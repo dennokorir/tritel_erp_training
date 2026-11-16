@@ -1,0 +1,279 @@
+# Tender tracker terms (tritel_tender_tracker). One or two plain sentences each.
+# Channel, OEM, compliance and commercial-target terms live in channel.yaml.
+# Bare words such as status, won, lost or stage are left out so they don't link on every page.
+- term: Tender Manager
+  aliases: [Tender Tracker]
+  definition: "The Odoo app where Tritel records every tender, RFQ and prequalification it considers, from first sighting to result, with its team, bid desk, quality checks, summaries and customer touches."
+  module: tenders
+  see: [tenders/index]
+- term: Tender
+  aliases: [tenders]
+  definition: "One record for one public tender, RFQ or similar request Tritel considers bidding for. It holds the customer, reference, value, team, dates, documents and its tender status."
+  module: tenders
+  see: [tenders/concepts/tenders-and-statuses]
+- term: Tender status
+  definition: "Where a tender is in its life - Draft, Bidding, Evaluation, Won, Prequalified, Lost, Dropped or Cancelled. It changes only through the buttons on the tender and decides the board column."
+  module: tenders
+  see: [tenders/concepts/tenders-and-statuses, tenders/workflows/tender-status]
+- term: Tender board
+  aliases: [All Tenders]
+  definition: "The board under Tender Manager › Tenders › All Tenders, with one column per tender status and a period bar."
+  module: tenders
+  see: [tenders/concepts/tenders-and-statuses]
+- term: Tender Number
+  definition: "The tender or document reference, shown as Ref at the top of the tender. Required."
+  module: tenders
+  see: [tenders/concepts/tenders-and-statuses]
+- term: Submission Deadline
+  definition: "When a bid must be in. It drives reminders, urgency, effort points and the late-submission flag. Edit it on the Tender Info tab."
+  module: tenders
+  see: [tenders/concepts/tenders-and-statuses, tenders/calculations/late-submission]
+- term: Expected Revenue
+  aliases: [Tender Sum]
+  definition: "The value of a tender in its own currency. A foreign-currency value is also shown in KES at the rate on the award date, else the submission deadline, else today."
+  module: tenders
+  see: [tenders/concepts/tenders-and-statuses]
+- term: Award Date
+  definition: "The date a tender was awarded. Required to mark a tender Won; it decides the target period the win counts in."
+  module: tenders
+  see: [tenders/workflows/tender-status]
+- term: Source/Pipeline
+  definition: "The field on a tender that links it to the CRM opportunity it came from. Only opportunities for the same customer can be picked."
+  module: tenders
+  see: [tenders/concepts/opportunities-and-tenders]
+- term: CRM opportunity
+  aliases: [pipeline opportunity]
+  definition: "A possible deal in the CRM app. It can be linked to tenders; winning or losing the tender marks the opportunity won or lost."
+  module: tenders
+  see: [tenders/concepts/opportunities-and-tenders]
+- term: Account Manager
+  aliases: [Account Managers]
+  definition: "The person who owns a customer account and its tenders and opportunities. On a tender, nominated by the Head of Channel or filled from the customer."
+  module: tenders
+  see: [tenders/concepts/roles-on-a-tender, tenders/concepts/market-coverage]
+- term: Bid Liaison
+  aliases: [Bid Liaisons]
+  definition: "The person who runs a bid - the readiness checklist, the submission and the receipt. Nominated by the Head of Commercial."
+  module: tenders
+  see: [tenders/concepts/roles-on-a-tender]
+- term: Technical Presales
+  aliases: [Technical Pre-sales Engineer, Technical Pre-sales, Technical Presales Engineer, presales engineer, pre-sales engineer]
+  definition: "The engineer who prepares a bid's technical response and manufacturer documents, and usually writes the project summary. Nominated by the Head of Channel."
+  module: tenders
+  see: [tenders/concepts/roles-on-a-tender]
+- term: Head of Commercial
+  definition: "The role that nominates Bid Liaisons, flags must-win tenders, approves business cases and looks after account ownership and target accounts."
+  module: tenders
+  see: [tenders/concepts/roles-on-a-tender]
+- term: Head of Channel
+  definition: "The role that nominates Account Managers and Technical Presales on tenders and opportunities, and requests and reviews project summaries."
+  module: tenders
+  see: [tenders/concepts/roles-on-a-tender]
+- term: Tender administrator
+  aliases: [Tender Tracker Administrator]
+  definition: "The Tender Manager's Administrator role. Can do everything, and is the only role that can reopen a tender, move it back on the board or delete it."
+  module: tenders
+  see: [tenders/concepts/roles-on-a-tender]
+- term: Nomination to-do
+  aliases: [Required Nomination]
+  definition: "A to-do asking a head to nominate a Bid Liaison or Technical Presales on a new tender, or telling the nominee they were picked. Removed once the tender is submitted or closed."
+  module: tenders
+  see: [tenders/concepts/roles-on-a-tender]
+- term: Confirm Bid
+  definition: "The button that moves a tender from Draft to Bidding. It records the bid decision and builds the readiness checklist."
+  module: tenders
+  see: [tenders/workflows/tender-status]
+- term: Mark Submitted
+  definition: "The button that moves a tender from Bidding to Evaluation, recording when the bid actually went in. Only the Bid Liaison, their manager or a Tender administrator see it."
+  module: tenders
+  see: [tenders/workflows/tender-status]
+- term: Lost Reason
+  aliases: [Tender lost reason]
+  definition: "Why a tender was lost, chosen in the Lost window with a closing note. Some reasons are marked as disqualifications."
+  module: tenders
+  see: [tenders/workflows/tender-status]
+- term: Drop Reason
+  aliases: [Tender drop reason]
+  definition: "Why Tritel decided not to bid, chosen in the Drop window with a closing note."
+  module: tenders
+  see: [tenders/workflows/tender-status]
+- term: Cancel Reason
+  aliases: [Why Cancelled]
+  definition: "Why a tender was cancelled - withdrawn by the client, re-tendered, a duplicate entry, or other."
+  module: tenders
+  see: [tenders/workflows/tender-status]
+- term: Prequalification
+  aliases: [Prequalifications, prequal]
+  definition: "The record of Tritel being shortlisted by a customer. Created when a tender is marked Prequalified, it tracks the validity window and the RFQs that follow."
+  module: tenders
+  see: [tenders/concepts/prequalifications, tenders/workflows/prequalification]
+- term: RFQ
+  aliases: [RFQs, request for quotation, Log RFQ]
+  definition: "A request for quotation sent under a prequalification. Each is logged as a new tender with Log RFQ."
+  module: tenders
+  see: [tenders/concepts/prequalifications]
+- term: Bid desk
+  definition: "The team of Bid Liaisons who prepare and submit bids, and the tools that balance their workload and check their bids."
+  module: tenders
+  see: [tenders/concepts/bid-desk-workload]
+- term: Bid Desk Team
+  aliases: [Full-time on Bids]
+  definition: "The list of Bid Liaisons who take a full share of bids. Only they appear in the load table when a Bid Liaison is assigned."
+  module: tenders
+  see: [tenders/concepts/bid-desk-workload]
+- term: Effort points
+  aliases: [workload points]
+  definition: "How much work a tender is: 1 point, plus 1 for short notice, 1 for a bid bond and 2 for must-win before submission. Dropped tenders count half and cancelled ones nothing."
+  module: tenders
+  see: [tenders/concepts/bid-desk-workload, tenders/calculations/workload-points]
+- term: Fair share
+  aliases: [Over fair share, Fair Workload]
+  definition: "A Bid Liaison is over their fair share when their quarter's effort points, with the new tender, would be more than 15% above the team average."
+  module: tenders
+  see: [tenders/concepts/bid-desk-workload]
+- term: Bid readiness checklist
+  aliases: [readiness checklist, Bid Readiness]
+  definition: "The list of documents a bid needs, built when the tender moves to Bidding. Each row is Ready, Missing, Expired or Not Needed."
+  module: tenders
+  see: [tenders/concepts/bid-readiness, tenders/workflows/bid-readiness]
+- term: Confirm Ready
+  aliases: [Confirmed Ready]
+  definition: "The step that locks a complete checklist. It should be done at least 72 hours before the submission deadline."
+  module: tenders
+  see: [tenders/workflows/bid-readiness]
+- term: Bid bond
+  aliases: [Bid Bond Required, bid security]
+  definition: "A guarantee some tenders require. When required, it adds a checklist row and an effort point."
+  module: tenders
+  see: [tenders/concepts/bid-readiness]
+- term: Submission Recorded
+  aliases: [Submission Receipt, Add Receipt]
+  definition: "Ticked once the bid's receipt or proof of delivery is attached, with who recorded it and when."
+  module: tenders
+  see: [tenders/workflows/bid-readiness]
+- term: Actual Submission
+  definition: "When the bid actually went in, entered at Mark Submitted. The scorer can correct it."
+  module: tenders
+  see: [tenders/concepts/must-win-and-bid-quality, tenders/calculations/late-submission]
+- term: Submitted Late
+  definition: "Ticked when the actual submission time is after the submission deadline."
+  module: tenders
+  see: [tenders/calculations/late-submission]
+- term: Must-win tender
+  aliases: [Must-Win, must win]
+  definition: "A tender the Head of Commercial has flagged as one Tritel most needs to win. The team is warned before the deadline, and a confirmed error on it counts three times."
+  module: tenders
+  see: [tenders/concepts/must-win-and-bid-quality]
+- term: Bid quality check
+  aliases: [Quality Check]
+  definition: "The Bid Liaison's manager's scoring of a submitted bid against the bid quality guidelines, due 10 days after submission."
+  module: tenders
+  see: [tenders/concepts/must-win-and-bid-quality, tenders/workflows/quality-and-disqualification]
+- term: Bid Quality Guidelines
+  definition: "The list of checks a bid is scored against, such as signed forms and valid certificates. Each is marked Met, Not met or Not applicable."
+  module: tenders
+  see: [tenders/concepts/must-win-and-bid-quality]
+- term: Quality Score
+  definition: "Guidelines met divided by guidelines that apply, times 100, to one decimal."
+  module: tenders
+  see: [tenders/calculations/bid-quality-score]
+- term: Bid Quality Score
+  definition: "The Accountability measure for a Bid Liaison - the average quality score of their bids, with must-win bids counting three times and confirmed disqualifications they caused at 0%."
+  module: tenders
+  see: [tenders/calculations/bid-quality-score]
+- term: Disqualification
+  aliases: [disqualified, Confirm Cause]
+  definition: "A tender lost or dropped for an avoidable error. The person recording it names who caused it, and a manager who isn't at fault confirms the cause."
+  module: tenders
+  see: [tenders/concepts/must-win-and-bid-quality, tenders/workflows/quality-and-disqualification]
+- term: Tender business case
+  aliases: [business case, business cases]
+  definition: "The cost and margin case for a bid, with one per tender, submitted for the Head of Commercial's approval."
+  module: tenders
+  see: [tenders/concepts/business-cases, tenders/workflows/business-case]
+- term: Gross Margin
+  definition: "On a business case, gross profit (expected revenue minus total cost) divided by expected revenue, times 100."
+  module: tenders
+  see: [tenders/calculations/business-case-margin]
+- term: Commissions & Facilitation
+  definition: "A business case cost category whose descriptions only the head it belongs to and Tender administrators can read."
+  module: tenders
+  see: [tenders/concepts/business-cases]
+- term: Project summary
+  aliases: [project summaries, case study]
+  definition: "A short structured case study of a won tender, requested by a manager, written by a writer and approved by a reviewer before it joins the library."
+  module: tenders
+  see: [tenders/concepts/project-summaries, tenders/workflows/project-summary]
+- term: Summary Tracker
+  definition: "The list of won tenders and where each project summary stands. Managers see all; writers see their own."
+  module: tenders
+  see: [tenders/concepts/project-summaries]
+- term: Summary heading
+  aliases: [Summary Headings]
+  definition: "One of the headings a project summary is written under, such as The client's problem or Outcome. Required headings must have content before submitting."
+  module: tenders
+  see: [tenders/concepts/project-summaries]
+- term: Project pillar
+  aliases: [Primary Pillar, Secondary Pillars]
+  definition: "A business pillar a project summary is classified under, such as Productivity or Connectivity."
+  module: tenders
+  see: [tenders/concepts/project-summaries]
+- term: Customer Naming
+  definition: "Set when a summary is approved - whether marketing may name the customer (Can be named), must anonymise it, or hasn't asked yet."
+  module: tenders
+  see: [tenders/concepts/project-summaries]
+- term: Project Summaries library
+  aliases: [summary library, Project Summary Library]
+  definition: "The screen of complete project summaries, with Gallery, Reader, Pillar × sector, Timeline and Reference finder views."
+  module: tenders
+  see: [tenders/concepts/project-summaries, tenders/how-to/customers/use-the-summary-library]
+- term: Marketing pack
+  aliases: [Export for Marketing, Marketing Exports]
+  definition: "A downloadable file of complete project summaries filtered for marketing. Customers not yet asked about naming are held back unless included."
+  module: tenders
+  see: [tenders/how-to/customers/export-for-marketing]
+- term: Customer activity
+  aliases: [customer activities, customer touch, customer touches, touchpoint, touchpoints]
+  definition: "One contact with a customer, such as a meeting, call or visit, either planned or done. Done touches feed coverage, last-seen dates and achievements."
+  module: tenders
+  see: [tenders/concepts/customer-activities, tenders/workflows/customer-activity]
+- term: Planned touch
+  aliases: [Plan touch, Overdue planned customer touches]
+  definition: "A customer touch scheduled for a future date. It is overdue once the date passes without being completed."
+  module: tenders
+  see: [tenders/workflows/customer-activity]
+- term: Touch Phase
+  definition: "Where a touch falls in the deal, by the date it happened - Account-level, Pipelining, Bid Support, Post-submission or Delivery & Collection."
+  module: tenders
+  see: [tenders/concepts/customer-activities]
+- term: Last Seen
+  definition: "The date of a customer's latest done touch. A nightly job sorts customers into bands from 1 to 30 days up to never seen."
+  module: tenders
+  see: [tenders/concepts/customer-activities]
+- term: Coverage ladder
+  aliases: [coverage rung]
+  definition: "The rung each customer sits on - Anchor, Named, Prequalified, In play, Contested, Engaged or Untouched - worked out from its tenders, opportunities and touches."
+  module: tenders
+  see: [tenders/concepts/market-coverage, tenders/calculations/coverage-ladder]
+- term: Named share
+  definition: "Customers with at least one win (Anchor or Named) as a share of the customers reached."
+  module: tenders
+  see: [tenders/concepts/market-coverage]
+- term: Market Coverage
+  definition: "The screen under Tender Customers that shows the coverage ladder, named share, win rate and sectors for the customers you can see."
+  module: tenders
+  see: [tenders/concepts/market-coverage, tenders/how-to/customers/market-coverage]
+- term: Account ownership
+  aliases: [Needs Owner, Claim for Me, Suggested Owner]
+  definition: "Giving each engaged customer one account manager. Account managers can claim unowned customers; the Head of Commercial assigns or accepts suggested owners."
+  module: tenders
+  see: [tenders/concepts/market-coverage, tenders/how-to/customers/account-ownership]
+- term: Target account
+  aliases: [target accounts, Target Tier, Propose as Target]
+  definition: "A customer Tritel has chosen to pursue, with a tier of Strategic, Growth or Maintain. Anyone can propose one; the Head of Commercial approves it."
+  module: tenders
+  see: [tenders/concepts/market-coverage, tenders/workflows/customer-activity]
+- term: Commercial Dashboard
+  definition: "The portal landing page for anyone with a tender role, at /my/dashboard, showing counts, values and win rate for a period."
+  module: tenders
+  see: [tenders/concepts/the-portal]

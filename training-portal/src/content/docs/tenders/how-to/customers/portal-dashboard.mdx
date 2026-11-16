@@ -1,0 +1,79 @@
+---
+title: Use the Commercial Dashboard and portal pages
+description: Use the commercial portal's Dashboard, Tenders, Pipeline and Customers pages to see your period figures, your tenders and opportunities, and how your customers are doing.
+module: tenders
+pageType: how-to
+roles: [account-manager, bid-liaison, presales]
+tags: [portal, reports]
+keywords: [portal, website, my account, /my, phone, mobile, dashboard, pipeline, my tenders, win rate, customers, KPI]
+where: [Portal, Dashboard]
+before:
+  - You have a tender role (Account Manager, Bid Liaison or Technical Presales, or a head of department) and your user is linked to an employee record. Without the employee link the pages refuse to open.
+related: [tenders/concepts/the-portal, tenders/how-to/bids/tender-my-actions, tenders/how-to/customers/write-a-project-summary, tenders/how-to/customers/use-the-summary-library, getting-started/finding-your-way]
+sources:
+  - tritel_tender_tracker/views/portal_tender_templates.xml
+  - tritel_tender_tracker/views/portal_customer_templates.xml
+  - tritel_tender_tracker/controllers/portal_tender.py
+  - tritel_tender_tracker/models/portal_home.py
+sidebar: { order: 11 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+The commercial portal is the simple website view of your tender work. When you sign in with a tender role you land on its **Dashboard**. The tabs across the top lead to **My Actions**, **Targets**, **Pipeline**, **Summaries**, **Tenders**, **Achievements** and **Customers**.
+
+<Illustration name="tenders/cust-portal-dashboard" caption="The Dashboard for an account manager. The numbers match the steps below." />
+
+## Steps
+
+1. Open the portal (**/my**). With a tender role you land on **/my/dashboard**. The tabs at the top move between the pages.
+2. Pick the **Period:** to look at. It starts on the current period; ★ marks active ones.
+3. Read the cards. Click a card to open the page behind it (**View Pipeline →**, **View Tenders →**, **View Targets →**). What you see depends on your role:
+
+   | Your role | Cards |
+   |---|---|
+   | Account Manager | **Targets**, **Pipeline**, **Tenders** (by status), **Tender Success**, **Achievements** |
+   | Bid Liaison | **Bid Portfolio**, **Tender Success**, **Tender Breakdown**, **Achievements** |
+   | Technical Presales | **Targets**, **Pipeline**, **Bid Portfolio**, **Bid Breakdown**, **Achievements** |
+
+4. **Tender Success** shows your win rate in the period with a word: **Excellent** (over 40%), **Good** (30% or more), **Fair** (20% or more), **Concerning** (10% or more), **Poor**, or **No data** when nothing has been decided.
+5. **Customer Touchpoints** counts the **unique accounts touched** in the period, through valid recorded activities.
+6. **Recent Activities** lists your 5 latest customer activities, planned or done, whatever the period.
+
+<Illustration name="tenders/cust-portal-tenders" caption="The Tenders page." />
+
+7. Click **Tenders** (**/my/tenders**). Filter by **Period**, **Account Manager**, **Bid Liaison** or **Tech Presales**; **Clear ×** removes them.
+8. Read **Tender Status Overview** and the list: **Tender Ref**, **Tender Name**, **Customer**, **Status**, **Deadline**, **Revenue** and **Must-Win**. Click **View** for the tender's page, with its activities and project summary.
+
+The other pages:
+
+- **Pipeline** (**/my/pipeline**): your opportunities, a **Pipeline Funnel** by stage and a list with **Opportunity**, **Customer**, **Stage**, **Exp. Revenue** and **Tenders**. Filter by **Period**, **Account Manager** or **Tech Presales**.
+- **Customers** (**/my/customers**): **Customer Performance** for a **Primary period** compared with another (**Compare to**): **Customers Touched**, **Activities Logged**, **Pipeline Value**, **Tender Value** and win rate, the **Activity Phase Distribution**, and a row per customer with **Last Touch**.
+- **Summaries** and **My Actions**: see [Write and submit a project summary](/tenders/how-to/customers/write-a-project-summary/) and [Work through Tender My Actions](/tenders/how-to/bids/tender-my-actions/).
+
+## Who sees what
+
+| Page | Account Manager | Bid Liaison | Technical Presales |
+|---|---|---|---|
+| **Tenders** | Tenders where you are the account manager, bid liaison or pre-sales engineer | Same | Same |
+| **Pipeline** | Opportunities where you are the account manager or salesperson (*Showing your assigned opportunities*) | Opportunities linked to your tenders (*Showing opportunities linked to your tenders*) | Opportunities where you are the pre-sales engineer (*Showing opportunities you support*) |
+| **Customers** | Only your own accounts | Any account manager's accounts, or all | Any account manager's accounts, or all |
+
+The Head of Commercial also sees the tenders of all account managers and bid liaisons; the Head of Channel those of all pre-sales engineers; Tender administrators everything.
+
+## What happens next
+
+Nothing changes: these pages only show figures. To act on a tender or opportunity, open it in the backend.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *You must be linked to an employee to access the tender portal.* | Your user has no employee record. | Ask HR to link your user to your employee record. |
+| *You do not have permission to view this tender.* | The tender is not one of yours (or your team's, for heads). | Ask the account manager, or open it in the backend. |
+
+:::note[Good to know]
+- The dashboard picks one view for you. If you hold more than one role, the account manager view wins over bid liaison, and bid liaison over pre-sales.
+- **Customer Touchpoints** and **Activity Phase Distribution** count only valid activities, planned as well as done: mainly ones linked to a tender or opportunity (see [Log a customer activity](/tenders/how-to/customers/log-a-customer-activity/)). Touches with no deal don't count here, although they show on the **Customer Activities** screen.
+- The **Targets** card and **/my/targets** come from Commercial Targets, which are being replaced by Accountability revenue targets.
+- On the portal, the "team" of a head of department is everyone in the matching role, not their reporting line. The **Customer Activities** screen in the backend follows the reporting line instead.
+:::

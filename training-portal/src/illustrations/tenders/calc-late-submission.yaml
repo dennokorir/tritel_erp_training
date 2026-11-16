@@ -1,0 +1,12 @@
+type: calc
+title: Submitted Late
+desc: Worked example of the Submitted Late flag, with a Submission Deadline of 10 Mar 2026 10:00 and an Actual Submission of 10 Mar 2026 10:30, which is later than the deadline, so the bid shows Submitted Late.
+source: tritel_tender_tracker/models/bid_quality.py (_compute_submitted_late)
+heading: TND-2026-011
+inputs:
+  - {label: Submission Deadline, value: "10 Mar 2026 10:00"}
+  - {label: Actual Submission, value: "10 Mar 2026 10:30"}
+steps:
+  - {label: "Is Actual Submission later than the deadline?", value: "Yes, by 30 minutes"}
+result: {label: Submitted Late, value: "Yes", tone: bad}
+note: At exactly 10:00, or any time before, the flag stays off. Both the date and the time count.

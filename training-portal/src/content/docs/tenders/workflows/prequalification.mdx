@@ -1,0 +1,96 @@
+---
+title: Prequalification workflow
+description: The statuses of a prequalification (Applied, Active, Expired, Renewed, Closed), how it is created from a prequalified tender, how RFQs are logged, and the expiry and follow-up reminders the system sends.
+module: tenders
+pageType: workflow
+roles: [account-manager, bid-liaison, head-commercial, tender-admin]
+tags: [prequalifications, workflows]
+keywords: [prequalification, prequal, PQ, registration, framework, shortlist, RFQ, log RFQ, expired, renewal, follow-up, validity]
+related: [tenders/concepts/prequalifications, tenders/how-to/bids/prequalifications-and-rfqs, tenders/how-to/bids/record-the-result, tenders/workflows/tender-status]
+sources:
+  - tritel_tender_tracker/models/prequalification_pipeline.py
+  - tritel_tender_tracker/wizards/tender_move_wizard.py
+  - tritel_tender_tracker/views/tender_workflow_views.xml
+  - tritel_tender_tracker/data/tender_workflow_data.xml
+sidebar: { order: 4 }
+---
+
+A **prequalification** is created when a tender is marked **Prequalified**, and starts **Active**. While active, RFQs are logged against it and the system watches its expiry and how long it has been since the last RFQ. Its other statuses are set by hand on the status bar.
+
+```mermaid
+stateDiagram-v2
+  state "Applied" as applied
+  state "Active" as active
+  state "Expired" as expired
+  state "Renewed" as renewed
+  state "Closed" as closed
+  [*] --> active: Tender marked Prequalified (anyone)
+  active --> expired: Valid Until passed (the system)
+  active --> renewed: Status bar (anyone)
+  expired --> renewed: Status bar (anyone)
+  renewed --> closed: Status bar (anyone)
+  active --> closed: Status bar (anyone)
+  expired --> closed: Status bar (anyone)
+  applied --> active: Status bar (anyone)
+  note right of active
+    Log RFQ while Active or Renewed
+    Reminders only while Active:
+    expiry notice 60 and 30 days before
+    no RFQ for 60 days, then every 30
+  end note
+```
+
+| Status | What it means | Moves to | Who moves it |
+|---|---|---|---|
+| **Applied** | Tritel has applied and is waiting to hear. Set by hand; nothing is automatic. | Any status, by clicking the status bar | Any internal user |
+| **Active** | Tritel is prequalified and inside the validity window. RFQs can be logged; reminders run. | **Expired** the day after **Valid Until**; any status by clicking the status bar | The system; any internal user |
+| **Expired** | **Valid Until** has passed. | Any status, by clicking the status bar | Any internal user |
+| **Renewed** | The prequalification was renewed. RFQs can still be logged. Reminders don't run. | Any status, by clicking the status bar | Any internal user |
+| **Closed** | No longer followed up. | Any status, by clicking the status bar | Any internal user |
+
+The status bar shows **Applied**, **Active**, **Expired** and **Closed**; **Renewed** shows when it is the current status. The diagram shows the usual moves, but any status can be clicked from any other.
+
+## Who does what
+
+```mermaid
+flowchart TD
+  subgraph AMs["Account Manager"]
+    A1["Mark the tender Prequalified: dates, categories"]
+    A2["Add missing dates, untick Dates Unknown"]
+    A3["Log RFQ for each request"]
+    A4["Follow up, plan the renewal"]
+  end
+  subgraph BLs["Bid Liaison"]
+    B1["Run each RFQ as a tender"]
+  end
+  subgraph Sys["System"]
+    S1["Prequalification Active, follow-up in 30 days"]
+    S2["Expiry notices, no-RFQ notices"]
+    S3["Expired after Valid Until"]
+  end
+  A1 --> S1 --> A3 --> B1
+  S1 -.-> A2
+  S1 --> S2 --> A4
+  S2 --> S3
+```
+
+## What the system does automatically
+
+- **Tender marked Prequalified:** creates the prequalification with the customer, reference, account manager (also the **Owner**), the dates and categories from the window, status **Active**, and **Next Follow-up** 30 days away. If a date is missing, **Dates Unknown** is ticked. The tender's chatter says *Prequalification created: valid … to ….*
+- **Log RFQ:** opens a new tender with the customer, account manager and categories filled in and linked in **From Prequalification**. The tender shows a **From prequalification** badge. The prequalification's **RFQs**, **Bids**, **Won**, **Value Won** and **Last RFQ** update as its RFQ tenders move.
+- **Each day, for Active prequalifications:**
+  - after **Valid Until**: status **Expired**, and *Expired on …* in the chatter;
+  - exactly 60 and 30 days before **Valid Until** (dates known): the account manager is told *This prequalification expires on …. Plan the renewal.*;
+  - 60 days without an RFQ (counting from the last RFQ, or else **Valid From**, or else the day it was created), then every 30 days: *No RFQ has come in under this prequalification for 60 days. Follow up with the client.*
+- **My Actions:** the account manager sees **Prequalifications to follow up** for each active one with dates unknown, expiring within 60 days, or with no RFQ for 60 days.
+
+:::note[Good to know]
+- Anyone can click the status bar, and only **Active** has automatic follow-up. Agree in your team what **Applied**, **Renewed** and **Closed** mean and who sets them.
+- Notices go to the account manager on the prequalification. If it has none, they are only noted in its chatter.
+:::
+
+## Related tasks
+
+- [Follow up a prequalification and log an RFQ](/tenders/how-to/bids/prequalifications-and-rfqs/)
+- [Record the result: Won, Lost, Prequalified, Drop or Cancel](/tenders/how-to/bids/record-the-result/)
+- [Prequalifications](/tenders/concepts/prequalifications/)

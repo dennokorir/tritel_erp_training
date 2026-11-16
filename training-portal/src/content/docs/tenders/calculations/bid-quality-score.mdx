@@ -1,0 +1,73 @@
+---
+title: Bid quality score
+description: How a bid's Quality Score (%) is worked out from the guideline results, and how Accountability turns quality scores and confirmed disqualifications into the Bid Quality Score and Bid Compliance, with must-win bids counting three times.
+module: tenders
+pageType: calculation
+roles: [bid-liaison, presales, head-commercial, tender-admin]
+tags: [bid quality, scores]
+keywords: [bid score, quality score, quality check, guidelines, must-win weight, disqualification, DQ, bid compliance, KPI, appraisal, bid liaison score, error]
+related: [tenders/concepts/must-win-and-bid-quality, tenders/how-to/bids/score-bid-quality, tenders/how-to/bids/confirm-a-disqualification, tenders/how-to/bids/flag-a-must-win, tenders/workflows/quality-and-disqualification, accountability/calculations/metric-families]
+sources:
+  - tritel_tender_tracker/models/bid_quality.py
+  - tritel_tender_tracker/wizards/bid_quality_wizards.py
+  - tritel_tender_tracker/views/bid_quality_views.xml
+  - tritel_tender_tracker/data/bid_quality_data.xml
+  - tritel_accountability_framework/models/metric_hook_bid_quality.py
+sidebar: { order: 1 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Two figures carry the name "quality". The **Quality Score (%)** sits on the tender's **Bid Quality** tab: the Bid Liaison's manager gives it once the bid is submitted. The **Bid Quality Score** is an Accountability metric: it averages a Bid Liaison's scored bids over a quarter, counts must-win bids three times and counts confirmed errors at 0%.
+
+## The Quality Score on a tender
+
+When a tender first moves to **Evaluation**, its **Quality Check** becomes **To Score** and is due 10 days later. The scorer clicks **Score Bid** and marks each guideline **Met**, **Not met** or **Not applicable** in the **Bid Quality Check** window.
+
+- **Quality Score (%)** = guidelines **Met** ÷ guidelines that apply × 100, rounded to one decimal.
+- A guideline marked **Not applicable** is left out of both sides.
+
+<Illustration name="tenders/calc-quality-score" caption="6 guidelines met out of the 7 that apply gives 85.7%, not 6 out of 8." />
+
+The guideline list comes from **Tender Manager › Configuration › Bid Quality Guidelines** (8 to start with, from *All required forms are completed and signed* to *Submitted before the deadline at the correct location*). Each scored tender keeps the wording it was scored against, so changing the list later doesn't change past scores. **Change Score** reopens the same rows.
+
+**Who scores:** the Bid Liaison's manager in the Employees app. If the Bid Liaison has no usable manager, the Head of Commercial users score; failing that, Tender administrators. The Bid Liaison can never score their own bid.
+
+## The Bid Quality Score in Accountability
+
+The **Bid Quality Score (Bid Liaison)** metric looks at the tenders where the person is the **Bid Liaison**:
+
+| Tender | Counts as | Weight | Which quarter |
+|---|---|---|---|
+| Disqualification confirmed, **Caused By** **Bid Liaison** | 0% | 3 if must-win, else 1 | The quarter it was confirmed |
+| Submitted and scored, no confirmed error by the Bid Liaison | Its **Quality Score (%)** | 3 if must-win, else 1 | The quarter of its **Actual Submission** |
+| Submitted, not yet scored | Left out of the average and listed | – | – |
+
+**Bid Quality Score** = sum of (score × weight) ÷ sum of weights, rounded to one decimal.
+
+<Illustration name="tenders/calc-bid-quality-score" caption="A must-win bid at 90% counts three times. The confirmed disqualification counts at 0%. The unscored bid is left out." />
+
+## Bid Compliance for Technical Presales
+
+The **Bid Compliance (Technical Presales)** metric works the same way for the tenders where the person is **Technical Presales**, but ignores the manager's quality check: every bid counts at 100%, except a disqualification confirmed as caused by **Technical Presales**, which counts at 0%.
+
+<Illustration name="tenders/calc-bid-compliance" caption="Two compliant bids, one of them must-win, and one confirmed error give 80.0%." />
+
+Both metrics wait 14 days after the quarter ends before an automatic review, so late scores and confirmations are picked up. See [how metrics count](/accountability/calculations/metric-families/).
+
+## Edge cases
+
+- **No bids in the quarter**: the review is **Not Applicable** and doesn't affect the score.
+- **Every bid unscored**: the same. The worksheet lists the bids waiting to be scored.
+- **A disqualification caused by someone else** (Account Manager, OEM or supplier, Client, Other) doesn't count against the Bid Liaison. The bid counts at its quality score if it has one.
+- **A disqualification still To Confirm** doesn't count as an error yet. The bid counts at its quality score and is flagged *awaiting confirmation*.
+- **Cancelled tenders** count only if they were scored.
+- **Must-win** is the flag on the tender when the metric runs. Flagging or removing it later changes the weight.
+- **All guidelines Not applicable**: the score can't be saved: *At least one guideline must apply to this bid.*
+
+:::note[Good to know]
+A disqualification caused by the Bid Liaison counts in the quarter it was **confirmed**, not the quarter the bid went in. A bid submitted in March and confirmed as a Bid Liaison error in April counts at 0% in Q2, and is not counted in Q1 at all. It also counts when the bid was dropped and never submitted.
+
+The scorer can correct the **Actual Submission** in the **Bid Quality Check** window. That date decides which quarter a scored bid counts in.
+
+Must-win can currently be flagged at any status, even after submission. Flagging a bid after it was scored makes it count three times.
+:::

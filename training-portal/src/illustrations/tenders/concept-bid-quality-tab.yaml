@@ -1,0 +1,27 @@
+type: screen
+title: The Bid Quality tab
+desc: The Bid Quality tab of a must-win tender in Evaluation, with the Must-Win reason, the submission details and Submitted Late, the Quality Check status and due date with the Score Bid button, and a Disqualification group with the Confirm Cause button, numbered 1 to 5.
+source: tritel_tender_tracker/views/bid_quality_views.xml (view_tender_form_bid_quality); views/bid_desk_views.xml (view_tender_form_bid_desk)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true}, My Actions, Tender Customers, Reporting]
+  breadcrumb: [All Tenders, TND-2026-003]
+blocks:
+  - buttons: [{label: Remove Must-Win}, {label: Won, primary: true}, {label: Prequalified, primary: true}, {label: Lost, primary: true}, {label: Cancel}]
+    status: {steps: [Draft, Bidding, Evaluation], current: Evaluation}
+  - title: {text: "Ref TND-2026-003", sub: "Must-Win · Customer C"}
+  - tabs: {items: [Tender Info, Documents, Bid Readiness, Bid Quality], active: Bid Quality}
+  - columns:
+      - panel: true
+        blocks:
+          - heading: Must-Win
+          - fields: [[{label: Why Must-Win, value: "Entry into a new sector", n: 1}], [{label: Flagged By, value: Employee D}]]
+      - panel: true
+        blocks:
+          - heading: Submission
+          - fields: [[{label: Actual Submission, value: "20/03/2026 09:40", n: 2}], [{label: Submitted Late, value: "☐"}], [{label: Submission Recorded, value: "☑"}]]
+  - heading: Quality Check
+  - fields: [[{label: Quality Check, value: To Score, n: 3}, {label: Quality Check Due, value: 30/03/2026}]]
+  - buttons: [{label: Score Bid, primary: true, n: 4}]
+  - note: {text: "Disqualification: To Confirm · Caused By: Bid Liaison · Confirm By 27/03/2026", tone: warn, n: 5}

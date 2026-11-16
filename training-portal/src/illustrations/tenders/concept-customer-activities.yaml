@@ -1,0 +1,22 @@
+type: screen
+title: The Customer Activities screen
+desc: The Customer Activities workspace with the Log touch, Plan touch and List buttons, the Customers, People and Planned tabs, the Showing person picker and Made by them only toggle, and the customer heatmap with last-touch shading, numbered 1 to 5.
+source: tritel_tender_tracker/static/src/touchpoints/workspace/touchpoints_workspace.xml; static/src/touchpoints/heatmap/touchpoints_heatmap.xml
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [Tenders, My Actions, {label: Tender Customers, active: true}, Reporting]
+  breadcrumb: [Customer Activities]
+blocks:
+  - buttons: [{label: Log touch, primary: true, n: 1}, {label: Plan touch}, {label: List}]
+  - tabs: {items: [Customers, People, "Planned  3"], active: Customers, n: 2}
+  - fields: [[{label: Showing, value: "My team", n: 3}, {label: Made by them only, value: "☐"}]]
+  - tiles: [{label: Touches, value: "42"}, {label: Customers, value: "18"}, {label: "Quiet > 90 days", value: "4", tone: warn, n: 4}]
+  - table:
+      columns: [Customer, Jan, Feb, Mar, "Last touch · people"]
+      widths: [4, 1, 1, 1, 4]
+      n: 5
+      rows:
+        - [Customer A, "2", "3", "1", {text: "≤ 30 days · Employee A, Employee C", tone: good}]
+        - [Customer B, "1", "", "", {text: "31–90 · Employee A", tone: warn}]
+        - [Customer C, "", "", "", {text: "> 90 or never", tone: bad}]

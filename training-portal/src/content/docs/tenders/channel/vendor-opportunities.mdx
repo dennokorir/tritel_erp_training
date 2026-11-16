@@ -1,0 +1,45 @@
+---
+title: Record vendor opportunities on a CRM opportunity
+description: List the OEMs involved in a CRM opportunity, with product tags and an estimated value for each, so the OEM pipeline and each OEM's Vendor Pipeline are right.
+module: tenders
+pageType: how-to
+roles: [account-manager, presales, head-channel]
+tags: [channel, opportunities]
+keywords: [vendor opportunity, vendor lead, OEM, deal registration, pipeline, opportunity, estimated value, partner, principal, OEM pipeline]
+where: [CRM, Sales, My Pipeline]
+before:
+  - You can open and edit the opportunity in CRM.
+  - The OEM exists under <strong>Channel › OEMs(Vendors)</strong>.
+related: [tenders/channel/oems-and-distributors, tenders/concepts/opportunities-and-tenders, tenders/channel/index, accountability/concepts/metrics]
+sources:
+  - crm_tender/views/crm_lead_views.xml
+  - crm_tender/models/crm_oem.py
+  - crm_tender/models/crm_lead.py
+  - crm_tender/models/crm_tag.py
+  - tritel_accountability_framework/models/metric_hook_oem.py
+sidebar: { order: 3 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+A **vendor opportunity** is one OEM on one CRM opportunity, with the value you expect that OEM's products to make up. Add one row per OEM when you know which manufacturers a deal involves. The rows feed each OEM's **Opportunities** button and the **OEM pipeline** figure used by Accountability targets.
+
+<Illustration name="tenders/ch-vendor-opportunities" caption="The Vendor Opportunities tab on an opportunity. The numbers match the steps below." />
+
+## Steps
+
+1. Open the opportunity in CRM.
+2. Open the **Vendor Opportunities** tab (next to **Internal Notes**).
+3. Click **Add a line**, then choose the OEM in the **Vendor** column.
+4. Choose the **Tags** for the products involved, and type the **Estimated Value**. Repeat from step 3 for each OEM.
+5. Save the opportunity. The **Name** column fills in with the opportunity's name.
+
+## What happens next
+
+- The opportunity appears under the OEM's **Opportunities** smart button, the **Vendor Pipeline**.
+- Accountability targets that use the **OEM pipeline (vendor leads)** metric add up the **Estimated Value** of each OEM's rows on opportunities that are still open (not won, not lost, not in a folded stage). Rows with no value are flagged in the target's worksheet. See [Metrics](/accountability/concepts/metrics/).
+
+:::note[Good to know]
+- **Estimated Value** has no currency, and the pipeline metric adds the figures as typed. Agree with your Head of Channel which currency to use and use it on every row.
+- The **Tags** list only offers CRM tags whose **Tag Type** is **Product**. If a tag is missing, ask a CRM manager to set its type under **CRM › Configuration › Tags**.
+- This tab is the only Channel addition to an opportunity. It does not book anything: OEM bookings are made against purchase order lines. See [OEM bookings](/tenders/channel/oem-bookings/).
+:::

@@ -1,0 +1,21 @@
+type: screen
+title: Recording a loss with a disqualification
+desc: The Lost Reason window with Tender lost reason set to a disqualification, the Caused By and Evidence boxes that appear for it, the Closing Note and the Submit button, numbered 4.
+source: tritel_tender_tracker/wizards/tender_lost_views.xml (view_tender_lost_form); wizards/tender_lost.py; wizards/tender_dropped_views.xml
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true}, My Actions, Tender Customers, Commercial Targets]
+  breadcrumb: [Tenders, Campus Wi-Fi upgrade]
+blocks:
+  - buttons: [{label: Won, primary: true}, {label: Prequalified, primary: true}, {label: Lost, primary: true, n: 4}, {label: Cancel}]
+    status: {steps: [Draft, Bidding, Evaluation], current: Evaluation}
+  - dialog:
+      title: Lost Reason
+      blocks:
+        - fields:
+            - [{label: Tender lost reason, value: "Disqualified: missing signature", bold: true}]
+            - [{label: Caused By, value: Bid Liaison}]
+            - [{label: Evidence, value: "Evaluation report, page 3: form of tender not signed"}]
+        - note: {text: "What went wrong ? — The signature page was left out of the original copy.", tone: muted}
+        - buttons: [{label: Submit, primary: true}, {label: Cancel}]

@@ -1,0 +1,21 @@
+type: matrix
+title: Who can do what in Channel
+desc: Permission grid for the Channel app, for any internal user, Channel users, Channel Managers and Purchase administrators, covering OEM bookings, untagged purchases, OEMs, distributors, compliance, certifications and learning development.
+source: crm_tender/security/ir.model.access.csv, security/crm_tender_security.xml, views/crm_oem_booking_views.xml, wizards/oem_set_lines.py, wizards/oem_booking_add_lines.py
+columns: [Any internal user, Channel user, Channel Manager, Purchase administrator]
+labelWidth: 330
+rows:
+  - {group: OEM bookings}
+  - {action: See OEM Bookings, cells: [n, y, y, y]}
+  - {action: "Create, Add purchase lines, Confirm, Reset to Draft", cells: [n, n, y, y]}
+  - {action: Remove a line from a draft booking, cells: [n, n, y, y]}
+  - {action: Delete a draft booking, cells: [n, n, y, y]}
+  - {action: Untagged Purchases and Set OEM, cells: [n, n, y, n]}
+  - {group: Master data}
+  - {action: Add and change OEMs, cells: [p, p, p, p]}
+  - {action: "Distributors, courses, certifications, compliance documents", cells: [y, y, y, y]}
+  - {action: Vendor Opportunities on an opportunity, cells: [y, y, y, y]}
+  - {group: Learning Development}
+  - {action: See and update, cells: [n, y, y, n]}
+  - {action: Create, cells: [n, n, y, n]}
+legend: {p: "Partly: see the notes under the picture"}

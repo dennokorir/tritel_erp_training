@@ -1,0 +1,32 @@
+type: screen
+title: The project summary workspace
+desc: A project summary in Writing, with the Submit for review and Reassign buttons, the status bar, the writer, requester and due date, the Headings progress, the text written under the headings, and the Classification, Headings and What to cover panels, numbered 1 to 5.
+source: tritel_tender_tracker/views/project_summary_views.xml (tender_summary_workspace_form); models/project_summary.py; data/tender_summary_heading_data.xml
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true}, My Actions, Tender Customers, Reporting]
+  breadcrumb: [Summary Tracker, Customer A]
+blocks:
+  - buttons: [{label: Submit for review, primary: true, n: 1}, {label: Reassign}]
+    status: {steps: [Not requested, Writing, In review, Complete], current: Writing, n: 2}
+  - title: {text: Customer A, sub: "TND-2026-005 · Network upgrade"}
+  - fields:
+      - [{label: Summary Writer, value: Employee C}, {label: Due, value: 20/04/2026}]
+      - [{label: Summary Requested By, value: Employee D}, {label: Headings, value: "6 of 8 · 75%", n: 3}]
+  - columns:
+      - panel: true
+        blocks:
+          - heading: Client and sector
+          - text: "Customer A is a public sector agency…"
+          - heading: "The client's problem"
+          - text: "…"
+          - heading: What we delivered
+          - text: "…"
+      - panel: true
+        blocks:
+          - heading: Classification
+          - fields: [[{label: Primary Pillar, value: Connectivity, n: 4}], [{label: "Tritel's Role", value: Prime contractor}], [{label: Motion, value: Project}]]
+          - heading: Headings
+          - text: "✓ Client and sector · ✓ What we delivered · ✗ Outcome"
+            n: 5

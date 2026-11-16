@@ -1,0 +1,52 @@
+type: screen
+title: An OEM booking in draft
+desc: A draft OEM booking with the Add purchase lines, Confirm buttons, the Portal Reference, the From the OEM portal and Reconciliation (USD) groups, the Purchase lines tab with a Remove button on each line, and the Add purchase lines window with Selected (USD) and Add to booking, numbered 1 to 7.
+source: crm_tender/views/crm_oem_booking_views.xml (crm_oem_booking_view_form, crm_oem_booking_add_lines_view_form)
+frame:
+  grid: true
+  app: Channel
+  menu: ["OEMs(Vendors)", {label: OEM Bookings, active: true, n: 1}, Untagged Purchases, Distributors, Certifications]
+  breadcrumb: [OEM Bookings, BK-1001]
+blocks:
+  - buttons: [{label: Add purchase lines, primary: true, n: 4}, {label: Confirm, n: 7}]
+    status: {steps: [Draft, Confirmed], current: Draft}
+  - title: {text: BK-1001, sub: Portal Reference, n: 2}
+  - columns:
+      - panel: true
+        blocks:
+          - heading: From the OEM portal
+            n: 3
+          - fields:
+              - [{label: OEM, value: OEM A}]
+              - [{label: OEM-Recognised Amount, value: "9,000.00", bold: true}]
+              - [{label: Currency, value: USD}]
+              - [{label: Portal Date, value: 20/03/2026}]
+      - panel: true
+        blocks:
+          - heading: Reconciliation (USD)
+            n: 6
+          - fields:
+              - [{label: Purchase Cost (USD), value: "10,000.00"}]
+              - [{label: Distributor Margin (USD), value: "1,000.00"}]
+              - [{label: Distributor Margin (%), value: "10.00"}]
+              - [{label: Booking Date, value: 18/03/2026}]
+  - tabs: {items: [Purchase lines, Notes], active: Purchase lines}
+  - table:
+      columns: [Order Reference, Distributor, Product, Subtotal (USD), Confirmed On, ""]
+      widths: [2, 2, 2, 2, 2, 1]
+      rows:
+        - [PO-2026-001, Distributor A, Switch 48-port, "6,000.00", 03/03/2026, {text: "× Remove", tone: bad}]
+        - {cells: [PO-2026-002, Distributor A, Support 1 year, "4,000.00", 18/03/2026, {text: "× Remove", tone: bad}], n: 5}
+  - dialog:
+      title: "Add purchase lines · OEM A"
+      blocks:
+        - text: "Lines tagged with this OEM, on confirmed purchase orders, that aren't in another booking."
+        - table:
+            columns: [Order Reference, Product, Subtotal (USD)]
+            widths: [2, 3, 2]
+            rows:
+              - [PO-2026-001, Switch 48-port, "6,000.00"]
+              - [PO-2026-002, Support 1 year, "4,000.00"]
+        - fields:
+            - [{label: Selected (USD), value: "10,000.00", bold: true}]
+        - buttons: [{label: Add to booking, primary: true, n: 4}, {label: Cancel}]

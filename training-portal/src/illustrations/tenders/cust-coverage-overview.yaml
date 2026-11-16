@@ -1,0 +1,33 @@
+type: screen
+title: Market Coverage overview
+desc: The Overview tab of Market Coverage, with the account manager, sector, market and period choices, the coverage figures, the Named vs touched by account manager table and the ladder, numbered 1 to 5.
+source: tritel_tender_tracker/static/src/coverage/market_coverage.xml (MarketCoverage, overview)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, Tenders, {label: Tender Customers, active: true, n: 1}, Reporting]
+  breadcrumb: [Market Coverage]
+blocks:
+  - buttons: [{label: All account managers}, {label: All sectors}, {label: All engaged, primary: true}, {label: Target accounts}, {label: All time, n: 2}]
+  - tabs: {items: [Overview, Accounts, Sectors, Share of account, Account managers], active: Overview, n: 3}
+  - tiles:
+      - {label: Customers reached, value: "60"}
+      - {label: Named, value: "18 (30%)", tone: good}
+      - {label: Wins / decided bids, value: "24/70"}
+      - {label: "Reached, no account manager", value: "5", tone: warn}
+  - heading: Named vs touched by account manager
+  - table:
+      columns: [Account manager, "Named · touched", Named share, Wins / bids]
+      widths: [3, 3, 1.6, 1.6]
+      rows:
+        - ["Employee A", "████░░░░", "40% 8/20", "10 / 25"]
+        - ["Employee B", "██░░░░░░", "25% 4/16", "5 / 18"]
+        - {cells: [{text: "No account manager · needs owner", tone: warn}, "░░░", "0% 0/5", "0 / 6"], n: 4}
+  - heading: Where customers sit on the ladder
+    n: 5
+  - bars:
+      - {label: Anchor, value: 6, max: 20, tone: good}
+      - {label: Named, value: 12, max: 20, tone: good}
+      - {label: In play, value: 15, max: 20, tone: accent}
+      - {label: Contested, value: 10, max: 20, tone: warn}
+      - {label: Untouched, value: 4, max: 20, tone: muted}

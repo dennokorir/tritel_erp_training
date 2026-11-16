@@ -1,0 +1,22 @@
+type: screen
+title: A prequalification
+desc: A prequalification form with the Log RFQ button and the clickable status bar, the RFQs smart button, the source tender, account manager and validity dates, the follow-up date, the Results group and the RFQs tab, numbered 1 to 6.
+source: tritel_tender_tracker/views/tender_workflow_views.xml (view_prequalification_form_pipeline)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true}, My Actions, Tender Customers, Reporting]
+  breadcrumb: [Prequalifications, TND-2026-006]
+blocks:
+  - buttons: [{label: Log RFQ, primary: true, n: 1}]
+    status: {steps: [Applied, Active, Expired, Closed], current: Active, n: 2}
+  - smart: [{label: RFQs, value: "2", n: 3}]
+  - title: {text: Customer A}
+  - fields:
+      - [{label: Reference, value: TND-2026-006}, {label: Valid From, value: 01/01/2026, n: 4}]
+      - [{label: Source Tender, value: TND-2026-006}, {label: Valid Until, value: 31/12/2026}]
+      - [{label: Account Manager, value: Employee A}, {label: Dates Unknown, value: "☐"}]
+      - [{label: Owner, value: Employee A}, {label: Next Follow-up, value: 31/01/2026, n: 5}]
+  - heading: Results
+  - fields: [[{label: Bids, value: "2"}, {label: Value Won, value: "1,000,000"}], [{label: Won, value: "1"}, {label: Last RFQ, value: 15/03/2026}]]
+  - tabs: {items: [RFQs, Notes, Documents], active: RFQs, n: 6}

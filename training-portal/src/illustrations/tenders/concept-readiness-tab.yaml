@@ -1,0 +1,28 @@
+type: screen
+title: The Bid Readiness tab
+desc: The Bid Readiness tab of a tender in Bidding, with the Readiness status, Progress and Submission Deadline, the Confirm Ready button, and the checklist of documents with who prepares each, the files, Valid Until, Not Needed and a Ready, Missing or Expired status, numbered 1 to 5.
+source: tritel_tender_tracker/views/bid_desk_views.xml (view_tender_form_bid_desk); models/bid_desk.py; data/bid_desk_data.xml
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true}, My Actions, Tender Customers, Reporting]
+  breadcrumb: [All Tenders, TND-2026-002]
+blocks:
+  - buttons: [{label: Mark Submitted, primary: true}, {label: Drop}, {label: Cancel}]
+    status: {steps: [Draft, Bidding, Evaluation], current: Bidding}
+  - tabs: {items: [Tender Info, Documents, Competition, Bid Readiness], active: Bid Readiness}
+  - fields:
+      - [{label: Readiness, value: In Progress, n: 1}, {label: Progress, value: "4 of 6 ready", n: 2}]
+      - [{label: Submission Deadline, value: "20/03/2026 10:00"}]
+  - buttons: [{label: Confirm Ready, primary: true, n: 3}]
+  - table:
+      columns: [Document, Prepared By, Document Files, Valid Until, Not Needed, Status]
+      widths: [5, 3, 2, 2, 2, 2]
+      n: 4
+      rows:
+        - [Signed form of tender, Bid Liaison, "1 file", "", "☐", {text: Ready, badge: true, tone: good}]
+        - [Tax compliance certificate, Bid Liaison, "1 file", 10/03/2026, "☐", {text: Expired, badge: true, tone: bad}]
+        - [Manufacturer authorisation letter, Technical Presales, "", "", "☐", {text: Missing, badge: true, tone: bad}]
+        - [Technical compliance response, Technical Presales, "1 file", "", "☐", {text: Ready, badge: true, tone: good}]
+        - [Financial proposal, Bid Liaison, "1 file", "", "☐", {text: Ready, badge: true, tone: good}]
+        - {cells: [Certificate of incorporation and CR12, Bid Liaison, "", "", "☑", {text: Not Needed, badge: true, tone: muted}], n: 5}

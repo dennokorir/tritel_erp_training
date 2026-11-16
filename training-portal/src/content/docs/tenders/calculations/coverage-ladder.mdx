@@ -1,0 +1,67 @@
+---
+title: The market coverage ladder
+description: How each customer's Coverage rung is decided from its tenders, opportunities and customer touches, how an account climbs from Untouched to Anchor, and how the Market Coverage screen counts customers reached, named share and wins.
+module: tenders
+pageType: calculation
+roles: [account-manager, head-commercial, head-channel, tender-admin]
+tags: [coverage, customers]
+keywords: [coverage, key account, named account, anchor, named share, market share, reached, untouched, contested, win rate, target accounts, customers won]
+related: [tenders/concepts/market-coverage, tenders/how-to/customers/market-coverage, tenders/how-to/customers/account-ownership, tenders/concepts/customer-activities, accountability/calculations/metric-families]
+sources:
+  - tritel_tender_tracker/models/market_coverage.py
+  - tritel_tender_tracker/static/src/coverage/market_coverage.xml
+  - tritel_tender_tracker/views/res_partner.xml
+  - tritel_tender_tracker/models/target_accounts.py
+sidebar: { order: 4 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Every customer sits on one rung of the coverage ladder. The rung is worked out each time you look, from all the customer's tenders, all its CRM opportunities (archived ones too) and its customer activities marked **Done**. It shows as **Coverage** on customer lists and drives the **Market Coverage** screen.
+
+## The rungs
+
+The system checks from the top and stops at the first rung that applies:
+
+| Rung | When |
+|---|---|
+| **Anchor** | 2 or more wins: tenders **Won** plus opportunities in a CRM stage marked as won |
+| **Named** | Exactly 1 win |
+| **Prequalified** | A tender **Prequalified**, and no win |
+| **In play** | An open tender (**Draft**, **Bidding** or **Evaluation**) or an open opportunity |
+| **Contested** | A tender **Lost**, or an opportunity that is neither won nor open |
+| **Engaged** | Only **Dropped** or **Cancelled** tenders, leads not yet turned into opportunities, or **Done** customer activities |
+| **Untouched** | The customer has an **Account Manager** and nothing else yet |
+
+An opportunity counts as open only while it is active and sits in one of the CRM's first three standard stages (New, Qualified and Proposition, unless they were renamed). A customer with no account manager and no activity of any kind has no rung and isn't in the market.
+
+<Illustration name="tenders/calc-coverage-ladder" caption="One win puts Customer A on Named, whatever else is going on." />
+
+## How an account climbs
+
+A typical path: an account manager is assigned (**Untouched**), logs a visit (**Engaged**), a tender is drafted (**In play**), a bid is lost (**Contested** once nothing else is open), a tender is won (**Named**), a second win follows (**Anchor**). A customer can also move down: if its only open tender is lost, it drops from **In play** to **Contested**.
+
+## The Market Coverage figures
+
+- **Customers reached**: customers on any rung except **Untouched**.
+- **Named**: customers on **Named** or **Anchor**, with the share in brackets: named ÷ reached × 100, to a whole number.
+- **New named this year**: named customers whose first win (the award date of a won tender, or the close date of a won opportunity) is in this calendar year.
+- **Wins / decided bids**: wins over wins plus lost tenders and lost opportunities.
+- **Won value**: the won tenders' **Expected Revenue** in KES plus the won opportunities' expected revenue.
+
+<Illustration name="tenders/calc-named-share" caption="12 customers reached, 3 of them named: 3 (25%)." />
+
+Which customers make up the market depends on the setting **Market Coverage measures against**: **Engaged customers + assigned accounts** (every engaged customer plus every customer with an account manager) or **Target accounts** (target accounts only, which show **Untouched** until something happens).
+
+## Edge cases
+
+- **Choosing a year** on the screen counts only tenders and opportunities created, and touches dated, on or after 1 January of that year. A customer can sit on a lower rung for 2026 than on its customer form.
+- **Archived opportunities** that weren't won count as lost, so they can make a customer **Contested**.
+- **An active opportunity in a later stage** that isn't marked as won also counts as neither won nor open, so it makes the customer **Contested**, not **In play**.
+- **Prequalified** beats **In play**: a customer with a prequalification and an open tender shows **Prequalified**.
+- **Planned** touches don't count. Only **Done** ones make a customer **Engaged**.
+
+:::note[Good to know]
+The ladder looks at every deal, not only the current account manager's. A customer won years ago by an account manager who has since left still shows **Named**.
+
+Opportunities in stages added after the three standard early ones (for example a negotiation stage) are treated like lost ones, so a live deal can make a customer look **Contested**. Check the customer's opportunities if a rung looks wrong.
+:::

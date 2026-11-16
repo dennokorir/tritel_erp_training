@@ -1,0 +1,69 @@
+---
+title: Read the Customer Activities screen
+description: Use the Customers heatmap, People profiles, Planned list and each customer's timeline to see who is talking to which customers, how often, and which accounts have gone quiet.
+module: tenders
+pageType: how-to
+roles: [account-manager, head-commercial]
+tags: [customer activities, reports]
+keywords: [touchpoint, customer visit, call, meeting, heatmap, quiet customers, coverage, engagement, account review, who is talking to the customer, timeline]
+where: [Tender Manager, Tender Customers, Customer Activities]
+before:
+  - Only touches marked <strong>Done</strong> are counted. Planned touches appear only on the <strong>Planned</strong> tab.
+related: [tenders/concepts/customer-activities, tenders/how-to/customers/log-a-customer-activity, tenders/how-to/customers/plan-customer-touches, tenders/how-to/customers/market-coverage]
+sources:
+  - tritel_tender_tracker/static/src/touchpoints/workspace/touchpoints_workspace.xml
+  - tritel_tender_tracker/static/src/touchpoints/heatmap/touchpoints_heatmap.xml
+  - tritel_tender_tracker/static/src/touchpoints/profile/touchpoints_profile.xml
+  - tritel_tender_tracker/static/src/touchpoints/timeline/touchpoints_timeline.xml
+  - tritel_tender_tracker/static/src/touchpoints/common/touchpoints_common.js
+  - tritel_tender_tracker/models/touchpoints.py
+  - tritel_tender_tracker/models/partner_activity_touchpoints.py
+sidebar: { order: 8 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+**Customer Activities** shows your customer touches as a picture: which customers were touched each month and by whom, which have gone quiet, and how each person spends their customer time. Use it to prepare account reviews and to spot customers nobody has called.
+
+<Illustration name="tenders/cust-activities-heatmap" caption="The Customers tab. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Tender Manager › Tender Customers › Customer Activities**. The label beside the title says what you can see, for example **You and your team** or **All customers**.
+2. Choose whose touches to show under **Showing**: **Me**, **My team**, one of the people **Reporting to me** or, if you can see everyone, **Everyone**. Tick **Made by them only** to leave out touches by others on their accounts. Move the window with the arrows and choose **6 months**, **12 months** or **24 months**.
+3. On the **Customers** tab, narrow the heatmap: search a customer, or pick an account manager, a role, a channel or a customer tag. Tick **Only customers with open deals** to see customers with an open tender or opportunity. Sort by **Most touches**, **Quietest first** or **Name**.
+4. Read a row: each cell is the number of touches that month (darker means more), and the thin coloured strip shows who made them (AM, Presales, Bid liaison, Leadership, Other). A dot before the name means an open tender or opportunity. The last column shows the last touch date and how many people touched the customer.
+5. Watch the last-touch colour: green is 30 days or less, amber 31 to 90 days, red more than 90 days or **Never**. **Quiet > 90 days** at the top counts the red ones.
+6. Click a customer to open its timeline (below).
+
+<Illustration name="tenders/cust-activities-timeline" caption="One customer's timeline." />
+
+7. The timeline has one lane per role, with a dot for each month's touches, and marks for each tender's submission and award. Click a lane or a dot to filter the feed.
+8. **Touches** lists every touch: date, who, their role and channel, the type, the **Touch Phase**, the deal and the note. Click one to open it. **Open customer** opens the customer record; **Log touch** and **Plan touch** add to this customer.
+
+### The People tab
+
+The **People** tab shows a profile card for a person: **touches**, **customers**, **linked to a deal** (%), **on top 2 customers** (%), **overdue plans** and **entered late**, then their **Monthly rhythm**, **Phase**, **Kind of touch**, **Acting as** and **Top customers**. Use **Compare with** to put a second person beside them. A profile counts only touches the person made themself.
+
+### The Planned tab
+
+See [Plan customer touches](/tenders/how-to/customers/plan-customer-touches/).
+
+Click **List** at the top for the classic list, pivot, graph and calendar of the same selection.
+
+## What happens next
+
+Nothing changes: these screens only read. Your filters are kept when you come back with the breadcrumb.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *You can only view yourself and the people who report to you.* | You picked someone outside your reporting line, for example from an old link. | Choose yourself or someone who reports to you. |
+| *You can only view profiles of yourself and the people who report to you.* | Same, on the **People** tab. | As above. |
+
+:::note[Good to know]
+- Who sees what: the Head of Commercial, Tender administrators and HR managers see all customers. Everyone else sees their own touches and accounts, and those of everyone below them in the employee reporting line. Someone with no employee record sees only the touches they made.
+- **Touch Phase** on these screens follows the date of the touch. The target achievements and the portal dashboard use a different **Activity Phase**, which follows the day the touch was entered. See [Log a customer activity](/tenders/how-to/customers/log-a-customer-activity/).
+- **Participant Role** comes from the person's role on the linked tender or opportunity, otherwise from their job title. A director with no role on the deal shows as **Leadership**.
+- The **Customer touches** strip at the top of each tender and opportunity shows the same touches for that one deal. Click it to open it.
+:::

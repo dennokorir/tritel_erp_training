@@ -1,0 +1,17 @@
+type: calc
+title: Effort points for one tender
+desc: Worked example of the effort points for one tender, captured 5 days before its deadline, with a bid bond and flagged must-win while Bidding, giving 1 + 1 + 1 + 2 = 5 points.
+source: tritel_tender_tracker/models/bid_desk.py (_bd_effort_points, _bd_notice_days)
+heading: TND-2026-008, created 1 Mar 2026 09:00, deadline 6 Mar 2026 10:00
+inputs:
+  - {label: Status, value: Bidding}
+  - {label: Notice, value: "5.04 days"}
+  - {label: Bid Bond Required, value: "Yes"}
+  - {label: Must-win, value: In Bidding}
+steps:
+  - {label: "Base: any status except Dropped (0.5) and Cancelled (0)", value: "1"}
+  - {label: "Short notice: created less than 7 days before the deadline", value: "+ 1"}
+  - {label: Bid bond required, value: "+ 1"}
+  - {label: "Must-win, flagged before submission", value: "+ 2"}
+result: {label: Effort points, value: "5", tone: accent}
+note: A cancelled tender is always 0 points, whatever else applies.

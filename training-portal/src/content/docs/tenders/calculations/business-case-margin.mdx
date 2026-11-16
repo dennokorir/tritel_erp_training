@@ -1,0 +1,60 @@
+---
+title: Business case margin
+description: How a tender business case works out Total Cost, Gross Profit and Gross Margin from its cost lines, and, after award, the actual figures from confirmed sales and purchase orders and the variances against the estimate.
+module: tenders
+pageType: calculation
+roles: [account-manager, head-commercial, head-channel, tender-admin, finance]
+tags: [business case, margin]
+keywords: [margin, GP, gross profit, gross margin, business case, cost breakdown, actual vs estimated, variance, pp, profitability, costing, commission]
+related: [tenders/concepts/business-cases, tenders/workflows/business-case, tenders/how-to/bids/business-case, projects/calculations/margin]
+sources:
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/views/tender_business_case_views.xml
+  - tritel_tender_tracker/models/models.py
+sidebar: { order: 6 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+The business case opens from the **Business case** button on a tender. Its four cards show **Revenue**, **Total Cost**, **Gross Profit** and **Margin**: the estimate (**Est.**) always, and the actual figures (**Act.**) once the tender is **Won** or **Prequalified**. All figures are in the company currency (KES).
+
+## The estimate
+
+- **Expected Revenue**: the tender's **Expected Revenue**, converted to KES at the rate on the **Award Date**, or else on the **Submission Deadline** date, or else today.
+- Each cost line's **Subtotal (line CCY)** = **Qty** × **Unit Price**, in the line's **Currency**. **Subtotal (CC)** is that amount in KES at today's rate when the line is saved.
+- **Total Cost** = sum of the lines' **Subtotal (CC)**.
+- **Gross Profit** = **Expected Revenue** − **Total Cost**.
+- **Gross Margin (%)** = **Gross Profit** ÷ **Expected Revenue** × 100, rounded to one decimal; 0 when there is no revenue.
+
+<Illustration name="tenders/calc-business-case-estimate" caption="KES 7,000,000 of costs against KES 10,000,000 of revenue is a 30.0% margin." />
+
+The **Margin** card's coloured stripe is green from 20%, amber from 10% to under 20%, and red below 10%. The **Gross Profit** stripe is red when profit is below zero.
+
+## The actual figures
+
+Once the tender is **Won** or **Prequalified**, the **Actual vs Estimated** tab and the **Act.** lines appear:
+
+- **Actual Revenue**: the totals of the tender's confirmed sales orders, each converted to KES at the rate on its order date.
+- **Actual Cost**: the totals of the tender's confirmed purchase orders, converted the same way.
+- **Actual Gross Profit** = **Actual Revenue** − **Actual Cost**.
+- **Actual Margin %** = **Actual Gross Profit** ÷ **Actual Revenue** × 100, one decimal.
+- **GP Variance (Actual − Estimated)** = **Actual Gross Profit** − **Gross Profit**. The cards also show the revenue and cost variances (actual − estimated) and the margin variance in percentage points (pp): **Actual Margin %** − **Gross Margin (%)**.
+
+On the cards, a green ↑ or red ↓ badge shows each variance. For cost the colours are reversed: spending more than estimated is red.
+
+<Illustration name="tenders/calc-business-case-actual" caption="VAT on the orders lifts the actual gross profit by 480,000 while the margin stays at 30.0%." />
+
+Orders count only when they carry the tender in their **Tender** field and are confirmed (sales order or purchase order, including locked). Quotations, requests for quotation and cancelled orders don't count.
+
+## Edge cases
+
+- **No sales order yet**: **Actual Revenue** is 0, and so is **Actual Margin %**. The margin variance then shows the whole estimated margin as a drop.
+- **Foreign-currency cost lines** keep the rate of the day they were last changed. They are not revalued every day.
+- **The tender's value changes** (or its award date): **Expected Revenue**, **Gross Profit** and **Gross Margin** follow straight away.
+- **Commissions & Facilitation** lines count in the total like any other line. Their **Description** shows as dots to everyone except the Head of Commercial (for commercial commissions), the Head of Channel (for channel commissions) and Tender administrators.
+- **One business case per tender**: *A business case already exists for this tender.*
+
+:::note[Good to know]
+The actual figures use the orders' totals including taxes, while cost lines are usually entered before tax. With 16% VAT on both sides, the actual gross profit looks 16% bigger than the same deal estimated without VAT, and **GP Variance (Actual − Estimated)** shows a gain that is only tax. Compare the margins (the pp badge on the **Margin** card) rather than the amounts.
+
+This business case is the bid-stage view. The delivery budget and its margin live on the delivery project: see [expected revenue and margin left](/projects/calculations/margin/).
+:::

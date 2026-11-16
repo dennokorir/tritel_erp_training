@@ -1,0 +1,24 @@
+type: screen
+title: Request a project summary
+desc: The project summary workspace for a won tender with no summary yet, its Request summary button, and the Request project summary window with the Writer and Due fields, numbered 3 and 4.
+source: tritel_tender_tracker/views/project_summary_views.xml (tender_summary_workspace_form, tender_summary_wizard_form)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, {label: Tenders, active: true}, Tender Customers, Reporting]
+  breadcrumb: [Summary Tracker, Customer A]
+blocks:
+  - buttons: [{label: Request summary, primary: true, n: 3}]
+    status: {steps: [Not requested, Writing, In review, Complete], current: Not requested}
+  - title: {text: Customer A, sub: "TND-2026-001 · Network upgrade"}
+  - fields:
+      - [{label: Pre-sales, value: Employee B, readonly: true}, {label: Award Date, value: 01/10/2026, readonly: true}]
+  - note: {text: No summary has been requested for this tender yet., tone: muted}
+  - dialog:
+      title: Request project summary
+      n: 4
+      blocks:
+        - fields:
+            - [{label: Writer, value: Employee B}]
+            - [{label: Due, value: 23/11/2026}]
+        - buttons: [{label: Confirm, primary: true}, {label: Cancel}]

@@ -1,0 +1,82 @@
+---
+title: The bid readiness checklist
+description: The checklist of bid documents each tender gets when it moves to Bidding, what makes a document Ready, Missing or Expired, who can work it, and confirming the bid ready before the deadline.
+module: tenders
+pageType: concept
+roles: [bid-liaison, presales, head-commercial, tender-admin]
+tags: [bid desk, readiness]
+keywords: [bid checklist, readiness, compliance documents, tax compliance, CR12, ICTA licence, manufacturer authorisation, MAF, bid bond, bid security, confirm ready, 72 hours, submission]
+related: [tenders/workflows/bid-readiness, tenders/how-to/bids/work-the-readiness-checklist, tenders/how-to/bids/mark-submitted, tenders/calculations/readiness-progress, tenders/concepts/bid-desk-workload]
+sources:
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/views/bid_desk_views.xml
+  - tritel_tender_tracker/data/bid_desk_data.xml
+  - tritel_tender_tracker/wizards/bid_desk_wizards.py
+sidebar: { order: 5 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Every bid needs the same core documents: a signed form of tender, company registration, tax compliance, licences, a manufacturer's authorisation, the technical response and the financial proposal. A missing signature or an expired certificate can disqualify an otherwise good bid. The **bid readiness checklist** makes sure each one is there, and in date, before the bid goes in.
+
+When a tender moves to **Bidding** (with **Confirm Bid**), the system builds its checklist from the **Standard Bid Documents** list and sets **Readiness** to **In Progress**. Each row is one document, prepared either by the **Bid Liaison** or by **Technical Presales**. Attach the file to its row; for documents that expire, also fill in **Valid Until**. Tick **Not Needed** for anything this tender doesn't ask for.
+
+When every row is **Ready** or **Not Needed**, the Bid Liaison clicks **Confirm Ready**. **Readiness** becomes **Confirmed Ready** and the rows are locked. The aim is to confirm at least 72 hours before the **Submission Deadline**.
+
+<Illustration name="tenders/concept-readiness-tab" caption="The Bid Readiness tab while the checklist is open. The numbers match the list below." />
+
+1. **Readiness**: **Not Started**, **In Progress** or **Confirmed Ready**.
+2. **Progress**: how many of the rows that count are ready, such as *4 of 6 ready*. Rows marked **Not Needed** don't count.
+3. **Confirm Ready** locks the checklist. Once confirmed, **Reopen** unlocks it again.
+4. The rows: **Document**, **Prepared By**, **Document Files**, **Valid Until** (only for documents that expire), **Not Needed** and **Status**.
+5. A row ticked **Not Needed** is left out of the count.
+
+## What each row status means
+
+| Status | When |
+|---|---|
+| **Ready** | A file is attached and, if the document expires, **Valid Until** is on or after the deadline day. |
+| **Missing** | No file is attached, or the document expires and **Valid Until** is empty. |
+| **Expired** | **Valid Until** is before the deadline day (Nairobi time). |
+| **Not Needed** | **Not Needed** is ticked. |
+
+## The standard documents
+
+| Document | Prepared By | Expires |
+|---|---|---|
+| Signed form of tender | Bid Liaison | No |
+| Certificate of incorporation and CR12 | Bid Liaison | No |
+| Tax compliance certificate | Bid Liaison | Yes |
+| Licences and accreditations, such as ICTA | Bid Liaison | Yes |
+| Manufacturer authorisation letter | Technical Presales | Yes |
+| Technical compliance response | Technical Presales | No |
+| Financial proposal | Bid Liaison | No |
+| Bid bond | Bid Liaison | Yes, and only when the tender needs a bid bond |
+
+The Head of Commercial and Tender administrators keep this list at **Tender Manager › Configuration › Standard Bid Documents**. Changes apply to checklists built from then on.
+
+## Who can work the checklist
+
+| Who | Can |
+|---|---|
+| The tender's **Bid Liaison**, their manager, Tender administrators | Create the checklist, add and remove rows, edit any row, **Confirm Ready** and **Reopen**. |
+| The tender's **Technical Presales** engineer | Edit the rows prepared by Technical Presales, while the checklist is open. |
+| Anyone else | Read it. Editing stops with *Only the person preparing this document, the Bid Liaison or their manager can change it.* |
+
+**Create Checklist** builds the checklist by hand, for example on a tender that was already in **Bidding** before checklists existed.
+
+## Reminders
+
+- **Emails:** 5 days and 3 days before the deadline, if a **Draft** or **Bidding** tender isn't confirmed ready, the Bid Liaison and the Technical Presales engineer get *Bid not yet confirmed ready*: *This bid closes in 3 day(s) and isn't confirmed ready. It should be confirmed at least 72 hours before the deadline.*
+- **My Actions:** the Bid Liaison and the Technical Presales engineer see **Bids to confirm ready** from 6 days before the deadline. An item is overdue once there are less than 72 hours left.
+
+:::note[Good to know]
+- **Confirm Ready** checks again for a bid bond if the tender now needs one, so a late change can add a row and stop the confirmation.
+- Only the Bid Liaison, their manager or a Tender administrator see **Mark Submitted**. Confirming ready is not required to submit, but the Accountability measure **Ready at 72 Hours (Bid Liaison)** counts the bids confirmed ready at least 72 hours before the deadline.
+:::
+
+## Tasks that use this
+
+- [Work the bid readiness checklist](/tenders/how-to/bids/work-the-readiness-checklist/)
+- [Mark a tender submitted](/tenders/how-to/bids/mark-submitted/)
+- [Readiness progress](/tenders/calculations/readiness-progress/)
+- [Bid readiness workflow](/tenders/workflows/bid-readiness/)

@@ -1,0 +1,36 @@
+type: screen
+title: The two follow-up report windows
+desc: Side by side, the Tender Follow Up Report window from Tender Manager Reporting and the Pipeline Follow Up Report window from CRM Reporting, each with From Date, To Date, Account Manager, a Status or Stages filter and the Print Report button, numbered 1 to 8.
+source: tritel_tender_tracker/report/tender_evaluation_report.xml (view_tender_evaluation_report_wizard_form); report/pipeline_report.xml (view_pipeline_report_wizard_form)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [Tenders, My Actions, Tender Customers, {label: Reporting, active: true, n: 1}]
+  breadcrumb: [Tender Follow Up Report]
+blocks:
+  - columns:
+      - panel: true
+        blocks:
+          - heading: Tender Follow Up Report
+          - text: Date Range
+          - fields:
+              - [{label: From Date, value: 01/11/2026, n: 2}]
+              - [{label: To Date, value: 16/11/2026}]
+          - text: Filters
+          - fields:
+              - [{label: Account Manager, value: Employee A, n: 3}]
+              - [{label: Status, value: "All statuses (defaults to Evaluation)", tone: muted, n: 3}]
+          - buttons: [{label: Print Report, primary: true, n: 4}, {label: Cancel}]
+      - panel: true
+        blocks:
+          - heading: Pipeline Follow Up Report
+            n: 5
+          - text: Date Range
+          - fields:
+              - [{label: From Date, value: 01/11/2026, n: 6}]
+              - [{label: To Date, value: 16/11/2026}]
+          - text: Filters
+          - fields:
+              - [{label: Account Manager, value: Employee A, n: 7}]
+              - [{label: Stages, value: All stages, tone: muted, n: 7}]
+          - buttons: [{label: Print Report, primary: true, n: 8}, {label: Cancel}]

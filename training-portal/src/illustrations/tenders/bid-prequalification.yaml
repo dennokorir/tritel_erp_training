@@ -1,0 +1,33 @@
+type: screen
+title: A prequalification and its RFQs
+desc: The Prequalification form with the Log RFQ button and status bar, the RFQs smart button, the yellow Dates Unknown banner, the Valid From, Valid Until, Dates Unknown and Next Follow-up fields, the Results group and the RFQs tab, numbered 1 to 7.
+source: tritel_tender_tracker/views/tender_workflow_views.xml (view_prequalification_form_pipeline); models/prequalification_pipeline.py
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true, n: 1}, My Actions, Tender Customers, Commercial Targets]
+  breadcrumb: [Prequalifications, PQ-2026-004]
+blocks:
+  - buttons: [{label: Log RFQ, primary: true, n: 5}]
+    status: {steps: [Applied, Active, Expired, Closed], current: Active, n: 6}
+  - smart: [{label: RFQs, value: "2"}]
+  - title: {text: Customer A}
+  - note: {text: "Add the dates this prequalification is valid for, then untick Dates Unknown, so reminders can start.", tone: warn, n: 2}
+  - fields:
+      - [{label: Reference, value: PQ-2026-004}, {label: Valid From, value: 01/07/2026, n: 3}]
+      - [{label: Source Tender, value: Framework for ICT supplies}, {label: Valid Until, value: 30/06/2028, n: 3}]
+      - [{label: Account Manager, value: Employee A}, {label: Dates Unknown, value: "☑", n: 3}]
+      - [{label: Owner, value: Employee A}, {label: Next Follow-up, value: 15/12/2026, n: 4}]
+      - [{label: Categories, value: Connectivity}]
+  - heading: Results
+    n: 7
+  - fields:
+      - [{label: Bids, value: "1", readonly: true}, {label: Value Won, value: "3,000,000.00", readonly: true}]
+      - [{label: Won, value: "1", readonly: true}, {label: Last RFQ, value: 02/10/2026, readonly: true}]
+  - tabs: {items: [RFQs, Notes, Documents], active: RFQs}
+  - table:
+      columns: [Tender Number, Tender, Submission Deadline, Status, Value (KES)]
+      widths: [2, 3.4, 2.4, 1.6, 2]
+      rows:
+        - [RFQ-2026-011, Access switches, 20/09/2026, {text: Won, badge: true, tone: good}, "3,000,000.00"]
+        - [RFQ-2026-015, Firewall renewal, 10/12/2026, {text: Bidding, badge: true, tone: accent}, "1,500,000.00"]

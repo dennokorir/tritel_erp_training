@@ -1,0 +1,25 @@
+type: matrix
+title: Who can do what with tenders
+desc: Permission grid for seeing, creating, assigning, moving, reopening and deleting tenders and for business cases, for Account Managers, Bid Liaisons, Technical Presales, the Head of Commercial, the Head of Channel, Tender administrators and any other internal user.
+source: tritel_tender_tracker/security/ir.model.access.csv, security/security.xml, views/tender_views.xml, views/tender_business_case_views.xml, models/models.py, models/tender_workflow.py, models/tender_business_case.py, controllers/portal_tender.py
+columns: [Account Manager, Bid Liaison, Technical Presales, Head of Commercial, Head of Channel, Tender administrator, Any internal user]
+labelWidth: 250
+rows:
+  - {group: Seeing}
+  - {action: See and edit every tender in Tender Manager, cells: [y, y, y, y, y, y, y]}
+  - {action: See a tender on the portal (/my/tenders), cells: [p, p, p, p, p, y, p]}
+  - {group: The team}
+  - {action: Assign the Account Manager or Technical Presales, cells: [n, n, n, n, y, y, n]}
+  - {action: Assign the Bid Liaison, cells: [n, n, n, y, n, y, n]}
+  - {group: Moving a tender}
+  - {action: "Confirm Bid, Drop or Cancel", cells: [p, p, p, p, p, y, p]}
+  - {action: Mark Submitted, cells: [n, p, n, p, n, y, n]}
+  - {action: "Won, Prequalified or Lost", cells: [p, p, p, p, p, y, p]}
+  - {action: Reopen or drag back on the board, cells: [n, n, n, n, n, y, n]}
+  - {action: Delete a tender, cells: [n, n, n, n, n, n, n]}
+  - {group: Business case}
+  - {action: "Open, fill in and Submit for Review", cells: [y, y, y, y, y, y, y]}
+  - {action: Read commission descriptions, cells: [n, n, n, p, p, y, n]}
+  - {action: Approve or Reject, cells: [n, n, n, y, n, y, n]}
+  - {action: Reset to Draft or delete, cells: [n, n, n, n, n, y, n]}
+legend: {p: "Partly: see the notes under the picture"}

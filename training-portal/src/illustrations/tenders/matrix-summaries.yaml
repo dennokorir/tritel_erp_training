@@ -1,0 +1,20 @@
+type: matrix
+title: Who can do what with project summaries
+desc: Permission grid for requesting, writing, reviewing and reopening project summaries, the Summary Tracker, the Project Summaries library, marketing exports and the summary set-up lists, for Account Managers, Bid Liaisons, Technical Presales, the Head of Commercial, the Head of Channel, Tender administrators and any other internal user.
+source: tritel_tender_tracker/models/project_summary.py, models/summary_library.py, wizards/summary_marketing_wizard.py, views/project_summary_views.xml, wizards/summary_marketing_wizard_views.xml, security/ir.model.access.csv, security/summary_marketing_security.xml
+columns: [Account Manager, Bid Liaison, Technical Presales, Head of Commercial, Head of Channel, Tender administrator, Any internal user]
+labelWidth: 250
+rows:
+  - {group: The workflow}
+  - {action: "Request summary, Reassign, Remind", cells: [n, n, n, y, y, y, n]}
+  - {action: Write and Submit for review, cells: [p, p, p, p, p, p, p]}
+  - {action: "Approve, Send back, Reopen", cells: [n, n, n, p, p, p, n]}
+  - {action: Summary Tracker, cells: [p, p, p, y, y, y, p]}
+  - {group: Library and marketing}
+  - {action: Project Summaries library, cells: [y, y, y, y, y, y, n]}
+  - {action: Export for Marketing, cells: [y, y, y, y, y, y, n]}
+  - {action: See other people's Marketing Exports, cells: [n, n, n, n, n, y, n]}
+  - {action: Save as default brief, cells: [n, n, n, n, n, y, n]}
+  - {group: Set-up}
+  - {action: Pillars and Summary Headings, cells: [n, n, n, y, y, y, n]}
+legend: {p: "Partly: see the notes under the picture"}

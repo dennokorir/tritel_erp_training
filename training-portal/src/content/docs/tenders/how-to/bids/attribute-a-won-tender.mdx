@@ -1,0 +1,73 @@
+---
+title: Attribute a won tender (achievements)
+description: Credit the Account Manager, Bid Liaison and Technical Presales with their share of a won tender, which feeds their Accountability revenue measures.
+module: tenders
+pageType: how-to
+roles: [head-commercial, head-channel]
+tags: [tenders, achievements, my actions]
+keywords: [attribution, achievement, credit, win credit, revenue credit, award, commission split, pipelining, bid support, post-submission, achieved revenue]
+where: [Tender Manager, My Actions]
+before:
+  - "The tender is <strong>Won</strong> and its <strong>Award Date</strong> is filled in."
+  - "Head of Commercial: you attribute the Account Manager and Bid Liaison. Head of Channel: you attribute the Technical Presales."
+  - "Each person has an individual target under <strong>Tender Manager › Commercial Targets › Manage Individual Targets</strong>; the line is attached to it."
+related: [tenders/commercial-targets/achievements, tenders/commercial-targets/index, tenders/concepts/customer-activities, accountability/calculations/metric-families, tenders/how-to/bids/tender-my-actions]
+sources:
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/views/target_views.xml
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/my_actions.py
+  - tritel_tender_tracker/models/res_partner.py
+  - tritel_accountability_framework/models/accountability_metric.py
+sidebar: { order: 13 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+When a tender is won, each person on it is credited with a share of its value through an **achievement line** on the tender's **Target Achievements** tab. The share comes from **attribution points** for three stages of the work: **Pipelining**, **Bid Submission Support** and **Post-Submission Influence**. This is live: the Accountability revenue measures read these lines, and a win with no points counts as nothing.
+
+<Illustration name="tenders/bid-attribute-tab" caption="A won tender with lines for all three roles; the presales line still has 0 points. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Tender Manager › My Actions**. Won tenders waiting for you are under **Achievements to attribute**; click one. (The **HoC Attribution Pending** and **HoCh Attribution Pending** filters in the tender list find them too.)
+2. Open the **Target Achievements** tab and click **Add a line**.
+3. In **Target**, choose the person's individual target (it shows as *target name - person*), and choose the **Role** they played on this tender. **Name**, **Date From** and **Date To** fill in with the quarter of the award date, for example *Q4 2026*. Save the tender. **Gross Value** shows the tender's value in KES.
+4. Click the open icon (↗) at the start of the line. On the achievement, under **Stage Attribution**, type the points for each stage. The box shows each stage's maximum for the role.
+5. Or click **Compute Related Activities** to work the points out from the customer activities this person logged on the tender and its opportunity: 3 valid activities in a stage give the full points for that stage.
+6. Check **Overall Achievement** (the sum of the stages, out of 100) and save. Repeat for each person you attribute.
+
+<Illustration name="tenders/bid-attribute-form" caption="Steps 4 to 6: stage points for a Technical Presales line." />
+
+The maximum points per stage, which always add up to 100:
+
+| Role | Pipelining | Bid Submission Support | Post-Submission Influence |
+|---|---|---|---|
+| **Account Manager** | 40 | 20 | 40 |
+| **Bid Liaison** | (none) | 60 | 40 |
+| **Technical Presales** | 60 | 40 | (none) |
+
+## What happens next
+
+- **Achieved Value** = **Gross Value** × **% Achievement** ÷ 100. In the first picture the account manager's 80 points on KES 12,000,000 give KES 9,600,000. If two lines share a role on the same tender, the value is split equally between them.
+- Once the Account Manager and Bid Liaison both have a line, the tender leaves the Head of Commercial's **Achievements to attribute**; once the Presales has one, it leaves the Head of Channel's. The tender's card on the board is no longer amber for it.
+- **Compute Related Activities** lists the activities it used on the achievement's **Activities** tab. An activity counts when it was logged (entered) after the opportunity or tender was created and not after the award date. Activities on the opportunity count as **Pipelining**; on the tender, as **Bid Submission Support** up to the deadline date and **Post-Submission Influence** after it.
+- In Accountability, the lines feed **Achieved revenue (attributed)** for each role, plus the Account Manager's **Gross awarded value**, **Awarded tenders** and **Attribution rate**, all counted by award date. See [How metrics count](/accountability/calculations/metric-families/). How the split works is on [How achievements are split and counted](/tenders/commercial-targets/achievements/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *The 'Award Date' field is missing. Please provide a value before executing this action.* | The tender has no **Award Date**. | Ask a Tender administrator to check the tender; a won tender should have one. |
+| *'Pipelining' cannot exceed 0 for role 'Bid Liaison'.* | You typed points in a stage above that role's maximum. | Keep each stage within the maximum in the table. |
+| *'Post-Submission Influence' cannot exceed 40 for role 'Account Manager'.* | Same as above. | Lower the points. |
+| *'Bid Submission Support' cannot be negative.* | A negative number was typed. | Enter 0 or more. |
+
+:::note[Good to know]
+- A line with 0 points clears the "pending" flag but earns nothing. Accountability flags these as *award(s) awaiting attribution*, so always enter the points.
+- **Compute Related Activities** replaces any points typed by hand, and doesn't rerun by itself. Click it again after more activities are logged, or retype the points afterwards.
+- Only activities where the person is **Responsible** count. Activities logged by someone else on their behalf don't.
+- The **Role** isn't checked against the person's role on the tender, and nothing stops any user from adding or changing lines. Each head should attribute only their own side.
+- A **Prequalified** tender also shows the **Target Achievements** tab but never asks for attribution: its RFQs earn instead when won.
+- Commercial Targets role and individual targets are being replaced by Accountability revenue targets, but attribution lines still need an individual target to attach to. See [Commercial Targets: what's live and what's being replaced](/tenders/commercial-targets/).
+:::

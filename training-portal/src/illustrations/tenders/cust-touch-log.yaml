@@ -1,0 +1,21 @@
+type: screen
+title: Log a customer touch
+desc: The Customer Activities screen with its Log touch button and the Log a customer touch window, showing the customer, date, type, channel, who made the touch, account manager, tender or opportunity, and what happened, numbered 1 to 6.
+source: tritel_tender_tracker/static/src/touchpoints/workspace/touchpoints_workspace.xml; views/partner_activity_touchpoints_views.xml (view_touch_quick_log)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, Tenders, {label: Tender Customers, active: true, n: 1}, Reporting]
+  breadcrumb: [Customer Activities]
+blocks:
+  - buttons: [{label: + Log touch, primary: true, n: 2}, {label: Plan touch}, {label: List}]
+  - dialog:
+      title: Log a customer touch
+      blocks:
+        - fields:
+            - [{label: Customer, value: Customer A, n: 3}, {label: Touch made by, value: Employee A, n: 4}]
+            - [{label: Date, value: 16/11/2026}, {label: Account Manager, value: Employee A}]
+            - [{label: Type, value: Customer visit}, {label: Tender, value: TND-2026-001, n: 5}]
+            - [{label: Channel, value: Visit}, {label: Lead/Pipeline, value: ""}]
+            - [{label: What happened, value: "Met the IT manager; they want a demo before the bid closes.", n: 6}]
+        - buttons: [{label: Save, primary: true}, {label: Discard}]

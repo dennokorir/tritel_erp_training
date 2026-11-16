@@ -1,0 +1,65 @@
+---
+title: Track OEM certifications and learning development
+description: Set up OEM courses, record staff certificates, and follow a person working towards an OEM certification through to pass or fail in the Channel app.
+module: tenders
+pageType: how-to
+roles: [head-channel, channel-user, presales, everyone]
+tags: [channel, certifications]
+keywords: [certification, OEM certification, partner certification, training, course, exam, pass, fail, learning, specialisation, partner tier, minimum certified staff]
+where: [Channel, Learning Development]
+before:
+  - To start a learning record you are a <strong>Channel Manager</strong> or <strong>Channel Administrator</strong>. Channel Users can update existing records.
+  - The course exists under <strong>Channel › Configuration › Courses</strong>, linked to its OEM.
+related: [tenders/channel/oems-and-distributors, tenders/channel/index, tenders/channel/compliance]
+sources:
+  - crm_tender/models/crm_oem.py
+  - crm_tender/models/hr_employee.py
+  - crm_tender/wizards/pass_fail_wizard.py
+  - crm_tender/wizards/pass_fail_wizard.xml
+  - crm_tender/views/crm_oem_views.xml
+  - crm_tender/views/hr_employee.xml
+  - crm_tender/data/learning_stages.xml
+  - crm_tender/security/ir.model.access.csv
+sidebar: { order: 9 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+OEMs often require a number of certified staff before Tritel can sell or support a product line. The Channel app keeps three things for this:
+
+- **Courses** (**Channel › Configuration › Courses**): each OEM's course or track, the **Certification** it leads to, and the **Minimum Requirement**, the number of certified staff the OEM expects.
+- **Certifications** (**Channel › Certifications**, also under **Employees**): one record per certificate a person holds, with its dates and a copy of the certificate.
+- **Learning Development** (**Channel › Learning Development**): one record per person working towards a certification, shown on a board with the stages **Planning**, **Ongoing**, **Passed** and **Failed**.
+
+<Illustration name="tenders/ch-learning" caption="A learning record and the Pass or Fail window. The numbers match the steps below." />
+
+## Steps: follow someone to certification
+
+1. Open **Channel › Learning Development** and click **New**.
+2. Choose the **Employee**, the **Oem** and the **Course** (only that OEM's courses are offered). Set the **Promise Date** by which they expect to sit the exam, and **Date Start** and **Date End**, the dates the certificate will run from and to.
+3. When they start studying, click **Ongoing** on the status bar.
+4. When the result is known, click **Pass/Fail Certification**. It shows only while the status is **Ongoing**.
+5. In the **Pass or Fail** window, choose the **Certification Status** (**Pass** or **Fail**) and the **Date**.
+6. Click **Submit**.
+7. On a pass, open the new certificate with the certificate button at the top right of the record. Choose its **Course**, check the dates and, on the **Documents** tab, click **Attach a file** to add the certificate.
+
+## What happens next
+
+- The status becomes **Pass** or **Fail** and the card moves to **Passed** or **Failed** on the board.
+- On a pass, if the record has no certificate yet, one is created for the employee with the record's **Date Start** and **Date End**. It appears under **Channel › Certifications** and on the employee's **Certifications** smart button.
+- On the board, an **Ongoing** card shows *To be submitted* with the days left to the **Promise Date**.
+
+## Record a certificate someone already holds
+
+1. Open **Channel › Certifications** and click **New**.
+2. Choose the **Employee** and the **Course**. The name and **Oem** come from the course.
+3. Set **Date Start** and **Date End**, and attach the certificate on the **Documents** tab.
+
+Use the **Attached** and **Not Attached** filters to find certificates with no copy on file.
+
+:::note[Good to know]
+- Change a learning record's status with the status bar on the form. Dragging its card to another column moves the card but doesn't change the status, so **Pass/Fail Certification** may not appear.
+- A certificate created by a pass has no **Course** until you set it, so it has no name or OEM and is listed apart from the others. Do step 7 every time.
+- The **Date** in the **Pass or Fail** window is not kept anywhere. Note the exam date in the record's chatter if you need it.
+- Certificates don't expire by themselves: the **Active** label never changes and there is no reminder. Check **Date End** when an OEM asks for your certified headcount.
+- Every internal user can add, change and delete courses and certificates.
+:::

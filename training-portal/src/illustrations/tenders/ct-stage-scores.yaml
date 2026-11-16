@@ -1,0 +1,15 @@
+type: calc
+title: Stage points from activities
+desc: Worked example of Compute Related Activities for an Account Manager with two valid Pipelining activities, three Bid Submission Support activities and one Post-Submission Influence activity, giving 60 points.
+source: tritel_tender_tracker/models/target.py (_compute_stage_scores_from_activities, compute_related_activities)
+heading: "Employee A, Account Manager on TND-2026-001"
+inputs:
+  - {label: "Valid Pipelining activities", value: "2"}
+  - {label: "Valid Bid Submission Support activities", value: "3"}
+  - {label: "Valid Post-Submission Influence activities", value: "1"}
+steps:
+  - {label: "Pipelining = 2 ÷ 3 × 40", value: "26.7"}
+  - {label: "Bid Submission Support = 3 ÷ 3 × 20", value: "20.0"}
+  - {label: "Post-Submission Influence = 1 ÷ 3 × 40", value: "13.3"}
+result: {label: "% Achievement", value: "60.0 → 3,000,000 of a 5,000,000 gross", tone: warn}
+note: Three or more valid activities in a stage earn its full points. The button replaces any points typed by hand.

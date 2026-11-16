@@ -1,0 +1,25 @@
+type: screen
+title: A tender business case
+desc: A tender business case in Submitted, with the Approve, Reject and Reset to Draft buttons, the Revenue, Total Cost, Gross Profit and Margin tiles, the Tender and Approval groups, and the Cost Breakdown, Actual vs Estimated and Notes and Assumptions tabs, numbered 1 to 5.
+source: tritel_tender_tracker/views/tender_business_case_views.xml (view_tender_business_case_form); models/tender_business_case.py
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true}, My Actions, Tender Customers, Reporting]
+  breadcrumb: [All Tenders, TND-2026-001, Business Case]
+blocks:
+  - buttons: [{label: Approve, primary: true, n: 1}, {label: Reject}, {label: Reset to Draft}]
+    status: {steps: [Draft, Submitted, Approved, Rejected], current: Submitted, n: 2}
+  - tiles: [{label: Revenue, value: "5,000,000"}, {label: Total Cost, value: "4,000,000"}, {label: Gross Profit, value: "1,000,000", tone: good}, {label: Margin, value: "20.0%", n: 3}]
+  - fields:
+      - [{label: Tender, value: TND-2026-001}, {label: Submitted By, value: Employee A}]
+      - [{label: Expected Revenue, value: "5,000,000"}, {label: Submitted Date, value: 05/03/2026}]
+  - tabs: {items: [Cost Breakdown, Actual vs Estimated, "Notes & Assumptions"], active: Cost Breakdown, n: 4}
+  - table:
+      columns: [Category, Description, Qty, Unit Price, Subtotal (CC)]
+      widths: [4, 4, 1, 2, 2]
+      n: 5
+      rows:
+        - [Hardware / Equipment, Switches, "10", "300,000", "3,000,000"]
+        - [Labour (Internal), Installation, "1", "600,000", "600,000"]
+        - ["Commissions & Facilitation", "● ● ● ● ● ●", "1", "400,000", "400,000"]

@@ -1,0 +1,43 @@
+type: screen
+title: Tender My Actions
+desc: The Tender Manager My Actions screen with the To do, Overdue and Waiting on others tiles, a link row for won tenders with no summary requested, and groups such as Bid liaisons to nominate with a Nominate button, Bid quality checks to score and Business cases waiting for approval, numbered 1 to 5.
+source: tritel_tender_tracker/static/src/my_actions/tender_my_actions.xml; static/src/my_actions/tender_my_actions.js; models/my_actions.py; models/bid_quality.py; models/bid_desk.py; models/prequalification_pipeline.py
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [Tenders, {label: My Actions, active: true, n: 1}, Tender Customers, Commercial Targets]
+  breadcrumb: [My Actions]
+blocks:
+  - tiles:
+      - {label: To do, value: "5", tone: accent}
+      - {label: Overdue, value: "1", tone: bad}
+      - {label: Waiting on others, value: "1", n: 2}
+  - table:
+      columns: [Won tenders with no summary requested, ""]
+      widths: [8, 2]
+      rows:
+        - ["2 · Select tenders in the Summary Tracker to request several at once.", {text: Open tracker, bold: true}]
+      n: 3
+  - heading: Bid liaisons to nominate  2
+  - text: Overdue when the submission deadline has passed.
+  - table:
+      columns: [Item, Waiting, ""]
+      widths: [7, 1.5, 1.8]
+      n: 4
+      rows:
+        - ["TND-2026-001 · Customer A · needs a bid liaison", "2 days", {text: Nominate, bold: true}]
+        - ["TND-2026-003 · Customer B · needs a bid liaison", {text: "9 days", tone: bad}, {text: Nominate, bold: true}]
+  - heading: Bid quality checks to score  1
+  - text: Score the bid on the tender's Bid Quality tab.
+  - table:
+      columns: [Item, Waiting, ""]
+      widths: [7, 1.5, 1.8]
+      rows:
+        - ["TND-2026-002 · Employee C · Customer B · due 2026-12-14 · must-win", today, Open]
+  - heading: Business cases waiting for approval  1
+    n: 5
+  - table:
+      columns: [Item, Waiting, ""]
+      widths: [7, 1.5, 1.8]
+      rows:
+        - ["TND-2026-004 · Customer C · submitted", "3 days", Open]

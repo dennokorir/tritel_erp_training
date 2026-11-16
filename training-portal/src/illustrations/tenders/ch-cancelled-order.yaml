@@ -1,0 +1,26 @@
+type: screen
+title: A confirmed booking with a cancelled order
+desc: A confirmed OEM booking showing the red banner about purchase orders that are no longer confirmed, the Reset to Draft button, the recognised amount, the purchase line from the cancelled order and the to-do in the chatter, numbered 1 to 5.
+source: crm_tender/views/crm_oem_booking_views.xml (crm_oem_booking_view_form); crm_tender/models/purchase.py (_oem_bookings_on_cancel)
+frame:
+  grid: true
+  app: Channel
+  menu: ["OEMs(Vendors)", {label: OEM Bookings, active: true}, Untagged Purchases, Distributors, Certifications]
+  breadcrumb: [OEM Bookings, BK-1001]
+blocks:
+  - buttons: [{label: Reset to Draft, n: 2}]
+    status: {steps: [Draft, Confirmed], current: Confirmed}
+  - title: {text: BK-1001, sub: Portal Reference}
+  - note: {text: "Includes lines from purchase orders that are no longer confirmed: PO-2026-002. Reset to draft, remove them, check the amount and confirm again.", tone: bad, n: 1}
+  - fields:
+      - [{label: OEM, value: OEM A}, {label: Purchase Cost (USD), value: "10,000.00"}]
+      - [{label: OEM-Recognised Amount, value: "9,000.00", bold: true, n: 4}, {label: Distributor Margin (USD), value: "1,000.00"}]
+  - tabs: {items: [Purchase lines, Notes], active: Purchase lines}
+  - table:
+      columns: [Order Reference, Product, Subtotal (USD), ""]
+      widths: [2, 3, 2, 1]
+      rows:
+        - [PO-2026-001, Switch 48-port, "6,000.00", ""]
+        - {cells: [PO-2026-002, Support 1 year, "4,000.00", {text: "× Remove", tone: bad}], highlight: true, n: 3}
+  - divider: true
+  - note: {text: "To-do for the booking's creator: PO-2026-002 was cancelled: correct this booking", tone: warn, n: 5}

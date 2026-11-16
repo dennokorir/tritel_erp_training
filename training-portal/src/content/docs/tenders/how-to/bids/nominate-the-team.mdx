@@ -1,0 +1,63 @@
+---
+title: Nominate the Account Manager, Bid Liaison and Presales
+description: Assign the people who will work on a tender, using the fair-workload table to choose the Bid Liaison.
+module: tenders
+pageType: how-to
+roles: [head-commercial, head-channel]
+tags: [tenders, bid desk, my actions]
+keywords: [nominate, assign, allocate, bid team, bid liaison, presales, pre-sales engineer, account manager, workload, fair share, bid desk]
+where: [Tender Manager, My Actions]
+before:
+  - "To assign a <strong>Bid Liaison</strong> you need the Head of Commercial role. To assign the <strong>Account Manager</strong> or <strong>Technical Pre-sales Engineer</strong> you need the Head of Channel role. Tender administrators can do all three."
+  - The tender is in Draft or Bidding (Draft, Bidding or Evaluation for the Account Manager).
+related: [tenders/concepts/roles-on-a-tender, tenders/concepts/bid-desk-workload, tenders/calculations/workload-points, tenders/how-to/bids/confirm-the-bid, tenders/how-to/bids/tender-my-actions]
+sources:
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/wizards/tenders_assignment_wizard.py
+  - tritel_tender_tracker/wizards/tenders_assignment_wizard.xml
+  - tritel_tender_tracker/wizards/bid_desk_wizards.py
+  - tritel_tender_tracker/views/bid_desk_views.xml
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/models/my_actions.py
+sidebar: { order: 2 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A new tender needs three people: an **Account Manager**, a **Bid Liaison** who compiles and submits the bid, and a **Technical Pre-sales Engineer** who writes the technical response. The Head of Commercial nominates the Bid Liaison. The Head of Channel nominates the Account Manager (when the customer's own one isn't filled in) and the Technical Presales. A tender can't move past Draft until the Bid Liaison and Presales are in place.
+
+<Illustration name="tenders/bid-nominate-team" caption="Nominating a Bid Liaison who is over their fair share. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Tender Manager › My Actions**. Tenders waiting for you are under **Bid liaisons to nominate**, **Pre-sales engineers to nominate** or **Account managers to nominate**. Click **Nominate** to go straight to step 3, or click the tender to open it. You can also open it from your *Required Nomination of …* to-do.
+2. On the tender, click **Assign** next to **Bid Liaison**.
+3. The **Assign Bid Liaison** window lists every full-time Bid Liaison with their effort points this quarter, the bids they have open now, and any of their deadlines within 3 days of this one. **Suggested** marks the person with the fewest points who isn't over their fair share and has no clash. **Over fair share** and **Clash** mark the others.
+4. Choose the **Bid Liaison**. If you pick someone marked over their fair share or with a clash, a red line explains why, and you must fill in **Why This Person?**.
+5. Click **Assign Bid Liaison**.
+6. For presales (Head of Channel), click **Assign** next to **Technical Pre-sales Engineer**, choose the person in the **Assign Technical Pre-sales** window and click **Assign Technical Pre-sales**. The **Account Manager** works the same way: **Assign**, then **Assign Account Manager**.
+
+To change a nomination, click **Assign** again and choose someone else.
+
+## What happens next
+
+- The person's name appears on the tender, and the chatter notes who assigned them.
+- The nominee gets a to-do: *Nomination for Bid Liaison*, *Nomination for Technnical Pre-sales* or *Nomination for Account Manager*. A replaced nominee's to-do is removed.
+- Your *Required Nomination of …* to-do is removed, and the tender leaves that section of **My Actions** for every head.
+- A *Team Resource Alert* email goes to the Account Manager, Presales and Bid Liaison, copied to the Tender administrators, Heads of Commercial and Heads of Channel.
+- If you gave a reason for an over-share or clash choice, it is kept as **Why Assigned Despite Load** on the tender's **Bid Readiness** tab, and noted in the chatter.
+- The nomination to-dos are cleared automatically when the tender is marked submitted or closed.
+- In Accountability, Bid Liaison choices feed the Head of Commercial's **Fair Workload Balance** and **Deadline Clash-Free** measures. See [How metrics count](/accountability/calculations/metric-families/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Please say why this person should take the bid.* | You chose someone over their fair share or with another deadline within 3 days, and **Why This Person?** is empty. | Type the reason, or pick the suggested person. |
+
+:::note[Good to know]
+- The table lists only people in **Tender Manager › Configuration › Bid Desk Team** with **Full-time on Bids** switched on. If it says *Nobody is marked as full-time on bids yet.*, ask the Head of Commercial or a Tender administrator to fill in that list. You can still choose any employee.
+- Points count the current calendar quarter and include this tender. How they are worked out is on [Bid desk workload points](/tenders/calculations/workload-points/).
+- The **Assign** links disappear once the tender is past Bidding (past Evaluation for the Account Manager).
+- Nothing checks that the person you choose actually holds that role in the tender tracker.
+- Opportunities in CRM have their own **Assign Account Manager** and **Assign Tech-Presales** buttons for the Head of Channel. An opportunity can't leave its first three CRM stages (except to Lost) without a Technical Presales.
+:::

@@ -1,0 +1,72 @@
+---
+title: Work the bid readiness checklist
+description: Upload each bid document, mark the ones the tender doesn't need, and confirm the bid ready at least 72 hours before the deadline.
+module: tenders
+pageType: how-to
+roles: [bid-liaison, presales]
+tags: [tenders, bid desk, readiness]
+keywords: [checklist, bid documents, mandatory documents, tax compliance, CR12, manufacturer authorisation, MAF, expired certificate, ready, 72 hours, compliance]
+where: [Tender Manager, Tenders, All Tenders]
+before:
+  - The tender is in <strong>Bidding</strong>. The checklist is built when the bid is confirmed.
+  - "You are the tender's Bid Liaison, the Bid Liaison's manager or a Tender administrator. As the tender's Technical Presales you can work only the rows <strong>Prepared By</strong> Technical Presales."
+related: [tenders/concepts/bid-readiness, tenders/workflows/bid-readiness, tenders/calculations/readiness-progress, tenders/how-to/bids/mark-submitted, tenders/how-to/bids/confirm-the-bid]
+sources:
+  - tritel_tender_tracker/views/bid_desk_views.xml
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/data/bid_desk_data.xml
+sidebar: { order: 4 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+The **Bid Readiness** tab lists the documents a bid needs, who prepares each one, and whether it is ready. The Bid Liaison and the Technical Presales attach their documents as they go. When nothing is missing or expired, the Bid Liaison clicks **Confirm Ready**, ideally at least 72 hours before the deadline.
+
+<Illustration name="tenders/bid-readiness-checklist" caption="A checklist in progress: one expired certificate, one missing letter and one document not needed. The numbers match the steps below." />
+
+## Steps
+
+1. Open the tender and click the **Bid Readiness** tab. If **Readiness** shows **Not Started** and there is no list, the Bid Liaison clicks **Create Checklist**.
+2. For each row you prepare (see **Prepared By**), upload the document in **Document Files**.
+3. For a document that expires, such as a tax compliance certificate, type its expiry date in **Valid Until**. It must be on or after the deadline date, or the row shows **Expired**. **Valid Until** can be typed only on rows that have an expiry.
+4. Tick **Not Needed** on any row this tender doesn't ask for.
+5. Bid Liaison: to add a document the tender asks for that isn't listed, click **Add a line**, type the **Document** and choose who it is **Prepared By**. To remove a row, click its bin icon.
+6. Click **Save** (the cloud icon). Check each row's **Status** and the **Progress**, for example *4 of 7 ready*. Rows marked **Not Needed** aren't counted.
+7. Bid Liaison: when every row is **Ready** or **Not Needed**, click **Confirm Ready**. If something has to change afterwards, click **Reopen**, make the change and confirm again.
+
+What each **Status** means:
+
+| Status | When |
+|---|---|
+| **Missing** | No file is attached, or the document expires and **Valid Until** is empty. |
+| **Expired** | **Valid Until** is before the date of the **Submission Deadline**. |
+| **Ready** | A file is attached and, if it expires, it is still valid on the deadline date. |
+| **Not Needed** | **Not Needed** is ticked. |
+
+## What happens next
+
+- **After Confirm Ready:** **Readiness** shows **Confirmed Ready**, with **Confirmed Ready On** and **Confirmed By**. The checklist is locked and the chatter notes *Bid confirmed ready by Employee C.* The tender leaves **Bids to confirm ready** in **My Actions** and the reminder emails stop.
+- **Until it is confirmed:** the tender sits in the Bid Liaison's and Presales' **My Actions** under **Bids to confirm ready** from 5 days before the deadline, marked overdue once less than 72 hours remain. Reminder emails go to both 5 and 3 days before the deadline.
+- **After Reopen:** **Readiness** goes back to **In Progress** and the checklist can be changed again. The chatter notes who reopened it.
+- In Accountability, **Ready at 72 Hours** counts the bid as met for the Bid Liaison and the Technical Presales when it was confirmed ready at least 72 hours before the deadline. See [How metrics count](/accountability/calculations/metric-families/).
+
+When the bid has gone in, [mark the tender submitted](/tenders/how-to/bids/mark-submitted/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *This bid isn't ready yet: - Tax compliance certificate: expired* | You clicked **Confirm Ready** while a row is **Missing** or **Expired**. The message lists each one. | Attach the file, fix **Valid Until**, or tick **Not Needed**, then confirm again. |
+| *This checklist is confirmed. Reopen it to make changes.* | You tried to change or add a row after **Confirm Ready**. | Ask the Bid Liaison to click **Reopen**. |
+| *Only the person preparing this document, the Bid Liaison or their manager can change it.* | As Technical Presales you edited a row **Prepared By** Bid Liaison, or you aren't on this tender's team. | Work only your own rows. |
+| *Only the Bid Liaison or their manager can add items.* | Someone other than the Bid Liaison, their manager or a Tender administrator clicked **Add a line**. | Ask the Bid Liaison to add the row. |
+| *Only the Bid Liaison or their manager can remove items, while the checklist is open.* | You tried to delete a row without the right, or after the checklist was confirmed. | Ask the Bid Liaison; reopen the checklist first if it is confirmed. |
+| *Only the Bid Liaison or their manager can do this.* | You clicked **Create Checklist**, **Confirm Ready** or **Reopen** without being the Bid Liaison, their manager or a Tender administrator. | Ask the Bid Liaison. |
+| *There is no open checklist to confirm.* | The checklist was already confirmed, or hasn't been created. | Refresh the page and check **Readiness**. |
+| *This checklist isn't confirmed.* | You clicked **Reopen** on a checklist that is still open. | Refresh the page. |
+
+:::note[Good to know]
+- **Confirm Ready** isn't required before **Mark Submitted**, but an unconfirmed bid counts as not met for **Ready at 72 Hours**.
+- If the customer moves the deadline, correct **Submission Deadline** on the **Tender Info** tab. The **Expired** check uses the new date straight away.
+- The **Bid bond** row is added only when **Bid Bond Required** is set on the tender, which can't be done in the back office at the moment. If the tender asks for a bid bond, add a **Bid bond** row with **Add a line**.
+- The standard list of documents is kept under **Tender Manager › Configuration › Standard Bid Documents** by the Head of Commercial. Changing it doesn't change checklists already built.
+:::

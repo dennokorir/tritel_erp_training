@@ -1,0 +1,57 @@
+---
+title: Follow up a prequalification and log an RFQ
+description: Keep a prequalification's validity dates and follow-up up to date, and log each RFQ the customer sends under it as a new tender.
+module: tenders
+pageType: how-to
+roles: [account-manager, bid-liaison]
+tags: [tenders, prequalification]
+keywords: [prequal, prequalification, registration, framework, shortlist, supplier list, RFQ, request for quotation, renewal, expiry, follow up]
+where: [Tender Manager, Tenders, Prequalifications]
+before:
+  - A tender was marked <strong>Prequalified</strong>, which created the prequalification.
+  - Any internal user can work a prequalification. Follow-up reminders go to its <strong>Account Manager</strong>.
+related: [tenders/concepts/prequalifications, tenders/workflows/prequalification, tenders/how-to/bids/create-a-tender, tenders/how-to/bids/record-the-result, tenders/how-to/bids/tender-my-actions]
+sources:
+  - tritel_tender_tracker/views/tender_workflow_views.xml
+  - tritel_tender_tracker/models/prequalification_pipeline.py
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/wizards/tender_move_wizard.py
+sidebar: { order: 8 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Being **prequalified** puts the company on a customer's list for a period of time. The value comes from the **RFQs** the customer sends during that window, so each prequalification is followed up: its dates kept right, a next follow-up date set, and every RFQ logged under it as its own tender.
+
+<Illustration name="tenders/bid-prequalification" caption="A prequalification still missing its dates, with two RFQs logged. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Tender Manager › Tenders › Prequalifications**. The board is grouped by status. Use the **Active**, **Dates Unknown** and **My Accounts** filters to find yours, then click the card.
+2. If a yellow banner says *Add the dates this prequalification is valid for, then untick Dates Unknown, so reminders can start.*, the dates are missing.
+3. Fill in **Valid From** and **Valid Until**, then untick **Dates Unknown**.
+4. Set the **Next Follow-up** date, and keep notes on the **Notes** tab and papers on the **Documents** tab. Click **Save**.
+5. When the customer sends an RFQ, click **Log RFQ**. A **New RFQ** tender opens with the customer, the categories (as tags) and **From Prequalification** filled in. Type its **Ref**, description, value and **Submission Deadline**, and save. It then follows the normal tender steps, starting with [nominating the team](/tenders/how-to/bids/nominate-the-team/). The original prequalified tender has a **Log RFQ** button too.
+6. Keep the status bar right: click **Applied**, **Active**, **Expired** or **Closed** to change it. **Log RFQ** shows only while the status is **Active** or **Renewed**.
+7. Check **Results**: **Bids** (RFQs that were submitted), **Won**, **Value Won** (in KES) and **Last RFQ**. The **RFQs** tab and smart button list every RFQ logged.
+
+## What happens next
+
+- An RFQ tender shows a **From prequalification** badge next to its **Ref**, and a **Prequalification** smart button back to this record. It creates the usual nomination to-dos for the heads.
+- Every day the system checks active prequalifications:
+  - after **Valid Until** has passed, the status becomes **Expired**;
+  - 60 and 30 days before **Valid Until**, it posts *This prequalification expires on … Plan the renewal.* to the Account Manager;
+  - when no RFQ has come in for 60 days, it posts *No RFQ has come in under this prequalification for 60 days. Follow up with the client.*, then again every 30 days.
+- The Account Manager's **My Actions** lists it under **Prequalifications to follow up** when dates are missing, when it expires within 60 days, or when no RFQ has come in for 60 days. See [Work through Tender My Actions](/tenders/how-to/bids/tender-my-actions/).
+- Won RFQs count as wins in their own right. The prequalified tender itself earns no achievement.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *'Valid From' is after 'Valid Until'.* | When marking the tender **Prequalified**, the dates were the wrong way round. | Swap them in **Mark as Prequalified**. |
+
+:::note[Good to know]
+- Anyone can change a prequalification's status from the status bar, and nothing checks the change. Only the automatic move from **Active** to **Expired** is done by the system.
+- **Renewed** isn't on the status bar; it shows only on prequalifications already in that status. Reminders run only for **Active** ones.
+- Reminders don't start while **Dates Unknown** is ticked, even if the dates are filled in.
+:::

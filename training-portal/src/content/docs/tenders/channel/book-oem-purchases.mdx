@@ -1,0 +1,66 @@
+---
+title: Book OEM purchases
+description: Create an OEM booking from the OEM's partner portal figure, add the purchase lines it covers, check the distributor margin, confirm it, and remove a line from a draft booking.
+module: tenders
+pageType: how-to
+roles: [head-channel, channel-user, finance]
+tags: [channel, oem bookings]
+keywords: [OEM booking, book purchases, deal registration, partner portal, recognised amount, PO, LPO, purchase order line, distributor margin, confirm booking, remove line]
+where: [Channel, OEM Bookings]
+before:
+  - You are a <strong>Channel Manager</strong> or <strong>Channel Administrator</strong>, or a <strong>Purchase Administrator</strong>. Channel Users can only view bookings.
+  - The purchase orders are confirmed and their lines are tagged with the OEM. If they aren't, <a href="/tenders/channel/tag-untagged-purchases/">set the OEM first</a>.
+  - You have the OEM portal's reference and recognised amount in front of you.
+related: [tenders/channel/oem-bookings, tenders/channel/booking-workflow, tenders/channel/cancelled-orders, tenders/channel/tag-untagged-purchases, tenders/calculations/oem-bookings]
+sources:
+  - crm_tender/models/crm_oem_booking.py
+  - crm_tender/models/purchase.py
+  - crm_tender/wizards/oem_booking_add_lines.py
+  - crm_tender/views/crm_oem_booking_views.xml
+  - crm_tender/security/ir.model.access.csv
+sidebar: { order: 5 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Book an OEM's portal figure when the OEM has credited Tritel for purchases of its products. You create the booking, link the purchase lines it covers, check the margin, and confirm it. Only confirmed bookings count as OEM-recognised revenue.
+
+<Illustration name="tenders/ch-book-oem-purchases" caption="A draft booking and the Add purchase lines window. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Channel › OEM Bookings** and click **New**. You can also start from the OEM's **Bookings** smart button, which fills in the OEM for you.
+2. Type the **Portal Reference**: the booking or deal reference shown on the OEM's portal.
+3. Under **From the OEM portal**, choose the **OEM**, type the **OEM-Recognised Amount**, check the **Currency** (USD unless the portal shows another) and enter the **Portal Date**.
+4. Click **Add purchase lines**. In the window that opens:
+   1. Click **Add a line** and tick the lines this booking covers. Only lines tagged with this OEM, on confirmed purchase orders, and not in another booking are offered.
+   2. Check **Selected (USD)** against what you expect.
+   3. Click **Add to booking**.
+5. Check the **Purchase lines** tab. To take a line off, click the red **Remove** (×) at the end of its row.
+6. Check **Reconciliation (USD)**: **Purchase Cost (USD)**, **Recognised (USD)**, **Distributor Margin (USD)** and **(%)**, and the **Booking Date**. Read any yellow banner and fix the amount or the lines if it is a mistake.
+7. Click **Confirm**.
+
+## What happens next
+
+- The booking becomes **Confirmed**. The portal reference, amount, currency and portal date are locked, and **Add purchase lines** and **Remove** disappear.
+- It counts in the OEM's **Channel performance this year (USD)** and in Accountability's **OEM-recognised revenue (USD)**, in the month of its **Booking Date**.
+- The lines leave the OEM's **Awaiting OEM** list.
+- Every change (amount, lines removed, status) is recorded in the booking's chatter.
+- To correct a confirmed booking, click **Reset to Draft**, make the change and confirm again. See the [OEM booking workflow](/tenders/channel/booking-workflow/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *'BK-1001': link the purchase lines this booking covers before confirming.* | You clicked **Confirm** with no lines. | Click **Add purchase lines** first. |
+| *'BK-1001': enter the amount the OEM recognises.* | **OEM-Recognised Amount** is 0. | Type the portal figure. |
+| *'BK-1001': remove the lines from purchase orders that are no longer confirmed before confirming: PO-2026-002.* | A linked purchase order was cancelled or reset. | Remove that order's lines, check the amount, then confirm. |
+| *The recognised amount cannot be negative.* | You typed a minus figure. | Enter the amount as a positive number. |
+| *Reset confirmed bookings to draft before deleting them.* | You tried to delete a confirmed booking. | Click **Reset to Draft**, then delete. |
+| *1 line(s) are already in an OEM booking (BK-1001); remove them from the booking before changing their OEM.* | Someone tried to change the OEM on a booked purchase line. | Remove the line from the booking first. |
+| The line you need isn't offered in **Add purchase lines** | It has no OEM or another OEM, its order isn't confirmed, or it is already in a booking. | [Set its OEM](/tenders/channel/tag-untagged-purchases/), or remove it from the other booking. |
+
+:::note[Good to know]
+- The **OEM** can't be changed once lines are linked. To change it, remove all the lines first.
+- **Remove** shows only on a draft booking, and only to Channel Managers, Channel Administrators and Purchase Administrators.
+- **Booking Date** comes from the purchase orders, not from **Portal Date**. If the lines come from orders confirmed in March and April, the booking counts in April.
+:::

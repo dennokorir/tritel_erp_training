@@ -1,0 +1,15 @@
+type: calc
+title: Quality Score on a tender
+desc: Worked example of a bid's Quality Score, with 8 guidelines of which 6 are Met, 1 is Not met and 1 is Not applicable, giving 6 out of 7, or 85.7%.
+source: tritel_tender_tracker/models/bid_quality.py (_bid_save_quality), wizards/bid_quality_wizards.py
+heading: Bid Quality Check on TND-2026-001
+inputs:
+  - {label: Met, value: "6"}
+  - {label: Not met, value: "1"}
+  - {label: Not applicable, value: "1"}
+steps:
+  - {label: "Guidelines that apply: 8 − 1 not applicable", value: "7"}
+  - {label: "Quality Score (%) = Met ÷ guidelines that apply × 100", value: "6 ÷ 7 × 100"}
+  - {label: Rounded to one decimal, value: "85.7"}
+result: {label: Quality Score (%), value: "85.7%", tone: good}
+note: Not applicable guidelines are left out of both sides. If every guideline is Not applicable, the score can't be saved.

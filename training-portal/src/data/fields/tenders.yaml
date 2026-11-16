@@ -1,0 +1,215 @@
+# Field reference for the Tender Tracker (Tender Manager) and the Channel app, grouped by screen.
+# Labels are exactly as on screen. Source: tritel_tender_tracker views and models (tender_views.xml,
+# bid_desk_views.xml, bid_quality_views.xml, tender_workflow_views.xml, project_summary_views.xml,
+# tender_business_case_views.xml, res_partner.xml, partner_activity_touchpoints_views.xml,
+# target_accounts_views.xml; models/*.py) and crm_tender (crm_oem_booking_views.xml, crm_oem_booking.py, purchase.py).
+screens:
+  - name: Tender form, top of the form
+    where: Tender Manager › Tenders › All Tenders (open a tender)
+    fields:
+      - {label: Status, meaning: "Draft, Bidding or Evaluation on the bar; Won, Prequalified, Lost, Dropped or Cancelled once closed. Changes only through the buttons.", where: Header}
+      - {label: Ref, meaning: "The tender or document reference number (Tender Number). Required.", where: Title}
+      - {label: Starred, meaning: "Star to mark an important tender.", where: Title}
+      - {label: Tender, meaning: "Title and scope of works, typed in the box under Ref (Tender description / scope of works…). Also the tender's name in lists.", where: Title}
+      - {label: Expected Revenue, meaning: "The bid value in the tender's currency. When the currency isn't KES, the KES value shows next to it (≈), converted at the rate on the Award Date, else the deadline date, else today.", where: Title}
+      - {label: Customer, meaning: "Required. Choosing it fills the Account Manager from the customer.", where: Left column}
+      - {label: Account Manager, meaning: "Read-only. Set with Assign (Head of Channel, Tender administrator) or from the customer.", where: Left column}
+      - {label: Bid Liaison, meaning: "Read-only. Set with Assign (Head of Commercial, Tender administrator) while Draft or Bidding.", where: Left column}
+      - {label: Technical Pre-sales Engineer, meaning: "Read-only. Set with Assign (Head of Channel, Tender administrator) while Draft or Bidding.", where: Left column}
+      - {label: OEMs, meaning: "The manufacturers whose products the bid offers, from the Channel app's OEM list.", where: Right column}
+      - {label: Tags, meaning: "Free labels, also used as prequalification categories.", where: Right column}
+      - {label: Source/Pipeline, meaning: "The CRM opportunity the tender came from (same customer only). Won and Lost tenders set it Won or Lost.", where: Right column}
+      - {label: Sale Orders, meaning: "Sales orders linked to the tender. Shown when Won.", where: Right column}
+      - {label: Purchase Orders, meaning: "Purchase orders linked to the tender. Shown when Won.", where: Right column}
+      - {label: From Prequalification, meaning: "The prequalification this tender was logged under as an RFQ.", where: Right column}
+      - {label: Must-Win, meaning: "Red badge next to Ref when the Head of Commercial has flagged the tender.", where: Title}
+
+  - name: Tender form, Tender Info tab
+    where: Tender form › Tender Info
+    fields:
+      - {label: Validity Period (Days), meaning: "How long the bid must stay valid.", where: Tab}
+      - {label: Submission Deadline, meaning: "Date and time the bid is due. Edit it here; the copies on Bid Readiness and Bid Quality are read-only.", where: Tab}
+      - {label: Tender Opening Date, meaning: "When bids are opened.", where: Tab}
+      - {label: Award Date, meaning: "When the tender was awarded. Required to mark Won. Shown when Won or Prequalified.", where: Tab}
+      - {label: Period, meaning: "The commercial target period covering the Award Date, else the deadline date, else the creation date. Shown when Won or Prequalified.", where: Tab}
+
+  - name: Tender form, Documents and Competition tabs
+    where: Tender form › Documents, Competition
+    fields:
+      - {label: Name, meaning: "Name of a tender document. Add a row with Add a document.", where: Documents}
+      - {label: Document, meaning: "The uploaded files for that row.", where: Documents}
+      - {label: Last Updated on, meaning: "When the row last changed.", where: Documents}
+      - {label: Firm Name, meaning: "A competing bidder, from the tender opening minutes.", where: Competition}
+      - {label: Lot Bidded, meaning: "The lot the firm bid for.", where: Competition}
+      - {label: Bid Amount, meaning: "The firm's total bid for that lot, shown as a firm × lot grid.", where: Competition}
+
+  - name: Tender form, Bid Readiness tab
+    where: Tender form › Bid Readiness (from Bidding, or once a checklist exists)
+    fields:
+      - {label: Readiness, meaning: "Not Started, In Progress or Confirmed Ready.", where: Tab}
+      - {label: Progress, meaning: "Items Ready of the items not marked Not Needed, for example 5 of 7 ready.", where: Tab}
+      - {label: Submission Deadline, meaning: "Read-only copy of the deadline.", where: Tab}
+      - {label: Confirmed Ready On, meaning: "When Confirm Ready was clicked. Cleared by Reopen.", where: Tab}
+      - {label: Confirmed By, meaning: "Who confirmed the bid ready.", where: Tab}
+      - {label: Document, meaning: "A checklist item, copied from Standard Bid Documents.", where: Checklist}
+      - {label: Prepared By, meaning: "Bid Liaison or Technical Presales: who provides the document.", where: Checklist}
+      - {label: Document Files, meaning: "The file for this item.", where: Checklist}
+      - {label: Valid Until, meaning: "Expiry date, for documents that expire. Empty counts as Missing.", where: Checklist}
+      - {label: Not Needed, meaning: "Tick when this tender doesn't need the document.", where: Checklist}
+      - {label: Status, meaning: "Missing, Expired, Ready or Not Needed.", where: Checklist}
+      - {label: Bid Decision Made, meaning: "When the tender first moved to Bidding or was dropped.", where: Decision and Assignment}
+      - {label: Why Assigned Despite Load, meaning: "The reason given when a Bid Liaison over their fair share or with a clash was chosen.", where: Decision and Assignment}
+
+  - name: Tender form, Bid Quality tab
+    where: Tender form › Bid Quality (when must-win, submitted or disqualified)
+    fields:
+      - {label: Why Must-Win, meaning: "Reason given when the tender was flagged.", where: Must-Win}
+      - {label: Flagged By, meaning: "Who flagged it.", where: Must-Win}
+      - {label: Flagged On, meaning: "When it was flagged.", where: Must-Win}
+      - {label: Submission Deadline, meaning: "Read-only copy of the deadline.", where: Submission}
+      - {label: Actual Submission, meaning: "When the bid really went in. Set at Mark Submitted; Add Receipt or the scorer can correct it.", where: Submission}
+      - {label: Submitted Late, meaning: "Actual Submission is later than the Submission Deadline.", where: Submission}
+      - {label: Submission Recorded, meaning: "A submission receipt has been attached.", where: Submission}
+      - {label: Recorded By, meaning: "Who recorded the submission.", where: Submission}
+      - {label: Submission Receipt, meaning: "The receipt or proof of delivery.", where: Submission}
+      - {label: Quality Check, meaning: "Not Due, To Score or Scored.", where: Quality Check}
+      - {label: Quality Check Due, meaning: "10 days after the tender reached Evaluation.", where: Quality Check}
+      - {label: Quality Score (%), meaning: "Guidelines Met ÷ guidelines that apply × 100.", where: Quality Check}
+      - {label: Scored By, meaning: "Who scored the bid.", where: Quality Check}
+      - {label: Scored On, meaning: "When it was scored.", where: Quality Check}
+      - {label: Quality Check Note, meaning: "The scorer's note to the Bid Liaison.", where: Quality Check}
+      - {label: Guideline, meaning: "One bid guideline as scored on this tender.", where: Guidelines}
+      - {label: Result, meaning: "Met, Not met or Not applicable.", where: Guidelines}
+      - {label: Disqualification, meaning: "None, To Confirm or Confirmed.", where: Disqualification}
+      - {label: Caused By, meaning: "Bid Liaison, Technical Presales, Account Manager, OEM or supplier, Client or Other.", where: Disqualification}
+      - {label: Evidence, meaning: "What shows the cause.", where: Disqualification}
+      - {label: Recorded By, meaning: "Who recorded the disqualification.", where: Disqualification}
+      - {label: Confirm By, meaning: "7 days after it was recorded.", where: Disqualification}
+      - {label: Confirmed By, meaning: "Who confirmed the cause.", where: Disqualification}
+      - {label: Confirmed On, meaning: "Date confirmed. Decides the quarter it counts in.", where: Disqualification}
+
+  - name: Tender form, closing tabs
+    where: Tender form › Tender Lost Reason, Drop Reason, Project Summary, Target Achievements
+    fields:
+      - {label: Lost Reason, meaning: "Why the tender was lost. Shown when Lost.", where: Tender Lost Reason}
+      - {label: Drop Reason, meaning: "Why Tritel didn't bid. Shown when Dropped.", where: Drop Reason}
+      - {label: Drop Reason Feedback, meaning: "The closing note given with the drop.", where: Drop Reason}
+      - {label: Summary Status, meaning: "Not requested, Writing, In review, Changes requested or Complete. Shown when Won.", where: Project Summary}
+      - {label: Summary Writer, meaning: "Who writes the project summary.", where: Project Summary}
+      - {label: Summary Due, meaning: "When the writing is due.", where: Project Summary}
+      - {label: Target, meaning: "The individual target an achievement line counts towards.", where: Target Achievements}
+      - {label: Role, meaning: "Account Manager, Bid Liaison or Technical Presales.", where: Target Achievements}
+      - {label: Gross Value, meaning: "The tender's KES value, split equally among lines of the same role.", where: Target Achievements}
+      - {label: "% Achievement", meaning: "The points earned for the role's stages.", where: Target Achievements}
+      - {label: Achieved Value, meaning: "Gross Value × % Achievement ÷ 100.", where: Target Achievements}
+
+  - name: Prequalification
+    where: Tender Manager › Tenders › Prequalifications (open one)
+    fields:
+      - {label: Status, meaning: "Applied, Active, Expired, Renewed or Closed. Active becomes Expired after Valid Until.", where: Header}
+      - {label: Reference, meaning: "The application or prequalification reference.", where: Form}
+      - {label: Source Tender, meaning: "The tender that was prequalified.", where: Form}
+      - {label: Account Manager, meaning: "Gets the follow-up notices.", where: Form}
+      - {label: Owner, meaning: "The user who owns the record.", where: Form}
+      - {label: Categories, meaning: "What Tritel is prequalified for.", where: Form}
+      - {label: Valid From, meaning: "Start of the prequalification window.", where: Form}
+      - {label: Valid Until, meaning: "End of the window. Notices go out 60 and 30 days before.", where: Form}
+      - {label: Dates Unknown, meaning: "Created without dates. Reminders start once the dates are filled in.", where: Form}
+      - {label: Next Follow-up, meaning: "Next planned follow-up. Set 30 days ahead when a tender is marked Prequalified.", where: Form}
+      - {label: RFQs, meaning: "Tenders logged under this prequalification.", where: Results}
+      - {label: Bids, meaning: "RFQs that reached Evaluation or a result.", where: Results}
+      - {label: Won, meaning: "RFQs won.", where: Results}
+      - {label: Value Won, meaning: "KES value of the won RFQs.", where: Results}
+      - {label: Last RFQ, meaning: "When the latest RFQ was logged.", where: Results}
+
+  - name: Business case
+    where: Tender form › Business case button
+    fields:
+      - {label: Status, meaning: "Draft, Submitted, Approved or Rejected.", where: Header}
+      - {label: Expected Revenue, meaning: "The tender's Expected Revenue in KES.", where: Tender}
+      - {label: Submitted By, meaning: "Who clicked Submit for Review.", where: Approval}
+      - {label: Submitted Date, meaning: "When it was submitted.", where: Approval}
+      - {label: Reviewed By, meaning: "Who approved or rejected it.", where: Approval}
+      - {label: Review Date, meaning: "When it was approved or rejected.", where: Approval}
+      - {label: Rejection Reason, meaning: "Required before Reject.", where: Approval}
+      - {label: Category, meaning: "Hardware / Equipment, Software / Licenses, Labour (Internal), Subcontractors, or Commissions & Facilitation.", where: Cost Breakdown}
+      - {label: Commission Role, meaning: "Head of Commercial or Head of Channel: whose commission line it is.", where: Cost Breakdown}
+      - {label: Description, meaning: "Required. Commission descriptions show as dots to others.", where: Cost Breakdown}
+      - {label: Qty, meaning: "Quantity.", where: Cost Breakdown}
+      - {label: Unit Price, meaning: "Price per unit in the line's currency.", where: Cost Breakdown}
+      - {label: Subtotal (line CCY), meaning: "Qty × Unit Price.", where: Cost Breakdown}
+      - {label: Subtotal (CC), meaning: "The subtotal in KES at the rate on the day the line was saved.", where: Cost Breakdown}
+      - {label: Actual Revenue, meaning: "Confirmed sales orders on the tender, totals in KES. Won or Prequalified only.", where: Actual vs Estimated}
+      - {label: Actual Cost, meaning: "Confirmed purchase orders on the tender, totals in KES.", where: Actual vs Estimated}
+      - {label: Actual Gross Profit, meaning: "Actual Revenue − Actual Cost.", where: Actual vs Estimated}
+      - {label: Actual Margin %, meaning: "Actual Gross Profit ÷ Actual Revenue × 100.", where: Actual vs Estimated}
+      - {label: GP Variance (Actual − Estimated), meaning: "Actual Gross Profit − estimated Gross Profit.", where: Actual vs Estimated}
+
+  - name: Project summary workspace
+    where: Tender form › Project Summary › Open summary workspace, or Tender Manager › Tenders › Summary Tracker
+    fields:
+      - {label: Summary Status, meaning: "Not requested, Writing, In review, Changes requested or Complete.", where: Header}
+      - {label: Summary Writer, meaning: "The person asked to write it. Only they can edit it.", where: Form}
+      - {label: Pre-sales, meaning: "The tender's presales engineer, the default writer. Shown before a request.", where: Form}
+      - {label: Summary Requested By, meaning: "The manager who asked for it.", where: Form}
+      - {label: Award Date, meaning: "The tender's award date.", where: Form}
+      - {label: Due, meaning: "When the writing is due (7 days by default).", where: Form}
+      - {label: Review Due, meaning: "When the review is due (5 days after submission by default).", where: Form}
+      - {label: Days Waiting, meaning: "Days since it was submitted (in review) or requested (writing).", where: Form}
+      - {label: Summary Approved By, meaning: "Who approved it.", where: Form}
+      - {label: Customer Naming, meaning: "Can be named, Anonymise or Not yet asked. Chosen on approval.", where: Form}
+      - {label: Headings, meaning: "Share of the required headings filled in.", where: Form}
+      - {label: Reviewer's Note, meaning: "What the reviewer asked to change.", where: Form}
+      - {label: Primary Pillar, meaning: "Main business pillar. Required to submit.", where: Classification}
+      - {label: Secondary Pillars, meaning: "Other pillars. Can't include the primary one.", where: Classification}
+      - {label: Tritel's Role, meaning: "Prime contractor, Subcontractor or Partner. Required to submit.", where: Classification}
+      - {label: Motion, meaning: "Project or Channel. Required to submit.", where: Classification}
+
+  - name: Customer activity
+    where: Tender Manager › Tender Customers › Customer Activities (list), or the Customer activities button on a tender
+    fields:
+      - {label: Partner, meaning: "The customer touched.", where: Form}
+      - {label: Name, meaning: "Short title of the touch.", where: Form}
+      - {label: Date, meaning: "When the touch happened or is planned. Can't be in the future when marked Done.", where: Form}
+      - {label: Account Manager, meaning: "The customer's account manager.", where: Form}
+      - {label: Responsible, meaning: "The person who made the touch.", where: Form}
+      - {label: Partner Activity Type, meaning: "Meeting, call, visit and so on.", where: Form}
+      - {label: Channel, meaning: "How the customer was reached, from the type.", where: Form}
+      - {label: Feedback, meaning: "What happened. Posted on the tender or opportunity when marked Done.", where: Form}
+      - {label: Tender, meaning: "The tender the touch supports.", where: Pipeline/Tender Related Touch}
+      - {label: Lead/Pipeline, meaning: "The opportunity the touch supports.", where: Pipeline/Tender Related Touch}
+      - {label: Valid, meaning: "Whether the touch counts for target achievements, by the day it was entered.", where: Validity}
+      - {label: Validity Note, meaning: "Why it is or isn't valid.", where: Validity}
+      - {label: Activity Phase, meaning: "Pipelining, Bid Submission Support or Post-Submission Influence, for achievements.", where: Validity}
+      - {label: Participant Role, meaning: "Account Manager, Presales, Bid Liaison, Leadership or Other.", where: Touchpoint}
+      - {label: Touch Phase, meaning: "Account-level, Pipelining, Bid Support, Post-submission or Delivery & Collection, by the touch date.", where: Touchpoint}
+      - {label: Entered Late, meaning: "Entered more than 7 days after the touch.", where: Touchpoint}
+
+  - name: Customer, coverage and target accounts
+    where: Tender Manager › Tender Customers › Customers (open a customer), Classify Accounts, Account Ownership
+    fields:
+      - {label: Account Manager, meaning: "Who owns the customer. Changing it moves the customer's open tenders, planned touches and open opportunities too.", where: Customer form}
+      - {label: Last Seen Stage, meaning: "How long since the last Done touch.", where: Customer form}
+      - {label: Coverage, meaning: "Anchor, Named, Prequalified, In play, Contested, Engaged or Untouched.", where: Lists}
+      - {label: Segment, meaning: "Public sector, Private sector or NGO / Development.", where: Customer form}
+      - {label: Target Account, meaning: "A customer the team is targeting. Set by the Head of Commercial or a Tender administrator.", where: Customer form}
+      - {label: Target Tier, meaning: "Strategic, Growth or Maintain.", where: Customer form}
+      - {label: Target Since, meaning: "When it became a target.", where: Customer form}
+      - {label: Target Note, meaning: "Why it is a target.", where: Customer form}
+
+  - name: OEM booking
+    where: Channel › OEM Bookings (open a booking)
+    fields:
+      - {label: Portal Reference, meaning: "The booking, deal or order reference on the OEM's portal.", where: Title}
+      - {label: OEM, meaning: "The manufacturer. Locked once lines are linked.", where: From the OEM portal}
+      - {label: OEM-Recognised Amount, meaning: "What the OEM credits, from its portal. Can't be negative; must be above 0 to confirm.", where: From the OEM portal}
+      - {label: Currency, meaning: "Currency of that amount. USD by default.", where: From the OEM portal}
+      - {label: Portal Date, meaning: "The date on the portal, for reference.", where: From the OEM portal}
+      - {label: Purchase Cost (USD), meaning: "Sum of the linked lines' Subtotal (USD).", where: Reconciliation (USD)}
+      - {label: Recognised (USD), meaning: "The recognised amount in USD, at the rate on the Booking Date.", where: Reconciliation (USD)}
+      - {label: Distributor Margin (USD), meaning: "Purchase Cost (USD) − Recognised (USD).", where: Reconciliation (USD)}
+      - {label: Distributor Margin (%), meaning: "Distributor Margin ÷ Purchase Cost × 100. Above 25% or below 0 shows a warning.", where: Reconciliation (USD)}
+      - {label: Booking Date, meaning: "Latest confirmation date of the linked purchase orders. Decides which review window the booking counts in.", where: Reconciliation (USD)}
+      - {label: Distributors, meaning: "Suppliers on the linked purchase orders.", where: Reconciliation (USD)}
+      - {label: Subtotal (USD), meaning: "A line's amount before tax in USD, at the rate on its order's confirmation date.", where: Purchase lines}
+      - {label: Confirmed On, meaning: "When the line's purchase order was confirmed.", where: Purchase lines}

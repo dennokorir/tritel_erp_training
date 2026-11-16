@@ -1,0 +1,19 @@
+type: screen
+title: Classify Accounts
+desc: The Classify Accounts list with the Apply Suggested Sector, Target tier, Approve Proposed, Decline Proposed and Propose as Target buttons, and editable Sector, Segment, Target Account and Target Tier columns, numbered 6 to 9.
+source: tritel_tender_tracker/views/target_accounts_views.xml (view_partner_classify_tree)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, Tenders, {label: Tender Customers, active: true}, Reporting]
+  breadcrumb: [Classify Accounts]
+blocks:
+  - buttons: [{label: Apply Suggested Sector, primary: true, n: 6}, {label: "Target: Strategic", n: 8}, {label: "Target: Growth"}, {label: "Target: Maintain"}, {label: Approve Proposed, n: 9}, {label: Decline Proposed}, {label: Propose as Target, n: 7}]
+  - search: {facets: [Unclassified (no sector)], placeholder: "Search…", filters: [Filters, Group By]}
+  - table:
+      columns: ["", Customer, Coverage, Sector, Suggested Sector, Segment, Target Account, Target Tier, Proposed]
+      widths: [0.5, 2, 1.4, 1.6, 1.8, 1.6, 1.4, 1.4, 1.1]
+      rows:
+        - ["☑", Customer A, Anchor, "", Banking, Private sector, "☐", "", "☑"]
+        - ["☐", Customer B, Named, "", Government, Public sector, "☐", "", "☐"]
+        - ["☐", Customer C, In play, "", "", "", "☐", "", "☐"]

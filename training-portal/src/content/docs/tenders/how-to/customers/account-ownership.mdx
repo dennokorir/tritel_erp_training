@@ -1,0 +1,68 @@
+---
+title: Claim, assign and classify accounts
+description: Give every engaged customer an account manager by claiming it, accepting the suggested owner or assigning one, tidy up customer records, and propose, approve and tier target accounts.
+module: tenders
+pageType: how-to
+roles: [account-manager, head-commercial]
+tags: [market coverage]
+keywords: [key account, account owner, account manager, claim customer, assign, target accounts, strategic accounts, tier, sector, classify, duplicate customer, coverage]
+where: [Tender Manager, Tender Customers, Account Ownership]
+before:
+  - Account managers can claim customers and propose target accounts. Assigning owners, tidying records and approving or tiering target accounts is for the Head of Commercial and Tender administrators.
+related: [tenders/concepts/market-coverage, tenders/workflows/customer-activity, tenders/how-to/customers/market-coverage, tenders/calculations/coverage-ladder]
+sources:
+  - tritel_tender_tracker/views/account_ownership_views.xml
+  - tritel_tender_tracker/models/account_ownership.py
+  - tritel_tender_tracker/views/target_accounts_views.xml
+  - tritel_tender_tracker/models/target_accounts.py
+  - tritel_tender_tracker/views/res_partner.xml
+sidebar: { order: 10 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Every customer Tritel has bid for, pitched to or touched should have an **account manager**. **Account Ownership** lists the ones that don't, with a suggested owner. **Classify Accounts** is where sectors are set and **target accounts** (the customers the company has chosen to win) are proposed, approved and tiered.
+
+<Illustration name="tenders/cust-account-ownership" caption="Account Ownership, with the Assign window open. The numbers match the steps below." />
+
+## Steps: owners
+
+1. Open **Tender Manager › Tender Customers › Account Ownership**. It opens on **Needs Owner (engaged, no AM)**: customers with a tender, opportunity or done touch but no account manager. **Suggested Owner** and **Why** say who should probably own each one.
+2. **Account managers**: tick customers that are yours and click **Claim for Me**.
+3. **Head of Commercial**: tick customers and click **Accept Suggestion** to give each one its **Suggested Owner**. Customers with no suggestion are skipped.
+4. **Head of Commercial**: to choose the owner yourself, tick customers and click **Assign To…**.
+5. In *Assign account manager*, pick the **Account Manager**, add a **Note** if you like (it goes on each customer's chatter), and click **Assign**.
+
+To tidy records, use the other filters: **Owner Archived**, **Organisation Saved as Individual** (tick them and click **Mark as Company**) and **Possible Duplicate** (click the merge icon on the row, *Merge with look-alikes*). These buttons are for the Head of Commercial and Tender administrators.
+
+<Illustration name="tenders/cust-classify-accounts" caption="Classify Accounts." />
+
+## Steps: sectors and target accounts
+
+6. Open **Tender Manager › Tender Customers › Classify Accounts**. It opens on **Unclassified (no sector)**. You can type the **Sector** and **Segment** on each row. To take the system's suggestions, tick rows and click **Apply Suggested Sector** (Head of Commercial).
+7. **Account managers**: to suggest a target account, tick it and click **Propose as Target** (or click **Propose as Target** on the customer's form). It shows as **Proposed, awaiting approval**.
+8. **Head of Commercial**: to make customers target accounts directly, tick them and click **Target: Strategic**, **Target: Growth** or **Target: Maintain**.
+9. **Head of Commercial**: use the **Proposed Targets** filter, tick proposals and click **Approve Proposed** (they become **Growth** unless a tier is set) or **Decline Proposed**. On a customer's form, a blue line *Proposed as a target by Employee A* has **Approve** and **Decline** buttons.
+
+## What happens next
+
+- A message confirms each action, for example *2 customer(s) claimed*, *3 customer(s) assigned*, *Proposed as target account(s)* or *1 target account(s) approved*. Each change is noted on the customer's chatter.
+- When a customer gets an account manager, that person also moves onto the customer's draft and bidding tenders, planned touches and early-stage opportunities.
+- Owned customers leave the **Needs Owner** list. In **Market Coverage** they count for their account manager, and **Reached, no account manager** goes down.
+- Approved target accounts get a **Target Since** date and count in **Market Coverage** under **Target accounts**.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Only account managers can claim customers.* | You don't hold the account manager role. | Ask the Head of Commercial to assign the customer. |
+| *Customer A already has an account manager.* | One of the ticked customers is already owned. | Untick it. To change an owner, ask the Head of Commercial. |
+| *Only the Head of Commercial or a Tender Administrator can assign account managers.* | You clicked **Accept Suggestion**, **Assign To…** or **Mark as Company** without that role. | Use **Claim for Me**, or ask the Head of Commercial. |
+| *Only the Head of Commercial or a Tender Administrator can set target accounts. Use "Propose as Target" instead.* | You ticked **Target Account** or changed the tier yourself. | Click **Propose as Target**. |
+| *Only the Head of Commercial or a Tender Administrator can approve target accounts.* (also *…decline proposed targets.*, *…set target tiers.*, *…classify customers in bulk.*) | You clicked a Head of Commercial button. | Ask the Head of Commercial. |
+
+:::note[Good to know]
+- Customers also get an owner on their own: when a tender or opportunity is saved for a customer with no account manager, the deal's account manager becomes the customer's.
+- **Why** explains the suggestion: *Account manager on 2 of its deals*, *Most recent of 3 account managers on its deals*, *Made 4 of its customer touches*, or no suggestion with *Previous account manager archived* or *No deals or touches by an account manager*.
+- **Accept Suggestion** that finds nothing to do shows *0 customer(s) assigned*.
+- **Approve Proposed** makes every ticked customer a target account, whether it was proposed or not. Tick only the proposals.
+:::

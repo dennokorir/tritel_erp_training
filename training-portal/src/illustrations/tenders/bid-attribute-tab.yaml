@@ -1,0 +1,23 @@
+type: screen
+title: Attribution lines on a won tender
+desc: The Target Achievements tab of a Won tender with one line each for the Account Manager, Bid Liaison and Technical Presales, showing Target, Role, Gross Value, % Achievement, Achieved Value and the quarter, and the open icon at the start of each line, numbered 1 to 5.
+source: tritel_tender_tracker/views/tender_views.xml (view_tender_form, page target_achievements); models/target.py
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true}, {label: My Actions, n: 1}, Tender Customers, Commercial Targets]
+  breadcrumb: [Tenders, Campus Wi-Fi upgrade]
+blocks:
+  - buttons: [{label: Open Delivery Project, primary: true}]
+    status: {steps: [Draft, Bidding, Evaluation, Won], current: Won}
+  - title: {text: Campus Wi-Fi upgrade, sub: "Ref TND-2026-001 · Customer A · KES 12,000,000"}
+  - tabs: {items: [Tender Info, Bid Quality, Project Summary, Target Achievements], active: Target Achievements, n: 2}
+  - table:
+      columns: ["", Target, Role, Gross Value, "% Achievement", Achieved Value, Name]
+      widths: [0.4, 3.2, 2.7, 2.4, 1.8, 2.4, 1.3]
+      rows:
+        - ["↗", "FY 2026 AM revenue - Employee A", Account Manager, "12,000,000.00", "80.0", "9,600,000.00", Q4 2026]
+        - ["↗", "FY 2026 BL revenue - Employee C", Bid Liaison, "12,000,000.00", "100.0", "12,000,000.00", Q4 2026]
+        - {cells: ["↗", "FY 2026 TP revenue - Employee D", Technical Presales, "12,000,000.00", "0.0", "0.00", Q4 2026], highlight: true, n: 3}
+  - text: "Add a line"
+  - note: {text: "Click ↗ to open a line and enter its stage points, or work them out from the person's customer activities.", tone: accent, n: 4}

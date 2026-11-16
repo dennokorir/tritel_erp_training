@@ -1,0 +1,24 @@
+type: screen
+title: Write a summary on the portal
+desc: The project summary page on the website portal for the writer, with the pillar, role and motion lists, the text box, the guidance and headings panels, and the Save draft and Submit for review buttons.
+source: tritel_tender_tracker/views/portal_my_actions_templates.xml (portal_summary_workspace)
+frame:
+  app: Tritel portal
+  menu: [Dashboard, My Actions, {label: Summaries, active: true}, Tenders, Customers]
+  breadcrumb: [Summary Tracker, Customer A]
+blocks:
+  - title: {text: Customer A, sub: "TND-2026-001 · Network upgrade · Writing"}
+  - fields:
+      - [{label: Writer, value: Employee B, readonly: true}, {label: Due, value: 23/11/2026, readonly: true}]
+      - [{label: Primary pillar, value: Connectivity}, {label: Tritel's role, value: Prime contractor}]
+      - [{label: Secondary pillars, value: "☑ Productivity"}, {label: Motion, value: Project}]
+  - columns:
+      - panel: true
+        blocks:
+          - heading: The client's problem
+          - text: "Branches lost connection several times a month."
+      - panel: true
+        blocks:
+          - heading: What to cover
+          - text: "Outcome: what changed for the client."
+  - buttons: [{label: Save draft}, {label: Submit for review, primary: true}]

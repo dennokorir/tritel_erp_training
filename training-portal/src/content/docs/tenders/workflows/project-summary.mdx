@@ -1,0 +1,114 @@
+---
+title: Project summary workflow
+description: Every status of a won tender's project summary, from Not requested through Writing and In review to Complete, with who requests, writes, reviews and reopens it, the due dates, emails, to-dos and overdue reminders.
+module: tenders
+pageType: workflow
+roles: [head-channel, head-commercial, presales, tender-admin]
+tags: [project summaries, workflows]
+keywords: [project summary, case study, request summary, write, submit for review, send back, approve, reopen, reassign, remind, overdue, library, customer naming]
+related: [tenders/concepts/project-summaries, tenders/how-to/customers/request-a-project-summary, tenders/how-to/customers/write-a-project-summary, tenders/how-to/customers/review-a-project-summary, tenders/how-to/customers/use-the-summary-library]
+sources:
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/models/my_actions.py
+  - tritel_tender_tracker/wizards/tender_summary_wizard.py
+  - tritel_tender_tracker/wizards/tender_summary_bulk_wizard.py
+  - tritel_tender_tracker/views/project_summary_views.xml
+  - tritel_tender_tracker/data/ir_cron_data.xml
+  - tritel_tender_tracker/data/mail_activity.xml
+sidebar: { order: 5 }
+---
+
+A project summary belongs to a won tender. A manager (the Head of Channel, the Head of Commercial or a Tender administrator) requests it from a writer; the writer submits it; another manager approves it or sends it back. Approved summaries are **Complete** and appear in the library. The status shows as **Summary Status** on the summary workspace and the tender's **Project Summary** tab.
+
+```mermaid
+stateDiagram-v2
+  state "Not requested" as notreq
+  state "Writing" as writing
+  state "In review" as review
+  state "Changes requested" as changes
+  state "Complete" as complete
+  [*] --> notreq: Tender won
+  notreq --> writing: Request summary (manager)
+  writing --> review: Submit for review (writer)
+  review --> changes: Send back (reviewer)
+  changes --> review: Submit for review (writer)
+  review --> complete: Approve (reviewer)
+  complete --> writing: Reopen (reviewer)
+  note right of writing
+    Reassign (manager) changes the writer
+    or due date while Writing or Changes requested
+    Writing due: 7 days. Review due: 5 days
+  end note
+```
+
+| Status | What it means | Moves to | Who moves it |
+|---|---|---|---|
+| **Not requested** | The tender is won, but no one has been asked to write. | **Writing** with **Request summary** (one tender) or **Request summaries** (several, from the Summary Tracker) | Head of Channel, Head of Commercial or Tender administrator |
+| **Writing** | The writer is writing under the headings. **Summary Due** is set (7 days by default). | **In review** with **Submit for review**; stays **Writing** with a new writer or date via **Reassign** | The writer only (submit); a manager (reassign) |
+| **In review** | Submitted. **Review Due** is 5 days after submission. Locked for the writer. | **Complete** with **Approve**; **Changes requested** with **Send back** | Any of the three managers except the writer |
+| **Changes requested** | Sent back with a **Reviewer's note**. A new due date, 7 days away. | **In review** with **Submit for review**; **Reassign** | The writer; a manager |
+| **Complete** | Approved, with **Customer Naming** set. In the library. | **Writing** with **Reopen** (confirm *Reopen this summary? It leaves the library until it is approved again.*) | Any of the three managers except the writer |
+
+## What each step asks for
+
+| Button | You enter |
+|---|---|
+| **Request summary** / **Reassign** | **Writer** (defaults to the tender's Technical Presales engineer) and **Due** (defaults to 7 days away). |
+| **Submit for review** | Nothing, but the **Primary Pillar**, **Tritel's Role** and **Motion** must be chosen and every required heading must have content. |
+| **Send back** | **What needs to change** (required). |
+| **Approve** | **Customer naming**: **Can be named**, **Anonymise** or **Not yet asked** (required). |
+
+## Who does what
+
+```mermaid
+flowchart TD
+  subgraph Mgr["Manager: Head of Channel / Head of Commercial"]
+    M1["Request summary: writer, due date"]
+    M2["Approve: customer naming"]
+    M3["Send back: what needs to change"]
+    M4["Remind, Reassign, Reopen"]
+  end
+  subgraph Wr["Writer (usually Technical Presales)"]
+    W1["Write under each heading, classify"]
+    W2["Submit for review"]
+    W3["Make the changes, submit again"]
+  end
+  subgraph Sys["System"]
+    S1["Email and Write Project Summary to-do"]
+    S2["Email and Review Project Summary to-do"]
+    S3["Overdue emails: day after due, then weekly"]
+    S4["Complete: in the library"]
+  end
+  M1 --> S1 --> W1 --> W2 --> S2
+  S2 --> M2 --> S4
+  S2 --> M3 --> W3 --> S2
+  S1 -.-> S3
+  S2 -.-> S3
+```
+
+## What the system does automatically
+
+- **Request summary:** the summary text is set up with every heading, **Client and sector** is filled from the customer where possible, the writer gets a **Write Project Summary** to-do due on the due date and an email *Project summary to write* listing the headings. A bulk request sends each writer one email for all their tenders. Every step is kept in the **History**.
+- **Reassign:** the new writer gets the email and the to-do; the previous writer is told *This project summary is now with Employee B. You no longer need to write it.* Changing only the date sends *Project summary due date changed*.
+- **Submit for review:** the reviewer gets a **Review Project Summary** to-do and an email *Project summary to review*. The reviewer is the person who requested it, or another manager if the requester is also the writer. Any manager other than the writer can act on it.
+- **Send back:** the writer gets a new to-do with the reviewer's note and an email *Project summary sent back*.
+- **Approve:** the writer and the requester get *Project summary complete*. The summary appears in the library with its naming badge.
+- **Reopen:** the writer gets *Project summary reopened* and a new due date; the summary leaves the library.
+- **Overdue:** each day, a summary whose due date (or review date) has passed is emailed to the writer and requester (or reviewer and requester) the day after, then every 7 days: *Overdue: project summary*.
+- **Remind:** in **My Actions**, managers can nudge whoever the summary is waiting on.
+- **Tender leaves Won:** the to-dos are removed and the text kept. When it is **Won** again, the to-dos come back and whoever it waits on gets *Project summary back in progress*.
+- Nobody is emailed about their own action.
+
+:::note[Good to know]
+- Only the assigned writer can edit the text, and only while **Writing** or **Changes requested**: *Only the assigned writer can edit a project summary, while it's being written.*
+- A manager who wrote the summary can't approve it: *You wrote this summary, so someone else needs to review it.*
+- The **Reference status** heading is required to submit but is never included in the marketing pack.
+:::
+
+## Related tasks
+
+- [Request a project summary](/tenders/how-to/customers/request-a-project-summary/)
+- [Write and submit a project summary](/tenders/how-to/customers/write-a-project-summary/)
+- [Review, send back or approve a summary](/tenders/how-to/customers/review-a-project-summary/)
+- [Find references in the summary library](/tenders/how-to/customers/use-the-summary-library/)
+- [Export a marketing pack](/tenders/how-to/customers/export-for-marketing/)

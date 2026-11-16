@@ -1,0 +1,16 @@
+type: calc
+title: Where a customer sits on the ladder
+desc: Worked example of Customer A's coverage rung, with one won tender, one lost tender and an open tender. The ladder is checked from the top, and the first rung that applies is Named.
+source: tritel_tender_tracker/models/market_coverage.py (_mc_facts, _mc_rung)
+heading: Customer A
+inputs:
+  - {label: Wins, value: "1"}
+  - {label: Prequalified, value: "No"}
+  - {label: Open deals, value: "1"}
+  - {label: Lost deals, value: "1"}
+steps:
+  - {label: "Anchor: 2 or more wins?", value: "No"}
+  - {label: "Named: exactly 1 win?", value: "Yes"}
+  - {label: "Prequalified, In play and the rungs below are not checked", value: "—"}
+result: {label: Coverage, value: "Named", tone: good}
+note: Without the win, the open tender would put Customer A on In play, ahead of the lost one.

@@ -1,0 +1,20 @@
+type: screen
+title: The Account Ownership list
+desc: The Account Ownership list of customers that need an owner, with the Accept Suggestion, Assign To, Mark as Company and Claim for Me buttons, and columns for the current account manager, the Suggested Owner and Why, Coverage and counts of tenders, opportunities and touches, numbered 1 to 3.
+source: tritel_tender_tracker/views/account_ownership_views.xml; models/account_ownership.py
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [Tenders, My Actions, {label: Tender Customers, active: true}, Reporting]
+  breadcrumb: [Account Ownership]
+blocks:
+  - search: {facets: [Needs Owner], placeholder: "Search…", filters: [Filters, Group By]}
+  - buttons: [{label: Accept Suggestion, primary: true, n: 1}, {label: Assign To…}, {label: Mark as Company}, {label: Claim for Me, n: 2}]
+  - table:
+      columns: [Customer, Account Manager, Suggested Owner, Why, Coverage, Tenders]
+      widths: [3, 2, 2, 4, 2, 1]
+      n: 3
+      rows:
+        - [Customer A, "", Employee A, Account manager on 2 of its deals, Named, "2"]
+        - [Customer B, "", Employee B, Made 3 of its customer touches, Engaged, "0"]
+        - [Customer C, "", "", Previous account manager archived, Contested, "1"]

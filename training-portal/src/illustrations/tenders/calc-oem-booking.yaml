@@ -1,0 +1,17 @@
+type: calc
+title: OEM booking figures
+desc: Worked example of an OEM booking with two purchase lines, USD 6,000 on an order confirmed on 3 Mar 2026 and KES 520,000 converted at 130 to USD 4,000 on an order confirmed on 18 Mar 2026, and USD 9,000 recognised by the OEM. Purchase Cost is USD 10,000, Distributor Margin USD 1,000 or 10.00%, and Booking Date 18 Mar 2026.
+source: crm_tender/models/crm_oem_booking.py (_compute_amounts), crm_tender/models/purchase.py (_compute_usd_subtotal)
+heading: Booking BK-1001 for OEM A
+inputs:
+  - {label: "Line 1, confirmed 3 Mar", value: "USD 6,000"}
+  - {label: "Line 2, confirmed 18 Mar", value: "KES 520,000"}
+  - {label: OEM-Recognised Amount, value: "USD 9,000"}
+steps:
+  - {label: "Line 2 in USD: 520,000 ÷ 130 (rate on 18 Mar)", value: "4,000.00"}
+  - {label: "Purchase Cost (USD): 6,000 + 4,000", value: "10,000.00"}
+  - {label: "Distributor Margin (USD): 10,000 − 9,000", value: "1,000.00"}
+  - {label: "Distributor Margin (%): 1,000 ÷ 10,000 × 100", value: "10.00"}
+  - {label: "Booking Date: the later of 3 Mar and 18 Mar", value: "18 Mar 2026"}
+result: {label: Recognised (USD), value: "9,000.00 in March 2026", tone: good}
+note: Line amounts are before tax. Above 25% margin, or when the OEM recognises more than the cost, the booking shows a warning.

@@ -1,0 +1,57 @@
+---
+title: Confirm the bid
+description: Move a Draft tender to Bidding once the team is in place, which starts the bid readiness checklist.
+module: tenders
+pageType: how-to
+roles: [account-manager]
+tags: [tenders, bids]
+keywords: [go decision, bid decision, go no go, confirm bid, bidding, start bid, tender board, draft]
+where: [Tender Manager, Tenders, All Tenders]
+before:
+  - The tender is in <strong>Draft</strong>.
+  - "Its <strong>Bid Liaison</strong> and <strong>Technical Pre-sales Engineer</strong> are filled in. Only a Tender administrator can confirm without them."
+related: [tenders/workflows/tender-status, tenders/concepts/tenders-and-statuses, tenders/how-to/bids/nominate-the-team, tenders/how-to/bids/work-the-readiness-checklist, tenders/how-to/bids/record-the-result]
+sources:
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/models/tender_workflow.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/static/src/js/tender_board_moves.js
+sidebar: { order: 3 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+**Confirm Bid** records the decision to bid: the tender moves from **Draft** to **Bidding** and the bid team starts work. If you decide not to bid, use **Drop** instead (see [Record the result](/tenders/how-to/bids/record-the-result/)). Make the decision early: confirming or dropping at least 5 days before the deadline is measured.
+
+<Illustration name="tenders/bid-confirm-bid" caption="A Draft tender ready to confirm. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Tender Manager › Tenders › All Tenders** and click the tender's card in the **Draft** column.
+2. Check that **Bid Liaison** and **Technical Pre-sales Engineer** are filled in. If not, ask the Head of Commercial or Head of Channel to [nominate them](/tenders/how-to/bids/nominate-the-team/).
+3. On the **Tender Info** tab, check the **Submission Deadline**. Correct it there if the customer has moved it, then save.
+4. Click **Confirm Bid**.
+
+You can also drag the card from the **Draft** column to **Bidding** on the board: it does the same thing.
+
+## What happens next
+
+- The status changes to **Bidding** and the card moves to the **Bidding** column.
+- **Bid Decision Made** is stamped with the date and time (the first time only).
+- A **Bid Readiness** tab appears with the document checklist, built from the standard bid documents, and **Readiness** shows **In Progress**. The Bid Liaison and Presales work through it: see [Work the bid readiness checklist](/tenders/how-to/bids/work-the-readiness-checklist/).
+- From 5 days before the deadline the tender appears in the Bid Liaison's and Presales' **My Actions** under **Bids to confirm ready**. If it still isn't confirmed ready, they get reminder emails 5 and 3 days before the deadline.
+- No email goes out and the CRM opportunity doesn't change.
+- In Accountability, **Bid Decision Lead Time** counts the tender as met when it was confirmed (or dropped) at least 5 days before its deadline. See [How metrics count](/accountability/calculations/metric-families/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Missing bid liaison. Please assign one before proceeding!* | **Bid Liaison** is empty. | Ask the Head of Commercial to nominate one. |
+| *Missing technical presales engineer. Please assign one before proceeding* | **Technical Pre-sales Engineer** is empty. | Ask the Head of Channel to nominate one. |
+| *A tender in Draft can't move to Evaluation.* | You dragged the card past **Bidding** on the board. | Drag it to **Bidding** first. It moves to Evaluation only when the Bid Liaison marks it submitted. |
+
+:::note[Good to know]
+- Anyone who can open the tender can click **Confirm Bid**; there is no role check on the button itself.
+- The team rule applies to every status change after Draft, not only this one: until a Bid Liaison and a Technical Presales are assigned, nobody except a Tender administrator can drop, cancel or otherwise move the tender either.
+:::

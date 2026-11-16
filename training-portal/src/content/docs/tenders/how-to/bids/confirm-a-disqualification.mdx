@@ -1,0 +1,57 @@
+---
+title: Confirm the cause of a disqualification
+description: Check who caused a recorded disqualification, change the cause if needed, and confirm it so it counts in the right person's bid measures.
+module: tenders
+pageType: how-to
+roles: [head-commercial]
+tags: [tenders, bid quality, my actions]
+keywords: [disqualified, disqualification, DQ, non-responsive, rejected bid, fault, cause, blame, lost tender, avoidable error]
+where: [Tender Manager, My Actions]
+before:
+  - The tender was closed as Lost or Dropped with a disqualification reason, so its <strong>Disqualification</strong> is <strong>To Confirm</strong>.
+  - "You confirm it if you manage the person it names: the Technical Presales' manager when presales is named, otherwise the Bid Liaison's manager. If there is no such manager, any Head of Commercial, then a Tender administrator. The person at fault never confirms their own."
+related: [tenders/concepts/must-win-and-bid-quality, tenders/workflows/quality-and-disqualification, tenders/calculations/bid-quality-score, tenders/how-to/bids/record-the-result, tenders/how-to/bids/score-bid-quality]
+sources:
+  - tritel_tender_tracker/views/bid_quality_views.xml
+  - tritel_tender_tracker/wizards/bid_quality_wizards.xml
+  - tritel_tender_tracker/wizards/bid_quality_wizards.py
+  - tritel_tender_tracker/models/bid_quality.py
+  - tritel_tender_tracker/wizards/tender_lost.py
+  - tritel_tender_tracker/wizards/tender_dropped.py
+sidebar: { order: 11 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+When a tender is lost or dropped because of an avoidable error, such as a missing signature or an expired certificate, the person closing it records who caused it. A manager then **confirms the cause** within 7 days. Only a confirmed disqualification counts against anyone, so check the evidence and correct the cause if it's wrong.
+
+<Illustration name="tenders/bid-dq-confirm" caption="Confirming a disqualification caused by the Bid Liaison. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Tender Manager › My Actions**. Tenders waiting for you are under **Disqualifications to confirm**; click one. (The **Disqualification To Confirm** filter in the tender list finds them too.)
+2. Open the tender's **Bid Quality** tab.
+3. Read the **Disqualification** section: **Caused By**, **Evidence**, **Recorded By** and **Confirm By**. The **Tender Lost Reason** or **Drop Reason** tab and the chatter show the rest.
+4. Click **Confirm Cause**.
+5. In **Confirm Disqualification**, read the **Evidence** and check **Caused By**: **Bid Liaison**, **Technical Presales**, **Account Manager**, **OEM or supplier**, **Client** or **Other**. Change it if the evidence points elsewhere, and explain in **Note**.
+6. Click **Confirm**.
+
+## What happens next
+
+- **Cause kept, or changed to someone you also answer for:** **Disqualification** becomes **Confirmed**, with **Confirmed By** and **Confirmed On**. The chatter records it. If the cause names a team member (Bid Liaison, Technical Presales or Account Manager), that person gets a *Disqualification confirmed* email.
+- **Cause changed to someone another manager answers for** (for example from Bid Liaison to Technical Presales): it stays **To Confirm** and moves to that manager, who is emailed *Disqualification to confirm*. The chatter records the change.
+- The tender leaves your **My Actions**.
+- In Accountability, a confirmed disqualification caused by the **Bid Liaison** counts as 0% in their **Bid Quality Score**, in the quarter it was confirmed; one caused by **Technical Presales** counts as 0% in their **Bid Compliance**. Other causes don't count against either. Must-win tenders count three times. See [Bid quality score](/tenders/calculations/bid-quality-score/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *There is no disqualification waiting to be confirmed on this tender.* | It was already confirmed, or the tender was reopened, which clears it. | Refresh the page and check the **Bid Quality** tab. |
+| *You are not the person who confirms this disqualification.* | You aren't the manager of the person named, or you are the person at fault. | Leave it to the manager it is waiting on. |
+| *Must-win, quality check and disqualification details can only be changed with the buttons on the tender.* | Someone tried to edit the disqualification fields directly. | Use **Confirm Cause**. |
+
+:::note[Good to know]
+- **Confirm By** is 7 days after the disqualification was recorded. If it's late, the confirmer gets an *Overdue: disqualification to confirm* email the day after, then weekly.
+- If a Tender administrator reopens the tender, the disqualification is cleared, confirmed or not.
+- Choosing a disqualification reason is the only way a disqualification is recorded. The **Submitted Late** tick on its own doesn't create one.
+:::

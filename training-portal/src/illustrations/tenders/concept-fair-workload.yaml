@@ -1,0 +1,25 @@
+type: screen
+title: Assigning a Bid Liaison
+desc: The Assign Bid Liaison window with the current load table for the quarter (points, open bids, deadlines within 3 days and the Suggested, Over fair share and Clash badges), the chosen Bid Liaison, the warning line and the Why This Person? box, numbered 1 to 4.
+source: tritel_tender_tracker/views/bid_desk_views.xml (view_bid_liaison_assign_wizard_form_load, bid_assignment_load); wizards/bid_desk_wizards.py; models/bid_desk.py
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true}, My Actions, Tender Customers, Reporting]
+  breadcrumb: [All Tenders, TND-2026-001]
+blocks:
+  - dialog:
+      title: Assign Bid Liaison
+      blocks:
+        - table:
+            columns: [Bid Liaison, "Points, Q1 2026", Open now, Deadlines within 3 days, ""]
+            widths: [3, 2, 2, 3, 3]
+            n: 1
+            rows:
+              - [Employee C, "2", "1", None, {text: Suggested, badge: true, tone: good}]
+              - [Employee B, "4", "2", None, {text: Over fair share, badge: true, tone: bad}]
+              - [Employee A, "6", "3", 18 Mar, {text: "Over fair share · Clash", badge: true, tone: warn}]
+        - fields: [[{label: Bid Liaison, value: Employee A, n: 2}]]
+        - note: {text: "Employee A is over their fair share this quarter and has another deadline within 3 days.", tone: bad, n: 3}
+        - fields: [[{label: Why This Person?, value: "Only one who knows Customer A's portal", n: 4}]]
+        - buttons: [{label: Assign Bid Liaison, primary: true}, {label: Cancel}]

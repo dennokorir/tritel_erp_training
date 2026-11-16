@@ -1,0 +1,69 @@
+---
+title: Write and submit a project summary
+description: Write the project summary you were asked for under each heading, classify it by pillar, role and motion, and submit it for review, in the backend or on the portal.
+module: tenders
+pageType: how-to
+roles: [presales]
+tags: [project summaries, my actions]
+keywords: [case study, reference, credentials, project summary, write-up, pillar, motion, submit, sent back, changes requested, portal]
+where: [Tender Manager, My Actions]
+before:
+  - A manager has asked you to write the summary. You get an email <em>Project summary to write</em> and a to-do <em>Write Project Summary</em>.
+  - Only the person named as the writer can edit and submit it, and only while it is <strong>Writing</strong> or <strong>Changes requested</strong>.
+related: [tenders/concepts/project-summaries, tenders/workflows/project-summary, tenders/how-to/customers/request-a-project-summary, tenders/how-to/customers/review-a-project-summary, tenders/how-to/bids/tender-my-actions]
+sources:
+  - tritel_tender_tracker/views/project_summary_views.xml
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/data/tender_summary_heading_data.xml
+  - tritel_tender_tracker/views/portal_my_actions_templates.xml
+  - tritel_tender_tracker/controllers/portal_tender.py
+sidebar: { order: 2 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A project summary is a short case study of a won tender, written under fixed headings. You write it, a manager reviews it, and once approved it goes into the summary library for sales and marketing. Pre-sales engineers are asked by default, but anyone can be named as the writer.
+
+<Illustration name="tenders/cust-summary-write" caption="A summary being written. The numbers match the steps below." />
+
+## Steps
+
+1. Open the summary. Use the link in the email, or open **Tender Manager › My Actions** and click the tender under **Summaries to write**. (**Tenders › Summary Tracker** also lists the summaries assigned to you.)
+2. Check the **Due** date and the **Headings** bar, which shows how many required headings are filled, for example *6 of 8*.
+3. In the **Classification** box, choose the **Primary Pillar**, any **Secondary Pillars**, **Tritel's Role** (**Prime contractor**, **Subcontractor** or **Partner**) and the **Motion** (**Project** or **Channel**).
+4. Write in the text box under each heading. The headings are already there. Keep each heading on its own line, and type your text on the lines below it. **What to cover** on the right says what each heading needs.
+5. Watch the **Headings** list on the right: a tick appears beside each heading once it has text. Headings marked **(optional)** can stay empty. Save as you go.
+6. When every required heading is ticked, click **Submit for review**.
+
+### If it was sent back
+
+The status shows **Changes requested** and a yellow **Reviewer's note** says what to change. You get a new to-do and a new due date (7 days). Make the changes, then click **Submit for review** again. It appears in **My Actions** under **Summaries sent back to you**.
+
+### On the portal
+
+Open **Summaries** on the portal (**/my/summaries**) and pick the tender, or follow the portal link in the email. Choose the **Primary pillar**, **Secondary pillars**, **Tritel's role** and **Motion**, write in the box, then click **Save draft** or **Submit for review**.
+
+<Illustration name="tenders/cust-summary-portal-write" caption="Writing the same summary on the portal." />
+
+## What happens next
+
+- The status moves to **In review**. The review is due 5 days later.
+- The manager who asked for it gets an email *Project summary to review* and a to-do *Review Project Summary*. If you asked for it yourself, it goes to another manager.
+- A copy of the text as submitted is kept in the **History** at the bottom of the page.
+- You can no longer edit it, unless the reviewer sends it back or reopens it.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Choose the primary pillar, Tritel's role, the motion. Add content under: The client's problem, Outcome.* | Something required is missing. The message lists exactly what. | Fill in what it names. If it names a heading you did write under, check the heading line is still spelled the same and on its own line. |
+| *Only the assigned writer can edit a project summary, while it's being written.* | You are not the writer, or it is already in review or complete. | Ask the manager to reassign it, or wait for it to be sent back. |
+| *Only the assigned writer can submit this summary, while it's being written.* | Same as above. | As above. |
+| *Productivity is the primary pillar, so it can't be a secondary one as well.* | You ticked the primary pillar as a secondary too. | Untick it under **Secondary Pillars**. |
+
+:::note[Good to know]
+- The **Pillars** heading is ticked by choosing the **Primary Pillar**, and **Tritel's role** by choosing both the role and the motion. You don't need to type under them.
+- **Reference status** (whether the client can be named, contacts, quotes, photos) is required, but it never appears in the library or in marketing packs. Contact details stay internal.
+- Text typed above the first heading doesn't count for any heading.
+- On the portal, if **Submit for review** is refused, your draft is still saved. Read the red message, fix it and submit again.
+- Overdue summaries get a reminder email the day after the due date, then every 7 days.
+:::

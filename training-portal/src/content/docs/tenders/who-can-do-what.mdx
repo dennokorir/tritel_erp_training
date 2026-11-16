@@ -1,0 +1,120 @@
+---
+title: Who can do what
+description: Who can see, assign, move, reopen and score tenders, run the bid desk, request and approve project summaries, manage customers and coverage, and work in the Channel app, by Tender Tracker role and Channel role.
+module: tenders
+pageType: reference
+roles: [account-manager, bid-liaison, presales, head-commercial, head-channel, tender-admin, channel-user, everyone, system-admin]
+tags: [permissions, access]
+keywords: [access rights, permissions, roles, who can approve, who can reopen, can't see tender, portal visibility, Tender administrator, Channel Manager, security, must-win rights, delete tender]
+related: [tenders/faq, tenders/index, tenders/concepts/roles-on-a-tender, tenders/concepts/the-portal, tenders/channel/index]
+sources:
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/security/ir.model.access.csv
+  - tritel_tender_tracker/security/summary_marketing_security.xml
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/views/bid_desk_views.xml
+  - tritel_tender_tracker/views/bid_quality_views.xml
+  - tritel_tender_tracker/views/tender_business_case_views.xml
+  - tritel_tender_tracker/views/project_summary_views.xml
+  - tritel_tender_tracker/views/account_ownership_views.xml
+  - tritel_tender_tracker/views/target_accounts_views.xml
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/tender_workflow.py
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/models/bid_quality.py
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/models/summary_library.py
+  - tritel_tender_tracker/models/touchpoints.py
+  - tritel_tender_tracker/models/account_ownership.py
+  - tritel_tender_tracker/models/target_accounts.py
+  - tritel_tender_tracker/controllers/portal_tender.py
+  - crm_tender/security/crm_tender_security.xml
+  - crm_tender/security/ir.model.access.csv
+  - crm_tender/views/crm_oem_booking_views.xml
+sidebar: { order: 2 }
+---
+import Illustration from '../../../components/Illustration.astro';
+
+The Tender Manager app has six roles of its own. The Channel app has three more. Your line manager in the Employees app also matters: some bid desk rights go to the Bid Liaison's manager, whatever role that person holds.
+
+## The roles
+
+| Role | How you get it |
+|---|---|
+| **Account Manager**, **Bid Liaison**, **Technical Presales**, **Head of Commercial**, **Head of Channel** | A system administrator ticks the role under **Tender Tracker** on your user's access rights (Technical Presales shows as **Technical Pre-sales**). |
+| **Tender administrator** | The **Administrator** role under **Tender Tracker**. It doesn't include the other roles, but most checks let a Tender administrator through. |
+| **Project Summary Library** | A separate tick for people outside the tender team (marketing, for example) who only read approved summaries. |
+| **Channel user**, **Channel Manager**, **Channel administrator** | The **User**, **Manager** or **Administrator** role under **Channel**. Each includes the one before. |
+| **Any internal user** | Anyone who can log in to the back end. |
+
+Holding a role and being named on a tender are different. The **Bid Liaison** column below means "the person named as Bid Liaison on that tender", who normally also holds the role.
+
+## Tenders
+
+<Illustration name="tenders/matrix-tenders" caption="Who can see, assign, move, reopen and delete tenders, and work on business cases." />
+
+Notes on the "partly" marks:
+
+- **See a tender on the portal**: you see tenders where you are the **Account Manager**, **Bid Liaison** or **Technical Pre-sales Engineer**. The Head of Commercial also sees every tender of people holding the Account Manager or Bid Liaison role; the Head of Channel, every tender of people holding the Technical Presales role. Tender administrators see all. A tender with nobody named in those three fields is visible on the portal to administrators only. Your user must be linked to an employee.
+- **Confirm Bid, Drop or Cancel** and **Won, Prequalified or Lost**: any status change needs both a **Bid Liaison** and a **Technical Pre-sales Engineer** on the tender, unless you are a Tender administrator: *Missing bid liaison. Please assign one before proceeding!*
+- **Mark Submitted**: the tender's Bid Liaison, the Bid Liaison's manager, or a Tender administrator. The Head of Commercial gets it only as the Bid Liaison's manager.
+- **Read commission descriptions**: the Head of Commercial reads commercial commission lines, the Head of Channel channel commission lines. Everyone else sees dots.
+
+**Approve** and **Reject** on a business case are hidden from everyone except the Head of Commercial and Tender administrators.
+
+## The bid desk
+
+<Illustration name="tenders/matrix-bid-desk" caption="Who runs the readiness checklist, records the submission, flags must-win bids, scores quality and confirms disqualifications." />
+
+Notes on the "partly" marks:
+
+- **Checklist and Add Receipt**: the tender's Bid Liaison, the Bid Liaison's manager in the Employees app, and Tender administrators. Once a receipt is recorded, the Bid Liaison can't record it again; their manager or an administrator can.
+- **Upload files on a checklist row**: also the person who prepares that document, so Technical Presales can fill in the rows marked **Technical Presales** in **Prepared By**.
+- **Score Bid** and **Confirm Cause**: the Bid Liaison's manager. If there is no usable manager, every Head of Commercial; failing that, every Tender administrator. A disqualification caused by **Technical Presales** goes to the presales engineer's manager instead. Nobody can score their own bid or confirm their own error. See [bid quality score](/tenders/calculations/bid-quality-score/).
+
+Anyone who is a Bid Liaison's line manager in the Employees app gets that Bid Liaison's checklist, **Mark Submitted**, **Add Receipt** and scoring rights, whatever their Tender Tracker role.
+
+## Project summaries and the library
+
+<Illustration name="tenders/matrix-summaries" caption="Who requests, writes, reviews and reopens project summaries, and who can open the library and export for marketing." />
+
+Notes on the "partly" marks:
+
+- **Write and Submit for review**: only the person named as **Summary Writer**, and only while the summary is **Writing** or **Changes requested**. That can be anyone; the default is the tender's Technical Presales.
+- **Approve, Send back, Reopen**: the Head of Commercial, Head of Channel or a Tender administrator, but not the person who wrote the summary: *You wrote this summary, so someone else needs to review it.*
+- **Summary Tracker**: the three managers see every won tender. Everyone else sees the summaries they write.
+
+People with only **Project Summary Library** access can open the library, **Export for Marketing** and their own **Marketing Exports**.
+
+## Customers and coverage
+
+<Illustration name="tenders/matrix-customers" caption="Who logs customer activities, sees which customers, owns accounts and approves target accounts." />
+
+Notes on the "partly" marks:
+
+- **See every customer**: the Head of Commercial, Tender administrators and HR administrators (Employees app) see all customers and touches. Everyone else sees their own touches and accounts and those of the people who report to them in the Employees app.
+- **Claim for Me** works for anyone the system counts as an account manager: holding the role, owning a customer, or being Account Manager on a tender or opportunity in the last 24 months.
+
+## Channel
+
+Tender Tracker roles give nothing extra in Channel; only the Channel roles and purchasing rights do.
+
+<Illustration name="tenders/matrix-channel" caption="Who can see and work on OEM bookings and the Channel lists." />
+
+Notes:
+
+- **Add and change OEMs** needs CRM access to leads. Deleting an OEM needs the Sales role **User: All Documents**.
+- **Untagged Purchases** and **Action › Set OEM** appear only for Channel Managers. Setting the OEM directly in the **Untagged Purchases** list also needs purchasing rights; without them, use **Set OEM**.
+- **Learning Development** can be deleted only by a Channel administrator.
+
+## Who can see a tender in the back end?
+
+Every internal user. In **Tender Manager** there is no restriction by role, team or tender: anyone can open and edit every tender's details. The limits above apply to the buttons and to the portal.
+
+:::note[Good to know]
+Nobody can delete a tender from the screen, Tender administrators included. Use **Drop** or **Cancel** instead.
+
+**Won**, **Prequalified**, **Lost**, **Drop** and **Cancel** have no role check: any internal user can close any tender, as long as it has a Bid Liaison and a Technical Pre-sales Engineer.
+
+The **Tender Tracker Portal User** role only gives read access. What each person sees on the portal pages is decided by the pages themselves, as described above.
+:::

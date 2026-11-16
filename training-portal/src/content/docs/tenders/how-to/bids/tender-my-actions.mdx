@@ -1,0 +1,68 @@
+---
+title: Work through Tender My Actions
+description: Use Tender Manager's My Actions screen to see everything in the tender tracker waiting on you, act on it, and chase what you are waiting for.
+module: tenders
+pageType: how-to
+roles: [account-manager, bid-liaison, presales, head-commercial, head-channel]
+tags: [tenders, my actions]
+keywords: [to do, to-do list, tasks, inbox, pending, overdue, nominate, approvals, reminders, what do I need to do]
+where: [Tender Manager, My Actions]
+before:
+  - Any internal user can open it. What you see depends on your role and on the tenders you work on.
+related: [tenders/how-to/bids/nominate-the-team, tenders/how-to/bids/score-bid-quality, tenders/how-to/bids/confirm-a-disqualification, tenders/how-to/bids/attribute-a-won-tender, tenders/how-to/bids/business-case, tenders/how-to/customers/review-a-project-summary, tenders/concepts/the-portal]
+sources:
+  - tritel_tender_tracker/static/src/my_actions/tender_my_actions.xml
+  - tritel_tender_tracker/static/src/my_actions/tender_my_actions.js
+  - tritel_tender_tracker/models/my_actions.py
+  - tritel_tender_tracker/models/bid_quality.py
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/models/prequalification_pipeline.py
+  - tritel_tender_tracker/views/portal_my_actions_templates.xml
+sidebar: { order: 14 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+**My Actions** in Tender Manager collects everything in the tender tracker that is waiting on you: nominations, readiness checks, submissions to record, quality checks, disqualifications, attributions, business cases, prequalifications and project summaries. It also lists what you are waiting on from others. Start your day here.
+
+<Illustration name="tenders/bid-my-actions" caption="My Actions for a Head of Commercial. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Tender Manager › My Actions**. On the portal, the same list is at **/my/actions**.
+2. Read the tiles: **To do**, **Overdue** and **Waiting on others**.
+3. Rows at the top with a count and a button, such as **Won tenders with no summary requested** (**Open tracker**) or **Overdue planned customer touches** (**Open Customer Activities**), open a list to work through.
+4. Work through each section. Click an item to open the tender (or prequalification, or business case). Some sections have a button that does the job straight away: **Nominate** opens the assign window; **Approve** and **Send back** act on a summary. The number on the right is how long the item has waited; red means it is past its deadline.
+5. At the bottom, **Summaries waiting on others** and **Business cases waiting for approval** show what you are waiting for. Managers can click **Remind** on a waiting summary.
+
+## What each section means
+
+| Section | Who sees it | What to do |
+|---|---|---|
+| **Pre-sales engineers to nominate** | Heads of Channel, Tender administrators | Draft or Bidding tenders with no Technical Presales: **Nominate**. |
+| **Account managers to nominate** | Heads of Channel, Tender administrators | Draft, Bidding or Evaluation tenders with no Account Manager: **Nominate**. |
+| **Bid liaisons to nominate** | Heads of Commercial, Tender administrators | Draft or Bidding tenders with no Bid Liaison: **Nominate**. |
+| **Bids to confirm ready** | The tender's Bid Liaison and Technical Presales | From 5 days before the deadline, until confirmed ready. Overdue under 72 hours. See [the readiness checklist](/tenders/how-to/bids/work-the-readiness-checklist/). |
+| **Must-win tenders closing soon** | The tender's Account Manager, Bid Liaison, Technical Presales and the Bid Liaison's manager | Must-win tenders closing within 7 days: check signatures, formatting and documents. |
+| **Submissions to record** | The tender's Bid Liaison | Marked submitted without a receipt: add it on the **Bid Quality** tab. |
+| **Bid quality checks to score** | The Bid Liaison's manager (or the fallback scorer) | [Score the bid](/tenders/how-to/bids/score-bid-quality/). |
+| **Disqualifications to confirm** | The manager who confirms the cause | [Confirm the cause](/tenders/how-to/bids/confirm-a-disqualification/). |
+| **Achievements to attribute** | Heads of Commercial (Account Manager and Bid Liaison lines), Heads of Channel (Presales lines) | [Attribute the win](/tenders/how-to/bids/attribute-a-won-tender/). |
+| **Business cases to approve** | Heads of Commercial, Tender administrators | Submitted cases you didn't create: [approve them](/tenders/how-to/bids/business-case/). |
+| **Business cases to finish** | The person who created the case | Draft or rejected cases: finish and submit them. |
+| **Prequalifications to follow up** | The prequalification's Account Manager | Add missing dates, plan a renewal, or chase RFQs. See [Follow up a prequalification](/tenders/how-to/bids/prequalifications-and-rfqs/). |
+| **Summaries to write**, **Summaries sent back to you** | The summary writer | [Write the summary](/tenders/how-to/customers/write-a-project-summary/). |
+| **Summaries to review** | Heads of Commercial, Heads of Channel, Tender administrators (not the writer) | [Approve or send back](/tenders/how-to/customers/review-a-project-summary/). |
+
+Each section shows a short hint under its title, for example *Overdue when the submission deadline has passed.*
+
+## What happens next
+
+- Items leave the list when the work is done on the record itself: the nominee is assigned, the checklist confirmed, the score saved, and so on. The screen reloads after you use a button.
+- When nothing is waiting, the screen says *Nothing is waiting on you*.
+- The portal's **My Actions** badge counts your **To do** items, plus delivery project items if you work on projects.
+
+:::note[Good to know]
+- My Actions reads the state of each tender, not the Odoo to-dos (activities). Marking a to-do done doesn't remove an item, and finishing the work removes the item even if a to-do is still there.
+- Nomination items count their waiting days from when the tender was created, and turn red once its submission deadline has passed.
+- A Tender administrator doesn't see **Achievements to attribute**; only the Heads do.
+:::

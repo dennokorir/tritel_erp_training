@@ -1,0 +1,67 @@
+---
+title: Late submission and submission dates
+description: How the Actual Submission time is set and corrected, when a bid shows Submitted Late, what Submission Recorded and the receipt mean, and how Submission Buffer counts bids handed in at least 24 hours early.
+module: tenders
+pageType: calculation
+roles: [bid-liaison, head-commercial, tender-admin]
+tags: [submission, bid desk]
+keywords: [late submission, submitted late, deadline, closing date, actual submission, receipt, proof of delivery, submission buffer, 24 hours, mark submitted, record submission]
+related: [tenders/how-to/bids/mark-submitted, tenders/workflows/tender-status, tenders/concepts/bid-readiness, tenders/concepts/must-win-and-bid-quality, accountability/calculations/metric-families]
+sources:
+  - tritel_tender_tracker/models/bid_quality.py
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/models/tender_workflow.py
+  - tritel_tender_tracker/wizards/tender_move_wizard.py
+  - tritel_tender_tracker/wizards/bid_desk_wizards.py
+  - tritel_tender_tracker/wizards/bid_quality_wizards.py
+  - tritel_tender_tracker/views/bid_quality_views.xml
+  - tritel_tender_tracker/views/bid_desk_views.xml
+  - tritel_accountability_framework/models/metric_hook_bid_desk.py
+sidebar: { order: 5 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+A tender has two times that matter at submission: the **Submission Deadline** on the **Tender Info** tab, and the **Actual Submission** on the **Bid Quality** tab. Comparing them gives **Submitted Late**. Separately, **Submission Recorded** says whether someone attached proof that the bid went in.
+
+## Actual Submission
+
+**Actual Submission** is set the first time the tender moves to **Evaluation**:
+
+1. **Mark Submitted** asks **Actually Submitted** (it starts at the current time). Whatever you enter becomes the **Actual Submission**. It can't be in the future: *The submission time can't be in the future.*
+2. **Add Receipt** on the **Bid Quality** tab asks the time again and replaces it.
+3. The manager who scores the bid can correct it in the **Bid Quality Check** window.
+
+## Submitted Late
+
+**Submitted Late** is ticked when **Actual Submission** is later than the **Submission Deadline**, comparing date and time.
+
+<Illustration name="tenders/calc-late-submission" caption="Thirty minutes after the deadline is late. Exactly on the deadline is not." />
+
+The flag is worked out each time, so it changes if either time is changed later. It is shown on the **Bid Quality** tab only; it doesn't change any score by itself.
+
+## Submission Recorded and the receipt
+
+**Submission Recorded** is ticked when the Bid Liaison (or their manager, or a Tender administrator) attaches a **Submission Receipt**, either in **Mark Submitted** or later with **Add Receipt**. Without a file: *Please attach the submission receipt.* **Recorded By** shows who recorded it.
+
+Once recorded, the Bid Liaison can't record it again. Only their manager or a Tender administrator can add another receipt or change the time.
+
+## Submission Buffer in Accountability
+
+**Submission Buffer (Bid Liaison)** = bids recorded as submitted at least 24 hours before the deadline ÷ bids submitted in the window × 100. A bid counts as met only if **Submission Recorded** is ticked and **Actual Submission** is at least 24 hours before the **Submission Deadline**.
+
+<Illustration name="tenders/calc-submission-buffer" caption="One bid had no receipt recorded, so 3 of 4 bids met the buffer." />
+
+Left out: tenders created less than 3 days before their deadline, cancelled tenders, and tenders from before the bid desk started. See [how metrics count](/accountability/calculations/metric-families/).
+
+## Edge cases
+
+- **No deadline on the tender**: **Submitted Late** stays off and the bid is left out of Submission Buffer.
+- **Moving the deadline after submission** changes **Submitted Late** and the buffer, because both use the current deadline.
+- **Reopening a tender** to **Bidding** keeps the old **Actual Submission**. Marking it submitted again replaces it.
+- **Times are shown in your own time zone**, but compared as exact moments, so the result is the same for everyone.
+
+:::note[Good to know]
+**Submitted Late** and the lost or drop reason *Disqualified: late submission* are not linked. Choosing that reason doesn't tick the flag, and a late flag doesn't record a disqualification.
+
+Change the deadline on the **Tender Info** tab. The **Submission Deadline** on the **Bid Readiness** and **Bid Quality** tabs is read-only.
+:::

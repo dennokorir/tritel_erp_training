@@ -1,0 +1,77 @@
+---
+title: How achievements are split and counted
+description: How achievement lines on a won tender split its value between the Account Manager, Bid Liaison and Technical Presales, how stage points are set by hand or from activities, and how Accountability counts the result.
+module: tenders
+pageType: calculation
+roles: [head-commercial, head-channel, account-manager, bid-liaison, presales]
+tags: [commercial targets, achievements]
+keywords: [achievement, attribution, attribution points, won tender, credit, commission, revenue share, pipelining, bid support, post-submission, achieved revenue, quota]
+related: [tenders/how-to/bids/attribute-a-won-tender, tenders/commercial-targets/index, tenders/concepts/customer-activities, tenders/how-to/customers/log-a-customer-activity, accountability/calculations/metric-families]
+sources:
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/res_partner.py
+  - tritel_tender_tracker/models/my_actions.py
+  - tritel_tender_tracker/views/target_views.xml
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_accountability_framework/models/accountability_metric.py
+sidebar: { order: 3 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+When a tender is won, the heads credit the people who won it. Each person gets an **achievement line** on the tender's **Target Achievements** tab. The line works out how much of the tender's value that person achieved. The steps are in [Attribute a won tender](/tenders/how-to/bids/attribute-a-won-tender/); this page explains the arithmetic.
+
+## The rule
+
+1. **Gross Value** = the tender's **Expected Revenue** in KES (converted at the rate on the award date), divided by the number of lines **with the same role** on that tender. Two Account Managers share the value; the Bid Liaison and Technical Presales each get the whole value.
+2. **% Achievement** = **Pipelining** + **Bid Submission Support** + **Post-Submission Influence**. Each stage has a maximum that depends on the line's **Role**; the maximums always add up to 100.
+3. **Achieved Value** = **Gross Value** × **% Achievement** ÷ 100.
+
+| Role | Pipelining | Bid Submission Support | Post-Submission Influence |
+|---|---|---|---|
+| Account Manager | up to 40 | up to 20 | up to 40 |
+| Bid Liaison | none | up to 60 | up to 40 |
+| Technical Presales | up to 60 | up to 40 | none |
+
+<Illustration name="tenders/ct-achievement-split" caption="One won tender, four achievement lines. Each role is credited with the full value." />
+
+## Stage points from activities
+
+The heads can type the points, or click **Compute Related Activities** on the achievement line. That button:
+
+1. links the customer activities on the tender, and on its opportunity, whose **Responsible** is this person;
+2. counts the valid ones in each stage;
+3. sets each stage to (valid activities ÷ 3, at most 1) × the stage maximum, to one decimal.
+
+An activity is valid, and gets its stage, by when it was logged in the system (not by its **Date**):
+
+- on the **opportunity**, logged on or after the opportunity was created: **Pipelining**;
+- on the **tender**, logged on or after the tender was created and not after the award date: **Bid Submission Support** if logged on or before the submission deadline, otherwise **Post-Submission Influence**;
+- linked to neither: not valid.
+
+<Illustration name="tenders/ct-stage-scores" caption="An Account Manager's stage points worked out from their activities." />
+
+## Name, dates and period
+
+Picking the person's individual target on a new line fills **Name** with the award quarter (for example *Q2 2026*) and sets **Date From** and **Date To** to that quarter. The line's **Period** is the target period covering the award date.
+
+## How Accountability counts it
+
+Accountability's **Achieved revenue (attributed)** metrics (one each for Account Manager, Bid Liaison and Technical Presales) add up the **Achieved Value** of a person's lines for that role on tenders with the status **Won**, by award date in the review window. **Gross awarded value**, **Awarded tenders** and **Attribution rate** do the same for Account Managers. Lines still at 0% count as nothing and are flagged as *award(s) awaiting attribution*. See [Metric families](/accountability/calculations/metric-families/).
+
+## Edge cases
+
+- **Totals across roles are more than the tender.** Each role is credited with the full value, so a fully attributed tender can count up to three times its value across the three roles. That is intended: each role is measured on its own.
+- **A second line in the same role.** A second Account Manager line halves both Account Managers' gross value, even before points are entered.
+- **Expected Revenue changes.** Every line on the tender is worked out again.
+- **No award date.** Picking the target or tender stops with *The 'Award Date' field is missing. Please provide a value before executing this action.* Set the **Award Date** on the tender first.
+- **Too many points.** *'Bid Submission Support' cannot exceed 20 for role 'Account Manager'.* For a Bid Liaison, any Pipelining points give *'Pipelining' cannot exceed 0 for role 'Bid Liaison'.* Negative points give *'Pipelining' cannot be negative.*
+- **Prequalified tenders** show the **Target Achievements** tab too, but are never flagged for attribution, and Accountability counts only **Won** tenders.
+- **Colours.** On the line, **Excellent** means 90 or more, **Meets Expectation** 50 to under 90, and **Below Target** under 50. These bands are not the target statuses (**Exceeded**, **On Track**, **At Risk**, **Behind**).
+
+:::note[Good to know]
+- **Compute Related Activities** replaces any points typed by hand. Run it again after more activities are logged; nothing reruns it for you.
+- Only activities where the person is **Responsible** count. Activities logged for them by someone else, or not linked to the tender or its opportunity, don't.
+- An activity linked to both the opportunity and the tender counts as **Pipelining**.
+- The **Role** on a line is chosen by hand and isn't checked against the person's role on the tender. Check it: it sets the maximums and which share of the value they get.
+:::

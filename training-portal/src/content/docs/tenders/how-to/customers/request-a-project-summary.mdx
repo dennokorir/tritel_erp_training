@@ -1,0 +1,68 @@
+---
+title: Request a project summary
+description: Ask a writer for the project summary of a won tender, one tender at a time or several at once, and hand an open request to someone else.
+module: tenders
+pageType: how-to
+roles: [head-channel, head-commercial]
+tags: [project summaries]
+keywords: [case study, reference, credentials, project summary, write-up, won tender, request, assign writer, reassign, summary tracker]
+where: [Tender Manager, Tenders, Summary Tracker]
+before:
+  - You are the Head of Channel, the Head of Commercial or a Tender administrator. Nobody else sees the request buttons.
+  - The tender's status is <strong>Won</strong>. Summaries can only be requested for won tenders.
+related: [tenders/concepts/project-summaries, tenders/workflows/project-summary, tenders/how-to/customers/write-a-project-summary, tenders/how-to/customers/review-a-project-summary, tenders/how-to/bids/tender-my-actions]
+sources:
+  - tritel_tender_tracker/views/project_summary_views.xml
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/wizards/tender_summary_wizard.py
+  - tritel_tender_tracker/wizards/tender_summary_bulk_wizard.py
+  - tritel_tender_tracker/models/my_actions.py
+  - tritel_tender_tracker/views/portal_my_actions_templates.xml
+sidebar: { order: 1 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Every won tender should end up with a **project summary**: a short case study that sales and marketing can reuse as a reference. You start it by asking someone, usually the pre-sales engineer on the tender, to write it by a due date.
+
+<Illustration name="tenders/cust-summary-tracker" caption="The Summary Tracker. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Tender Manager › Tenders › Summary Tracker**. You see every won tender. To find the ones still waiting, click **Not requested** in the **Status** panel on the left.
+2. Click the tender. Its project summary page opens. (From the tender itself, open the **Project Summary** tab and click **Open summary workspace**.)
+3. Click **Request summary**.
+4. In the window that opens:
+   1. Check the **Writer**. It starts as the tender's pre-sales engineer. You can choose any staff member.
+   2. Check the **Due** date. It starts 7 days from today.
+   3. Click **Confirm**.
+5. To request several at once, go back to the list, tick the tenders and click **Request summaries**. Pick a **Writer** on each row and one **Due** date for them all, then click **Request summaries**.
+
+<Illustration name="tenders/cust-summary-request" caption="Requesting one summary from its page." />
+
+To hand an open request to someone else, or move its date, open the summary and click **Reassign**. The same window opens. **Reassign** is there while the summary is **Writing** or **Changes requested**.
+
+You can do the same on the portal: open **Summaries** (**/my/summaries**), pick the tender, choose the **Writer** and **Due** date and click **Request summary** (or **Reassign**).
+
+## What happens next
+
+- The status moves to **Writing**. The writer gets a to-do, *Write Project Summary*, due on the date you chose, and an email *Project summary to write* that lists the headings to cover.
+- The summary text is started for them: every heading is already in place, and **Client and sector** is filled in with the customer's name and sector where the system knows them.
+- After a request for several tenders, a message confirms it, for example *Requested 3 summaries. Skipped 1 with no writer.* Each writer gets one email listing all their tenders.
+- If you reassign, the new writer is emailed, and the old writer is told *This project summary is now with Employee B. You no longer need to write it.* If you only change the date, the writer gets *Project summary due date changed*.
+- If the summary is not submitted by the due date, the writer and you get *Overdue: project summary* the day after, then every 7 days.
+- Your **My Actions** shows a link, **Won tenders with no summary requested**, while any are left.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *A project summary can only be requested for a won tender.* | The tender is not **Won** (for example it was reopened). | Request it once the tender is won. |
+| *This summary is under review or approved, so it can't be reassigned now.* | The writer has already submitted it, or it is complete. | Review it instead. See [Review, send back or approve a summary](/tenders/how-to/customers/review-a-project-summary/). |
+| *Choose an active internal user as the writer.* | The writer is empty, archived or a portal-only user. | Pick a current staff member. |
+| *Only an Administrator, Head of Commercial or Head of Channel can do this.* | You don't have one of those roles. | Ask the Head of Channel or Head of Commercial. |
+
+:::note[Good to know]
+- In the **Request summaries** window, tenders that already have a request, or aren't won, are left out. A blue line says how many, for example *2 selected tender(s) already have a request, or aren't won, and are left out.* Rows left without a writer are skipped.
+- If a tender stops being **Won**, its summary to-dos are paused and the text is kept. When it is won again, the work picks up and the person it is waiting on is emailed.
+- The workflow, with every role, is in the [project summary workflow](/tenders/workflows/project-summary/).
+:::

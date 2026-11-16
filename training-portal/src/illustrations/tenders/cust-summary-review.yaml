@@ -1,0 +1,25 @@
+type: screen
+title: Review a project summary
+desc: A project summary in review, with the Approve and Send back buttons, the review due date and days waiting, the summary text, and the Approve project summary window with the Customer naming choice, numbered 1 to 4.
+source: tritel_tender_tracker/views/project_summary_views.xml (tender_summary_workspace_form, tender_summary_wizard_form)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: My Actions, active: true, n: 1}, Tenders, Tender Customers]
+  breadcrumb: [My Actions, Customer A]
+blocks:
+  - buttons: [{label: Approve, primary: true, n: 4}, {label: Send back, n: 3}]
+    status: {steps: [Not requested, Writing, In review, Complete], current: In review}
+  - title: {text: Customer A, sub: "TND-2026-001 · Network upgrade"}
+  - fields:
+      - [{label: Summary Writer, value: Employee B, readonly: true}, {label: Review Due, value: 28/11/2026, readonly: true}]
+      - [{label: Summary Requested By, value: Employee C, readonly: true}, {label: Days Waiting, value: "2", readonly: true}]
+  - heading: What we delivered
+    n: 2
+  - text: "New links to 40 branches with a managed network."
+  - dialog:
+      title: Approve project summary
+      blocks:
+        - fields:
+            - [{label: Customer naming, value: "◉ Can be named   ○ Anonymise   ○ Not yet asked"}]
+        - buttons: [{label: Confirm, primary: true}, {label: Cancel}]

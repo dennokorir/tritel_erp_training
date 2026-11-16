@@ -1,0 +1,23 @@
+type: screen
+title: An achievement line's stage points
+desc: The Target Achievement form with the Compute Related Activities button, the Attribution Model banner for a Technical Presales line, the Employee and Role fields, the award quarter, and the Pipelining and Bid Submission Support points with the Overall Achievement, numbered 4 to 6.
+source: tritel_tender_tracker/views/target_views.xml (view_target_achievement_form); models/target.py
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true}, My Actions, Tender Customers, Commercial Targets]
+  breadcrumb: [Tenders, Campus Wi-Fi upgrade, Q4 2026]
+blocks:
+  - buttons: [{label: Compute Related Activities, n: 5}]
+  - smart: [{label: Tender, value: ""}]
+  - title: {text: Q4 2026, sub: Achievement}
+  - note: {text: "Attribution Model — Technical Presales (60 / 40). Enter attribution points earned at each pre-submission stage. Post-submission influence is not attributed to Technical Presales. Maximum total is 100.", tone: accent}
+  - fields:
+      - [{label: Target Line, value: "FY 2026 TP revenue - Employee D", readonly: true}, {label: Tender, value: Campus Wi-Fi upgrade}]
+      - [{label: Employee, value: Employee D, readonly: true}, {label: Customer, value: Customer A, readonly: true}]
+      - [{label: Role, value: Technical Presales}, {label: Award Date, value: 20/12/2026}]
+  - heading: Stage Attribution
+    n: 4
+  - fields:
+      - [{label: Pipelining, value: "40.0  / 60", bold: true}, {label: Bid Submission Support, value: "40.0  / 40", bold: true}]
+      - [{label: Overall Achievement, value: "80.0  / 100 %", bold: true, tone: good, n: 6}]

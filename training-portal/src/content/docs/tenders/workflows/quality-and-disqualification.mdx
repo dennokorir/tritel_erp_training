@@ -1,0 +1,135 @@
+---
+title: Quality check and disqualification workflow
+description: The statuses of a submitted bid's quality check (Not Due, To Score, Scored) and of a disqualification (None, To Confirm, Confirmed), with who scores and confirms, the deadlines and the reminders.
+module: tenders
+pageType: workflow
+roles: [head-commercial, bid-liaison, presales, account-manager, tender-admin]
+tags: [bid quality, workflows]
+keywords: [quality check, score bid, change score, bid quality score, disqualification, disqualified, confirm cause, caused by, evidence, must-win, error, rejected bid, non-responsive]
+related: [tenders/concepts/must-win-and-bid-quality, tenders/how-to/bids/score-bid-quality, tenders/how-to/bids/confirm-a-disqualification, tenders/how-to/bids/flag-a-must-win, tenders/calculations/bid-quality-score, tenders/workflows/tender-status]
+sources:
+  - tritel_tender_tracker/models/bid_quality.py
+  - tritel_tender_tracker/wizards/bid_quality_wizards.py
+  - tritel_tender_tracker/wizards/tender_lost.py
+  - tritel_tender_tracker/wizards/tender_dropped.py
+  - tritel_tender_tracker/views/bid_quality_views.xml
+  - tritel_tender_tracker/data/bid_quality_data.xml
+sidebar: { order: 3 }
+---
+
+Every submitted bid gets a **Quality Check**, scored by the Bid Liaison's manager against the bid guidelines. Separately, a tender lost or dropped for an avoidable error gets a **Disqualification**, whose cause a manager confirms. Both are on the tender's **Bid Quality** tab, and both change only through their buttons.
+
+## The quality check
+
+```mermaid
+stateDiagram-v2
+  state "Not Due" as notdue
+  state "To Score" as pending
+  state "Scored" as scored
+  [*] --> notdue: Tender created
+  notdue --> pending: First move to Evaluation (the system)
+  pending --> scored: Score Bid (Bid Liaison's manager)
+  scored --> scored: Change Score (Bid Liaison's manager)
+  note right of pending
+    Due 10 days after submission
+    Scorer: Bid Liaison's manager,
+    else Head of Commercial,
+    else a Tender administrator
+    Never the Bid Liaison
+  end note
+```
+
+| Status | What it means | Moves to | Who moves it |
+|---|---|---|---|
+| **Not Due** | The bid hasn't been submitted. | **To Score** the first time the tender moves to **Evaluation** | The system |
+| **To Score** | Submitted; waiting for the scorer. **Quality Check Due** is 10 days after submission. | **Scored** with **Score Bid** and **Save Score** | The Bid Liaison's manager (else the Head of Commercial, else a Tender administrator) |
+| **Scored** | The **Quality Score (%)**, **Scored By**, **Scored On**, the note and each guideline's result are shown. | Re-scored with **Change Score** | The same scorer |
+
+A cancelled tender's quality check stays where it is and drops out of the reminders.
+
+## The disqualification
+
+```mermaid
+stateDiagram-v2
+  state "None" as nodq
+  state "To Confirm" as tocon
+  state "Confirmed" as confirmed
+  [*] --> nodq
+  nodq --> tocon: Lost or Drop with a disqualification reason (anyone)
+  tocon --> confirmed: Confirm Cause (confirming manager)
+  tocon --> tocon: Cause changed to another manager's person
+  tocon --> nodq: Reopened (Tender administrator)
+  confirmed --> nodq: Reopened (Tender administrator)
+  note right of tocon
+    Due 7 days after it was recorded
+    Presales at fault: presales' manager
+    Anyone else: Bid Liaison's manager
+    Fallback: Head of Commercial, then Tender administrator
+    Never the person at fault
+  end note
+```
+
+| Status | What it means | Moves to | Who moves it |
+|---|---|---|---|
+| **None** | No disqualification. | **To Confirm** when the tender is marked **Lost** or **Dropped** with a reason ticked **Disqualification** | Whoever records the result (they must give **Caused By** and **Evidence**) |
+| **To Confirm** | Recorded, with a cause and evidence. **Confirm By** is 7 days later. | **Confirmed** with **Confirm Cause**; stays **To Confirm** and moves to another manager if the cause is changed to someone they answer for; **None** if the tender is reopened | The confirming manager; a Tender administrator (Reopen) |
+| **Confirmed** | The cause is confirmed, with **Confirmed By** and **Confirmed On**. A cause naming the Bid Liaison counts at 0% in their Bid Quality Score for the quarter it was confirmed. | **None** if the tender is reopened | A Tender administrator (Reopen) |
+
+## Must-win
+
+Must-win isn't a status but a flag, set and removed by the Head of Commercial or a Tender administrator with **Flag Must-Win** and **Remove Must-Win**, each with a reason. A confirmed error on a must-win tender counts three times in the Bid Quality Score.
+
+## Who does what
+
+```mermaid
+flowchart TD
+  subgraph HoC["Head of Commercial"]
+    H1["Flag Must-Win"]
+  end
+  subgraph Rec["Whoever records the result"]
+    R1["Lost or Drop with a disqualification reason, Caused By, Evidence"]
+  end
+  subgraph Mgr["Bid Liaison's manager (or presales' manager)"]
+    M1["Score Bid"]
+    M2["Confirm Cause or change it"]
+  end
+  subgraph BLs["Bid Liaison / person at fault"]
+    B1["Email: score"]
+    B2["Email: disqualification confirmed"]
+  end
+  subgraph Sys["System"]
+    S1["To Score, due in 10 days"]
+    S2["To Confirm, due in 7 days"]
+    S3["Overdue reminders, then weekly"]
+  end
+  H1 -.-> S1
+  S1 --> M1 --> B1
+  R1 --> S2 --> M2 --> B2
+  S1 -.-> S3
+  S2 -.-> S3
+```
+
+## What the system does automatically
+
+- **First move to Evaluation:** **Actual Submission** is set to now (the Mark Submitted window then saves the time you entered), **Quality Check** becomes **To Score** and **Quality Check Due** is 10 days away.
+- **Save Score:** checks that the **Actual Submission** isn't in the future and that at least one guideline applies (*At least one guideline must apply to this bid.*), works out the score, writes it in the chatter (including the old and new score on a change), and emails the Bid Liaison: *Your bid has been scored 85.7% against the bid guidelines.*
+- **Disqualification recorded:** the chatter notes who recorded it and the cause, and the confirming manager gets *Disqualification to confirm*.
+- **Cause changed to another manager's person:** that manager gets *Disqualification to confirm*, and it stays **To Confirm**.
+- **Confirmed:** the person named in the cause (if it names someone on the team) gets *Disqualification confirmed*.
+- **Reopened:** any later status other than **Lost** or **Dropped** clears the disqualification and writes *Disqualification cleared: the tender was reopened.*
+- **Daily reminders:** an overdue quality check emails the scorer *Overdue: bid quality check*, and an overdue disqualification emails the confirmer *Overdue: disqualification to confirm*, the day after it falls due and then every 7 days.
+- **Must-win:** emails the team when flagged or removed (only while **Draft** or **Bidding**), and warns them 7, 3 and 1 days before the deadline.
+- **My Actions:** **Bid quality checks to score**, **Disqualifications to confirm** and **Must-win tenders closing soon**.
+
+:::note[Good to know]
+- Someone who isn't the scorer or confirmer sees the tab but not the buttons. Trying anyway stops with *Only the Bid Liaison's manager can score this bid.* or *You are not the person who confirms this disqualification.*
+- The scorer and confirmer follow the **Manager** on each person's employee record. Keep it up to date.
+:::
+
+## Related tasks
+
+- [Flag a must-win tender](/tenders/how-to/bids/flag-a-must-win/)
+- [Score a bid's quality](/tenders/how-to/bids/score-bid-quality/)
+- [Confirm the cause of a disqualification](/tenders/how-to/bids/confirm-a-disqualification/)
+- [Bid quality score](/tenders/calculations/bid-quality-score/)
+- [Late submission and submission dates](/tenders/calculations/late-submission/)

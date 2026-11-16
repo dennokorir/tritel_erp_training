@@ -1,0 +1,70 @@
+---
+title: The bid desk and fair workload
+description: Who is on the bid desk, how each tender's effort points are counted, and how the Assign Bid Liaison window shows each person's load, suggests who should take a bid and asks why when someone is overloaded.
+module: tenders
+pageType: concept
+roles: [head-commercial, bid-liaison, tender-admin]
+tags: [bid desk, nominations]
+keywords: [bid desk, workload, fair share, load balancing, capacity, overloaded, clash, deadlines, assign bid liaison, effort points, full-time, bid decision]
+related: [tenders/how-to/bids/nominate-the-team, tenders/calculations/workload-points, tenders/concepts/roles-on-a-tender, tenders/concepts/bid-readiness, tenders/concepts/must-win-and-bid-quality]
+sources:
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/wizards/bid_desk_wizards.py
+  - tritel_tender_tracker/views/bid_desk_views.xml
+  - tritel_accountability_framework/models/metric_hook_bid_desk.py
+sidebar: { order: 7 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+The **bid desk** is the team of Bid Liaisons who prepare and submit Tritel's bids. Bids arrive unevenly, and some take far more work than others. To keep the load fair, each tender carries **effort points**, and when the Head of Commercial assigns a Bid Liaison, the window shows how many points each person already has this quarter and whether the new deadline clashes with one of theirs.
+
+The people counted are those on the **Bid Desk Team** list (**Tender Manager › Configuration › Bid Desk Team**) with **Full-time on Bids** switched on. The Head of Commercial and Tender administrators keep this list.
+
+## Effort points
+
+Each tender is worth:
+
+| Part | Points |
+|---|---|
+| Base | 1 (0.5 if **Dropped**; a **Cancelled** tender is worth 0 in total) |
+| Short notice: captured less than 7 days before the submission deadline | +1 |
+| A bid bond is required | +1 |
+| Flagged must-win before it was submitted | +2 |
+
+A tender recorded 5 days before its deadline, needing a bid bond, and flagged must-win while in **Bidding** is worth 1 + 1 + 1 + 2 = **5 points**. See [Bid desk workload points](/tenders/calculations/workload-points/).
+
+## The Assign Bid Liaison window
+
+<Illustration name="tenders/concept-fair-workload" caption="Assigning a Bid Liaison. The numbers match the list below." />
+
+1. The load table for the current calendar quarter. For each full-time Bid Liaison: **Points** (the effort points of their tenders with a submission deadline in this quarter), **Open now** (their tenders in **Draft** or **Bidding**) and **Deadlines within 3 days** of this tender's deadline. The badges:
+   - **Over fair share**: their points plus this tender's points would be more than 15% above the team average. The average includes this tender's points.
+   - **Clash**: another of their open tenders closes within 3 days of this one.
+   - **Suggested**: of the people neither over nor clashing, the one with the fewest points (then the fewest open bids). The list is sorted with them first.
+2. **Bid Liaison**: the person you choose.
+3. If they are over their fair share or clashing, a red line says why, for example *Employee A is over their fair share this quarter and has another deadline within 3 days.*
+4. **Why This Person?** is then required. Without it, assigning stops with *Please say why this person should take the bid.* The reason is written in the chatter and shown on the **Bid Readiness** tab as **Why Assigned Despite Load**.
+
+Worked example: Employee A has 6 points, Employee B 4 and Employee C 2, and the new tender is worth 2. The average is (6 + 4 + 2 + 2) ÷ 3 = 4.67, so the limit is 4.67 × 1.15 = 5.37. With the new tender, A would have 8 and B 6 (both over), and C 4. If C has no clash, C is **Suggested**.
+
+If nobody is marked full-time, the table says *Nobody is marked as full-time on bids yet.*
+
+## Bid decision
+
+The first time a tender moves to **Bidding** or is dropped, the system stamps **Bid Decision Made** with the date and time. It shows on the **Bid Readiness** tab.
+
+## How it counts in Accountability
+
+The Accountability Framework reads the bid desk to measure, among others: **Fair Workload Balance (Head of Commercial)**, **Deadline Clash-Free (Head of Commercial)**, **Bid Decision Lead Time (Account Manager)** and **(Head of Commercial)**, **Submission Buffer (Bid Liaison)**, **Ready at 72 Hours** and **Repeat Error Rate (Bid Liaison)**. Tenders recorded before the bid desk was introduced are not counted.
+
+:::note[Good to know]
+- The window only checks the load; it doesn't stop you assigning someone over their share. It just asks why.
+- When you reassign a tender, its own points are still added to the team average, even though they are already counted for the current Bid Liaison.
+- **Bid Bond Required** adds a point but can't be set on the back-office form today.
+:::
+
+## Tasks that use this
+
+- [Nominate the Account Manager, Bid Liaison and Presales](/tenders/how-to/bids/nominate-the-team/)
+- [Bid desk workload points](/tenders/calculations/workload-points/)
+- [Flag a must-win tender](/tenders/how-to/bids/flag-a-must-win/)

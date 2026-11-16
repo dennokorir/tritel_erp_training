@@ -1,0 +1,21 @@
+type: screen
+title: Vendor opportunities on an opportunity
+desc: A CRM opportunity with the Vendor Opportunities tab open, showing one row per OEM with the Name, Vendor, Tags and Estimated Value columns and the Add a line link, numbered 1 to 4.
+source: crm_tender/views/crm_lead_views.xml (crm_lead_view_form)
+frame:
+  grid: true
+  app: CRM
+  menu: [Sales, Reporting, Configuration]
+  breadcrumb: [Pipeline, Customer A network refresh]
+blocks:
+  - title: {text: Customer A network refresh, sub: Opportunity, n: 1}
+  - fields:
+      - [{label: Expected Revenue, value: "KES 12,000,000"}, {label: Customer, value: Customer A}]
+  - tabs: {items: [Internal Notes, Vendor Opportunities, Extra Information], active: Vendor Opportunities, n: 2}
+  - table:
+      columns: [Name, Vendor, Tags, Estimated Value]
+      widths: [3, 2, 2, 2]
+      rows:
+        - {cells: [Customer A network refresh, OEM A, Switching, {text: "6,000,000.00", bold: true}], highlight: true, n: 4}
+        - [Customer A network refresh, OEM B, Firewalls, "2,500,000.00"]
+  - buttons: [{label: Add a line, n: 3}]

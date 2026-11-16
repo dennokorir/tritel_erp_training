@@ -1,0 +1,69 @@
+---
+title: Reopen a tender
+description: Move a tender back one step, for example a Won or Lost tender back to Evaluation, with a reason that is kept on the tender.
+module: tenders
+pageType: how-to
+roles: [tender-admin]
+tags: [tenders, bids]
+keywords: [reopen, undo, move back, wrong status, revert, correct outcome, reverse, mistake]
+where: [Tender Manager, Tenders, All Tenders]
+before:
+  - You have the <strong>Tender administrator</strong> role. Nobody else can move a tender backwards.
+  - You know why the tender needs to go back; the reason is required.
+related: [tenders/workflows/tender-status, tenders/how-to/bids/record-the-result, tenders/how-to/bids/confirm-a-disqualification, tenders/who-can-do-what]
+sources:
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/views/tender_workflow_views.xml
+  - tritel_tender_tracker/models/tender_workflow.py
+  - tritel_tender_tracker/wizards/tender_move_wizard.py
+  - tritel_tender_tracker/models/bid_quality.py
+  - tritel_tender_tracker/models/project_summary.py
+sidebar: { order: 7 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Statuses only move forward for everyone else. When an outcome was recorded by mistake, or a closed tender comes back to life, a Tender administrator **reopens** it. Reopening moves the tender back **one step** and records the reason.
+
+<Illustration name="tenders/bid-reopen" caption="Reopening a Lost tender. The numbers match the steps below." />
+
+## Steps
+
+1. Open the tender from **Tender Manager › Tenders › All Tenders**.
+2. Click **Reopen**. (Dragging the card one column back on the board opens the same window.)
+3. In **Reopen Tender**, type the **Reason**.
+4. Click **Save**.
+
+Where the tender goes:
+
+| Status now | Reopens to |
+|---|---|
+| **Won**, **Prequalified** or **Lost** | **Evaluation** |
+| **Dropped** or **Cancelled** | The status it was closed from (**Draft**, **Bidding** or **Evaluation**) |
+| **Evaluation** | **Bidding** |
+| **Bidding** | **Draft** |
+| **Draft** | Can't be reopened |
+
+To go back more than one step, reopen again.
+
+## What happens next
+
+- The status and board column change, and the chatter notes *Reopened to Evaluation by Employee E. Reason: …*. No email goes out.
+- **Leaving Lost or Dropped** clears any disqualification on the tender (the chatter notes *Disqualification cleared: the tender was reopened.*).
+- **Leaving Won or Prequalified:** the CRM opportunity is **not** reopened. The chatter reminds you: *The pipeline opportunity was not reopened. Reopen it in CRM if needed.* A project summary in progress is paused; it resumes, and the person it waits on is emailed, if the tender is marked Won again. Achievement lines already added stay on the tender.
+- A prequalification already created stays as it is.
+- The tender then moves forward again with the normal buttons. Moving forward sends the usual emails again, for example the won alert.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Only Tender Tracker Administrators can reopen a tender.* | Someone without the Tender administrator role tried to reopen. | Ask a Tender administrator. |
+| *Only Tender Tracker Administrators can move a tender back.* | Someone without the role dragged a card to an earlier column. | Ask a Tender administrator. |
+| *Please give a reason for reopening.* | **Reason** is empty. | Type the reason. |
+| *This tender can't be reopened.* | The tender is in **Draft**. | Nothing to do: Draft is the first step. |
+| *A tender in Won can't move to Bidding.* | You dragged the card more than one step back, or to another outcome. | Reopen one step at a time, then use the buttons. |
+
+:::note[Good to know]
+- Reopening a tender from **Evaluation** to **Bidding** keeps its **Actual Submission** and quality check as they were. If the bid is resubmitted, the manager can correct **Actual Submission** with **Change Score**.
+- Tenders can't be deleted, by anyone. Reopen or cancel instead, so the history stays.
+:::

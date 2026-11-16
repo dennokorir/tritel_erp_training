@@ -1,0 +1,71 @@
+---
+title: OEMs and distributors
+description: What an OEM and a distributor are in the Channel app, what the OEM form shows, and how to add or update an OEM or a distributor so purchases are tagged correctly.
+module: tenders
+pageType: concept
+roles: [head-channel, channel-user, account-manager]
+tags: [channel, oems]
+keywords: [OEM, vendor, principal, manufacturer, partner, distributor, supplier, partner portal, onboarding, OEM account manager, channel partner]
+where: [Channel, OEMs(Vendors)]
+related: [tenders/channel/index, tenders/channel/oem-bookings, tenders/channel/tag-untagged-purchases, tenders/channel/vendor-opportunities, tenders/channel/certifications-and-learning]
+sources:
+  - crm_tender/models/crm_oem.py
+  - crm_tender/models/crm_oem_booking.py
+  - crm_tender/models/purchase.py
+  - crm_tender/views/crm_oem_views.xml
+  - crm_tender/views/crm_oem_booking_views.xml
+  - crm_tender/security/ir.model.access.csv
+sidebar: { order: 2 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+An **OEM** (original equipment manufacturer) is a maker whose products Tritel resells, for example a network or software vendor. Tritel rarely buys from the OEM directly. It buys through a **distributor**, a supplier that carries one or more OEMs. The OEM then credits Tritel on its partner portal with its own figure for those purchases. That figure is what an [OEM booking](/tenders/channel/oem-bookings/) records.
+
+Each OEM and each distributor has a status: **Onboarding** while the relationship is being set up, **Active** once it is running, and **Archived** when it is no longer used.
+
+<Illustration name="tenders/ch-oem-form" caption="An OEM. The numbers match the list and steps below." />
+
+1. Open **Channel › OEMs(Vendors)**. The list shows archived OEMs too.
+2. The OEM's name.
+3. **Confirm** makes an Onboarding OEM **Active** (you are asked *Set Active?*). **Draft** takes an Active OEM back to **Onboarding**.
+4. The tabs: **Distributors** (who sells it to Tritel), **Solution Engineers** and **Certifications** (its courses).
+5. The smart buttons: **Opportunities** (the Vendor Pipeline: opportunities with this OEM), **Purchase Orders**, **Bookings** and **Awaiting OEM** (tagged purchase lines this year with no confirmed booking; shown only when there are some).
+6. **Channel performance this year (USD)**: **OEM-Recognised YTD (USD)** and **Purchase Cost YTD (USD)** from this year's confirmed bookings, the **Average Distributor Margin (%)** between them, and **Awaiting OEM Confirmation (USD)**.
+
+## Key fields
+
+| Label | Meaning |
+|---|---|
+| **Account Manager** | The Tritel employee who looks after this OEM. **Phone**, **Mobile** and **Email** come from their employee record. |
+| **Partner Portal** | The address of the OEM's partner portal. The OEM card in the kanban view has a button to open it. |
+| **Distributors** (OEM tab) / **OEMs(Vendors)** (distributor tab) | Which distributors carry the OEM. The same link shows on both forms. |
+| **Vendor** (on a distributor) | The distributor's supplier contact, the one used on purchase orders. |
+
+## Add or update an OEM
+
+1. Open **Channel › OEMs(Vendors)** and click **New**, or click an OEM.
+2. Type the name, choose the **Account Manager** and fill in **Partner Portal**.
+3. On the **Distributors** tab, add the distributors that sell this OEM to Tritel.
+4. When the OEM is ready to use, click **Confirm**, then **OK** on *Set Active?*.
+
+## Add or update a distributor
+
+1. Open **Channel › Distributors** and click **New**, or click a distributor.
+2. Type the name and choose the **Vendor**: the supplier contact used on purchase orders.
+3. On the **OEMs(Vendors)** tab, add the OEMs it carries.
+4. Click **Confirm**, then **OK** on *Set Active?*.
+
+## Why the links matter
+
+When someone adds a line to a purchase order, the system sets the line's **OEM** by itself when it can be sure:
+
+- the product has an **OEM** (on the product's **Channel** tab); otherwise
+- the supplier on the order is the **Vendor** of a distributor that carries exactly **one** OEM.
+
+If neither applies, the line stays without an OEM and appears in [Untagged Purchases](/tenders/channel/tag-untagged-purchases/). A distributor with the right **Vendor** and a product with the right OEM save that clean-up later.
+
+:::note[Good to know]
+- Archiving an OEM or a distributor sets it to **Archived**. Unarchiving it sets it back to **Onboarding**, even if it was **Active** before. Click **Confirm** again.
+- The **Purchase Orders** count on the OEM also counts cancelled purchase orders. Use **Bookings** and the channel figures for money: they leave cancelled orders out.
+- Staff with CRM access can create and edit OEMs; only sales managers who see all documents can delete one. Every internal user can create, edit and delete distributors.
+:::

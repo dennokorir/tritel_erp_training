@@ -1,0 +1,85 @@
+---
+title: "Record the result: Won, Lost, Prequalified, Drop or Cancel"
+description: Close a tender with the right outcome, filling in the award date, prequalification window, or the reason it was lost, dropped or cancelled.
+module: tenders
+pageType: how-to
+roles: [account-manager, head-commercial]
+tags: [tenders, bids]
+keywords: [award, awarded, won, LPO, contract, lost, regret, disqualified, prequalified, prequal, shortlisted, drop, no bid, cancel, withdrawn, re-tendered, outcome]
+where: [Tender Manager, Tenders, All Tenders]
+before:
+  - "Won, Prequalified and Lost: the tender is in <strong>Evaluation</strong> (the bid has been marked submitted)."
+  - "Drop: the tender is in <strong>Draft</strong> or <strong>Bidding</strong>. Cancel: Draft, Bidding or Evaluation."
+  - You have the customer's award letter, regret letter or notice.
+related: [tenders/workflows/tender-status, tenders/workflows/quality-and-disqualification, tenders/workflows/prequalification, tenders/how-to/bids/confirm-a-disqualification, tenders/how-to/bids/attribute-a-won-tender, tenders/how-to/bids/prequalifications-and-rfqs, tenders/how-to/bids/reopen-a-tender]
+sources:
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/views/tender_workflow_views.xml
+  - tritel_tender_tracker/models/tender_workflow.py
+  - tritel_tender_tracker/wizards/tender_move_wizard.py
+  - tritel_tender_tracker/wizards/tender_lost.py
+  - tritel_tender_tracker/wizards/tender_lost_views.xml
+  - tritel_tender_tracker/wizards/tender_dropped.py
+  - tritel_tender_tracker/wizards/tender_dropped_views.xml
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/prequalification_pipeline.py
+  - tritel_tender_tracker/models/bid_quality.py
+sidebar: { order: 6 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Every tender ends in one of five outcomes. After the customer decides, a submitted tender is **Won**, **Prequalified** (shortlisted, with RFQs to follow) or **Lost**. Before submission you can **Drop** it (you decide not to bid). At any open stage it can be **Cancelled** (the customer withdrew it, it was re-tendered, or it was entered twice). Each button opens a small window that asks for what the outcome needs.
+
+<Illustration name="tenders/bid-result-won" caption="A tender in Evaluation and the Mark as Won window. The numbers match the steps below." />
+
+## Steps
+
+1. Open the tender from **Tender Manager › Tenders › All Tenders**. Check the status bar: a tender in **Evaluation** shows **Won**, **Prequalified**, **Lost** and **Cancel**; one in **Draft** or **Bidding** shows **Drop** and **Cancel**.
+2. **Won:** click **Won**. In **Mark as Won**, enter the **Award Date** from the award letter, add a **Note** if useful, and click **Save**.
+3. **Prequalified:** click **Prequalified**. In **Mark as Prequalified**, enter **Valid From** and **Valid Until** for the prequalification and check the **Categories** (copied from the tender's tags). Add a **Note** if useful and click **Save**.
+4. **Lost:** click **Lost**. In the **Lost Reason** window:
+   1. Choose the **Tender lost reason**.
+   2. If the reason is a disqualification (for example *Disqualified: missing signature*), choose who it was **Caused By** and write the **Evidence**: what happened, and how you know.
+   3. Write the **Closing Note** in the large box (*What went wrong ?*). It is required.
+   4. Click **Submit**.
+5. **Drop:** click **Drop**. The **Drop Reason** window works the same way: **Tender drop reason**, **Caused By** and **Evidence** if the reason is a disqualification, the **Closing Note**, then **Submit**.
+6. **Cancel:** click **Cancel**. In **Cancel Tender**, choose **Why Cancelled** (for example *Withdrawn by the client*, *Re-tendered* or *Duplicate entry*), add a **Note** if useful, and click **Save**.
+
+Dragging a card to the **Won**, **Prequalified**, **Lost**, **Dropped** or **Cancelled** column opens the same window.
+
+<Illustration name="tenders/bid-result-lost" caption="Step 4: a loss through disqualification asks who caused it and for the evidence." />
+
+## What happens next
+
+| Outcome | On the tender | Elsewhere |
+|---|---|---|
+| **Won** | Status **Won**. **Award Date** and **Period** show on **Tender Info**; the **Project Summary** and **Target Achievements** tabs appear. | The CRM opportunity is marked won. The won alert email goes to the Tender administrators, Heads of Commercial and Heads of Channel, copied to the Account Manager, Presales and Bid Liaison. The Heads see the tender in **My Actions** under **Achievements to attribute**. |
+| **Prequalified** | Status **Prequalified**. A prequalification is created (status **Active**, next follow-up in 30 days, **Dates Unknown** ticked if you left a date out), with a **Prequalification** smart button and a **Log RFQ** button. | The CRM opportunity is marked won and the same won alert email goes out. The Account Manager follows up the prequalification. |
+| **Lost** | Status **Lost**; the **Tender Lost Reason** tab shows the reason. The closing note is posted in the chatter. | The CRM opportunity is marked lost. The lost alert email goes out (same people as above). |
+| **Dropped** | Status **Dropped**; the **Drop Reason** tab shows the reason and the closing note. **Bid Decision Made** is stamped if it was empty. | The drop alert email goes out (same people as above). The CRM opportunity doesn't change. |
+| **Cancelled** | Status **Cancelled**; **Cancel Reason** and **Cancel Note** show on **Tender Info**. | No email; the CRM opportunity doesn't change. |
+
+For every outcome, the nomination to-dos still open on the tender are removed, and the card moves to the matching column.
+
+**If the reason was a disqualification**, the tender's **Bid Quality** tab shows **Disqualification** as **To Confirm**, due in 7 days, and the person who confirms the cause is emailed. See [Confirm the cause of a disqualification](/tenders/how-to/bids/confirm-a-disqualification/).
+
+**After a win:** the Heads [attribute the win](/tenders/how-to/bids/attribute-a-won-tender/), which feeds the Accountability revenue measures; a manager can [request a project summary](/tenders/how-to/customers/request-a-project-summary/); and the delivery team can [open a delivery project](/projects/how-to/delivery-pm/open-a-delivery-project/).
+
+**In Accountability:** a dropped tender counts as a bid decision (on time if dropped at least 5 days before the deadline) and as half a workload point; a cancelled tender is left out of the bid desk measures.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *'Valid From' is after 'Valid Until'.* | The prequalification dates are the wrong way round. | Swap them. |
+| *A tender in Bidding can't move to Won.* | You dragged a card to an outcome its status doesn't allow. | Mark the bid submitted first, or drag to a column the status allows. |
+| *Missing bid liaison. Please assign one before proceeding!* | The tender has no Bid Liaison. This check runs on every outcome, Drop and Cancel included, for everyone except Tender administrators. | Ask the Head of Commercial to nominate one, or ask a Tender administrator to close it. |
+| *Missing technical presales engineer. Please assign one before proceeding* | The tender has no Technical Presales. | Ask the Head of Channel to nominate one, or ask a Tender administrator. |
+
+:::note[Good to know]
+- **Won**, **Prequalified**, **Lost**, **Drop** and **Cancel** have no role check: anyone who can open the tender can close it. Agree internally who records outcomes.
+- A closed tender can only be moved by a Tender administrator, with **Reopen**. See [Reopen a tender](/tenders/how-to/bids/reopen-a-tender/).
+- A prequalified tender earns no achievement itself; the RFQs logged under it do when they are won.
+- The disqualification reasons for **Lost** are set up already. A **Drop** reason asks for **Caused By** only if it has been marked as a disqualification under **Tender Manager › Configuration › Drop Reasons**.
+- The reason *Disqualified: late submission* isn't linked to the **Submitted Late** tick; choose it yourself when it applies.
+:::

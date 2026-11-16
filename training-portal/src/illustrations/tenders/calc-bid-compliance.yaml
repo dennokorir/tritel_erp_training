@@ -1,0 +1,15 @@
+type: calc
+title: Bid Compliance for Technical Presales
+desc: Worked example of Bid Compliance for a Technical Presales engineer, with a compliant must-win bid counting three times at 100%, a compliant bid at 100% and a confirmed disqualification caused by Technical Presales at 0%, giving 400 points over a weight of 5, or 80.0%.
+source: tritel_accountability_framework/models/metric_hook_bid_quality.py (_hook_bid_compliance_presales)
+heading: Employee B, Technical Presales, Q1 2026
+inputs:
+  - {label: "TND-2026-005 (must-win)", value: "100% × 3"}
+  - {label: TND-2026-006, value: "100% × 1"}
+  - {label: "TND-2026-007 (DQ)", value: "0% × 1"}
+steps:
+  - {label: "Points: 100 × 3 + 100 × 1 + 0 × 1", value: "400"}
+  - {label: "Total weight: 3 + 1 + 1", value: "5"}
+  - {label: "Score = points ÷ total weight", value: "400 ÷ 5"}
+result: {label: Bid Compliance, value: "80.0%", tone: warn}
+note: The manager's quality check doesn't matter here. Every bid without a confirmed error caused by Technical Presales counts at 100%.

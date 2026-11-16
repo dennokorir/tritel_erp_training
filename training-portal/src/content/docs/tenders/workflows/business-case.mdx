@@ -1,0 +1,87 @@
+---
+title: Business case workflow
+description: Every status of a tender business case (Draft, Submitted, Approved, Rejected), with who submits, approves, rejects and resets it, and what appears in My Actions at each step.
+module: tenders
+pageType: workflow
+roles: [account-manager, head-commercial, tender-admin]
+tags: [business cases, approvals, workflows]
+keywords: [business case, approval, approve, reject, reset to draft, submit for review, margin approval, pricing approval, costing, sign-off]
+related: [tenders/concepts/business-cases, tenders/how-to/bids/business-case, tenders/calculations/business-case-margin, tenders/how-to/bids/tender-my-actions]
+sources:
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/views/tender_business_case_views.xml
+  - tritel_tender_tracker/models/my_actions.py
+  - tritel_tender_tracker/models/models.py
+sidebar: { order: 6 }
+---
+
+A **tender business case** is drafted from the tender's **Business Case** smart button, submitted for review, and approved or rejected by the Head of Commercial. A Tender administrator can send a submitted or rejected case back to **Draft**. There are no emails; the steps show in **My Actions**.
+
+```mermaid
+stateDiagram-v2
+  state "Draft" as draft
+  state "Submitted" as submitted
+  state "Approved" as approved
+  state "Rejected" as rejected
+  [*] --> draft: Business Case button (anyone)
+  draft --> submitted: Submit for Review (anyone)
+  submitted --> approved: Approve (Head of Commercial)
+  submitted --> rejected: Reject (Head of Commercial)
+  submitted --> draft: Reset to Draft (Tender administrator)
+  rejected --> draft: Reset to Draft (Tender administrator)
+  note right of submitted
+    Approve and Reject: Head of Commercial
+    or a Tender administrator
+    Reject needs a Rejection Reason
+  end note
+```
+
+| Status | What it means | Moves to | Who moves it |
+|---|---|---|---|
+| **Draft** | Cost lines and notes are being entered. | **Submitted** with **Submit for Review** | Any internal user (usually the Account Manager) |
+| **Submitted** | Waiting for approval. **Submitted By** and **Submitted Date** are filled in. | **Approved** with **Approve**; **Rejected** with **Reject**; **Draft** with **Reset to Draft** | Head of Commercial or Tender administrator; Tender administrator (reset) |
+| **Approved** | Approved. **Reviewed By** and **Review Date** are filled in. | — | — |
+| **Rejected** | Rejected, with a **Rejection Reason**. **Reviewed By** and **Review Date** are filled in. | **Draft** with **Reset to Draft** | Tender administrator |
+
+## Who does what
+
+```mermaid
+flowchart TD
+  subgraph AM["Account Manager"]
+    A1["Open Business Case from the tender"]
+    A2["Enter cost lines and notes"]
+    A3["Submit for Review"]
+  end
+  subgraph HoC["Head of Commercial"]
+    H1["Approve"]
+    H2["Reject with a reason"]
+  end
+  subgraph Adm["Tender administrator"]
+    X1["Reset to Draft"]
+  end
+  A1 --> A2 --> A3
+  A3 --> H1
+  A3 --> H2
+  H2 --> X1 --> A2
+```
+
+## What the system does automatically
+
+- **Business Case button:** opens the tender's case, creating a draft if it has none. A tender can have only one: *A business case already exists for this tender.*
+- **Totals:** **Total Cost**, **Gross Profit** and **Gross Margin (%)** update as lines change. The revenue always follows the tender's **Expected Revenue** in KES.
+- **Submit for Review:** records **Submitted By** (your employee) and **Submitted Date**.
+- **Approve / Reject:** records **Reviewed By** and **Review Date**. Approving clears any old rejection reason.
+- **After the award:** on a **Won** or **Prequalified** tender, the actual revenue and cost come from the tender's confirmed sales and purchase orders.
+- **My Actions:** the Head of Commercial and Tender administrators see **Business cases to approve** (not ones they created, and not for lost, dropped or cancelled tenders). The person who created the case sees **Business cases to finish** while it is a draft or rejected, and **Business cases waiting for approval** while it is submitted.
+
+:::note[Good to know]
+- **Reject** stops with *Please enter a rejection reason before rejecting.* if the **Rejection Reason** is empty, and that box is only shown once a case is rejected. Until the form is changed, the Head of Commercial can't reject from the back office alone; record the reason in the chatter and ask a Tender administrator.
+- **Approve** and **Reject** are hidden from other roles, but there is no further check behind them.
+- An approved case has no way back to **Draft** on the form.
+:::
+
+## Related tasks
+
+- [Prepare and approve a business case](/tenders/how-to/bids/business-case/)
+- [Business case margin](/tenders/calculations/business-case-margin/)
+- [Tender business cases](/tenders/concepts/business-cases/)

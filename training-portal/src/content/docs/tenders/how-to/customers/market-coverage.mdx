@@ -1,0 +1,68 @@
+---
+title: Use the Market Coverage screen
+description: See where each customer sits on the coverage ladder, how many customers are reached and named, coverage by sector and account manager, and which customers have no owner.
+module: tenders
+pageType: how-to
+roles: [account-manager, head-commercial]
+tags: [market coverage, reports]
+keywords: [coverage, key account, named accounts, market share, win rate, share of account, sector, addressable market, target accounts, account plan, ladder]
+where: [Tender Manager, Tender Customers, Market Coverage]
+before:
+  - What you see follows the same rule as Customer Activities. The Head of Commercial, Tender administrators and HR managers see every customer; others see their own and their team's accounts.
+related: [tenders/concepts/market-coverage, tenders/calculations/coverage-ladder, tenders/how-to/customers/account-ownership, tenders/how-to/customers/read-the-customer-activities-screen]
+sources:
+  - tritel_tender_tracker/static/src/coverage/market_coverage.xml
+  - tritel_tender_tracker/static/src/coverage/market_coverage.js
+  - tritel_tender_tracker/models/market_coverage.py
+  - tritel_tender_tracker/views/target_accounts_views.xml
+sidebar: { order: 9 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+**Market Coverage** places every customer on a **coverage ladder**, from **Untouched** up to **Anchor** (two or more wins), and shows how far up the ladder the market is. Use it to see how many customers you have won at, where you keep losing, and which customers nobody owns.
+
+<Illustration name="tenders/cust-coverage-overview" caption="The Overview tab. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Tender Manager › Tender Customers › Market Coverage**.
+2. At the top, pick an account manager or a sector, choose the market (**All engaged** or **Target accounts**) and the period (**All time** or **Since 2025**, for example). Every tab follows these choices.
+3. Pick a tab: **Overview**, **Accounts**, **Sectors**, **Share of account** or **Account managers**.
+4. On **Overview**, read the figures: **Customers reached**, **Named** (and its share of reached), **New named this year**, **Wins / decided bids**, **Won value**, and, when there are any, **Reached, no account manager**, **Targets named** and **Targets untouched**. In **Named vs touched by account manager**, switch the credit between **AM on the bid** and **Customer's AM**. Click an account manager's row to focus on them; click the **needs owner** row to go to **Account Ownership**.
+5. Under **Where customers sit on the ladder**, click a rung to list its customers on the **Accounts** tab.
+
+<Illustration name="tenders/cust-coverage-accounts" caption="The Accounts tab." />
+
+6. On **Accounts**, search a customer, pick a rung, or tick **Has open bid** or **No account manager**. ◎ marks a target account.
+7. Each column is a rung. Click a column heading to open its customers as a list. Click a card to open that customer's touchpoint timeline (24 months).
+
+The other tabs:
+
+- **Sectors**: **Coverage by sector**, with **Addressable**, **Reached**, **Named**, **Named share**, **Targets** and **Won value** per sector. Click a sector to filter every tab. **Unclassified** customers are tagged **classify**.
+- **Share of account**: **Wins out of decided bids, per customer**, sorted by **Won value**, **Wins** or **Win rate**. Open bids aren't counted until decided.
+- **Account managers**: a card per account manager with their named share, **Wins / bids**, **Won value** and **Target accounts named**. Click **Focus on …** to filter every tab to them.
+
+## The ladder
+
+| Rung | The customer has |
+|---|---|
+| **Anchor** | 2 or more wins (won tenders and won opportunities) |
+| **Named** | exactly 1 win |
+| **Prequalified** | a prequalified tender, no win |
+| **In play** | an open tender or opportunity |
+| **Contested** | bid and lost |
+| **Engaged** | only dropped or cancelled tenders, early leads, or customer touches |
+| **Untouched** | an account manager, but nothing else yet |
+
+A customer takes the highest rung that applies. The full rule is in [The market coverage ladder](/tenders/calculations/coverage-ladder/).
+
+## What happens next
+
+Nothing changes: the screen only reads. To give unowned customers an owner, or to choose target accounts, see [Claim, assign and classify accounts](/tenders/how-to/customers/account-ownership/).
+
+:::note[Good to know]
+- **All engaged** means every customer with an account manager plus every customer engaged in any way. **Target accounts** counts only approved target accounts. A Tender administrator sets which one opens by default in **Settings › Tender Tracker › Market Coverage measures against**.
+- With a period other than **All time**, rungs use only activity in that period, so assigned customers with none show as **Untouched**.
+- **AM on the bid** credits every account manager who bid at a customer; **Customer's AM** counts each customer once, for the account manager on the customer record. The two can give different named shares.
+- If one customer is 40% or more of won value, a line under the figures says so.
+:::

@@ -1,0 +1,29 @@
+type: screen
+title: Project Summaries library
+desc: The Project Summaries library screen in the Reader view, with the view switch, the filter bar, the list of cases and the open case with its Copy text, Open and Export for Marketing buttons, numbered 1 to 6.
+source: tritel_tender_tracker/static/src/summary_library/summary_library.xml (SummaryLibrary)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, {label: Tenders, active: true, n: 1}, Tender Customers]
+  breadcrumb: [Project Summaries]
+blocks:
+  - buttons: [{label: Gallery}, {label: Reader, primary: true, n: 3}, {label: Pillar × sector, n: 4}, {label: Timeline, n: 5}, {label: Reference finder, n: 6}, {label: List}]
+  - search: {placeholder: "Search text, client, OEM…", filters: [All pillars, All sectors, All OEMs, All years, Any role, Any naming, Clear], n: 2}
+  - text: "12 of 40 Complete summaries"
+  - columns:
+      - panel: true
+        blocks:
+          - table:
+              columns: [Case]
+              rows:
+                - {cells: [{text: "Network upgrade · Customer A · 2026", bold: true}], highlight: true}
+                - ["Contact centre · Customer B · 2025"]
+                - ["Campus Wi-Fi · Customer D · 2024"]
+      - panel: true
+        blocks:
+          - title: {text: Network upgrade, sub: "Customer A · Banking"}
+          - text: "Connectivity · Can be named · Prime contractor · Project · Awarded 2026-10-01 · Cisco"
+          - buttons: [{label: Copy text}, {label: Open}, {label: Export for Marketing}]
+          - heading: The client's problem
+          - text: "Branches lost connection several times a month."

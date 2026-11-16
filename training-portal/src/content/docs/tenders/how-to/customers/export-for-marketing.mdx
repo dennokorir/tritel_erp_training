@@ -1,0 +1,56 @@
+---
+title: Export a marketing pack
+description: Choose complete project summaries by pillar, sector, OEM, year, role or motion and download them as one marketing pack, with customer names handled by each summary's naming rule.
+module: tenders
+pageType: how-to
+roles: [head-channel, head-commercial]
+tags: [project summaries]
+keywords: [case study, reference, credentials, marketing, brochure, website, export, download, markdown, anonymise, pack]
+where: [Tender Manager, Tenders, Export for Marketing]
+before:
+  - You can open the summary library (a tender role or library access). Anyone who can open the library can export.
+  - The summaries you want are <strong>Complete</strong>. Summaries still being written or reviewed are never exported.
+related: [tenders/concepts/project-summaries, tenders/how-to/customers/use-the-summary-library, tenders/how-to/customers/review-a-project-summary]
+sources:
+  - tritel_tender_tracker/wizards/summary_marketing_wizard_views.xml
+  - tritel_tender_tracker/wizards/summary_marketing_wizard.py
+  - tritel_tender_tracker/models/summary_marketing_pack.py
+  - tritel_tender_tracker/security/summary_marketing_security.xml
+sidebar: { order: 5 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A **marketing pack** is one text file holding the complete project summaries you choose, ready for marketing to turn into case studies or web pages. Each summary's **Customer naming** decides whether its client is named or anonymised.
+
+<Illustration name="tenders/cust-marketing-export" caption="The Export for Marketing window. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Tender Manager › Tenders › Export for Marketing**. (You can also click **Export for Marketing** in the summary library or the Summary Tracker list. In the library's **Gallery**, tick cards first, then click **Export 3 for Marketing** to start with just those.)
+2. Under **Which summaries**, narrow the pack. Leave **Only these tenders** empty to take every complete summary that matches the other choices: **Pillars**, **Sectors**, **OEMs**, **Awarded** (from and to year), **Tritel's role** and **Motion**.
+3. Under **What goes in**:
+   - Tick **Include "Not yet asked" as anonymised** to add summaries whose customer hasn't been asked about naming. Otherwise they are held back.
+   - Untick **Contract value** to leave the value out.
+   - The badges count what the pack will hold, for example *4 named*, *2 anonymised*, *1 held back: not yet asked*, *3 not complete*.
+4. Read the **Preview** tab. In **Brief for the writer** you can change the instructions printed at the top of the pack for this export.
+5. Click **Download pack (.md)**.
+
+## What happens next
+
+- A file named like *tritel-marketing-pack-20261116.md* downloads.
+- The export is logged under **Tender Manager › Tenders › Marketing Exports**: **Exported on**, who exported it, the number of cases and anonymised cases, the filters and the **Pack** file. You see your own exports; Tender administrators see everyone's.
+- Anonymised cases have the client's name and the tender's own reference removed, and the client is described by its sector instead.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *No Complete summaries match these filters.* | Nothing complete fits your choices, or every match is held back as *Not yet asked*. | Widen the filters, or tick **Include "Not yet asked" as anonymised**. |
+| *Only people who can open the project summary library can export it.* | You have no tender role or library access. | Ask for library access. |
+| *Only a Tender Tracker Administrator can change the default brief.* | You clicked **Save as default brief** without the Tender administrator role. | Change the brief for this export only, or ask a Tender administrator. |
+
+:::note[Good to know]
+- The pack never includes drafts, reviewer notes, people's names or the **Reference status** section. Email addresses and phone numbers are removed.
+- Contract values are exact. In public material, don't put an exact value next to an anonymised client: round it or leave it out.
+- **Save as default brief** (Tender administrators only) keeps your brief for everyone's future exports.
+:::

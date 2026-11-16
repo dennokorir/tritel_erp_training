@@ -1,0 +1,17 @@
+type: screen
+title: A target period
+desc: The Target Period form under Tender Manager, Configuration, with the Set Active button, the Draft, Active and Closed status bar, the Period Name and dates, the totals and the read-only Role Targets tab, numbered 1 to 5.
+source: tritel_tender_tracker/views/target_period_views.xml (view_target_period_form)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [Tenders, My Actions, Tender Customers, Compliance, Commercial Targets, Reporting, {label: Configuration, active: true, n: 1}]
+  breadcrumb: [Target Periods, Q2 2026]
+blocks:
+  - buttons: [{label: Set Active, primary: true, n: 4}]
+    status: {steps: [Draft, Active, Closed], current: Draft, n: 5}
+  - fields:
+      - [{label: Period Name, value: Q2 2026, bold: true, n: 2}, {label: Role Targets, value: "0"}]
+      - [{label: Date From, value: 01/04/2026, n: 3}, {label: Total Target Value, value: "0.00"}]
+      - [{label: Date To, value: 30/06/2026}, {label: Total Achieved Value, value: "0.00"}]
+  - tabs: {items: [Role Targets], active: Role Targets}

@@ -1,0 +1,25 @@
+type: screen
+title: A new tender in Draft
+desc: A new tender form in Tender Manager with the Ref and description at the top, the tender currency and Expected Revenue, the Customer and Account Manager, OEMs, Tags and Source/Pipeline, and the Tender Info and Documents tabs, numbered 1 to 8.
+source: tritel_tender_tracker/views/tender_views.xml (view_tender_form); models/models.py
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true, n: 1}, My Actions, Tender Customers, Commercial Targets]
+  breadcrumb: [Tenders, New]
+blocks:
+  - buttons: [{label: Confirm Bid, primary: true}, {label: Drop}, {label: Cancel}]
+    status: {steps: [Draft, Bidding, Evaluation], current: Draft}
+  - fields:
+      - [{label: Ref, value: TND-2026-001, n: 2}]
+  - title: {text: Campus Wi-Fi upgrade, sub: "Tender description / scope of works", n: 3}
+  - fields:
+      - [{label: Expected Revenue, value: "KES 12,000,000", bold: true, n: 4}]
+      - [{label: Customer, value: Customer A, n: 5}, {label: OEMs, value: OEM A, n: 6}]
+      - [{label: Account Manager, value: Employee A, readonly: true}, {label: Tags, value: Connectivity}]
+      - [{label: Bid Liaison, value: "", readonly: true}, {label: Source/Pipeline, value: Campus Wi-Fi upgrade, n: 7}]
+      - [{label: Technical Pre-sales Engineer, value: "", readonly: true}, {label: From Prequalification, value: ""}]
+  - tabs: {items: [Tender Info, Documents, Competition], active: Tender Info, n: 8}
+  - fields:
+      - [{label: Validity Period (Days), value: "90"}, {label: Submission Deadline, value: "04/12/2026 10:00:00", bold: true}]
+      - [{label: Tender Opening Date, value: "04/12/2026 11:00:00"}]

@@ -1,0 +1,30 @@
+type: screen
+title: The tender board
+desc: The All Tenders board with the period bar and search filters, one column per tender status, and tender cards showing the reference, customer, value, team and a Must-Win badge, numbered 1 to 4.
+source: tritel_tender_tracker/views/tender_views.xml (view_tender_kanban, view_tender_search); views/bid_quality_views.xml (view_tender_kanban_bid_quality); static/src/xml/tender_period_bar.xml
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true}, My Actions, Tender Customers, Commercial Targets, Reporting, Configuration]
+  breadcrumb: [All Tenders]
+blocks:
+  - search: {facets: ["Period: Q1 2026"], placeholder: "Search…", filters: [Filters, Group By], n: 1}
+  - kanban:
+      - title: Draft
+        count: 2
+        n: 2
+        cards:
+          - {title: TND-2026-001, lines: ["Customer A", "Network upgrade", "Tender Sum KES 5,000,000"], tag: Must-Win, tagTone: bad, n: 3}
+          - {title: TND-2026-004, lines: ["Customer B", "Tender Sum KES 1,200,000"]}
+      - title: Bidding
+        count: 1
+        cards:
+          - {title: TND-2026-002, lines: ["Customer B", "Tender Sum KES 2,000,000", "Team: Employee A"], tone: warn, n: 4}
+      - title: Evaluation
+        count: 1
+        cards:
+          - {title: TND-2026-003, lines: ["Customer C", "Tender Sum KES 800,000"]}
+      - title: Won
+        count: 1
+        cards:
+          - {title: TND-2026-005, lines: ["Customer A", "Contract Value KES 3,000,000"], tone: good}

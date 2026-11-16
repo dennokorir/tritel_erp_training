@@ -1,0 +1,21 @@
+type: screen
+title: Summary Tracker
+desc: The Summary Tracker list in Tender Manager, showing won tenders with their summary status, progress, writer and next deadline, and the Request summaries button for several tenders at once, numbered 1, 2 and 5.
+source: tritel_tender_tracker/views/project_summary_views.xml (tender_summary_tracker_tree, tender_summary_tracker_search)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, {label: Tenders, active: true, n: 1}, Tender Customers, Reporting]
+  breadcrumb: [Summary Tracker]
+blocks:
+  - buttons: [{label: Request summaries, primary: true, n: 5}, {label: Export for Marketing}]
+  - search: {placeholder: "Search…", filters: [Filters, Group By]}
+  - table:
+      columns: ["", Ref, Tender, Customer, Status, Progress, Writer, Next deadline]
+      widths: [0.5, 1.6, 3, 1.8, 2, 1.4, 1.8, 1.8]
+      rows:
+        - {cells: ["☑", TND-2026-001, Network upgrade, Customer A, {text: Not requested, badge: true, tone: muted}, "", "", ""], n: 2}
+        - ["☑", TND-2026-002, Contact centre, Customer B, {text: Not requested, badge: true, tone: muted}, "", "", ""]
+        - ["☐", TND-2026-003, Data centre power, Customer C, {text: Writing, badge: true, tone: warn}, "50%", Employee A, 20/11/2026]
+        - ["☐", TND-2026-004, Campus Wi-Fi, Customer D, {text: In review, badge: true, tone: accent}, "100%", Employee B, 18/11/2026]
+        - ["☐", TND-2026-005, Security operations, Customer E, {text: Complete, badge: true, tone: good}, "100%", Employee A, ""]

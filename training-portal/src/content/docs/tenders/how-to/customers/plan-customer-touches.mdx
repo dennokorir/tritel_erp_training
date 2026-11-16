@@ -1,0 +1,55 @@
+---
+title: Plan customer touches
+description: Plan upcoming calls, meetings and visits with customers, then reschedule them or complete them with the outcome from the Planned tab.
+module: tenders
+pageType: how-to
+roles: [account-manager]
+tags: [customer activities]
+keywords: [customer visit, call, meeting, touchpoint, plan, schedule, follow up, reminder, overdue, reschedule, calendar]
+where: [Tender Manager, Tender Customers, Customer Activities]
+before:
+  - The customer exists in Odoo.
+related: [tenders/concepts/customer-activities, tenders/workflows/customer-activity, tenders/how-to/customers/log-a-customer-activity, tenders/how-to/customers/read-the-customer-activities-screen, tenders/how-to/bids/tender-my-actions]
+sources:
+  - tritel_tender_tracker/static/src/touchpoints/planned/touchpoints_planned.xml
+  - tritel_tender_tracker/static/src/touchpoints/planned/touchpoints_planned.js
+  - tritel_tender_tracker/static/src/touchpoints/common/touch_dialog.js
+  - tritel_tender_tracker/views/partner_activity_touchpoints_views.xml
+  - tritel_tender_tracker/models/touchpoints.py
+  - tritel_tender_tracker/models/my_actions.py
+sidebar: { order: 7 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Plan the customer touches you intend to make, so they show on your list until they are done. When the touch has happened, you complete it with the outcome: it then counts like any logged touch.
+
+<Illustration name="tenders/cust-touch-planned" caption="The Planned tab. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Tender Manager › Tender Customers › Customer Activities** and click **Plan touch**.
+2. In *Plan a customer touch*, fill in the **Customer**, **Planned for** (the date), **Type**, **Who will make it** and the **Account Manager** (filled in from the customer). Link the **Tender** or **Lead/Pipeline** if there is one. Under **Notes**, say what the touch is for. Click **Save**. *Touch planned* appears.
+3. Click the **Planned** tab. The number beside it counts your planned touches. They are grouped under **Overdue** (with how many days late), **This week**, **Later** and **No date**.
+4. To move one, click **Reschedule**, pick the new date and click **Save**.
+5. When the touch has happened, click **Complete**. In *Complete planned touch*, set the **Date** to the day it happened, write the outcome under **What happened**, and click **Save**.
+
+**Open** shows the full record. It also has a **Mark as Done** button.
+
+## What happens next
+
+- A completed touch becomes **Done**: it leaves the **Planned** tab, its note is posted on the linked tender or opportunity, and it counts on the heatmap and timeline.
+- A planned touch whose date has passed is **Overdue**: it shows in red in the activity list and counts as an **overdue plan** on the person's **People** profile.
+- **My Actions** shows **Overdue planned customer touches** with a count of yours, and an **Open Customer Activities** button.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Activity date cannot be greater than today!* | You clicked **Complete** on a touch whose date is still in the future. | Change the **Date** to the day it really happened, then save. |
+| *This planned touch is not one you can reschedule.* | It isn't on your accounts or your team's, or it was done meanwhile. | Refresh the page. |
+| *This touch is not one you can complete.* | It isn't on your accounts or your team's. | Ask its owner or their manager. |
+
+:::note[Good to know]
+- **Showing** at the top decides whose planned touches you see: **Me**, **My team**, a person who reports to you, or (for the Head of Commercial, Tender administrators and HR) **Everyone**.
+- A planned touch counts nowhere until it is completed. Planning many touches doesn't raise anyone's figures.
+:::

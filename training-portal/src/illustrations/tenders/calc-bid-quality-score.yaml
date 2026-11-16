@@ -1,0 +1,16 @@
+type: calc
+title: Bid Quality Score for a quarter
+desc: Worked example of a Bid Liaison's Bid Quality Score for Q1 2026, with a must-win bid scored 90% counting three times, a bid scored 80%, a confirmed disqualification caused by the Bid Liaison at 0% and an unscored bid left out, giving 350 points over a weight of 5, or 70.0%.
+source: tritel_accountability_framework/models/metric_hook_bid_quality.py (_bid_quality_result)
+heading: Employee A, Bid Liaison, Q1 2026
+inputs:
+  - {label: "TND-2026-001 (must-win)", value: "90% × 3"}
+  - {label: TND-2026-002, value: "80% × 1"}
+  - {label: "TND-2026-003 (DQ)", value: "0% × 1"}
+  - {label: TND-2026-004, value: Not scored}
+steps:
+  - {label: "Points: 90 × 3 + 80 × 1 + 0 × 1", value: "350"}
+  - {label: "Total weight: 3 + 1 + 1 (the unscored bid is left out)", value: "5"}
+  - {label: "Score = points ÷ total weight", value: "350 ÷ 5"}
+result: {label: Bid Quality Score, value: "70.0%", tone: warn}
+note: TND-2026-003 counts at 0% because the disqualification was confirmed as caused by the Bid Liaison. It counts in the quarter it was confirmed, not the quarter it was submitted.

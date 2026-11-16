@@ -1,0 +1,13 @@
+type: calc
+title: Submission Buffer for a quarter
+desc: Worked example of the Submission Buffer metric for a Bid Liaison with 4 bids submitted in the quarter, of which 3 were recorded with a receipt at least 24 hours before the deadline and 1 has no receipt recorded, giving 3 of 4, or 75.0%.
+source: tritel_accountability_framework/models/metric_hook_bid_desk.py (_hook_bid_submission_buffer)
+heading: Employee A, Bid Liaison, Q1 2026
+inputs:
+  - {label: Bids submitted, value: "4"}
+  - {label: "Recorded, 24 h or more early", value: "3"}
+  - {label: Not recorded, value: "1"}
+steps:
+  - {label: "Bids that met the buffer ÷ bids submitted × 100", value: "3 ÷ 4 × 100"}
+result: {label: Submission Buffer, value: "75.0%", tone: warn}
+note: A bid without a recorded receipt never counts as met, however early it went in.

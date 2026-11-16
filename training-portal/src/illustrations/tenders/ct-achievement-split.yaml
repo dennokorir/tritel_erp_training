@@ -1,0 +1,23 @@
+type: calc
+title: How a won tender's value is split
+desc: Worked example of a won tender worth KES 10,000,000 with two Account Managers, one Bid Liaison and one Technical Presales person, showing each line's gross value, attribution points and achieved value.
+source: tritel_tender_tracker/models/target.py (_compute_achieved_value, _compute_achieved_value_percentage, _STAGE_CEILINGS)
+heading: Won tender TND-2026-001, Expected Revenue KES 10,000,000
+inputs:
+  - {label: "Account Managers on the tender", value: "Employee A, Employee B"}
+  - {label: "Bid Liaison", value: Employee C}
+  - {label: "Technical Presales", value: Employee D}
+steps:
+  - {label: "Gross per Account Manager = 10,000,000 ÷ 2", value: "5,000,000"}
+  - {label: "Gross for the Bid Liaison and for Technical Presales (one line each)", value: "10,000,000 each"}
+  - {label: "Employee A: Pipelining 40 + Bid Submission Support 10 + Post-Submission Influence 30", value: "80% → 4,000,000"}
+  - {label: "Employee B: 20 + 10 + 20", value: "50% → 2,500,000"}
+  - {label: "Employee C (Bid Liaison): Bid Submission Support 60 + Post-Submission Influence 20", value: "80% → 8,000,000"}
+  - {label: "Employee D (Technical Presales): Pipelining 45 + Bid Submission Support 40", value: "85% → 8,500,000"}
+result: {label: "Achieved Value = Gross Value × % Achievement ÷ 100", value: "4,000,000 for Employee A", tone: good}
+bars:
+  - {label: Employee A, value: 80, tone: warn}
+  - {label: Employee B, value: 50, tone: warn}
+  - {label: Employee C, value: 80, tone: warn}
+  - {label: Employee D, value: 85, tone: warn}
+note: Each role is credited with the whole tender value, shared only between people in the same role. The four lines here add up to 23,000,000.

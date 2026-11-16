@@ -1,0 +1,21 @@
+type: matrix
+title: Who can do what on the bid desk
+desc: Permission grid for the readiness checklist, recording submissions, must-win flags, quality checks, disqualifications and the bid desk set-up lists, for Account Managers, Bid Liaisons, Technical Presales, the Head of Commercial, the Head of Channel, Tender administrators and any other internal user.
+source: tritel_tender_tracker/models/bid_desk.py, models/bid_quality.py, views/bid_desk_views.xml, views/bid_quality_views.xml, security/ir.model.access.csv
+columns: [Account Manager, Bid Liaison, Technical Presales, Head of Commercial, Head of Channel, Tender administrator, Any internal user]
+labelWidth: 250
+rows:
+  - {group: Readiness checklist}
+  - {action: "Create Checklist, Confirm Ready, Reopen", cells: [n, p, n, p, n, y, n]}
+  - {action: Add or remove checklist items, cells: [n, p, n, p, n, y, n]}
+  - {action: Upload files on a checklist row, cells: [n, p, p, p, n, y, n]}
+  - {group: Submission}
+  - {action: Add Receipt (record the submission), cells: [n, p, n, p, n, y, n]}
+  - {group: Must-win and quality}
+  - {action: Flag Must-Win or Remove Must-Win, cells: [n, n, n, y, n, y, n]}
+  - {action: Score Bid or Change Score, cells: [n, n, n, p, n, p, n]}
+  - {action: Confirm Cause of a disqualification, cells: [n, n, n, p, n, p, n]}
+  - {group: Set-up}
+  - {action: "Bid Quality Guidelines, Standard Bid Documents, Bid Desk Team", cells: [n, n, n, y, n, y, n]}
+  - {action: Cancel reasons, cells: [n, n, n, y, n, y, n]}
+legend: {p: "Partly: see the notes under the picture"}

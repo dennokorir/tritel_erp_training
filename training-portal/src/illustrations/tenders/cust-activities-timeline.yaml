@@ -1,0 +1,29 @@
+type: screen
+title: Customer touchpoint timeline
+desc: One customer's touchpoint timeline, with the touches in the window, people, last touch and account manager, one lane per role with dots per month and tender milestones, and the Touches feed, numbered 7 and 8.
+source: tritel_tender_tracker/static/src/touchpoints/timeline/touchpoints_timeline.xml
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, Tenders, {label: Tender Customers, active: true}, Reporting]
+  breadcrumb: [Customer Activities, Customer A]
+blocks:
+  - buttons: [{label: "‹  Dec 2025 – Nov 2026  ›"}, {label: 12 months}, {label: + Log touch, primary: true}, {label: Plan touch}, {label: Open customer}]
+  - text: "10 touches in window · 3 people · Last touch 12 Nov 2026 · Account manager: Employee A · Open deal"
+  - table:
+      columns: [Lane, Sep, Oct, Nov]
+      widths: [2, 1, 1, 1]
+      n: 7
+      rows:
+        - ["AM  6", "● 2", "● 3", "●"]
+        - ["Presales  3", "", "● 2", "●"]
+        - ["Leadership  1", "", "●", ""]
+  - text: "◆ 15 Oct · TND-2026-001 submitted"
+  - heading: Touches
+    n: 8
+  - table:
+      columns: [Date, Who, What]
+      widths: [1.4, 2.4, 5]
+      rows:
+        - ["12 Nov 2026", "Employee A · Account Manager · Visit", "Customer visit · Post-submission · TND-2026-001"]
+        - ["02 Oct 2026", "Employee B · Presales · Workshop / Demo", "Demo · Bid Support · TND-2026-001"]

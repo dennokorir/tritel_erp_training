@@ -1,0 +1,121 @@
+# Channel app (crm_tender) and Commercial Targets (tritel_tender_tracker) terms. One or two plain sentences each.
+# Tender-tracker terms live in tenders.yaml. Bare everyday words are avoided because terms link site-wide.
+- term: Channel app
+  definition: The Odoo app for Tritel's OEMs and distributors, OEM bookings, untagged purchases, OEM courses, staff certifications and learning development.
+  module: tenders
+  see: [tenders/channel/index]
+- term: OEM
+  aliases: [OEMs, original equipment manufacturer]
+  definition: A manufacturer whose products Tritel resells, such as a network or software vendor. Tritel usually buys its products through a distributor.
+  module: tenders
+  see: [tenders/channel/oems-and-distributors]
+- term: Distributor
+  aliases: [Distributors]
+  definition: A supplier that sells one or more OEMs' products to Tritel. Its Vendor is the supplier contact used on purchase orders.
+  module: tenders
+  see: [tenders/channel/oems-and-distributors]
+- term: OEM booking
+  aliases: [OEM bookings]
+  definition: A record of the value an OEM credits Tritel with on its partner portal, linked to the purchase order lines it covers. Only confirmed bookings count as OEM-recognised revenue.
+  module: tenders
+  see: [tenders/channel/oem-bookings, tenders/channel/booking-workflow]
+- term: Portal Reference
+  definition: The booking, deal or order reference shown on an OEM's partner portal, used as the name of an OEM booking.
+  module: tenders
+  see: [tenders/channel/book-oem-purchases]
+- term: OEM-Recognised Amount
+  definition: The figure an OEM credits for a booking's purchases, typed from its partner portal. Recognised (USD) is the same figure in US dollars.
+  module: tenders
+  see: [tenders/channel/oem-bookings, tenders/calculations/oem-bookings]
+- term: Distributor margin
+  definition: What Tritel paid for a booking's purchase lines minus what the OEM recognises, in USD and as a share of the purchase cost.
+  module: tenders
+  see: [tenders/channel/oem-bookings, tenders/calculations/oem-bookings]
+- term: Booking Date
+  definition: The latest confirmation date of the purchase orders behind an OEM booking. It decides which month and review window the booking counts in, not the portal date.
+  module: tenders
+  see: [tenders/channel/oem-bookings, tenders/calculations/oem-bookings]
+- term: Awaiting OEM confirmation
+  aliases: [Awaiting OEM]
+  definition: Purchase lines tagged with an OEM, on orders confirmed this year, that are not yet in a confirmed OEM booking. They don't count as OEM-recognised revenue.
+  module: tenders
+  see: [tenders/channel/oem-bookings]
+- term: Untagged Purchases
+  definition: The Channel Managers' work list of purchase lines on orders confirmed since 1 Jan 2026 that have no OEM.
+  module: tenders
+  see: [tenders/channel/tag-untagged-purchases]
+- term: Set OEM
+  definition: An Action on purchase line lists that gives the selected lines one OEM, and optionally their products too. Lines already in a booking are left unchanged.
+  module: tenders
+  see: [tenders/channel/tag-untagged-purchases]
+- term: Vendor opportunity
+  aliases: [Vendor Opportunities, vendor lead, vendor leads, Vendor Pipeline]
+  definition: One OEM on one CRM opportunity, with product tags and an estimated value. Vendor opportunities on open opportunities make up an OEM's pipeline.
+  module: tenders
+  see: [tenders/channel/vendor-opportunities]
+- term: OEM course
+  definition: A course or certification track an OEM offers, with the certification it leads to and the number of certified staff the OEM expects.
+  module: tenders
+  see: [tenders/channel/certifications-and-learning]
+- term: OEM certification
+  aliases: ["OEM(Vendor) Certification"]
+  definition: A record of one employee's certificate for an OEM course, with its dates and a copy of the certificate.
+  module: tenders
+  see: [tenders/channel/certifications-and-learning]
+- term: Learning Development
+  definition: The Channel board that follows a person working towards an OEM certification, from Registration to Ongoing and then Pass or Fail.
+  module: tenders
+  see: [tenders/channel/certifications-and-learning]
+- term: Compliance item
+  definition: One company compliance document, such as a tax compliance certificate or a regulator's licence, kept under Tender Manager › Compliance with its validity periods.
+  module: tenders
+  see: [tenders/channel/compliance]
+- term: Compliance Body
+  aliases: [Compliance Organization]
+  definition: The authority that issues a compliance item, such as a tax authority or a regulator.
+  module: tenders
+  see: [tenders/channel/compliance]
+- term: Compliance History
+  definition: The validity periods of a compliance item, each with its start and end dates and the certificate file. Adding one renews the item.
+  module: tenders
+  see: [tenders/channel/compliance]
+- term: Compliance Status
+  definition: Active while a compliance item's latest validity period ends after today; Expired from its end date on.
+  module: tenders
+  see: [tenders/channel/compliance]
+- term: Compliance Calendar
+  definition: The calendar that shows every compliance validity period on the day it expires.
+  module: tenders
+  see: [tenders/channel/compliance]
+- term: Commercial Targets
+  definition: The older target screens in the Tender Manager - target periods, role targets, individual targets and achievements. Periods and achievements are in use; role and individual targets are being replaced by Accountability revenue targets.
+  module: tenders
+  see: [tenders/commercial-targets/index]
+- term: Target period
+  aliases: [Target Periods]
+  definition: A named stretch of time, such as Q2 2026, that tenders, opportunities and achievements are filed into. The Active one is the default on the tender board and CRM pipeline.
+  module: tenders
+  see: [tenders/commercial-targets/target-periods]
+- term: Role target
+  definition: A Commercial Targets figure for one role in one period, held by the role's head. Being replaced by Accountability revenue targets.
+  module: tenders
+  see: [tenders/commercial-targets/index]
+- term: Individual target
+  aliases: [Manage Individual Targets]
+  definition: A Commercial Targets quota for one person within a role target. Being replaced, but each achievement line still names one.
+  module: tenders
+  see: [tenders/commercial-targets/index]
+- term: Achievement line
+  aliases: [Target Achievements, target achievement]
+  definition: One person's credit on a won tender - their share of its value, scaled by their stage attribution points. Accountability's achieved revenue metrics read these lines.
+  module: tenders
+  see: [tenders/commercial-targets/achievements, tenders/how-to/bids/attribute-a-won-tender]
+- term: Stage attribution
+  aliases: [attribution points, Attribution Model]
+  definition: The points a person earns on an achievement line for Pipelining, Bid Submission Support and Post-Submission Influence. Each role has its own maximum per stage, and the maximums add up to 100.
+  module: tenders
+  see: [tenders/commercial-targets/achievements]
+- term: Compute Related Activities
+  definition: The button on an achievement line that links the person's customer activities on the tender and its opportunity and sets the stage points from them, replacing points typed by hand.
+  module: tenders
+  see: [tenders/commercial-targets/achievements]

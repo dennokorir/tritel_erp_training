@@ -1,0 +1,20 @@
+type: screen
+title: Recording a win
+desc: A tender in Evaluation with the Won, Prequalified, Lost and Cancel buttons, and the Mark as Won window with the Award Date, Note and Save, numbered 1 to 6.
+source: tritel_tender_tracker/views/tender_views.xml (view_tender_form); views/tender_workflow_views.xml (tender_move_wizard_form); models/tender_workflow.py
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true}, My Actions, Tender Customers, Commercial Targets]
+  breadcrumb: [Tenders, Campus Wi-Fi upgrade]
+blocks:
+  - buttons: [{label: Won, primary: true, n: 2}, {label: Prequalified, primary: true, n: 3}, {label: Lost, primary: true, n: 4}, {label: Cancel, n: 6}]
+    status: {steps: [Draft, Bidding, Evaluation], current: Evaluation, n: 1}
+  - title: {text: Campus Wi-Fi upgrade, sub: "Ref TND-2026-001 · Customer A · KES 12,000,000"}
+  - dialog:
+      title: Mark as Won
+      blocks:
+        - fields:
+            - [{label: Award Date, value: 20/12/2026, bold: true, n: 2}]
+            - [{label: Note, value: "Optional"}]
+        - buttons: [{label: Save, primary: true}, {label: Cancel}]

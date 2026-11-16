@@ -1,0 +1,20 @@
+type: matrix
+title: Who can do what with customers and coverage
+desc: Permission grid for customer activities, the Customer Activities and Market Coverage screens, account ownership, target accounts and prequalifications, for Account Managers, Bid Liaisons, Technical Presales, the Head of Commercial, the Head of Channel, Tender administrators and any other internal user.
+source: tritel_tender_tracker/models/touchpoints.py, models/market_coverage.py, models/account_ownership.py, models/target_accounts.py, views/account_ownership_views.xml, views/target_accounts_views.xml, security/ir.model.access.csv
+columns: [Account Manager, Bid Liaison, Technical Presales, Head of Commercial, Head of Channel, Tender administrator, Any internal user]
+labelWidth: 250
+rows:
+  - {group: Customer activities}
+  - {action: Log or plan a customer activity, cells: [y, y, y, y, y, y, y]}
+  - {action: See every customer on Customer Activities and Market Coverage, cells: [p, p, p, y, p, y, p]}
+  - {group: Account ownership}
+  - {action: Claim for Me, cells: [y, n, n, y, n, y, n]}
+  - {action: "Accept Suggestion, Assign To…, Mark as Company", cells: [n, n, n, y, n, y, n]}
+  - {group: Target accounts}
+  - {action: Propose as Target, cells: [y, y, y, y, y, y, y]}
+  - {action: "Approve, Decline, set Target Account or tier", cells: [n, n, n, y, n, y, n]}
+  - {action: Apply Suggested Sector, cells: [n, n, n, y, n, y, n]}
+  - {group: Prequalifications}
+  - {action: "Create, change status, Log RFQ", cells: [y, y, y, y, y, y, y]}
+legend: {p: "Partly: see the notes under the picture"}

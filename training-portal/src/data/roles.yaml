@@ -8,6 +8,7 @@
 - { id: presales,           label: Technical Presales,    department: channel }
 - { id: head-channel,       label: Head of Channel,       department: channel }
 - { id: channel-user,       label: Channel user,          department: channel }
+- { id: tender-admin,       label: Tender administrator,  department: commercial }
 - { id: delivery-pm,        label: Delivery PM,           department: delivery }
 - { id: head-delivery,      label: Head of Delivery,      department: delivery }
 - { id: delivery-finance,   label: Delivery Finance,      department: finance-and-accounts }

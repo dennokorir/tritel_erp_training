@@ -1,0 +1,27 @@
+type: screen
+title: A compliance item and a new validity period
+desc: A compliance item opened from Tender Manager, Compliance, with the Create button, the name, the Compliance Body and the Compliance History tab, then the validity period form that Create opens, with Date Start, Date End and the Documents tab, numbered 1 to 6.
+source: crm_tender/views/crm_compliance_views.xml (crm_compliance_form, crm_compliance_history_form)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [Tenders, My Actions, Tender Customers, {label: Compliance, active: true, n: 1}, Commercial Targets, Reporting, Configuration]
+  breadcrumb: [Compliance, Tax compliance certificate]
+blocks:
+  - buttons: [{label: Create, primary: true, n: 4}]
+  - title: {text: Tax compliance certificate, n: 2}
+  - fields:
+      - [{label: Compliance Body, value: Tax authority, n: 3}, {label: Attachment Url, value: "/web/content/…"}]
+  - tabs: {items: [Compliance History], active: Compliance History}
+  - table:
+      columns: [Name, Date Start, Date End, Status]
+      widths: [3, 2, 2, 1]
+      rows:
+        - [Tax compliance certificate, 01/01/2025, 31/12/2025, {text: Expired, badge: true, tone: warn}]
+  - divider: true
+  - heading: "After Create: the new validity period"
+  - fields:
+      - [{label: Date Start, value: 01/01/2026, n: 5}, {label: Date End, value: 31/12/2026}]
+  - tabs: {items: [Documents], active: Documents, n: 6}
+  - fields:
+      - [{label: Attach a file, value: tax-compliance-2026.pdf}]

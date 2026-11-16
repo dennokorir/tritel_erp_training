@@ -1,0 +1,70 @@
+---
+title: Review, send back or approve a summary
+description: Review a submitted project summary, send it back with a note, or approve it and record whether the customer can be named; reopen a complete one if it needs more work.
+module: tenders
+pageType: how-to
+roles: [head-channel, head-commercial]
+tags: [project summaries, approvals]
+keywords: [case study, reference, credentials, review, approve, send back, reject, customer naming, anonymise, reopen, sign off]
+where: [Tender Manager, My Actions]
+before:
+  - You are the Head of Channel, the Head of Commercial or a Tender administrator, and you did not write this summary yourself.
+  - The summary is <strong>In review</strong>. You get an email <em>Project summary to review</em> and a to-do <em>Review Project Summary</em> when the writer submits it.
+related: [tenders/concepts/project-summaries, tenders/workflows/project-summary, tenders/how-to/customers/write-a-project-summary, tenders/how-to/customers/use-the-summary-library, tenders/how-to/customers/export-for-marketing, tenders/how-to/bids/tender-my-actions]
+sources:
+  - tritel_tender_tracker/views/project_summary_views.xml
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/wizards/tender_summary_wizard.py
+  - tritel_tender_tracker/views/portal_my_actions_templates.xml
+  - tritel_tender_tracker/models/my_actions.py
+sidebar: { order: 3 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+When a writer submits a project summary, a manager reads it and either sends it back with a note or approves it. Approving puts it in the summary library, so this is also where you decide whether marketing may name the customer.
+
+<Illustration name="tenders/cust-summary-review" caption="A summary in review, with the approval window open. The numbers match the steps below." />
+
+## Steps
+
+1. Open the summary. Use the link in the email, or open **Tender Manager › My Actions** and click it under **Summaries to review**. (In **Tenders › Summary Tracker**, click **In review** in the **Status** panel.)
+2. Read the text under each heading. The **Headings** list on the right shows which are filled. **History** at the bottom shows each step, with the text as it was submitted.
+3. If it needs changes, click **Send back**. Under **What needs to change**, tell the writer what to fix, then click **Confirm**.
+4. If it is ready, click **Approve**. Choose the **Customer naming**, then click **Confirm**:
+   - **Can be named**: marketing may name the customer publicly.
+   - **Anonymise**: the customer's name must be removed outside the company.
+   - **Not yet asked**: nobody has asked the customer yet.
+
+To take a **Complete** summary back for more work:
+
+<Illustration name="tenders/cust-summary-reopen" caption="Reopening a complete summary." />
+
+5. Open the summary and click **Reopen**. Click **Ok** to confirm *Reopen this summary? It leaves the library until it is approved again.*
+
+On the portal, open **Summaries** (**/my/summaries**) and pick the tender. Under the text, choose the **Customer naming** and click **Approve**, or write in **What needs to change** and click **Send back**. A complete summary has a **Reopen** button.
+
+## What happens next
+
+- **Send back**: the status moves to **Changes requested**. The writer gets a to-do with your note, a new due date 7 days away, and an email *Project summary sent back*. Your note shows on the summary as the **Reviewer's note**.
+- **Approve**: the status moves to **Complete**. The summary appears in the library straight away. The writer and the person who requested it get *Project summary complete*, with the naming you chose.
+- **Reopen**: the status moves back to **Writing**, with a new due date 7 days away. The summary leaves the library and the writer gets *Project summary reopened*.
+- Every step is noted in the **History** and in the tender's chatter.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *You wrote this summary, so someone else needs to review it.* | You are also the writer. | Ask another manager to review it. |
+| *Add a note so the writer knows what to change.* | **What needs to change** was empty. | Write what to fix. |
+| *Choose whether the customer can be named before approving.* | No **Customer naming** was chosen. | Pick one of the three choices. |
+| *Only a summary in review can be sent back.* / *Only a summary in review can be approved.* | Someone else already decided it, or the writer hasn't submitted yet. | Refresh the page and check the status bar. |
+| *Only an approved summary can be reopened.* | The summary is not **Complete**. | Nothing to reopen. Use **Reassign** while it is being written. |
+| *Only an Administrator, Head of Commercial or Head of Channel can do this.* | You don't have one of those roles. | Leave it to a summary manager. |
+
+:::note[Good to know]
+- The review to-do goes to the manager who asked for the summary (or to another manager if they also wrote it), but any manager who isn't the writer can approve or send it back.
+- If the review is not done within 5 days, the reviewer and the requester get *Overdue: project summary* the day after, then every 7 days.
+- Under **Summaries waiting on others** in **My Actions**, managers can click **Remind** to nudge whoever a summary is waiting on.
+- On the portal, **Reopen** has no confirmation step. It reopens at once.
+- The library shows **Anonymise** as **Anonymise externally**. Inside the company the real name is always shown; the badge says how it may be used outside.
+:::

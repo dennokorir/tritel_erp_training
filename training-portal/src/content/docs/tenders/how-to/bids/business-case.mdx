@@ -1,0 +1,66 @@
+---
+title: Prepare and approve a business case
+description: List the expected costs of a tender to show its gross profit and margin, submit it, and have the Head of Commercial approve it.
+module: tenders
+pageType: how-to
+roles: [account-manager, head-commercial]
+tags: [tenders, business case, my actions]
+keywords: [business case, costing, cost sheet, BOQ, margin, gross profit, GP, pricing approval, bid approval, commission]
+where: [Tender Manager, Tenders, All Tenders]
+before:
+  - The tender has its <strong>Expected Revenue</strong> filled in; the business case uses it as the revenue.
+  - "Anyone can prepare and submit a business case. Approving or rejecting needs the <strong>Head of Commercial</strong> or <strong>Tender administrator</strong> role."
+related: [tenders/concepts/business-cases, tenders/workflows/business-case, tenders/calculations/business-case-margin, tenders/how-to/bids/tender-my-actions]
+sources:
+  - tritel_tender_tracker/views/tender_business_case_views.xml
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/my_actions.py
+sidebar: { order: 12 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A **business case** sets the tender's expected revenue against what it will cost to deliver: equipment, licences, subcontractors, internal labour and commissions. It shows the estimated gross profit and margin, and the Head of Commercial approves it. After the award, the same screen compares the estimate with the actual sales and purchase orders.
+
+<Illustration name="tenders/bid-business-case" caption="Preparing a business case. The numbers match the steps below." />
+
+## Steps
+
+1. Open the tender and click the **Business Case** smart button. If the tender has none yet, a draft is created and opened.
+2. On the **Cost Breakdown** tab, click **Add a line** for each cost and fill in:
+   - **Category**: **Hardware / Equipment**, **Software / Licenses**, **Labour (Internal)**, **Subcontractors** or **Commissions & Facilitation**;
+   - **Description**, which is required;
+   - **Currency**, **Qty** and **Unit Price**.
+
+   **Subtotal (line CCY)** is in the line's currency; **Subtotal (CC)** converts it to KES at today's rate.
+3. On the **Notes & Assumptions** tab, write the assumptions behind the figures, such as exchange rate, payment terms or exclusions.
+4. Check the figures at the top: **Revenue**, **Total Cost**, **Gross Profit** and **Margin** (all **Est.**). The margin's colour bar is green from 20%, amber from 10% to under 20%, and red below 10%.
+5. Click **Submit for Review**.
+
+<Illustration name="tenders/bid-business-case-approve" caption="The Head of Commercial's view of a submitted case. The numbers match the steps below." />
+
+6. Head of Commercial: open **Tender Manager › My Actions**; submitted cases are under **Business cases to approve**. Click one.
+7. Check the costs, margin and notes, then click **Approve**.
+8. If it needs rework, see the note below about **Reject**.
+
+## What happens next
+
+- **After Submit for Review:** status **Submitted**, with **Submitted By** and **Submitted Date**. It appears in the Heads of Commercial's and Tender administrators' **My Actions** under **Business cases to approve**, and in yours under **Business cases waiting for approval**.
+- **After Approve:** status **Approved**, with **Reviewed By** and **Review Date**. It leaves both lists.
+- **After Reject:** status **Rejected**, with the **Rejection Reason** shown. It comes back to the person who created it under **Business cases to finish**. A Tender administrator can **Reset to Draft** a submitted or rejected case.
+- **Once the tender is Won or Prequalified**, an **Act.** figure appears under each estimate, from the tender's confirmed sales orders (revenue) and confirmed purchase orders (cost), with the difference. The **Actual vs Estimated** tab shows the detail. See [Business case margin](/tenders/calculations/business-case-margin/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Description is required on all cost lines.* | A cost line has no **Description**. | Describe every line. |
+| *Please enter a rejection reason before rejecting.* | **Reject** needs a **Rejection Reason**, and the box isn't shown on a submitted case. | See the note below. |
+
+:::note[Good to know]
+- **Rejecting at the moment:** the **Rejection Reason** box only appears once a case is already rejected, so **Reject** on a submitted case stops with the message above. Until this changes, write what needs to change in the chatter (**Send message**), let the account manager update the cost lines (they stay editable while submitted), then **Approve** it. Or ask a Tender administrator to **Reset to Draft**.
+- Cost lines can still be changed after approval, and a change doesn't send the case back for approval. Check the chatter if figures move.
+- **Commissions & Facilitation** lines are private: only the head who owns the commission (Head of Commercial or Head of Channel, set in **Commission Role**) and Tender administrators see their description. Others see dots.
+- The case belongs to whoever first clicked the **Business Case** button: that person gets the **Business cases to finish** and **Business cases waiting for approval** items. A Head of Commercial doesn't see their own case under **Business cases to approve**; another approver must approve it.
+- Cases on Dropped, Lost or Cancelled tenders don't appear under **Business cases to approve**.
+:::

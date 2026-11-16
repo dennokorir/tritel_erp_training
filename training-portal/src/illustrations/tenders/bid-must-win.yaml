@@ -1,0 +1,20 @@
+type: screen
+title: Flagging a must-win tender
+desc: A tender with the Flag Must-Win button, and the Flag as Must-Win window explaining that errors count three times, the required Reason box and the Save button, numbered 1 to 4.
+source: tritel_tender_tracker/views/bid_quality_views.xml (view_tender_form_bid_quality); wizards/bid_quality_wizards.xml (tender_must_win_wizard_form); models/bid_quality.py
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true, n: 1}, My Actions, Tender Customers, Commercial Targets]
+  breadcrumb: [Tenders, Campus Wi-Fi upgrade]
+blocks:
+  - buttons: [{label: Flag Must-Win, n: 2}, {label: Mark Submitted, primary: true}, {label: Drop}, {label: Cancel}]
+    status: {steps: [Draft, Bidding, Evaluation], current: Bidding}
+  - title: {text: Campus Wi-Fi upgrade, sub: "Ref TND-2026-001 · Customer A · KES 12,000,000"}
+  - dialog:
+      title: Flag as Must-Win
+      blocks:
+        - text: A confirmed error on a must-win tender counts three times in the Bid Quality Score. The team is told by email if the tender hasn't been submitted yet.
+        - fields:
+            - [{label: Reason, value: Anchor account; opens the 2027 campus framework, bold: true, n: 3}]
+        - buttons: [{label: Save, primary: true, n: 4}, {label: Cancel}]

@@ -1,0 +1,28 @@
+type: screen
+title: Commercial portal dashboard
+desc: The My Dashboard page of the commercial portal for an account manager, with the tab bar, the Period list, the Targets, Pipeline, Tenders, Tender Success and Achievements cards, and the Customer Touchpoints and Recent Activities panels, numbered 1 to 6.
+source: tritel_tender_tracker/views/portal_tender_templates.xml (portal_dashboard, portal_tender_nav)
+frame:
+  app: Tritel portal
+  menu: [{label: Dashboard, active: true, n: 1}, My Actions, Targets, Pipeline, Summaries, Tenders, Achievements, Customers]
+  breadcrumb: [Home, Tender Dashboard]
+blocks:
+  - title: {text: My Dashboard}
+  - fields:
+      - [{label: "Period:", value: "FY 2026 Q4 ★", n: 2}]
+  - tiles:
+      - {label: Targets, value: "65%"}
+      - {label: "Pipeline · 12 opportunities", value: "KES 40,000,000", n: 3}
+      - {label: "Tenders · in period", value: "8"}
+  - tiles:
+      - {label: "Tender Success · win rate", value: "33% Good", tone: good, n: 4}
+      - {label: "Achievements · awards recorded", value: "3"}
+      - {label: "Customer Touchpoints · unique accounts touched", value: "11", n: 5}
+  - heading: Recent Activities
+    n: 6
+  - table:
+      columns: [Customer, Type, Date]
+      widths: [3, 3, 2]
+      rows:
+        - [Customer A, Customer visit, 2026-11-12]
+        - [Customer B, Call, 2026-11-10]

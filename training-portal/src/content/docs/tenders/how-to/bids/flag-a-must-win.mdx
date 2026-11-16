@@ -1,0 +1,56 @@
+---
+title: Flag a must-win tender
+description: Mark a tender as must-win so the team is warned, deadlines are watched more closely, and its bid quality counts three times.
+module: tenders
+pageType: how-to
+roles: [head-commercial]
+tags: [tenders, bid quality]
+keywords: [must win, must-win, strategic bid, priority tender, key tender, flag, critical bid, high priority]
+where: [Tender Manager, Tenders, All Tenders]
+before:
+  - You have the <strong>Head of Commercial</strong> or <strong>Tender administrator</strong> role. Nobody else sees the button.
+  - Ideally the tender is still in Draft or Bidding, so the team is told and the extra effort is counted.
+related: [tenders/concepts/must-win-and-bid-quality, tenders/workflows/quality-and-disqualification, tenders/calculations/bid-quality-score, tenders/calculations/workload-points, tenders/how-to/bids/score-bid-quality]
+sources:
+  - tritel_tender_tracker/views/bid_quality_views.xml
+  - tritel_tender_tracker/wizards/bid_quality_wizards.xml
+  - tritel_tender_tracker/wizards/bid_quality_wizards.py
+  - tritel_tender_tracker/models/bid_quality.py
+  - tritel_tender_tracker/models/bid_desk.py
+sidebar: { order: 9 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A **must-win** tender is one the company can't afford to get wrong. Flagging it warns the bid team, sends extra deadline reminders, and makes its quality check count three times in the Bid Liaison's **Bid Quality Score**. You give a reason each time you flag or remove the flag.
+
+<Illustration name="tenders/bid-must-win" caption="Flagging a tender in Bidding as must-win. The numbers match the steps below." />
+
+## Steps
+
+1. Open the tender from **Tender Manager › Tenders › All Tenders**.
+2. Click **Flag Must-Win**.
+3. In **Flag as Must-Win**, type the **Reason**: why this tender matters.
+4. Click **Save**.
+
+To take the flag off, click **Remove Must-Win**, type the **Reason** and click **Save**.
+
+## What happens next
+
+- A red **Must-Win** badge appears next to the **Ref** and on the board card. The **Must-Win** filter and the **Priority** column in the list pick it up.
+- The **Bid Quality** tab shows **Why Must-Win**, **Flagged By** and **Flagged On**, and the chatter records the reason.
+- **If the tender is in Draft or Bidding**, the Account Manager, Bid Liaison, Technical Presales and the Bid Liaison's manager get a *Must-win tender* email. They also get warnings 7, 3 and 1 days before the deadline, and see it in **My Actions** under **Must-win tenders closing soon** in the last 7 days.
+- The tender counts 2 extra workload points for the Bid Liaison when it was flagged before submission. See [Bid desk workload points](/tenders/calculations/workload-points/).
+- In Accountability, its quality score counts three times in the **Bid Quality Score** (Bid Liaison) and **Bid Compliance** (Technical Presales). See [Bid quality score](/tenders/calculations/bid-quality-score/).
+- **Removing** the flag clears the reason and the extra points, and emails the same people *No longer must-win* if the tender is still in Draft or Bidding.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Only Head of Commercial or a Tender Tracker Administrator can change must-win.* | Someone without either role tried to flag or remove it. | Ask the Head of Commercial. |
+| *This tender is already must-win.* | It was flagged by someone else while you had it open. | Refresh the page. |
+| *Must-win, quality check and disqualification details can only be changed with the buttons on the tender.* | Someone tried to change the must-win details directly, for example by import. | Use **Flag Must-Win** or **Remove Must-Win**. |
+
+:::note[Good to know]
+- At the moment must-win can be flagged or removed at **any** status, including after submission or on a closed tender. Emails go out only while the tender is in Draft or Bidding, and the extra workload points count only when it was flagged before submission. Flag tenders as early as possible.
+:::

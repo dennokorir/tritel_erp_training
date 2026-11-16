@@ -1,0 +1,26 @@
+type: screen
+title: Customer Activities heatmap
+desc: The Customers tab of Customer Activities, with the Showing selector, Made by them only, the period arrows and window length, the filter bar, the summary figures and the heatmap of touches per customer per month, numbered 1 to 5.
+source: tritel_tender_tracker/static/src/touchpoints/workspace/touchpoints_workspace.xml; touchpoints/heatmap/touchpoints_heatmap.xml
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, Tenders, {label: Tender Customers, active: true, n: 1}, Reporting]
+  breadcrumb: [Customer Activities]
+blocks:
+  - buttons: [{label: + Log touch, primary: true}, {label: Plan touch}, {label: List}]
+  - tabs: {items: [Customers, People, "Planned  3"], active: Customers}
+  - buttons: [{label: "Showing  My team", n: 2}, {label: "☐ Made by them only"}, {label: "‹  Dec 2025 – Nov 2026  ›"}, {label: 12 months}]
+  - search: {placeholder: "Search customer…", filters: [All account managers, All roles, All channels, "☐ Only customers with open deals", Most touches], n: 3}
+  - tiles:
+      - {label: Touches, value: "86"}
+      - {label: Customers, value: "14"}
+      - {label: Quiet > 90 days, value: "3", tone: warn}
+      - {label: "AM · Presales · Bid liaison", value: "52 · 30 · 4"}
+  - table:
+      columns: [Customer, Sep, Oct, Nov, Last touch · people]
+      widths: [3, 1, 1, 1, 3]
+      rows:
+        - {cells: ["● Customer A", "3", "5", "2", {text: "12 Nov 2026 · 3", badge: true, tone: good}], n: 4}
+        - ["Customer B", "1", "", "", {text: "20 Sep 2026 · 1", badge: true, tone: warn}]
+        - {cells: ["Customer C", "", "", "", {text: Never · 0, badge: true, tone: bad}], n: 5}

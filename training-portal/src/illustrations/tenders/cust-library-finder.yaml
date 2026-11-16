@@ -1,0 +1,32 @@
+type: screen
+title: Reference finder
+desc: The Reference finder view of the Project Summaries library, with the What does the bid ask for? choices on the left and ranked matching summaries with points and reasons on the right, numbered 6.
+source: tritel_tender_tracker/static/src/summary_library/summary_library.xml (SummaryLibrary, finder view); models/summary_library.py (_summary_library_find)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, {label: Tenders, active: true}, Tender Customers]
+  breadcrumb: [Project Summaries]
+blocks:
+  - buttons: [{label: Gallery}, {label: Reader}, {label: Pillar × sector}, {label: Timeline}, {label: Reference finder, primary: true}, {label: List}]
+  - columns:
+      - panel: true
+        blocks:
+          - heading: What does the bid ask for?
+            n: 6
+          - fields:
+              - [{label: Pillar, value: Connectivity}]
+              - [{label: Client's sector, value: Banking}]
+              - [{label: OEM in the bid, value: Cisco}]
+              - [{label: Tritel's role, value: Any}]
+              - [{label: "☑", value: Client must be nameable, input: false}]
+      - panel: true
+        blocks:
+          - table:
+              columns: [Match, Points]
+              widths: [4, 1]
+              rows:
+                - [{text: "Network upgrade · Customer A · Banking · 2026", bold: true}, "100 pts"]
+                - ["Why: same primary pillar, same sector, Cisco delivered, recent, can be named", ""]
+                - [{text: "Branch Wi-Fi · Customer F · Banking · 2024", bold: true}, "81 pts"]
+                - ["Why: pillar as secondary, same sector, Cisco delivered, can be named", ""]

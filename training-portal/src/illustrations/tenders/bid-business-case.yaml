@@ -1,0 +1,30 @@
+type: screen
+title: Preparing a tender business case
+desc: A draft business case with the Submit for Review button and status bar, the Revenue, Total Cost, Gross Profit and Margin strip, the Tender and Approval groups, and the Cost Breakdown tab with Category, Description, Currency, Qty, Unit Price and subtotals, numbered 1 to 5.
+source: tritel_tender_tracker/views/tender_business_case_views.xml (view_tender_business_case_form); models/tender_business_case.py
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true}, My Actions, Tender Customers, Commercial Targets]
+  breadcrumb: [Tenders, Campus Wi-Fi upgrade, Campus Wi-Fi upgrade]
+blocks:
+  - buttons: [{label: Submit for Review, primary: true, n: 5}]
+    status: {steps: [Draft, Submitted, Approved, Rejected], current: Draft}
+  - tiles:
+      - {label: "Revenue · Est.", value: "12,000,000"}
+      - {label: "Total Cost · Est.", value: "9,000,000", tone: warn}
+      - {label: "Gross Profit · Est.", value: "3,000,000", tone: good}
+      - {label: "Margin · Est.", value: "25.0%", tone: good, n: 4}
+  - fields:
+      - [{label: Tender, value: Campus Wi-Fi upgrade, n: 1}, {label: Submitted By, value: "", readonly: true}]
+      - [{label: Expected Revenue, value: "12,000,000.00", readonly: true}, {label: Reviewed By, value: "", readonly: true}]
+  - tabs: {items: [Cost Breakdown, Notes & Assumptions], active: Cost Breakdown, n: 3}
+  - table:
+      columns: [Category, Description, Currency, Qty, Unit Price, Subtotal (CC)]
+      widths: [3, 3.6, 1.4, 1, 2, 2.2]
+      n: 2
+      rows:
+        - [Hardware / Equipment, Access points, USD, "60", "500.00", "3,900,000.00"]
+        - [Software / Licenses, Controller licences, USD, "60", "200.00", "1,560,000.00"]
+        - [Subcontractors, Cabling, KES, "1", "2,540,000.00", "2,540,000.00"]
+        - [Labour (Internal), Installation team, KES, "20", "50,000.00", "1,000,000.00"]

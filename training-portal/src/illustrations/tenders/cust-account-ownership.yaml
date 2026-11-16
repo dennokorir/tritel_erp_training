@@ -1,0 +1,29 @@
+type: screen
+title: Account Ownership
+desc: The Account Ownership list with the Needs Owner filter, the Accept Suggestion, Assign To…, Mark as Company and Claim for Me buttons, the suggested owner and why, and the Assign account manager window, numbered 1 to 5.
+source: tritel_tender_tracker/views/account_ownership_views.xml (view_partner_ownership_tree, view_assign_owner_wizard_form)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, Tenders, {label: Tender Customers, active: true, n: 1}, Reporting]
+  breadcrumb: [Account Ownership]
+blocks:
+  - buttons: [{label: Accept Suggestion, primary: true, n: 3}, {label: Assign To…, n: 4}, {label: Mark as Company}, {label: Claim for Me, n: 2}]
+  - search: {facets: ["Needs Owner (engaged, no AM)"], placeholder: "Search…", filters: [Filters, Group By]}
+  - table:
+      columns: ["", Customer, Account Manager, Suggested Owner, Why, Coverage, Touches]
+      widths: [0.5, 2.2, 1.8, 1.8, 3.6, 1.4, 1.1]
+      rows:
+        - ["☑", Customer A, "", Employee A, "Account manager on 2 of its deals", In play, "4"]
+        - ["☐", Customer B, "", Employee B, "Made 3 of its customer touches", Engaged, "3"]
+        - ["☐", Customer C, "", "", "Previous account manager archived", Contested, "0"]
+  - dialog:
+      title: Assign account manager
+      n: 5
+      blocks:
+        - fields:
+            - [{label: Account Manager, value: Employee B}]
+            - [{label: Note, value: Agreed in the sales meeting}]
+            - [{label: Customers, value: Customer C, readonly: true}]
+        - text: "The account manager also moves onto these customers' draft and bidding tenders, planned touches and early-stage opportunities."
+        - buttons: [{label: Assign, primary: true}, {label: Cancel}]

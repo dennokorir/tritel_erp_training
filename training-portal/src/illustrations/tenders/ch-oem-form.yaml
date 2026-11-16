@@ -1,0 +1,29 @@
+type: screen
+title: An OEM in the Channel app
+desc: The OEM form in the Channel app with the Confirm button and status bar, the Opportunities, Purchase Orders, Bookings and Awaiting OEM smart buttons, the account manager and partner portal, the Channel performance this year figures and the Distributors tab, numbered 1 to 6.
+source: crm_tender/views/crm_oem_views.xml (crm_oem_view_form), crm_tender/views/crm_oem_booking_views.xml (crm_oem_view_form_bookings)
+frame:
+  grid: true
+  app: Channel
+  menu: [{label: "OEMs(Vendors)", active: true, n: 1}, OEM Bookings, Untagged Purchases, Distributors, Certifications, Learning Development, Configuration]
+  breadcrumb: [CRM OEMs, OEM A]
+blocks:
+  - buttons: [{label: Confirm, primary: true, n: 3}]
+    status: {steps: [Onboarding, Active, Archived], current: Onboarding}
+  - smart: [{label: Opportunities, value: "4"}, {label: Purchase Orders, value: "6"}, {label: Bookings, value: "3"}, {label: Awaiting OEM, value: "2", tone: warn, n: 5}]
+  - title: {text: OEM A, n: 2}
+  - fields:
+      - [{label: Account Manager, value: Employee A}, {label: Partner Portal, value: "partners.oem-a.example"}]
+      - [{label: Email, value: employee.a@example.com}, {label: Tags, value: Networking}]
+  - heading: Channel performance this year (USD)
+    n: 6
+  - fields:
+      - [{label: OEM-Recognised YTD (USD), value: "90,000.00"}, {label: Average Distributor Margin (%), value: "10.00"}]
+      - [{label: Purchase Cost YTD (USD), value: "100,000.00"}, {label: Awaiting OEM Confirmation (USD), value: "12,000.00", tone: warn}]
+  - tabs: {items: [Distributors, Solution Engineers, Certifications], active: Distributors, n: 4}
+  - table:
+      columns: [Distributor, Email]
+      widths: [2, 3]
+      rows:
+        - [Distributor A, sales@distributor-a.example]
+        - [Distributor B, sales@distributor-b.example]

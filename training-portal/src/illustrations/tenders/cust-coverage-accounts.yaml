@@ -1,0 +1,30 @@
+type: screen
+title: Market Coverage accounts board
+desc: The Accounts tab of Market Coverage, a board with one column per coverage rung and a card per customer showing bids, wins, won value and account manager, with the search and filters, numbered 6 and 7.
+source: tritel_tender_tracker/static/src/coverage/market_coverage.xml (MarketCoverage, accounts)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, Tenders, {label: Tender Customers, active: true}, Reporting]
+  breadcrumb: [Market Coverage]
+blocks:
+  - tabs: {items: [Overview, Accounts, Sectors, Share of account, Account managers], active: Accounts}
+  - search: {placeholder: "Search customer…", filters: [All rungs, "☐ Has open bid", "☐ No account manager"], n: 6}
+  - kanban:
+      - title: Anchor
+        count: 2
+        n: 7
+        cards:
+          - {title: "Customer A ◎", lines: ["4 bids · 3 wins · open", "KES 30,000,000 won", Employee A], tone: good}
+      - title: Named
+        count: 3
+        cards:
+          - {title: Customer B, lines: ["2 bids · 1 win", "KES 5,000,000 won", Employee B], tone: good}
+      - title: In play
+        count: 4
+        cards:
+          - {title: Customer C, lines: ["1 bid · 0 wins · open", No account manager], tone: accent}
+      - title: Contested
+        count: 2
+        cards:
+          - {title: Customer D, lines: ["2 bids · 0 wins", Employee A], tone: warn}

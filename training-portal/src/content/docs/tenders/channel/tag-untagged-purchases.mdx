@@ -1,0 +1,57 @@
+---
+title: Set the OEM on untagged purchases
+description: As a Channel Manager, give an OEM to confirmed purchase order lines that have none, one at a time or in bulk with Set OEM, so they can be booked and counted.
+module: tenders
+pageType: how-to
+roles: [head-channel, channel-user]
+tags: [channel, oem bookings]
+keywords: [untagged purchases, set OEM, tag purchase lines, PO lines, LPO, purchase order, vendor, OEM tagging, clean-up, awaiting OEM]
+where: [Channel, Untagged Purchases]
+before:
+  - You are a <strong>Channel Manager</strong> or <strong>Channel Administrator</strong>. The menu is hidden from Channel Users.
+  - The OEM exists under <strong>Channel › OEMs(Vendors)</strong>.
+related: [tenders/channel/oems-and-distributors, tenders/channel/book-oem-purchases, tenders/channel/oem-bookings, tenders/channel/index]
+sources:
+  - crm_tender/views/crm_oem_booking_views.xml
+  - crm_tender/wizards/oem_set_lines.py
+  - crm_tender/models/purchase.py
+  - crm_tender/models/product.py
+  - crm_tender/models/product_template.py
+  - crm_tender/security/ir.model.access.csv
+sidebar: { order: 7 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+A purchase line can only be booked, and only counts as awaiting OEM confirmation, once it has an **OEM**. The system sets it by itself when it can be sure (see [OEMs and distributors](/tenders/channel/oems-and-distributors/)). **Untagged Purchases** is the work list of confirmed lines it couldn't tag. Work through it regularly, and before you book an OEM's portal figure.
+
+<Illustration name="tenders/ch-untagged-purchases" caption="Untagged Purchases with the Set OEM window. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Channel › Untagged Purchases**. It shows lines on purchase orders confirmed since 1 Jan 2026.
+2. The list opens with the **No OEM** filter and grouped by **Distributor**. Open a distributor's group. Use the search box to find an order, product or distributor.
+3. **To tag one line:** click its **OEM** cell, choose the OEM, and save the line. It leaves the list.
+4. **To tag several lines with the same OEM:** tick them, then open **Action** and choose **Set OEM**.
+5. In the window that opens, choose the **OEM**. Leave **Also set on the products** ticked if these products always belong to that OEM: future purchase lines for them are then tagged automatically.
+6. Click **Set OEM**. A message confirms it, for example *2 line(s) tagged OEM B.*
+
+## What happens next
+
+- The lines leave **Untagged Purchases** and appear under the OEM's **Awaiting OEM** smart button until a confirmed booking covers them.
+- They can now be picked in **Add purchase lines** on a booking for that OEM. See [Book OEM purchases](/tenders/channel/book-oem-purchases/).
+- With **Also set on the products** ticked, each product that had no OEM gets this one (on the product's **Channel** tab), and its other untagged, unbooked purchase lines are tagged too. Products that already have an OEM are left alone.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *1 line(s) are already in an OEM booking (BK-1001); remove them from the booking before changing their OEM.* | You changed the OEM on a line that is already booked. | Remove the line from the booking first, then change its OEM. |
+| An access error when you save a line in the list | Changing a purchase line in place needs Purchase rights, which a Channel Manager may not have. | Tick the line and use **Action › Set OEM** instead. |
+| Fewer lines tagged than you ticked | **Set OEM** skips lines that are already in a booking. | Nothing to do: booked lines keep their OEM. |
+
+:::note[Good to know]
+- The list starts on **1 Jan 2026**. Lines on orders confirmed before that don't appear, even without an OEM.
+- **Set OEM** is also in the **Action** menu of other purchase line lists, for Channel Managers.
+- A distributor that carries exactly one OEM tags every new line from that supplier automatically. If a distributor starts carrying a second OEM, new lines from it are no longer tagged by supplier, only by product.
+- Purchase users can also set the **OEM** column on the lines of a purchase order themselves.
+:::

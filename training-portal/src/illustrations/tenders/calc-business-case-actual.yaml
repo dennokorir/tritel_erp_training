@@ -1,0 +1,17 @@
+type: calc
+title: Actual gross profit and variance
+desc: Worked example of a business case's actual figures after award, with a confirmed sales order of KES 11,600,000 and confirmed purchase orders of KES 8,120,000, both including 16% VAT, giving an Actual Gross Profit of 3,480,000, an Actual Margin of 30.0%, a GP Variance of +480,000 and a Margin Variance of 0.0 pp.
+source: tritel_tender_tracker/models/tender_business_case.py (_compute_actuals)
+heading: TND-2026-012 after award (KES)
+inputs:
+  - {label: Sales orders, value: "11,600,000"}
+  - {label: Purchase orders, value: "8,120,000"}
+  - {label: Estimated Gross Profit, value: "3,000,000"}
+  - {label: Estimated margin, value: "30.0%"}
+steps:
+  - {label: "Actual Gross Profit: 11,600,000 − 8,120,000", value: "3,480,000"}
+  - {label: "Actual Margin %: 3,480,000 ÷ 11,600,000 × 100", value: "30.0"}
+  - {label: "GP Variance: 3,480,000 − 3,000,000", value: "+ 480,000"}
+  - {label: "Margin Variance (pp): 30.0 − 30.0", value: "0.0"}
+result: {label: GP Variance (Actual − Estimated), value: "+ 480,000", tone: good}
+note: Both order totals include 16% VAT. The whole 480,000 comes from VAT on the orders. The margin itself has not changed.

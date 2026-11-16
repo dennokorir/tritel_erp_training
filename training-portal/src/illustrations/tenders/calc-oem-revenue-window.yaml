@@ -1,0 +1,15 @@
+type: calc
+title: OEM-recognised revenue for a quarter
+desc: Worked example of the OEM-recognised revenue metric for OEM A in Q1 2026, with a confirmed booking dated 18 Mar 2026 at USD 9,000 counted, a draft booking dated 20 Feb 2026 at USD 5,000 not counted, and a confirmed booking dated 2 Apr 2026 at USD 12,000 left for Q2, giving USD 9,000. USD 3,000 of tagged purchases awaiting OEM confirmation are listed but not counted.
+source: tritel_accountability_framework/models/metric_hook_oem.py (_hook_oem_recognised_revenue)
+heading: OEM A, Q1 2026 (1 Jan to 31 Mar)
+inputs:
+  - {label: "BK-1001, Confirmed, 18 Mar", value: "USD 9,000"}
+  - {label: "BK-1002, Draft, 20 Feb", value: "USD 5,000"}
+  - {label: "BK-1003, Confirmed, 2 Apr", value: "USD 12,000"}
+steps:
+  - {label: "BK-1001: confirmed, Booking Date inside the quarter", value: "counts"}
+  - {label: "BK-1002: still Draft", value: "not counted"}
+  - {label: "BK-1003: Booking Date after the quarter", value: "counts in Q2"}
+  - {label: "Tagged purchases with no confirmed booking", value: "USD 3,000 listed, not counted"}
+result: {label: OEM-recognised revenue (USD), value: "USD 9,000", tone: accent}

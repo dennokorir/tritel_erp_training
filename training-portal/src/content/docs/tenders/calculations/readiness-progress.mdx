@@ -1,0 +1,58 @@
+---
+title: Readiness progress
+description: How each checklist item's Status is decided, how the Progress on the Bid Readiness tab is counted, when Confirm Ready is allowed, and how Ready at 72 Hours uses the confirmation time.
+module: tenders
+pageType: calculation
+roles: [bid-liaison, presales, head-commercial, tender-admin]
+tags: [bid readiness, bid desk]
+keywords: [readiness, checklist, progress, ready, missing, expired, not needed, bid documents, compliance documents, 72 hours, confirm ready, bid bond]
+related: [tenders/concepts/bid-readiness, tenders/workflows/bid-readiness, tenders/how-to/bids/work-the-readiness-checklist, accountability/calculations/metric-families]
+sources:
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/views/bid_desk_views.xml
+  - tritel_accountability_framework/models/metric_hook_bid_desk.py
+sidebar: { order: 3 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+The **Bid Readiness** tab shows **Progress** as a count, such as *5 of 7 ready*. It is not a percentage. It counts the checklist items that are **Ready** against the items that are needed.
+
+## Each item's Status
+
+Each row of the checklist gets a **Status**, checked in this order:
+
+| Status | When |
+|---|---|
+| **Not Needed** | **Not Needed** is ticked on the row |
+| **Missing** | No file in **Document Files**, or the document has an expiry date and **Valid Until** is empty |
+| **Expired** | The document has an expiry date and **Valid Until** is before the day of the **Submission Deadline** (Nairobi time) |
+| **Ready** | Anything else |
+
+Only documents set up with an expiry date (for example a tax compliance certificate) can be **Expired**. **Valid Until** can be filled in only on those rows.
+
+## Progress
+
+**Progress** = number of **Ready** items "of" the number of items not marked **Not Needed**.
+
+<Illustration name="tenders/calc-readiness-progress" caption="One item is Not Needed, so 7 items count. 5 of them are Ready." />
+
+**Confirm Ready** checks the list again. If anything is **Missing** or **Expired**, it stops with a list, for example *This bid isn't ready yet: - Tax compliance certificate: expired*. When it succeeds, **Readiness** becomes **Confirmed Ready** with **Confirmed Ready On** and **Confirmed By**.
+
+## In Accountability
+
+**Ready at 72 Hours** (for the Bid Liaison and for Technical Presales): bids submitted in the window that were confirmed ready at least 72 hours before the deadline ÷ bids submitted with a checklist × 100. A bid never confirmed ready counts as not met. Tenders created less than 3 days before their deadline, cancelled tenders and tenders from before the bid desk started are left out. See [how metrics count](/accountability/calculations/metric-families/).
+
+The daily reminder emails the Bid Liaison and Technical Presales 5 days and 3 days before the deadline while the bid isn't confirmed ready.
+
+## Edge cases
+
+- **No checklist yet**: **Progress** is empty. The checklist is built when the tender moves to **Bidding**, or with **Create Checklist**.
+- **Everything Not Needed**: **Progress** shows *0 of 0 ready* and **Confirm Ready** is allowed.
+- **Valid Until on the deadline day**: the document is **Ready**. Only a date before the deadline day is **Expired**.
+- **The deadline moves**: the statuses are worked out again, so a document can turn **Expired** after the deadline is pushed back.
+- **Bid bond**: the *Bid bond* item is added only when **Bid Bond Required** is ticked on the tender. **Confirm Ready** adds it if the tick was set after the checklist was made.
+- **Changing a confirmed checklist**: refused with *This checklist is confirmed. Reopen it to make changes.* **Reopen** puts it back to **In Progress**, and the earlier confirmation time is cleared.
+
+:::note[Good to know]
+Reopening a confirmed checklist clears **Confirmed Ready On**. If you confirm again later than 72 hours before the deadline, the bid no longer counts as ready at 72 hours. Only reopen when something really has to change.
+:::

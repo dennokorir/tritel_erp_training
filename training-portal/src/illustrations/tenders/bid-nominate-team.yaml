@@ -1,0 +1,34 @@
+type: screen
+title: Nominating the Bid Liaison
+desc: A tender in Draft with Assign links next to Account Manager, Bid Liaison and Technical Pre-sales Engineer, and the Assign Bid Liaison window showing each full-time Bid Liaison's points this quarter, open bids, nearby deadlines and a Suggested badge, with the Why This Person? box and the Assign Bid Liaison button, numbered 1 to 6.
+source: tritel_tender_tracker/views/tender_views.xml (view_tender_form); wizards/tenders_assignment_wizard.xml; views/bid_desk_views.xml (bid_assignment_load); wizards/bid_desk_wizards.py
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true}, {label: My Actions, n: 1}, Tender Customers, Commercial Targets]
+  breadcrumb: [Tenders, Campus Wi-Fi upgrade]
+blocks:
+  - buttons: [{label: Flag Must-Win}, {label: Confirm Bid, primary: true}, {label: Drop}, {label: Cancel}]
+    status: {steps: [Draft, Bidding, Evaluation], current: Draft}
+  - fields:
+      - [{label: Account Manager, value: "Employee A    Assign", n: 6}, {label: Source/Pipeline, value: Campus Wi-Fi upgrade}]
+      - [{label: Bid Liaison, value: "Assign", tone: accent, n: 2}, {label: Tags, value: Connectivity}]
+      - [{label: Technical Pre-sales Engineer, value: "Assign", tone: accent, n: 6}]
+  - dialog:
+      title: Assign Bid Liaison
+      blocks:
+        - table:
+            columns: [Bid Liaison, "Points, Q4 2026", Open now, Deadlines within 3 days, ""]
+            widths: [2.4, 2, 1.5, 2.6, 2.6]
+            n: 3
+            rows:
+              - [Employee C, "2", "1", None, {text: Suggested, badge: true, tone: good}]
+              - [Employee D, "4", "2", None, ""]
+              - [Employee B, "6", "3", 5 Dec, {text: Over fair share, badge: true, tone: bad}]
+        - text: Assign a bid liaison to lead bid compilation process
+        - fields:
+            - [{label: Bid Liaison, value: Employee B, n: 4}]
+        - note: {text: "Employee B is over their fair share this quarter and has another deadline within 3 days.", tone: bad}
+        - fields:
+            - [{label: Why This Person?, value: Has run this customer's last three bids, n: 4}]
+        - buttons: [{label: Assign Bid Liaison, primary: true, n: 5}, {label: Cancel}]

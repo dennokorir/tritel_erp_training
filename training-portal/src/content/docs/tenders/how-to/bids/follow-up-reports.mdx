@@ -1,0 +1,53 @@
+---
+title: Run the Tender and Pipeline Follow Up reports
+description: Print a PDF of tenders or CRM opportunities with the customer activity updates logged on each in a date range, for follow-up meetings.
+module: tenders
+pageType: how-to
+roles: [account-manager, head-commercial]
+tags: [tenders, reports]
+keywords: [follow up, follow-up report, pipeline review, weekly report, sales meeting, evaluation updates, activity updates, PDF, print, opportunities]
+where: [Tender Manager, Reporting, Tender Follow Up Report]
+before:
+  - "Updates come from customer activities logged on the tender or opportunity, so log them first."
+  - "The Pipeline Follow Up Report is in CRM and needs access to CRM's <strong>Reporting</strong> menu."
+related: [tenders/concepts/customer-activities, tenders/how-to/customers/log-a-customer-activity, accountability/calculations/metric-families, tenders/how-to/bids/tender-my-actions]
+sources:
+  - tritel_tender_tracker/report/tender_evaluation_report.py
+  - tritel_tender_tracker/report/tender_evaluation_report.xml
+  - tritel_tender_tracker/report/pipeline_report.py
+  - tritel_tender_tracker/report/pipeline_report.xml
+sidebar: { order: 15 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Two PDF reports list each deal with the follow-up updates logged on it, ready for a pipeline or tender review meeting. The **Tender Follow Up Report** covers tenders (by default those in **Evaluation**, waiting for the customer's decision). The **Pipeline Follow Up Report** covers CRM opportunities.
+
+<Illustration name="tenders/bid-follow-up-reports" caption="The two report windows side by side. The numbers match the steps below." />
+
+## Steps
+
+**Tender Follow Up Report**
+
+1. Open **Tender Manager › Reporting › Tender Follow Up Report**.
+2. Set **From Date** and **To Date**. They start at the first of this month and today. Only updates dated in this range are printed.
+3. Optionally choose an **Account Manager**, and one or more **Status** values. Leave **Status** empty for tenders in **Evaluation**.
+4. Click **Print Report**. The PDF lists **Ref**, **Name/Description**, **Customer**, **Account Manager**, **Status** and **Updates**: each update's date, the person responsible and their feedback.
+
+**Pipeline Follow Up Report**
+
+5. Open **CRM › Reporting › Pipeline Follow Up Report**.
+6. Set **From Date** and **To Date** the same way.
+7. Optionally choose an **Account Manager** and one or more **Stages**. Leave **Stages** empty for all stages.
+8. Click **Print Report**. The PDF lists **Opportunity**, **Customer**, **Account Manager**, **Stage**, **Expected Revenue** and **Updates**.
+
+## What happens next
+
+- The PDF downloads; nothing in Odoo changes.
+- Every tender or opportunity matching the filters is listed, even with no updates in the range. An empty **Updates** cell shows a deal nobody followed up in that period. If nothing matches, the report says *No tenders found matching the selected criteria.* (or *No pipeline items found matching the selected criteria.*).
+- In Accountability, **Tender evaluation coverage** measures the same thing week by week: whether the account manager and presales logged an update on each tender in Evaluation. See [How metrics count](/accountability/calculations/metric-families/).
+
+:::note[Good to know]
+- An update is any customer activity on the deal whose **Date** falls in the range, planned ones included. An activity with no feedback shows *No feedback*.
+- The date range filters the updates, not the deals: a tender in the chosen status is listed whatever its dates.
+- **Expected Revenue** on the pipeline report is the opportunity's figure, without a currency sign.
+:::

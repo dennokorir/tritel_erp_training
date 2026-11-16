@@ -1,0 +1,62 @@
+---
+title: Find references in the summary library
+description: Browse, filter and read complete project summaries, see which sectors and pillars have references, and use the Reference finder to pick the best cases for a bid.
+module: tenders
+pageType: how-to
+roles: [everyone]
+tags: [project summaries]
+keywords: [case study, reference, credentials, past projects, similar projects, experience, library, bid references, pillar, sector, OEM, copy text]
+where: [Tender Manager, Tenders, Project Summaries]
+before:
+  - You have a tender role (Account Manager, Bid Liaison, Technical Presales, Head of Channel, Head of Commercial or Tender administrator) or library access. Without one, the menu is not shown.
+related: [tenders/concepts/project-summaries, tenders/how-to/customers/export-for-marketing, tenders/how-to/customers/request-a-project-summary, tenders/how-to/customers/review-a-project-summary]
+sources:
+  - tritel_tender_tracker/static/src/summary_library/summary_library.xml
+  - tritel_tender_tracker/static/src/summary_library/summary_library.js
+  - tritel_tender_tracker/models/summary_library.py
+  - tritel_tender_tracker/models/summary_marketing_pack.py
+  - tritel_tender_tracker/views/summary_library_views.xml
+  - tritel_tender_tracker/views/portal_summary_library_templates.xml
+sidebar: { order: 4 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+The **Project Summaries** library holds every **Complete** project summary. Use it when a bid asks for references or similar experience, or when you want a ready-written case study.
+
+<Illustration name="tenders/cust-library-reader" caption="The library in the Reader view. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Tender Manager › Tenders › Project Summaries**. It opens on the **Gallery**: one card per case, with the client and sector, the title, the first line of the outcome and the OEMs.
+2. Narrow the cases with the bar at the top: search the text, client or OEM, or pick a pillar, sector, OEM, award year, Tritel's role or naming. **Clear** removes them all. The count shows, for example, *12 of 40 Complete summaries*.
+3. Click a card to read it in the **Reader**: the cases are listed on the left and the full text on the right. Click **Copy text** to copy the case to paste into a bid, **Open** to open the summary page, or **Export for Marketing** for a marketing pack of this case.
+4. Click **Pillar × sector** to see how many cases each sector has in each pillar. Click a cell to list its cases. For an empty cell, click **See won tenders whose summaries could fill it** to open the won tenders there with no complete summary. Tick **Count secondary pillars too** to include secondary pillars.
+5. Click **Timeline** to see every case as a dot on its pillar's lane, placed by award date. Click a dot to read it.
+6. Click **Reference finder** to rank cases for a bid (see below).
+
+Click **List** for the plain list, with the usual filters and group-by.
+
+<Illustration name="tenders/cust-library-finder" caption="The Reference finder." />
+
+In the **Reference finder**, under **What does the bid ask for?**, choose the **Pillar**, **Client's sector**, **OEM in the bid** and **Tritel's role**, and tick **Client must be nameable** if the bid needs a named reference. Up to 12 cases appear, best first, each with its points and a **Why** line, for example *same primary pillar, same sector, Cisco delivered, recent, can be named*. A case must match at least the pillar, the sector or an OEM to appear.
+
+On the portal, click **Summaries**, then **Summary library** (**/my/summaries/library**). It has the **Gallery**, **Pillar × sector**, **Timeline** and **Reference finder** views. Clicking a case opens its summary page.
+
+## What happens next
+
+Nothing changes in the system: the library is read-only. To change a case, a manager reopens the summary. See [Review, send back or approve a summary](/tenders/how-to/customers/review-a-project-summary/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *The project summary library is for people with library access or a tender role.* | You have neither. | Ask your manager to request access. |
+| *This summary is not in your library.* | You tried to copy a case you can't see (for example it was reopened since the page loaded). | Refresh the page. |
+| *Copy was blocked by the browser. Open the case and copy from there.* | Your browser refused to copy. | Click **Open** and copy from the summary page. |
+
+:::note[Good to know]
+- Inside the company, cases always show the real client. The badge tells you how a case may be used outside: **Can be named**, **Anonymise externally** or **Not yet asked**. Check it before you put a client's name in a public document.
+- The **Reference status** section is never shown in the library or in **Copy text**, and email addresses and phone numbers are replaced with *[email removed]* and *[phone removed]*.
+- How the finder scores: same primary pillar 50 points (secondary 30), same sector 25, each matching OEM 15, same role 5, up to 6 for a recent award, and 4 if the client can be named.
+- On the portal, account managers, bid liaisons and pre-sales engineers see the cases of the tenders they work on. People with library access, summary managers and Tender administrators see every case.
+:::

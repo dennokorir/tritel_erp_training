@@ -1,0 +1,19 @@
+type: screen
+title: The tender team on a tender
+desc: The top of a tender form in Draft with the Flag Must-Win and Confirm Bid buttons, the status bar, and the Customer, Account Manager, Bid Liaison and Technical Pre-sales Engineer fields each with an Assign link, and the Source/Pipeline field, numbered 1 to 5.
+source: tritel_tender_tracker/views/tender_views.xml (view_tender_form); views/bid_quality_views.xml (view_tender_form_bid_quality)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true}, My Actions, Tender Customers, Reporting]
+  breadcrumb: [All Tenders, TND-2026-001]
+blocks:
+  - buttons: [{label: Flag Must-Win}, {label: Confirm Bid, primary: true, n: 1}, {label: Drop}, {label: Cancel}]
+    status: {steps: [Draft, Bidding, Evaluation], current: Draft}
+  - title: {text: "Ref TND-2026-001", sub: "Network upgrade · KES 5,000,000"}
+  - fields:
+      - [{label: Customer, value: Customer A}, {label: OEMs, value: OEM A}]
+      - [{label: Account Manager, value: "Employee A   Assign", n: 2}, {label: Source/Pipeline, value: "Customer A network upgrade", n: 5}]
+      - [{label: Bid Liaison, value: "(empty)   Assign", n: 3}, {label: Tags, value: Connectivity}]
+      - [{label: Technical Pre-sales Engineer, value: "(empty)   Assign", n: 4}]
+  - tabs: {items: [Tender Info, Documents, Competition], active: Tender Info}

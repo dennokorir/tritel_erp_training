@@ -1,0 +1,122 @@
+---
+title: Tenders and Channel FAQ
+description: Short answers to the questions staff ask most about tenders, the bid desk, bid quality, project summaries, customers and coverage, business cases and OEM bookings.
+module: tenders
+pageType: faq
+roles: [account-manager, bid-liaison, presales, head-commercial, head-channel, tender-admin, channel-user, everyone]
+tags: [faq, tenders, channel]
+keywords: [FAQ, help, why can't I, missing bid liaison, reopen tender, portal, bid score, fair share, coverage, GP, OEM booking not counted, untagged]
+related: [tenders/index, tenders/who-can-do-what, tenders/workflows/tender-status, tenders/calculations/bid-quality-score, tenders/calculations/oem-bookings]
+sources:
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/tender_workflow.py
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/models/bid_quality.py
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/models/market_coverage.py
+  - tritel_tender_tracker/models/touchpoints.py
+  - tritel_tender_tracker/models/account_ownership.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/controllers/portal_tender.py
+  - crm_tender/models/crm_oem_booking.py
+  - crm_tender/security/ir.model.access.csv
+  - tritel_accountability_framework/models/metric_hook_bid_quality.py
+  - tritel_accountability_framework/models/metric_hook_oem.py
+sidebar: { order: 3 }
+---
+
+## Why can't I see a tender on the portal?
+
+The portal shows a tender only if you are its **Account Manager**, **Bid Liaison** or **Technical Pre-sales Engineer**, or if you head that person's role (the Head of Commercial for account managers and bid liaisons, the Head of Channel for presales). A tender with none of the three filled in is visible only to Tender administrators. Your user must also be linked to an employee: *You must be linked to an employee to access the tender portal.* In the back end, every internal user can see every tender. See [Who can do what](/tenders/who-can-do-what/).
+
+## Why can't I leave Draft?
+
+A tender needs both a **Bid Liaison** and a **Technical Pre-sales Engineer** before its status can change: *Missing bid liaison. Please assign one before proceeding!* This applies to **Drop** and **Cancel** too. Ask the Head of Commercial to assign the Bid Liaison and the Head of Channel to assign presales. See [Nominate the team](/tenders/how-to/bids/nominate-the-team/).
+
+## Why can't I change the Status, or drag the card where I want?
+
+The status changes only through the buttons: *Use the buttons on the tender to change its status.* On the board you can drag forward one step; moves that need details open the same window as the button. Dragging backwards is a reopen, for Tender administrators only. See [Tender status workflow](/tenders/workflows/tender-status/).
+
+## Why don't I see Mark Submitted?
+
+Only the tender's Bid Liaison, the Bid Liaison's manager and Tender administrators see it: *Only the Bid Liaison or their manager can mark a bid as submitted.* See [Mark a tender submitted](/tenders/how-to/bids/mark-submitted/).
+
+## Who can reopen a tender?
+
+Only a Tender administrator, one step back at a time, with a reason. **Won**, **Prequalified** and **Lost** go back to **Evaluation**; **Dropped** and **Cancelled** go back to the status they were closed from. The CRM opportunity is not reopened. See [Reopen a tender](/tenders/how-to/bids/reopen-a-tender/).
+
+## Can I delete a tender?
+
+No. Nobody can delete a tender from the screen. **Drop** or **Cancel** it instead.
+
+## Why can't I flag a tender as must-win?
+
+Only the Head of Commercial and Tender administrators can: *Only Head of Commercial or a Tender Tracker Administrator can change must-win.* See [Flag a must-win tender](/tenders/how-to/bids/flag-a-must-win/).
+
+## Why can't I score this bid?
+
+Only the Bid Liaison's manager scores it, or, if there is none, the Head of Commercial, then Tender administrators. The bid must have been submitted first: *This bid has not been submitted yet.* See [Score a bid's quality](/tenders/how-to/bids/score-bid-quality/).
+
+## Why is my quality score 85.7% when I met 6 of 8 guidelines?
+
+Guidelines marked **Not applicable** are left out. With one of the eight not applicable, the score is 6 ÷ 7. See [Bid quality score](/tenders/calculations/bid-quality-score/).
+
+## Why did a disqualification count in a later quarter?
+
+A confirmed error counts at 0% in the quarter it was **confirmed**, not the quarter the bid went in. See [Bid quality score](/tenders/calculations/bid-quality-score/).
+
+## Why does Confirm Ready say the bid isn't ready?
+
+At least one item is **Missing** (no file, or no **Valid Until** on a document that expires) or **Expired** (valid until a day before the deadline). Fix it or tick **Not Needed**. See [Readiness progress](/tenders/calculations/readiness-progress/).
+
+## Why is there no bid bond on my checklist?
+
+The *Bid bond* item appears only when **Bid Bond Required** is ticked on the tender, and that tick isn't on the tender form at the moment. Ask a Tender administrator. See [Work the bid readiness checklist](/tenders/how-to/bids/work-the-readiness-checklist/).
+
+## Why does my bid show Submitted Late?
+
+**Actual Submission** is later than the **Submission Deadline**, even by a minute. If the time was entered wrongly, the Bid Liaison's manager can correct it. See [Late submission and submission dates](/tenders/calculations/late-submission/).
+
+## Why can't I add the receipt again?
+
+Once a submission is recorded, the Bid Liaison can't record it again: *You can't record this submission.* Ask your manager or a Tender administrator. See [Late submission and submission dates](/tenders/calculations/late-submission/).
+
+## Why is a Bid Liaison marked "Over fair share"?
+
+Their effort points this quarter, plus this tender's, are more than 15% above the team average. You can still choose them if you give a reason. If the table is empty, nobody is on the **Bid Desk Team** list yet. See [Bid desk workload points](/tenders/calculations/workload-points/).
+
+## Why can't I write the project summary?
+
+Only the person named as **Summary Writer** can, and only while it is **Writing** or **Changes requested**: *Only the assigned writer can edit a project summary, while it's being written.* See [Write and submit a project summary](/tenders/how-to/customers/write-a-project-summary/).
+
+## Why can't I approve a summary I wrote?
+
+Someone else must review it: *You wrote this summary, so someone else needs to review it.* See [Review, send back or approve a summary](/tenders/how-to/customers/review-a-project-summary/).
+
+## Why is my customer "Contested" when we still have a live opportunity?
+
+An opportunity counts as open only in the CRM's three standard early stages. In a later stage, or archived, it counts like a lost one. See [The market coverage ladder](/tenders/calculations/coverage-ladder/).
+
+## Why can't I see other people's customers on Customer Activities?
+
+You see your own touches and accounts and those of the people who report to you. The Head of Commercial, Tender administrators and HR administrators see everyone: *You can only view yourself and the people who report to you.* See [Read the Customer Activities screen](/tenders/how-to/customers/read-the-customer-activities-screen/).
+
+## Why can't I claim a customer?
+
+Only account managers can claim, and only customers with no account manager: *Only account managers can claim customers.* See [Claim, assign and classify accounts](/tenders/how-to/customers/account-ownership/).
+
+## Why is the actual gross profit on the business case higher than estimated?
+
+The actual figures use the orders' totals including VAT, while cost lines are usually entered before tax. Compare the margin percentages instead. See [Business case margin](/tenders/calculations/business-case-margin/).
+
+## Why didn't my OEM booking count?
+
+Check three things: the booking is **Confirmed** (drafts never count), its **Booking Date** (the latest confirmation date of its purchase orders, not the portal date) falls in the review window, and its **OEM** is the one the target measures. See [OEM booking value and booking date](/tenders/calculations/oem-bookings/).
+
+## Why did my booking move to another month?
+
+A line from a later purchase order was added, or an order was cancelled and confirmed again, which moved the **Booking Date**. See [OEM booking value and booking date](/tenders/calculations/oem-bookings/).
+
+## Why can't I see OEM Bookings or Untagged Purchases?
+
+**OEM Bookings** needs a Channel role or purchasing administrator rights. **Untagged Purchases** is for Channel Managers only. See [Who can do what](/tenders/who-can-do-what/).

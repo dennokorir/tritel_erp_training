@@ -1,0 +1,33 @@
+type: screen
+title: Export for Marketing
+desc: The Export for Marketing window with the Which summaries filters, the What goes in options and counts, the Preview and Brief for the writer tabs, and the Download pack (.md) button, numbered 1 to 5.
+source: tritel_tender_tracker/wizards/summary_marketing_wizard_views.xml (tender_summary_marketing_wizard_form)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, {label: Tenders, active: true, n: 1}, Tender Customers]
+  breadcrumb: [Project Summaries]
+blocks:
+  - dialog:
+      title: Export for Marketing
+      blocks:
+        - columns:
+            - blocks:
+                - heading: Which summaries
+                  n: 2
+                - fields:
+                    - [{label: Only these tenders, value: All Complete summaries}]
+                    - [{label: Pillars, value: Connectivity}]
+                    - [{label: Sectors, value: Banking}]
+                    - [{label: OEMs, value: ""}]
+                    - [{label: Awarded, value: 2024 to 2026}]
+            - blocks:
+                - heading: What goes in
+                  n: 3
+                - fields:
+                    - [{label: "Include \"Not yet asked\" as anonymised", value: "☐"}]
+                    - [{label: Contract value, value: "☑"}]
+                - text: "4 named · 2 anonymised · 1 held back: not yet asked · 3 not complete"
+        - tabs: {items: [Preview, Brief for the writer], active: Preview, n: 4}
+        - text: "# Tritel project references · marketing pack"
+        - buttons: [{label: Download pack (.md), primary: true, n: 5}, {label: Close}]

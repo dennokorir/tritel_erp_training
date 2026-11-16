@@ -1,0 +1,17 @@
+type: calc
+title: Average when the tender is already assigned
+desc: Worked example showing that when TND-2026-009 is already assigned to Employee B, its 2 points are counted in Employee B's 6 points and again as this tender's points, raising the team average from 4.67 to 5.33, so Employee B is not shown as over their fair share.
+source: tritel_tender_tracker/models/bid_desk.py (_bd_assignment_rows, _bd_load_summary)
+heading: Reopening Assign for TND-2026-009, already with Employee B
+inputs:
+  - {label: Employee A, value: "6 points"}
+  - {label: Employee B, value: "6 points"}
+  - {label: Employee C, value: "2 points"}
+  - {label: This tender, value: "2 points"}
+steps:
+  - {label: "Employee B's 6 points already include this tender's 2", value: "—"}
+  - {label: "Average on screen: (6 + 6 + 2 + 2) ÷ 3", value: "5.33"}
+  - {label: "Average if the tender counted once: (6 + 6 + 2) ÷ 3", value: "4.67"}
+  - {label: "Fair-share limit on screen: 5.33 × 1.15", value: "6.13"}
+result: {label: Employee B, value: "6, not over", tone: warn}
+note: Counted once, the limit would be 4.67 × 1.15 = 5.37 and Employee B, on 6, would show Over fair share.

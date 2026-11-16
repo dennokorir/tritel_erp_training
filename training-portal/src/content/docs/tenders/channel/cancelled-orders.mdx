@@ -1,0 +1,58 @@
+---
+title: When a purchase order is cancelled
+description: What happens to OEM bookings when one of their purchase orders is cancelled, and how to correct a confirmed booking that still includes the cancelled lines.
+module: tenders
+pageType: how-to
+roles: [head-channel, channel-user, finance]
+tags: [channel, oem bookings]
+keywords: [cancelled PO, cancel purchase order, LPO cancelled, OEM booking, correct booking, reset to draft, remove line, red banner, to-do, recognised amount]
+where: [Channel, OEM Bookings]
+before:
+  - You are a <strong>Channel Manager</strong> or <strong>Channel Administrator</strong>, or a <strong>Purchase Administrator</strong>.
+  - "A purchase order with lines in a confirmed booking has been cancelled. If you created the booking, you have a to-do: <em>PO-2026-002 was cancelled: correct this booking</em>."
+related: [tenders/channel/booking-workflow, tenders/channel/book-oem-purchases, tenders/channel/oem-bookings, tenders/calculations/oem-bookings]
+sources:
+  - crm_tender/models/purchase.py
+  - crm_tender/models/crm_oem_booking.py
+  - crm_tender/views/crm_oem_booking_views.xml
+sidebar: { order: 6 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+When someone cancels a purchase order, its lines can no longer back an OEM booking. The system deals with **draft** bookings by itself. A **confirmed** booking was agreed against those lines, so it keeps them until you correct it.
+
+| Booking status when the order is cancelled | What the system does |
+|---|---|
+| **Draft** | Removes the cancelled order's lines from the booking and notes it in the chatter: *PO-2026-002 was cancelled, so its lines were removed: PO-2026-002 · Support 1 year · USD 4,000.00. By Employee A.* Nothing else to do; check the amount before you confirm. |
+| **Confirmed** | Keeps the lines, shows a red banner, notes it in the chatter, and gives whoever created the booking a to-do: *PO-2026-002 was cancelled: correct this booking*. Follow the steps below. |
+
+<Illustration name="tenders/ch-cancelled-order" caption="A confirmed booking that still includes a cancelled order. The numbers match the steps below." />
+
+## Steps
+
+1. Open the booking from your to-do, or from **Channel › OEM Bookings**. The red banner reads *Includes lines from purchase orders that are no longer confirmed: PO-2026-002. Reset to draft, remove them, check the amount and confirm again.*
+2. Click **Reset to Draft**.
+3. On the **Purchase lines** tab, click the red **Remove** (×) on each line from the cancelled order. Each removal is noted in the chatter.
+4. Check the **OEM-Recognised Amount** against the OEM's portal. If the OEM has reduced its figure, type the new one.
+5. Click **Confirm**, then mark the to-do as done in the chatter.
+
+## What happens next
+
+- The red banner goes away and the booking's **Purchase Cost (USD)**, margin and **Booking Date** are worked out again from the lines that are left.
+- If the corrected booking's booking date moves, it may now count in a different month or review window.
+- If the cancelled order was the only one behind the booking, there are no lines left. Either add the replacement order's lines, or delete the draft booking.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *'BK-1001' is confirmed. Reset the booking to draft before removing lines.* | You tried to remove a line from a confirmed booking. | Click **Reset to Draft** first. |
+| *'BK-1001': remove the lines from purchase orders that are no longer confirmed before confirming: PO-2026-002.* | You clicked **Confirm** with the cancelled order's lines still linked. | Remove them, then confirm. |
+| *'BK-1001': link the purchase lines this booking covers before confirming.* | You removed every line. | Add the replacement lines, or delete the draft booking. |
+
+:::note[Good to know]
+- Until you correct it, the confirmed booking still counts **in full** in the OEM's figures and in Accountability's OEM-recognised revenue, cancelled lines included.
+- Only the person who created the booking gets the to-do, and only if they can still see bookings. Others see the red banner and the chatter note.
+- The to-do is not closed for you when the booking is fixed. Mark it done yourself.
+- The **Purchase Orders** count on the OEM form still counts the cancelled order. Bookings and the channel figures don't.
+:::

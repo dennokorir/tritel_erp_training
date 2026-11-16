@@ -1,0 +1,26 @@
+type: screen
+title: Confirming the cause of a disqualification
+desc: The Disqualification section of a Lost tender's Bid Quality tab with the Confirm Cause button, and the Confirm Disqualification window with the Evidence, the Caused By choice, an optional Note and the Confirm button, numbered 1 to 6.
+source: tritel_tender_tracker/views/bid_quality_views.xml (view_tender_form_bid_quality); wizards/bid_quality_wizards.xml (tender_dq_confirm_wizard_form); models/bid_quality.py
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true}, {label: My Actions, n: 1}, Tender Customers, Commercial Targets]
+  breadcrumb: [Tenders, Campus Wi-Fi upgrade]
+blocks:
+  - tabs: {items: [Tender Info, Documents, Bid Quality, Tender Lost Reason], active: Bid Quality, n: 2}
+  - heading: Disqualification
+  - fields:
+      - [{label: Disqualification, value: To Confirm, tone: warn, readonly: true}, {label: Recorded By, value: Employee A, readonly: true}]
+      - [{label: Caused By, value: Bid Liaison, readonly: true}, {label: Confirm By, value: 27/12/2026, readonly: true}]
+      - [{label: Evidence, value: "Evaluation report, page 3", readonly: true, n: 3}]
+  - buttons: [{label: Confirm Cause, primary: true, n: 4}]
+  - dialog:
+      title: Confirm Disqualification
+      blocks:
+        - text: Confirm who caused this disqualification, or change the cause.
+        - fields:
+            - [{label: Evidence, value: "Evaluation report, page 3: form of tender not signed", readonly: true}]
+            - [{label: Caused By, value: Bid Liaison, bold: true, n: 5}]
+            - [{label: Note, value: Optional}]
+        - buttons: [{label: Confirm, primary: true, n: 6}, {label: Cancel}]

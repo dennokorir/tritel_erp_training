@@ -1,0 +1,62 @@
+---
+title: OEM booking value and booking date
+description: How an OEM booking works out its USD figures, distributor margin and Booking Date, and how the OEM-recognised revenue and OEM pipeline metrics count bookings and vendor opportunities.
+module: tenders
+pageType: calculation
+roles: [head-channel, channel-user, finance, tender-admin]
+tags: [channel, OEM bookings]
+keywords: [OEM revenue, OEM bookings, recognised revenue, vendor portal, distributor margin, booking date, USD, purchase cost, awaiting OEM, OEM pipeline, vendor leads, partner portal]
+related: [tenders/channel/oem-bookings, tenders/channel/book-oem-purchases, tenders/channel/booking-workflow, tenders/channel/cancelled-orders, tenders/channel/tag-untagged-purchases, tenders/channel/vendor-opportunities, accountability/calculations/metric-families]
+sources:
+  - crm_tender/models/crm_oem_booking.py
+  - crm_tender/models/purchase.py
+  - crm_tender/views/crm_oem_booking_views.xml
+  - tritel_accountability_framework/models/metric_hook_oem.py
+sidebar: { order: 7 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+An OEM booking records the value an OEM credits Tritel with on its partner portal, against the purchase lines that sale covers. The booking turns everything into US dollars so the OEM's figure can be compared with what Tritel paid its distributors.
+
+## The figures on a booking
+
+- **Subtotal (USD)** on each purchase line: the line's amount before tax × the USD rate on the day the purchase order was confirmed (or its order date if it was never confirmed). Lines already in USD use a rate of 1.
+- **Purchase Cost (USD)** = sum of the linked lines' **Subtotal (USD)**.
+- **Recognised (USD)**: the **OEM-Recognised Amount** you enter, in its **Currency** (USD by default). In another currency it is converted at the rate on the **Booking Date**, or else the **Portal Date**, or else today.
+- **Distributor Margin (USD)** = **Purchase Cost (USD)** − **Recognised (USD)**.
+- **Distributor Margin (%)** = **Distributor Margin (USD)** ÷ **Purchase Cost (USD)** × 100, two decimals.
+- **Booking Date**: the latest confirmation date among the purchase orders behind the linked lines.
+
+<Illustration name="tenders/calc-oem-booking" caption="Two purchase lines cost USD 10,000. The OEM recognises USD 9,000, so the distributor margin is 10%. The later order sets the Booking Date." />
+
+Two warnings appear on the booking: *The OEM recognises more than was paid for these lines. Check the amount or the linked lines.* when the margin is below zero, and *Distributor margin of 30.0% is unusually high. Check the amount or the linked lines.* when it is above 25%. Neither stops you confirming.
+
+## OEM-recognised revenue in Accountability
+
+**OEM-recognised revenue (USD)** adds up **Recognised (USD)** for the chosen OEM's bookings that are **Confirmed** and whose **Booking Date** falls in the review window. It is organisation-wide, not per person: each target picks its OEM in **Measured For**.
+
+<Illustration name="tenders/calc-oem-revenue-window" caption="Only the confirmed booking dated inside the quarter counts. The draft booking and the April booking don't." />
+
+The worksheet also lists the OEM's purchase lines on orders confirmed in the window that have no confirmed booking, as *awaiting OEM confirmation (not counted)*. The metric waits 30 days after the window closes before an automatic review, to give time for bookings to be entered and confirmed. **OEM-recognised revenue vs target** divides the same figure by the target.
+
+## OEM pipeline
+
+**OEM pipeline (vendor leads)** adds up the **Estimated Value** on the **Vendor Opportunities** tab for the chosen OEM, on opportunities that are active, not in a won stage and not in a folded stage (such as *Lost*), on the review date. Values are taken as entered, with no currency conversion. Vendor opportunities without a value are flagged.
+
+## The OEM's figures this year
+
+On the OEM form, **Channel performance this year (USD)** shows **OEM-Recognised YTD (USD)** and **Purchase Cost YTD (USD)** for confirmed bookings with a **Booking Date** from 1 January, **Average Distributor Margin (%)** = (cost − recognised) ÷ cost × 100 on those totals, and **Awaiting OEM Confirmation (USD)** for this year's tagged lines on confirmed orders without a confirmed booking.
+
+## Edge cases
+
+- **No lines linked**: **Booking Date** is empty and the booking counts nowhere. It can't be confirmed: *'BK-1001': link the purchase lines this booking covers before confirming.*
+- **A line from a later order is added**: the **Booking Date** moves to that order's confirmation date, and the booking can move into a later window.
+- **A purchase order is cancelled and confirmed again**: its confirmation date changes, and so can the **Booking Date**.
+- **Draft bookings** never count, whatever their date.
+- **The Portal Date** is for reference. It only sets the exchange rate when there is no **Booking Date**.
+
+:::note[Good to know]
+A booking counts in the month of its latest purchase order confirmation, not the date on the OEM portal. If a booking is confirmed late, or a line is added later, a window that has already been reviewed can change. The automatic review waits 30 days after the window to catch most of these, so confirm bookings promptly.
+
+The **Estimated Value** on vendor opportunities has no currency. Enter every value in the same currency, or the OEM pipeline adds unlike amounts.
+:::

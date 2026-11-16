@@ -1,0 +1,20 @@
+type: calc
+title: Fair share when assigning a Bid Liaison
+desc: Worked example of the Assign Bid Liaison screen for a new 2-point tender with three full-time Bid Liaisons on 6, 4 and 2 points this quarter. The team average is 4.67 and the fair-share limit 5.37, so Employee A and Employee B would be over their fair share and Employee C is suggested.
+source: tritel_tender_tracker/models/bid_desk.py (_bd_load_summary, _bd_assignment_rows), wizards/bid_desk_wizards.py
+heading: Assigning TND-2026-009 (2 points), Q2 2026
+inputs:
+  - {label: Employee A, value: "6 points"}
+  - {label: Employee B, value: "4 points"}
+  - {label: Employee C, value: "2 points"}
+  - {label: This tender, value: "2 points"}
+steps:
+  - {label: "Team average: (6 + 4 + 2 + 2) ÷ 3 people", value: "4.67"}
+  - {label: "Fair-share limit: 4.67 × 1.15", value: "5.37"}
+  - {label: "With this tender: A 6 + 2 = 8, B 4 + 2 = 6, C 2 + 2 = 4", value: "A and B over"}
+result: {label: Suggested, value: "Employee C", tone: good}
+bars:
+  - {label: Employee A, value: 8, max: 10, tone: bad, mark: 5.37}
+  - {label: Employee B, value: 6, max: 10, tone: bad, mark: 5.37}
+  - {label: Employee C, value: 4, max: 10, tone: good, mark: 5.37}
+note: Employee C is suggested only if they have no other open deadline within 3 days of this one. Choosing A or B asks for a reason in Why This Person?

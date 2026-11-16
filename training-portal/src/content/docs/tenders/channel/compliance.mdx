@@ -1,0 +1,56 @@
+---
+title: Keep compliance documents and use the compliance calendar
+description: Record the company's compliance documents (tax, regulator and registration certificates) with their validity periods and files, renew them, and see what expires when on the compliance calendar.
+module: tenders
+pageType: how-to
+roles: [everyone, head-commercial, finance]
+tags: [compliance, channel]
+keywords: [compliance certificate, tax compliance, KRA, NCA, AGPO, PPRA, licence, registration certificate, expiry, renewal, tender documents, statutory documents]
+where: [Tender Manager, Compliance, Compliance]
+before:
+  - Any internal user can add and update compliance documents. The menu is in the <strong>Tender Manager</strong> app, not in <strong>Channel</strong>.
+  - You have the certificate as a file (PDF or scan) and know its start and end dates.
+related: [tenders/channel/index, tenders/concepts/bid-readiness, tenders/channel/certifications-and-learning]
+sources:
+  - crm_tender/models/crm_compliance.py
+  - crm_tender/views/crm_compliance_views.xml
+  - crm_tender/security/ir.model.access.csv
+sidebar: { order: 8 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Bids often need the company's current compliance documents: a tax compliance certificate, a regulator's licence, a contractor or AGPO registration. Each document is kept as a **compliance item** under the body that issues it, with one **validity period** for each certificate issued. Renewing a certificate means adding a new validity period with the new file, so the history stays.
+
+<Illustration name="tenders/ch-compliance" caption="A compliance item and the validity period that Create opens. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Tender Manager › Compliance › Compliance**. Items are grouped by issuing body, and each card shows **Active** or **Expired**.
+2. Click the item to renew. For a new one, click **New** and type its name, for example *Tax compliance certificate*.
+3. Choose the **Compliance Body**. If the body isn't there, add it first under **Tender Manager › Compliance › Compliance Organization**.
+4. Click **Create** at the top of the item. A new validity period opens.
+5. Set **Date Start** and **Date End** as printed on the certificate.
+6. On the **Documents** tab, click **Attach a file** and choose the certificate.
+7. Save, then go back to the item using the breadcrumb.
+
+## What happens next
+
+- The new period appears on the item's **Compliance History** tab.
+- The item's dates and **Compliance Status** follow the period with the latest **Date End**: **Active** while that date is after today, **Expired** from that day on.
+- **Attachment Url** on the item links to the latest certificate's file, to download or share it.
+- The period appears on the compliance calendar on its **Date End**.
+
+## The calendar and churn views
+
+| Menu | What it shows |
+|---|---|
+| **Tender Manager › Compliance › Compliance Calendar** | Every validity period on the day it expires, a year at a time. Switch to the list view to sort by **Date End**. The page is titled *Compliance Churn*. |
+| **Tender Manager › Compliance › Compliance Churn** | A cohort chart of validity periods by start month, showing how many have lapsed month by month. The page is titled *Compliance History*. |
+| **Tender Manager › Compliance › Compliance Organization** | The issuing bodies, each with a count of its compliance items. |
+
+:::note[Good to know]
+- Nothing reminds anyone before a certificate expires. Check the **Compliance Calendar** at the start of each month, and before every bid.
+- A certificate whose **Date End** is today already shows **Expired**. A period with no **Date End** also counts as expired.
+- The **Compliance Calendar** and **Compliance Churn** menus open pages titled the other way round (*Compliance Churn* and *Compliance History*). Go by the menu name.
+- Every internal user can change or delete compliance items and periods. Archive an item you no longer need rather than deleting it, to keep its history.
+:::

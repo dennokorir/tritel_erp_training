@@ -1,0 +1,15 @@
+type: calc
+title: Named share on Market Coverage
+desc: Worked example of the Named figure on the Market Coverage screen, with 14 customers in the market of which 2 are Untouched, leaving 12 reached, and 3 on Named or Anchor, giving 3 (25%).
+source: tritel_tender_tracker/models/market_coverage.py (get_coverage), static/src/coverage/market_coverage.xml
+heading: Market Coverage, all years
+inputs:
+  - {label: Customers in the market, value: "14"}
+  - {label: Untouched, value: "2"}
+  - {label: Anchor, value: "1"}
+  - {label: Named, value: "2"}
+steps:
+  - {label: "Customers reached: 14 − 2 Untouched", value: "12"}
+  - {label: "Named: Anchor + Named", value: "3"}
+  - {label: "Share: 3 ÷ 12 × 100, to a whole number", value: "25%"}
+result: {label: Named, value: "3 (25%)", tone: accent}

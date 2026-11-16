@@ -1,0 +1,38 @@
+type: screen
+title: Write a project summary
+desc: The project summary workspace while the writer is writing, with the due date and headings progress, the summary text under its headings, the Classification box, the Headings checklist and the Submit for review button, numbered 1 to 6.
+source: tritel_tender_tracker/views/project_summary_views.xml (tender_summary_workspace_form)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: My Actions, active: true, n: 1}, Tenders, Tender Customers]
+  breadcrumb: [My Actions, Customer A]
+blocks:
+  - buttons: [{label: Submit for review, primary: true, n: 6}]
+    status: {steps: [Not requested, Writing, In review, Complete], current: Writing}
+  - title: {text: Customer A, sub: "TND-2026-001 · Network upgrade"}
+  - fields:
+      - [{label: Summary Writer, value: Employee B, readonly: true}, {label: Due, value: 23/11/2026, readonly: true, n: 2}]
+      - [{label: Summary Requested By, value: Employee C, readonly: true}, {label: Headings, value: "6 of 8 · 75%", readonly: true}]
+  - columns:
+      - panel: true
+        blocks:
+          - heading: Client and sector
+            n: 4
+          - text: "Customer A. Banking."
+          - heading: The client's problem
+          - text: "Branches lost connection several times a month."
+          - heading: Outcome
+          - text: "(still to write)"
+      - panel: true
+        blocks:
+          - heading: Classification
+            n: 3
+          - fields:
+              - [{label: Primary Pillar, value: Connectivity}]
+              - [{label: Secondary Pillars, value: Productivity}]
+              - [{label: Tritel's Role, value: Prime contractor}]
+              - [{label: Motion, value: Project}]
+          - heading: Headings
+            n: 5
+          - text: "✓ Client and sector · ✓ Pillars · ○ Outcome"

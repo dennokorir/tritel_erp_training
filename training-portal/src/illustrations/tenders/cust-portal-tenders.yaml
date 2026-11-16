@@ -1,0 +1,18 @@
+type: screen
+title: Tenders on the portal
+desc: The Tenders page of the commercial portal, with the period and people filters, the status overview and the tender list with reference, name, customer, status, deadline, revenue and must-win, numbered 7 and 8.
+source: tritel_tender_tracker/views/portal_tender_templates.xml (portal_tenders_list)
+frame:
+  app: Tritel portal
+  menu: [Dashboard, My Actions, Targets, Pipeline, Summaries, {label: Tenders, active: true}, Achievements, Customers]
+  breadcrumb: [Home, Tenders]
+blocks:
+  - buttons: [{label: "Period  Current Period", n: 7}, {label: All Account Managers}, {label: All Bid Liaisons}, {label: All Tech Presales}, {label: Clear ×}]
+  - heading: Tender Status Overview
+  - table:
+      columns: [Tender Ref, Tender Name, Customer, Status, Deadline, Revenue, Must-Win, ""]
+      widths: [1.6, 2.6, 1.6, 1.4, 1.5, 1.8, 1.1, 0.8]
+      n: 8
+      rows:
+        - [TND-2026-001, Network upgrade, Customer A, {text: Evaluation, badge: true, tone: accent}, 15/10/2026, "KES 10,000,000", "", View]
+        - [TND-2026-006, Branch Wi-Fi, Customer B, {text: Bidding, badge: true, tone: warn}, 30/11/2026, "KES 4,000,000", Yes, View]

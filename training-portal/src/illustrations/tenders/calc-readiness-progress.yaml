@@ -1,0 +1,15 @@
+type: calc
+title: Readiness progress
+desc: Worked example of the Progress on the Bid Readiness tab, with 8 checklist items of which 1 is Not Needed, 5 are Ready, 1 is Missing and 1 is Expired, giving 5 of 7 ready.
+source: tritel_tender_tracker/models/bid_desk.py (_compute_readiness_progress, _compute_status)
+heading: Checklist on TND-2026-010
+inputs:
+  - {label: Ready, value: "5"}
+  - {label: Missing, value: "1"}
+  - {label: Expired, value: "1"}
+  - {label: Not Needed, value: "1"}
+steps:
+  - {label: "Items that count: 8 − 1 Not Needed", value: "7"}
+  - {label: "Items Ready", value: "5"}
+result: {label: Progress, value: "5 of 7 ready", tone: warn}
+note: Confirm Ready is refused until the Missing and Expired items are fixed or marked Not Needed.

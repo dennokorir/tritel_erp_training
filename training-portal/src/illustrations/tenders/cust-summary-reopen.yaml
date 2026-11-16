@@ -1,0 +1,21 @@
+type: screen
+title: Reopen a complete summary
+desc: A Complete project summary with its approver and customer naming, the Reopen button, and the confirmation message, numbered 5.
+source: tritel_tender_tracker/views/project_summary_views.xml (tender_summary_workspace_form)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, {label: Tenders, active: true}, Tender Customers]
+  breadcrumb: [Summary Tracker, Customer A]
+blocks:
+  - buttons: [{label: Reopen, n: 5}]
+    status: {steps: [Not requested, Writing, In review, Complete], current: Complete}
+  - title: {text: Customer A, sub: "TND-2026-001 · Network upgrade"}
+  - fields:
+      - [{label: Summary Writer, value: Employee B, readonly: true}, {label: Summary Approved By, value: Employee C, readonly: true}]
+      - [{label: Award Date, value: 01/10/2026, readonly: true}, {label: Customer Naming, value: Can be named, readonly: true}]
+  - dialog:
+      title: Confirmation
+      blocks:
+        - text: Reopen this summary? It leaves the library until it is approved again.
+        - buttons: [{label: Ok, primary: true}, {label: Cancel}]

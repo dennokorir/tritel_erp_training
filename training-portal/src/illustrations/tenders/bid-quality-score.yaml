@@ -1,0 +1,32 @@
+type: screen
+title: Scoring a bid's quality
+desc: The Bid Quality Check window opened from a tender's Bid Quality tab, with the Actual Submission time, one row per guideline with a Met, Not met or Not applicable result and a note, the note for the Bid Liaison, and the Save Score button, numbered 1 to 6.
+source: tritel_tender_tracker/views/bid_quality_views.xml (view_tender_form_bid_quality); wizards/bid_quality_wizards.xml (tender_quality_wizard_form); data/bid_quality_data.xml
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true}, {label: My Actions, n: 1}, Tender Customers, Commercial Targets]
+  breadcrumb: [Tenders, Campus Wi-Fi upgrade]
+blocks:
+  - tabs: {items: [Tender Info, Documents, Bid Readiness, Bid Quality], active: Bid Quality, n: 2}
+  - fields:
+      - [{label: Quality Check, value: To Score, readonly: true}, {label: Quality Check Due, value: 14/12/2026, readonly: true}]
+  - buttons: [{label: Score Bid, primary: true, n: 2}]
+  - dialog:
+      title: Bid Quality Check
+      blocks:
+        - fields:
+            - [{label: Actual Submission, value: "04/12/2026 09:15:00", n: 3}]
+        - table:
+            columns: [Guideline, Result, Note]
+            widths: [6, 2, 3]
+            n: 4
+            rows:
+              - [All required forms are completed and signed, Met, ""]
+              - [Every page needing a stamp or initials has them, Not met, Page 14 not initialled]
+              - ["Format, binding and number of copies match the tender instructions", Met, ""]
+              - [Bid security is included in the correct form, Not applicable, No bid bond asked]
+              - [Submitted before the deadline at the correct location, Met, ""]
+        - fields:
+            - [{label: Note, value: Good bid; tighten the initialling check, n: 5}]
+        - buttons: [{label: Save Score, primary: true, n: 6}, {label: Cancel}]

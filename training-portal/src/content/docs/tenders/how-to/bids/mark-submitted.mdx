@@ -1,0 +1,64 @@
+---
+title: Mark a tender submitted
+description: Record when the bid actually went in and attach the receipt, which moves the tender to Evaluation and starts the quality check.
+module: tenders
+pageType: how-to
+roles: [bid-liaison]
+tags: [tenders, bid desk]
+keywords: [submission, submit bid, bid submitted, receipt, proof of delivery, tender box, evaluation, late submission, submission time]
+where: [Tender Manager, Tenders, All Tenders]
+before:
+  - The tender is in <strong>Bidding</strong> and the bid has been delivered to the customer.
+  - "You are the tender's Bid Liaison, the Bid Liaison's manager or a Tender administrator. Nobody else sees <strong>Mark Submitted</strong>."
+  - Have the receipt or proof of delivery ready to attach (a scan or photo).
+related: [tenders/workflows/tender-status, tenders/calculations/late-submission, tenders/how-to/bids/work-the-readiness-checklist, tenders/how-to/bids/score-bid-quality, tenders/how-to/bids/record-the-result]
+sources:
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/views/tender_workflow_views.xml
+  - tritel_tender_tracker/wizards/tender_move_wizard.py
+  - tritel_tender_tracker/models/tender_workflow.py
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/views/bid_desk_views.xml
+  - tritel_tender_tracker/models/bid_quality.py
+sidebar: { order: 5 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+When the bid has gone in, the Bid Liaison marks the tender submitted. You enter the real time it was delivered and attach the receipt. The tender moves to **Evaluation**, and the Bid Liaison's manager is asked to check the bid's quality.
+
+<Illustration name="tenders/bid-mark-submitted" caption="Marking a bid submitted with its receipt. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Tender Manager › Tenders › All Tenders** and click the tender in the **Bidding** column.
+2. Click **Mark Submitted**. (Dragging the card to the **Evaluation** column opens the same window.)
+3. In **Actually Submitted**, enter the date and time the bid was delivered. It starts at the current time: change it to the real time if you are recording it later.
+4. In **Submission Receipt**, attach the receipt or proof of delivery.
+5. Add a **Note** if useful, then click **Save**.
+6. No receipt yet? Save without it. Later, open the tender's **Bid Quality** tab, click **Add Receipt**, check **Actually Submitted**, attach the file in **Submission Receipt** and click **Save** in the **Record Submission** window.
+
+## What happens next
+
+- The status changes to **Evaluation** and the card moves to that column. The **Won**, **Prequalified**, **Lost** and **Cancel** buttons appear.
+- A **Bid Quality** tab appears showing **Submission Deadline**, **Actual Submission** and **Submitted Late** (ticked if the bid went in after the deadline).
+- **Quality Check** becomes **To Score**, due in 10 days. The Bid Liaison's manager sees the bid in **My Actions** under **Bid quality checks to score**. See [Score a bid's quality](/tenders/how-to/bids/score-bid-quality/).
+- **With a receipt:** **Submission Recorded** is ticked with **Recorded By** and the receipt, and the chatter notes the submission.
+- **Without a receipt:** the tender appears in your **My Actions** under **Submissions to record** until you add it.
+- The nomination to-dos still open on the tender are removed. No email goes out and the CRM opportunity doesn't change.
+- In Accountability, **Submission Buffer** counts the bid as met when the submission was recorded at least 24 hours before the deadline. The quality score later feeds the **Bid Quality Score**. See [How metrics count](/accountability/calculations/metric-families/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Only the Bid Liaison or their manager can mark a bid as submitted.* | You dragged the card to **Evaluation** without being the Bid Liaison, their manager or a Tender administrator. | Ask the Bid Liaison to mark it submitted. |
+| *The submission time can't be in the future.* | **Actually Submitted** is later than now. | Enter the real delivery time. |
+| *Please attach the submission receipt.* | You clicked **Save** in **Record Submission** without a file. | Attach the receipt, then save. |
+| *You can't record this submission.* | The submission is already recorded and you are the Bid Liaison, or you aren't the Bid Liaison, their manager or a Tender administrator. | Ask the Bid Liaison's manager to correct it with **Add Receipt**. |
+| *Missing technical presales engineer. Please assign one before proceeding* | The tender has no Technical Presales. | Ask the Head of Channel to [nominate one](/tenders/how-to/bids/nominate-the-team/). |
+
+:::note[Good to know]
+- You can mark a bid submitted even if its readiness checklist was never confirmed. It then counts as not met for **Ready at 72 Hours**.
+- Once the submission is recorded, the Bid Liaison can't change it. The Bid Liaison's manager or a Tender administrator can, with **Add Receipt**. The manager can also correct **Actual Submission** when scoring the bid.
+- **Submitted Late** compares the exact times, so 10:30 against a 10:00 deadline is late.
+:::

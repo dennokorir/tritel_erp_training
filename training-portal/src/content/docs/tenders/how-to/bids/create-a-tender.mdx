@@ -1,0 +1,59 @@
+---
+title: Create a tender from an opportunity
+description: Record a new tender or RFQ in Tender Manager, link it to the customer's CRM opportunity, and set the deadline so the bid team can be nominated.
+module: tenders
+pageType: how-to
+roles: [account-manager]
+tags: [tenders, bids]
+keywords: [new tender, bid, RFP, RFQ, EOI, tender number, opportunity, pipeline, submission deadline, closing date, capture a tender]
+where: [Tender Manager, Tenders, All Tenders]
+before:
+  - You have the tender document, or at least its reference number, customer, scope and closing date.
+  - "If the tender came from a CRM opportunity, the opportunity exists and is for the same customer."
+related: [tenders/concepts/opportunities-and-tenders, tenders/concepts/tenders-and-statuses, tenders/workflows/tender-status, tenders/how-to/bids/nominate-the-team, tenders/how-to/bids/confirm-the-bid, tenders/how-to/bids/prequalifications-and-rfqs]
+sources:
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/account_ownership.py
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/models/my_actions.py
+sidebar: { order: 1 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Every tender, RFP, RFQ or EOI the company considers is recorded as a **tender** in Tender Manager. Nothing creates it for you: when a customer issues a tender against one of your CRM opportunities, you create the tender here and link it to that opportunity. Do it as soon as the tender is out, because the time between capture and deadline is measured.
+
+<Illustration name="tenders/bid-create-tender" caption="A new tender in Draft. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Tender Manager › Tenders › All Tenders** and click **New**.
+2. In **Ref**, type the customer's tender number, for example *TND-2026-001*. Click the star if the tender is important.
+3. In the box under it, type the tender description or scope of works, for example *Campus Wi-Fi upgrade*. This is the name the tender shows everywhere.
+4. Under **Expected Revenue**, choose the tender currency (KES unless the tender is priced in another currency) and type the expected value of the bid. A foreign-currency value also shows its KES equivalent, for example *≈ KES 1,300,000*.
+5. Choose the **Customer**. **Account Manager** fills in from the customer's account manager; you can't type in it.
+6. Add the **OEMs** whose products the bid uses, and any **Tags**.
+7. In **Source/Pipeline**, choose the CRM opportunity the tender came from. Only opportunities for the same customer are listed.
+8. On the **Tender Info** tab, fill in **Validity Period (Days)**, **Submission Deadline** (date and time) and **Tender Opening Date**. Then, on the **Documents** tab, click **Add a document** for each tender document you want to keep with it.
+9. Click **Save** (the cloud icon).
+
+**Bid Liaison** and **Technical Pre-sales Engineer** stay empty: the heads nominate them. See [Nominate the Account Manager, Bid Liaison and Presales](/tenders/how-to/bids/nominate-the-team/).
+
+## What happens next
+
+- The tender is in **Draft** and appears in the **Draft** column of the board. Its card turns red when the deadline is 7 days away or less, and amber at 21 days or less, or when there is no deadline yet.
+- Every Head of Commercial gets a to-do *Required Nomination of Bid Liaison*, and every Head of Channel a to-do *Required Nomination of Technnical Pre-sales*. The tender also appears in their **My Actions** under **Bid liaisons to nominate** and **Pre-sales engineers to nominate**. If **Account Manager** is empty, it appears under **Account managers to nominate** for the Head of Channel.
+- If the customer had no account manager, the tender's account manager becomes the customer's owner.
+- The opportunity's **Tenders** smart button now lists this tender, and the tender's **Pipeline** smart button opens the opportunity. The opportunity itself doesn't move.
+- The tender is filed into a commercial target period by its deadline (by its award date once it is won).
+- For the bid desk measures: a tender captured less than 7 days before its deadline counts as extra work for the Bid Liaison, and one captured less than 3 days before is left out of the timing measures. See [Bid desk workload points](/tenders/calculations/workload-points/).
+
+When the team is in place, [confirm the bid](/tenders/how-to/bids/confirm-the-bid/), or drop it if you decide not to bid.
+
+:::note[Good to know]
+- A tender can't be deleted, not even by a Tender administrator. If it was entered twice or by mistake, close it with **Cancel** (reason *Duplicate entry*) or **Drop**. See [Record the result](/tenders/how-to/bids/record-the-result/).
+- The opportunity you need isn't in **Source/Pipeline**? Check that the tender's **Customer** is the same as the opportunity's customer.
+- An RFQ that comes in under a prequalification is better created with **Log RFQ** on the prequalification, which fills in the customer and links the two. See [Follow up a prequalification and log an RFQ](/tenders/how-to/bids/prequalifications-and-rfqs/).
+- **Bid Bond Required** can't be set in the back office at the moment (the portal tender page only shows it). If the tender asks for a bid bond, the Bid Liaison adds it to the readiness checklist by hand.
+- If **Account Manager** is still empty after you save, the Head of Channel nominates one.
+:::

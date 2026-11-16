@@ -1,0 +1,318 @@
+# Tender tracker: every status of every workflow, one entry per status.
+# Written from tritel_tender_tracker (models and views); see the workflow pages for diagrams.
+
+# ── Tender status ──
+- module: tenders
+  workflow: "Tender status"
+  link: "/tenders/workflows/tender-status/"
+  state: "Draft"
+  meaning: "Recorded, not yet decided. The team is being nominated."
+  next: "Bidding (Confirm Bid); Dropped (Drop); Cancelled (Cancel)"
+  who: "Any internal user; needs a Bid Liaison and Technical Presales unless a Tender administrator"
+- module: tenders
+  workflow: "Tender status"
+  link: "/tenders/workflows/tender-status/"
+  state: "Bidding"
+  meaning: "Tritel is bidding. The readiness checklist is open."
+  next: "Evaluation (Mark Submitted); Dropped (Drop); Cancelled (Cancel); Draft (Reopen)"
+  who: "Bid Liaison, their manager or Tender administrator (Mark Submitted); any internal user (Drop, Cancel); Tender administrator (Reopen)"
+- module: tenders
+  workflow: "Tender status"
+  link: "/tenders/workflows/tender-status/"
+  state: "Evaluation"
+  meaning: "Submitted; the customer is evaluating. The quality check is due in 10 days."
+  next: "Won (Won); Prequalified (Prequalified); Lost (Lost); Cancelled (Cancel); Bidding (Reopen)"
+  who: "Any internal user; Tender administrator (Reopen)"
+- module: tenders
+  workflow: "Tender status"
+  link: "/tenders/workflows/tender-status/"
+  state: "Won"
+  meaning: "Awarded to Tritel, with an Award Date. Opportunity marked won; won alert emailed."
+  next: "Evaluation (Reopen)"
+  who: "Tender administrator"
+- module: tenders
+  workflow: "Tender status"
+  link: "/tenders/workflows/tender-status/"
+  state: "Prequalified"
+  meaning: "Shortlisted. A prequalification now tracks the RFQs that follow."
+  next: "Evaluation (Reopen)"
+  who: "Tender administrator"
+- module: tenders
+  workflow: "Tender status"
+  link: "/tenders/workflows/tender-status/"
+  state: "Lost"
+  meaning: "Not awarded, with a Lost Reason. Opportunity marked lost; a disqualification reason starts a disqualification to confirm."
+  next: "Evaluation (Reopen)"
+  who: "Tender administrator"
+- module: tenders
+  workflow: "Tender status"
+  link: "/tenders/workflows/tender-status/"
+  state: "Dropped"
+  meaning: "Tritel chose not to bid, with a Drop Reason."
+  next: "The status it was dropped from (Reopen)"
+  who: "Tender administrator"
+- module: tenders
+  workflow: "Tender status"
+  link: "/tenders/workflows/tender-status/"
+  state: "Cancelled"
+  meaning: "Withdrawn by the client, re-tendered or a duplicate, with a Cancel Reason."
+  next: "The status it was cancelled from (Reopen)"
+  who: "Tender administrator"
+
+# ── Bid readiness ──
+- module: tenders
+  workflow: "Bid readiness"
+  link: "/tenders/workflows/bid-readiness/"
+  state: "Not Started"
+  meaning: "No checklist yet."
+  next: "In Progress (Confirm Bid or Create Checklist)"
+  who: "Whoever confirms the bid; Bid Liaison, their manager or Tender administrator"
+- module: tenders
+  workflow: "Bid readiness"
+  link: "/tenders/workflows/bid-readiness/"
+  state: "In Progress"
+  meaning: "The checklist is open and documents are being attached."
+  next: "Confirmed Ready (Confirm Ready)"
+  who: "Bid Liaison, their manager or Tender administrator"
+- module: tenders
+  workflow: "Bid readiness"
+  link: "/tenders/workflows/bid-readiness/"
+  state: "Confirmed Ready"
+  meaning: "Every row is Ready or Not Needed; the checklist is locked."
+  next: "In Progress (Reopen)"
+  who: "Bid Liaison, their manager or Tender administrator"
+
+# ── Bid readiness row ──
+- module: tenders
+  workflow: "Bid readiness row"
+  link: "/tenders/workflows/bid-readiness/"
+  state: "Missing"
+  meaning: "No file attached, or the document expires and Valid Until is empty."
+  next: "Ready (attach the file and date); Not Needed (tick it)"
+  who: "The person preparing it, the Bid Liaison or their manager"
+- module: tenders
+  workflow: "Bid readiness row"
+  link: "/tenders/workflows/bid-readiness/"
+  state: "Expired"
+  meaning: "Valid Until is before the deadline day."
+  next: "Ready (attach a current document)"
+  who: "The person preparing it, the Bid Liaison or their manager"
+- module: tenders
+  workflow: "Bid readiness row"
+  link: "/tenders/workflows/bid-readiness/"
+  state: "Ready"
+  meaning: "Attached and in date on the deadline day."
+  next: "Expired (if the deadline moves past Valid Until)"
+  who: "The system"
+- module: tenders
+  workflow: "Bid readiness row"
+  link: "/tenders/workflows/bid-readiness/"
+  state: "Not Needed"
+  meaning: "Ticked as not needed for this tender; left out of Progress."
+  next: "Missing or Ready (untick it)"
+  who: "The person preparing it, the Bid Liaison or their manager"
+
+# ── Submission record ──
+- module: tenders
+  workflow: "Submission record"
+  link: "/tenders/workflows/bid-readiness/"
+  state: "Not recorded"
+  meaning: "In Evaluation, but no submission receipt attached yet."
+  next: "Submission Recorded (Add Receipt)"
+  who: "Bid Liaison, their manager or Tender administrator"
+- module: tenders
+  workflow: "Submission record"
+  link: "/tenders/workflows/bid-readiness/"
+  state: "Submission Recorded"
+  meaning: "The receipt or proof of delivery is attached."
+  next: "Re-recorded (Add Receipt)"
+  who: "Bid Liaison's manager or Tender administrator"
+
+# ── Bid quality check ──
+- module: tenders
+  workflow: "Bid quality check"
+  link: "/tenders/workflows/quality-and-disqualification/"
+  state: "Not Due"
+  meaning: "The bid has not been submitted."
+  next: "To Score (first move to Evaluation)"
+  who: "The system"
+- module: tenders
+  workflow: "Bid quality check"
+  link: "/tenders/workflows/quality-and-disqualification/"
+  state: "To Score"
+  meaning: "Submitted; waiting to be scored, due 10 days after submission."
+  next: "Scored (Score Bid)"
+  who: "Bid Liaison's manager, else Head of Commercial, else Tender administrator"
+- module: tenders
+  workflow: "Bid quality check"
+  link: "/tenders/workflows/quality-and-disqualification/"
+  state: "Scored"
+  meaning: "Scored against the bid quality guidelines; Quality Score (%) shown."
+  next: "Re-scored (Change Score)"
+  who: "The same scorer"
+
+# ── Disqualification ──
+- module: tenders
+  workflow: "Disqualification"
+  link: "/tenders/workflows/quality-and-disqualification/"
+  state: "None"
+  meaning: "No disqualification on the tender."
+  next: "To Confirm (Lost or Drop with a disqualification reason)"
+  who: "Whoever records the result"
+- module: tenders
+  workflow: "Disqualification"
+  link: "/tenders/workflows/quality-and-disqualification/"
+  state: "To Confirm"
+  meaning: "Recorded with a cause and evidence; to be confirmed within 7 days."
+  next: "Confirmed (Confirm Cause); None (tender reopened)"
+  who: "Presales' manager or Bid Liaison's manager, else Head of Commercial, else Tender administrator"
+- module: tenders
+  workflow: "Disqualification"
+  link: "/tenders/workflows/quality-and-disqualification/"
+  state: "Confirmed"
+  meaning: "Cause confirmed. A cause naming the Bid Liaison counts at 0% in their Bid Quality Score."
+  next: "None (tender reopened)"
+  who: "Tender administrator (Reopen)"
+
+# ── Prequalification ──
+- module: tenders
+  workflow: "Prequalification"
+  link: "/tenders/workflows/prequalification/"
+  state: "Applied"
+  meaning: "Tritel has applied and is waiting. Set by hand; nothing automatic."
+  next: "Any status (status bar)"
+  who: "Any internal user"
+- module: tenders
+  workflow: "Prequalification"
+  link: "/tenders/workflows/prequalification/"
+  state: "Active"
+  meaning: "Prequalified and inside the validity window. RFQs can be logged; reminders run."
+  next: "Expired (day after Valid Until); any status (status bar)"
+  who: "The system; any internal user"
+- module: tenders
+  workflow: "Prequalification"
+  link: "/tenders/workflows/prequalification/"
+  state: "Expired"
+  meaning: "Valid Until has passed."
+  next: "Any status (status bar)"
+  who: "Any internal user"
+- module: tenders
+  workflow: "Prequalification"
+  link: "/tenders/workflows/prequalification/"
+  state: "Renewed"
+  meaning: "Renewed. RFQs can still be logged; no reminders."
+  next: "Any status (status bar)"
+  who: "Any internal user"
+- module: tenders
+  workflow: "Prequalification"
+  link: "/tenders/workflows/prequalification/"
+  state: "Closed"
+  meaning: "No longer followed up."
+  next: "Any status (status bar)"
+  who: "Any internal user"
+
+# ── Project summary ──
+- module: tenders
+  workflow: "Project summary"
+  link: "/tenders/workflows/project-summary/"
+  state: "Not requested"
+  meaning: "The tender is won but nobody has been asked to write the summary."
+  next: "Writing (Request summary)"
+  who: "Head of Channel, Head of Commercial or Tender administrator"
+- module: tenders
+  workflow: "Project summary"
+  link: "/tenders/workflows/project-summary/"
+  state: "Writing"
+  meaning: "The writer is writing under the headings; due 7 days after the request by default."
+  next: "In review (Submit for review)"
+  who: "The writer"
+- module: tenders
+  workflow: "Project summary"
+  link: "/tenders/workflows/project-summary/"
+  state: "In review"
+  meaning: "Submitted; review due 5 days later."
+  next: "Complete (Approve); Changes requested (Send back)"
+  who: "Any of the three managers except the writer"
+- module: tenders
+  workflow: "Project summary"
+  link: "/tenders/workflows/project-summary/"
+  state: "Changes requested"
+  meaning: "Sent back with a reviewer's note; new due date."
+  next: "In review (Submit for review)"
+  who: "The writer"
+- module: tenders
+  workflow: "Project summary"
+  link: "/tenders/workflows/project-summary/"
+  state: "Complete"
+  meaning: "Approved with Customer Naming set; in the library."
+  next: "Writing (Reopen)"
+  who: "Any of the three managers except the writer"
+
+# ── Business case ──
+- module: tenders
+  workflow: "Business case"
+  link: "/tenders/workflows/business-case/"
+  state: "Draft"
+  meaning: "Cost lines and notes are being entered."
+  next: "Submitted (Submit for Review)"
+  who: "Any internal user"
+- module: tenders
+  workflow: "Business case"
+  link: "/tenders/workflows/business-case/"
+  state: "Submitted"
+  meaning: "Waiting for approval."
+  next: "Approved (Approve); Rejected (Reject); Draft (Reset to Draft)"
+  who: "Head of Commercial or Tender administrator; Tender administrator (reset)"
+- module: tenders
+  workflow: "Business case"
+  link: "/tenders/workflows/business-case/"
+  state: "Approved"
+  meaning: "Approved by the Head of Commercial."
+  next: "—"
+  who: "—"
+- module: tenders
+  workflow: "Business case"
+  link: "/tenders/workflows/business-case/"
+  state: "Rejected"
+  meaning: "Rejected, with a Rejection Reason."
+  next: "Draft (Reset to Draft)"
+  who: "Tender administrator"
+
+# ── Customer touch ──
+- module: tenders
+  workflow: "Customer touch"
+  link: "/tenders/workflows/customer-activity/"
+  state: "Planned"
+  meaning: "A touch to come; overdue once its date has passed."
+  next: "Done (Complete or Mark as Done); new date (Reschedule)"
+  who: "The person making it, or anyone whose scope covers it"
+- module: tenders
+  workflow: "Customer touch"
+  link: "/tenders/workflows/customer-activity/"
+  state: "Done"
+  meaning: "It happened; the outcome is recorded. Counts in coverage, Last Seen and achievements."
+  next: "—"
+  who: "—"
+
+# ── Target account ──
+- module: tenders
+  workflow: "Target account"
+  link: "/tenders/workflows/customer-activity/"
+  state: "Not a target"
+  meaning: "An ordinary customer."
+  next: "Proposed (Propose as Target); Target account (tier buttons)"
+  who: "Any internal user (propose); Head of Commercial or Tender administrator (tier)"
+- module: tenders
+  workflow: "Target account"
+  link: "/tenders/workflows/customer-activity/"
+  state: "Proposed"
+  meaning: "Proposed as a target, awaiting a decision."
+  next: "Target account (Approve); Not a target (Decline)"
+  who: "Head of Commercial or Tender administrator"
+- module: tenders
+  workflow: "Target account"
+  link: "/tenders/workflows/customer-activity/"
+  state: "Target account"
+  meaning: "A chosen account with a tier: Strategic, Growth or Maintain."
+  next: "Another tier (tier buttons)"
+  who: "Head of Commercial or Tender administrator"

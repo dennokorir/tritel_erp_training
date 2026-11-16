@@ -1,0 +1,27 @@
+type: screen
+title: The Untagged Purchases list
+desc: The Untagged Purchases list in the Channel app, filtered on No OEM and grouped by Distributor, with an OEM chosen on one line, two lines selected and the Set OEM window from the Action menu with Also set on the products, numbered 1 to 6.
+source: crm_tender/views/crm_oem_booking_views.xml (purchase_order_line_oem_worklist_tree, purchase_order_line_oem_worklist_search, crm_oem_set_lines_view_form)
+frame:
+  grid: true
+  app: Channel
+  menu: ["OEMs(Vendors)", OEM Bookings, {label: Untagged Purchases, active: true, n: 1}, Distributors, Certifications]
+  breadcrumb: [Untagged Purchases]
+blocks:
+  - search: {facets: [No OEM, "Group By: Distributor"], placeholder: "Search…", filters: [Filters, Group By], n: 2}
+  - table:
+      columns: [Order Reference, Distributor, Product, Subtotal (USD), Confirmed On, OEM]
+      widths: [2, 2, 3, 2, 2, 2]
+      rows:
+        - {cells: [PO-2026-003, Distributor A, Access point indoor, "3,000.00", 05/04/2026, {text: OEM B, bold: true}], highlight: true, n: 3}
+        - [PO-2026-004, Distributor B, Firewall licence, "5,000.00", 07/04/2026, ""]
+        - [PO-2026-005, Distributor B, Firewall appliance, "8,000.00", 07/04/2026, ""]
+  - buttons: [{label: "2 selected", n: 4}, {label: Action}]
+  - dialog:
+      title: Set OEM
+      blocks:
+        - fields:
+            - [{label: OEM, value: OEM B, n: 5}]
+            - [{label: Also set on the products, value: "☑"}]
+        - text: Lines already in an OEM booking are left unchanged.
+        - buttons: [{label: Set OEM, primary: true, n: 6}, {label: Cancel}]

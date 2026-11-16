@@ -1,0 +1,119 @@
+# Channel app (crm_tender) and Commercial Targets (tritel_tender_tracker): every status, one entry per status.
+# Written from the models and views; see the linked pages for details.
+
+# ── OEM booking ──────────────────────────────────────────────────────────
+- module: tenders
+  workflow: "OEM booking"
+  link: "/tenders/channel/booking-workflow/"
+  state: "Draft"
+  meaning: "Being put together: portal reference, amount, currency and portal date can change, lines can be added and removed, and it can be deleted. It doesn't count anywhere."
+  next: "Confirmed (Confirm)"
+  who: "Channel Manager or Administrator; Purchase Administrator"
+- module: tenders
+  workflow: "OEM booking"
+  link: "/tenders/channel/booking-workflow/"
+  state: "Confirmed"
+  meaning: "Checked and counting in the OEM's channel figures and in Accountability's OEM-recognised revenue, by Booking Date. Figures and lines are locked."
+  next: "Draft (Reset to Draft)"
+  who: "Channel Manager or Administrator; Purchase Administrator"
+
+# ── OEM and distributor ──────────────────────────────────────────────────
+- module: tenders
+  workflow: "OEM and distributor"
+  link: "/tenders/channel/oems-and-distributors/"
+  state: "Onboarding"
+  meaning: "The relationship is being set up. New OEMs and distributors start here, and unarchived ones come back here."
+  next: "Active (Confirm); Archived (Archive)"
+  who: "Staff with CRM access (OEMs); any internal user (distributors)"
+- module: tenders
+  workflow: "OEM and distributor"
+  link: "/tenders/channel/oems-and-distributors/"
+  state: "Active"
+  meaning: "The OEM or distributor is in use."
+  next: "Onboarding (Draft); Archived (Archive)"
+  who: "Staff with CRM access (OEMs); any internal user (distributors)"
+- module: tenders
+  workflow: "OEM and distributor"
+  link: "/tenders/channel/oems-and-distributors/"
+  state: "Archived"
+  meaning: "No longer used. Archived OEMs still show in the OEMs(Vendors) list, with an Archived ribbon."
+  next: "Onboarding (Unarchive)"
+  who: "Staff with CRM access (OEMs); any internal user (distributors)"
+
+# ── Learning development ─────────────────────────────────────────────────
+- module: tenders
+  workflow: "Learning development"
+  link: "/tenders/channel/certifications-and-learning/"
+  state: "Registration"
+  meaning: "The person is registered for the course but hasn't started. The card sits in the Planning column."
+  next: "Ongoing (status bar)"
+  who: "Channel User, Manager or Administrator"
+- module: tenders
+  workflow: "Learning development"
+  link: "/tenders/channel/certifications-and-learning/"
+  state: "Ongoing"
+  meaning: "The person is studying towards the certification. Pass/Fail Certification is available."
+  next: "Pass or Fail (Pass/Fail Certification)"
+  who: "Channel User, Manager or Administrator"
+- module: tenders
+  workflow: "Learning development"
+  link: "/tenders/channel/certifications-and-learning/"
+  state: "Pass"
+  meaning: "The person passed. A certificate is created for them if the record has none; set its course and attach the file."
+  next: "Any status (status bar)"
+  who: "Channel User, Manager or Administrator"
+- module: tenders
+  workflow: "Learning development"
+  link: "/tenders/channel/certifications-and-learning/"
+  state: "Fail"
+  meaning: "The person did not pass. No certificate is created."
+  next: "Ongoing (status bar), for a resit"
+  who: "Channel User, Manager or Administrator"
+
+# ── OEM certification ────────────────────────────────────────────────────
+- module: tenders
+  workflow: "OEM certification"
+  link: "/tenders/channel/certifications-and-learning/"
+  state: "Active"
+  meaning: "The label every certificate has. It is not changed by the system, even after Date End."
+  next: "None in the system"
+  who: "Nobody"
+
+# ── Compliance item and validity period ──────────────────────────────────
+- module: tenders
+  workflow: "Compliance item"
+  link: "/tenders/channel/compliance/"
+  state: "Active"
+  meaning: "The item's latest validity period ends after today."
+  next: "Expired (automatically on its Date End)"
+  who: "The system"
+- module: tenders
+  workflow: "Compliance item"
+  link: "/tenders/channel/compliance/"
+  state: "Expired"
+  meaning: "The latest validity period ends today or earlier, has no end date, or there is none."
+  next: "Active (Create a new validity period ending after today)"
+  who: "Any internal user"
+
+# ── Target period ────────────────────────────────────────────────────────
+- module: tenders
+  workflow: "Target period"
+  link: "/tenders/commercial-targets/target-periods/"
+  state: "Draft"
+  meaning: "Set up but not current. Records are still filed into it by date."
+  next: "Active (Set Active)"
+  who: "Any internal user"
+- module: tenders
+  workflow: "Target period"
+  link: "/tenders/commercial-targets/target-periods/"
+  state: "Active"
+  meaning: "The current period: the tender board and CRM pipeline open on it."
+  next: "Closed (Close Period)"
+  who: "Any internal user"
+- module: tenders
+  workflow: "Target period"
+  link: "/tenders/commercial-targets/target-periods/"
+  state: "Closed"
+  meaning: "Finished. Closing locks nothing: its records can still be changed."
+  next: "Draft (Reset to Draft); Active (Set Active)"
+  who: "Any internal user"

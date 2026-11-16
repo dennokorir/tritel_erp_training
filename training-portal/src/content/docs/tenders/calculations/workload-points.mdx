@@ -1,0 +1,72 @@
+---
+title: Bid desk workload points
+description: How effort points are worked out for each tender, how the Assign Bid Liaison screen compares full-time Bid Liaisons against the team average, and how Fair Workload Balance and Deadline Clash-Free use the same points.
+module: tenders
+pageType: calculation
+roles: [head-commercial, bid-liaison, tender-admin]
+tags: [bid desk, workload]
+keywords: [workload, fair workload, fair share, effort points, bid load, over fair share, clash, deadline clash, assign bid liaison, bid desk team, balance, capacity]
+related: [tenders/concepts/bid-desk-workload, tenders/how-to/bids/nominate-the-team, tenders/concepts/must-win-and-bid-quality, accountability/calculations/metric-families]
+sources:
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/wizards/bid_desk_wizards.py
+  - tritel_tender_tracker/views/bid_desk_views.xml
+  - tritel_accountability_framework/models/metric_hook_bid_desk.py
+sidebar: { order: 2 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Every tender carries effort points, so a short-notice must-win bid with a bid bond weighs more than a routine one. When the Head of Commercial clicks **Assign** next to **Bid Liaison**, the window shows each full-time Bid Liaison's points for the current quarter and flags anyone who would go over their fair share.
+
+## Effort points for one tender
+
+| What | Points |
+|---|---|
+| Base, any status except the two below | 1 |
+| Base for a **Dropped** tender | 0.5 |
+| **Cancelled** tender | 0, and nothing is added |
+| Created in Odoo less than 7 days before its **Submission Deadline** | + 1 |
+| **Bid Bond Required** | + 1 |
+| Flagged must-win while still **Draft** or **Bidding** | + 2 |
+
+Notice is measured from the moment the tender was created in Odoo to the deadline, not from when the customer advertised it.
+
+<Illustration name="tenders/calc-effort-points" caption="Short notice, a bid bond and an early must-win flag make a 5-point tender." />
+
+## The Assign Bid Liaison screen
+
+The table in the **Assign** window lists everyone on **Tender Manager › Configuration › Bid Desk Team** with **Full-time on Bids** switched on:
+
+- **Points, Q2 2026** (the current quarter): the effort points of that person's tenders that are not cancelled and have a **Submission Deadline** in the current calendar quarter (Nairobi time), whatever their status.
+- **Open now**: their tenders in **Draft** or **Bidding**, any quarter.
+- **Deadlines within 3 days**: their open tenders with a deadline less than 3 days from this tender's deadline. These show **Clash**.
+- **Team average** = (everyone's points + this tender's points) ÷ number of people on the list.
+- **Over fair share** when the person's points, plus this tender's points if it isn't already theirs, are more than the team average × 1.15.
+- **Suggested**: the person with the fewest points (then the fewest open tenders) who is neither over their fair share nor clashing.
+
+<Illustration name="tenders/calc-fair-workload" caption="With this tender added, Employee A would reach 8 and Employee B 6, both above the 5.37 limit. Employee C is suggested." />
+
+If you choose someone marked **Over fair share** or **Clash**, the window shows, for example, *Employee A is over their fair share this quarter.* and asks **Why This Person?**. Without a reason: *Please say why this person should take the bid.* The reason is kept on the tender's **Bid Readiness** tab as **Why Assigned Despite Load** and in the chatter.
+
+## In Accountability
+
+- **Fair Workload Balance (Head of Commercial)**: full-time Bid Liaisons whose points for the review window are within 15% of the team average (above or below) ÷ full-time Bid Liaisons × 100. Here the average is simply everyone's points ÷ the number of people. It needs at least two people on the list and some tenders due.
+- **Deadline Clash-Free (Head of Commercial)**: tenders due in the window where the Bid Liaison had no other deadline within 3 days ÷ tenders due × 100.
+
+See [how metrics count](/accountability/calculations/metric-families/).
+
+## Edge cases
+
+- **Nobody on the Bid Desk Team list**: the table says *Nobody is marked as full-time on bids yet.* and nothing is suggested or flagged.
+- **This tender has no deadline**: it counts as 1 point, and it can't clash.
+- **Part-time Bid Liaisons** (switch off **Full-time on Bids**) can still be chosen, but aren't listed or compared.
+- **Must-win flagged after submission** adds no points. Removing the flag takes the 2 points away.
+- **Bid Bond Required** isn't on the tender form at the moment. It shows only, read-only, on the portal tender page.
+
+:::note[Good to know]
+The screen always adds this tender's points to the team total, even when the tender already belongs to one of the Bid Liaisons and its points are already in their figure. When you reopen **Assign** on an assigned tender, the average comes out a little high, so the current Bid Liaison may not show **Over fair share** when they would be on the true average.
+
+<Illustration name="tenders/calc-fair-workload-reassign" caption="Counted twice, the tender lifts the average from 4.67 to 5.33, and Employee B is not flagged." />
+
+The quarter is always the current one, not the quarter of this tender's deadline. A tender due early next quarter is compared against this quarter's load.
+:::

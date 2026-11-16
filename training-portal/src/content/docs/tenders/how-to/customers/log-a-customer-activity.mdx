@@ -1,0 +1,63 @@
+---
+title: Log a customer activity
+description: Record a call, meeting, visit, demo or email with a customer as a done touch, linked to its tender or opportunity, from the Customer Activities screen.
+module: tenders
+pageType: how-to
+roles: [account-manager, presales]
+tags: [customer activities]
+keywords: [customer visit, call, meeting, touchpoint, touch, log activity, customer engagement, feedback, follow up, demo, site visit]
+where: [Tender Manager, Tender Customers, Customer Activities]
+before:
+  - The customer exists in Odoo. The <strong>Customer</strong> list does not let you create one from here.
+  - The touch has already happened. For one you are planning, see <a href="/tenders/how-to/customers/plan-customer-touches/">Plan customer touches</a>.
+related: [tenders/concepts/customer-activities, tenders/workflows/customer-activity, tenders/how-to/customers/plan-customer-touches, tenders/how-to/customers/read-the-customer-activities-screen]
+sources:
+  - tritel_tender_tracker/static/src/touchpoints/workspace/touchpoints_workspace.xml
+  - tritel_tender_tracker/static/src/touchpoints/common/touch_dialog.js
+  - tritel_tender_tracker/views/partner_activity_touchpoints_views.xml
+  - tritel_tender_tracker/models/partner_activity_touchpoints.py
+  - tritel_tender_tracker/models/res_partner.py
+  - tritel_tender_tracker/models/touchpoints.py
+sidebar: { order: 6 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A **customer touch** is any contact with a customer: a call, a meeting, a visit, a demo, an email. Log each one soon after it happens, and link it to the tender or opportunity it was about, so the team can see who is talking to which customers.
+
+<Illustration name="tenders/cust-touch-log" caption="Logging a touch. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Tender Manager › Tender Customers › Customer Activities**.
+2. Click **Log touch**. The window *Log a customer touch* opens, with today's date.
+3. Choose the **Customer**, check the **Date** and pick the **Type**. The **Channel** (for example **Call**, **Meeting**, **Visit**, **Workshop / Demo**) fills in from the type; change it if it's wrong.
+4. **Touch made by** starts as you. If you are logging for someone who reports to you, pick them. The **Account Manager** fills in from the customer.
+5. If the touch was about a deal, pick the **Tender** or the **Lead/Pipeline** (an opportunity). Only that customer's deals are listed. You can link one or the other, not both.
+6. Under **What happened**, write what the customer said, the outcome and the next step. Click **Save**.
+
+You can also click **Log touch** on a customer's touchpoint timeline (open it from the heatmap, or with the **Touchpoints** button on the customer). The customer is then filled in for you.
+
+## What happens next
+
+- The touch is saved as **Done** and *Touch logged* appears.
+- If you linked a tender or opportunity, your note is posted on its chatter as *Feedback from customer touch dated 2026-11-16*.
+- If it is the customer's latest touch, the customer's **Last Seen** date moves to it.
+- It counts straight away on the **Customers** heatmap, the customer's timeline, your **People** profile and the **Customer touches** strip at the top of the tender or opportunity.
+- A touch linked to a tender or opportunity can also count towards the people's achievements on that deal.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Activity date cannot be greater than today!* | The **Date** is in the future. A touch can't be done before it happens. | Set the date it happened. For a future touch, use **Plan touch**. |
+| *Date is Mandatory!* | The date was cleared on a touch being marked done. | Fill in the **Date**. |
+| *This touch is not one you can complete.* | The touch isn't on your accounts or your team's, so you can't mark it done. | Ask the account manager, or their manager, to log it. |
+
+:::note[Good to know]
+- If saving is refused with *Activity date cannot be greater than today!*, the touch has already been saved, but as **Planned**. Find it on the **Planned** tab and click **Complete** with the right date, so you don't log it twice.
+- A touch entered more than 7 days after it happened is flagged **Entered Late**.
+- There are two different "phase" ideas on a touch:
+  - **Touch Phase** (**Account-level**, **Pipelining**, **Bid Support**, **Post-submission**, **Delivery & Collection**) follows the **date of the touch**. It is what the Customer Activities screens show.
+  - **Valid** and **Activity Phase** (**Pipelining**, **Bid Submission Support**, **Post-Submission Influence**) follow the **day you entered it** in Odoo. They are what target achievements and the portal dashboard count. A touch with no tender or opportunity, or entered before the deal was registered, or after the award date, is not valid for them.
+- So log touches on the day, and always link the deal.
+:::

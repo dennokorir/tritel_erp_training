@@ -1,0 +1,25 @@
+type: screen
+title: A learning record and the pass or fail window
+desc: A Learning Development record in the Channel app with the Pass/Fail Certification button, the clickable status bar, the employee, Oem and course, the dates, and the Pass or Fail window with Certification Status, Date and Submit, numbered 1 to 6.
+source: crm_tender/views/crm_oem_views.xml (view_oem_learning_form); crm_tender/wizards/pass_fail_wizard.xml
+frame:
+  grid: true
+  app: Channel
+  menu: ["OEMs(Vendors)", OEM Bookings, Distributors, Certifications, {label: Learning Development, active: true, n: 1}, Configuration]
+  breadcrumb: [Learning Development, Certified Network Associate]
+blocks:
+  - buttons: [{label: Pass/Fail Certification, primary: true, n: 4}]
+    status: {steps: [Registration, Ongoing, Pass, Fail], current: Ongoing, n: 3}
+  - title: {text: Certified Network Associate, sub: Certification}
+  - fields:
+      - [{label: Employee, value: Employee B, n: 2}, {label: Promise Date, value: 30/06/2026}]
+      - [{label: Oem, value: OEM A}, {label: Date Start, value: 01/04/2026}]
+      - [{label: Course, value: OEM A associate track}, {label: Date End, value: 31/03/2029}]
+  - dialog:
+      title: Pass or Fail
+      blocks:
+        - text: Use this form to mark candidate as passed or failed
+        - fields:
+            - [{label: Employee, value: Employee B}, {label: Certification Status, value: Pass, bold: true, n: 5}]
+            - [{label: Certification, value: Certified Network Associate}, {label: Date, value: 20/06/2026}]
+        - buttons: [{label: Submit, primary: true, n: 6}, {label: Cancel}]
