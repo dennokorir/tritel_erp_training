@@ -1,0 +1,24 @@
+type: screen
+title: Withdrawing a target
+desc: A live target's form with the Withdraw link next to Weight, and the Withdraw window with the From date, the reason box, the effect on the overall rating score and the Submit button, numbered 1 to 5.
+source: tritel_accountability_framework/views/accountability_target_views.xml (Assignment group); views/accountability_scorecard_request_views.xml (scorecard_request_view_form_dialog)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, {label: My Team, active: true}, My Actions, Organisation]
+  breadcrumb: [Team Targets, Customer visits per month]
+blocks:
+  - status: {steps: [Draft, Active, Pending Review, Reviewed], current: Active}
+  - heading: Assignment
+  - fields:
+      - [{label: Employee, value: Employee A}, {label: Objective, value: Grow the customer base}]
+      - [{label: Weight, value: "2   Rebalance Weights   Withdraw", n: 1}]
+  - dialog:
+      title: Withdraw
+      blocks:
+        - fields:
+            - [{label: Target, value: Customer visits per month}, {label: Kind, value: Withdraw}]
+            - [{label: Employee, value: Employee A}, {label: From, value: 01/10/2026, n: 2}]
+        - note: {text: "Territory moved to Employee C from October.", tone: muted, n: 3}
+        - note: {text: "Overall rating score 64.0% Meets Expectations → 68.2% Exceeds Expectations", tone: accent, n: 4}
+        - buttons: [{label: Submit, primary: true, n: 5}, {label: Cancel}]

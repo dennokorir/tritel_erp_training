@@ -1,0 +1,32 @@
+type: screen
+title: The Performance Overview
+desc: The Org Performance Cascade screen with the period and As at selectors, the Trend switch, the Freeze button, the List, Organogram and Focus tabs, the KPI strip and the side panel for one person with Own, Team and Composite scores, numbered 1 to 7.
+source: tritel_accountability_framework/static/src/cascade/accountability_cascade_dashboard.xml
+frame:
+  grid: true
+  app: Accountability
+  menu: [{label: My Performance, active: true}, My Team, My Actions, Organisation]
+  breadcrumb: [Performance Overview]
+blocks:
+  - buttons: [{label: FY 2026 ●, n: 1}, {label: As at 30 Sep 2026 · quarter end, n: 2}, {label: Trend}, {label: ❄ Freeze organisation snapshot, n: 7}]
+  - buttons: [{label: List}, {label: Organogram, primary: true, n: 3}, {label: Focus}, {label: + Expand All}]
+  - tiles: [{label: Org Composite, value: "68.4%", tone: good, n: 4}, {label: Employees, value: "24"}, {label: Targets, value: "112"}, {label: Reviewed, value: "71"}, {label: Standalone, value: "1", tone: muted}]
+  - columns:
+      - panel: true
+        blocks:
+          - heading: Organogram
+          - table:
+              columns: [Person, Composite, Targets]
+              widths: [2.5, 1.2, 1.2]
+              rows:
+                - [Employee B, "72%", "T 4/5"]
+                - {cells: [Employee A, "64%", "T 3/4"], highlight: true, n: 5}
+                - [Employee C, "58%", "T 2/4"]
+      - panel: true
+        blocks:
+          - title: {text: Employee B, sub: "Head of Sales · Manager"}
+          - tiles: [{label: Own, value: "70%"}, {label: Team, value: "73%"}, {label: Composite, value: "72%", tone: good}]
+          - text: "Composite = 40% Own + 60% Team Avg"
+          - heading: Direct Reports
+            n: 6
+          - text: "Employee A 64% ›   Employee C 58% ›"

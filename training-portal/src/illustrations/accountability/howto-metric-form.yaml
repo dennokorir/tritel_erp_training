@@ -1,0 +1,31 @@
+type: screen
+title: A metric and its test
+desc: The Metric form in Accountability with the Test this metric button, the Kind choice, Unit, Code and wait settings, the Records to measure group, and the Test Metric window with Employee, From, To, Evaluate and the result, numbered 1 to 8.
+source: tritel_accountability_framework/views/accountability_metric_views.xml (accountability_metric_view_form, accountability_metric_test_wizard_view_form)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, My Team, My Actions, {label: Organisation, active: true, n: 1}]
+  breadcrumb: [Metrics, Invoiced revenue]
+blocks:
+  - buttons: [{label: Test this metric, n: 6}]
+  - title: {text: Invoiced revenue, sub: Name, n: 2}
+  - fields:
+      - [{label: Kind, value: "Aggregate (count / sum / average of records)", n: 3}, {label: Code, value: invoiced_revenue}]
+      - [{label: Unit, value: KES}, {label: Wait Before Automatic Review (days), value: "0"}]
+  - heading: Records to measure
+    n: 4
+  - fields:
+      - [{label: Model, value: Journal Entry}, {label: Scope, value: The target employee only}]
+      - [{label: Aggregation, value: Sum of a field}, {label: Time Basis, value: "Within the review window, by a date field"}]
+      - [{label: Person Field, value: Salesperson}, {label: Date Field, value: Invoice/Bill Date}]
+  - tabs: {items: [Rule, Worksheet columns, Flags], active: Rule, n: 5}
+  - dialog:
+      title: Test Metric
+      blocks:
+        - fields:
+            - [{label: Employee, value: Employee A, n: 7}, {label: From, value: 01/07/2026}]
+            - [{label: Metric, value: Invoiced revenue}, {label: To, value: 30/09/2026}]
+            - [{label: Value, value: "4,200,000.0000", bold: true}]
+        - text: "Window 2026-07-01 to 2026-09-30 · 6 record(s) counted …"
+        - buttons: [{label: Evaluate, primary: true, n: 8}, {label: Close}]

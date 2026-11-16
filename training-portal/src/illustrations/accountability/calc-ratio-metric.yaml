@@ -1,0 +1,13 @@
+type: calc
+title: Coverage ratio metric
+desc: Worked example of a pipeline coverage ratio where an annual revenue target of 120,000,000 is pro-rated to a 90-day quarter, 29,589,041, and a pipeline of 90,000,000 gives 3.04 times the target.
+source: tritel_accountability_framework/models/accountability_metric.py (_evaluate_ratio)
+heading: Qualified pipeline coverage for Q1 2026
+inputs:
+  - {label: Reference Target (year), value: "120,000,000"}
+  - {label: Window, value: "90 of 365 days"}
+  - {label: Qualified pipeline, value: "90,000,000"}
+steps:
+  - {label: "Revenue target for the window = 120,000,000 × 90 ÷ 365", value: "29,589,041"}
+  - {label: "Coverage = 90,000,000 ÷ 29,589,041", value: "3.04"}
+result: {label: Fetched value, value: "3.04 × revenue target", tone: good}

@@ -1,0 +1,14 @@
+type: calc
+title: Objective achievement
+desc: Worked example of an objective's Org Average from two measured targets weighted by their period weight, giving 70%, compared with an Achievement Threshold of 70%.
+source: tritel_accountability_framework/models/accountability_objective.py (_compute_score_stats, _compute_achievement_state)
+heading: Objective "Grow revenue", FY 2026
+inputs:
+  - {label: "Employee A · 80% · Counts As", value: "2.00"}
+  - {label: "Employee B · 50% · Counts As", value: "1.00"}
+  - {label: Achievement Threshold (%), value: "70"}
+steps:
+  - {label: "Org Average = (80 × 2 + 50 × 1) ÷ (2 + 1)", value: "210 ÷ 3 = 70.0%"}
+  - {label: "When the objective is closed: 70.0 ≥ 70", value: "Achieved"}
+result: {label: Achievement, value: "Achieved", tone: good}
+note: "When the objective is closed: Achieved at or above the threshold, Partial Achievement from 75% of it (52.5 here), Not Achieved below that."

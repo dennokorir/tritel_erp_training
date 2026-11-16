@@ -1,0 +1,14 @@
+type: calc
+title: SLA target score
+desc: Worked example of an SLA target's score as the plain average of its three signed-off reviews, 100%, 66.7% and 0%, giving 55.6%.
+source: tritel_accountability_framework/models/accountability_target.py (_score_threshold)
+heading: SLA target score over the year so far
+inputs:
+  - {label: Q1 review, value: "100%"}
+  - {label: Q2 review, value: "66.7%"}
+  - {label: Q3 review, value: "0%"}
+  - {label: Q4, value: "not reviewed"}
+steps:
+  - {label: "Count signed-off reviews only. Not Applicable and missing reviews are left out.", value: "3 reviews"}
+  - {label: "Score = (100 + 66.7 + 0) ÷ 3", value: "166.7 ÷ 3"}
+result: {label: Score (%), value: "55.6%", tone: bad}

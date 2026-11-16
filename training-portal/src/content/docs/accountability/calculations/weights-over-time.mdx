@@ -1,0 +1,53 @@
+---
+title: Time-weighted weights
+description: How a target's weight is spread over the period, so a weight change, a late start, a withdrawal or a close counts only for the days it applied.
+module: accountability
+pageType: calculation
+roles: [everyone, line-manager, hr, accountability-admin]
+tags: [weights, scores]
+keywords: [weighting, weight, counts as, period weight, rebalance, mid-year change, late target, withdrawn, pro-rata, KPI weight]
+related: [accountability/concepts/weights-and-share-of-score, accountability/calculations/share-of-score, accountability/how-to/line-managers/rebalance-weights, accountability/how-to/line-managers/withdraw-a-target]
+sources:
+  - tritel_accountability_framework/models/accountability_target_weights.py
+  - tritel_accountability_framework/views/accountability_target_views.xml
+sidebar: { order: 3 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Each target has a **Weight** (1 by default). A target with weight 2 counts twice as much as one with weight 1. Weights can change during the year, and targets can start late or stop early. So the system works out a single figure for the whole period, called **Counts As**.
+
+## The rule
+
+**Counts As = the sum of (weight × days that weight was in force) ÷ days in the period.**
+
+- Counting starts on the period's **Start Date**, or on **Live From** if the target went live later.
+- Counting stops on the earliest of **Withdrawn From**, **Closed On** or **Fully Cascaded On**. That day itself is not counted.
+- Today's weight is assumed to carry on to the end of the period.
+
+<Illustration name="accountability/calc-period-weight" caption="Weight 1 for the first half of FY 2026 and 2 for the second half counts as 1.50 over the year." />
+
+More examples in a 365-day period (1 Jan to 31 Dec):
+
+| Target | What happened | Counts As |
+|---|---|---|
+| Revenue | Weight 2 all year | 2 × 365 ÷ 365 = **2.00** |
+| Customer visits | Weight 1 until 30 Jun, 2 from 1 Jul | (181 + 368) ÷ 365 = **1.50** |
+| Response SLA | Went live 1 Oct with weight 1 | 92 ÷ 365 = **0.25** |
+| Training plan | Weight 1, withdrawn from 1 Apr, had a result | 90 ÷ 365 = **0.25** |
+
+Counts As is then used to work out the [share of score](/accountability/calculations/share-of-score/) and the [own score](/accountability/calculations/own-team-overall/).
+
+## Edge cases
+
+- **Draft targets** don't count at all. The target shows *Draft: counts once activated*. While it is a draft, the manager can type its weight directly.
+- **Live targets** can only change weight through **Rebalance Weights**. Typing a weight on a live target gives *'Grow qualified pipeline' is live: use Rebalance Weights, which records the reason and asks the employee to acknowledge the new priorities.* Every change is listed under the **Weight History** button.
+- **Ended with no result.** A target that was withdrawn, closed or fully cascaded before it got any result counts as 0 and is not part of the score. The hint says *It ended with no result, so it is not part of the score.*
+- **Ended on the day it went live.** It never counts.
+- **Withdrawn with a result.** Its result keeps counting, but only for the days it was live: *Withdrawn from the scorecard from 1 Apr 2026: any result counts for the time it was live.*
+- **Closed period.** Weights can't be changed: *FY 2026 is closed: rebalancing weights is no longer possible for 'Customer visits'.*
+- **Starting weight of a new target.** It starts at the average weight of your other live targets under the same objective. If there are none, it uses the objective's **Default Weight for New Targets**. The objective's weight is a starting point only and is never used in scores.
+- **Review packs keep their weights.** When a manager submits a review, each target's weight at that moment is locked into it. Later weight changes don't move that review's average.
+
+:::note[Good to know]
+**Counts As** is shown rounded to 2 decimals. The system uses the exact figure, so working it out by hand from the rounded numbers can be a few tenths out.
+:::

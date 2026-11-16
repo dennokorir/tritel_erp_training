@@ -1,0 +1,23 @@
+type: screen
+title: A snapshot compared with today
+desc: The Snapshot panel for one person as at a month end, with the Rebuilt and Frozen switch, the frozen snapshot picker, the PDF, Open and Freeze snapshot buttons, the Since it was frozen list, the overall rating and the target table, numbered 1 to 7.
+source: tritel_accountability_framework/static/src/components/snapshot/snapshot_panel.xml (SnapshotPanel); views/accountability_snapshot_views.xml
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, {label: My Team, active: true}, My Actions, Organisation]
+  breadcrumb: [Team Targets]
+blocks:
+  - buttons: [{label: "As at 30 Sep 2026 · quarter end", n: 1}]
+  - title: {text: "Employee A · as at 30 Sep 2026", sub: "Frozen 2026-10-01 05:00 UTC · Month end"}
+  - buttons: [{label: Rebuilt}, {label: Frozen, primary: true, n: 2}, {label: PDF, n: 6}, {label: Open}, {label: Freeze snapshot, n: 7}]
+  - note: {text: "Since it was frozen: Score changed · Customer visits per month: 66.7% → 75.0%.   Reviews since · Grow qualified pipeline: 2 → 3", tone: warn, n: 3}
+  - fields:
+      - [{label: Rating, value: Meets Expectations, tone: good, n: 4}, {label: Overall, value: "64.0% overall"}]
+  - table:
+      columns: [Target, Actual, Target value, Expected by then, Score, Rating]
+      widths: [3, 1.4, 1.4, 1.6, 1.4, 2.2]
+      n: 5
+      rows:
+        - [Grow qualified pipeline, "18,000,000", "30,000,000", "22,500,000", "60.0%", {text: Outstanding · on pace, badge: true, tone: good}]
+        - [Customer visits per month, "8", "12", "", "66.7%", {text: Meets Expectations, badge: true, tone: accent}]

@@ -1,0 +1,28 @@
+type: screen
+title: Your review, waiting for you to acknowledge it
+desc: The My Review form in Accountability, with the Acknowledge and Raise a Concern buttons, the deadline banner, the average and rating, your manager's comment, and the Targets tab, numbered 1 to 6.
+source: tritel_accountability_framework/views/accountability_review_pack_views.xml (accountability_review_pack_view_form)
+frame:
+  grid: true
+  app: Accountability
+  menu: [{label: My Performance, active: true}, My Team, My Actions]
+  breadcrumb: [My Reviews, Q3 2026 reviews]
+blocks:
+  - buttons: [{label: Acknowledge, primary: true, n: 5}, {label: Raise a Concern, n: 6}]
+    status: {steps: [Awaiting Acknowledgment, Acknowledged], current: Awaiting Acknowledgment}
+  - note: {text: "Please read your review and acknowledge it by 10/10/2026, or raise a concern about specific targets. After that date it is signed off automatically.", tone: warn, n: 1}
+  - title: {text: Q3 2026 reviews, sub: Employee A}
+  - fields:
+      - [{label: Reviewer, value: Employee B}, {label: Average (%), value: "78.5", bold: true, n: 2}]
+      - [{label: Period, value: FY 2026}, {label: Rating, value: Meets expectations, tone: good}]
+      - [{label: Review Cutoff, value: 30/09/2026}, {label: Based on, value: "4 target(s) — 4 done"}]
+  - heading: Your manager's comment
+    n: 3
+  - text: "Strong quarter on pipeline; customer visits slipped in August."
+  - tabs: {items: [Targets, How the average is reached], active: Targets, n: 4}
+  - table:
+      columns: [Target, Target, Actual, Score (%), Rating, Status]
+      widths: [4, 2, 2, 1.5, 2.5, 1.5]
+      rows:
+        - [Grow qualified pipeline, "30,000,000", "27,000,000", "90", {text: Meets, badge: true, tone: good}, {text: Done, badge: true, tone: good}]
+        - [Customer visits per month, "12", "8", "66.7", {text: Needs improvement, badge: true, tone: warn}, {text: Done, badge: true, tone: good}]

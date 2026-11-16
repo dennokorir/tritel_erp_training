@@ -1,0 +1,31 @@
+type: screen
+title: Deciding an escalated review
+desc: The Team Reviews board with an escalated review showing the Decide button, and the Decide the Escalation window with the questioned scores, the employee's question, the manager's reply, the reason for escalating, the Decision choice, the Decision note and the Record Decision button, numbered 7 to 11.
+source: tritel_accountability_framework/views/accountability_review_pack_views.xml (accountability_team_reviews_view_kanban) and views/wizard_review_concern_views.xml (accountability_review_concern_decide_wizard_view_form)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, {label: My Team, active: true, n: 7}, My Actions, Organisation]
+  breadcrumb: [Team Reviews]
+blocks:
+  - search: {facets: [Open + Closed in Last 30 Days, Segment (Waiting On)], filters: [Filters, Group By]}
+  - kanban:
+      - title: With Escalation
+        count: 1
+        cards:
+          - {title: Employee A, lines: ["Q3 2026 — Quarterly Review", "Escalated · 2 day(s) in step", "Decide"], tag: Your move, tagTone: accent, n: 8}
+      - title: Employee's Move
+        count: 2
+        cards:
+          - {title: Employee E, lines: ["Q3 2026 — Quarterly Review", "Awaiting Acknowledgment"]}
+  - dialog:
+      title: Decide the Escalation
+      blocks:
+        - fields:
+            - [{label: Questioned scores, value: "Customer visits per month: actual 8 · score 66.7%"}]
+            - [{label: The employee asked, value: "Two visits in August were logged late."}]
+            - [{label: "The manager's reply", value: "The log dates are after the cutoff."}]
+            - [{label: Why the employee escalated, value: "The visits took place in August.", n: 9}]
+            - [{label: Decision, value: "◉ Uphold the manager's scores  ○ Send back to the manager to revise", n: 10}]
+            - [{label: Decision note, value: "Visits count by the date logged; scores stand."}]
+        - buttons: [{label: Record Decision, primary: true, n: 11}, {label: Cancel}]

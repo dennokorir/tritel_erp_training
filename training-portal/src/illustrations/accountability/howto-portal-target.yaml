@@ -1,0 +1,22 @@
+type: screen
+title: A target's page on the portal
+desc: The Target Detail page on the portal for a milestone target, with the Stages table, the completed-on date and Mark Done button, and the Review History, numbered 1 to 3.
+source: tritel_accountability_framework/views/portal_performance_templates.xml (accountability_target_detail)
+frame:
+  app: Tritel portal
+  menu: [Home, {label: My Performance, active: true}]
+  breadcrumb: [Home, My Performance, Target Detail]
+blocks:
+  - title: {text: Deliver CRM roll-out, sub: "Quarterly · Target: 100 % · Actual: 30.0"}
+  - heading: Stages
+    n: 1
+  - table:
+      columns: [Stage, Start, Due, Weight, Status, ""]
+      widths: [3, 1.6, 1.6, 1, 2.4, 2.6]
+      rows:
+        - ["1 · Requirements signed", 2026-02-01, 2026-03-31, "30%", "Confirmed", ""]
+        - ["2 · System configured", 2026-04-01, 2026-09-30, "30%", "Awaiting Confirmation", "Withdraw"]
+        - {cells: ["3 · Users trained", 2026-10-01, 2026-11-30, "40%", "Open", {text: "Mark Done", bold: true}], n: 2}
+  - heading: Review History
+    n: 3
+  - text: "30 Sep 2026 · Reviewer: Employee B · Actual: 30.0 · Score: 30.0%"

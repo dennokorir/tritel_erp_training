@@ -1,0 +1,61 @@
+---
+title: Set targets for my team
+description: Check your team's draft targets on Team Targets and add them to each person's scorecard with Activate, giving a reason for the change.
+module: accountability
+pageType: how-to
+roles: [line-manager]
+tags: [targets, scorecard changes]
+keywords: [team targets, KPI, set KPIs, objectives, goals, scorecard, activate target, approve target, draft target, new target, appraisal targets]
+where: [Accountability, My Team, Team Targets]
+before:
+  - You are the person's manager in HR (the <strong>Manager</strong> field on their employee record). That alone gives you the My Team menu.
+  - The target exists as a draft. Your team member adds it from <strong>My Targets</strong>, or you create it on <strong>Propose Targets</strong>, with <strong>Cascade ↓</strong>, or on an objective's <strong>Targets</strong> tab.
+  - The period is active. The <strong>Activate</strong> button only shows in an active period.
+related: [accountability/concepts/targets, accountability/workflows/target, accountability/workflows/scorecard-change-request, accountability/how-to/line-managers/propose-next-years-targets, accountability/how-to/line-managers/rebalance-weights]
+sources:
+  - tritel_accountability_framework/static/src/team_targets/accountability_team_targets.xml
+  - tritel_accountability_framework/static/src/team_targets/accountability_team_targets.js
+  - tritel_accountability_framework/views/accountability_scorecard_request_views.xml
+  - tritel_accountability_framework/models/accountability_scorecard_request.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/accountability_target_milestones.py
+  - tritel_accountability_framework/views/accountability_objective_views.xml
+sidebar: { order: 1 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A target only counts once it is **active** on the person's scorecard. New targets start as **Draft**. You, as the manager, check each draft and add it to the scorecard with **Activate**. The system records your reason and shows the effect on the person's overall score.
+
+<Illustration name="accountability/mgr-team-targets" caption="Team Targets with a draft target and the Add to the scorecard window. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Accountability › My Team › Team Targets**. Check the period at the top (for example **FY 2026**). The chips beside it show how many people and targets are listed and the team's average.
+2. In the **My Team** list on the left, click the person.
+3. Find the target marked **Draft**. Click the target to open it and check the **Objective**, **Target Value**, **Unit**, **Review Cadence** and **Weight**. Change anything that is wrong while it is still a draft, then go back.
+4. Click **Activate** on the target's row. The **Add to the scorecard** window opens.
+5. Write why the target is being added in the reason box. The employee, the approver and HR all see it.
+6. Read the effect line: the person's **Overall rating score** before and after. A new target counts once it has a result, so the score usually does not move yet.
+7. Click **Submit**.
+
+## What happens next
+
+- **Before the period's target-setting deadline** (or when the period has no deadline): the change is applied at once. The target becomes **Active**, and your **Activate Target** to-do is closed.
+- **After the deadline:** the request waits for approval. Your own manager and HR get an **Approve scorecard change** to-do, and either of them may approve it. The target stays a draft until then. A target activated after the deadline is also flagged as late-set on its history.
+- **If the period has already started**, the new target changes how much the other targets count. The employee gets a **Priority Change** to acknowledge (*Your priorities changed: please acknowledge.*). If they don't, it is accepted automatically after the acknowledgment window.
+- Every request is listed under **My Team › Scorecard Change Requests**, and HR receives a monthly summary.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Give a reason for the change.* | The reason box was empty. | Write a short reason and click **Submit** again. |
+| *Only Employee B, the manager who cascaded it, HR or an accountability administrator can add 'Customer visits per month' to the scorecard.* | You are not this person's manager. | Ask their manager to activate it. |
+| *'Customer visits per month' already has an open change request (Add to the scorecard · Customer visits per month, waiting for approval). Decide or cancel it first.* | A request for this target is already waiting. | Open it from **Scorecard Change Requests** and wait for the decision, or cancel it. |
+| *'Launch the partner portal' isn't ready: - Add the target's start and end dates. …* | A milestone target is missing dates or stages, or its stage weights don't total 100%. | Fix the items listed. See [Set milestone dates and confirm milestones](/accountability/how-to/line-managers/milestone-dates-and-confirmations/). |
+| *FY 2026 is closed: adding a target is no longer possible for 'Customer visits per month'.* | The period has been closed. | Targets can only be added in an open period. |
+| *'Grow qualified pipeline' is live: change what it is measured against with 'Change target', which records the reason and its effect on the score.* | You tried to edit the value, type or objective of an active target. | Use [Request a scorecard change](/accountability/how-to/line-managers/request-a-scorecard-change/). |
+
+:::note[Good to know]
+Team Targets has no "new target" button. To create a target for someone, use **Propose Targets** (next year's targets), push a share with **Cascade ↓** from your own target, or open the objective under **Organisation › Objectives** and add a line on its **Targets** tab with the employee's name. Your team members can also add their own drafts from **My Targets**; you then get an **Activate Target** to-do.
+:::

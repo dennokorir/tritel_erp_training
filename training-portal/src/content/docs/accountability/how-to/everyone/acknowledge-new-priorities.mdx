@@ -1,0 +1,54 @@
+---
+title: Acknowledge new priorities
+description: When a target is added, withdrawn, closed or reweighted, read how your score is now made up and acknowledge the change before the deadline.
+module: accountability
+pageType: how-to
+roles: [everyone]
+tags: [weights, my actions]
+keywords: [priorities, weight change, rebalance, share of score, scorecard change, acknowledge, sign off, KPI weights, new target added]
+where: [Accountability, My Actions]
+before:
+  - Your manager, HR or an administrator has changed your scorecard. You get a notice and a to-do called <strong>Acknowledge your new priorities</strong>.
+  - You have until the <strong>Acknowledge By</strong> date (5 days by default, restarted by each further change).
+related: [accountability/workflows/priority-change, accountability/concepts/weights-and-share-of-score, accountability/calculations/share-of-score, accountability/how-to/everyone/my-targets]
+sources:
+  - tritel_accountability_framework/views/accountability_weight_change_views.xml
+  - tritel_accountability_framework/models/accountability_priority_change.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/static/src/my_actions/accountability_my_actions.js
+sidebar: { order: 4 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Each target counts for a share of your score. When a target is added after the period has started, withdrawn, closed, fully passed down to your team, or given a new weight, those shares change. The system collects the changes into one **priority change** and asks you to read and acknowledge it.
+
+<Illustration name="accountability/howto-priority-change" caption="A priority change waiting for you. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Accountability › My Actions**. Under **Priorities to acknowledge**, click the period (for example **FY 2026**) to open it. The line shows what changed and the date to acknowledge by.
+2. Read the yellow banner. It gives the **Acknowledge By** date.
+3. Under **What Changed**, read each change: the date, the target and the reason, what changed (for example *Weight changed: weight 1 → 2*), the **Share of score** before and after, and who made it.
+4. Under **Your Score Now**, check how your score is made up today: a coloured bar, then each target's **Weight now**, **Counts as**, **Share of score** and **Share from today**.
+5. Click **Acknowledge New Priorities**.
+
+If you are happy with the change without reading the detail, you can also click **Acknowledge** straight from the line in **My Actions**.
+
+## What happens next
+
+- The status moves to **Acknowledged** and your to-do is closed. Your manager can see this under **My Team › Priority Changes**.
+- If you do nothing, the daily job accepts the change on the day after the **Acknowledge By** date. The status becomes **Accepted automatically**.
+- If you disagree with a change, talk to your manager. Acknowledging only confirms you have seen it; it does not change any score.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *These priorities were already acknowledged.* | You (or the daily job) already acknowledged them. | Nothing to do. Refresh the page. |
+| *Only Employee A can acknowledge their priorities.* | Someone other than the employee clicked **Acknowledge New Priorities**. Managers can't acknowledge for you. | The employee acknowledges it. Managers can click **Remind** in **My Actions**. |
+
+:::note[Good to know]
+- Your past reviews never change. A new weight counts from the day it applies.
+- If more changes arrive before you acknowledge, they join the same priority change and the **Acknowledge By** date starts again.
+- **Share of score** is for the whole period, so it moves slowly. **Share from today** is how much each target counts from now on.
+:::

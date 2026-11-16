@@ -1,0 +1,53 @@
+---
+title: See my team's scores
+description: Read each team member's overall, own and team score and rating on Team Scores, compare with last period, and see how a manager's team score is reached.
+module: accountability
+pageType: how-to
+roles: [line-manager, hr]
+tags: [scores, snapshots]
+keywords: [team scores, team performance, ratings, scorecard, KPI results, appraisal scores, overall score, team score, ranking, export scores, snapshot]
+where: [Accountability, My Team, Team Scores]
+before:
+  - Only people with targets in the period appear. Exempt staff are hidden unless you tick <strong>Show exempt staff</strong>.
+related: [accountability/concepts/scores, accountability/calculations/own-team-overall, accountability/calculations/ratings, accountability/concepts/snapshots-and-as-at, accountability/reports/performance-overview]
+sources:
+  - tritel_accountability_framework/static/src/team_scores/accountability_team_scores.xml
+  - tritel_accountability_framework/static/src/team_scores/accountability_team_scores.js
+  - tritel_accountability_framework/models/accountability_team_scores.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+sidebar: { order: 9 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+**Team Scores** lists everyone in your team with their **Overall** score and rating. For managers in your team it also shows their **Own** and **Team** scores, and how the team score is put together.
+
+<Illustration name="accountability/mgr-team-scores" caption="Team Scores for a manager with three direct reports. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Accountability › My Team › Team Scores** and check the period. To see the team as it stood at a past month end, choose it in the **As at** list (for example *As at 30 Sep 2026 · quarter end*).
+2. Choose whose scores to show: **Direct reports** or **Whole reporting line**. HR also sees **Everyone**.
+3. Read the summary: **Team average (overall)**, **Where the team stands** (how many people sit in each rating) and **Biggest moves** compared with the previous closed period.
+4. Click a rating chip (for example **Needs Improvement**) to list only those people. **All** shows everyone again. Use **Sort** to order by **Lowest rating first**, **Highest overall**, **Biggest change** or **Name**.
+5. Read each row: **Overall**, **Own**, **Team** (managers only), **Status** (the rating), **vs last period** and **Targets scored**. Click **Scorecard** to open that person's targets.
+6. For a manager, click **Team ▾**. **How the team score is reached** lists each team member's score and share of the period, and the **Overall score** line shows the own and team split.
+7. To keep a record of today's figures, click **Freeze team snapshot**. Everyone listed gets a frozen snapshot that never changes.
+
+**Export / list** opens the same scores as a normal list you can filter, group, pivot or export.
+
+## What happens next
+
+- Scores update by themselves when reviews are signed off, and again every night.
+- Frozen snapshots appear under **My Performance › Performance Snapshots** and can be compared with today later. See [Snapshots and Compare](/accountability/reports/snapshots-and-compare/).
+- A ❄ next to the status means a frozen snapshot exists for that date.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *You cannot freeze snapshots for: Employee B.* | You can freeze snapshots for people below you, never for yourself. | Ask your own manager or HR to freeze yours. |
+| *No team scores* — *Nobody in this view has a score for FY 2026 yet.* | Nobody in the chosen view has a scored target in the period. | Choose another period, or wait for the first reviews. |
+
+:::note[Good to know]
+**Overall** is the score the rating is based on. While the period is open, running-total targets are counted *on pace* (against what should have been reached by their last review), so the figure can be higher than the score against the full-year target. When the two differ, the full-year figure is shown underneath as *full period*. A person with no scored target yet shows **No data yet**.
+:::

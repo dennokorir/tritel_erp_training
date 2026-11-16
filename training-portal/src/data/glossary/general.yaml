@@ -1,0 +1,35 @@
+# Terms used across all systems. Keep definitions to one or two plain sentences.
+- term: Back office
+  aliases: [backend]
+  definition: Odoo's full screens, reached by logging in and picking an app. Used to create, change and approve records.
+  module: general
+  see: [getting-started/logging-in]
+- term: Portal
+  definition: The simpler web pages under /my, for checking your own figures and acting on the go. Board members use only the portal.
+  module: general
+  see: [getting-started/logging-in]
+- term: My Actions
+  definition: The list of work waiting for you in each system, with a button to act on each item.
+  module: general
+  see: [getting-started/my-actions]
+- term: Chatter
+  definition: The panel beside a record with its messages, internal notes, to-dos and history of changes.
+  module: general
+  see: [getting-started/chatter-and-activities]
+- term: Activity
+  aliases: [to-do]
+  definition: A to-do on a record, assigned to one person with a due date. Many are created by the system for you.
+  module: general
+  see: [getting-started/chatter-and-activities]
+- term: Smart button
+  definition: A button at the top of a form that shows a related figure, such as spend so far, and opens the related records.
+  module: general
+  see: [getting-started/lists-boards-forms]
+- term: Status bar
+  definition: The row of steps at the top right of a form showing where the record is in its workflow.
+  module: general
+  see: [getting-started/lists-boards-forms]
+- term: Breadcrumb
+  definition: The path at the top of a screen showing where you are; click an earlier part to go back.
+  module: general
+  see: [getting-started/finding-your-way]

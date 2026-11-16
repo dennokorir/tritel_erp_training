@@ -1,0 +1,58 @@
+---
+title: Exempt a member of staff
+description: Mark an intern, temporary worker or other employee as exempt from accountability, optionally between two dates, so they are left out of scores, team figures, cascades and review sessions.
+module: accountability
+pageType: how-to
+roles: [hr, accountability-admin]
+tags: [exempt staff, employees]
+keywords: [exempt, intern, internship, temporary staff, casual, probation, excluded, no KPI, development target, not scored, leave out]
+where: [Employees, Employees]
+before:
+  - You are HR (Employees administrator) or an accountability administrator. Others see the exemption but can't change it.
+  - You know the reason and, if it applies, the start and end dates.
+related: [accountability/concepts/exempt-withdrawn-development, accountability/calculations/own-team-overall, accountability/how-to/line-managers/team-scores]
+sources:
+  - tritel_accountability_framework/views/accountability_exempt_views.xml
+  - tritel_accountability_framework/models/accountability_exempt.py
+  - tritel_accountability_framework/views/hr_employee_views.xml
+sidebar: { order: 8 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Some people take no part in accountability: interns, temporary staff, or someone on a long absence. Marking them **exempt** means no targets are expected of them, they get no score, and they are left out of their manager's team figures, cascades and review sessions for the exempt days.
+
+<Illustration name="accountability/howto-employee-exempt" caption="Exempting an intern. The numbers match the steps below." />
+
+## Steps
+
+1. Open the **Employees** app and open the person's record.
+2. Open the **Performance** tab.
+3. Under **Accountability exemption**, tick **Exempt from Accountability**.
+4. Fill in the **Exemption Reason** (required), for example *Internship, May–Aug 2026*. If it is for a set time, fill in **Exempt From** and **Exempt Until**. Leave **Exempt From** empty for "since they joined" and **Exempt Until** empty for "until further notice".
+5. Save. While the exemption applies, a grey banner at the top of the tab says the person is exempt.
+
+To end an exemption early, set **Exempt Until** to their last exempt day. To remove it entirely, untick **Exempt from Accountability**; the dates are cleared.
+
+## What happens next
+
+- Scores for the person and everyone above them in the active period are recalculated straight away.
+- Their manager's team score leaves out the exempt days. Team screens hide exempt staff unless the viewer ticks **Show exempt staff**.
+- Review sessions set to **All my direct reports** leave out people exempt on the cutoff date. A manager who picks them by hand sees a warning.
+- New targets created for them while exempt are marked **Development (not scored)**: they can be tracked and reviewed, but never count towards a score or objective.
+- In the employee list, the **Exempt** column and the **Exempt from Accountability** filter show who is exempt today.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Give a reason for exempting Employee F from accountability.* | **Exemption Reason** is empty. | Write the reason. |
+| *The exemption for Employee F ends before it starts.* | **Exempt Until** is before **Exempt From**. | Correct the dates. |
+| *Only HR managers and accountability administrators can change exemptions.* | Someone else tried to change the exemption. | Ask HR. |
+| *Only HR managers and accountability administrators can change whether a target is scored.* | Someone else ticked or unticked **Development (not scored)** on a target. | Ask HR. |
+| *'Customer visits per month' is a development target (not scored), so rebalancing weights doesn't apply to it.* | A manager tried to rebalance or withdraw a development target. | Nothing to do: it doesn't count anyway. |
+
+:::note[Good to know]
+- Exempting someone does not change targets they already hold. If those should stop counting, tick **Development (not scored)** on each target, or withdraw them.
+- Signed-off reviews and closed periods never change.
+- The person's real reporting line is untouched; they still appear under their manager in the org chart.
+:::

@@ -1,0 +1,30 @@
+type: screen
+title: A target and its main parts
+desc: The Target form in Accountability, showing the status bar, the Assignment and Measurement groups, the Share of Score strip, the Quantitative Target group, the Data Source group and the Progress group, numbered 1 to 6.
+source: tritel_accountability_framework/views/accountability_target_views.xml (accountability_target_view_form)
+frame:
+  grid: true
+  app: Accountability
+  menu: [{label: My Performance, active: true}, My Team, My Actions, Organisation]
+  breadcrumb: [My Targets, Grow qualified pipeline]
+blocks:
+  - buttons: [{label: Request Review}, {label: Close}, {label: "Cascade ↓"}]
+    status: {steps: [Draft, Active, Pending Review, Reviewed, Closed], current: Active, n: 1}
+  - title: {text: Grow qualified pipeline, sub: "Target · FY 2026"}
+  - fields:
+      - [{label: Employee, value: Employee A, n: 2}, {label: Review Cadence, value: Quarterly}]
+      - [{label: Objective, value: Grow revenue}, {label: Target Type, value: Quantitative, n: 3}]
+      - [{label: Weight, value: "2   Rebalance Weights · Withdraw"}, {label: Period, value: FY 2026}]
+  - note: {text: "Share of Score  25% of the score from today (weight 2 of 8) · #2 of 5", tone: accent, n: 4}
+  - heading: Quantitative Target
+  - fields:
+      - [{label: Target Value, value: "30,000,000"}, {label: Direction, value: Higher is Better}]
+      - [{label: Unit, value: KES}, {label: Apportion when cascading, value: "On"}]
+  - heading: Data Source
+    n: 5
+  - fields:
+      - [{label: Metric, value: Qualified pipeline (quarter)}, {label: Automatic Reviews, value: Create a draft review for the reviewer to confirm}]
+  - heading: Progress
+    n: 6
+  - fields:
+      - [{label: Actual Value, value: "18,000,000"}, {label: Score (%), value: "60.0", bold: true}]

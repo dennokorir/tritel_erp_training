@@ -1,0 +1,57 @@
+---
+title: Open and close a period
+description: Create the next financial year's accountability period, set its target-setting deadline, copy last year's objectives, activate it, and close the old period at year end.
+module: accountability
+pageType: how-to
+roles: [accountability-admin]
+tags: [periods, year end]
+keywords: [financial year, FY, new year, year end, period, activate, close, target-setting deadline, appraisal cycle, roll over]
+where: [Accountability, Organisation, Periods]
+before:
+  - You are an accountability administrator. Only administrators see <strong>Organisation › Periods</strong>.
+  - At year end, reviews for the old period's last window are finished and signed off.
+related: [accountability/workflows/period, accountability/concepts/periods-and-objectives, accountability/how-to/hr-admin/objectives, accountability/how-to/line-managers/propose-next-years-targets]
+sources:
+  - tritel_accountability_framework/views/accountability_period_views.xml
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_target_proposal.py
+  - tritel_accountability_framework/models/accountability_withdrawn.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+sidebar: { order: 1 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A **period** is the accountability year, normally a financial year. Every objective, target and review belongs to one. Only one period can be **Active** at a time, so the year-end changeover is: close the old period, then activate the new one.
+
+<Illustration name="accountability/howto-period-form" caption="A new period, ready to activate. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Accountability › Organisation › Periods** and click **New**. (The list opens on the **Active** filter; remove it to see draft and closed periods.)
+2. Type the **Period Name** (for example *FY 2027*), the **Start Date** and the **End Date**.
+3. Set the **Target-Setting Deadline**. After this date, changes to a live scorecard need approval, and new targets are flagged as late-set. Leave it blank to switch both off.
+4. Save. To carry last year's objectives over, click **Copy Last Year's Objectives**. They are copied as drafts with the same tree, owners and default weights. You can click it again later; it only adds what is missing.
+5. At year end, open the old period and click **Close**. Then open the new period and click **Activate**.
+
+To reopen a closed period by mistake, click **Reset to Draft**, then **Activate** again.
+
+## What happens next
+
+- **Activate**: the period becomes the default on every screen. Managers can set and activate targets in it.
+- **Close**: the system freezes a final snapshot for everyone who had a target in the period, as at its last day (**Period close**). Any scorecard change still open is cancelled, and the people involved are told. Objective scores are frozen as they stand. Nobody can rebalance, withdraw, add or reorder targets in it any more.
+- **Copy Last Year's Objectives**: a message says how many objectives were copied as drafts. Activate them, or let owners do it, under **Organisation › Objectives**. See [Set up objectives](/accountability/how-to/hr-admin/objectives/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Only one period can be active at a time per company. "FY 2026" is currently active.* | You clicked **Activate** while last year is still active. | Close the old period first. |
+| *End date must be after start date.* | The dates are the wrong way round. | Correct the **Start Date** or **End Date**. |
+| *There is no earlier period to copy objectives from.* | No period ends before this one starts. | Create objectives by hand. |
+| *FY 2026 is closed: rebalancing weights is no longer possible for 'Customer visits per month'.* | Someone tried to change a target in a closed period. | Make the change in the open period, or reset the period to draft if it was closed by mistake. |
+
+:::note[Good to know]
+- **Close** has no confirmation step. Check that the year's last reviews are signed off, and close the objectives (so their achievement is worked out), first.
+- Late-set targets are flagged by the date they were **created**, while the help text on the deadline says "activated". A target created before the deadline but activated after it is not flagged.
+- HR managers can also click **Copy Last Year's Objectives**, but only administrators see the **Periods** menu.
+:::

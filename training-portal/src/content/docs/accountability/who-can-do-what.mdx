@@ -1,0 +1,86 @@
+---
+title: Who can do what
+description: Who can see and change targets, reviews and set-up in Accountability, and how the automatic roles of everyone and line manager are given out.
+module: accountability
+pageType: reference
+roles: [everyone, line-manager, hr, accountability-admin, board, system-admin]
+tags: [permissions, access]
+keywords: [access rights, permissions, roles, who can see my score, can't see My Team, supervisor, administrator, HR, privacy, security, visibility]
+related: [accountability/how-to/hr-admin/access-rights, accountability/faq, accountability/index, roles/hr]
+sources:
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/security/ir.model.access.csv
+  - tritel_accountability_framework/security/ir_rules.xml
+  - tritel_accountability_framework/security/target_rules.xml
+  - tritel_accountability_framework/security/snapshot_rules.xml
+  - tritel_accountability_framework/security/progress_brief_rules.xml
+  - tritel_accountability_framework/models/res_users.py
+  - tritel_accountability_framework/models/accountability_target_weights.py
+  - tritel_accountability_framework/models/accountability_scorecard_request.py
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/views/menu.xml
+  - e_board/models/accountability_extensions.py
+sidebar: { order: 2 }
+---
+import Illustration from '../../../components/Illustration.astro';
+
+Accountability follows the org chart in the Employees app. Most people never need access to be set by hand.
+
+## The roles
+
+| Role | How you get it |
+|---|---|
+| **Everyone** | Automatic. Every Odoo user who is linked to an active employee record. |
+| **Line manager** | Automatic. Anyone whose employee record is the **Manager** of at least one active employee. You lose it automatically when you no longer manage anyone. |
+| **HR** | Given in the Employees app (**Employees: Administrator**). HR staff are also employees, so they have everything in the Everyone column too. |
+| **Accountability administrator** | Given by hand by a system administrator. Never added or removed automatically. Has everything a line manager has, for everyone. |
+| **Board member** | A board portal user named as **Board Reviewer** (or **Backup Board Reviewer**) in Settings. Not an employee. |
+
+The two automatic roles are updated whenever an employee is created, archived, linked to a user or given a new **Manager**. An administrator can also click **Resync Access Rights** in **Accountability › Organisation › Settings**.
+
+"Your reporting line" means everyone below you in the org chart, however many levels down. "Your team" or "direct reports" means only the people whose **Manager** is you.
+
+## Targets and objectives
+
+<Illustration name="accountability/matrix-targets" caption="Who can see and change targets, weights, stages, objectives and periods." />
+
+Notes on the "partly" marks:
+
+- **See my team's targets and scores**: line managers see everyone in their reporting line. HR and administrators see everyone. Nobody else sees peers' or other departments' targets.
+- **Create and activate targets for someone else**, **Change weights**, **Withdraw, close or change a live target**: the employee's own manager, or the manager who cascaded the target to them. HR can also withdraw, close or change a live target through **Scorecard Change Requests**, but not change weights.
+- **Push a target down** and **Approve or deny a pull request**: line managers, for their own targets and their direct reports.
+- **Approve a scorecard change after the deadline**: the requester's own manager (when named as an approver) or any HR manager, but never the person who raised it. Administrators approve only when there is no such manager and no HR manager.
+- **Confirm or send back a stage**: the owner's manager. Administrators do it only when the owner's manager has no active Odoo user. The owner can never confirm their own stage.
+- **Propose next year's targets**: line managers for the people below them, never for themselves.
+
+## Reviews
+
+<Illustration name="accountability/matrix-reviews" caption="Who can request, run, answer and decide reviews, and who can freeze snapshots." />
+
+Notes on the "partly" marks:
+
+- **Conduct a single review** and **Plan and run a review session**: only for your own **direct reports**. An administrator can run a session for any reviewer.
+- **See review sessions and Team Reviews**: line managers see their own sessions and those of managers below them. HR can see every session and review but cannot change them.
+- **Send a reminder** and **Answer a concern**: the reviewer of that review.
+- **Decide an escalation**: the reviewer's own manager, or the **Review Escalation Contacts** named in Settings, or, if neither exists, HR. HR and administrators can also decide any escalation, as long as they are not the employee or the reviewer.
+- **Freeze a snapshot**: line managers for the people below them, never themselves.
+- **Raise a concern or escalate my review**: only the employee. Nobody, administrators included, can do it on their behalf.
+- **Review the Managing Director each quarter**: once a board reviewer is named, nobody inside the company can review or type results for the top-level employee's targets: *'Grow revenue' is reviewed by the board each quarter.*
+
+## Organisation and settings
+
+<Illustration name="accountability/matrix-organisation" caption="Which menus and set-up tasks each role can reach." />
+
+Notes on the "partly" marks:
+
+- **My Performance and My Actions** for HR: only if the HR user is linked to an employee record. Without one, the Accountability app doesn't appear at all.
+- **My Team menu** for HR: **Propose Targets**, **Review Sessions**, **Scorecard Change Requests**, **Team Reviews**, **Team Scores** (with the **Everyone** scope) and **Priority Changes**. Not **Team Targets**, **Cascade Management** or **Milestone Timeline**, unless the HR user also manages people.
+- **Session Coverage** and **See someone's score on their employee form**: line managers for their own reporting line.
+
+## Who can see my score?
+
+You, every manager above you in your reporting line, HR and accountability administrators. Colleagues at your level and in other departments cannot.
+
+:::note[Good to know]
+Some buttons, such as **Adopt** and **Decline** on a pushed target, or **Activate** on an objective, are not limited to one named person. Anyone who can open the record may see them. Use them only on your own targets and objectives.
+:::

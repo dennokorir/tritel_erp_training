@@ -1,0 +1,20 @@
+type: screen
+title: Review analysis in pivot view
+desc: The Team Reviews screen switched to its pivot view, with reviewers as rows, how each review closed as columns, and the Turnaround, Concerns and Average measures, numbered 1 to 4.
+source: tritel_accountability_framework/views/accountability_review_pack_views.xml (accountability_review_pack_analysis_pivot, accountability_team_reviews_action)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, {label: My Team, active: true}, My Actions, Organisation]
+  breadcrumb: [Team Reviews]
+blocks:
+  - search: {facets: ["Open + Closed in Last 30 Days"], placeholder: "Search…", filters: [Filters, Group By], n: 1}
+  - buttons: [{label: Measures, n: 2}, {label: Kanban}, {label: List}, {label: Pivot, primary: true, n: 3}]
+  - table:
+      columns: [Reviewer, Acknowledged by Employee, Signed Off Automatically, Closed after Escalation, Total]
+      widths: [2, 2, 2, 2, 1.2]
+      n: 4
+      rows:
+        - [{text: Employee B, bold: true}, "1.5 days", "5.0 days", "", "2.3 days"]
+        - [{text: Employee F, bold: true}, "3.0 days", "", "9.0 days", "4.5 days"]
+  - text: "Shown: Turnaround (days). Concerns and Avg Score (%) appear beside it; untick them under Measures to focus on one."

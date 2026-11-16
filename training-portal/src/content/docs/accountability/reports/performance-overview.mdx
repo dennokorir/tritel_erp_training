@@ -1,0 +1,52 @@
+---
+title: Performance Overview
+description: The organisation (or your part of it) as a tree of people with their own, team and composite scores, rating counts and targets reviewed, today or as at a past month end.
+module: accountability
+pageType: report
+roles: [everyone, line-manager, hr, md]
+tags: [scores, reports, snapshots]
+keywords: [performance overview, org chart scores, organogram, cascade dashboard, company performance, department scores, composite score, KPI dashboard, ratings count, trend]
+where: [Accountability, My Performance, Performance Overview]
+related: [accountability/concepts/scores, accountability/calculations/own-team-overall, accountability/concepts/snapshots-and-as-at, accountability/how-to/line-managers/team-scores, accountability/reports/snapshots-and-compare]
+sources:
+  - tritel_accountability_framework/static/src/cascade/accountability_cascade_dashboard.xml
+  - tritel_accountability_framework/static/src/cascade/accountability_cascade_dashboard.js
+  - tritel_accountability_framework/models/accountability_score.py
+  - tritel_accountability_framework/models/accountability_overview_asat.py
+sidebar: { order: 1 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+**Accountability › My Performance › Performance Overview** is the first screen of the Accountability app. Its title is **Org Performance Cascade**. It shows people as a tree that follows the reporting lines, each with their scores, and a side panel with the details for one person.
+
+What you see depends on who you are. Accountability administrators and HR see the whole organisation. Everyone else sees themselves and the people below them, so a manager sees their branch and a team member sees only their own card.
+
+<Illustration name="accountability/report-performance-overview" caption="The Performance Overview as at a quarter end, with one manager's panel open. The numbers match the list below." />
+
+## Reading the screen
+
+1. **Period.** Choose the period at the top; the active one is marked ●.
+2. **As at.** *As at today (live)* shows today's figures. Pick a month end (for example *As at 30 Sep 2026 · quarter end*) to see the organisation as it stood then. Every figure is rebuilt from the dated history, and the tree follows the reporting lines of that date. A banner says so.
+3. **Views.** **List**, **Organogram** and **Focus** show the same people in different layouts. **+ Expand All** / **− Collapse All** opens or closes every branch. Each card shows the person's composite score, **T** (targets reviewed / targets) and **O** (objectives).
+4. **KPI strip** (for everyone shown):
+   - **Org Composite**: the simple average of the composite scores of everyone with a scored target.
+   - **Employees**, **Targets** and **Reviewed** (targets that are Reviewed or Closed).
+   - One tile per rating, with its range, counting how many people sit in it.
+   - **Standalone**: people with no manager and no team, flagged for HR.
+5. **A person.** Click a card to open the side panel.
+6. **The side panel** shows the person's role and scoring type (**Top Level**, **Manager**, **Individual Contributor** or **Standalone**), their **Own**, **Team** (managers only) and **Composite** scores, and then **Team Summary**, **Objectives**, **Targets** (with how many are reviewed) and **Direct Reports** (click one to move to them). **Open snapshot** (or **❄ Compare with frozen** when one exists) opens the person's snapshot for the chosen date.
+7. **❄ Freeze organisation snapshot** (managers, HR and administrators) saves a frozen snapshot, as at the chosen date, for everyone shown that you are allowed to freeze. Add an optional note and click **Freeze**. People you can't freeze are skipped and counted in the message.
+
+Tick **Trend** to add a line with the organisation average at each month end. Tick **Show exempt staff** to show people who are exempt; they are never counted in the figures.
+
+## What the scores mean
+
+- **Own**: the weighted average of the person's scored targets.
+- **Team**: for managers, the average of their team members' results, weighted by how much of the period each one reported to them.
+- **Composite**: for managers, own and team combined using the split in the Accountability settings. For everyone else it equals the own score.
+
+The full rules are in [Own, Team and Overall score](/accountability/calculations/own-team-overall/).
+
+:::note[Good to know]
+The line under the scores in the side panel always reads *Composite = 40% Own + 60% Team Avg* for managers. That is the default split. If your administrator has changed the split in the settings, the score itself uses the new split; only that line of text stays the same. **Team Scores** shows the split actually used.
+:::

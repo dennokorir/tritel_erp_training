@@ -1,0 +1,13 @@
+type: calc
+title: Session average
+desc: Worked example of a review session average where each employee's pack average counts once, 64.3% and 80.0%, and an employee with nothing counted is left out, giving 72.2%.
+source: tritel_accountability_framework/models/accountability_review_session.py (_compute_stats)
+heading: Avg Score (%) of the Q3 2026 review session
+inputs:
+  - {label: Employee A, value: "64.3%"}
+  - {label: Employee B, value: "80.0%"}
+  - {label: Employee C, value: "nothing counted"}
+steps:
+  - {label: "Leave out employees with no counted target", value: "Employee C out"}
+  - {label: "Each employee counts once: (64.3 + 80.0) ÷ 2", value: "144.3 ÷ 2"}
+result: {label: Avg Score (%), value: "72.2%", tone: good}

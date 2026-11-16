@@ -1,0 +1,67 @@
+---
+title: Ratings and progress briefs
+description: The five-level rating scale, why running totals are rated on pace during the year, and the progress brief emails that show where you stand.
+module: accountability
+pageType: concept
+roles: [everyone, line-manager, hr, accountability-admin]
+tags: [ratings, scores]
+keywords: [rating, grade, band, appraisal rating, meets expectations, outstanding, on track, behind, pace, progress report, monthly brief, email]
+related: [accountability/calculations/ratings, accountability/workflows/progress-brief, accountability/how-to/everyone/read-briefs-and-snapshots, accountability/how-to/hr-admin/settings]
+sources:
+  - tritel_accountability_framework/models/accountability_rating.py
+  - tritel_accountability_framework/models/accountability_progress_brief.py
+  - tritel_accountability_framework/views/accountability_progress_brief_views.xml
+  - tritel_accountability_framework/views/accountability_config_views.xml
+sidebar: { order: 8 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+A **rating** turns a score into one of five levels. You see ratings on your targets, your reviews, your overall score, Team Scores, snapshots and the portal.
+
+| Rating | Default score range |
+|---|---|
+| **Unsatisfactory** | below 50% |
+| **Needs Improvement** | 50% to under 60% |
+| **Meets Expectations** | 60% to under 70% |
+| **Exceeds Expectations** | 70% to under 80% |
+| **Outstanding** | 80% and above |
+
+An accountability administrator can move the boundaries in the settings (**Needs Improvement from**, **Meets Expectations from**, **Exceeds Expectations from**, **Outstanding from**) and change the description of each level. Every rating is worked out again when a boundary changes.
+
+## Rated on pace
+
+A target measured as a running total, such as revenue for the year, can't be judged against the full-year figure in October. So while the period is open, these targets are **Rated on pace**: the actual is compared with what was expected by the date of the last review.
+
+<Illustration name="accountability/concept-on-pace" caption="The same result rated on pace, and against the full target." />
+
+On-pace rating applies only to quantitative targets measured **Period to date** in an open period. Other targets are rated on their score. Once the period is closed, ratings use the final scores.
+
+Your **Overall rating** uses these on-pace figures for running totals, so it shows how you are tracking, not how far through the year you are. A review pack also has a **Rating**, from the ratings of its lines. Development targets and targets with no result have no rating.
+
+## Progress briefs
+
+A **progress brief** is a short email at each month or quarter end showing how your running totals are tracking. It goes to your work email with your manager copied, and you can also read it under **Accountability › My Performance › Progress Briefs** and on the portal.
+
+The brief has one row per running-total target:
+
+| Column | Meaning |
+|---|---|
+| **Target** | The target and its objective. |
+| **Actual** | Your result as at your last review. |
+| **Expected by then** | The share of the target expected by that date. |
+| **Gap** | Actual less expected. |
+| **Rating on pace** | The rating of your actual against what was expected. |
+| **At this pace by period end** | Where your current pace leads by the end of the period, and its rating. |
+
+**Below expectations** counts the targets rated **Unsatisfactory** or **Needs Improvement** on pace. Briefs only cover running-total targets. If you have none, you don't get a brief.
+
+:::note[Good to know]
+Progress briefs are switched off until an administrator turns on **Send progress briefs** in the settings and picks **Brief checkpoints** (**Monthly** or **Quarterly**). Until then, the Progress Briefs list stays empty.
+:::
+
+## Tasks that use this
+
+- [Read my progress briefs and snapshots](/accountability/how-to/everyone/read-briefs-and-snapshots/)
+- [Change the Accountability settings](/accountability/how-to/hr-admin/settings/)
+- [Ratings: the calculation](/accountability/calculations/ratings/)
+- [Progress brief workflow](/accountability/workflows/progress-brief/)

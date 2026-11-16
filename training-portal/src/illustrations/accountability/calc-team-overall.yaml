@@ -1,0 +1,15 @@
+type: calc
+title: Team and overall score
+desc: Worked example of a manager's team score from three team members weighted by the share of the period each reported to them, then the overall score as 40% own and 60% team, giving 77.0%.
+source: tritel_accountability_framework/models/accountability_score.py (_team_component, _score_values)
+heading: Team and Overall score for Employee D (a manager)
+inputs:
+  - {label: "Employee A · all year", value: "1.00 × 70%"}
+  - {label: "Employee B · all year", value: "1.00 × 85%"}
+  - {label: "Employee C · from 1 Jul", value: "0.50 × 60%"}
+steps:
+  - {label: "Team = (70 + 85 + 0.504 × 60) ÷ (1 + 1 + 0.504)", value: "185.2 ÷ 2.504 = 74.0%"}
+  - {label: "Own Score (%) of Employee D", value: "81.4%"}
+  - {label: "Overall = Own × 40% + Team × 60%", value: "32.6 + 44.4"}
+result: {label: Overall (Composite Score), value: "77.0%", tone: good}
+note: 40% and 60% are the default Own Performance Weight (%) and Team Average Weight (%) in Settings.

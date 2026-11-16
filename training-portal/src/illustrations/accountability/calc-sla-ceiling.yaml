@@ -1,0 +1,14 @@
+type: calc
+title: SLA ceiling review score
+desc: Worked example of one review on an SLA target set to At or below ceiling, where the limit of 48 hours is typed in the Compliance Floor field, the ideal is 24 hours and the actual is 36 hours, giving 50%.
+source: tritel_accountability_framework/models/accountability_target.py (_band_score, _score_steps)
+heading: One SLA review, At or below ceiling (response time)
+inputs:
+  - {label: "Compliance Floor (the limit)", value: "48 h"}
+  - {label: Ideal Target (Full Credit), value: "24 h"}
+  - {label: Actual this review, value: "36 h"}
+steps:
+  - {label: "Above 48 h scores 0%. 24 h or less scores 100%.", value: "36 h is in between"}
+  - {label: "(Limit − Actual) ÷ (Limit − Ideal) × 100", value: "(48 − 36) ÷ (48 − 24) × 100"}
+result: {label: Review score, value: "50%", tone: bad}
+note: For this direction the upper limit goes in the field labelled Compliance Floor.

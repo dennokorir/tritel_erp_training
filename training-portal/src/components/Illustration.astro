@@ -1,0 +1,13 @@
+---
+/* Inlines a generated SVG so it picks up the site's light/dark tokens.
+   name = path under src/illustrations without extension, e.g. "accountability/target-form". */
+const svgs = import.meta.glob('../generated/illustrations/**/*.svg', { query: '?raw', import: 'default', eager: true }) as Record<string, string>;
+interface Props { name: string; caption?: string; narrow?: boolean }
+const { name, caption, narrow = false } = Astro.props;
+const svg = svgs[`../generated/illustrations/${name}.svg`];
+if (!svg) throw new Error(`Illustration "${name}" not found. Add src/illustrations/${name}.yaml and run "npm run generate".`);
+---
+<figure class:list={['tp-figure', { 'tp-narrow': narrow }]}>
+  <div class="tp-figure-scroll"><Fragment set:html={svg} /></div>
+  {caption && <figcaption>{caption}</figcaption>}
+</figure>

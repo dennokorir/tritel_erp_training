@@ -1,0 +1,39 @@
+---
+title: Lists, boards and forms
+description: The three kinds of screen you'll use everywhere, and how to search, filter, group and save.
+module: general
+pageType: concept
+roles: [everyone]
+tags: [start here, navigation]
+keywords: [list view, kanban, board, form, filter, group by, favourite, save, discard, status bar, smart button, export]
+sidebar: { order: 3 }
+sources: [Odoo 16 web client]
+---
+import Illustration from '../../../components/Illustration.astro';
+
+## Lists and boards
+
+A **list** shows records as rows. A **board** (Odoo calls it *kanban*) shows them as cards in columns, usually one column per status. Switch between them with the view buttons at the top right.
+
+- **Search:** type a word and pick what to search in (for example *Employee* or *Customer*).
+- **Filters:** ready-made filters such as *My Sessions* or *Needs My Response*. Several filters together narrow the list further.
+- **Group By:** groups rows, for example by status or by person. Click a group to open it.
+- **Favorites:** save the current search to use again.
+
+Many lists open with a filter already applied. If a list looks empty, check the grey filter tags in the search bar and remove them with ×.
+
+## Forms
+
+A **form** shows one record.
+
+<Illustration name="general/form-parts" caption="The parts of a form." />
+
+1. **Action buttons** do the next step of the work, for example **Record Handover**. You only see the buttons that apply to the record's current status and your role.
+2. **The status bar** shows where the record is in its workflow. The highlighted step is the current one.
+3. **Smart buttons** show related figures and open related records, for example the project's baseline or its spend.
+4. **Fields.** Click into a field to change it.
+5. **Tabs** hold more fields and lists.
+
+## Saving
+
+Odoo 16 saves a form when you leave it, or when you click the cloud icon beside the breadcrumb. To throw away changes, click the **×** (Discard) next to it. If a save is refused, a red message explains why; the guides list the common ones under **Common mistakes**.

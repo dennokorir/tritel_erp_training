@@ -1,0 +1,63 @@
+---
+title: Respond to my review
+description: Read the review your manager submitted, then acknowledge it or raise a concern about specific targets before the deadline.
+module: accountability
+pageType: how-to
+roles: [everyone]
+tags: [reviews, my actions]
+keywords: [appraisal, performance review, acknowledge, sign off, agree, disagree, dispute, concern, review pack, quarterly review, feedback]
+where: [Accountability, My Performance, My Reviews]
+before:
+  - Your manager has submitted your review. You get an email and a to-do when they do.
+  - You have until the <strong>Acknowledge By</strong> date shown on the review (5 days by default).
+related: [accountability/concepts/reviews, accountability/workflows/review-pack, accountability/calculations/review-averages]
+sources:
+  - tritel_accountability_framework/views/accountability_review_pack_views.xml
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/wizard/review_pack_ack_wizard.py
+  - tritel_accountability_framework/wizard/review_concern_wizards.py
+  - tritel_accountability_framework/controllers/portal.py
+sidebar: { order: 5 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+After a review session your manager scores each of your targets and submits your **review**. You then read it and either **acknowledge** it or **raise a concern** about the targets you disagree with.
+
+<Illustration name="accountability/review-pack-form" caption="Your review, waiting for you to respond. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Accountability › My Performance › My Reviews**. The list opens on **Needs My Response**. Click your review. The yellow banner shows the date you must respond by.
+2. Check the **Average (%)** and **Rating** at the top right. **Based on** says how many targets were counted.
+3. Read **Your manager's comment**.
+4. In the **Targets** tab, check each target's **Actual**, **Score (%)** and **Rating**. The **How the average is reached** tab shows the sum step by step.
+5. If you agree, click **Acknowledge**. Add a comment if you wish, then click **Acknowledge** in the window that opens.
+6. If you disagree with some scores, click **Raise a Concern** instead:
+   1. Under **Which targets?**, tick the targets you are questioning.
+   2. In **What should your manager look at?**, explain why.
+   3. Click **Send to My Manager**.
+
+You can do the same on the portal: open **/my/performance/reviews** and pick your review.
+
+## What happens next
+
+- **After Acknowledge:** the review is closed. Your scores are written to your targets and your Overview updates. Your manager is notified.
+- **After Raise a Concern:** the deadline stops. Your manager gets a to-do to answer you. They either revise the scores and resubmit the review, or keep the scores and reply.
+  - If they **revise**, you get the review back to acknowledge again.
+  - If they **keep the scores**, you can acknowledge it, or click **Escalate** (only shown at that point) to send it for a decision. It goes to your manager's own manager, or to the escalation contacts HR has named, or to HR.
+- **If you do nothing:** the system sends a reminder 2 days before the deadline, then signs the review off automatically when the deadline passes.
+
+The full path, with every role, is in the [review pack workflow](/accountability/workflows/review-pack/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Choose at least one target that is awaiting your acknowledgment.* | You clicked **Send to My Manager** without ticking a target. | Tick at least one target under **Which targets?** |
+| *Only a review awaiting your acknowledgment can be acknowledged.* | The review has moved on, for example it was signed off automatically or a concern is open. | Refresh the page and check the status bar. |
+| *You can only raise a concern on a review in the 'Awaiting Acknowledgment' step.* | A concern is already open, or the review is closed. | Wait for your manager's answer, or read the **Concerns** tab. |
+| *Only Employee A can raise a concern on this review.* | Someone other than the employee tried to raise it. Managers and administrators can't raise or escalate on your behalf. | The employee must do it themselves. |
+
+:::note[Good to know]
+Only one concern can be open at a time, and you can escalate only after your manager has kept the scores. While a concern or escalation is open, nothing is signed off automatically.
+:::

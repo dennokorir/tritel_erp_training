@@ -1,0 +1,55 @@
+---
+title: Review analysis
+description: Pivot and graph views on Team Reviews and Review Sessions that show how quickly reviews are closed, how often they are questioned, and how session scores and timeliness compare across reviewers.
+module: accountability
+pageType: report
+roles: [line-manager, hr]
+tags: [reviews, review sessions, reports]
+keywords: [review analysis, turnaround, acknowledgment time, concerns raised, review statistics, appraisal analytics, pivot, average session score, days to done, reviewer comparison]
+where: [Accountability, My Team, Team Reviews]
+related: [accountability/how-to/line-managers/team-reviews-board, accountability/reports/session-coverage, accountability/calculations/review-averages, accountability/calculations/metric-families]
+sources:
+  - tritel_accountability_framework/views/accountability_review_pack_views.xml
+  - tritel_accountability_framework/views/accountability_review_session_views.xml
+  - tritel_accountability_framework/models/accountability_review_session.py
+sidebar: { order: 5 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Two menus have analysis views for reviews. **My Team › Team Reviews** analyses individual reviews: how they closed, how long employees took and how often they raised concerns. **My Team › Review Sessions** analyses sessions: average scores, how much was scored and how soon after the cutoff they were done. Both show only what you are allowed to see: your team and the teams below you, or everything for HR.
+
+<Illustration name="accountability/report-review-analysis" caption="Team Reviews in pivot view: turnaround by reviewer and by how the review closed. The numbers match the list below." />
+
+## Team Reviews pivot
+
+1. **Filters.** The default filter **Open + Closed in Last 30 Days** applies here too. Remove it, or pick **Closed**, to analyse a longer stretch.
+2. **Measures.** **Turnaround (days)**, **Concerns** and **Avg Score (%)** are shown. Use **Measures** to add or remove one.
+3. **Pivot view.** Switch to the pivot view with the view buttons at the top right.
+4. **The table.** One row per **Reviewer**, one column per **Closed By**: **Acknowledged by Employee**, **Signed Off Automatically** or **Closed after Escalation**.
+
+What the measures mean:
+
+- **Turnaround (days)**: from the moment the review was submitted to the moment it closed. For example, submitted 1 Oct at 09:00 and acknowledged 3 Oct at 21:00 is 2.5 days. Each cell shows the average.
+- **Concerns**: how many concerns were raised on the reviews.
+- **Avg Score (%)**: each review's weighted average score.
+
+## Review Sessions pivot and graph
+
+Open **My Team › Review Sessions** and switch view:
+
+- **Pivot**: one row per reviewer, one column per cutoff month, with **Avg Score (%)**, **Scored (%)** and **Days from Cutoff to Done**.
+- **Graph**: **Average Session Score** by cutoff month.
+- **Calendar**: sessions on their cutoff dates.
+- **Gantt** (**Review Cycle Timeline**): each session as a bar from the start of its window to its cutoff, with the share scored.
+
+What the measures mean:
+
+- **Avg Score (%)**: the simple average of the employees' review averages. Each employee counts once.
+- **Scored (%)**: lines no longer pending ÷ all lines. Skipped and Not Applicable lines count as scored.
+- **Days from Cutoff to Done**: for example, cutoff 30 Sep and done on 9 Oct is 9.0 days.
+
+:::note[Good to know]
+In the Team Reviews pivot, **Avg Score (%)** is added up across the reviews in a cell rather than averaged, so a cell with several reviews can show more than 100. Read scores per review, or use the Review Sessions pivot, where **Avg Score (%)** is averaged. Reviews that are still open have a turnaround of 0, so pick the **Closed** filter before reading turnaround.
+
+The same review behaviour can be measured on managers' own scorecards. Metrics such as *Team review coverage (direct reports)*, *Review acknowledgment rate*, *Review acknowledgment turnaround* and *Review concern response time* read these figures. See [How metrics count](/accountability/calculations/metric-families/).
+:::

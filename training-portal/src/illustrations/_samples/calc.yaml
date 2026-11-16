@@ -1,0 +1,10 @@
+type: calc
+title: Sample calculation
+desc: Test of the calculation renderer.
+source: tritel_accountability_framework/models/accountability_target.py
+heading: Number target, higher is better
+inputs: [{label: Target, value: "100"}, {label: Actual so far, value: "80", n: 1}]
+steps: [{label: "Score = Actual ÷ Target × 100, capped at 100", value: "80 ÷ 100 × 100", n: 2}]
+result: {label: Score, value: "80%", tone: good}
+bars: [{label: Employee A, value: 80, tone: good}, {label: Employee B, value: 45, tone: warn, mark: 60}]
+note: The score never goes above 100%, even when the actual beats the target.

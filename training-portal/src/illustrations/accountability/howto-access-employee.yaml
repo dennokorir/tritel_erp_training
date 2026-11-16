@@ -1,0 +1,18 @@
+type: screen
+title: The two fields that decide Accountability access
+desc: An employee form in the Employees app highlighting the Manager field and, on the HR Settings tab, the Related User field, numbered 1 and 2.
+source: Odoo Employees form (hr.view_employee_form); rules in tritel_accountability_framework/models/res_users.py (_sync_accountability_groups) and models/hr_employee.py
+frame:
+  grid: true
+  app: Employees
+  menu: [{label: Employees, active: true}, Departments]
+  breadcrumb: [Employees, Employee A]
+blocks:
+  - title: {text: Employee A, sub: Account Manager}
+  - fields:
+      - [{label: Department, value: Commercial}, {label: Manager, value: Employee B, n: 1}]
+      - [{label: Job Position, value: Account Manager}, {label: Coach, value: ""}]
+  - tabs: {items: [Resume, Work Information, Private Information, HR Settings, Performance], active: HR Settings}
+  - fields:
+      - [{label: Related User, value: Employee A, n: 2}]
+  - note: {text: "Employee A gets the automatic User role (linked user). Employee B gets the automatic Supervisor role (manages at least one active employee).", tone: accent}

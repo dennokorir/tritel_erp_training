@@ -1,0 +1,43 @@
+---
+title: Track reviews on the Team Reviews board
+description: See every review in your team grouped by whose move it is, spot the ones waiting too long, and remind, answer or decide straight from the cards.
+module: accountability
+pageType: how-to
+roles: [line-manager, hr]
+tags: [reviews]
+keywords: [team reviews, review status, appraisal tracker, who is waiting, overdue reviews, remind employee, concerns, escalations, acknowledgment, review board]
+where: [Accountability, My Team, Team Reviews]
+before:
+  - Reviews appear here once a review session includes your team. Your own review is never shown here.
+related: [accountability/workflows/review-pack, accountability/how-to/line-managers/conduct-a-review, accountability/reports/review-analysis, accountability/how-to/hr-admin/decide-changes-and-escalations]
+sources:
+  - tritel_accountability_framework/views/accountability_review_pack_views.xml
+  - tritel_accountability_framework/models/accountability_review_session.py
+sidebar: { order: 8 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+**Team Reviews** shows every review in your team as a card, grouped by whose move it is: yours, the employee's, the escalation's, or nobody's (closed). Use it to see what is stuck and act on it.
+
+<Illustration name="accountability/mgr-team-reviews" caption="The Team Reviews board. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Accountability › My Team › Team Reviews**. It opens on **Open + Closed in Last 30 Days**, grouped by **Segment (Waiting On)**. Under **Filters**, pick **Needs My Action** to see only what you must do, or **Employee's Move**, **Reviewer's Move**, **Escalated**, **With Concerns**, **Draft** or **Closed**. The panel on the left filters by segment or by session.
+2. Read the columns: **Reviewer's Move**, **Employee's Move**, **With Escalation** and **Closed**. The coloured bar at the top of each column shows the statuses inside it.
+3. Read a card: the employee, the session, the status, and the next step, for example *Employee B to answer the concern on 1 target(s)*. **Your move** marks the ones waiting for you. The card also shows how many days it has been in this step, the average and the rating. Click **Answer** on a card with a concern to reply (see [Conduct a review](/accountability/how-to/line-managers/conduct-a-review/)).
+4. On a card waiting for the employee, click **Remind** to send them a reminder to acknowledge.
+5. The **Closed** column shows reviews that were acknowledged, signed off automatically or closed after an escalation, for example *Closed: acknowledged on 8 Oct*.
+
+Click any card to open the review. Switch to the list view for a table with **Your Move**, **Status**, **Waiting On**, **Next Step**, **Days in Step**, **Average (%)**, **Rating**, **Acknowledge By** and **Concerns**.
+
+## What happens next
+
+- **Remind** sends the employee *Reminder: please acknowledge your review…*. The system also reminds them by itself 2 days before the **Acknowledge By** date.
+- Cards change colour as they wait: under 3 days in a step is fresh, 3 to 5 days is ageing, 6 days or more is stale.
+- If you are the person an escalated review was sent to (or HR), the card shows **Decide**. See [Decide scorecard changes and escalations](/accountability/how-to/hr-admin/decide-changes-and-escalations/).
+- Managers above you see your team's reviews too, so they can follow how your reviews are going.
+
+:::note[Good to know]
+**Days in Step** counts from the moment the review entered its current status, not from the session date. A review that was revised and resubmitted starts counting again.
+:::

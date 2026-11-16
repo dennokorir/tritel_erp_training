@@ -1,0 +1,19 @@
+# Roles used in page frontmatter (roles: [...]). The id is what pages use; label is what readers see.
+# department groups the /roles/<department>/ learning paths. Approved 2026-11-16.
+- { id: everyone,           label: Everyone,              department: everyone }
+- { id: line-manager,       label: Line manager,          department: line-managers }
+- { id: account-manager,    label: Account Manager,       department: commercial }
+- { id: bid-liaison,        label: Bid Liaison,           department: commercial }
+- { id: head-commercial,    label: Head of Commercial,    department: commercial }
+- { id: presales,           label: Technical Presales,    department: channel }
+- { id: head-channel,       label: Head of Channel,       department: channel }
+- { id: channel-user,       label: Channel user,          department: channel }
+- { id: delivery-pm,        label: Delivery PM,           department: delivery }
+- { id: head-delivery,      label: Head of Delivery,      department: delivery }
+- { id: delivery-finance,   label: Delivery Finance,      department: finance-and-accounts }
+- { id: finance,            label: Finance & Accounts,    department: finance-and-accounts }
+- { id: hr,                 label: HR,                    department: hr }
+- { id: accountability-admin, label: Accountability administrator, department: hr }
+- { id: md,                 label: Managing Director,     department: md-and-board }
+- { id: board,              label: Board member,          department: md-and-board }
+- { id: system-admin,       label: System administrator,  department: hr }

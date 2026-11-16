@@ -1,0 +1,14 @@
+type: calc
+title: Bid quality score
+desc: Worked example of the Bid Quality Score for a Bid Liaison where a must-win tender counts three times, a disqualification caused by the Bid Liaison counts as 0% and an unscored bid is left out, giving 68%.
+source: tritel_accountability_framework/models/metric_hook_bid_quality.py (_bid_quality_result)
+heading: Bid Quality Score (Bid Liaison), Q3 2026
+inputs:
+  - {label: "TND-2026-001 · must-win", value: "90% × 3"}
+  - {label: "TND-2026-002", value: "70% × 1"}
+  - {label: "TND-2026-003 · DQ, own error", value: "0% × 1"}
+  - {label: "TND-2026-004", value: "not scored"}
+steps:
+  - {label: "Unscored bids are listed but left out", value: "TND-2026-004 out"}
+  - {label: "(90 × 3 + 70 × 1 + 0 × 1) ÷ (3 + 1 + 1)", value: "340 ÷ 5"}
+result: {label: Fetched value, value: "68%", tone: warn}

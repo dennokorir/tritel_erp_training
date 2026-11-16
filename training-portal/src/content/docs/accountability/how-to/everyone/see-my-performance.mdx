@@ -1,0 +1,52 @@
+---
+title: See my performance
+description: Open the Performance Overview to see your own score, team score, overall (composite) score and rating for the period, and the targets behind them.
+module: accountability
+pageType: how-to
+roles: [everyone]
+tags: [scores, ratings]
+keywords: [KPI, scorecard, appraisal, my score, rating, composite, overall score, performance overview, how am I doing, results]
+where: [Accountability, My Performance, Performance Overview]
+before:
+  - You have a user account linked to your employee record. Without it the <strong>Accountability</strong> app does not appear.
+  - An accountability period is <strong>Active</strong>, and you have at least one live target in it.
+related: [accountability/concepts/scores, accountability/calculations/own-team-overall, accountability/concepts/ratings-and-briefs, accountability/how-to/everyone/my-targets]
+sources:
+  - tritel_accountability_framework/static/src/cascade/accountability_cascade_dashboard.xml
+  - tritel_accountability_framework/static/src/cascade/accountability_cascade_dashboard.js
+  - tritel_accountability_framework/models/accountability_overview_asat.py
+  - tritel_accountability_framework/models/accountability_score.py
+  - tritel_accountability_framework/views/menu.xml
+sidebar: { order: 1 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+The **Performance Overview** is the first screen you see when you open **Accountability**. It shows your score for the period, your rating, and how many of your targets have been reviewed. Use it whenever you want a quick answer to "how am I doing?".
+
+<Illustration name="accountability/howto-performance-overview" caption="The Performance Overview with your own row selected. The numbers match the steps below." />
+
+## Steps
+
+1. Open the **Accountability** app. It opens on **My Performance › Performance Overview**. You can also reach it from the menu at any time.
+2. In the dark header, check the period. The active period has a dot after its name (**FY 2026 ●**). To look back, pick another period, or pick a month end in the **As at** list instead of **As at today (live)**.
+3. Read the tiles across the top: **Org Composite**, **Employees**, **Targets**, **Reviewed**, and one tile per rating level. For staff without a team these describe only you.
+4. Click your name in the list (or switch to **Organogram** or **Focus**). A panel opens on the right.
+5. In the panel, read your scores:
+   - **Own**: the score from your own targets.
+   - **Team**: shown only if you manage people. It is the average of your team's scores.
+   - **Composite**: your overall score. The line under the tiles says how it is made up, for example *Composite = 100% Own Score*.
+6. Scroll the panel to **Targets**. The count in brackets says how many have been reviewed, for example **(2/4 reviewed)**. Each target shows its cadence, actual against target, and score.
+
+To act on a target (see its stages, request a review), open **My Performance › My Targets**. See [Check my targets](/accountability/how-to/everyone/my-targets/).
+
+## What happens next
+
+- Scores are recalculated every night, and straight away when a review is signed off or a stage is confirmed.
+- **As at** a past month end rebuilds the picture from history. Click **Open snapshot** in the panel to see that date's detail; if a frozen copy exists the button reads **❄ Compare with frozen**. See [Read my progress briefs and snapshots](/accountability/how-to/everyone/read-briefs-and-snapshots/).
+- Your line manager, their managers, HR and accountability administrators can see the same figures for you.
+
+:::note[Good to know]
+- Staff without a team see only themselves here. Managers see themselves and everyone below them. HR and administrators see the whole organisation.
+- A target counts towards your score only once it has a result (a signed-off review, an actual entered, or a confirmed stage). Until then your score can look low early in the year.
+- The line under the score tiles always shows the default split (*40% Own + 60% Team Avg*) for managers, even if HR has changed the split in the settings. The score itself uses the settings.
+:::

@@ -1,0 +1,32 @@
+type: screen
+title: A frozen performance snapshot
+desc: A Performance Snapshot record in Accountability with the Compare with today's rebuild and Print PDF buttons, the Overall and Frozen groups, and the list of targets as at the date, numbered 1 to 5.
+source: tritel_accountability_framework/views/accountability_snapshot_views.xml (accountability_snapshot_view_form)
+frame:
+  grid: true
+  app: Accountability
+  menu: [{label: My Performance, active: true}, My Actions]
+  breadcrumb: [Performance Snapshots, "Employee A · as at 30/09/2026"]
+blocks:
+  - buttons: [{label: "Compare with today's rebuild", primary: true, n: 4}, {label: Print PDF, n: 5}]
+  - title: {text: Employee A, sub: "As at 30/09/2026 · FY 2026", n: 1}
+  - columns:
+      - blocks:
+          - heading: Overall
+            n: 2
+          - fields:
+              - [{label: Rating, value: Exceeds Expectations, tone: good}]
+              - [{label: Rating score (%), value: "71.40"}]
+              - [{label: Own (%), value: "71.40"}]
+      - blocks:
+          - heading: Frozen
+          - fields:
+              - [{label: Taken on, value: 03/10/2026 06:00}]
+              - [{label: Taken, value: Month end}]
+  - table:
+      columns: [Objective, Target, Actual, Target value, Score (%), Rating]
+      widths: [2.2, 2.6, 1.6, 1.6, 1.2, 2]
+      rows:
+        - [Grow revenue, Grow qualified pipeline, "24,000,000", "30,000,000", "80.0", {text: Outstanding, badge: true, tone: good}]
+        - [Customer focus, Customer visits per month, "8", "12", "66.7", {text: Meets Expectations, badge: true, tone: accent}]
+      n: 3

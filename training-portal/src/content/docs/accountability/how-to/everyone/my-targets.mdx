@@ -1,0 +1,65 @@
+---
+title: Check my targets
+description: Use My Targets to see every target you hold this period, its progress, score, share of your score, next review and status, and to request a review.
+module: accountability
+pageType: how-to
+roles: [everyone]
+tags: [targets, scores]
+keywords: [KPI, scorecard, goals, objectives, my targets, weight, share of score, request review, provisional, progress]
+where: [Accountability, My Performance, My Targets]
+before:
+  - Your manager has set and activated your targets for the period. New targets you add yourself start as <strong>Draft</strong> until your manager activates them.
+related: [accountability/concepts/targets, accountability/concepts/weights-and-share-of-score, accountability/calculations/target-scores, accountability/how-to/everyone/update-a-milestone, accountability/workflows/target]
+sources:
+  - tritel_accountability_framework/static/src/my_targets/accountability_my_targets.xml
+  - tritel_accountability_framework/static/src/my_targets/accountability_my_targets.js
+  - tritel_accountability_framework/views/accountability_target_views.xml
+  - tritel_accountability_framework/views/accountability_scorecard_request_views.xml
+  - tritel_accountability_framework/models/accountability_target.py
+sidebar: { order: 2 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+**My Targets** lists every target you hold in a period: how far along it is, what it scores, how much it counts towards your overall score, and when it is next reviewed. Check it at the start of the year, before each review, and whenever your manager tells you a target has changed.
+
+<Illustration name="accountability/howto-my-targets" caption="My Targets in the Cadence view. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Accountability › My Performance › My Targets**. Check the period at the top left. It opens on the active period; pick another one to look back.
+2. Read the chips next to it: number of targets, **pending** reviews, your **% overall** score, your rating, **due soon** and **awaiting activation**. If you get progress briefs, a **Progress brief** chip opens the latest one.
+3. Choose a view: **Cadence** (the default list), **Table**, **Scorecard** (grouped by objective, with a score ring per target) or **Board** (columns **Not Started**, **Below expectations**, **Meets or better**, **Reviewed**).
+4. In **Cadence**, narrow the list with **All**, **Weekly**, **Monthly**, **Quarterly**, **Semi-Annual** or **Annual**. Tick **Group by objective** to group targets under their objectives. Tick **Show withdrawn and closed** to see targets that no longer run.
+5. Read each row:
+   - The badges show the type (**Quant**, **SLA**, **Mile.**), the cadence, the weight (for example **×2**) and the share of your score (for example **40% of score**). Hover over the share to see the full explanation.
+   - **Progress** shows actual against target, or **No actual entered**.
+   - **Score**, **Next Review** and the status: **Draft**, **Active**, **Pending Review**, **Reviewed** or **Closed**.
+6. If a target is measured from Odoo data, a **Provisional** line shows its current value and what it would score. Click the refresh icon to update it. Click **How is this calculated?**, then **Open worksheet →**, to see the records behind it.
+7. Click a target to open its form. From there you can:
+   - click **Request Review** to ask your manager to review it now;
+   - click **Propose a change** to ask your manager to withdraw it, close it or change what it is measured against. Choose the change, give a reason, then click **Propose to my manager**.
+
+To add a target of your own, click **+ New Target**, pick the **Objective** it supports, fill in the form and save. It stays **Draft** until your manager activates it.
+
+## What happens next
+
+- **Request Review** moves the target to **Pending Review**. It appears in your manager's **My Actions** under **Targets waiting for review**. When they have reviewed it, you are asked to acknowledge the result.
+- **+ New Target** gives your manager an *Activate Target* to-do. **Propose a change** gives your manager a *Scorecard change proposed* to-do. They submit it or decline it with a note.
+- When a target is added, withdrawn or reweighted, you are asked to [acknowledge your new priorities](/accountability/how-to/everyone/acknowledge-new-priorities/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Select the objective this target contributes to.* | You saved a new target without an **Objective**. | Choose the objective, then save. |
+| *You can only create targets for yourself. Ask your supervisor to set targets for other employees.* | You changed the **Employee** on a new target. | Leave yourself as the employee. |
+| *Results for SLA targets come from reviews: request or conduct a review to record the actual.* | You typed an actual on an SLA (threshold) target. | Click **Request Review** instead. |
+| *'Grow qualified pipeline' is fully cascaded. Its progress is reviewed on the recipients' shares, not on the original target.* | The whole target has been passed down to your team. | Nothing to review here. Your team's shares are reviewed instead. |
+| *'Grow qualified pipeline' was refreshed 2 minute(s) ago. Values can be refreshed every 5 minutes.* | You clicked refresh on the **Provisional** value too often. | Wait five minutes. |
+| *Give a reason for the change.* | You clicked **Propose to my manager** with no reason. | Write why the change is needed. |
+
+:::note[Good to know]
+- The **Provisional** value is never part of your score. Only a signed-off review puts a result into your score.
+- Scores never go above 100%, even if you beat a target.
+- Withdrawn and closed targets still count in your score for the time they were live.
+:::

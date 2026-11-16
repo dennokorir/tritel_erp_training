@@ -1,0 +1,45 @@
+---
+title: Share of score
+description: How much each target counts in your score, over the whole period and from today, with a worked example and what the hint under the bar means.
+module: accountability
+pageType: calculation
+roles: [everyone, line-manager, hr, accountability-admin]
+tags: [weights, scores]
+keywords: [share of score, weighting, percentage, how much does this count, composition, priority, rank, KPI weight, score breakdown]
+related: [accountability/concepts/weights-and-share-of-score, accountability/calculations/weights-over-time, accountability/how-to/line-managers/rebalance-weights, accountability/how-to/everyone/acknowledge-new-priorities]
+sources:
+  - tritel_accountability_framework/models/accountability_target_weights.py
+  - tritel_accountability_framework/views/accountability_target_views.xml
+sidebar: { order: 4 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+The **Share of Score** section on a target shows how much that target counts in your score. There are two figures, because weights can change during the year.
+
+## The rule
+
+- **Share of Score (%)** (the whole period) = this target's **Counts As** ÷ the total **Counts As** of all your live and finished targets in the period × 100. See [time-weighted weights](/accountability/calculations/weights-over-time/).
+- **Share From Today (%)** = this target's weight today ÷ the total weight of your targets that are live today × 100.
+
+The label next to **Share of Score** shows the share from today, for example *40% of the score from today (weight 2 of 5)*, and the **Rank**, for example *#1 of 3*. The text below the bar gives the whole-period share.
+
+<Illustration name="accountability/calc-share-of-score" caption="Three targets for Employee A. Over the year the revenue target is 53.2% of the score; from today it is 40%." />
+
+## The hint under the bar
+
+The hint tells you what a better result is worth: *A 10-point gain on this target adds about 4.0 points to the FY 2026 score.* That is the whole-period share ÷ 10.
+
+For a line manager, the hint adds the own-score part: *Own score is 40% of the overall score, so about 1.6 points overall.* That is share ÷ 10 × the **Own Performance Weight (%)**.
+
+## Edge cases
+
+- **Drafts** show *Draft: counts once activated* and have no share.
+- **Live targets with no result yet** are included in the shares, but they don't count in your score until a value is in. The bar segment is hatched and the hint adds *Not scored yet: it carries its share once a value is in.*
+- **Finished targets** (withdrawn, closed or fully cascaded) show *No longer counts from 30 Sep 2026* and keep their whole-period share if they had a result.
+- **Targets that ended with no result** get a share of 0: *It ended with no result, so it is not part of the score.*
+- **Shares from today always add up to 100%.** In **Rebalance Weights** each target needs at least 1%: *Every target needs at least 1%: Customer visits.*
+- **Any change to the shares** (a new target, a weight change, a withdrawal or a close) asks you to acknowledge your new priorities.
+
+:::note[Good to know]
+The share shown includes live targets that have no result yet, but your own score is worked out only from targets that have one. Early in the year, a target with a large share may not affect your score at all until its first review.
+:::

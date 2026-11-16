@@ -1,0 +1,64 @@
+---
+title: Rebalance weights
+description: Change how much each of a team member's live targets counts towards their score, from today, by dragging shares in the Rebalance Weights window.
+module: accountability
+pageType: how-to
+roles: [line-manager]
+tags: [weights, targets]
+keywords: [weights, weighting, KPI weight, priorities, share of score, reprioritise, change weight, rebalance, importance, scorecard balance]
+where: [Accountability, My Team, Team Targets]
+before:
+  - You are the person's manager, or the manager who cascaded the target to them.
+  - The targets are live (active). A draft's weight is typed straight on the target and counts once it is activated.
+  - The period is not closed.
+related: [accountability/concepts/weights-and-share-of-score, accountability/calculations/weights-over-time, accountability/calculations/share-of-score, accountability/workflows/priority-change]
+sources:
+  - tritel_accountability_framework/views/accountability_weight_change_views.xml
+  - tritel_accountability_framework/static/src/weight_rebalance/weight_rebalance.xml
+  - tritel_accountability_framework/wizard/target_weight_wizard.py
+  - tritel_accountability_framework/models/accountability_target_weights.py
+  - tritel_accountability_framework/static/src/team_targets/accountability_team_targets.xml
+sidebar: { order: 4 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Each target has a **weight**. Together the weights decide each target's **share of score**. When priorities change during the year, you rebalance: you set new shares from today, give a reason, and the person is asked to acknowledge the new priorities. The time before today keeps the old weights.
+
+<Illustration name="accountability/mgr-rebalance" caption="The Rebalance Weights window for one team member. The numbers match the steps below." />
+
+## Steps
+
+Open **Accountability › My Team › Team Targets**, click the person in **My Team**, then click **Rebalance Weights** under their name. (On a live target you can also click **Rebalance Weights** next to **Weight**.)
+
+1. Choose how dragging behaves: **Trade with neighbour** (only the two targets either side of a boundary change) or **Resize, others rescale** (all other unlocked targets move in proportion).
+2. Drag a boundary on the **Share of score from today** bar. You can also click a boundary and use the ← → keys.
+3. Or type a share in the **Share today** column. Click the lock in **Lock** to keep a target's share fixed while you change others. Check **New weight** and **Period share** (the share for the whole period after the change). **Reset** undoes your changes.
+4. Type the **Reason**. The employee sees it when acknowledging the new priorities.
+5. Read the **Effect**: the change in share, own score and overall score.
+6. Click **Rebalance**, then confirm *Rebalance from today?*
+
+To change only the order of the targets, drag the rows by their handle and click **Save Order**. Order doesn't affect scores, so no reason is needed.
+
+## What happens next
+
+- Each changed target gets a new weight from today. The change is recorded in the target's **Weight History**.
+- The employee gets one **Priority Change** to acknowledge (*Your priorities changed: please acknowledge.*). If they don't respond by the **Acknowledge By** date it is **Accepted automatically**. You can follow these under **My Team › Priority Changes**.
+- Scores are recalculated for the person and up the reporting line.
+- Targets that were withdrawn, closed or fully cascaded appear greyed out (*No longer counts from today*): their share for the past stays as it was.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *The shares add up to 95.0%; they must add up to 100%.* | Typed shares don't total 100. | Adjust a share, or drag a boundary instead. |
+| *Every target needs at least 1%: Response time (hours).* | A share was set below 1%. | Give it at least 1%, or withdraw the target. |
+| *Give a reason for the rebalance.* | The **Reason** box is empty. | Write a reason. |
+| *Nothing changed: drag a boundary or type a share first.* | No share was changed. | Change at least one share. |
+| *'Customer visits per month' is a draft: type its weight directly; it counts once activated.* | You opened Rebalance from a draft target. | Type the draft's **Weight** on the target. |
+| *'Customer visits per month' is live: use Rebalance Weights, which records the reason and asks the employee to acknowledge the new priorities.* | You typed a new **Weight** on a live target. | Use **Rebalance Weights**. |
+| *Only Employee B, the manager who cascaded it or an accountability administrator can change the weight of 'Customer visits per month'.* | You are not this person's manager. | Ask their manager. |
+| *'Mentoring plan' is a development target (not scored), so rebalancing weights doesn't apply to it.* | The target is development-only. | Nothing to do: it never counts. |
+
+:::note[Good to know]
+The **Rebalance** button only appears once you have changed at least one share. Weights are worked out from the shares you set, choosing the scale that changes the fewest weights, so **New weight** can show round numbers that differ from what you expected while the shares are exactly right.
+:::

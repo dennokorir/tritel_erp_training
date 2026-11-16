@@ -1,0 +1,14 @@
+type: calc
+title: Own score
+desc: Worked example of an own score built from two scored targets weighted by their period weight, while a third target with no result yet is left out, giving 81.4%.
+source: tritel_accountability_framework/models/accountability_score.py (_score_values); accountability_target_weights.py (_weighted_target_score)
+heading: Own Score (%) for Employee A
+inputs:
+  - {label: "Revenue · 75% · Counts As", value: "2.00"}
+  - {label: "Visits · 90% · Counts As", value: "1.504"}
+  - {label: "Response SLA", value: "no result yet"}
+steps:
+  - {label: "Leave out targets with no result yet", value: "Response SLA out"}
+  - {label: "Score × Counts As, added up", value: "150.0 + 135.4 = 285.4"}
+  - {label: "Divide by the Counts As of the scored targets", value: "285.4 ÷ 3.504"}
+result: {label: Own Score (%), value: "81.4%", tone: good}

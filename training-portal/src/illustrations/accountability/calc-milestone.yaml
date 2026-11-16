@@ -1,0 +1,14 @@
+type: calc
+title: Milestone target score
+desc: Worked example of a milestone target scored on weighted milestones, with stages weighted 30, 30 and 40 where the first two are confirmed, giving 60%.
+source: tritel_accountability_framework/models/accountability_target.py (_score_milestone)
+heading: Milestone target, Weighted milestones (partial credit)
+inputs:
+  - {label: "Stage 1 · 30%", value: "Confirmed"}
+  - {label: "Stage 2 · 30%", value: "Confirmed"}
+  - {label: "Stage 3 · 40%", value: "Awaiting"}
+steps:
+  - {label: "Add the Weight (%) of every Confirmed stage", value: "30 + 30"}
+  - {label: "Stage 3 is marked done but not yet confirmed by the manager", value: "+ 0"}
+result: {label: Score (%), value: "60%", tone: warn}
+note: "Binary - done / not done gives 0% until all three stages are confirmed, then 100%. Supervisor assessment uses the Supervisor Score (0–100) as typed."

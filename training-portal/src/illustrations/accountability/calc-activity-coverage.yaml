@@ -1,0 +1,15 @@
+type: calc
+title: Update coverage metric
+desc: Worked example of pipeline status update coverage over two months, where 8 of 10 and 9 of 12 opportunities were updated by their owner, giving 77.3%.
+source: tritel_accountability_framework/models/metric_hook_activity.py (_hook_pipeline_status_coverage)
+heading: Pipeline status update coverage, Oct–Nov 2026
+inputs:
+  - {label: "October · due", value: "10"}
+  - {label: "October · updated", value: "8"}
+  - {label: "November · due", value: "12"}
+  - {label: "November · updated", value: "9"}
+steps:
+  - {label: "Add the months together (not an average of months)", value: "17 of 22"}
+  - {label: "17 ÷ 22 × 100", value: "77.3%"}
+result: {label: Fetched value, value: "77.3%", tone: warn}
+note: An update counts only if the owner logged a done activity dated in that month and entered it within 7 days of the month end.

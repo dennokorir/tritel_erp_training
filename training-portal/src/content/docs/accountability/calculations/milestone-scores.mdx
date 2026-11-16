@@ -1,0 +1,44 @@
+---
+title: How a milestone target is scored
+description: How a Milestone / Task target's score comes from its confirmed stages, in the three scoring modes, with a worked example.
+module: accountability
+pageType: calculation
+roles: [everyone, line-manager, accountability-admin]
+tags: [scores, milestones]
+keywords: [milestone, stage, task, project, deliverable, partial credit, binary, done, confirm, supervisor assessment, KPI, percentage]
+related: [accountability/how-to/everyone/update-a-milestone, accountability/workflows/milestone-stage, accountability/how-to/line-managers/milestone-dates-and-confirmations, accountability/calculations/target-scores]
+sources:
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/accountability_target_milestones.py
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/views/accountability_target_views.xml
+sidebar: { order: 2 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+A **Milestone / Task** target is scored from its stages. The **Scoring Mode** on the target decides how.
+
+## The rule
+
+| Scoring Mode | Score |
+|---|---|
+| **Weighted milestones (partial credit)** | The sum of the **Weight (%)** of every stage with status **Confirmed**. Stage weights must add up to 100. |
+| **Binary — done / not done** | 100% when every stage is **Confirmed**, otherwise 0%. |
+| **Supervisor assessment (0–100)** | The **Supervisor Score (0–100)** your manager types. Anything outside 0–100 is treated as 0 or 100. |
+
+Only **Confirmed** stages count. When you click **Mark Done**, the stage moves to **Awaiting Confirmation**. It adds to the score only once your manager clicks **Confirm**.
+
+<Illustration name="accountability/calc-milestone" caption="Stages weighted 30, 30 and 40. Two are confirmed, so the score is 60%. The third is waiting for the manager." />
+
+## Edge cases
+
+- **No confirmed stage yet.** A weighted or binary target with no confirmed stage has no result, so it doesn't count in your own score yet.
+- **Sent back.** If your manager clicks **Send Back**, the stage returns to **Open** with the reason in **Sent Back Because**. It adds nothing until it is marked done and confirmed again.
+- **Reopened.** An accountability administrator can **Reopen** a confirmed stage (*Undo this confirmation? The stage stops counting towards the score.*). The score drops by that stage's weight.
+- **Late stages still count.** Finishing a stage after its **Due** date doesn't reduce the score. The **Timing** column shows it, for example "Completed 4 day(s) late".
+- **Stage weights are locked once the target is live.** *Stage weights on a live target are locked: they decide its score.* To change them, ask an administrator.
+- **Reviews of a milestone target** record the completion % from the confirmed stages. It can't be typed over: *This figure comes from the confirmed stages and can't be typed over.*
+
+:::note[Good to know]
+In **Supervisor assessment** mode there are no stages to tick. The score is whatever the manager types in **Supervisor Score (0–100)**, and it counts once a score above 0 has been entered.
+:::

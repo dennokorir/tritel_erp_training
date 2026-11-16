@@ -1,0 +1,61 @@
+---
+title: Set up objectives
+description: Create the objective tree for a period (company goals and the sub-objectives under them), give each an owner and default weight, and activate it so targets can be set against it.
+module: accountability
+pageType: how-to
+roles: [line-manager, accountability-admin]
+tags: [objectives, periods]
+keywords: [objective, goal, strategic objective, OKR, pillar, sub-objective, KRA, key result area, owner, default weight, achievement threshold]
+where: [Accountability, Organisation, Objectives]
+before:
+  - The period exists. Administrators create it under <strong>Organisation › Periods</strong>.
+  - You are a line manager or an accountability administrator. Other staff don't see <strong>Organisation › Objectives</strong>.
+related: [accountability/concepts/periods-and-objectives, accountability/workflows/objective, accountability/calculations/objective-achievement, accountability/how-to/hr-admin/open-and-close-periods, accountability/how-to/line-managers/set-team-targets]
+sources:
+  - tritel_accountability_framework/static/src/period_browser/accountability_period_browser.xml
+  - tritel_accountability_framework/static/src/period_browser/accountability_period_browser.js
+  - tritel_accountability_framework/views/accountability_objective_views.xml
+  - tritel_accountability_framework/models/accountability_objective.py
+sidebar: { order: 2 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+**Objectives** are what the company wants to achieve in a period. They form a tree: a few top-level objectives, each with sub-objectives owned by departments or managers. Every target belongs to one objective, so objectives must exist before targets can be set.
+
+<Illustration name="accountability/howto-period-browser" caption="The Objectives screen. The numbers match steps 1 to 3." />
+
+## Steps
+
+1. Open **Accountability › Organisation › Objectives**. The left panel lists periods; the active period is selected.
+2. Click the period you want. The right panel lists its objectives with their level (**L0** is top level), owner, number of targets, **Achievement** and score.
+3. Click **New Objective**. The objective form opens for the selected period.
+
+<Illustration name="accountability/howto-objective-form" caption="A new sub-objective. The numbers match steps 4 to 9." />
+
+4. Type the objective's name.
+5. Check the **Period**. For a sub-objective, choose its **Parent Objective**; leave it empty for a top-level one.
+6. Set **Default Weight for New Targets**. Targets added under this objective start at this weight. Also check the **Achievement Threshold (%)** (70 by default): the average score at which the objective counts as **Achieved**.
+7. Choose the **Owner**. The **Department** fills in from the owner; change it if needed.
+8. Save, then click **Activate**.
+9. To add sub-objectives, open the **Sub-objectives** tab and add lines. The **Targets** tab lists the targets set against this objective; the **Cascade** and **Reviews** tabs appear once there are cascades or reviews.
+
+To copy last year's objectives instead of typing them, an administrator or HR clicks **Copy Last Year's Objectives** on the period. See [Open and close a period](/accountability/how-to/hr-admin/open-and-close-periods/).
+
+## What happens next
+
+- Active objectives can be chosen on targets. Managers then [set targets for their team](/accountability/how-to/line-managers/set-team-targets/).
+- As targets are reviewed, the Objectives screen shows each objective's score. **Your Level** is the average for you and your reporting line; **Org** is the whole organisation.
+- When you click **Close** on the objective, **Achievement** shows **Achieved**, **Partial Achievement** (at least three quarters of the threshold), **Not Achieved**, or **Not Measured** if no target has a result. Until then it reads **Not Set**.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *The default weight for new targets must be greater than zero.* | **Default Weight for New Targets** is 0 or negative. | Enter a positive number, such as 1. |
+| *No objective 'Grow revenue' in FY 2027 yet. Copy last year's objectives first.* | A manager proposing next year's targets found no matching objective. | Copy or create the objective in the new period. |
+
+:::note[Good to know]
+- The default weight is a starting point only. A target's own weight decides its share of the score; the objective's weight is never used in a target score.
+- Any line manager can create, activate and close objectives, in any department. Agree who maintains the tree, usually HR or the administrator, before the year starts.
+- Closing a period does not close its objectives. Close each objective at year end, before the period is closed, so its achievement is worked out and kept.
+:::

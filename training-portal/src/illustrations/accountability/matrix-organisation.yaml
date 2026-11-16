@@ -1,0 +1,23 @@
+type: matrix
+title: Who can do what in Organisation
+desc: Permission grid for the Organisation menu and settings, showing which screens and set-up tasks everyone, line managers, HR and accountability administrators can reach.
+source: tritel_accountability_framework/views/menu.xml, security/ir.model.access.csv, models/accountability_config.py, models/accountability_exempt.py, models/accountability_target_library.py, models/hr_employee.py
+columns: [Everyone, Line manager, HR, Accountability administrator]
+labelWidth: 300
+rows:
+  - {group: Menus}
+  - {action: My Performance and My Actions, cells: [y, y, p, y]}
+  - {action: My Team menu, cells: [n, y, p, y]}
+  - {action: Organisation › Objectives, cells: [n, y, n, y]}
+  - {action: Organisation › Session Coverage, cells: [n, p, y, y]}
+  - {action: Organisation › Targets Library, cells: [n, n, y, y]}
+  - {action: Organisation › Scorecard Changes, cells: [n, n, y, y]}
+  - {action: "Organisation › Periods, Compliance, Metrics, Settings", cells: [n, n, n, y]}
+  - {group: People and set-up}
+  - {action: See someone's score on their employee form, cells: [n, p, y, y]}
+  - {action: Exempt a member of staff, cells: [n, n, y, y]}
+  - {action: Edit reporting history, cells: [n, n, y, y]}
+  - {action: Define and test metrics, cells: [n, n, n, y]}
+  - {action: Let automatic reviews submit themselves, cells: [n, n, n, y]}
+  - {action: Change settings and resync access rights, cells: [n, n, n, y]}
+legend: {p: "Partly: see the notes below the picture"}

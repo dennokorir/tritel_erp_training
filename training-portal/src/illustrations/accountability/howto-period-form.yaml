@@ -1,0 +1,18 @@
+type: screen
+title: A period, ready to activate
+desc: The Period form in Accountability with the Activate, Copy Last Year's Objectives, Close and Reset to Draft buttons, the status bar, the period name and the Start Date, End Date and Target-Setting Deadline fields, numbered 1 to 5.
+source: tritel_accountability_framework/views/accountability_period_views.xml (accountability_period_view_form)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, My Team, My Actions, {label: Organisation, active: true, n: 1}]
+  breadcrumb: [Periods, FY 2027]
+blocks:
+  - buttons: [{label: Activate, primary: true, n: 5}, {label: "Copy Last Year's Objectives", n: 4}]
+    status: {steps: [Draft, Active, Closed], current: Draft}
+  - title: {text: FY 2027, n: 2}
+  - fields:
+      - [{label: Start Date, value: 01/01/2027}, {label: Company, value: Tritel}]
+      - [{label: End Date, value: 31/12/2027}]
+      - [{label: Target-Setting Deadline, value: 31/01/2027, n: 3}]
+  - note: {text: "Only one period can be active at a time. Close FY 2026 before you activate FY 2027.", tone: warn}

@@ -1,0 +1,13 @@
+---
+// The A–Z master index at /reference/index/. Starlight serves any content page named "index" at its
+// parent URL (/reference/), so this route renders the generated Markdown inside Starlight's own layout.
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { Content, frontmatter } from '../../generated/a-z-index.md';
+
+export function getStaticPaths() {
+  return [{ params: { page: 'index' } }];
+}
+---
+<StarlightPage frontmatter={{ ...frontmatter }}>
+  <Content />
+</StarlightPage>

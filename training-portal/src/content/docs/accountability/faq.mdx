@@ -1,0 +1,116 @@
+---
+title: Accountability FAQ
+description: Short answers to the questions staff ask most about targets, scores, weights, reviews, ratings and access in Accountability.
+module: accountability
+pageType: faq
+roles: [everyone, line-manager, hr, accountability-admin]
+tags: [faq, scores, reviews]
+keywords: [FAQ, help, why is my score 0, KPI, appraisal, rating, signed off automatically, late set, My Team missing, provisional, weighting, percentage, access]
+related: [accountability/index, accountability/who-can-do-what, accountability/calculations/target-scores, accountability/calculations/own-team-overall, accountability/concepts/reviews]
+sources:
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/accountability_target_weights.py
+  - tritel_accountability_framework/models/accountability_score.py
+  - tritel_accountability_framework/models/accountability_rating.py
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/models/accountability_priority_change.py
+  - tritel_accountability_framework/models/res_users.py
+  - tritel_accountability_framework/views/menu.xml
+sidebar: { order: 3 }
+---
+
+## Why is my score 0?
+
+Your score is built only from targets that have a result. If none has one yet, your score is 0 and you are *Not rated yet*. A target gets a result when a review is signed off, an actual is entered, or (for a milestone target) a stage is confirmed. Draft targets and the **Provisional** current value never count. See [Own, Team and Overall score](/accountability/calculations/own-team-overall/).
+
+## Why does one target show 0% even though I have done some of the work?
+
+Common reasons: it has no review yet; it is an SLA target, which is scored only from signed-off reviews; it is a milestone target whose stages are marked done but not yet **Confirmed** by your manager; or your team has adopted the whole target, so you are measured through your team. See [target scores](/accountability/calculations/target-scores/) and [milestone scores](/accountability/calculations/milestone-scores/).
+
+## Why does my revenue target score so low when I'm on track?
+
+A running total against an annual target is scored against the full year, so in September 7,500,000 of 12,000,000 is 62.5%. Its **Rating** is read on pace instead: against what was expected by then. That is why the rating can say **Outstanding** while the score is 62.5%. See [Ratings](/accountability/calculations/ratings/).
+
+## Can I score more than 100%?
+
+No. Every target score is capped at 100%, so beating a target gives 100%, not more. Your own, team and overall scores can therefore not go above 100% either.
+
+## What is the "Current value" with a Provisional badge?
+
+A preview of what a metric reads for the window still in progress, and what it **would score**. It is *Not part of the score until a review records it.* It updates every night, or when you click **Refresh** (once every 5 minutes). See [How metrics count](/accountability/calculations/metric-families/).
+
+## Why doesn't my target's weight match its share of the score?
+
+The weight is relative. **Share of Score (%)** divides each target's time-weighted weight by the total of all your targets, and **Share From Today (%)** uses today's weights only. A target added halfway through the year has a smaller share of the whole year than its weight suggests. See [Share of score](/accountability/calculations/share-of-score/) and [time-weighted weights](/accountability/calculations/weights-over-time/).
+
+## Why can't I change my target's value or weight?
+
+Once a target is live, changes go through a recorded process. Your manager uses **Rebalance Weights** for weights and **Change target**, **Withdraw** or **Close** for the rest. You can click **Propose a change** to ask them. After the period's **Target-Setting Deadline**, changes also need approval. See [Request a scorecard change](/accountability/how-to/line-managers/request-a-scorecard-change/).
+
+## What does Late Set mean?
+
+**Late Set** marks a target that was created after the period's **Target-Setting Deadline**. It is a flag only: it doesn't change the target's score or weight. It is decided by the day the target was **created**, even though the note posted on a target activated after the deadline says *Target activated after the period's target-setting deadline (2026-03-31). This target is flagged as late-set.* So a draft created before the deadline and activated after it is not flagged. See [Targets](/accountability/concepts/targets/).
+
+## Why am I asked to acknowledge new priorities?
+
+Something changed what your score is made of: a target was added, withdrawn or closed, a weight changed, or a target value changed. **Acknowledge New Priorities** confirms you have seen it. If you don't, it is **Accepted automatically** after the deadline (5 days by default). See [Acknowledge new priorities](/accountability/how-to/everyone/acknowledge-new-priorities/).
+
+## Why did my review sign itself off?
+
+You didn't acknowledge it or raise a concern by the **Acknowledge By** date (5 days after your manager submitted it, by default). The system sends a reminder 2 days before, then closes it as **Signed Off Automatically**. The scores stand as submitted. See [Respond to my review](/accountability/how-to/everyone/respond-to-my-review/).
+
+## I disagree with my review. What can I do?
+
+Click **Raise a Concern**, tick the targets you are questioning and explain why. Nothing is signed off automatically while the concern is open. If your manager keeps the scores, you can **Escalate**. See [Respond to my review](/accountability/how-to/everyone/respond-to-my-review/) and the [review concern workflow](/accountability/workflows/review-concern/).
+
+## Why is a target in my review counted as 0%?
+
+A line left **Pending** with nothing entered counts as 0% in the review's average. A **Skipped** or **Not Applicable** line is left out instead. See [Review and session averages](/accountability/calculations/review-averages/).
+
+## What does Not Applicable mean on a review?
+
+There was nothing to measure in that window: for example no projects handed over, or no review packs closed. A Not Applicable review is signed off straight away and never affects any score.
+
+## Why can't I see the My Team menu?
+
+**My Team** appears only for line managers (anyone recorded as the **Manager** of at least one active employee) and for HR. If you manage people but don't see it, ask HR to check the **Manager** field on your team's employee records. See [Fix someone's access](/accountability/how-to/hr-admin/access-rights/).
+
+## Why can't I see Accountability at all?
+
+The app appears only for Odoo users linked to an active employee record. Ask HR to link your user to your employee record.
+
+## Who can see my score and targets?
+
+You, every manager above you, HR and accountability administrators. Colleagues at your level and in other departments cannot. See [Who can do what](/accountability/who-can-do-what/).
+
+## Why did my manager's score change when mine did?
+
+A manager's overall score is 40% their own targets and 60% their team's scores (by default). When your score changes, your manager's team score changes, and so on up the line. See [Own, Team and Overall score](/accountability/calculations/own-team-overall/).
+
+## Why is my manager's overall score low when their team hasn't been reviewed?
+
+Team members with no score are left out of the team score. If nobody in the team has a score yet, the team score is 0, so the manager's overall score is only 40% of their own score until the first team member is reviewed.
+
+## I joined a new team mid-year. Whose team score do I count in?
+
+Both. Each manager counts you for the share of the period you reported to them. Your old manager's team score uses the reviews done while you were in their team.
+
+## Who confirms my milestone stages?
+
+Your manager. When you click **Mark Done**, the stage waits for them to **Confirm** or **Send Back**. If your manager has no Odoo user, accountability administrators confirm it. You can never confirm your own stage. See [Update a milestone](/accountability/how-to/everyone/update-a-milestone/).
+
+## What happens to a target that is withdrawn halfway through the year?
+
+Its result keeps counting, but only for the days it was live. If it had no result when it was withdrawn, it is not part of the score at all. See [time-weighted weights](/accountability/calculations/weights-over-time/).
+
+## Why does my review session say Late?
+
+A session is **Late** when it is not **Done** more than 7 days after its **Review Cutoff**. The 7 days can't be changed in Settings. See [Plan a review session](/accountability/how-to/line-managers/plan-a-review-session/).
+
+## What do the five ratings mean?
+
+**Outstanding** from 80, **Exceeds Expectations** from 70, **Meets Expectations** from 60, **Needs Improvement** from 50, and **Unsatisfactory** below 50, unless HR has changed the boundaries. See [Ratings](/accountability/calculations/ratings/).
+
+## I'm exempt from accountability. What does that mean for my targets?
+
+Targets created while you are exempt become **Development (not scored)**: you can track them, but they never count towards a score, and you are left out of your manager's team score for the exempt days. See [Exempt staff, withdrawn and development targets](/accountability/concepts/exempt-withdrawn-development/).

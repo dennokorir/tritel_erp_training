@@ -1,0 +1,74 @@
+---
+title: Fix someone's access
+description: Understand how Accountability access follows the employee record and the org chart, give or remove the Administrator role, resync access, and check what to fix when someone can't see a menu.
+module: accountability
+pageType: how-to
+roles: [hr, accountability-admin]
+tags: [access, employees, settings]
+keywords: [access rights, permissions, can't see menu, missing menu, no access, supervisor, line manager, administrator, org chart, manager field, related user, resync]
+where: [Accountability, Organisation, Settings]
+before:
+  - To fix the employee record you need HR rights in the <strong>Employees</strong> app. To resync or give the Administrator role you must be an accountability administrator (and, for the role, an Odoo administrator).
+related: [accountability/who-can-do-what, accountability/how-to/hr-admin/settings, accountability/how-to/hr-admin/exempt-staff, getting-started/finding-your-way]
+sources:
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/models/res_users.py
+  - tritel_accountability_framework/models/hr_employee.py
+  - tritel_accountability_framework/models/accountability_config.py
+  - tritel_accountability_framework/views/accountability_config_views.xml
+  - tritel_accountability_framework/views/menu.xml
+sidebar: { order: 9 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Nobody is given Accountability access by hand, except administrators. Access follows the employee record and the org chart:
+
+- **User** (everyone): given automatically to anyone whose user account is linked to an active employee record.
+- **Supervisor** (line managers): given automatically when that employee is the **Manager** of at least one active employee. It is taken away again when they no longer manage anyone.
+- **Administrator**: given by hand. The automatic updates never add or remove it.
+
+So when someone can't see something, the fix is almost always on their employee record, not in the access settings.
+
+<Illustration name="accountability/howto-access-employee" caption="The two fields that decide access. The numbers match steps 1 and 2." />
+
+## Steps
+
+1. Open the **Employees** app and find the person. Check they appear (an archived employee loses access) and check the **Manager** field. To make someone a line manager in Accountability, they must be the **Manager** on at least one active employee's record.
+2. Open the **HR Settings** tab and check **Related User**. It must be the person's own user account. Without it, the **Accountability** app doesn't appear for them at all. Save any change; access updates straight away.
+
+<Illustration name="accountability/howto-access-resync" caption="Resyncing access rights. The numbers match steps 3 and 4." />
+
+3. If access still looks wrong (for example after employees were imported in bulk), open **Accountability › Organisation › Settings** and click **Resync Access Rights**.
+4. A message confirms it: *Access rights synced* and how many users were updated *from the HR org chart*.
+5. To give someone the **Administrator** role, open **Settings › Users & Companies › Users**, open their user, and on the **Access Rights** tab set **Accountability Framework** to **Administrator**. To take it away, set it back to **User**, save, then click **Resync Access Rights** so the automatic role is worked out again.
+6. Ask the person to reload the page in their browser.
+
+### When someone can't see a menu
+
+| They can't see | Who sees it | What to check |
+|---|---|---|
+| The **Accountability** app | Everyone with a linked employee record | **Related User** on their employee record; the employee is not archived |
+| **My Team** (Team Targets, Cascade Management, Milestone Timeline) | Line managers | They are the **Manager** of at least one active employee |
+| **My Team** (Review Sessions, Team Reviews, Team Scores, Propose Targets, Priority Changes, Scorecard Change Requests) | Line managers and HR | As above, or they have HR rights in **Employees** |
+| **Organisation › Objectives** | Line managers | As above |
+| **Organisation › Session Coverage**, **Targets Library**, **Scorecard Changes** | HR (Session Coverage also line managers) | HR rights in **Employees**, or the Administrator role |
+| **Organisation › Periods**, **Compliance**, **Metrics**, **Settings** | Administrators only | The **Administrator** role (step 5) |
+
+## What happens next
+
+- Changing **Related User**, **Manager** or archiving an employee updates access for the people involved at once, including the old and new manager.
+- Someone who is newly a **Manager** gets the line-manager menus; someone who no longer manages anyone loses them.
+- Administrators keep everything a line manager has, whatever the org chart says.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Only Accountability Administrators can resync access rights.* | Someone without the Administrator role clicked **Resync Access Rights**. | Ask an administrator. |
+| *Only Accountability Administrators can open the settings.* | Someone without the Administrator role opened the settings from a link. | Ask an administrator. |
+
+:::note[Good to know]
+- HR staff who have no employee record of their own don't see the **Accountability** app, even with HR rights. Link them to an employee record.
+- Portal-only users (such as board members) are never given Accountability access by the automatic updates.
+- Seeing someone's scores also follows the org chart: you see your own, your whole reporting line's, and HR and administrators see everyone's.
+:::

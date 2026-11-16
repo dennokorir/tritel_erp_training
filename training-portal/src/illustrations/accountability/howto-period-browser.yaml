@@ -1,0 +1,30 @@
+type: screen
+title: The Objectives screen
+desc: The Objectives screen in Accountability with the New Objective button, the list of periods on the left, and the selected period's objectives on the right with level, owner, target count, achievement and score, numbered 1 to 3.
+source: tritel_accountability_framework/static/src/period_browser/accountability_period_browser.xml (PeriodBrowser)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, My Team, My Actions, {label: Organisation, active: true, n: 1}]
+  breadcrumb: [Objectives]
+blocks:
+  - buttons: [{label: New Objective, primary: true, n: 3}]
+  - columns:
+      - panel: true
+        blocks:
+          - heading: Periods
+          - table:
+              columns: [Period, Status]
+              widths: [2, 1]
+              rows:
+                - {cells: ["FY 2026 · 6 objectives", {text: Active, badge: true, tone: good}], highlight: true, n: 2}
+                - ["FY 2025 · 5 objectives", {text: Closed, badge: true, tone: muted}]
+      - panel: true
+        blocks:
+          - heading: "FY 2026 · Objectives 6 · Your Level 71% · Targets 24"
+          - table:
+              columns: [L, Objective, Achievement, Score]
+              widths: [0.5, 3.4, 1.8, 0.9]
+              rows:
+                - ["L0", "Grow revenue · Employee C · 8 targets", {text: Not Set, badge: true, tone: muted}, "74%"]
+                - ["L1", "Grow qualified pipeline · Employee B · 5 targets", {text: Not Set, badge: true, tone: muted}, "70%"]

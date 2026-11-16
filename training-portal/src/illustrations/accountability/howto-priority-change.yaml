@@ -1,0 +1,33 @@
+type: screen
+title: A priority change waiting for you
+desc: The Priority Change form in Accountability with the Acknowledge New Priorities button, the yellow deadline banner, the What Changed table and the Your Score Now section, numbered 1 to 5.
+source: tritel_accountability_framework/views/accountability_weight_change_views.xml (view_priority_change_form)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, {label: My Actions, active: true, n: 1}]
+  breadcrumb: [My Actions, "Priorities · Employee A · FY 2026"]
+blocks:
+  - buttons: [{label: Acknowledge New Priorities, primary: true, n: 5}]
+    status: {steps: [To acknowledge, Acknowledged], current: To acknowledge}
+  - note: {text: "How much your targets count changed. Read what changed and why, then acknowledge by 21/11/2026; after that it is accepted automatically. Your past reviews are unchanged.", tone: warn, n: 2}
+  - title: {text: "Priorities · Employee A · FY 2026"}
+  - fields:
+      - [{label: Employee, value: Employee A}, {label: Acknowledge By, value: 21/11/2026}]
+      - [{label: Manager, value: Employee B}, {label: Period, value: FY 2026}]
+  - heading: What Changed
+    n: 3
+  - table:
+      columns: [Date, Target, Change, Share of score, By · from]
+      widths: [1, 2.6, 3.2, 1.8, 1.8]
+      rows:
+        - ["16 Nov", "Customer visits per month", "Weight changed: 1 → 2", "22.2% → 24.3%", "Employee B · 16 Nov"]
+  - heading: Your Score Now
+    n: 4
+  - table:
+      columns: [Target, Weight now, Share of score, Share from today]
+      widths: [3, 1.4, 1.6, 1.8]
+      rows:
+        - [Grow qualified pipeline, "2", "43.2%", "36.4%"]
+        - [Customer visits per month, "2", "24.3%", "36.4%"]
+        - [Deliver CRM roll-out, "1.5", "32.4%", "27.3%"]

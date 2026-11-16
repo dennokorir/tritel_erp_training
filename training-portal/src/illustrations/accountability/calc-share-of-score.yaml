@@ -1,0 +1,20 @@
+type: calc
+title: Share of score
+desc: Worked example of three targets with period weights 2.00, 1.50 and 0.25, showing each one's Share of Score (%) over the period and its share from today.
+source: tritel_accountability_framework/models/accountability_target_weights.py (_composition)
+heading: Share of Score for Employee A, FY 2026
+inputs:
+  - {label: "Revenue · Counts As", value: "2.00"}
+  - {label: "Visits · Counts As", value: "1.50"}
+  - {label: "Response SLA · Counts As", value: "0.25"}
+steps:
+  - {label: "Total Counts As of all live and finished targets (exact figures)", value: "2 + 1.504 + 0.252 = 3.756"}
+  - {label: "Revenue: 2.000 ÷ 3.756", value: "53.2%"}
+  - {label: "Visits: 1.504 ÷ 3.756", value: "40.0%"}
+  - {label: "Response SLA: 0.252 ÷ 3.756", value: "6.7%"}
+result: {label: Shares add up to, value: "100%", tone: good}
+bars:
+  - {label: Revenue (weight 2 today), value: 40, display: "40% from today"}
+  - {label: Visits (weight 2 today), value: 40, display: "40% from today"}
+  - {label: Response SLA (weight 1 today), value: 20, display: "20% from today"}
+note: Counts As is shown rounded to 2 decimals; the system uses the exact figure. The bars show Share From Today (%), which uses only today's weights 2, 2 and 1.

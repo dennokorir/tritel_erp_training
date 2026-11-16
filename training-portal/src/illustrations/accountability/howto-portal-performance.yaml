@@ -1,0 +1,20 @@
+type: screen
+title: My Performance on the portal
+desc: The My Performance page on the website portal with the As at selector, the My Reviews button, the overall rating and Own Performance cards, and the My Targets table with the Request Review button, numbered 1 to 5.
+source: tritel_accountability_framework/views/portal_performance_templates.xml (accountability_my_performance)
+frame:
+  app: Tritel portal
+  menu: [Home, {label: My Performance, active: true, n: 1}]
+  breadcrumb: [Home, My Performance]
+blocks:
+  - buttons: [{label: "As at  Today (live)", n: 2}, {label: My Reviews, n: 3}]
+  - tiles:
+      - {label: "Overall rating · 72.0%", value: Exceeds Expectations, tone: good, n: 4}
+      - {label: Own Performance, value: "72.0%"}
+  - heading: My Targets — FY 2026
+  - table:
+      columns: [Target, Cadence, Target, Actual, Score, Status, ""]
+      widths: [3, 1.3, 1.6, 1.6, 1.2, 1.4, 1.8]
+      rows:
+        - [Grow qualified pipeline, quarterly, "30,000,000 KES", "27,000,000", "90.0%", {text: Reviewed, badge: true, tone: good}, ""]
+        - {cells: [Customer visits per month, monthly, "12", "8", "66.7%", {text: Active, badge: true, tone: muted}, {text: Request Review, bold: true}], n: 5}

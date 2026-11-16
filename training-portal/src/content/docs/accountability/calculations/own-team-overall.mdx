@@ -1,0 +1,65 @@
+---
+title: Own, Team and Overall score
+description: How your own score is built from your targets, how a manager's team score is built from their team, and how the two combine into the overall (composite) score.
+module: accountability
+pageType: calculation
+roles: [everyone, line-manager, hr, accountability-admin, md]
+tags: [scores]
+keywords: [overall score, composite, own score, team score, manager score, KPI, appraisal, 40/60, weighting, performance score]
+related: [accountability/concepts/scores, accountability/how-to/line-managers/team-scores, accountability/reports/performance-overview, accountability/calculations/ratings]
+sources:
+  - tritel_accountability_framework/models/accountability_score.py
+  - tritel_accountability_framework/models/accountability_target_weights.py
+  - tritel_accountability_framework/models/accountability_config.py
+sidebar: { order: 5 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Everyone gets an **Own Score (%)**. People who manage a team also get a **Team Score (%)**. The two combine into the **Overall** score, also labelled **Composite Score (%)** or **Composite %**.
+
+## Own score
+
+**Own Score = the average of your targets' scores, each weighted by its Counts As.**
+
+Only targets with a result count: a reviewed target, a live or closed target with an actual entered, or a milestone target with at least one confirmed stage. Draft targets, development targets and targets waiting for their first result are left out.
+
+<Illustration name="accountability/calc-own-score" caption="Two scored targets give an own score of 81.4%. The SLA target has no review yet, so it is left out." />
+
+## Team score (managers)
+
+**Team Score = the average of your team members' scores, each weighted by the share of the period they reported to you.**
+
+- A member who reported to you all period counts 1.00. One who joined your team halfway counts about 0.50. Days a member was exempt are taken off.
+- While the period is running, the share is measured against the days gone so far.
+- A member who reported only to you this period counts with their own overall score.
+- A member who moved between managers counts with a score worked out from the reviews done while they reported to you.
+- Members with no score yet are **left out**, so they don't pull the average down to 0.
+
+**Team Scores** and the target form both show the working, one line per person, under **How the team score is reached**.
+
+## Overall score
+
+| Who | Overall score |
+|---|---|
+| Staff with no team, or a manager with fewer than 2 participating direct reports (**Leaf / Individual Contributor**) | Own score |
+| Managers with a manager above them and at least 2 participating direct reports (**Middle**) | Own × 40% + Team × 60% |
+| The top of the organisation: has a team but no manager (**Top Level**) | Own × 40% + Team × 60%, whatever the team size |
+| No manager and no team (**Standalone (Flagged)**) | Own score |
+| Exempt for every day of the period so far (**Exempt**) | No score and no rating |
+
+40% and 60% are the defaults for **Own Performance Weight (%)** and **Team Average Weight (%)** in Settings. "At least 2" is **Min. Headcount for Team Weighting**.
+
+<Illustration name="accountability/calc-team-overall" caption="Employee D manages three people. Their team score is 74.0%, and with an own score of 81.4% the overall score is 77.0%." />
+
+## Edge cases
+
+- **No result on any target.** Your own score is 0 and you have no rating (*Not rated yet*).
+- **A manager whose team has no scores yet.** The team score is 0, so the overall score is only 40% of the own score until the first team member is reviewed.
+- **A manager with only 1 participating direct report** (and a manager above) is scored as **Leaf / Individual Contributor**: overall = own. The **Scoring Mode** shows this. "Participating" means not exempt for at least part of the period.
+- **Scores move up the line.** When your score changes, your manager's team score and everyone above is recalculated.
+- **The "vs last period" figure** compares with your overall score in the latest **closed** period.
+- **Caps.** Target scores are capped at 100%, so no score here can go above 100%.
+
+:::note[Good to know]
+The settings don't check that Own and Team add up to 100%. If they were set to 50 and 60, a manager's overall score could go above 100%. Keep them adding up to 100.
+:::

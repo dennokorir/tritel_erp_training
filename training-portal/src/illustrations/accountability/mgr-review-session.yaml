@@ -1,0 +1,34 @@
+type: screen
+title: Setting up a review session
+desc: The Review Session form in Draft, with the Launch Session and Populate & Start buttons, the Review Cadence and Review Cutoff fields, the Covers dates, the Scope choice and the Employees tab, numbered 1 to 6.
+source: tritel_accountability_framework/views/accountability_review_session_views.xml (accountability_review_session_view_form)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, {label: My Team, active: true}, My Actions, Organisation]
+  breadcrumb: [Review Sessions, New]
+blocks:
+  - buttons: [{label: Launch Session}, {label: Populate & Start, primary: true, n: 6}]
+    status: {steps: [Draft, In Progress, Done], current: Draft}
+  - title: {text: "Q3 2026 — Quarterly Review", sub: Session}
+  - columns:
+      - blocks:
+          - heading: Session
+          - fields:
+              - {label: Session Date, value: 06/10/2026, readonly: true}
+              - {label: Review Cadence, value: Quarterly, n: 2}
+              - {label: Review Cutoff, value: 30/09/2026, n: 3}
+              - {label: Covers, value: "01/07/2026 – 30/09/2026", readonly: true}
+              - {label: Period, value: FY 2026, readonly: true}
+      - blocks:
+          - heading: Who is reviewed
+          - fields:
+              - {label: Reviewer, value: Employee B, readonly: true}
+              - {label: Scope, value: "All my direct reports", n: 4}
+              - {label: Employees, value: "(only for Selected direct reports)", tone: muted}
+  - tabs: {items: [Employees], active: Employees, n: 5}
+  - table:
+      columns: [Employee, Targets, Done, Pending, Review]
+      widths: [3, 1, 1, 1, 1.6]
+      rows:
+        - [Employee A, "—", "—", "—", ""]

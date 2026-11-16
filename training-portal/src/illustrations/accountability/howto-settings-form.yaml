@@ -1,0 +1,43 @@
+type: screen
+title: Accountability settings
+desc: The Accountability Framework Settings form with the Resync Access Rights button and the Composite Score Weights, Performance Rating Scale, Progress Briefs, Review Workflow, Automatic Metric Reviews, Cascade Notifications and Notifications sections, numbered 1 to 7.
+source: tritel_accountability_framework/views/accountability_config_views.xml (accountability_config_view_form)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, My Team, My Actions, {label: Organisation, active: true, n: 1}]
+  breadcrumb: [Settings]
+blocks:
+  - buttons: [{label: "⟳ Resync Access Rights"}]
+  - heading: Composite Score Weights
+    n: 2
+  - fields:
+      - [{label: Own Performance Weight (%), value: "40.00"}, {label: Min. Headcount for Team Weighting, value: "2"}]
+      - [{label: Team Average Weight (%), value: "60.00"}]
+  - heading: Performance Rating Scale
+    n: 3
+  - fields:
+      - [{label: Needs Improvement from, value: "50.00"}, {label: Meets Expectations from, value: "60.00"}]
+      - [{label: Exceeds Expectations from, value: "70.00"}, {label: Outstanding from, value: "80.00"}]
+  - heading: Progress Briefs
+    n: 4
+  - fields:
+      - [{label: Send progress briefs, value: "☐"}, {label: Brief checkpoints, value: Monthly}]
+  - buttons: [{label: Send briefs now}]
+  - columns:
+      - blocks:
+          - heading: Review Workflow
+            n: 5
+          - fields:
+              - [{label: Acknowledgment Window (days), value: "5"}]
+      - blocks:
+          - heading: Automatic Metric Reviews
+            n: 6
+          - fields:
+              - [{label: Metric Settle Period (days), value: "3"}]
+              - [{label: Metric Review Confirmation Deadline (days), value: "5"}]
+  - heading: Cascade Notifications · Notifications
+    n: 7
+  - fields:
+      - [{label: Cascade Action Deadline (days), value: "3"}, {label: Review Escalation Contacts, value: Employee D}]
+      - [{label: Cascade Reminder Interval (days), value: "3"}, {label: Notify on Standalone Employees, value: Employee D}]

@@ -1,0 +1,80 @@
+---
+title: Push a target down, or approve a pull
+description: Share one of your targets with your direct reports using Cascade ↓, follow adoption on Cascade Management, and approve or deny a team member's pull request.
+module: accountability
+pageType: how-to
+roles: [line-manager]
+tags: [cascading, targets]
+keywords: [cascade, cascade down, push target, split target, share target, allocate target, pull request, request cascade, adopt, team KPI, apportion]
+where: [Accountability, My Performance, My Targets]
+before:
+  - The target you push from is yours, belongs to an objective, and that objective belongs to a period.
+  - The people you push to are your direct reports. Exempt staff are not offered.
+related: [accountability/concepts/cascading, accountability/workflows/cascade, accountability/reports/compliance, accountability/how-to/line-managers/set-team-targets]
+sources:
+  - tritel_accountability_framework/views/wizard_cascade_push_views.xml
+  - tritel_accountability_framework/wizard/cascade_push_wizard.py
+  - tritel_accountability_framework/wizard/cascade_line_mixin.py
+  - tritel_accountability_framework/views/accountability_target_views.xml
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/static/src/cascade_management/accountability_cascade_management.xml
+sidebar: { order: 3 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+When a target is delivered by your team, you **cascade** it. A **share** hands part of the number to a team member: what they adopt is taken off what you are measured on. A **supporting target** (for example an SLA or a set of milestones) helps deliver yours without taking anything from it. Team members can also ask for a share of your target themselves: that is a **pull request**, which you approve or deny.
+
+<Illustration name="accountability/mgr-push-cascade" caption="The Push Cascade window opened from your own target. The numbers match the steps below." />
+
+## Steps
+
+### Push a target to your team
+
+1. Open **Accountability › My Performance › My Targets** and click your target. On the target, click **Cascade ↓**. (You can also click **Cascade ↓** on a target row in an objective's **Targets** tab.)
+2. Check the **Allocation** figures: **Source Total**, **Already Allocated**, **This Push** and **Remaining After Push**. A yellow *Over-allocating* note appears if you give out more than the target; this is allowed as a stretch buffer.
+3. The window lists one line per direct report. For each line:
+   1. Leave **Include** on for people who should get a target, or switch it off.
+   2. Type the **Value** for a share. Leave the target name blank to use your target's name.
+   3. Click a line to change its **Type**, **Link** (**Share of source** or **Supporting target**) and **Cadence**. A supporting SLA needs its floor and ideal; a supporting milestone target needs its **Milestone Stages**, one per line.
+   4. People shown in grey already hold this cascade. For a share, tick one to **top up** their share by the value you enter.
+4. Add a **Note to Team (optional)** explaining the cascade.
+5. Click **Push Cascade**.
+6. Optional: before pushing, **Split Remaining Evenly** divides what is left equally across the ticked share lines.
+
+### Follow adoption
+
+Open **Accountability › My Team › Cascade Management**. The **Board** view has columns **Pending Adoption**, **Adopted**, **Declined** and **Pull Requests**. Click **Remind All** on a source target to nudge everyone who hasn't adopted yet. **Sources**, **Recipients** and **Roster** show the same cascades in other ways.
+
+### Approve or deny a pull request
+
+<Illustration name="accountability/mgr-pull-request" caption="A team member's pull request on your target. The numbers match the steps below." />
+
+1. Open the request from **My Actions** (**Pull requests to approve**), or click the card in the **Pull Requests** column of Cascade Management. Read the **Cascade** section: what they asked for, from which of your targets, and their justification in **Manager Note**.
+2. Click **Approve Pull** to offer them the share.
+3. Or click **Deny Pull** to refuse it.
+
+You can also approve or deny from your own target: the **Cascade Recipients** tab has **Approve** and **Deny** buttons on each pull request.
+
+## What happens next
+
+- **After a push:** each person gets a draft target with **Cascade Status** **Pending Adoption**, a message, and an **Adopt Cascade** to-do. They **Adopt** it (it becomes active) or **Decline** it with a reason. Reminders go out automatically every few days while it waits.
+- **When a share is adopted**, your own target is measured on what you keep: **Measured On** = your target minus the adopted shares. If everything is adopted, your target is fully cascaded and is reviewed through the shares. You may also get a **Review the Balance** to-do to keep or rebalance the person's weights.
+- **When someone declines**, you get a **Resolve Declined Cascade** to-do. Push to that person again, or leave it.
+- **After the target-setting deadline**, adopting a cascade is a scorecard change that needs approval by your manager or HR.
+- **After Approve Pull**, the share moves to **Pending Adoption** and the person gets an **Adopt Cascade** to-do. **After Deny Pull**, it is **Declined** and the person is told.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *This target has no parent objective. Assign it to an objective before cascading.* | Your target isn't linked to an objective. | Set its **Objective** first. |
+| *Tick at least one line to push.* | Every line has **Include** switched off. | Switch on at least one line. |
+| *Every ticked line needs a recipient.* | A ticked line has no employee. | Pick the employee or untick the line. |
+| *'Grow qualified pipeline' for Employee A: a share needs a value greater than 0 KES.* | A share line has no value. | Type the value, or make it a supporting target. |
+| *'Grow qualified pipeline' for Employee A: a share of the source must be quantitative.* | A share line is set to SLA or milestone. | Change the **Link** to **Supporting target**. |
+| *'Grow qualified pipeline' for Employee A: this source can't be shared — mark the line as a supporting target.* | Your target is not set to be split into shares. | Use **Supporting target** for that line. |
+| *Nothing left to allocate — this target is already fully allocated.* | You clicked **Split Remaining Evenly** with nothing left. | Type the values by hand. |
+
+:::note[Good to know]
+The **Adopt** and **Decline** buttons on a share appear for anyone who can open it, not only the person it was sent to. Leave adopting and declining to the recipient so the decision is theirs.
+:::

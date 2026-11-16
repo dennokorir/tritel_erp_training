@@ -1,0 +1,420 @@
+# Accountability Framework: every status of every workflow, one entry per status.
+# Written from tritel_accountability_framework (models and views); see the workflow pages for diagrams.
+
+# ── Period ───────────────────────────────────────────────────────────────
+- module: accountability
+  workflow: "Period"
+  link: "/accountability/workflows/period/"
+  state: "Draft"
+  meaning: "The period is being set up: objectives and draft targets can be prepared. Nothing is scored automatically yet."
+  next: "Active (Activate)"
+  who: "Accountability administrator"
+- module: accountability
+  workflow: "Period"
+  link: "/accountability/workflows/period/"
+  state: "Active"
+  meaning: "The live year. Scores are recalculated nightly, automatic reviews run and milestone stages can be confirmed. Only one period per company can be active."
+  next: "Closed (Close)"
+  who: "Accountability administrator"
+- module: accountability
+  workflow: "Period"
+  link: "/accountability/workflows/period/"
+  state: "Closed"
+  meaning: "The year is finished. Scorecards can't change, open change requests were cancelled and final snapshots were frozen."
+  next: "Draft (Reset to Draft)"
+  who: "Accountability administrator"
+
+# ── Objective ────────────────────────────────────────────────────────────
+- module: accountability
+  workflow: "Objective"
+  link: "/accountability/workflows/objective/"
+  state: "Draft"
+  meaning: "Being set up. Left out of the period's objective average. Objectives copied from last year start here."
+  next: "Active (Activate)"
+  who: "Line manager or accountability administrator"
+- module: accountability
+  workflow: "Objective"
+  link: "/accountability/workflows/objective/"
+  state: "Active"
+  meaning: "Live. Its targets count and its Org Average (%) updates. Achievement shows Not Set."
+  next: "Closed (Close)"
+  who: "Line manager or accountability administrator"
+- module: accountability
+  workflow: "Objective"
+  link: "/accountability/workflows/objective/"
+  state: "Closed"
+  meaning: "Finished. Achievement is decided: Achieved, Partial Achievement, Not Achieved or Not Measured."
+  next: "Draft (Reset to Draft)"
+  who: "Line manager or accountability administrator"
+
+# ── Target ───────────────────────────────────────────────────────────────
+- module: accountability
+  workflow: "Target"
+  link: "/accountability/workflows/target/"
+  state: "Draft"
+  meaning: "Proposed, not yet on the scorecard. Doesn't count towards any score."
+  next: "Active (Activate, then Submit; or Adopt for a cascaded share)"
+  who: "Line manager, HR or accountability administrator; Adopt: the person it was cascaded to"
+- module: accountability
+  workflow: "Target"
+  link: "/accountability/workflows/target/"
+  state: "Active"
+  meaning: "Live on the scorecard. Counts once it has a result. Changes go through a scorecard change request."
+  next: "Pending Review (Request Review); Reviewed (a review is signed off); Closed (Close, then Submit)"
+  who: "Employee or line manager; the system; line manager, HR or administrator"
+- module: accountability
+  workflow: "Target"
+  link: "/accountability/workflows/target/"
+  state: "Pending Review"
+  meaning: "A one-off review was requested. The employee's direct manager sees Conduct Review."
+  next: "Reviewed (review signed off); Active (target withdrawn or fully cascaded)"
+  who: "Line manager conducts, employee acknowledges; the system"
+- module: accountability
+  workflow: "Target"
+  link: "/accountability/workflows/target/"
+  state: "Reviewed"
+  meaning: "Has at least one signed-off review; its latest result is on the target. Still live."
+  next: "Pending Review (Request Review); Closed (Close, then Submit)"
+  who: "Employee or line manager; line manager, HR or administrator"
+- module: accountability
+  workflow: "Target"
+  link: "/accountability/workflows/target/"
+  state: "Closed"
+  meaning: "Finished. Counts in the score for the time it was live. Can't be reopened."
+  next: "—"
+  who: "—"
+
+# ── Single review (Conduct Review) ───────────────────────────────────────
+- module: accountability
+  workflow: "Single review"
+  link: "/accountability/workflows/target/"
+  state: "Draft"
+  meaning: "The manager is recording the result, or the system created it from a metric for the manager to confirm."
+  next: "Pending Acknowledgment (Sign Off in the Conduct Review window)"
+  who: "Line manager (direct manager) or accountability administrator"
+- module: accountability
+  workflow: "Single review"
+  link: "/accountability/workflows/target/"
+  state: "Pending Acknowledgment"
+  meaning: "Sent to the employee to acknowledge."
+  next: "Signed Off (Acknowledge, or automatically after the acknowledgment window)"
+  who: "Employee; the system"
+- module: accountability
+  workflow: "Single review"
+  link: "/accountability/workflows/target/"
+  state: "Signed Off"
+  meaning: "Final. The result is written to the target and the score recalculated."
+  next: "—"
+  who: "—"
+
+# ── Cascade ──────────────────────────────────────────────────────────────
+- module: accountability
+  workflow: "Cascade"
+  link: "/accountability/workflows/cascade/"
+  state: "Not Cascaded"
+  meaning: "An ordinary target that didn't come from a cascade."
+  next: "—"
+  who: "—"
+- module: accountability
+  workflow: "Cascade"
+  link: "/accountability/workflows/cascade/"
+  state: "Pull Requested"
+  meaning: "A team member asked for part of their manager's live target. The share is a draft waiting for the manager."
+  next: "Pending Adoption (Approve Pull); Declined (Deny Pull)"
+  who: "Line manager who owns the source target"
+- module: accountability
+  workflow: "Cascade"
+  link: "/accountability/workflows/cascade/"
+  state: "Pending Adoption"
+  meaning: "A share was pushed down, or a pull was approved. It is a draft until the team member accepts it."
+  next: "Adopted (Adopt); Declined (Decline, then Confirm Decline)"
+  who: "The team member who received it"
+- module: accountability
+  workflow: "Cascade"
+  link: "/accountability/workflows/cascade/"
+  state: "Adopted"
+  meaning: "Accepted. The share is Active on the team member's scorecard."
+  next: "—"
+  who: "—"
+- module: accountability
+  workflow: "Cascade"
+  link: "/accountability/workflows/cascade/"
+  state: "Declined"
+  meaning: "Turned down with a reason, or a pull request that was denied. The share doesn't count."
+  next: "— (the manager can push again)"
+  who: "—"
+
+# ── Milestone stage ──────────────────────────────────────────────────────
+- module: accountability
+  workflow: "Milestone stage"
+  link: "/accountability/workflows/milestone-stage/"
+  state: "Open"
+  meaning: "Not finished yet. If it was sent back, Sent Back Because shows the reason."
+  next: "Awaiting Confirmation (Mark Done)"
+  who: "The target's owner"
+- module: accountability
+  workflow: "Milestone stage"
+  link: "/accountability/workflows/milestone-stage/"
+  state: "Awaiting Confirmation"
+  meaning: "The owner says it is finished. It doesn't count until confirmed."
+  next: "Confirmed (Confirm); Open (Send Back, or Withdraw by the owner)"
+  who: "Line manager (the owner's manager); the owner"
+- module: accountability
+  workflow: "Milestone stage"
+  link: "/accountability/workflows/milestone-stage/"
+  state: "Confirmed"
+  meaning: "Accepted. The stage counts towards the score and can't be edited."
+  next: "Open (Reopen)"
+  who: "Accountability administrator"
+
+# ── Scorecard change request ─────────────────────────────────────────────
+- module: accountability
+  workflow: "Scorecard change request"
+  link: "/accountability/workflows/scorecard-change-request/"
+  state: "Draft"
+  meaning: "The request window is open and being filled in. A reason is required."
+  next: "Proposed by the employee (Propose to my manager); Applied or Waiting for approval (Submit)"
+  who: "Employee proposes; line manager, cascading manager, HR or accountability administrator submits"
+- module: accountability
+  workflow: "Scorecard change request"
+  link: "/accountability/workflows/scorecard-change-request/"
+  state: "Proposed by the employee"
+  meaning: "The employee asked their manager to withdraw, close or change a target. Nothing has changed yet."
+  next: "Applied or Waiting for approval (Submit); Declined (Decline)"
+  who: "Line manager, HR or accountability administrator"
+- module: accountability
+  workflow: "Scorecard change request"
+  link: "/accountability/workflows/scorecard-change-request/"
+  state: "Waiting for approval"
+  meaning: "Submitted after the period's target-setting deadline. The approvers must decide."
+  next: "Applied (Approve); Declined (Decline)"
+  who: "An approver (the submitter's manager) or anyone in HR, never the submitter"
+- module: accountability
+  workflow: "Scorecard change request"
+  link: "/accountability/workflows/scorecard-change-request/"
+  state: "Applied"
+  meaning: "The change was made on the target with its reason, and scores were recalculated."
+  next: "—"
+  who: "—"
+- module: accountability
+  workflow: "Scorecard change request"
+  link: "/accountability/workflows/scorecard-change-request/"
+  state: "Declined"
+  meaning: "Not made. Note on the decision says why."
+  next: "—"
+  who: "—"
+- module: accountability
+  workflow: "Scorecard change request"
+  link: "/accountability/workflows/scorecard-change-request/"
+  state: "Cancelled"
+  meaning: "Withdrawn by whoever raised it (Cancel request), or cancelled because the period was closed."
+  next: "—"
+  who: "—"
+
+# ── Review session ───────────────────────────────────────────────────────
+- module: accountability
+  workflow: "Review session"
+  link: "/accountability/workflows/review-session/"
+  state: "Draft"
+  meaning: "Being set up: cadence, cutoff and scope can still change."
+  next: "In Progress (Populate & Start or Launch Session)"
+  who: "The reviewer (line manager) or accountability administrator"
+- module: accountability
+  workflow: "Review session"
+  link: "/accountability/workflows/review-session/"
+  state: "In Progress"
+  meaning: "The reviewer is scoring targets and submitting reviews."
+  next: "Done (automatically when every review is submitted, or Mark Done); Draft (Back to Draft, while no review exists)"
+  who: "The system; the reviewer or accountability administrator"
+- module: accountability
+  workflow: "Review session"
+  link: "/accountability/workflows/review-session/"
+  state: "Done"
+  meaning: "Finished. Completed On is stamped. Late if it was done more than 7 days after the cutoff."
+  next: "In Progress (Reopen, while no review exists)"
+  who: "The reviewer or accountability administrator"
+
+# ── Review pack ──────────────────────────────────────────────────────────
+- module: accountability
+  workflow: "Review pack"
+  link: "/accountability/workflows/review-pack/"
+  state: "Draft"
+  meaning: "The manager is scoring the targets. The employee can't see it yet."
+  next: "Awaiting Acknowledgment (Submit Review or Submit All Reviews); Signed Off Automatically (every target not applicable)"
+  who: "Line manager (the reviewer); the system"
+- module: accountability
+  workflow: "Review pack"
+  link: "/accountability/workflows/review-pack/"
+  state: "Awaiting Acknowledgment"
+  meaning: "Submitted. The employee has until Acknowledge By (5 days by default) to respond."
+  next: "Acknowledged (Acknowledge); Concern Raised (Raise a Concern); Signed Off Automatically (deadline passed)"
+  who: "Employee; the system"
+- module: accountability
+  workflow: "Review pack"
+  link: "/accountability/workflows/review-pack/"
+  state: "Concern Raised"
+  meaning: "The employee questioned some targets. The deadline is paused."
+  next: "Being Revised or Scores Kept (Answer the Concern)"
+  who: "Line manager (the reviewer) or accountability administrator"
+- module: accountability
+  workflow: "Review pack"
+  link: "/accountability/workflows/review-pack/"
+  state: "Being Revised"
+  meaning: "The manager is re-scoring the questioned targets."
+  next: "Awaiting Acknowledgment (Resubmit Review)"
+  who: "Line manager (the reviewer)"
+- module: accountability
+  workflow: "Review pack"
+  link: "/accountability/workflows/review-pack/"
+  state: "Scores Kept"
+  meaning: "The manager kept the scores and replied. A new Acknowledge By date is set."
+  next: "Acknowledged (Acknowledge); Escalated (Escalate); Signed Off Automatically (deadline passed)"
+  who: "Employee; the system"
+- module: accountability
+  workflow: "Review pack"
+  link: "/accountability/workflows/review-pack/"
+  state: "Escalated"
+  meaning: "The employee asked for a decision. The deadline is paused."
+  next: "Closed after Escalation or Being Revised (Decide the Escalation)"
+  who: "The people it was escalated to, HR or accountability administrator"
+- module: accountability
+  workflow: "Review pack"
+  link: "/accountability/workflows/review-pack/"
+  state: "Acknowledged"
+  meaning: "Closed by the employee. Scores are written to the targets."
+  next: "—"
+  who: "—"
+- module: accountability
+  workflow: "Review pack"
+  link: "/accountability/workflows/review-pack/"
+  state: "Signed Off Automatically"
+  meaning: "Closed by the system after the deadline, or because there was nothing to acknowledge."
+  next: "—"
+  who: "—"
+- module: accountability
+  workflow: "Review pack"
+  link: "/accountability/workflows/review-pack/"
+  state: "Closed after Escalation"
+  meaning: "Closed because the escalation upheld the manager's scores."
+  next: "—"
+  who: "—"
+
+# ── Review line (a target inside a review pack) ──────────────────────────
+- module: accountability
+  workflow: "Review line"
+  link: "/accountability/workflows/review-pack/"
+  state: "Pending"
+  meaning: "Not scored yet. A review can't be submitted while any line is pending."
+  next: "Done (enter an Actual, Fetch, or the tick to accept 0); Not Applicable (Fetch finds nothing); Skipped (Skip)"
+  who: "Line manager (the reviewer)"
+- module: accountability
+  workflow: "Review line"
+  link: "/accountability/workflows/review-pack/"
+  state: "Done"
+  meaning: "Scored. Counts in the review average."
+  next: "Pending (Reopen while the review is a draft, or when a concern reopens it)"
+  who: "Line manager; the system"
+- module: accountability
+  workflow: "Review line"
+  link: "/accountability/workflows/review-pack/"
+  state: "Not Applicable"
+  meaning: "Nothing to measure in this window. Left out of every average."
+  next: "Pending (Reopen)"
+  who: "Line manager"
+- module: accountability
+  workflow: "Review line"
+  link: "/accountability/workflows/review-pack/"
+  state: "Skipped"
+  meaning: "Left out of this review on purpose, and out of the average."
+  next: "Pending (Reopen)"
+  who: "Line manager"
+
+# ── Review concern ───────────────────────────────────────────────────────
+- module: accountability
+  workflow: "Review concern"
+  link: "/accountability/workflows/review-concern/"
+  state: "Awaiting Manager"
+  meaning: "The employee questioned some targets and explained why. Values When Raised keeps the figures at that moment."
+  next: "Scores Revised or Scores Kept (Answer the Concern, Send Answer)"
+  who: "Line manager (the reviewer) or accountability administrator"
+- module: accountability
+  workflow: "Review concern"
+  link: "/accountability/workflows/review-concern/"
+  state: "Scores Revised"
+  meaning: "The manager agreed to look again; the questioned targets are re-scored and the review resubmitted."
+  next: "Closed (employee acknowledges the review)"
+  who: "Employee"
+- module: accountability
+  workflow: "Review concern"
+  link: "/accountability/workflows/review-concern/"
+  state: "Scores Kept"
+  meaning: "The manager kept the scores and replied."
+  next: "Escalated (Escalate); Closed (employee acknowledges the review)"
+  who: "Employee"
+- module: accountability
+  workflow: "Review concern"
+  link: "/accountability/workflows/review-concern/"
+  state: "Escalated"
+  meaning: "The employee asked for a decision. Escalated To shows who decides."
+  next: "Upheld on Escalation or Sent Back for Revision (Decide the Escalation, Record Decision)"
+  who: "The people it was escalated to, HR or accountability administrator"
+- module: accountability
+  workflow: "Review concern"
+  link: "/accountability/workflows/review-concern/"
+  state: "Upheld on Escalation"
+  meaning: "The decider kept the manager's scores; the review closed after escalation."
+  next: "—"
+  who: "—"
+- module: accountability
+  workflow: "Review concern"
+  link: "/accountability/workflows/review-concern/"
+  state: "Sent Back for Revision"
+  meaning: "The decider sent the review back to the manager to re-score."
+  next: "Closed (employee acknowledges the revised review)"
+  who: "Employee"
+- module: accountability
+  workflow: "Review concern"
+  link: "/accountability/workflows/review-concern/"
+  state: "Closed"
+  meaning: "The employee acknowledged the review after the answer or decision."
+  next: "—"
+  who: "—"
+
+# ── Progress brief ───────────────────────────────────────────────────────
+- module: accountability
+  workflow: "Progress brief"
+  link: "/accountability/workflows/progress-brief/"
+  state: "Not sent"
+  meaning: "Written but not emailed yet. In practice it is sent as soon as it is created."
+  next: "Sent (daily job, or Send briefs now)"
+  who: "The system; accountability administrator"
+- module: accountability
+  workflow: "Progress brief"
+  link: "/accountability/workflows/progress-brief/"
+  state: "Sent"
+  meaning: "Emailed to the employee with their manager copied, plus an inbox notification."
+  next: "Sent again (Send again)"
+  who: "Accountability administrator"
+
+# ── Priority change ──────────────────────────────────────────────────────
+- module: accountability
+  workflow: "Priority change"
+  link: "/accountability/workflows/priority-change/"
+  state: "To acknowledge"
+  meaning: "How the employee's targets count has changed. Further changes join this record and reset Acknowledge By."
+  next: "Acknowledged (Acknowledge New Priorities); Accepted automatically (deadline passed)"
+  who: "The employee only; the system"
+- module: accountability
+  workflow: "Priority change"
+  link: "/accountability/workflows/priority-change/"
+  state: "Acknowledged"
+  meaning: "The employee confirmed they have seen the new priorities."
+  next: "—"
+  who: "—"
+- module: accountability
+  workflow: "Priority change"
+  link: "/accountability/workflows/priority-change/"
+  state: "Accepted automatically"
+  meaning: "Not acknowledged by the deadline, so the system accepted it. Scores are not affected."
+  next: "—"
+  who: "—"

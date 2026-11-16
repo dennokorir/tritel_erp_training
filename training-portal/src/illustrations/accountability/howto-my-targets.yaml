@@ -1,0 +1,27 @@
+type: screen
+title: My Targets, cadence view
+desc: The My Targets screen in Accountability with the period selector, the summary chips, the view buttons, the cadence filter and one row per target showing progress, score, next review and status, numbered 1 to 6.
+source: tritel_accountability_framework/static/src/my_targets/accountability_my_targets.xml (MyTargets)
+frame:
+  grid: true
+  app: Accountability
+  menu: [{label: My Performance, active: true}, My Actions]
+  breadcrumb: [My Targets]
+blocks:
+  - buttons: [{label: FY 2026, n: 1}, {label: "As at today (live)"}, {label: "+ New Target"}, {label: "↑ Request Cascade"}]
+  - tiles:
+      - {label: Targets, value: "4"}
+      - {label: Overall, value: "72%", tone: good, n: 2}
+      - {label: Rating, value: Exceeds Expectations, tone: good}
+      - {label: Awaiting activation, value: "1", tone: warn}
+  - buttons: [{label: Cadence, primary: true, n: 3}, {label: Table}, {label: Scorecard}, {label: Board}]
+  - buttons: [{label: All, primary: true, n: 4}, {label: Monthly}, {label: Quarterly}, {label: Annual}]
+  - table:
+      columns: [Target, Progress, Score, Next Review, Status]
+      widths: [3.4, 1.8, 1, 1.6, 1.6]
+      rows:
+        - {cells: ["Pipeline · 40% of score", "27M / 30M KES", "90%", "31/12/2026", {text: Reviewed, badge: true, tone: good}], n: 5}
+        - ["Visits · 25% of score", "8 / 12", "67%", "30/11/2026", {text: Active, badge: true, tone: accent}]
+        - ["CRM roll-out · 35% of score", "1/3 stages", "30%", "", {text: Active, badge: true, tone: accent}]
+        - ["Account plans (draft)", "No actual entered", "0%", "", {text: Draft, badge: true, tone: muted}]
+  - note: {text: "Provisional · Current value 28,500,000 KES · would score 95%. Not part of the score until a review records it.", tone: accent, n: 6}

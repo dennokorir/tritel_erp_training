@@ -1,0 +1,33 @@
+type: screen
+title: An objective
+desc: The Objective form in Accountability with the Trace, Activate, Close and Reset to Draft buttons, the objective name, the Context and Ownership groups, and the Targets, Cascade, Reviews and Sub-objectives tabs, numbered 4 to 9.
+source: tritel_accountability_framework/views/accountability_objective_views.xml (accountability_objective_view_form)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, My Team, My Actions, {label: Organisation, active: true}]
+  breadcrumb: [Objectives, Grow qualified pipeline]
+blocks:
+  - buttons: [{label: Trace}, {label: Activate, primary: true, n: 8}]
+    status: {steps: [Draft, Active, Closed], current: Draft}
+  - smart: [{label: Targets, value: "5"}, {label: Sub-objectives, value: "2"}]
+  - title: {text: Grow qualified pipeline, sub: Objective, n: 4}
+  - columns:
+      - blocks:
+          - heading: Context
+          - fields:
+              - [{label: Period, value: FY 2026, n: 5}]
+              - [{label: Parent Objective, value: Grow revenue}]
+              - [{label: Default Weight for New Targets, value: "1.00", n: 6}]
+              - [{label: Achievement Threshold (%), value: "70.00"}]
+      - blocks:
+          - heading: Ownership
+          - fields:
+              - [{label: Owner, value: Employee B, n: 7}]
+              - [{label: Department, value: Commercial}]
+  - tabs: {items: [Targets, Cascade, Reviews, Sub-objectives], active: Sub-objectives, n: 9}
+  - table:
+      columns: [L, Objective, Owner, Targets, Status]
+      widths: [0.5, 3, 2, 1, 1.2]
+      rows:
+        - ["2", Win new named accounts, Employee A, "2", {text: Draft, badge: true, tone: warn}]

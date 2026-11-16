@@ -1,0 +1,14 @@
+type: calc
+title: Time-weighted weight
+desc: Worked example of a target whose weight changed from 1 to 2 on 1 July in a 365-day period, giving a period weight (Counts As) of 1.50.
+source: tritel_accountability_framework/models/accountability_target_weights.py (_period_weight)
+heading: Counts As for a target whose weight changed mid-year
+inputs:
+  - {label: Period, value: "365 days"}
+  - {label: "Weight 1 Jan–30 Jun", value: "1 × 181 d"}
+  - {label: "Weight 1 Jul–31 Dec", value: "2 × 184 d"}
+steps:
+  - {label: "Add up weight × days for each stretch", value: "181 + 368 = 549"}
+  - {label: "Divide by the days in the period", value: "549 ÷ 365"}
+result: {label: Counts As, value: "1.50", tone: accent}
+note: "A target that went live on 1 Oct with weight 1 counts for 92 days only: 92 ÷ 365 = 0.25."

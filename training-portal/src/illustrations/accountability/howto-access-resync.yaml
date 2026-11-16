@@ -1,0 +1,14 @@
+type: screen
+title: Resyncing access rights
+desc: The Accountability Settings form with the Resync Access Rights button at the top and the Access rights synced message that appears afterwards, numbered 3 and 4.
+source: tritel_accountability_framework/views/accountability_config_views.xml (accountability_config_view_form) and models/accountability_config.py (action_resync_access_rights)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, My Team, My Actions, {label: Organisation, active: true}]
+  breadcrumb: [Settings]
+blocks:
+  - buttons: [{label: "⟳ Resync Access Rights", n: 3}]
+  - heading: Accountability Framework Settings
+  - text: Composite Score Weights · Performance Rating Scale · Progress Briefs · Review Workflow …
+  - note: {text: "Access rights synced — 2 user(s) updated from the HR org chart.", tone: good, n: 4}

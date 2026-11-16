@@ -1,0 +1,11 @@
+type: screen
+title: The parts of a form
+desc: A record opened in a form, with the action buttons, the status bar, the smart buttons, the fields and the tabs numbered 1 to 5.
+source: Odoo 16 form view layout; tritel_project_delivery/views/project_views.xml
+frame: { grid: true, app: Project, menu: [My Actions, {label: Delivery, active: true}, Configuration], breadcrumb: [Delivery Projects, PRJ Customer A network upgrade] }
+blocks:
+  - { buttons: [{label: Record Handover, primary: true, n: 1}, {label: Log Client Delay}], status: {steps: [Not started, Handed over, Closed], current: Not started, n: 2} }
+  - { smart: [{label: Delivery baseline, value: Approved v1, n: 3}, {label: Spent so far, value: "38%"}, {label: Budget left, value: On track, tone: good}] }
+  - { title: {text: Customer A network upgrade, sub: Delivery project} }
+  - fields: [[{label: Customer, value: Customer A, n: 4}, {label: Project Manager, value: Employee B}], [{label: Award date, value: 03/02/2026}, {label: Baseline due, value: 17/02/2026}]]
+  - { tabs: {items: [Delivery, Handover & close, Tasks], active: Delivery, n: 5} }

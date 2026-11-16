@@ -1,0 +1,18 @@
+type: screen
+title: Exempting an employee
+desc: An employee form in the Employees app on the Performance tab, with the grey exempt banner and the Accountability exemption group holding Exempt from Accountability, Exempt From, Exempt Until and Exemption Reason, numbered 1 to 5.
+source: tritel_accountability_framework/views/accountability_exempt_views.xml (hr_employee_view_form_accountability_exempt) and views/hr_employee_views.xml
+frame:
+  grid: true
+  app: Employees
+  menu: [{label: Employees, active: true, n: 1}, Departments]
+  breadcrumb: [Employees, Employee F]
+blocks:
+  - title: {text: Employee F, sub: Intern}
+  - tabs: {items: [Resume, Work Information, Private Information, HR Settings, Performance], active: Performance, n: 2}
+  - note: {text: "Exempt from accountability: no targets are expected, no score is calculated, and this person is left out of team figures, cascades and review sessions.", tone: muted, n: 5}
+  - heading: Accountability exemption
+  - fields:
+      - [{label: Exempt from Accountability, value: "☑", n: 3}, {label: Exemption Reason, value: "Internship, May–Aug 2026", n: 4}]
+      - [{label: Exempt From, value: 01/05/2026}]
+      - [{label: Exempt Until, value: 31/08/2026}]

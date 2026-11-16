@@ -1,0 +1,91 @@
+---
+title: Conduct a review
+description: Score each target line in a team member's review, add your comment and submit it, then answer any concern by revising or keeping the scores.
+module: accountability
+pageType: how-to
+roles: [line-manager]
+tags: [reviews, review sessions]
+keywords: [conduct review, score targets, appraisal, performance review, submit review, review pack, actuals, concern, dispute, revise scores, resubmit, sign off]
+where: [Accountability, My Team, Review Sessions]
+before:
+  - You have a review session <strong>In Progress</strong> with its targets loaded (see Plan a review session).
+  - You are the session's reviewer.
+related: [accountability/concepts/reviews, accountability/workflows/review-pack, accountability/workflows/review-concern, accountability/calculations/review-averages, accountability/how-to/line-managers/team-reviews-board]
+sources:
+  - tritel_accountability_framework/views/accountability_review_session_views.xml
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/views/wizard_review_concern_views.xml
+  - tritel_accountability_framework/wizard/review_concern_wizards.py
+  - tritel_accountability_framework/views/wizard_review_session_views.xml
+  - tritel_accountability_framework/wizard/review_session_wizard.py
+  - tritel_accountability_framework/views/accountability_review_views.xml
+  - tritel_accountability_framework/models/accountability_review.py
+sidebar: { order: 7 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+In a review session each team member has one **review**. You record the result for every target line, add an overall comment and submit it. The employee then acknowledges it or raises a concern, which you answer.
+
+<Illustration name="accountability/mgr-review-pack" caption="One employee's review while you score it. The numbers match the steps below." />
+
+## Steps
+
+### Score and submit
+
+Open the session from **Accountability › My Team › Review Sessions**. On the **Employees** tab, click **Review** on the person's row. Their review opens.
+
+1. Work down the **Targets** tab. Each line shows the target, its **Cadence**, **Target (yours)** (what this person is measured on) and the window it covers.
+2. Type the result in **Actual**. The **Score (%)** fills in and the line becomes **Done**. Click **ƒx** to see how the line's value and score are reached.
+3. For the lines still **Pending**:
+   - **Fetch** reads the value from the system for targets that have a metric. If there is nothing to measure in the window, the line becomes **Not Applicable** and is left out of the score.
+   - **✓** accepts the value as it is, for example a genuine 0.
+   - Milestone lines take their value from the confirmed stages and can't be typed.
+   - Until you deal with it, a pending line counts as 0% in the average.
+4. Click **Skip** for a target you won't review this time. Skipped lines are left out of the average. **Reopen** undoes Done, Skip or Not Applicable while the review is a draft.
+5. Write your overall feedback in **Comment for the employee**. It appears at the top of their review.
+6. Check **Avg Score (%)** and **Rating**. The line under them (and **How the average is reached**) explains which lines were counted.
+7. Click **Submit Review** and confirm. Back on the session you can instead click **Submit All Reviews** to submit every review that has no pending line.
+
+If a figure may include your team members' shares, an ⓘ or ⚠ icon appears on the line: the result must be this person's own result only.
+
+### Answer a concern
+
+<Illustration name="accountability/mgr-answer-concern" caption="Answering a concern on one review. The numbers match the steps below." />
+
+When the employee raises a concern you get an **Answer review concern** to-do, and their card on **Team Reviews** shows **Answer**.
+
+1. Open the review (status **Concern Raised**) and click **Answer the Concern**.
+2. Read the **Questioned targets** and what **The employee asked**.
+3. Under **Your answer**, choose **Revise the scores** or **Keep the scores**.
+4. Write your **Reply to the employee**.
+5. Click **Send Answer**.
+6. If you chose to revise, the review opens again on **Being Revised**. Only the questioned lines (marked **Questioned**) are open. Enter the corrected **Actual** values, then click **Resubmit Review** and confirm.
+
+### Review a single target
+
+When a team member clicks **Request Review** on one target, it moves to **Pending Review** and is listed in **My Actions** under **Targets waiting for review**. Open the target and click **Conduct Review**. Check **Covers From** and **Covers To** (**Previous window** steps back), type the **Actual Value** or click **Fetch value**, add **Notes** and a **Next Review Date**, then click **Sign Off**. The employee is asked to acknowledge it.
+
+## What happens next
+
+- **After Submit Review:** the review is **Awaiting Acknowledgment**. The employee gets one message with a link and an **Acknowledge your review** to-do, due on the **Acknowledge By** date (5 days by default). Each line's weight is fixed as submitted.
+- **Reminders:** the employee is reminded 2 days before the deadline. You can also click **Send Reminder** on the review, or **Remind** on the session or the Team Reviews card.
+- **If they acknowledge, or the deadline passes,** the review closes. The results are written to the targets and the scores are recalculated.
+- **After Keep the scores:** the employee gets a new deadline to acknowledge, or to **Escalate** the review to your own manager (or HR) to decide.
+- **After Resubmit Review:** the employee is told the review was revised and gets a new acknowledgment window.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Employee A: 1 target(s) are still pending. Enter a value (or press Done to accept 0), skip them or mark them not applicable before submitting: • Pipeline coverage* | A line is still **Pending**. | Type an actual, click **✓**, **Fetch** or **Skip** on the lines listed. |
+| *Some reviews were not submitted* — *Still pending targets for: Employee C. Finish their lines, then submit again.* | **Submit All Reviews** skipped reviews with pending lines. | Finish those reviews, then submit again. |
+| *'Customer visits per month' can't be changed: Employee A's review is awaiting acknowledgment.* | You tried to edit a submitted review. | Wait for the employee. If they raise a concern, revise it then. |
+| *This figure comes from the confirmed stages and can't be typed over.* | You typed an actual on a milestone line. | Confirm the stages on the target instead. |
+| *'Pipeline coverage' has no finished window by the session cutoff.* | The target's own window hasn't ended by the cutoff. | **Skip** the line this time. |
+| *Only the reviewer (Employee B) can answer this review.* | Someone other than the reviewer clicked **Answer the Concern**. | The reviewer answers it. |
+| *Reviews cover finished periods: the review period can't end in the current quarterly window. Use Previous window.* | In **Conduct Review**, the dates fall in a window that hasn't ended. | Click **Previous window**. |
+| *Only Employee B (their direct manager) or an accountability administrator can review 'Customer visits per month'.* | You are not the person's direct manager. | Their direct manager reviews it. |
+
+:::note[Good to know]
+Two buttons are labelled **Sign Off** and they behave differently. In the **Conduct Review** window, **Sign Off** sends the review to the employee to acknowledge. On a review's own form (for example a draft review the system created from a metric, listed under **Reviews to confirm** in My Actions), **Sign Off** closes it straight away, without asking the employee. Check the figures before you use the second one.
+:::

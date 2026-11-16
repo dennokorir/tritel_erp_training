@@ -1,0 +1,29 @@
+type: screen
+title: Marking a milestone stage done
+desc: A milestone target's stages in My Targets with the Mark Done button, and the Mark Stage Done window with the Completed On date and the Save button, numbered 1 to 5.
+source: tritel_accountability_framework/static/src/components/stages/accountability_stages.xml and views/accountability_milestone_views.xml (accountability_milestone_action_wizard_form)
+frame:
+  grid: true
+  app: Accountability
+  menu: [{label: My Performance, active: true}, My Actions]
+  breadcrumb: [My Targets]
+blocks:
+  - heading: Deliver CRM roll-out
+    n: 1
+  - text: "Mile. · Quarterly · 35% of score"
+  - buttons: [{label: "▸ Stages 1/3 confirmed · 1 awaiting confirmation", n: 2}]
+  - table:
+      columns: [Stage, Dates, Timing, Status, ""]
+      widths: [2.4, 2.2, 2.6, 2.4, 1.4]
+      rows:
+        - ["1 · Requirements signed", "01/02 → 31/03", "Completed on time", {text: Confirmed, badge: true, tone: good}, ""]
+        - ["2 · System configured", "01/04 → 30/09", "Completed 5 day(s) late", {text: Awaiting Confirmation, badge: true, tone: warn}, "Withdraw"]
+        - {cells: ["3 · Users trained", "01/10 → 30/11", "Due in 14 day(s)", {text: Open, badge: true, tone: muted}, {text: Mark Done, bold: true}], n: 3}
+  - dialog:
+      title: Mark Stage Done
+      blocks:
+        - fields:
+            - [{label: Stage, value: Users trained}]
+            - [{label: Completed On, value: 14/11/2026, n: 4}]
+        - text: Your manager confirms this before it counts towards your score.
+        - buttons: [{label: Save, primary: true, n: 5}, {label: Cancel}]

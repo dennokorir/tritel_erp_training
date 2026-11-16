@@ -1,0 +1,22 @@
+type: screen
+title: Answering a concern and resubmitting
+desc: The Employee Review form in Concern Raised with the Answer the Concern button, and the Answer the Concern window with the questioned targets, the employee's question, the Revise the scores and Keep the scores choice, the reply box and Send Answer, numbered 1 to 5.
+source: tritel_accountability_framework/views/accountability_review_session_views.xml (accountability_review_session_employee_view_form); views/wizard_review_concern_views.xml (accountability_review_concern_answer_wizard_view_form)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, {label: My Team, active: true}, My Actions, Organisation]
+  breadcrumb: [Team Reviews, Employee A]
+blocks:
+  - buttons: [{label: Answer the Concern, primary: true, n: 1}]
+    status: {steps: [Draft, Awaiting Acknowledgment, Concern Raised, Acknowledged], current: Concern Raised}
+  - note: {text: "Concern Raised: Q3 2026 — Quarterly Review · Employee A", tone: warn}
+  - dialog:
+      title: Answer the Concern
+      blocks:
+        - fields:
+            - {label: Questioned targets, value: Customer visits per month, n: 2}
+            - {label: The employee asked, value: "Two visits in August were logged late; the activity log shows 10."}
+            - {label: Your answer, value: "(•) Revise the scores   ( ) Keep the scores", n: 3}
+            - {label: Reply to the employee, value: "Agreed, I will rescore it.", n: 4}
+        - buttons: [{label: Send Answer, primary: true, n: 5}, {label: Cancel}]

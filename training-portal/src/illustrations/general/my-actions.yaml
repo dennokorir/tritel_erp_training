@@ -1,0 +1,16 @@
+type: screen
+title: A My Actions list
+desc: The Accountability My Actions screen, with tiles for To do, Overdue and Waiting on others, and a group of items each with its own buttons.
+source: tritel_accountability_framework/static/src/my_actions/accountability_my_actions.xml
+frame: { grid: true, app: Accountability, menu: [My Performance, My Team, {label: My Actions, active: true}, Organisation], breadcrumb: [My Actions] }
+blocks:
+  - tiles: [{label: To do, value: "4", n: 1}, {label: Overdue, value: "1", tone: bad, n: 2}, {label: Waiting on others, value: "2", tone: muted, n: 3}]
+  - heading: "Targets to acknowledge  (2)"
+    n: 4
+  - table:
+      columns: [Item, Waiting, ""]
+      widths: [6, 2, 3]
+      rows:
+        - [Grow qualified pipeline · Employee A, 3 days, {text: Acknowledge, badge: true, tone: accent}]
+        - [Customer visits per month · Employee A, {text: 9 days, tone: bad}, {text: Acknowledge, badge: true, tone: accent}]
+      n: 5

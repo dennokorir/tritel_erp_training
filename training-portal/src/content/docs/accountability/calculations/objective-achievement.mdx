@@ -1,0 +1,57 @@
+---
+title: Objective achievement
+description: How an objective's Org Average, Your Level and Achievement are worked out from the targets under it, and when an objective counts as achieved.
+module: accountability
+pageType: calculation
+roles: [line-manager, hr, accountability-admin, md]
+tags: [objectives, scores]
+keywords: [objective, goal, strategic objective, achievement threshold, achieved, partial, org average, department score, KPI, OKR]
+related: [accountability/concepts/periods-and-objectives, accountability/how-to/hr-admin/objectives, accountability/workflows/objective, accountability/calculations/weights-over-time]
+sources:
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/views/accountability_objective_views.xml
+sidebar: { order: 6 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+The **Objectives** screen (**Accountability › Organisation › Objectives**) scores each objective from the targets under it and, once the objective is closed, says whether it was **Achieved**.
+
+## The rule
+
+**Org Average (%) = the average score of the measured targets under the objective and all its sub-objectives, each weighted by its Counts As.**
+
+- **Targets Counted** are the live targets and the targets with a result. Drafts, development targets and fully cascaded targets are left out (a fully cascaded target is measured through the shares under it).
+- **Targets with a Result** are the counted targets that have a result. A result of 0% counts. A target not yet reviewed does not.
+- **Measurement** shows **Measured**, **Not yet measured** (targets but no results) or **No targets set**.
+
+**Your Level (%)** uses the same formula, but only with targets owned by you and the people below you in your reporting line. Accountability administrators see the organisation figure.
+
+**Achievement** compares the Org Average with the objective's **Achievement Threshold (%)** (70 by default), once the objective is **Closed**:
+
+| Achievement | When |
+|---|---|
+| **Achieved** | Org Average is at or above the threshold |
+| **Partial Achievement** | Org Average is at or above 75% of the threshold |
+| **Not Achieved** | Below 75% of the threshold |
+| **Not Measured** | Closed, but no target has a result |
+| **Not Set** | The objective is not closed yet, or the threshold is 0 |
+
+<Illustration name="accountability/calc-objective" caption="Two measured targets give an Org Average of 70.0%, which meets a threshold of 70." />
+
+With a threshold of 70: an Org Average of 60% is **Partial Achievement** (60 is at least 52.5), and 45% is **Not Achieved**.
+
+## The period figure
+
+The left panel of the Objectives screen shows one figure per period. It is the average of the **top-level** objectives' **Your Level (%)**, each weighted by the objective's **Default Weight for New Targets**. Draft objectives and objectives with no result at your level are left out.
+
+## Edge cases
+
+- **Achievement only appears when the objective is closed.** While it is active, Achievement stays **Not Set**, even if the average is already above the threshold.
+- **Closed periods are frozen.** Once the period is closed, the Org Average and Achievement keep the values they had. Later changes don't move them.
+- **Sub-objectives count twice over.** A target under a sub-objective counts in the sub-objective and in every objective above it. That is why the period figure uses only top-level objectives.
+- **Caps.** Target scores are capped at 100%, so the Org Average can't go above 100%.
+
+:::note[Good to know]
+The objective's **Default Weight for New Targets** is never used in target or personal scores. It sets the starting weight of new targets, and it weights objectives against each other only in the period figure on the Objectives screen.
+:::

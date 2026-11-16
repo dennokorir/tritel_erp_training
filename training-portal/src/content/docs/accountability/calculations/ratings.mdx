@@ -1,0 +1,64 @@
+---
+title: Ratings
+description: How a score becomes one of the five rating levels, and how running totals are rated on pace while the period is open.
+module: accountability
+pageType: calculation
+roles: [everyone, line-manager, hr, accountability-admin, md, board]
+tags: [ratings, scores]
+keywords: [rating, appraisal rating, band, grade, outstanding, exceeds expectations, meets expectations, needs improvement, unsatisfactory, on pace, on track, behind]
+related: [accountability/concepts/ratings-and-briefs, accountability/calculations/target-scores, accountability/calculations/own-team-overall, accountability/how-to/everyone/read-briefs-and-snapshots]
+sources:
+  - tritel_accountability_framework/models/accountability_rating.py
+  - tritel_accountability_framework/models/accountability_config.py
+  - tritel_accountability_framework/views/accountability_config_views.xml
+sidebar: { order: 7 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Every scored target, every review and every person's overall result gets a **Rating** on a five-level scale. The rating reads a score; it never changes the score.
+
+## The scale
+
+| Rating | Score from (default) |
+|---|---|
+| **Outstanding** | 80 |
+| **Exceeds Expectations** | 70 |
+| **Meets Expectations** | 60 |
+| **Needs Improvement** | 50 |
+| **Unsatisfactory** | below 50 |
+
+The rating is the highest level whose starting point the score reaches, after rounding to 2 decimals. So 79.99 is **Exceeds Expectations**, 79.996 rounds to 80.00 and is **Outstanding**, and 59.99 is **Needs Improvement**.
+
+An accountability administrator can change the boundaries under **Performance Rating Scale** in Settings. They must rise from left to right: *The rating boundaries must rise from left to right, between 0 and 100: Needs Improvement < Meets < Exceeds < Outstanding.* Changing them re-rates everything straight away.
+
+## Rated on pace
+
+Some targets are running totals, measured from the start of the period: revenue to date against an annual target, for example. In October, 70% of the annual target is a good result, but a plain score would rate it low. So while the period is open these targets are rated **on pace**:
+
+1. **Checkpoint** = the end of the latest window covered by a signed-off review (or today, if an actual was typed directly).
+2. **Expected by checkpoint (%)** = days from the period start to the checkpoint ÷ days in the period.
+3. **Expected by checkpoint** = Measured On × that share.
+4. **Rating score** = Actual ÷ Expected × 100, capped at 100. The rating is read from this.
+
+<Illustration name="accountability/calc-rating-pace" caption="7,500,000 by 30 September is 83.6% of what was expected by then, so the target is rated Outstanding while its score is 62.5%." />
+
+On pace applies only when **all** of these are true: the target is **Quantitative**, **Measure Over** is **Period to date**, the period is still active, and the target is not fully cascaded. Every other target is rated on its **Score (%)**.
+
+## Reviews and overall ratings
+
+- **A review line** in a review is rated the same way, using the end of the window it covers as the checkpoint. At the last window of the period it is the full target.
+- **A review's Rating** is the weighted average of its lines' rating scores, with the same weights as the **Average (%)**. See [review averages](/accountability/calculations/review-averages/).
+- **Your Overall rating** is your overall score worked out again with each target's rating score instead of its score. For managers, the team part uses the team members' ratings. Once the period is closed, the rating is simply the level of the stored overall score.
+
+## Edge cases
+
+- **No result, no rating.** Targets with no result, development targets and exempt staff show *Not rated yet*.
+- **Rating and score can disagree.** A target can show **Score (%)** 62.5 and **Rating** Outstanding while it is on pace. On **My Targets** the rating reads "Outstanding · on pace", and hovering over it shows *Outstanding: 83.6% of what is expected by 2026-09-30 (74.8% of the target). Against the full target: 62.5%.*
+- **A review's Average (%) and Rating can disagree** for the same reason.
+- **Caps.** The rating score is capped at 100, like the score.
+
+:::note[Good to know]
+A number target typed in by hand is also measured **Period to date** unless it has a metric set to **Cadence window**, because **Measure Over** only shows once a metric is chosen. If the actual entered is a monthly figure rather than a running total, the pace rating compares it with the expected share of the yearly target. On **My Targets** a rating read on pace says "· on pace" next to it; check for it when a rating looks surprising.
+
+Older notes may mention an **On-Track Threshold (%)** (80) and a **Needs Attention Threshold (%)** (65). These settings are not shown and not used anywhere. Ratings, progress briefs and the cascade trace use the rating scale above.
+:::

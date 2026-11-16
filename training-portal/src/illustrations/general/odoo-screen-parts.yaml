@@ -1,0 +1,20 @@
+type: screen
+title: The parts of an Odoo screen
+desc: A list screen in the Accountability app, with the app name, the top menu, the breadcrumb, the search bar with filters, and the list of records numbered 1 to 5.
+source: Odoo 16 web client layout; tritel_accountability_framework/views/menu.xml
+frame:
+  grid: 1
+  app: Accountability
+  n: 3
+  menu: [{label: My Performance, n: 2}, {label: My Team, active: true}, My Actions, Organisation]
+  breadcrumb: [Team Reviews]
+blocks:
+  - search: {facets: [Open + Closed in Last 30 Days], placeholder: "Search…", n: 4, filters: [Filters, Group By, Favorites]}
+  - table:
+      n: 5
+      columns: [Employee, Review Session, Status, Score]
+      widths: [3, 3, 2, 1]
+      rows:
+        - [Employee A, Q3 reviews, {text: With employee, badge: true, tone: warn}, "82%"]
+        - [Employee B, Q3 reviews, {text: Signed off, badge: true, tone: good}, "74%"]
+        - [Employee C, Q3 reviews, {text: Draft, badge: true, tone: muted}, "—"]

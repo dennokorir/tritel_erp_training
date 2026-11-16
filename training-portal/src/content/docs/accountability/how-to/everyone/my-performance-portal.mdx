@@ -1,0 +1,61 @@
+---
+title: Use My Performance on the portal
+description: Use the website portal's My Performance pages to see your score and rating, your targets, mark milestone stages done, request a review and respond to your reviews.
+module: accountability
+pageType: how-to
+roles: [everyone]
+tags: [portal, scores, reviews]
+keywords: [portal, website, my account, /my, phone, mobile, my performance, KPI, scorecard, appraisal, request review]
+where: [Portal, My Performance]
+before:
+  - You have a user account linked to your employee record. The <strong>My Performance</strong> panel and menu item appear only for staff with an employee record.
+related: [accountability/how-to/everyone/respond-to-my-review, accountability/how-to/everyone/update-a-milestone, accountability/how-to/everyone/see-my-performance, getting-started/finding-your-way]
+sources:
+  - tritel_accountability_framework/views/portal_performance_templates.xml
+  - tritel_accountability_framework/controllers/portal.py
+  - tritel_accountability_framework/models/res_users.py
+sidebar: { order: 6 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+The portal is the simple website view of Odoo. Its **My Performance** pages show the same score, targets and reviews as the **Accountability** app, in a layout that works well on a phone.
+
+<Illustration name="accountability/howto-portal-performance" caption="My Performance on the portal. The numbers match the steps below." />
+
+## Steps
+
+1. Open **My Performance**. Either click your name at the top right and choose **My Performance**, or click the **My Performance** panel on your portal home page (**/my**). A small number next to it counts the reviews and targets waiting on you.
+2. To see an earlier month end, pick it in the **As at** list (it starts on **Today (live)**). A snapshot card for that date appears above today's figures.
+3. Click **My Reviews** to see your reviews. **Needs your response** lists the ones you must acknowledge or question. See [Respond to my review](/accountability/how-to/everyone/respond-to-my-review/).
+4. Read the cards: your overall rating and score, **Own Performance**, and **Team Average** if you manage people. If you get progress briefs, the latest one appears under the cards.
+5. Under **My Targets**, each row shows the cadence, target, actual, score and status. On an **Active** target, click **Request Review** to ask your manager to review it.
+
+Click a target's name to open its page:
+
+<Illustration name="accountability/howto-portal-target" caption="A milestone target on the portal." />
+
+1. On a milestone target, the **Stages** table shows each stage's dates, weight and status.
+2. On a finished stage, set the completed date and click **Mark Done**. Click **Withdraw** to take it back before your manager confirms it.
+3. **Review History** lists the target's signed-off reviews.
+
+On other targets, an **Update Actual** box lets you type your latest figure and click **Update**.
+
+## What happens next
+
+- **Request Review** moves the target to **Pending Review** and gives your manager a to-do.
+- **Mark Done** sends the stage to your manager to confirm. See [Update a milestone](/accountability/how-to/everyone/update-a-milestone/).
+- A figure typed in **Update Actual** shows on the target straight away. The next signed-off review replaces it.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *The completed date can't be in the future.* | You picked a date after today next to **Mark Done**. | Pick the day you finished. |
+| *This stage can't be updated: its target isn't live, or the period is closed.* | The target is not active, or the period is closed. | Ask your manager. |
+| *Please say what your manager should look at.* | You raised a concern on a review without a reason. | Write what your manager should check. |
+
+:::note[Good to know]
+- If you land somewhere else when you sign in (for example a tender or board page), use your name menu › **My Performance** to get here.
+- **Update Actual** is not for SLA targets. Their results come only from reviews, so use **Request Review** instead.
+- If you have no user account linked to an employee record, **/my/performance** sends you back to your portal home.
+:::

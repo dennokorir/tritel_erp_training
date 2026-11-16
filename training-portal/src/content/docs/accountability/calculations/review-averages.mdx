@@ -1,0 +1,71 @@
+---
+title: Review and session averages
+description: How the Average (%) of a review and the Avg Score (%) of a review session are worked out, what Average Basis means, and how skipped, not applicable and blank lines are treated.
+module: accountability
+pageType: calculation
+roles: [everyone, line-manager, hr, accountability-admin]
+tags: [reviews, scores]
+keywords: [review average, appraisal score, session average, average basis, skipped, not applicable, N/A, pending, weight as submitted, quarterly review, monthly review]
+related: [accountability/concepts/reviews, accountability/how-to/everyone/respond-to-my-review, accountability/how-to/line-managers/conduct-a-review, accountability/reports/review-analysis]
+sources:
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/models/accountability_rating.py
+  - tritel_accountability_framework/views/accountability_review_pack_views.xml
+  - tritel_accountability_framework/views/accountability_review_session_views.xml
+sidebar: { order: 8 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+A review session holds one review per employee, with one line per target. Each review has an average, and the session has an average of those.
+
+## The review average
+
+**Average (%) = the average of the counted lines' scores, each weighted by the target's weight.**
+
+- **Counted lines** are lines with status **Done** or **Pending**. A **Pending** line with nothing entered counts as **0%**.
+- **Skipped** and **Not Applicable** lines are left out.
+- Each line's score uses the same formulas as the target: see [target scores](/accountability/calculations/target-scores/). For a milestone target it is the completion % from the confirmed stages.
+- The weight is the target's weight when the manager first submitted the review. Before submission, today's weight is used. Later weight changes don't move a submitted review.
+
+The employee sees this as **Average (%)** on **My Review**. The manager sees it as **Avg Score (%)** on the **Employee Review** form.
+
+<Illustration name="accountability/calc-pack-average" caption="Three counted lines, one of them pending with no value, and one skipped line left out: the average is 64.3%." />
+
+## Average Basis
+
+**Based on** (employee view) or the line under **Avg Score (%)** (manager view) explains what was counted, for example:
+
+*3 target(s) — 2 done, 1 pending (1 with no value, counted as 0%) · excluded: 1 skipped · weighted by target weight*
+
+"weighted by target weight" only appears when the targets have different weights. **How the average is reached** shows the sum step by step.
+
+## The session average
+
+**Avg Score (%) of a session = the plain average of the employees' review averages. Each employee counts once**, however many targets they have.
+
+<Illustration name="accountability/calc-session-average" caption="Two employees with something counted, and one with nothing, give a session average of 72.2%." />
+
+The session's **Average Basis** reads, for example, *Average of 2 employee(s), each weighted by target weight — 7 target(s) counted, 1 excluded (skipped / not applicable)*. "Each weighted by target weight" describes how each employee's own average is worked out. Between employees, everyone counts equally.
+
+## Other session figures
+
+| Figure | How it is worked out |
+|---|---|
+| **Total Targets** | All lines in all the session's reviews |
+| **Done** / **Pending** | Lines with that status |
+| **Scored (%)** | (Total Targets − Pending) ÷ Total Targets × 100. Skipped and Not Applicable lines count as scored. 20 lines with 5 pending is 75%. |
+| **Late** | The session is not Done more than 7 days after its **Review Cutoff** |
+| **Days from Cutoff to Done** | Days between the cutoff and the day the session was done |
+
+## Edge cases
+
+- **Nothing counted.** A review where every line is skipped or not applicable shows *No targets counted yet* and an average of 0. It is left out of the session average.
+- **Every line Not Applicable.** When the manager submits, the review is closed at once as **Signed Off Automatically**. Not Applicable reviews never affect any score.
+- **Pending lines block submission.** A review can't be submitted while a line is pending: *Employee A: 1 target(s) are still pending. Enter a value (or press Done to accept 0), skip them or mark them not applicable before submitting: • Customer visits*
+- **A real 0.** To record 0 as a result, click the ✓ button on the line (*Done: accept this value (e.g. a genuine 0)*). It then counts as an entered 0, not a blank.
+- **Rating.** The review's **Rating** comes from the lines' rating scores, which for running totals are measured on pace. It can therefore be higher than the level of the **Average (%)**. See [Ratings](/accountability/calculations/ratings/).
+- **The average does not change the target's score directly.** When the review is closed, each line's actual is written to its target, and the target's own formula decides its score. For an SLA target, the new review is added to the average of its reviews.
+
+:::note[Good to know]
+Skipping a target leaves it out of the average, while leaving it pending with no value counts it as 0%. If a target genuinely had nothing to measure this window, click **Skip** rather than leaving it blank. On a metric target, **Fetch** marks the line **Not Applicable** by itself when there is nothing to measure.
+:::

@@ -1,0 +1,23 @@
+type: screen
+title: A progress brief
+desc: A Progress Brief record in Accountability showing the brief table with Actual, Expected by then, Gap, Rating on pace and At this pace by period end, with the employee, checkpoint and sent date, numbered 1 to 4.
+source: tritel_accountability_framework/views/accountability_progress_brief_views.xml and models/accountability_progress_brief.py (_brief_html)
+frame:
+  grid: true
+  app: Accountability
+  menu: [{label: My Performance, active: true, n: 1}, My Actions]
+  breadcrumb: [Progress Briefs, "Progress brief · Employee A · 31/10/2026"]
+blocks:
+  - status: {steps: [Not sent, Sent], current: Sent}
+  - text: "PROGRESS BRIEF · FY 2026"
+  - title: {text: "Employee A · as at 31 Oct 2026", sub: "Your running totals against what is expected by now: 83% of the period has gone.", n: 2}
+  - note: {text: "Overall rating so far: Exceeds Expectations (72.0%, running totals on pace)", tone: good}
+  - table:
+      columns: [Target, Actual, Expected by then, Gap, Rating on pace, At this pace by period end]
+      widths: [2.6, 1.8, 1.8, 1.4, 2.2, 2.4]
+      rows:
+        - [Grow qualified pipeline, "8,500,000 KES", "9,994,521 KES", {text: "−1,494,521", tone: bad}, {text: Outstanding, badge: true, tone: good}, "10,205,757 KES"]
+      n: 3
+  - fields:
+      - [{label: Employee, value: Employee A}, {label: Checkpoint, value: 31/10/2026}]
+      - [{label: Supervisor, value: Employee B}, {label: Sent On, value: 01/11/2026 06:00, n: 4}]

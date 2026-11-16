@@ -1,0 +1,34 @@
+---
+title: Compliance
+description: The Cascade Compliance screen counts every cascaded target in a period and shows, objective by objective, which have been adopted, are still pending or were declined.
+module: accountability
+pageType: report
+roles: [accountability-admin]
+tags: [cascading, reports]
+keywords: [cascade compliance, adoption rate, cascaded targets, pending adoption, declined cascades, target alignment, traceability, remind]
+where: [Accountability, Organisation, Compliance]
+related: [accountability/concepts/cascading, accountability/workflows/cascade, accountability/how-to/line-managers/push-and-pull-targets, accountability/how-to/hr-admin/compliance-and-coverage]
+sources:
+  - tritel_accountability_framework/static/src/compliance/accountability_compliance.xml
+  - tritel_accountability_framework/static/src/compliance/accountability_compliance.js
+sidebar: { order: 4 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+**Accountability › Organisation › Compliance** opens the **Cascade Compliance** screen. It shows whether the targets managers pushed down have been taken up by their teams. Only accountability administrators have this menu. Line managers follow their own cascades on **My Team › Cascade Management**.
+
+<Illustration name="accountability/report-compliance" caption="Cascade Compliance for one period with one objective opened. The numbers match the list below." />
+
+## Reading the screen
+
+1. **Period.** Choose the period at the top right.
+2. **Tiles.** **Total Cascades** counts every target cascaded from another one in the period, at every level of the chain. **Adopted ✓**, **Pending ⏳** (pushed and waiting to be adopted) and **Declined ✗** split it up, and **Adoption Rate** is adopted ÷ total. Pull requests not yet approved count in the total but in none of the three tiles.
+3. **Objectives.** One row per top-level objective, with *adopted/total adopted* and a small bar: amber while anything is pending, green when it isn't. Click the row to open it.
+4. **The chains.** Inside an objective, each source target is shown with its owner and value, and below it every person it was cascaded to, with their value and status. On a **Pending** line, click **Send Reminder** to remind that person to adopt or decline.
+5. **Declined** lines stay listed so you can follow them up with the manager who pushed the target.
+
+:::note[Good to know]
+When a period has no cascades the screen says *Use Cascade ↓ from My Targets to start cascading.* The **Cascade ↓** button is on the target itself: open the target from **My Targets** first. See [Push a target down, or approve a pull](/accountability/how-to/line-managers/push-and-pull-targets/).
+
+Only the first level below each source target is listed. If a recipient cascades their share further, those targets are counted in the tiles but not shown in the list.
+:::

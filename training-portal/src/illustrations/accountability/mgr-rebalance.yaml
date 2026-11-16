@@ -1,0 +1,33 @@
+type: screen
+title: Rebalancing an employee's weights
+desc: The Rebalance Weights window with the drag mode buttons, the share bar, the target table with Lock, Share today, Weight now, New weight and Period share, the Reason box and the Rebalance button, numbered 1 to 6.
+source: tritel_accountability_framework/views/accountability_weight_change_views.xml (view_target_rebalance_wizard_form); static/src/weight_rebalance/weight_rebalance.xml
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, {label: My Team, active: true}, My Actions]
+  breadcrumb: [Team Targets]
+blocks:
+  - dialog:
+      title: "Rebalance Weights · Employee A"
+      blocks:
+        - buttons: [{label: Trade with neighbour, primary: true, n: 1}, {label: "Resize, others rescale"}]
+        - bars:
+            - {label: Grow qualified pipeline, value: 50, tone: accent}
+            - {label: Customer visits per month, value: 30, tone: good}
+            - {label: Response time (hours), value: 20, tone: warn}
+          n: 2
+        - table:
+            columns: [Target, Lock, Share today, Change, Weight now, New weight, Period share]
+            widths: [3, 0.8, 1.3, 1, 1.2, 1.2, 1.3]
+            n: 3
+            rows:
+              - [Grow qualified pipeline, "", "50%", {text: "+10", tone: good}, "2", {text: "2.5", bold: true}, "45.2%"]
+              - [Customer visits per month, "", "30%", {text: "-10", tone: bad}, "2", {text: "1.5", bold: true}, "35.1%"]
+              - [Response time (hours), {text: Locked, badge: true, tone: accent}, "20%", "", "1", "1", "19.7%"]
+        - heading: Reason
+          n: 4
+        - text: "Pipeline matters more in the second half of the year."
+        - heading: Effect
+          n: 5
+        - buttons: [{label: Rebalance, primary: true, n: 6}, {label: Cancel}]

@@ -1,0 +1,17 @@
+type: calc
+title: SLA review score
+desc: Worked example of one review on an SLA target set to At or above floor, with a floor of 80, an ideal of 95 and an actual of 90, giving 66.7%.
+source: tritel_accountability_framework/models/accountability_target.py (_band_score)
+heading: One SLA review, At or above floor
+inputs:
+  - {label: Compliance Floor, value: "80"}
+  - {label: Ideal Target (Full Credit), value: "95"}
+  - {label: Actual this review, value: "90"}
+steps:
+  - {label: "Below 80 scores 0%. 95 or more scores 100%.", value: "90 is in between"}
+  - {label: "(Actual − Floor) ÷ (Ideal − Floor) × 100", value: "(90 − 80) ÷ (95 − 80) × 100"}
+result: {label: Review score, value: "66.7%", tone: warn}
+bars:
+  - {label: "Actual 79", value: 0, tone: bad}
+  - {label: "Actual 90", value: 66.7, tone: warn}
+  - {label: "Actual 95 or more", value: 100, tone: good}

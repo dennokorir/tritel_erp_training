@@ -1,0 +1,23 @@
+type: screen
+title: Cascade Compliance
+desc: The Cascade Compliance screen with the period selector, the Total Cascades, Adopted, Pending, Declined and Adoption Rate tiles, and an opened objective showing a source target with its recipients, their statuses and a Send Reminder button, numbered 1 to 5.
+source: tritel_accountability_framework/static/src/compliance/accountability_compliance.xml; models/accountability_score.py (compliance data)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, My Team, My Actions, {label: Organisation, active: true}]
+  breadcrumb: [Compliance]
+blocks:
+  - buttons: [{label: FY 2026, n: 1}]
+  - tiles: [{label: Total Cascades, value: "18", n: 2}, {label: Adopted ✓, value: "14", tone: good}, {label: Pending ⏳, value: "3", tone: warn}, {label: Declined ✗, value: "1", tone: bad}, {label: Adoption Rate, value: "77.8%"}]
+  - heading: "Grow the customer base · 2/4 adopted"
+    n: 3
+  - table:
+      columns: [Who, Target, Value, Status, ""]
+      widths: [1.8, 3, 1.8, 1.3, 1.6]
+      rows:
+        - [{text: Employee B, bold: true}, {text: "· Grow qualified pipeline", bold: true}, "100,000,000 KES", "", ""]
+        - [Employee A, "", "30,000,000 KES", {text: Adopted, badge: true, tone: good}, ""]
+        - [Employee E, "", "30,000,000 KES", {text: Adopted, badge: true, tone: good}, ""]
+        - {cells: [Employee C, "", "30,000,000 KES", {text: Pending, badge: true, tone: warn}, {text: Send Reminder, bold: true, tone: accent}], n: 4}
+        - {cells: [Employee D, "", "10,000,000 KES", {text: Declined, badge: true, tone: bad}, ""], n: 5}

@@ -1,0 +1,26 @@
+type: matrix
+title: Who can do what with reviews
+desc: Permission grid for reviews, showing what everyone, line managers, HR, accountability administrators and the board member can do, from requesting a review to deciding escalations and freezing snapshots.
+source: tritel_accountability_framework/security/ir.model.access.csv, security/ir_rules.xml, security/snapshot_rules.xml, models/accountability_review_session.py, models/accountability_snapshot.py, e_board/models/accountability_extensions.py
+columns: [Everyone, Line manager, HR, Accountability administrator, Board member]
+labelWidth: 290
+rows:
+  - {group: Your own reviews}
+  - {action: Request a review of my target, cells: [y, y, y, y, n]}
+  - {action: Read my reviews, briefs and snapshots, cells: [y, y, y, y, n]}
+  - {action: Acknowledge my review, cells: [y, y, y, y, n]}
+  - {action: Raise a concern or escalate my review, cells: [y, y, y, y, n]}
+  - {group: Reviewing others}
+  - {action: Conduct a single review, cells: [n, p, n, y, n]}
+  - {action: Plan and run a review session, cells: [n, p, n, y, n]}
+  - {action: See review sessions and Team Reviews, cells: [n, p, y, y, n]}
+  - {action: Send a reminder to acknowledge, cells: [n, p, n, y, n]}
+  - {action: Answer a concern, cells: [n, p, n, y, n]}
+  - {action: Decide an escalation, cells: [n, p, y, y, n]}
+  - {action: Acknowledge a review for someone else, cells: [n, n, n, y, n]}
+  - {action: Review the Managing Director each quarter, cells: [n, n, n, n, y]}
+  - {group: Snapshots and briefs}
+  - {action: Freeze a snapshot, cells: [n, p, y, y, n]}
+  - {action: Delete a frozen snapshot, cells: [n, n, n, y, n]}
+  - {action: Resend a progress brief, cells: [n, n, n, y, n]}
+legend: {p: "Partly: only your own direct reports or reporting line, or only when named (see the notes)"}

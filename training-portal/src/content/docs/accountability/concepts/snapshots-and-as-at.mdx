@@ -1,0 +1,55 @@
+---
+title: Snapshots and "as at" figures
+description: How the system shows anyone's position on a past month end, why frozen snapshots never change, and how to compare a snapshot with today.
+module: accountability
+pageType: concept
+roles: [everyone, line-manager, hr, accountability-admin, md, board]
+tags: [snapshots, scores]
+keywords: [snapshot, as at, history, month end, point in time, freeze, compare, archive, PDF, past performance, trend]
+related: [accountability/reports/snapshots-and-compare, accountability/how-to/everyone/read-briefs-and-snapshots, accountability/reports/performance-overview, accountability/how-to/line-managers/team-scores]
+sources:
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/models/accountability_overview_asat.py
+  - tritel_accountability_framework/views/accountability_snapshot_views.xml
+  - tritel_accountability_framework/report/snapshot_report.xml
+sidebar: { order: 9 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Scores move every day. To answer "where did Employee A stand at the end of September?", the system offers two things:
+
+- **"As at" figures** are worked out on demand. Pick a past month end on the **Performance Overview**, **Team Scores**, **Team Targets** or the portal, and the system rebuilds each person's position on that date from the dated history: the reviews signed off by then, the stages confirmed by then, the weights in force then, and the reporting lines of the time.
+- **Frozen snapshots** are saved copies of that position. Once frozen, a snapshot never changes, even if a review is later corrected.
+
+## When snapshots are frozen
+
+| **Taken** | When |
+|---|---|
+| **Month end** | Automatically, within a week after each month end, for everyone with targets in the active period. |
+| **Period close** | Automatically, as at the last day, when the period is closed. |
+| **Taken by hand** | When a manager, HR or an administrator clicks **Freeze** on the Performance Overview or **Freeze team snapshot** on Team Scores. |
+
+Managers can freeze snapshots for the people below them, but not for themselves. HR and administrators can freeze for anyone. Exempt staff, and people with no live targets in the period, are skipped.
+
+## A frozen snapshot
+
+<Illustration name="accountability/concept-snapshot-form" caption="A frozen snapshot. The numbers match the list below." />
+
+1. **Compare with today's rebuild** — rebuilds the same date from today's data and lists what has changed since it was frozen: the overall score or rating, each target's score, rating, weight or number of reviews, and any targets added or removed. **Print PDF** gives a printable copy.
+2. **Overall** — the **Rating**, **Rating score (%)**, **Own (%)** and, for managers, **Team (%)**.
+3. **Frozen** — **Taken on**, **Taken by** and how it was **Taken**.
+4. **Targets** — each target as it stood: **Actual**, **Target value**, **Expected by then** and **On pace** for running totals, **Score (%)** and **Rating**.
+
+You find your own snapshots under **Accountability › My Performance › Performance Snapshots**. Managers also see their team's. Only administrators can delete one.
+
+:::note[Good to know]
+- A rebuilt "as at" figure uses today's view of who is a manager, and today's supervisor score on supervisor-assessed milestone targets. The rebuild flags these under **Notes on the rebuild**.
+- That is why a figure rebuilt today can differ from the snapshot frozen at the time. When the two disagree, the frozen snapshot is the record of what was shown then.
+:::
+
+## Tasks that use this
+
+- [Read my progress briefs and snapshots](/accountability/how-to/everyone/read-briefs-and-snapshots/)
+- [Snapshots and Compare](/accountability/reports/snapshots-and-compare/)
+- [Performance Overview](/accountability/reports/performance-overview/)
+- [See my team's scores](/accountability/how-to/line-managers/team-scores/)

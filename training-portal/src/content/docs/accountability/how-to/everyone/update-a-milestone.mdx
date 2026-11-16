@@ -1,0 +1,63 @@
+---
+title: Update a milestone
+description: Mark a stage of a milestone target done, with the date you finished it, so your manager can confirm it and it starts counting towards your score.
+module: accountability
+pageType: how-to
+roles: [everyone]
+tags: [milestones, targets]
+keywords: [milestone, stage, deliverable, project phase, mark done, complete, task, KPI, confirm, sent back]
+where: [Accountability, My Performance, My Targets]
+before:
+  - You hold an active milestone target whose stages are scored (the target shows a <strong>Mile.</strong> badge and a <strong>Stages</strong> line).
+  - The stage is <strong>Open</strong> and the work is finished. The period must still be active.
+related: [accountability/workflows/milestone-stage, accountability/calculations/milestone-scores, accountability/concepts/targets, accountability/how-to/line-managers/milestone-dates-and-confirmations]
+sources:
+  - tritel_accountability_framework/static/src/components/stages/accountability_stages.xml
+  - tritel_accountability_framework/views/accountability_milestone_views.xml
+  - tritel_accountability_framework/views/accountability_target_views.xml
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/views/portal_performance_templates.xml
+sidebar: { order: 3 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A milestone target is split into dated **stages**. When you finish a stage, you **mark it done**. Your manager then **confirms** it, and only then does it count towards your score.
+
+<Illustration name="accountability/howto-mark-stage-done" caption="Marking the third stage of a milestone target done. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Accountability › My Performance › My Targets** and find the milestone target. It has a **Mile.** badge.
+2. Click the **Stages** line under the target (for example **Stages 1/3 confirmed**) to open the list of stages. Each stage shows its dates, its timing (such as *Due in 14 day(s)* or *Overdue by 2 day(s)*) and its status.
+3. On the finished stage, click **Mark Done**. A window called **Mark Stage Done** opens.
+4. Check **Completed On**. It defaults to today; change it to the day you actually finished. It can't be in the future.
+5. Click **Save**.
+
+If you marked the wrong stage, click **Withdraw** on it before your manager confirms it. The stage goes back to **Open**.
+
+You can do the same from the target's form (the stages list has the same **Mark Done** button), or on the portal: open **/my/performance**, click the target, pick the date next to the stage and click **Mark Done**.
+
+## What happens next
+
+- The stage moves to **Awaiting Confirmation**. Your manager gets a *Confirm Milestone Stage* to-do. If you have no manager with a user account, accountability administrators get it.
+- Your manager either:
+  - clicks **Confirm**: the stage becomes **Confirmed**, you get a notice, and its weight counts towards the target's score straight away; or
+  - clicks **Send Back** with a reason: the stage returns to **Open** and shows *Sent back:* followed by the reason. Fix what's needed, then mark it done again.
+- Reminders: you are reminded 7, 3 and 1 days before an open stage is due. Once it is overdue, you and your manager are reminded every week.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *The completed date can't be in the future.* | **Completed On** is after today. | Use the date you actually finished. Mark the stage done once it is finished. |
+| *This stage can't be updated: its target isn't live, or the period is closed.* | The target is still **Draft**, is closed, or the period has closed. | Ask your manager to activate the target. Closed periods can't be changed. |
+| *Only the target's owner can do this.* | Someone other than the target holder tried to mark the stage done. | The person who holds the target marks it done. |
+| *This stage isn't open.* | The stage is already awaiting confirmation or confirmed. | Refresh the page and check its status. |
+| *Once a target is live, only the manager or an Accountability Administrator can change its stages.* | You tried to rename, re-date or add a stage on a live target. | Ask your manager to change the stage. |
+
+:::note[Good to know]
+- Only **Confirmed** stages count. A stage that is **Awaiting Confirmation** adds nothing to your score yet.
+- On a target scored "done or not done", you score 100% only when every stage is confirmed.
+- A warning such as *Starts before System configured (#2)* means a stage starts before one listed above it. It is a warning only and does not change your score.
+- Once a stage is confirmed you can't undo it. Only an accountability administrator can reopen it.
+:::

@@ -1,0 +1,28 @@
+type: screen
+title: Scoring an employee's review
+desc: The Employee Review form in Draft, with the Submit Review button, the progress figures, the Comment for the employee box and the Targets tab where each line has an Actual, Fetch, Done and Skip buttons and a status, numbered 1 to 7.
+source: tritel_accountability_framework/views/accountability_review_session_views.xml (accountability_review_session_employee_view_form)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, {label: My Team, active: true}, My Actions, Organisation]
+  breadcrumb: [Review Sessions, "Q3 2026 — Quarterly Review", Employee A]
+blocks:
+  - buttons: [{label: Refresh Targets}, {label: Submit Review, primary: true, n: 7}]
+    status: {steps: [Draft, Awaiting Acknowledgment, Acknowledged], current: Draft}
+  - title: {text: Employee A, sub: Employee}
+  - fields:
+      - [{label: Session, value: "Q3 2026 — Quarterly Review"}, {label: Avg Score (%), value: "64.3", bold: true, n: 6}]
+      - [{label: Pending, value: "1", tone: warn}, {label: Rating, value: Meets Expectations, tone: good}]
+  - heading: Comment for the employee
+    n: 5
+  - text: "Strong quarter on pipeline; customer visits slipped in August."
+  - tabs: {items: [Targets], active: Targets, n: 1}
+  - table:
+      columns: [Target, Cadence, Target (yours), Actual, "", Score (%), Status]
+      widths: [3, 1.3, 1.6, 1.5, 1.6, 1.1, 1.4]
+      rows:
+        - [Grow qualified pipeline, Quarterly, "7,500,000", "6,375,000", "ƒx", "85.0", {text: Done, badge: true, tone: good}]
+        - {cells: [Customer visits per month, Monthly, "12", "8", "ƒx", "66.7", {text: Done, badge: true, tone: good}], n: 2}
+        - {cells: [Pipeline coverage, Quarterly, "3", "", {text: "Fetch · ✓ · Skip", tone: accent}, "0.0", {text: Pending, badge: true, tone: warn}], n: 3}
+        - {cells: [Bid compliance, Monthly, "100", "", "", "—", {text: Skipped, badge: true, tone: muted}], n: 4}

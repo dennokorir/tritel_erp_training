@@ -1,0 +1,170 @@
+---
+title: How metrics count (revenue, pipeline, activity, coverage, bid desk, delivery, review behaviour)
+description: What each family of metrics counts, over which window, how long it waits before an automatic review, and who gets the credit.
+module: accountability
+pageType: calculation
+roles: [everyone, account-manager, bid-liaison, presales, head-commercial, head-channel, delivery-pm, head-delivery, line-manager, accountability-admin]
+tags: [metrics, scores]
+keywords: [metric, KPI, automatic review, revenue, attribution, pipeline, coverage, activity update, OEM, bid desk, bid quality, delivery on time, on budget, settle days, window, sources]
+related: [accountability/concepts/metrics, accountability/how-to/hr-admin/metrics, accountability/calculations/target-scores, accountability/how-to/line-managers/conduct-a-review]
+sources:
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/metric_hook_pipeline.py
+  - tritel_accountability_framework/models/metric_hook_activity.py
+  - tritel_accountability_framework/models/metric_hook_coverage.py
+  - tritel_accountability_framework/models/metric_hook_oem.py
+  - tritel_accountability_framework/models/metric_hook_bid_desk.py
+  - tritel_accountability_framework/models/metric_hook_bid_quality.py
+  - tritel_accountability_framework/models/metric_hook_delivery.py
+  - tritel_accountability_framework/models/metric_hook_review_ack.py
+  - tritel_accountability_framework/models/metric_hook_review_coverage.py
+  - tritel_tender_tracker/models/target.py
+sidebar: { order: 9 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+A **metric** reads a target's result from elsewhere in Odoo: CRM, the tender tracker, project delivery or the review records themselves. The figure it fetches becomes the review's actual, and the target's own formula turns it into a score (see [target scores](/accountability/calculations/target-scores/)). This page explains what each family of metrics counts.
+
+## Rules that apply to every metric
+
+**Window.** Each review covers one window. **Measure Over** on the target decides which:
+
+- **Cadence window — each review measures its own month / quarter**: the window is the month, quarter, half-year, year, week or day set by **Review Cadence**. The default for SLA targets.
+- **Period to date — each review measures from the period start**: the window runs from the period's start to the end of the current cadence window. The default for number targets, so revenue builds up as a running total.
+
+**Snapshot or window.** Some metrics measure what is open *on the review date* (a snapshot, for example open pipeline). Others count what happened *within the window* (for example invoices dated in the quarter).
+
+**Waiting before an automatic review.** When **Automatic Reviews** is on, the system waits after a window closes so late entries are counted, then creates a draft review for the manager to confirm (or, if an administrator chose **Create and submit the review automatically**, submits it).
+
+| Metric | Waits after the window closes |
+|---|---|
+| Snapshot metrics | No wait. Skipped if the job is more than 7 days late, so it never reports today's figure for a past window. |
+| Coded metrics | Their own default, listed below |
+| Other metrics | **Metric Settle Period (days)** in Settings (3 by default) |
+| Any metric with **Wait Before Automatic Review (days)** above 0 | That number of days |
+
+**Who gets the credit.** Most metrics count records where the target's employee is the named person (owner, salesperson, project manager, Bid Liaison…). If the metric's **Scope** is *The employee and everyone below them in the reporting line*, the whole branch is counted.
+
+**Nothing to measure.** If a window has nothing to count (no packs closed, no projects handed over, no bids), the review is recorded as **Not Applicable**. It is signed off at once and never affects a score.
+
+**Provisional values.** Every night, and when someone clicks **Refresh**, the target shows a **Current value** and **would score** for the window in progress, marked **Provisional**. It is *Not part of the score until a review records it.* Staff can refresh once every 5 minutes.
+
+## Ratio metrics (coverage "× target")
+
+A ratio metric divides one figure by another. When the denominator is the **Reference Target**, its value is pro-rated to the window: reference value × days in the window ÷ days in the period.
+
+<Illustration name="accountability/calc-ratio-metric" caption="A 90,000,000 qualified pipeline against a quarter's share of a 120,000,000 annual target is 3.04 times the target." />
+
+A denominator of 0 is an error, not a score: *'Qualified pipeline coverage': the denominator is zero for 2026-01-01 to 2026-03-31.*
+
+## Revenue
+
+| Metric | What it counts | Credit to | Window |
+|---|---|---|---|
+| **Invoiced revenue** | Untaxed amount of posted customer invoices | The invoice's salesperson | Invoice date in the window; waits 3 days |
+| **Achieved revenue (attributed)** — Account Manager / Bid Liaison / Technical Presales | Won tenders' value × the person's attribution points ÷ 100 | The person on the tender's attribution line for that role | Award date in the window |
+| **Gross awarded value — Account Manager** | Won tenders' value before attribution | Account manager (split equally if two share the role) | Award date |
+| **Awarded tenders — Account Manager** | Number of won tenders | Account manager | Award date |
+| **Attribution rate — Account Manager** | Achieved ÷ gross awarded (for example 0.37) | Account manager | Award date |
+| **Achieved revenue vs revenue target — Account Manager** | Achieved ÷ the pro-rated reference target | Account manager | Award date |
+
+Attribution points have a ceiling per stage, and the ceilings add up to 100 for each role:
+
+| Role | Pipelining | Bid Submission Support | Post-Submission Influence |
+|---|---|---|---|
+| Account Manager | 40 | 20 | 40 |
+| Bid Liaison | 0 | 60 | 40 |
+| Technical Presales | 60 | 40 | 0 |
+
+*Example:* TND-2026-001 is won for 10,000,000. The account manager earned 40 + 10 + 30 = 80 points, so their achieved revenue is 10,000,000 × 80 ÷ 100 = **8,000,000**. Awards not yet attributed count as 0.
+
+## Pipeline
+
+The owner of an opportunity is its **account manager**, or its salesperson when no account manager is set. Opportunities where the two differ are flagged for tidying up.
+
+| Metric | What it counts | Window |
+|---|---|---|
+| **Open pipeline value** | Expected revenue of opportunities still open on the review date (not won, not lost or parked) | Snapshot |
+| **Qualified pipeline (quarter)** | Expected revenue, as it stood on the window's last day, of opportunities that had reached Qualified or later and were still open, **plus** deals won during the window | Window |
+| **Pipeline coverage**, **Qualified pipeline coverage** | The two above ÷ the pro-rated revenue target | As above |
+
+## Activity coverage
+
+| Metric | What it counts | Waits |
+|---|---|---|
+| **Pipeline status coverage** (logic: *Pipeline status update coverage (monthly)*) | Opportunity-months updated by their owner ÷ opportunity-months due × 100. An opportunity is due in a month if, at month end, the person owned it and it was open, in any stage. | 7 days |
+| **Tender evaluation coverage** (logic: *Tender evaluation update coverage (weekly)*) | Tender-weeks updated by the person ÷ tender-weeks due × 100. A tender is due in a week (Monday to Sunday) if it was in Evaluation that week and the person was its account manager or technical presales. | 7 days |
+
+An update counts only when **the person themselves** logged a done activity against it, dated in that month or week, and entered it within the **Logging Grace (days)** (7 by default) after the period ended. Activities logged by others, or entered late, are listed but don't count. Months or weeks are added together, not averaged.
+
+<Illustration name="accountability/calc-activity-coverage" caption="8 of 10 opportunities updated in October and 9 of 12 in November give 17 of 22, or 77.3%." />
+
+## Market coverage
+
+Four metrics, shipped switched off: an administrator turns them on.
+
+- **Named share – deals led**: customers where the person won at least one tender or opportunity ÷ customers they bid on as account manager, over the 24 months to the review date.
+- **Named share – my accounts**: owned customers with a win (by anyone) ÷ owned customers engaged (a tender, opportunity or customer touch) in 24 months.
+- **New named accounts**: customers whose first-ever win falls in the window, with the person as account manager.
+- **Target accounts named**: owned target accounts on the Named or Anchor rung ÷ owned target accounts, on the review date.
+
+## OEM
+
+| Metric | What it counts | Waits |
+|---|---|---|
+| **OEM-recognised revenue (USD)** | USD the chosen OEM recognises for confirmed bookings, by the confirmation date of the latest linked purchase order. **Organisation-wide**, not per person. Purchase lines without a confirmed booking are listed as awaiting OEM confirmation. | 30 days |
+| **OEM-recognised revenue vs target** | The above ÷ the pro-rated reference target | 30 days |
+| **OEM pipeline (vendor leads)** | Estimated value of the OEM's vendor leads on opportunities still open on the review date, as entered (no currency conversion) | Snapshot |
+
+Each target picks its OEM in **Measured For**.
+
+## Bid desk
+
+All compare each tender with its **latest** deadline, count only bid-desk tracked tenders that were not cancelled, and wait 14 days. Tenders captured less than 3 days before their deadline are left out of the timing metrics.
+
+| Metric | Met when | Credit to |
+|---|---|---|
+| **Submission Buffer (Bid Liaison)** | Submission recorded (time and receipt) at least 24 hours before the deadline | Bid Liaison |
+| **Ready at 72 Hours** (Bid Liaison / Technical Presales) | Confirmed ready at least 72 hours before the deadline (bids with a checklist only) | Bid Liaison / Technical Presales |
+| **Repeat Error Rate (Bid Liaison)** | Share of failed guidelines also failed in the previous two quarters. **Lower is better.** | Bid Liaison |
+| **Bid Decision Lead Time** (Account Manager / Head of Commercial) | Tender confirmed for bidding or dropped at least 5 days before the deadline | Account manager's tenders / the whole desk |
+| **Fair Workload Balance (Head of Commercial)** | Share of full-time Bid Liaisons whose effort points are within 15% of the team average | Head of Commercial |
+| **Deadline Clash-Free (Head of Commercial)** | Share of bids where the Bid Liaison had no other deadline within 3 days | Head of Commercial |
+
+## Bid quality
+
+- **Bid Quality Score (Bid Liaison)**: each submitted tender counts at the score the manager gave it in the quality check. A confirmed disqualification caused by the Bid Liaison counts as 0%, in the quarter it was confirmed. Must-win tenders count 3 times. Bids not yet scored are listed but left out. Disqualifications caused by someone else don't count against them.
+- **Bid Compliance (Technical Presales)**: each submitted tender counts 100%, or 0% for a confirmed disqualification caused by presales. Must-win × 3.
+
+Both wait 14 days.
+
+<Illustration name="accountability/calc-bid-quality" caption="A must-win tender at 90% counts three times, a disqualification caused by the Bid Liaison counts as 0%, and the unscored bid is left out: 68%." />
+
+## Delivery
+
+Counts the delivery projects the person manages (project manager) with a confirmed handover in the window, that finance has closed with an approved baseline. Waits 30 days.
+
+| Metric | Met when |
+|---|---|
+| **Delivery on-time completion rate** | Handed over by the approved completion date, plus approved client delays, plus 7 days' grace |
+| **Delivery on-budget rate** | Final cost before VAT, confirmed by finance at close, is within the approved delivery budget (no tolerance) |
+| **Delivery success rate (on time and on budget)** | Both of the above |
+
+Each is met ÷ counted × 100. *Example:* 4 projects handed over and closed in Q3: 3 on time, 2 on budget, 2 both. On-time rate 75%, on-budget rate 50%, success rate 50%.
+
+- With **fewer than 3** counted projects, the previous window of the same length is added (flagged in the worksheet).
+- Projects handed over but not yet closed by finance, or closed without an approved baseline, are listed but not counted. If none can be counted, the review is Not Applicable with the note *2 handed over but not yet closed by finance*.
+
+## Review behaviour
+
+| Metric | What it counts | Waits |
+|---|---|---|
+| **Team review coverage (direct reports)** | For each finished month: direct reports whose due targets were all reviewed (submitted or signed off) ÷ direct reports due. Monthly, weekly and daily targets are due every month; quarterly, half-yearly and annual ones in the month their window ends. Months are added together. | 14 days |
+| **Review acknowledgment rate** | The employee's reviews acknowledged by them ÷ their reviews closed in the window. Signed off automatically or closed after escalation count as not acknowledged. | 7 days |
+| **Review acknowledgment turnaround** | Average days from submission to close for reviews closed in the window. **Lower is better.** | 7 days |
+| **Review concern response time** | Average days a reviewer took to answer concerns answered in the window. Answers after 3 days are flagged. **Lower is better.** | 3 days |
+
+:::note[Good to know]
+**OEM-recognised revenue** is the same figure for everyone who holds a target with that metric and OEM, because it counts the whole organisation's bookings. The bid desk and bid quality metrics are not created automatically: they only appear once an administrator sets them up. Every fetched figure has a worksheet (**ƒx** or **How it's calculated**) listing the records behind it and why any were left out.
+:::

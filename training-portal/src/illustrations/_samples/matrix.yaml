@@ -1,0 +1,11 @@
+type: matrix
+title: Sample matrix
+desc: Test of the matrix renderer.
+source: tritel_accountability_framework/security/ir.model.access.csv
+columns: [Everyone, Line manager, HR, Accountability administrator]
+rows:
+  - {group: Targets}
+  - {action: See my own targets, cells: [y, y, y, y]}
+  - {action: Create targets for my team, cells: [n, p, y, y]}
+  - {action: Close a period, cells: [n, n, n, y]}
+legend: {p: Own team only}

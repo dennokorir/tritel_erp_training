@@ -1,0 +1,27 @@
+type: screen
+title: Cascade Compliance
+desc: The Compliance screen in Accountability with the period selector, the Total Cascades, Adopted, Pending, Declined and Adoption Rate tiles, and an objective opened to show its cascade recipients with a Remind button, numbered 6 to 9.
+source: tritel_accountability_framework/static/src/compliance/accountability_compliance.xml (ComplianceDashboard)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, My Team, My Actions, {label: Organisation, active: true, n: 6}]
+  breadcrumb: [Compliance]
+blocks:
+  - title: {text: Cascade Compliance, sub: "Traceability · Adoption tracking"}
+  - buttons: [{label: FY 2026}]
+  - tiles:
+      - {label: Total Cascades, value: "12", n: 7}
+      - {label: "Adopted ✓", value: "9", tone: good}
+      - {label: "Pending ⏳", value: "2", tone: warn}
+      - {label: "Declined ✗", value: "1", tone: bad}
+      - {label: Adoption Rate, value: "75%"}
+  - heading: "Grow qualified pipeline · 3/5 adopted"
+    n: 8
+  - text: Cascade Recipients
+  - table:
+      columns: [Recipient objective, Owner, Target, Value, Status, ""]
+      widths: [2.4, 1.6, 2.2, 1.4, 1.2, 1.1]
+      rows:
+        - [Win new named accounts, Employee A, Pipeline share, "10,000,000", {text: Adopted, badge: true, tone: good}, ""]
+        - {cells: [Win new named accounts, Employee E, Pipeline share, "8,000,000", {text: Pending, badge: true, tone: warn}, {text: Remind, bold: true}], n: 9}

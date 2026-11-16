@@ -1,0 +1,73 @@
+---
+title: Request a scorecard change
+description: Change what a live target is measured against, or close it, with a reason and a preview of the effect, and submit or decline the changes your team members propose.
+module: accountability
+pageType: how-to
+roles: [line-manager]
+tags: [scorecard changes, targets]
+keywords: [change target, revise target, adjust KPI, lower target, raise target, close target, scorecard change, change request, approval, propose change, target-setting deadline]
+where: [Accountability, My Team, Scorecard Change Requests]
+before:
+  - You are the employee's manager or the manager who cascaded the target. HR and accountability administrators can do this too.
+  - The target is live (Active, Pending Review or Reviewed). Drafts are edited directly.
+  - A target can have only one open request at a time.
+related: [accountability/workflows/scorecard-change-request, accountability/how-to/line-managers/withdraw-a-target, accountability/how-to/hr-admin/decide-changes-and-escalations, accountability/workflows/priority-change]
+sources:
+  - tritel_accountability_framework/views/accountability_scorecard_request_views.xml
+  - tritel_accountability_framework/models/accountability_scorecard_request.py
+sidebar: { order: 10 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Once a target is live, what it is measured against is locked, because it decides the score. To change the value (or an SLA's floor and ideal), or to close a target, you raise a **scorecard change**. It records your reason, shows the effect on the score, and needs approval after the period's target-setting deadline.
+
+<Illustration name="accountability/mgr-scorecard-change" caption="Changing a live target's value. The numbers match the steps below." />
+
+## Steps
+
+### Change a target's value
+
+1. Open the target (from **Team Targets**, click it) and click **Change target**. The **Change what it is measured against** window opens. (To end a target early instead, click **Close**; the **Close** window works the same way.)
+2. Type the **New target**. For an SLA target, type the **New floor** and **New ideal** (and **New upper bound** for a range). The current values are shown beside them.
+3. Write why in the reason box. The employee, the approver and HR see it.
+4. Read the effect: the person's **Overall rating score** and rating, before and after.
+5. Click **Submit**.
+
+### Submit or decline a change your team member proposed
+
+<Illustration name="accountability/mgr-scorecard-request-form" caption="A change proposed by a team member, waiting for you. The numbers match the steps below." />
+
+Team members can click **Propose a change** on their own target to ask for it to be withdrawn, closed or changed. You get a **Scorecard change proposed** to-do.
+
+1. Open **Accountability › My Team › Scorecard Change Requests**. It opens on **Waiting for approval** and **Proposed by employees**. Open the request and read the **Reason** and the score before and after.
+2. Click **Submit** to make the change (or send it for approval, after the deadline).
+3. To refuse it, write the **Note on the decision** first.
+4. Then click **Decline**. The note is sent to the employee.
+
+### Approve a change raised by a manager below you
+
+After the deadline, changes raised by the managers who report to you come to you (and to HR). Filter on **For my approval**, open the request, then click **Approve**, or write a **Note on the decision** and click **Decline**. You can't approve your own requests.
+
+## What happens next
+
+- **Before the target-setting deadline**, or if the period has none: the change is applied at once and the request shows **Applied**.
+- **After the deadline**: the request is **Waiting for approval**. Your own manager and every HR manager get an **Approve scorecard change** to-do; one approval is enough.
+- **When applied**: the target is updated, the change is noted on the target, and scores are recalculated. Reviews already signed off don't move. The employee gets a **Priority Change** to acknowledge.
+- **Cancel request** withdraws a request that is not applied yet. Open requests are cancelled automatically when the period closes.
+- HR gets a monthly summary of applied, declined and waiting changes.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Give a reason for the change.* | The reason box was empty. | Write the reason. |
+| *Nothing changes: enter the new target value or thresholds.* | The new values equal the current ones. | Type the new value. |
+| *'Grow qualified pipeline' already has an open change request (Withdraw · Grow qualified pipeline, waiting for approval). Decide or cancel it first.* | Only one request per target can be open. | Wait for the decision, or cancel the open request. |
+| *Write a note explaining why, then decline.* | You clicked **Decline** with an empty **Note on the decision**. | Write the note, then decline. |
+| *You cannot approve this request.* | You are not one of its approvers, or you raised it. | Leave it to the approvers. |
+| *Only the manager, HR or an administrator can change what a live target is measured against.* | You are not the employee's manager. | Ask their manager. |
+| *'Grow qualified pipeline' is not live.* | The target is a draft or already closed. | Edit a draft directly; a closed target can't change. |
+
+:::note[Good to know]
+**Change target** is not offered on milestone targets: their stages and weights decide the score and are corrected by an accountability administrator. To take a target off the scorecard part-way through the year, use [Withdraw a target](/accountability/how-to/line-managers/withdraw-a-target/) rather than Close: withdrawing lets you choose the date it stops counting.
+:::

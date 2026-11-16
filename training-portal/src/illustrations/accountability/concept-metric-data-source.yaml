@@ -1,0 +1,24 @@
+type: screen
+title: A target fed by a metric
+desc: The Data Source group of a target form, with the Metric, Measure Over, Automatic Reviews and Reference Target fields, the Provisional current value with its Refresh link, and the How it's calculated tab, numbered 1 to 5.
+source: tritel_accountability_framework/views/accountability_target_views.xml (accountability_target_view_form, Data Source group and How it's calculated page)
+frame:
+  grid: true
+  app: Accountability
+  menu: [{label: My Performance, active: true}, My Team, My Actions]
+  breadcrumb: [My Targets, Pipeline three times the revenue target]
+blocks:
+  - title: {text: Pipeline three times the revenue target, sub: "Target · Employee A · FY 2026"}
+  - heading: Data Source
+  - fields:
+      - [{label: Metric, value: Qualified pipeline coverage, n: 1}, {label: Reference Target, value: Revenue FY 2026, n: 2}]
+      - [{label: Measure Over, value: "Cadence window — each review measures its own month / quarter", n: 3}]
+      - [{label: Automatic Reviews, value: Create a draft review for the reviewer to confirm, n: 4}]
+  - note: {text: "Provisional  Current value: 2.4 · would score 80%  as of 15/11/2026  Refresh — Not part of the score until a review records it.", tone: warn, n: 5}
+  - tabs: {items: ["How it's calculated", Review History, Cascade Recipients], active: "How it's calculated"}
+  - table:
+      columns: [Opportunity, Customer, Stage at window end, Expected revenue]
+      widths: [3, 2, 2, 2]
+      rows:
+        - [Network refresh, Customer A, Proposal, "12,000,000"]
+        - [Data centre upgrade, Customer B, Negotiation, "8,000,000"]

@@ -1,0 +1,59 @@
+---
+title: Withdraw a target
+description: Take a live target off a team member's scorecard from a chosen date, with a reason, so its result still counts for the time it was live.
+module: accountability
+pageType: how-to
+roles: [line-manager]
+tags: [scorecard changes, targets]
+keywords: [withdraw target, remove target, cancel KPI, drop target, delete target, stop counting, scorecard change, role change, territory change]
+where: [Accountability, My Team, Team Targets]
+before:
+  - You are the employee's manager, or the manager who cascaded the target to them.
+  - The target is live and the period is not closed.
+  - The target has no other change request open.
+related: [accountability/concepts/exempt-withdrawn-development, accountability/workflows/scorecard-change-request, accountability/calculations/weights-over-time, accountability/how-to/line-managers/request-a-scorecard-change]
+sources:
+  - tritel_accountability_framework/views/accountability_target_views.xml
+  - tritel_accountability_framework/views/accountability_scorecard_request_views.xml
+  - tritel_accountability_framework/models/accountability_scorecard_request.py
+  - tritel_accountability_framework/models/accountability_withdrawn.py
+  - tritel_accountability_framework/models/accountability_target_weights.py
+sidebar: { order: 11 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+When a target no longer applies, for example after a change of role or territory, you **withdraw** it. It stops counting from the date you choose. Any result it earned still counts for the days it was live, so nothing is lost.
+
+<Illustration name="accountability/mgr-withdraw" caption="Withdrawing a live target. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Accountability › My Team › Team Targets**, click the person, then click the target. In the **Assignment** section, click **Withdraw** next to **Weight**. The **Withdraw** window opens.
+2. Set **From**: the day the target stops counting. It defaults to today and must fall inside the period.
+3. Write why in the reason box. The employee sees it.
+4. Read the effect on the person's **Overall rating score**.
+5. Click **Submit**.
+
+## What happens next
+
+- **Before the target-setting deadline**, or if the period has none: the target is withdrawn at once. **After the deadline**: it waits for your manager or HR to approve it.
+- **Once applied**: the target shows *Withdrawn from* the date, and *any result counts for the time it was live*. Its share of the score shrinks to the days it counted, and the other targets' shares grow.
+- Shares of this target still waiting to be adopted are removed, and the people they were offered to are told. A review request on the target is set back, and it leaves **My Actions**.
+- The employee gets a **Priority Change** to acknowledge.
+- On **Team Targets**, withdrawn and closed targets are hidden. Tick **Show withdrawn and closed** to see them.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Give a reason for the change.* | The reason box was empty. | Write the reason. |
+| *Choose a date inside FY 2026.* | **From** is outside the period, or on its first day. | Pick a date within the period. |
+| *'Customer visits per month' was already withdrawn.* | It has been withdrawn before. | Nothing more to do. |
+| *'Customer visits per month' already has an open change request (Change what it is measured against · Customer visits per month, waiting for approval). Decide or cancel it first.* | Another request is open on the target. | Wait for it, or cancel it. |
+| *Only the employee's manager, the manager who cascaded it, HR or an accountability administrator can withdraw 'Customer visits per month'.* | You are not the person's manager. | Ask their manager. |
+| *FY 2026 is closed: withdrawing a target is no longer possible for 'Customer visits per month'.* | The period has closed. | Nothing can change in a closed period. |
+| *Only draft targets without reviews can be deleted. Withdraw 'Customer visits per month' instead, so its result keeps counting for the time it was live.* | You tried to delete a live target. | Withdraw it instead. |
+
+:::note[Good to know]
+The **Withdraw** link only appears on live targets, and only for the person's manager, the manager who cascaded the target or an accountability administrator. A development target (not scored) can't be withdrawn, because it never counts.
+:::

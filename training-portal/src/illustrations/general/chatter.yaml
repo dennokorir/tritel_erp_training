@@ -1,0 +1,13 @@
+type: screen
+title: The chatter beside a record
+desc: The message and activity area shown at the side or foot of a record, with Send message, Log note and Activities, a scheduled to-do, and the history of changes.
+source: Odoo 16 mail chatter (mail.thread / mail.activity.mixin)
+frame: { grid: true, app: Tender Manager, breadcrumb: [All Tenders, TND-2026-001] }
+blocks:
+  - { buttons: [{label: Send message, n: 1}, {label: Log note, n: 2}, {label: Activities, n: 3}] }
+  - heading: Planned activities
+    n: 4
+  - table: {columns: [Activity, Due, Assigned to], widths: [4, 2, 2], rows: [[Confirm the bid readiness checklist, {text: Today, tone: warn}, Employee B]]}
+  - heading: History
+    n: 5
+  - table: {columns: [When, Who, What], widths: [2, 2, 5], rows: [[Yesterday, Employee A, "Status: Draft → Bidding"], [3 days ago, Employee A, "Note: Customer asked for a site visit"]]}

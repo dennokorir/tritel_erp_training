@@ -1,0 +1,71 @@
+---
+title: Read my progress briefs and snapshots
+description: Find your progress briefs (how your running totals compare with where you should be by now) and your frozen performance snapshots, compare a snapshot with today and print it.
+module: accountability
+pageType: how-to
+roles: [everyone]
+tags: [snapshots, briefs, scores]
+keywords: [progress brief, on pace, behind, expected by now, snapshot, frozen, month end, as at, PDF, history, appraisal record]
+where: [Accountability, My Performance, Progress Briefs]
+before:
+  - Progress briefs are sent only once HR turns them on in the Accountability settings, and only if you have running-total targets (number targets measured from the start of the period).
+  - Snapshots are taken automatically at each month end and when a period closes, or by hand by your manager or HR.
+related: [accountability/concepts/ratings-and-briefs, accountability/concepts/snapshots-and-as-at, accountability/workflows/progress-brief, accountability/reports/snapshots-and-compare]
+sources:
+  - tritel_accountability_framework/views/accountability_progress_brief_views.xml
+  - tritel_accountability_framework/models/accountability_progress_brief.py
+  - tritel_accountability_framework/views/accountability_snapshot_views.xml
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/static/src/components/snapshot/snapshot_panel.xml
+sidebar: { order: 7 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A **progress brief** tells you, at each month or quarter end, whether your running totals are where they should be by that date, and where your current pace leads by the end of the period. A **performance snapshot** is a saved copy of your scores and targets as they stood on a date. It never changes, so you can compare it with today.
+
+<Illustration name="accountability/howto-progress-brief" caption="A progress brief. The numbers match steps 1 to 4." />
+
+## Steps
+
+### Read a progress brief
+
+1. Open **Accountability › My Performance › Progress Briefs**. You see your briefs, newest first, with the **Checkpoint**, the number of **Targets** and how many are **Below expectations**.
+2. Click a brief. The heading gives the checkpoint date and how much of the period had gone by then.
+3. Read the table, one row per running-total target:
+   - **Actual**: your result at your last review.
+   - **Expected by then**: the share of the target you should have reached by that date.
+   - **Gap**: the difference (red when behind).
+   - **Rating on pace**: your rating against what was expected.
+   - **At this pace by period end**: where you'll finish if you carry on at the same rate.
+4. **Sent On** shows when it was emailed to you (with your manager copied).
+
+<Illustration name="accountability/howto-snapshot-form" caption="A frozen snapshot. The numbers match steps 1 to 5 below." />
+
+### Read a snapshot
+
+1. Open **Accountability › My Performance › Performance Snapshots** and click a snapshot. Use the **Mine** filter if you also see your team's.
+2. Under **Overall**, read the **Rating**, **Rating score (%)** and **Own (%)** as they stood on the **As at** date. Under **Frozen**, **Taken** says whether it was **Taken by hand**, at **Month end** or at **Period close**.
+3. The table lists each target as it stood: **Actual**, **Target value**, **Score (%)** and rating.
+4. Click **Compare with today's rebuild** to see what has changed since it was frozen, for example a review signed off late.
+5. Click **Print PDF** to download a copy.
+
+You can also pick a month end in the **As at** list on **My Targets** or on the portal's **My Performance** page. It shows the snapshot for that date, with **Rebuilt** and **Frozen** buttons to switch between today's rebuild and the saved copy.
+
+## What happens next
+
+- Briefs and snapshots are read-only. Nothing you do here changes a score.
+- A new brief arrives at each checkpoint by email and as a notification. Only one brief is sent per checkpoint.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *You can only see snapshots for yourself and the people in your reporting line.* | You opened someone else's snapshot from a link. | Ask their manager or HR. |
+| *A frozen snapshot cannot be changed. Freeze a new one instead.* | You tried to edit a frozen snapshot. | Ask your manager or HR to freeze a new one. |
+
+:::note[Good to know]
+- No briefs at all? Briefs are off until HR switches on **Send progress briefs**. Targets measured month by month (not from the start of the period), SLA targets and milestone targets are never in a brief.
+- **Expected by then** is worked out from your last review date, not today. A target reviewed in September is judged against September's expectation.
+- A brief row reading *No actual reviewed yet* means the target has had no signed-off review.
+- You can't freeze a snapshot of yourself; your manager, HR or an administrator can.
+:::

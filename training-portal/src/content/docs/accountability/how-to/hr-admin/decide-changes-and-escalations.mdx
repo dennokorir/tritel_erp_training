@@ -1,0 +1,72 @@
+---
+title: Decide scorecard changes and escalations
+description: Approve or decline scorecard changes made after the target-setting deadline, and decide reviews that employees have escalated after their manager kept the scores.
+module: accountability
+pageType: how-to
+roles: [hr, accountability-admin]
+tags: [scorecard changes, reviews, my actions]
+keywords: [approve, decline, scorecard change, change request, withdraw target, escalation, dispute, appeal, grievance, uphold, send back, HR decision]
+where: [Accountability, My Team, Scorecard Change Requests]
+before:
+  - For a scorecard change, you are named under <strong>Approvers</strong> (the requester's own manager, plus HR), or you are HR. You can't decide a change you requested yourself.
+  - For an escalation, you are the reviewer's manager, a review escalation contact, HR or an administrator, and you are not the employee or the reviewer.
+related: [accountability/workflows/scorecard-change-request, accountability/workflows/review-concern, accountability/workflows/review-pack, accountability/how-to/line-managers/request-a-scorecard-change, accountability/how-to/line-managers/team-reviews-board]
+sources:
+  - tritel_accountability_framework/views/accountability_scorecard_request_views.xml
+  - tritel_accountability_framework/models/accountability_scorecard_request.py
+  - tritel_accountability_framework/views/accountability_review_pack_views.xml
+  - tritel_accountability_framework/views/wizard_review_concern_views.xml
+  - tritel_accountability_framework/wizard/review_concern_wizards.py
+  - tritel_accountability_framework/models/accountability_review_session.py
+sidebar: { order: 7 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+After a period's **target-setting deadline**, a change to a live scorecard (adding, withdrawing or closing a target, or changing what it is measured against) waits for approval by the requester's own manager or HR. Separately, when an employee disputes their review and their manager keeps the scores, the employee can **escalate** it for someone else to decide. Both land in your **My Actions**.
+
+<Illustration name="accountability/howto-scorecard-request" caption="A scorecard change waiting for approval. The numbers match steps 1 to 6." />
+
+## Steps
+
+### Decide a scorecard change
+
+1. Open **Accountability › My Actions** and click the item under **Scorecard changes to approve**. Or open **My Team › Scorecard Change Requests**, which opens on **Waiting for approval** and **Proposed by employees**.
+2. Read the heading: what kind of change it is and which target, for example *Withdraw · Customer visits per month*. **Kind** and **From** say what changes and when.
+3. Compare **Score before (%)** and **Score after (%)**, and the ratings, to see the effect on the employee's overall rating.
+4. Read the **Reason**.
+5. To agree, click **Approve**.
+6. To refuse, first type the **Note on the decision**, then click **Decline**.
+
+<Illustration name="accountability/howto-decide-escalation" caption="Deciding an escalated review. The numbers match steps 7 to 11." />
+
+### Decide an escalated review
+
+7. Open **Accountability › My Actions** and click **Decide** under **Escalated reviews to decide**. Or, if you see **My Team › Team Reviews**, look in the **With Escalation** column.
+8. On the card, click **Decide** (or open the review and click **Decide the Escalation**).
+9. Read **Questioned scores**, **The employee asked**, **The manager's reply** and **Why the employee escalated**. Open the review itself if you need the full detail.
+10. Choose the **Decision**: **Uphold the manager's scores** or **Send back to the manager to revise**, and write the **Decision note**.
+11. Click **Record Decision**.
+
+## What happens next
+
+- **Approve**: the change is applied at once. The employee is asked to [acknowledge their new priorities](/accountability/how-to/everyone/acknowledge-new-priorities/). Other approvers' to-dos close.
+- **Decline**: nothing changes on the scorecard. The requester (and the employee, if they proposed it) is sent your note.
+- **Uphold**: the review closes as **Closed after Escalation** and its scores are signed off. The employee and reviewer are told your decision.
+- **Send back**: the questioned targets reopen and the review goes to **Being Revised**. The reviewer gets a *Revise escalated review* to-do, revises and resubmits, and the employee responds again.
+- HR receives a monthly email on the 1st listing last month's applied, declined and waiting changes. **Organisation › Scorecard Changes** holds the full log.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Write a note explaining why, then decline.* | You clicked **Decline** with an empty **Note on the decision**. | Type the note first. |
+| *You cannot approve this request.* / *You cannot decline this request.* | You are not an approver or HR, or you raised the request yourself. | Leave it to the other approvers. |
+| *Only a request that is not applied yet can be cancelled.* | Someone clicked **Cancel request** on an applied or declined request. | Raise a new request to undo an applied change. |
+| *You aren't the person this review was escalated to.* | You are not a decider, or you are the employee or the reviewer. | Leave it to the people it was escalated to. |
+
+:::note[Good to know]
+- Before the target-setting deadline, changes apply at once with no approval. After it, the request lists the **Approvers**: the requester's own manager (or the employee's manager's manager) and every HR manager. Any one of them can decide.
+- An escalation goes to the reviewer's own manager. Only if there is none does it go to the **Review escalation contacts** in the settings, then to HR. HR and administrators can also decide any escalation they are not party to.
+- While an escalation is open, nothing is signed off automatically. Decide it promptly.
+- Closing a period cancels every scorecard change still waiting.
+:::

@@ -1,0 +1,21 @@
+type: screen
+title: Changing what a target is measured against
+desc: A live target's form with the Change target button, and the Change what it is measured against window with the current and new target, the reason box, the effect on the overall rating score and the Submit button, numbered 1 to 5.
+source: tritel_accountability_framework/views/accountability_scorecard_request_views.xml (scorecard_request_view_form_dialog, accountability_target_view_form_governance)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, {label: My Team, active: true}, My Actions, Organisation]
+  breadcrumb: [Team Targets, Grow qualified pipeline]
+blocks:
+  - buttons: [{label: Request Review}, {label: Close}, {label: Change target, n: 1}]
+    status: {steps: [Draft, Active, Pending Review, Reviewed], current: Active}
+  - dialog:
+      title: Change what it is measured against
+      blocks:
+        - fields:
+            - [{label: Target, value: Grow qualified pipeline}, {label: Current target, value: "30,000,000"}]
+            - [{label: Employee, value: Employee A}, {label: New target, value: "24,000,000", bold: true, n: 2}]
+        - note: {text: "Customer A's framework contract moved to FY 2027.", tone: muted, n: 3}
+        - note: {text: "Overall rating score 64.0% Meets Expectations → 71.5% Exceeds Expectations. After the period's target-setting deadline the change waits for the manager's manager or HR to approve it.", tone: accent, n: 4}
+        - buttons: [{label: Submit, primary: true, n: 5}, {label: Cancel}]

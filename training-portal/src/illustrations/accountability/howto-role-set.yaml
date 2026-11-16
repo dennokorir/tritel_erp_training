@@ -1,0 +1,24 @@
+type: screen
+title: A role set in the targets library
+desc: A Role Set form in the Targets Library with the Publish button, the status bar, the role name, Job positions and People, and the Entries tab listing standard targets with an Accept button on a suggestion, numbered 1 to 6.
+source: tritel_accountability_framework/views/accountability_target_library_views.xml (view_accountability_role_set_form)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, My Team, My Actions, {label: Organisation, active: true, n: 1}]
+  breadcrumb: [Targets Library, Account Manager]
+blocks:
+  - buttons: [{label: Publish, primary: true, n: 6}]
+    status: {steps: [Draft, Published], current: Draft}
+  - title: {text: Account Manager, n: 2}
+  - fields:
+      - [{label: Job positions, value: Account Manager, n: 3}, {label: Description, value: "Seeded from FY 2026: 6 people, 30 targets."}]
+      - [{label: People, value: "6"}]
+  - tabs: {items: [Entries], active: Entries}
+  - table:
+      columns: [Name, Measured by, Target Type, Cadence, Suggested Value, Optional, Held last year by, Status, ""]
+      widths: [2.4, 2, 1.6, 1.3, 1.6, 1.1, 1.2, 1.6, 1.2]
+      rows:
+        - {cells: [Qualified pipeline, "Qualified pipeline (quarter)", Quantitative, Quarterly, "30,000,000", "", "6", {text: In the library, badge: true, tone: good}, ""], n: 4}
+        - [Customer visits, "", Quantitative, Monthly, "12", "", "5", {text: In the library, badge: true, tone: good}, ""]
+        - {cells: [Partner workshops, "", Quantitative, Quarterly, "2", "✓", "1", {text: Suggested, badge: true, tone: warn}, {text: Accept, bold: true}], n: 5}

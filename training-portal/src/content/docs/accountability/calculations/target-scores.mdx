@@ -1,0 +1,83 @@
+---
+title: How a target's score is calculated (number, SLA)
+description: How the Score (%) of a number target and of an SLA target is worked out, with worked examples, the 100% cap and what happens with blank or zero values.
+module: accountability
+pageType: calculation
+roles: [everyone, line-manager, hr, accountability-admin]
+tags: [scores, targets]
+keywords: [KPI, score, percentage, target score, SLA, service level, floor, ceiling, ideal, higher is better, lower is better, cap, over-achievement, appraisal]
+related: [accountability/concepts/targets, accountability/concepts/scores, accountability/calculations/milestone-scores, accountability/calculations/ratings, accountability/calculations/own-team-overall]
+sources:
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/accountability_review.py
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/views/accountability_target_views.xml
+sidebar: { order: 1 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Every target has a **Score (%)** between 0 and 100. How it is worked out depends on the **Target Type**: **Quantitative** (a number to reach), **Threshold / SLA** (a level to stay within) or **Milestone / Task** (stages to deliver, see [milestone scores](/accountability/calculations/milestone-scores/)).
+
+## Number targets (Quantitative)
+
+The score compares the latest **Actual Value** with the number you are measured on.
+
+- **Higher is Better** (revenue, calls, visits): Actual ÷ Target × 100.
+- **Lower is Better** (incidents, cost, days): Target ÷ Actual × 100.
+
+The score never goes above 100%. Doing better than the target gives 100%, not more.
+
+If part of the target was [cascaded](/accountability/concepts/cascading/) to your team and they adopted it, you are scored only on the part you kept. The target form shows this part as **Measured On** in the **Allocation** section.
+
+<Illustration name="accountability/calc-number-target" caption="A 10,000,000 target with 4,000,000 adopted by the team: the owner is scored on the 6,000,000 they kept." />
+
+More examples:
+
+| Direction | Target | Actual | Score |
+|---|---|---|---|
+| Higher is Better | 10,000,000 | 7,500,000 | 75% |
+| Higher is Better | 10,000,000 | 12,000,000 | 100% (capped) |
+| Lower is Better | 5 incidents | 8 | 5 ÷ 8 = 62.5% |
+| Lower is Better | 5 incidents | 4 | 100% (capped) |
+| Lower is Better | 5 incidents | 0 entered | 100% |
+
+## SLA targets (Threshold / SLA)
+
+An SLA target is scored review by review. Each signed-off review gets its own score from a band, and the target's score is the **average of its signed-off reviews**.
+
+The band depends on the **SLA Direction**:
+
+| SLA Direction | Scores 0% | Scores 100% | In between |
+|---|---|---|---|
+| **At or above floor (quality SLA)** | below the **Compliance Floor** | at or above the **Ideal Target (Full Credit)** | (Actual − Floor) ÷ (Ideal − Floor) × 100 |
+| **At or below ceiling (cost / time SLA)** | above the limit typed in **Compliance Floor** | at or below the **Ideal Target (Full Credit)** | (Limit − Actual) ÷ (Limit − Ideal) × 100 |
+| **Within range (band compliance)** | below the **Compliance Floor** or above the **Upper Bound** | anywhere from the floor to the upper bound | nothing in between: 0% or 100% |
+
+<Illustration name="accountability/calc-sla-floor" caption="One review on a quality SLA: 90 sits two-thirds of the way from the floor (80) to the ideal (95)." />
+
+<Illustration name="accountability/calc-sla-ceiling" caption="One review on a response-time SLA: 36 hours is halfway between the limit (48 h) and the ideal (24 h)." />
+
+Then the reviews are averaged:
+
+<Illustration name="accountability/calc-sla-target" caption="The SLA target's score is the plain average of its signed-off reviews." />
+
+:::note[Good to know]
+For **At or below ceiling**, there is no field called "ceiling". Type the upper limit in the field labelled **Compliance Floor**, and the full-credit level in **Ideal Target (Full Credit)**. The **How it's calculated** tab shows it correctly as "Band: above 48 scores 0%, 24 or less scores 100%".
+:::
+
+## Edge cases
+
+- **Nothing entered yet.** A target with no actual and no signed-off review has no result. It shows a score of 0, but it is **not counted** in your own score until a result comes in. See [Own, Team and Overall score](/accountability/calculations/own-team-overall/).
+- **A blank actual is not the same as a 0.** On a **Lower is Better** target, an actual of 0 that was entered (for example, no incidents) scores 100%. A blank actual scores 0%.
+- **Target Value of 0.** A number target with a target of 0 always scores 0%, whatever the actual. Use a real target value, or an SLA target instead.
+- **Fully cascaded.** When your team has adopted the whole target, your own score on it is 0 and it stops counting in your own score from the day it became fully cascaded. The badge *Fully cascaded — measured through your team* appears. Your team's results reach you through your team score.
+- **SLA with no reviews.** The form says *Not yet reviewed — SLA targets are scored from their reviews.* The target does not count until a review is signed off.
+- **Missed reviews don't count against you.** An SLA target averages only the reviews that were signed off. A quarter that was never reviewed is simply left out.
+- **Not Applicable reviews** (nothing to measure in that window) are left out of the average.
+- **SLA actuals can't be typed.** Typing an actual on an SLA target gives *Results for SLA targets come from reviews: request or conduct a review to record the actual.*
+- **Provisional values don't count.** A metric target may show a **Current value** and **would score** with a **Provisional** badge. It is a preview only: *Not part of the score until a review records it.*
+- **Each review keeps the basis it was scored on.** A review stores the **Measured On** figure at the time, so later cascade changes don't move a signed score.
+
+:::note[Good to know]
+A running total measured from the start of the period (for example, revenue against an annual target) will have a low **Score (%)** early in the year. Its **Rating** is read "on pace" instead, against what was expected by then. See [Ratings](/accountability/calculations/ratings/).
+:::

@@ -1,0 +1,299 @@
+# Accountability Framework terms. One or two plain sentences each. Generic words (period, review,
+# weight, stage, exempt) are given specific names here so they don't link on other modules' pages.
+- term: Accountability Framework
+  definition: Tritel's system in Odoo for setting staff objectives and targets, recording results in reviews, and working out scores and ratings.
+  module: accountability
+  see: [accountability/index]
+- term: Accountability period
+  aliases: [performance year]
+  definition: The performance year, for example FY 2026, with a start date, end date and target-setting deadline. Only one period is active at a time.
+  module: accountability
+  see: [accountability/concepts/periods-and-objectives, accountability/workflows/period]
+- term: Target-Setting Deadline
+  definition: The date in a period after which changes to live targets need approval and new targets are marked late-set.
+  module: accountability
+  see: [accountability/concepts/periods-and-objectives]
+- term: Objective
+  definition: A goal inside a period, such as growing revenue, that targets sit under. Objectives form a tree with an owner for each.
+  module: accountability
+  see: [accountability/concepts/periods-and-objectives, accountability/workflows/objective]
+- term: Sub-objective
+  definition: An objective that sits under another objective in the tree.
+  module: accountability
+  see: [accountability/concepts/periods-and-objectives]
+- term: Objective achievement
+  aliases: [Achievement Threshold]
+  definition: Whether a closed objective's average score reached its achievement threshold (70% by default). The result is Achieved, Partial Achievement or Not Achieved.
+  module: accountability
+  see: [accountability/calculations/objective-achievement]
+- term: Target
+  aliases: [KPI]
+  definition: One thing a person is measured on in a period, with a type, a review cadence and a weight. A person's targets make up their scorecard.
+  module: accountability
+  see: [accountability/concepts/targets, accountability/workflows/target]
+- term: Scorecard
+  definition: All of one person's targets in a period, with how much each one counts.
+  module: accountability
+  see: [accountability/concepts/targets]
+- term: Quantitative target
+  definition: A target with a number to reach, such as revenue or visits. It is scored as the actual against the target value, up to 100%.
+  module: accountability
+  see: [accountability/concepts/targets, accountability/calculations/target-scores]
+- term: Threshold / SLA target
+  aliases: [SLA target]
+  definition: A target for a service level to stay within. Each review is scored on a band from the compliance floor to the ideal, and the target's score is the average of its signed-off reviews.
+  module: accountability
+  see: [accountability/concepts/targets, accountability/calculations/target-scores]
+- term: Compliance Floor
+  definition: On an SLA target, the level below which a review scores 0. For a cost or time SLA it holds the upper limit instead.
+  module: accountability
+  see: [accountability/calculations/target-scores]
+- term: Ideal Target
+  definition: On an SLA target, the level at or beyond which a review scores 100%.
+  module: accountability
+  see: [accountability/calculations/target-scores]
+- term: Upper Bound
+  definition: On a "within range" SLA target, the top of the band. Results inside the band score 100%, outside it 0.
+  module: accountability
+  see: [accountability/calculations/target-scores]
+- term: Milestone / Task target
+  aliases: [milestone target]
+  definition: A target made of dated stages to deliver. It is scored from the confirmed stages, or by the manager's assessment.
+  module: accountability
+  see: [accountability/concepts/targets, accountability/calculations/milestone-scores]
+- term: Milestone stage
+  definition: One step of a milestone target, with a due date and a weight. The owner marks it done and the manager confirms it; only confirmed stages count.
+  module: accountability
+  see: [accountability/workflows/milestone-stage, accountability/how-to/everyone/update-a-milestone]
+- term: Supervisor assessment
+  definition: A milestone scoring mode where the manager gives the target a score from 0 to 100 instead of counting stages.
+  module: accountability
+  see: [accountability/calculations/milestone-scores]
+- term: Review Cadence
+  definition: How often a target is reviewed (daily to annual). It decides which month, quarter or other window each review covers.
+  module: accountability
+  see: [accountability/concepts/targets]
+- term: Late Set
+  definition: A flag on a target created after the period's target-setting deadline. It is for reporting only and doesn't change the score.
+  module: accountability
+  see: [accountability/concepts/targets]
+- term: Scorecard change request
+  aliases: [scorecard change]
+  definition: The record made when a live target is added, withdrawn, closed or changed. After the target-setting deadline it needs approval before it takes effect.
+  module: accountability
+  see: [accountability/workflows/scorecard-change-request, accountability/how-to/line-managers/request-a-scorecard-change]
+- term: Metric
+  definition: A ready-made calculation that reads a target's result from Odoo, for example from CRM, the Tender Tracker or Projects, so nobody has to type it.
+  module: accountability
+  see: [accountability/concepts/metrics, accountability/calculations/metric-families]
+- term: Provisional value
+  definition: The value a metric gives for the window so far, shown on the target with what it would score. It is never part of a score until a review records it.
+  module: accountability
+  see: [accountability/concepts/metrics]
+- term: Measure Over
+  definition: Whether a metric measures each review's own window or everything from the start of the period (period to date).
+  module: accountability
+  see: [accountability/concepts/metrics]
+- term: Reference Target
+  definition: For a ratio metric, the target the figure is divided by, such as your revenue target for pipeline coverage.
+  module: accountability
+  see: [accountability/concepts/metrics]
+- term: Measured For
+  definition: The record a metric needs to know about, such as the OEM for OEM-recognised revenue.
+  module: accountability
+  see: [accountability/concepts/metrics]
+- term: Automatic Reviews
+  definition: What the system does after each window on a metric target. Usually it creates a draft review for the manager to confirm.
+  module: accountability
+  see: [accountability/concepts/metrics]
+- term: Metric worksheet
+  aliases: [How it's calculated]
+  definition: The list of records behind a metric's figure, with any rows that need checking flagged. Opened from a target or a review.
+  module: accountability
+  see: [accountability/concepts/metrics]
+- term: Target weight
+  definition: A number that says how much a target counts against the person's other targets. Weight 2 counts twice as much as weight 1.
+  module: accountability
+  see: [accountability/concepts/weights-and-share-of-score]
+- term: Share of score
+  definition: The percentage of a person's score that a target carries over the whole period, counting each weight for the days it was in force.
+  module: accountability
+  see: [accountability/concepts/weights-and-share-of-score, accountability/calculations/share-of-score]
+- term: Share From Today
+  definition: The percentage of the score a target carries from today, using today's weights of the live targets.
+  module: accountability
+  see: [accountability/concepts/weights-and-share-of-score]
+- term: Rebalance Weights
+  definition: The tool a manager uses to change the weights of a live scorecard. Shares from today must add up to 100% and a reason is required.
+  module: accountability
+  see: [accountability/how-to/line-managers/rebalance-weights]
+- term: Weight History
+  definition: The permanent record of every change to a person's scorecard in a period, with the reason and the score before and after.
+  module: accountability
+  see: [accountability/concepts/weights-and-share-of-score]
+- term: Priority Change
+  aliases: [new priorities]
+  definition: The notice asking you to acknowledge changes to your targets or weights. It is accepted automatically if you don't act by its date.
+  module: accountability
+  see: [accountability/workflows/priority-change, accountability/how-to/everyone/acknowledge-new-priorities]
+- term: Own score
+  definition: The average of a person's target scores, each counted by its share of score. Only targets with a result count.
+  module: accountability
+  see: [accountability/concepts/scores, accountability/calculations/own-team-overall]
+- term: Team score
+  definition: For a manager, the average overall score of the people who reported to them, each counted by how long they were in the team.
+  module: accountability
+  see: [accountability/concepts/scores, accountability/calculations/own-team-overall]
+- term: Overall score
+  aliases: [Composite score]
+  definition: The score everyone is judged on. For most staff it is the own score; for managers with a team it blends own (40%) and team (60%) by default.
+  module: accountability
+  see: [accountability/concepts/scores, accountability/calculations/own-team-overall]
+- term: Scoring Mode
+  definition: On a score, the kind of score a person gets from the org chart (Leaf, Middle, Top Level, Standalone or Exempt). On a milestone target, how its stages are scored.
+  module: accountability
+  see: [accountability/concepts/scores]
+- term: Standalone employee
+  definition: Someone with no manager and nobody reporting to them. They are scored on their own targets and flagged so the org chart can be fixed.
+  module: accountability
+  see: [accountability/concepts/scores]
+- term: Cascade
+  aliases: [cascading]
+  definition: Passing part of a target down the reporting line. A manager pushes it, or an employee requests it, and the recipient adopts or declines it.
+  module: accountability
+  see: [accountability/concepts/cascading, accountability/workflows/cascade]
+- term: Pull request
+  definition: An employee's request for part of their direct manager's live target. The manager approves or denies it.
+  module: accountability
+  see: [accountability/concepts/cascading, accountability/how-to/line-managers/push-and-pull-targets]
+- term: Pending Adoption
+  definition: A cascaded target waiting for its recipient to adopt or decline it.
+  module: accountability
+  see: [accountability/concepts/cascading]
+- term: Share of source
+  definition: A cascaded slice of a quantitative target, in the same unit. Once adopted it comes off the manager's own figure.
+  module: accountability
+  see: [accountability/concepts/cascading]
+- term: Supporting target
+  definition: A cascaded target that helps achieve the source, such as an SLA or milestone, without using up any of its value.
+  module: accountability
+  see: [accountability/concepts/cascading]
+- term: Measured On
+  definition: The part of a cascaded target the manager is personally scored against, after the adopted shares are taken off.
+  module: accountability
+  see: [accountability/concepts/cascading]
+- term: Fully cascaded
+  definition: A target whose whole value has been adopted by the team. It has no score of its own and is measured through the team score.
+  module: accountability
+  see: [accountability/concepts/cascading]
+- term: Over-allocated
+  definition: A target whose shares handed out add up to more than its value.
+  module: accountability
+  see: [accountability/concepts/cascading]
+- term: Trace Cascade
+  definition: A tree of a target and every share cascaded from it, with each holder's progress and where it is falling behind.
+  module: accountability
+  see: [accountability/concepts/cascading]
+- term: Accountability review
+  definition: One result recorded for one target over one window. When it is signed off, the result goes onto the target and the scores update.
+  module: accountability
+  see: [accountability/concepts/reviews]
+- term: Review session
+  definition: A manager's batch review of all their direct reports for one month, quarter or other window.
+  module: accountability
+  see: [accountability/concepts/reviews, accountability/workflows/review-session, accountability/how-to/line-managers/plan-a-review-session]
+- term: Review Cutoff
+  definition: The last day of the window a review session covers. The window must have ended.
+  module: accountability
+  see: [accountability/concepts/reviews]
+- term: Review pack
+  aliases: [My Review, Employee Review]
+  definition: One person's part of a review session, with a line for each target. The employee acknowledges it or raises a concern.
+  module: accountability
+  see: [accountability/concepts/reviews, accountability/workflows/review-pack, accountability/how-to/everyone/respond-to-my-review]
+- term: Acknowledge By
+  definition: The date by which you must respond to a review or a priority change (5 days by default). After it, the item is accepted automatically.
+  module: accountability
+  see: [accountability/how-to/everyone/respond-to-my-review]
+- term: Review concern
+  aliases: [raise a concern]
+  definition: An employee's objection to specific scores in their review. The manager revises the scores or keeps them.
+  module: accountability
+  see: [accountability/workflows/review-concern]
+- term: Review escalation
+  definition: Sending a disputed review, after the manager kept the scores, to the manager's own manager, the escalation contacts or HR to decide.
+  module: accountability
+  see: [accountability/workflows/review-concern, accountability/how-to/hr-admin/decide-changes-and-escalations]
+- term: Signed Off Automatically
+  aliases: [auto sign-off]
+  definition: A review pack the employee didn't respond to by the Acknowledge By date. Its results count as if acknowledged.
+  module: accountability
+  see: [accountability/workflows/review-pack]
+- term: N/A review
+  definition: A review or review line marked Not Applicable because there was nothing to measure in the window. It is left out of every score.
+  module: accountability
+  see: [accountability/concepts/reviews]
+- term: Session coverage
+  definition: The report showing, for each manager and each month or quarter, whether their review session was run and on time.
+  module: accountability
+  see: [accountability/reports/session-coverage]
+- term: Rating
+  definition: One of five levels, from Unsatisfactory to Outstanding, given to a score. The boundaries are set in the Accountability settings.
+  module: accountability
+  see: [accountability/concepts/ratings-and-briefs, accountability/calculations/ratings]
+- term: Rated on pace
+  aliases: [on pace]
+  definition: A running-total target rated against what was expected by its last review date, not against the full-year figure, while the period is open.
+  module: accountability
+  see: [accountability/concepts/ratings-and-briefs]
+- term: Progress brief
+  definition: An email at each month or quarter end showing how your running totals are tracking against what is expected by then.
+  module: accountability
+  see: [accountability/concepts/ratings-and-briefs, accountability/workflows/progress-brief]
+- term: Performance snapshot
+  aliases: [frozen snapshot]
+  definition: A saved copy of a person's scores, ratings and targets as at a date. Once frozen it never changes.
+  module: accountability
+  see: [accountability/concepts/snapshots-and-as-at, accountability/reports/snapshots-and-compare]
+- term: As-at figures
+  definition: A person's or team's position on a past month end, rebuilt from the dated history when you pick the date.
+  module: accountability
+  see: [accountability/concepts/snapshots-and-as-at]
+- term: Performance Overview
+  definition: The organisation chart of everyone's own, team and overall scores, with ratings, a trend and a choice of month end.
+  module: accountability
+  see: [accountability/reports/performance-overview]
+- term: Accountability exemption
+  aliases: [exempt from accountability]
+  definition: Taking a person out of accountability for a time, for example an intern or someone on long leave. Set by HR on the employee record.
+  module: accountability
+  see: [accountability/concepts/exempt-withdrawn-development, accountability/how-to/hr-admin/exempt-staff]
+- term: Development target
+  definition: A learning or growth target that is tracked and reviewed but never counts towards a score. Targets made while someone is exempt become development targets.
+  module: accountability
+  see: [accountability/concepts/exempt-withdrawn-development]
+- term: Withdrawn target
+  definition: A target taken off the scorecard from a date. Any result counts only for the time it was live.
+  module: accountability
+  see: [accountability/concepts/exempt-withdrawn-development, accountability/how-to/line-managers/withdraw-a-target]
+- term: Dropped target
+  definition: A withdrawn or closed target that ended with no result. It has no share and is not part of the score.
+  module: accountability
+  see: [accountability/concepts/exempt-withdrawn-development]
+- term: Targets library
+  aliases: [role set]
+  definition: HR's list of standard targets for each kind of role, used to suggest next year's targets.
+  module: accountability
+  see: [accountability/how-to/hr-admin/targets-library, accountability/how-to/line-managers/propose-next-years-targets]
+- term: Line manager
+  definition: In Accountability, anyone with at least one employee reporting to them in the org chart. They get the My Team menus automatically.
+  module: accountability
+  see: [accountability/who-can-do-what]
+- term: Accountability administrator
+  definition: The person given full control of Accountability by hand. They manage periods, metrics, settings and access.
+  module: accountability
+  see: [accountability/who-can-do-what, accountability/how-to/hr-admin/settings]
+- term: Reporting line history
+  definition: The dated record of who each employee reported to. It keeps past reviews and team scores with the manager of the time.
+  module: accountability
+  see: [accountability/concepts/scores, accountability/how-to/hr-admin/access-rights]

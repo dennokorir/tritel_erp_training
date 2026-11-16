@@ -1,0 +1,61 @@
+---
+title: Propose next year's targets
+description: Carry your team's targets forward from last year on Propose Targets, adjust the values, drop what no longer applies and create the drafts in one go.
+module: accountability
+pageType: how-to
+roles: [line-manager, hr]
+tags: [targets]
+keywords: [next year targets, new financial year, carry forward, uplift, target setting, KPI planning, budget targets, FY 2027, targets library, role set]
+where: [Accountability, My Team, Propose Targets]
+before:
+  - The new period exists, at least as a draft, and there is an earlier period to carry targets from.
+  - The new period has its objectives. If they are missing, HR copies them from last year.
+  - You can propose targets for the people below you, not for yourself. HR can propose for anyone.
+related: [accountability/concepts/targets, accountability/concepts/periods-and-objectives, accountability/how-to/hr-admin/targets-library, accountability/how-to/line-managers/set-team-targets]
+sources:
+  - tritel_accountability_framework/static/src/propose_targets/accountability_propose_targets.xml
+  - tritel_accountability_framework/static/src/propose_targets/accountability_propose_targets.js
+  - tritel_accountability_framework/models/accountability_target_proposal.py
+sidebar: { order: 2 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+At the start of a new year you don't have to type every target again. **Propose Targets** lists each person's targets from last year (and any suggested by their role in the targets library), with last year's value and result. You set the new values, drop what no longer fits, and create all the drafts at once.
+
+<Illustration name="accountability/mgr-propose-targets" caption="Propose Targets for FY 2027, carried from FY 2026. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Accountability › My Team › Propose Targets** and choose the new period in the list at the top (for example **FY 2027**). The screen shows *from FY 2026* next to it.
+2. Click **Propose for everyone** to fill in lines for everyone you set targets for. You can also click **Propose from FY 2026** for one person. Running it again only adds what is missing.
+3. To raise many values at once, type a percentage next to a kind of target under **Uplift on last year** (for example 10, or -5) and click **Apply**. Every proposed line of that kind becomes last year's value plus that percentage.
+4. Check each line. Type a different value in the new-period column if needed. SLA targets show two boxes: the floor and the ideal.
+5. Click **Drop** on a target the person should not have again (it becomes **Dropped**; **Restore** brings it back). Library suggestions show **Skip** and **Add** instead.
+6. Read the **Status** column. **Ready** lines can be created. Other lines tell you what they wait for, for example *Waits for Employee B's new target* (a share of a manager's target needs that manager's new target first).
+7. Click **Create drafts (3 ready)** at the top, or **Create drafts for Employee** next to one person.
+
+Use **Only people with open lines** to hide people who are finished. If a person has the wrong role set, pick another under **Role set**; the choice is remembered for next year.
+
+## What happens next
+
+- Each ready line becomes a **Draft** target in the new period. The status changes to **Draft created** and an **Open** link appears.
+- A line that is a share of a manager's target is offered to the person as a cascade. The status reads **Offered, waiting to be adopted** until they adopt it.
+- Drafts don't count yet. Once the new period is active, activate them on **Team Targets**. See [Set targets for my team](/accountability/how-to/line-managers/set-team-targets/).
+- **Add to library** on a target only one person held suggests it to that person's role set. HR accepts it there.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *There is no open period with an earlier period to carry targets from. Create the new period (as a draft) first.* | The new period hasn't been created yet. | Ask your accountability administrator to create it. |
+| *FY 2027 has 3 of 8 objectives from FY 2026. Targets attach to objectives, so copy them first.* (with *Ask HR to copy them.*) | The new period is missing objectives. | Ask HR to copy last year's objectives, then come back. |
+| *No objective 'Grow the customer base' in FY 2027 yet. Copy last year's objectives first.* | One line's objective has no match in the new period. | Ask HR to copy or create the objective. |
+| *Set a value greater than 0.* | A number line has no value. | Type the new value. |
+| *Employee B's new target is not split into shares.* | The line is a share of the manager's target, but their new target can't be shared. | Ask the manager to set their new target up to be shared, or drop the line. |
+| *Enter a percentage first, e.g. 15 or -5.* | You clicked **Apply** with an empty uplift box. | Type a percentage, then **Apply**. |
+| *You cannot propose targets for: Employee B.* | That person is not below you in the reporting line (or it is you). | Their own manager proposes for them. |
+| *This target was already created; change it on the target.* | You edited a line after its draft was created. | Click **Open** and change the draft target itself. |
+
+:::note[Good to know]
+Milestone targets have no value to type here: the column reads *stages set on the target*. Open the draft and check its dates and stages before you activate it.
+:::

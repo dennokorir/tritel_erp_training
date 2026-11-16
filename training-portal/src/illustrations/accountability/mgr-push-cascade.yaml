@@ -1,0 +1,30 @@
+type: screen
+title: Pushing a target down to your team
+desc: The Push Cascade to Team window opened from a target, with the allocation figures, one line per direct report with the Include switch, Link and Value, the note box and the Push Cascade and Split Remaining Evenly buttons, numbered 1 to 6.
+source: tritel_accountability_framework/views/wizard_cascade_push_views.xml (accountability_cascade_push_wizard_form)
+frame:
+  grid: true
+  app: Accountability
+  menu: [{label: My Performance, active: true}, My Team, My Actions]
+  breadcrumb: [My Targets, Grow qualified pipeline]
+blocks:
+  - buttons: [{label: Close}, {label: "Cascade ↓", primary: true, n: 1}]
+    status: {steps: [Draft, Active, Pending Review, Reviewed], current: Active}
+  - dialog:
+      title: Push Cascade
+      blocks:
+        - fields:
+            - [{label: Source Total, value: "100,000,000"}, {label: This Push, value: "60,000,000"}]
+            - [{label: Already Allocated, value: "0"}, {label: Remaining After Push, value: "40,000,000", n: 2}]
+        - table:
+            columns: [Include, Employee, Type, Link, Value]
+            widths: [1, 2, 1.6, 1.4, 1.6]
+            n: 3
+            rows:
+              - [{text: "On", badge: true, tone: good}, Employee A, Quantitative, {text: Share of source, badge: true, tone: good}, "30,000,000"]
+              - [{text: "On", badge: true, tone: good}, Employee B, Quantitative, {text: Share of source, badge: true, tone: good}, "30,000,000"]
+              - [{text: "On", badge: true, tone: good}, Employee C, Threshold / SLA, {text: Supporting target, badge: true, tone: accent}, "—"]
+        - heading: Note to Team (optional)
+          n: 4
+        - text: "Your share of the FY 2026 pipeline target."
+        - buttons: [{label: Push Cascade, primary: true, n: 5}, {label: Split Remaining Evenly, n: 6}, {label: Cancel}]

@@ -1,0 +1,24 @@
+type: screen
+title: Own, Team and Overall on Team Scores
+desc: The Team Scores screen for a manager, with the scope buttons, the team average tile, and one row per person showing Overall, Own and Team, with the Team breakdown opened for a manager, numbered 1 to 4.
+source: tritel_accountability_framework/static/src/team_scores/accountability_team_scores.xml
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, {label: My Team, active: true}, My Actions]
+  breadcrumb: [Team Scores]
+blocks:
+  - buttons: [{label: Direct reports, primary: true, n: 1}, {label: Whole reporting line}, {label: "As at today (live)"}, {label: Freeze team snapshot}]
+  - tiles: [{label: "Team average (overall)", value: "63.7%", tone: good}, {label: Where the team stands, value: "1 · 1 · 1"}, {label: Biggest moves, value: "+4.0 Employee B"}]
+  - table:
+      columns: [Person, Overall, Own, Team, Rating]
+      widths: [3, 1.5, 1.5, 1.5, 2.5]
+      rows:
+        - {cells: [Employee B, {text: "72.0", bold: true}, "70.0", "73.3", {text: Exceeds Expectations, badge: true, tone: good}], highlight: true, n: 2}
+        - [Employee C, "64.0", "64.0", "—", {text: Meets Expectations, badge: true, tone: accent}]
+        - [Employee D, "55.0", "55.0", "—", {text: Needs Improvement, badge: true, tone: warn}]
+  - note: {text: "Team score = the counted scores above, weighted by each person's share of the period under this manager: 73.3%", tone: accent, n: 3}
+  - bars:
+      - {label: "Overall score: Own 40%", value: 40, max: 100, tone: accent}
+      - {label: "Team 60%", value: 60, max: 100, tone: good}
+    n: 4

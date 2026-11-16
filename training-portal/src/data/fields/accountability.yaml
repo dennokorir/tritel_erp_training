@@ -1,0 +1,201 @@
+# Field reference for Accountability, grouped by screen. Labels are exactly as on screen.
+# Source: tritel_accountability_framework views and models (see each screen's fields).
+screens:
+  - name: Period
+    where: Accountability › Organisation › Periods
+    fields:
+      - {label: Period Name, meaning: "The name of the performance year, for example FY 2026.", where: Form title}
+      - {label: Start Date, meaning: "First day of the period. Every time-weighted figure counts from here.", where: Form}
+      - {label: End Date, meaning: "Last day of the period.", where: Form}
+      - {label: Target-Setting Deadline, meaning: "Targets created after this date are flagged Late Set, and changes to a live scorecard after it need approval. Leave blank for no deadline.", where: Form}
+      - {label: Status, meaning: "Draft, Active or Closed. Only one period per company can be Active. Closing a period freezes objective figures and cancels open change requests.", where: Status bar}
+
+  - name: Objective
+    where: Accountability › Organisation › Objectives (open an objective)
+    fields:
+      - {label: Objective, meaning: "The name of the objective.", where: Form title}
+      - {label: Period, meaning: "The period the objective belongs to.", where: Form}
+      - {label: Parent Objective, meaning: "The objective above this one. Leave empty for a top-level objective.", where: Form}
+      - {label: Owner, meaning: "The employee who owns the objective. Department is filled from the owner.", where: Form}
+      - {label: Default Weight for New Targets, meaning: "Starting weight for new targets under this objective. Never used in target or personal scores. Shown as Default Target Weight in lists.", where: Form}
+      - {label: Achievement Threshold (%), meaning: "Org Average needed for the objective to count as Achieved once it is closed (70 by default).", where: Form}
+      - {label: Org Average (%), meaning: "Average score of the measured targets under the objective and its sub-objectives, weighted by Counts As. Frozen when the period closes.", where: Form and Objectives screen}
+      - {label: Your Level (%), meaning: "The same average, using only targets owned by you and the people below you.", where: Objectives screen}
+      - {label: Targets Counted, meaning: "Live targets and targets with a result under this objective and its sub-objectives.", where: Form}
+      - {label: Targets with a Result, meaning: "Counted targets that have a result. A result of 0% counts.", where: Form}
+      - {label: Measurement, meaning: "Measured, Not yet measured or No targets set.", where: Form and Objectives screen}
+      - {label: Achievement, meaning: "Achieved, Partial Achievement, Not Achieved, Not Measured or Not Set. Only set once the objective is closed.", where: Form and Objectives screen}
+      - {label: Status, meaning: "Draft, Active or Closed.", where: Status bar}
+
+  - name: Target
+    where: Accountability › My Performance › My Targets, or My Team › Team Targets (open a target)
+    fields:
+      - {label: Target, meaning: "What is being measured.", where: Form title}
+      - {label: Employee, meaning: "Whose target it is. Only line managers can change it.", where: Assignment}
+      - {label: Supervisor, meaning: "The employee's manager, from the Employees app.", where: Assignment}
+      - {label: Objective, meaning: "The objective the target contributes to. Required.", where: Assignment}
+      - {label: Weight, meaning: "How much the target counts compared with your other targets (1 by default). Typed directly only on drafts; live targets use Rebalance Weights.", where: Assignment}
+      - {label: Review Cadence, meaning: "How often it is reviewed: Daily, Weekly, Monthly, Quarterly, Semi-Annual or Annual. Sets the review window.", where: Measurement}
+      - {label: Next Review Date, meaning: "When the next review is due, set from the last review.", where: Measurement}
+      - {label: Target Type, meaning: "Quantitative (a number), Threshold / SLA (a level to stay within) or Milestone / Task (stages).", where: Measurement}
+      - {label: Share of Score, meaning: "How much this target counts from today, its rank, the score composition bar and a hint on what a 10-point gain is worth.", where: Share of Score section}
+      - {label: Target Value, meaning: "The number to reach.", where: Quantitative Target}
+      - {label: Unit, meaning: "The unit of the target, for example KES, calls or %.", where: Quantitative Target and Threshold / SLA Target}
+      - {label: Direction, meaning: "Higher is Better or Lower is Better.", where: Quantitative Target}
+      - {label: Apportion when cascading, meaning: "When on, shares pushed to the team are taken out of this target's value.", where: Quantitative Target}
+      - {label: Yours to deliver, meaning: "The part of the target you kept after cascading.", where: Allocation}
+      - {label: Allocated, meaning: "Total of shares pushed, adopted or requested by your team.", where: Allocation}
+      - {label: Remaining, meaning: "Target Value minus Allocated. Negative means over-allocated.", where: Allocation}
+      - {label: Cascaded (Adopted), meaning: "Total of shares your team has adopted.", where: Allocation}
+      - {label: Measured On, meaning: "Target Value minus adopted shares. You are scored against this figure.", where: Allocation}
+      - {label: Team Result (not scored), meaning: "Your own result plus your team's adopted shares. For information only.", where: Allocation}
+      - {label: SLA Direction, meaning: "At or above floor (quality SLA), At or below ceiling (cost / time SLA) or Within range (band compliance).", where: Threshold / SLA Target}
+      - {label: Compliance Floor, meaning: "Below this a review scores 0%. For At or below ceiling, type the upper limit here: above it scores 0%.", where: Threshold / SLA Target}
+      - {label: Ideal Target (Full Credit), meaning: "At or beyond this a review scores 100%.", where: Threshold / SLA Target}
+      - {label: Upper Bound, meaning: "Top of the band for Within range. Shown only for that direction.", where: Threshold / SLA Target}
+      - {label: Metric, meaning: "Where the result is read from. Empty means it is entered by hand (Entered manually).", where: Data Source}
+      - {label: Measured For, meaning: "The record the metric needs, for example the OEM.", where: Data Source}
+      - {label: Measure Over, meaning: "Cadence window (each review measures its own month or quarter) or Period to date (each review measures from the period start).", where: Data Source}
+      - {label: Automatic Reviews, meaning: "Off, Create a draft review for the reviewer to confirm, or Create and submit the review automatically (administrators only).", where: Data Source}
+      - {label: Reference Target, meaning: "For ratio metrics: the target, pro-rated to the window, that the figure is divided by.", where: Data Source}
+      - {label: Current value, meaning: "Provisional figure for the window in progress and what it would score. Not part of the score until a review records it.", where: Data Source}
+      - {label: Scoring Mode, meaning: "Weighted milestones (partial credit), Binary — done / not done, or Supervisor assessment (0–100).", where: Milestone / Task Target}
+      - {label: Start, meaning: "Start date of a milestone target. Must fall inside the period.", where: Milestone / Task Target}
+      - {label: End, meaning: "End date of a milestone target. Must fall inside the period.", where: Milestone / Task Target}
+      - {label: Supervisor Score (0–100), meaning: "The manager's score in Supervisor assessment mode.", where: Milestone / Task Target}
+      - {label: Actual Value, meaning: "The latest result, written when a review is signed off.", where: Progress}
+      - {label: Latest Actual, meaning: "On SLA targets: the result of the most recent signed-off review. Can't be typed.", where: Progress}
+      - {label: Score (%), meaning: "The target's score, 0 to 100. See How a target's score is calculated.", where: Progress}
+      - {label: Cascaded From, meaning: "The target this one was cascaded from.", where: Cascade}
+      - {label: Link to Source, meaning: "Share of source (uses up part of the source value) or Supporting target (does not).", where: Cascade}
+      - {label: Cascade Status, meaning: "Not Cascaded, Pull Requested, Pending Adoption, Adopted or Declined.", where: Cascade}
+      - {label: Manager Note, meaning: "The note sent with a push, the reason for a pull request, or the reason for declining.", where: Cascade}
+      - {label: Status, meaning: "Draft, Active, Pending Review, Reviewed or Closed.", where: Status bar}
+
+  - name: Target lists and history
+    where: Target form (stat buttons and hidden list columns)
+    fields:
+      - {label: Counts As, meaning: "The target's weight spread over the whole period: weight × days in force ÷ days in the period.", where: Weight History and composition}
+      - {label: Share of Score (%), meaning: "Counts As ÷ the total Counts As of your targets in the period × 100.", where: Composition}
+      - {label: Share From Today (%), meaning: "Today's weight ÷ the total weight of your targets live today × 100.", where: Composition}
+      - {label: Live From, meaning: "The day the target went live, if after the period started. It counts from this date.", where: Form note}
+      - {label: Withdrawn From, meaning: "The target stopped counting from this date. Its result counts for the time it was live.", where: Withdrawn banner}
+      - {label: Closed On, meaning: "The day the target was closed. It counts up to that date if it has a result.", where: Form note}
+      - {label: Late Set, meaning: "The target was created after the period's Target-Setting Deadline. A flag only.", where: Target list (hidden column)}
+      - {label: Development (not scored), meaning: "Created while the employee was exempt. Tracked but never scored.", where: Target form}
+
+  - name: Milestone stages
+    where: Target form › stage list (Milestone / Task targets)
+    fields:
+      - {label: No., meaning: "Position of the stage in the list.", where: Stage list}
+      - {label: Stage, meaning: "The name of the stage.", where: Stage list}
+      - {label: Start, meaning: "When work on the stage starts.", where: Stage list}
+      - {label: Due, meaning: "When the stage is due. Required on live targets.", where: Stage list}
+      - {label: Weight (%), meaning: "How much the stage adds to the score when confirmed. Must total 100 on weighted targets. Locked once live.", where: Stage list}
+      - {label: Status, meaning: "Open, Awaiting Confirmation or Confirmed. Only Confirmed stages score.", where: Stage list}
+      - {label: Completed On, meaning: "The date given when the stage was marked done.", where: Stage list}
+      - {label: Timing, meaning: "For example Due in 3 day(s), Overdue by 2 day(s) or Completed 4 day(s) late.", where: Stage list}
+      - {label: Sequence check, meaning: "Warns when a stage starts before one listed above it.", where: Stage list}
+      - {label: Sent Back Because, meaning: "The manager's reason for sending the stage back.", where: Stage list (hidden column)}
+
+  - name: My Review
+    where: Accountability › My Performance › My Reviews (open a review)
+    fields:
+      - {label: Reviewer, meaning: "The manager who reviewed you.", where: Header}
+      - {label: Period, meaning: "The performance period.", where: Header}
+      - {label: Review Cutoff, meaning: "The last day of the window reviewed.", where: Header}
+      - {label: Submitted On, meaning: "When your manager submitted the review.", where: Header}
+      - {label: Closed On, meaning: "When the review was acknowledged or signed off.", where: Header}
+      - {label: Average (%), meaning: "Weighted average of the counted lines. Skipped and Not Applicable lines are left out; pending lines with no value count as 0%.", where: Header}
+      - {label: Rating, meaning: "Rating of the review, from the lines' rating scores (running totals on pace).", where: Header}
+      - {label: Rating score (%), meaning: "The figure the Rating is read from.", where: Header}
+      - {label: Based on, meaning: "What the average counted, for example 3 target(s) — 2 done, 1 pending.", where: Header}
+      - {label: Your manager's comment, meaning: "Your manager's overall comment.", where: Body}
+      - {label: Your comment, meaning: "Your comment when you acknowledged.", where: Body}
+      - {label: Actual, meaning: "The result recorded for each target in this review.", where: Targets tab}
+      - {label: Score (%), meaning: "The line's score from the target's formula.", where: Targets tab}
+      - {label: Questioned, meaning: "You raised a concern about this line.", where: Targets tab}
+      - {label: Status, meaning: "Pending, Done, Not Applicable or Skipped.", where: Targets tab}
+      - {label: How the average is reached, meaning: "The average worked out step by step.", where: Tab}
+
+  - name: Employee Review (manager)
+    where: Accountability › My Team › Review Sessions › a session › Review
+    fields:
+      - {label: Avg Score (%), meaning: "The review average, as the employee sees it in Average (%).", where: Progress}
+      - {label: Rating, meaning: "Rating of the review.", where: Progress}
+      - {label: Comment for the employee, meaning: "Your overall comment, shown at the top of the employee's review.", where: Body}
+      - {label: Measured On, meaning: "The part of the target the employee is scored against.", where: Target lines}
+      - {label: Entered, meaning: "A value was recorded, even if it is 0.", where: Target lines}
+      - {label: Target (yours), meaning: "The part of the target the employee is measured on, as a short label.", where: Target lines}
+      - {label: Full Target, meaning: "The target's full value before any cascade.", where: Target lines}
+      - {label: From / To, meaning: "The target's own window reviewed by this line, for example September for a monthly target in a Q3 session.", where: Target lines}
+      - {label: Actual, meaning: "The result for the window, typed or fetched. Entering it moves a pending line to Done.", where: Target lines}
+
+  - name: Review Session
+    where: Accountability › My Team › Review Sessions
+    fields:
+      - {label: Session Date, meaning: "The day the session was created.", where: Session}
+      - {label: Review Cadence, meaning: "Targets at this cadence and every finer one are included.", where: Session}
+      - {label: Review Cutoff, meaning: "End of the window reviewed. Must be a finished window.", where: Session}
+      - {label: Covers, meaning: "The window from its start to the cutoff.", where: Session}
+      - {label: Reviewer, meaning: "The manager running the session. Only administrators can pick someone else.", where: Who is reviewed}
+      - {label: Scope, meaning: "All my direct reports, or Selected direct reports.", where: Who is reviewed}
+      - {label: Total Targets, meaning: "All lines in the session's reviews.", where: Progress}
+      - {label: Done, meaning: "Lines with a value.", where: Progress}
+      - {label: Pending, meaning: "Lines still waiting for a value.", where: Progress}
+      - {label: Avg Score (%), meaning: "Plain average of the employees' review averages. Each employee counts once.", where: Progress}
+      - {label: Average Basis, meaning: "How many employees and targets the session average used.", where: Progress}
+      - {label: Scored (%), meaning: "Lines that are not pending ÷ all lines. Skipped and Not Applicable count as scored.", where: Lists and reports}
+      - {label: Late, meaning: "Not Done more than 7 days after the Review Cutoff.", where: Lists and filters}
+      - {label: Status, meaning: "Draft, In Progress or Done.", where: Status bar}
+
+  - name: Scores
+    where: Accountability › My Team › Team Scores, and the employee form
+    fields:
+      - {label: Own, meaning: "Own Score (%): weighted average of your scored targets.", where: Team Scores}
+      - {label: Team, meaning: "Team Score (%): weighted average of your team members' scores. Managers only.", where: Team Scores}
+      - {label: Overall, meaning: "Composite Score (%): own × 40% + team × 60% for managers (by default), otherwise own.", where: Team Scores}
+      - {label: Overall rating, meaning: "The five-level rating of the overall score, with running totals on pace while the period is open.", where: Team Scores and employee form}
+      - {label: Scoring Mode, meaning: "Top Level, Middle, Leaf / Individual Contributor, Standalone (Flagged) or Exempt.", where: Scores list}
+      - {label: How the team score is reached, meaning: "One line per team member with their share of the period and score.", where: Team Scores (expand)}
+      - {label: vs Previous Period, meaning: "Change in overall score since the latest closed period.", where: Scores list}
+      - {label: Composite Score (%), meaning: "The overall score.", where: Employee form › Performance tab}
+
+  - name: Settings
+    where: Accountability › Organisation › Settings
+    fields:
+      - {label: Own Performance Weight (%), meaning: "Share of a manager's overall score that comes from their own targets (40 by default).", where: Composite Score Weights}
+      - {label: Team Average Weight (%), meaning: "Share that comes from their team (60 by default). Keep the two adding up to 100.", where: Composite Score Weights}
+      - {label: Min. Headcount for Team Weighting, meaning: "Participating direct reports a manager with a manager above needs before the team counts (2 by default).", where: Composite Score Weights}
+      - {label: Needs Improvement from, meaning: "Lowest score rated Needs Improvement (50). Below it is Unsatisfactory.", where: Performance Rating Scale}
+      - {label: Meets Expectations from, meaning: "Lowest score rated Meets Expectations (60).", where: Performance Rating Scale}
+      - {label: Exceeds Expectations from, meaning: "Lowest score rated Exceeds Expectations (70).", where: Performance Rating Scale}
+      - {label: Outstanding from, meaning: "Lowest score rated Outstanding (80).", where: Performance Rating Scale}
+      - {label: Send progress briefs, meaning: "Turns progress briefs on (off by default).", where: Progress Briefs}
+      - {label: Brief checkpoints, meaning: "Monthly or Quarterly.", where: Progress Briefs}
+      - {label: Acknowledgment Window (days), meaning: "Days an employee has to respond to a review, and to acknowledge new priorities, before automatic sign-off (5 by default).", where: Review Workflow}
+      - {label: Metric Settle Period (days), meaning: "Days to wait after a window closes before an automatic review, for metrics without their own wait (3 by default).", where: Automatic Metric Reviews}
+      - {label: Metric Review Confirmation Deadline (days), meaning: "Days the manager has to confirm an automatic draft review (5 by default).", where: Automatic Metric Reviews}
+      - {label: Cascade Action Deadline (days), meaning: "Days to adopt or decline a pushed target (3 by default).", where: Cascade Notifications}
+      - {label: Cascade Reminder Interval (days), meaning: "How often reminders go out for cascades waiting for action (3 by default; 0 turns them off).", where: Cascade Notifications}
+      - {label: Review Escalation Contacts, meaning: "Who decides escalated reviews when the reviewer has no manager. If empty, HR.", where: Notifications}
+      - {label: Notify on Standalone Employees, meaning: "Who is told when someone has no manager and no team.", where: Notifications}
+
+  - name: Metric
+    where: Accountability › Organisation › Metrics
+    fields:
+      - {label: Coded Logic, meaning: "The built-in calculation a coded metric uses.", where: Rule}
+      - {label: Wait Before Automatic Review (days), meaning: "Days to wait after a window closes. 0 uses the built-in default or the Settings value.", where: Rule}
+      - {label: Logging Grace (days), meaning: "For activity coverage: how long after a month or week ends an update can still be entered and count (7 by default).", where: Rule}
+      - {label: Scope, meaning: "The target employee only, or The employee and everyone below them in the reporting line.", where: Records to measure}
+      - {label: Numerator, meaning: "The metric divided in a ratio.", where: Ratio}
+      - {label: Denominator, meaning: "Another metric, or the reference target pro-rated to the window.", where: Ratio}
+
+  - name: Accountability exemption
+    where: Employees › an employee › Accountability exemption
+    fields:
+      - {label: Exempt from Accountability, meaning: "The employee takes no part in scores for the dates below.", where: Employee form}
+      - {label: Exempt From, meaning: "First exempt day. Empty means since joining.", where: Employee form}
+      - {label: Exempt Until, meaning: "Last exempt day. Empty means open-ended.", where: Employee form}
+      - {label: Exemption Reason, meaning: "Why the employee is exempt. Required.", where: Employee form}
+      - {label: Exempt Today, meaning: "Whether the exemption covers today.", where: Employee form}

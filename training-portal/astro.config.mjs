@@ -1,0 +1,50 @@
+// @ts-check
+import { defineConfig } from 'astro/config';
+import starlight from '@astrojs/starlight';
+import mermaid from 'astro-mermaid';
+import remarkGlossaryLinks from './src/plugins/remark-glossary-links.mjs';
+
+const group = (label, directory, collapsed = false) => ({ label, collapsed, items: [{ autogenerate: { directory } }] });
+
+export default defineConfig({
+  // Netlify sets URL for production and DEPLOY_PRIME_URL for previews
+  site: process.env.DEPLOY_PRIME_URL || process.env.URL || 'http://localhost:4321',
+  trailingSlash: 'always',
+  markdown: { remarkPlugins: [remarkGlossaryLinks] },
+  integrations: [
+    // Must come before Starlight so ```mermaid blocks are claimed first
+    mermaid({ theme: 'neutral', autoTheme: true, enableLog: false }),
+    starlight({
+      title: 'Tritel Systems Training',
+      description: 'How to use the Accountability Framework, Project Delivery, Tenders and the Board portal at Tritel.',
+      logo: { src: './src/assets/mark.svg', alt: '' },
+      favicon: '/favicon.svg',
+      customCss: ['./src/styles/theme.css'],
+      components: { MarkdownContent: './src/components/MarkdownContent.astro' },
+      lastUpdated: false,
+      pagination: true,
+      tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
+      sidebar: [
+        group('Getting started', 'getting-started'),
+        {
+          label: 'Accountability',
+          items: [
+            { label: 'Overview', link: '/accountability/' },
+            group('Concepts', 'accountability/concepts', true),
+            group('Workflows', 'accountability/workflows', true),
+            group('How-to: everyone', 'accountability/how-to/everyone', true),
+            group('How-to: line managers', 'accountability/how-to/line-managers', true),
+            group('How-to: HR and administrators', 'accountability/how-to/hr-admin', true),
+            group('Reports', 'accountability/reports', true),
+            group("How it's calculated", 'accountability/calculations', true),
+            { label: 'Who can do what', link: '/accountability/who-can-do-what/' },
+            { label: 'FAQ', link: '/accountability/faq/' },
+          ],
+        },
+        group('End-to-end journeys', 'end-to-end', true),
+        group('Learning paths by role', 'roles', true),
+        group('Reference', 'reference', true),
+      ],
+    }),
+  ],
+});

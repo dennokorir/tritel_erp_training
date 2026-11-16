@@ -1,0 +1,19 @@
+type: screen
+title: Approving a pull request
+desc: A team member's target waiting as a pull request, with the Approve Pull and Deny Pull buttons, the Cascade section showing the source and the justification, numbered 1 to 3.
+source: tritel_accountability_framework/views/accountability_target_views.xml (accountability_target_view_form)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, My Team, {label: My Actions, active: true}]
+  breadcrumb: [My Actions, Customer A renewals]
+blocks:
+  - buttons: [{label: Approve Pull, primary: true, n: 2}, {label: Deny Pull, n: 3}]
+    status: {steps: [Draft, Active, Pending Review, Reviewed], current: Draft}
+  - title: {text: Customer A renewals, sub: "Employee A · Share of your target"}
+  - heading: Cascade
+    n: 1
+  - fields:
+      - [{label: Cascaded From, value: Grow qualified pipeline}, {label: Manager Note, value: "I already own Customer A."}]
+      - [{label: Link to Source, value: Share of source}, {label: Cascade Status, value: Pull Requested, tone: warn}]
+      - [{label: Target Value, value: "5,000,000"}, {label: Unit, value: KES}]

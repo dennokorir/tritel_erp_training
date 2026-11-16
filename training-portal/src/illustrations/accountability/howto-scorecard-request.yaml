@@ -1,0 +1,22 @@
+type: screen
+title: A scorecard change waiting for approval
+desc: The Scorecard change form in Accountability with the Approve, Decline and Cancel request buttons, the status bar, the target, kind and dates, the score and rating before and after, the approvers, the reason and the Note on the decision field, numbered 1 to 6.
+source: tritel_accountability_framework/views/accountability_scorecard_request_views.xml (scorecard_request_view_form)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, {label: My Team, active: true, n: 1}, My Actions, Organisation]
+  breadcrumb: [Scorecard Change Requests, "Withdraw · Customer visits per month"]
+blocks:
+  - buttons: [{label: Approve, primary: true, n: 5}, {label: Decline, n: 6}, {label: Cancel request}]
+    status: {steps: [Proposed by the employee, Waiting for approval, Applied], current: Waiting for approval}
+  - title: {text: "Withdraw · Customer visits per month", n: 2}
+  - fields:
+      - [{label: Target, value: Customer visits per month}, {label: Score before (%), value: "71.4"}]
+      - [{label: Employee, value: Employee A}, {label: Rating Before, value: Exceeds Expectations}]
+      - [{label: Kind, value: Withdraw}, {label: Score after (%), value: "74.0", n: 3}]
+      - [{label: From, value: 01/12/2026}, {label: Rating After, value: Exceeds Expectations}]
+      - [{label: Period, value: FY 2026}, {label: Approvers, value: "Employee C, Employee D"}]
+  - fields:
+      - [{label: Reason, value: "Customer visits moved to the new field team from December.", n: 4}]
+      - [{label: Note on the decision, value: "Required to decline: why the change is not made."}]

@@ -1,0 +1,31 @@
+---
+title: Your My Actions lists
+description: One list per system of everything waiting for you, with a button to act on each item.
+module: general
+pageType: concept
+roles: [everyone]
+tags: [start here, my actions]
+keywords: [my actions, to do, to-do list, inbox, pending, waiting for me, overdue, approvals]
+sidebar: { order: 5 }
+sources: [tritel_accountability_framework/static/src/my_actions/accountability_my_actions.xml, tritel_tender_tracker/models/my_actions.py, tritel_project_delivery/models/my_actions.py]
+---
+import Illustration from '../../../components/Illustration.astro';
+
+Each system has a **My Actions** screen that lists the work waiting for you, so you don't have to hunt through menus.
+
+| My Actions in… | Menu | What it lists |
+|---|---|---|
+| Accountability | **Accountability › My Actions** | Targets to acknowledge, reviews to respond to, approvals, and items from the other systems below |
+| Tenders | **Tender Manager › My Actions** | People to nominate, bids to confirm ready, submissions to record, quality checks, project summaries, business cases, achievements to attribute |
+| Projects | **Project › My Actions** | Baselines to draft or approve, handovers, client delays, projects to close |
+| The portal | **/my/actions** | The Tenders and Projects items, for use on a phone |
+
+<Illustration name="general/my-actions" caption="My Actions in the Accountability app." />
+
+1. **To do** counts items waiting for you.
+2. **Overdue** counts items past their deadline. Their waiting time shows in red.
+3. **Waiting on others** counts items you started that someone else must act on next.
+4. Items are grouped by kind of work, with a count for each group.
+5. Each item has its own buttons, for example **Acknowledge** or **Approve**. Click the item itself to open the full record.
+
+When you act on an item, it leaves your list. If an item no longer applies (for example the target was withdrawn or the tender dropped), the system clears it for you.

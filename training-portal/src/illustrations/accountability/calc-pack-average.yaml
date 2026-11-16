@@ -1,0 +1,15 @@
+type: calc
+title: Review pack average
+desc: Worked example of a review pack average where three counted lines are weighted by target weight, a pending line with no value counts as 0% and a skipped line is left out, giving 64.3%.
+source: tritel_accountability_framework/models/accountability_review_session.py (_line_average)
+heading: Average (%) of Employee A's review
+inputs:
+  - {label: "Target 1 · weight 3", value: "85%"}
+  - {label: "Target 2 · weight 1", value: "66.7%"}
+  - {label: "Target 3 · weight 1", value: "no value"}
+  - {label: "Target 4", value: "Skipped"}
+steps:
+  - {label: "Skipped and Not Applicable lines are left out", value: "Target 4 out"}
+  - {label: "A pending line with nothing entered counts as 0%", value: "Target 3 = 0%"}
+  - {label: "(85 × 3 + 66.7 × 1 + 0 × 1) ÷ (3 + 1 + 1)", value: "321.7 ÷ 5"}
+result: {label: Average (%), value: "64.3%", tone: warn}

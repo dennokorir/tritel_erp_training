@@ -1,0 +1,38 @@
+type: screen
+title: Performance Overview, your own figures
+desc: The Performance Overview screen in Accountability with the period and As at selectors, the figure tiles, your row in the list, and the side panel showing your Own and Composite scores, rating and targets, numbered 1 to 6.
+source: tritel_accountability_framework/static/src/cascade/accountability_cascade_dashboard.xml (CascadeDashboard)
+frame:
+  grid: true
+  app: Accountability
+  menu: [{label: My Performance, active: true, n: 1}, My Actions]
+  breadcrumb: [Performance Overview]
+blocks:
+  - title: {text: Org Performance Cascade, sub: "Period and As at selectors sit in the dark header"}
+  - buttons: [{label: "FY 2026 ●", n: 2}, {label: "As at today (live)"}, {label: List}, {label: Organogram}, {label: Focus}]
+  - tiles:
+      - {label: Org Composite, value: "72%", tone: good, n: 3}
+      - {label: Employees, value: "1"}
+      - {label: Targets, value: "4"}
+      - {label: Reviewed, value: "2"}
+  - columns:
+      - panel: true
+        blocks:
+          - table:
+              columns: [Name, Score]
+              widths: [3, 1]
+              rows:
+                - {cells: [Employee A, {text: "72%", badge: true, tone: good}], highlight: true, n: 4}
+      - panel: true
+        blocks:
+          - heading: Employee A
+          - text: "Individual Contributor · Open snapshot"
+          - smart: [{label: Own, value: "72%", tone: good, n: 5}, {label: Composite, value: "72%", tone: good}]
+          - text: "Composite = 100% Own Score"
+          - table:
+              columns: [Targets (2/4 reviewed), Score]
+              widths: [3, 1]
+              rows:
+                - [Grow qualified pipeline, "90%"]
+                - [Customer visits per month, "67%"]
+              n: 6

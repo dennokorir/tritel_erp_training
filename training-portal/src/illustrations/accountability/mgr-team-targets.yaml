@@ -1,0 +1,41 @@
+type: screen
+title: Activating a draft target on Team Targets
+desc: The Team Targets screen with the period selector, the My Team list, a draft target with its Activate button, and the Add to the scorecard window with its reason box, effect line and Submit button, numbered 1 to 7.
+source: tritel_accountability_framework/static/src/team_targets/accountability_team_targets.xml; views/accountability_scorecard_request_views.xml (scorecard_request_view_form_dialog)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, {label: My Team, active: true}, My Actions, Organisation]
+  breadcrumb: [Team Targets]
+blocks:
+  - buttons: [{label: FY 2026, n: 1}, {label: 3 employees}, {label: 9 targets}, {label: 68% avg}, {label: Roster, primary: true}, {label: List}]
+  - columns:
+      - panel: true
+        blocks:
+          - heading: My Team
+          - table:
+              columns: [Person, Avg]
+              widths: [3, 1]
+              rows:
+                - {cells: [Employee A, "72%"], highlight: true, n: 2}
+                - [Employee B, "64%"]
+                - [Employee C, "58%"]
+      - panel: true
+        blocks:
+          - title: {text: Employee A, sub: "Account Manager · Sales"}
+          - table:
+              columns: [Target, Status, ""]
+              widths: [3, 1.4, 1.3]
+              rows:
+                - [Grow qualified pipeline, {text: Active, badge: true, tone: good}, "80%"]
+                - {cells: [Customer visits per month, {text: Draft, badge: true, tone: muted}, {text: Activate, bold: true, tone: accent}], n: 3}
+  - dialog:
+      title: Add to the scorecard
+      n: 4
+      blocks:
+        - fields:
+            - [{label: Target, value: Customer visits per month}, {label: Employee, value: Employee A}]
+            - [{label: Kind, value: Add to the scorecard}]
+        - note: {text: "Agreed in the Q1 planning meeting.", tone: muted, n: 5}
+        - note: {text: "Overall rating score 72.0% Exceeds Expectations → 72.0% Exceeds Expectations. It counts once it has a result.", tone: accent, n: 6}
+        - buttons: [{label: Submit, primary: true, n: 7}, {label: Cancel}]

@@ -1,0 +1,145 @@
+---
+title: "Metrics: targets that update themselves"
+description: How a metric reads a target's result from CRM, the Tender Tracker, Projects or Accounting, and a plain-English list of every metric available.
+module: accountability
+pageType: concept
+roles: [everyone, line-manager, account-manager, bid-liaison, presales, head-commercial, head-channel, delivery-pm, head-delivery, accountability-admin]
+tags: [metrics, targets]
+keywords: [KPI, automatic KPI, data source, pipeline, revenue, coverage, bid desk, delivery KPI, provisional, auto review, measure, dashboard figure]
+related: [accountability/calculations/metric-families, accountability/how-to/hr-admin/metrics, accountability/concepts/targets, accountability/concepts/reviews]
+sources:
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/metric_hook_pipeline.py
+  - tritel_accountability_framework/models/metric_hook_activity.py
+  - tritel_accountability_framework/models/metric_hook_coverage.py
+  - tritel_accountability_framework/models/metric_hook_oem.py
+  - tritel_accountability_framework/models/metric_hook_bid_desk.py
+  - tritel_accountability_framework/models/metric_hook_bid_quality.py
+  - tritel_accountability_framework/models/metric_hook_delivery.py
+  - tritel_accountability_framework/models/metric_hook_review_coverage.py
+  - tritel_accountability_framework/models/metric_hook_review_ack.py
+  - tritel_accountability_framework/views/accountability_target_views.xml
+  - tritel_project_delivery/scripts/seed_delivery_kpis.py
+sidebar: { order: 3 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+A **metric** is a ready-made calculation that reads a figure from Odoo, such as the value of your open opportunities or the share of your bids submitted on time. When a metric is attached to a target, nobody has to type the result: the system works it out from the records you already keep.
+
+Accountability administrators define metrics under **Accountability › Organisation › Metrics** and attach them to targets in the **Data Source** section. A target with no metric shows *Entered manually*: its result is typed by the reviewer.
+
+## What a metric does on a target
+
+<Illustration name="accountability/concept-metric-data-source" caption="The Data Source section of a metric-driven target. The numbers match the list below." />
+
+1. **Metric** — which calculation feeds this target. Some metrics also ask **Measured For**, for example which OEM.
+2. **Reference Target** — for ratio metrics only, the target the figure is divided by. For example, *Qualified pipeline coverage* divides your qualified pipeline by your revenue target for the same window.
+3. **Measure Over** — **Cadence window — each review measures its own month / quarter**, or **Period to date — each review measures from the period start**. Running totals such as revenue use *period to date*; levels such as coverage use the window.
+4. **Automatic Reviews** — what happens after each review window ends:
+   - **Off — fetch manually when reviewing**: the manager clicks **Fetch** (or **Fetch value**) in the review.
+   - **Create a draft review for the reviewer to confirm** (the usual choice): the system creates the review and gives the manager a *Confirm Metric Review* to-do.
+   - **Create and submit the review automatically**: goes straight to the employee. Only administrators can choose this.
+5. **Provisional** — the **Current value** for the window so far, what it **would score**, and when it was worked out. It refreshes every night, and when you click **Refresh** (at most every 5 minutes). It is *Not part of the score until a review records it.*
+
+The **How it's calculated** tab, and **Open worksheet →** on My Targets, list the records behind the figure, with any rows that need checking flagged.
+
+A few rules worth knowing:
+
+- The system waits a few days after a window ends before creating the review, so late updates can be logged. Some metrics wait longer (14 or 30 days).
+- When there is nothing to measure in a window (for example no bids were due), the review is recorded as **Not Applicable** and leaves the score alone.
+- When a metric can't be worked out, the manager gets a *Fix Metric* to-do.
+
+## Every metric, by family
+
+The names below are as they appear in the **Metric** field. How each one counts, with examples, is in [How metrics count](/accountability/calculations/metric-families/).
+
+### Revenue
+
+| Metric | What it counts | Data from | For |
+|---|---|---|---|
+| **Invoiced revenue** | Untaxed value of posted customer invoices where you are the salesperson, dated in the window. | Accounting | Sales staff |
+| **Achieved revenue (attributed) — Account Manager** | Value of tenders won in the window, credited to you by your attribution points for the stages you worked on. | Tender Tracker | Account managers |
+| **Achieved revenue (attributed) — Bid Liaison** | The same, credited to the Bid Liaison. | Tender Tracker | Bid Liaison |
+| **Achieved revenue (attributed) — Technical Presales** | The same, credited to Technical Presales. | Tender Tracker | Technical Presales |
+| **Gross awarded value — Account Manager** | Your share of the value of tenders won in the window, before attribution. | Tender Tracker | Account managers |
+| **Awarded tenders — Account Manager** | Number of tenders won in the window on which you are the account manager. | Tender Tracker | Account managers |
+| **Attribution rate — Account Manager** | Achieved revenue ÷ gross awarded value: how much of the won value your effort accounts for. | Tender Tracker | Account managers |
+| **Achieved revenue vs revenue target — Account Manager** | Achieved revenue ÷ your revenue target for the window. 1.0 means on target. | Tender Tracker | Account managers |
+
+### Pipeline
+
+| Metric | What it counts | Data from | For |
+|---|---|---|---|
+| **Open pipeline value** | Expected revenue of your open opportunities (not won, not lost) on the review date. | CRM | Account managers |
+| **Pipeline coverage** | Open pipeline ÷ your revenue target for the window. 3.0 means three times the target. | CRM | Account managers |
+| **Qualified pipeline (quarter)** | Expected revenue of opportunities past *New* at the end of the window, as they stood then, plus deals won in the window. | CRM | Account managers |
+| **Qualified pipeline coverage** | Qualified pipeline ÷ your revenue target for the window. | CRM | Account managers |
+
+### Activity coverage
+
+| Metric | What it counts | Data from | For |
+|---|---|---|---|
+| **Pipeline status coverage** | Share of your open opportunities (any stage) you logged a status update against each month. | CRM and customer activities | Account managers |
+| **Tender evaluation coverage** | Share of your tenders under evaluation you logged an update against each week. | Tender Tracker and customer activities | Account managers, Technical Presales |
+
+### Market coverage
+
+| Metric | What it counts | Data from | For |
+|---|---|---|---|
+| **Named share – deals led** | Customers you won at ÷ customers you bid on as account manager, over 24 months. | Tender Tracker and CRM | Account managers |
+| **Named share – my accounts** | Named customers ÷ engaged customers among the accounts you own, over 24 months. | Tender Tracker and CRM | Account managers |
+| **New named accounts** | Customers whose first-ever win falls in the window, with you as account manager. | Tender Tracker and CRM | Account managers |
+| **Target accounts named** | Of the target accounts you own, the share that are named on the review date. | Tender Tracker (market coverage) | Account managers |
+
+### Channel and OEM
+
+| Metric | What it counts | Data from | For |
+|---|---|---|---|
+| **OEM-recognised revenue (USD)** | What the chosen OEM recognises for Tritel's purchases of its products, from confirmed bookings dated in the window. | CRM (OEM bookings) and Purchases | Channel manager |
+| **OEM-recognised revenue vs target** | The above ÷ the revenue target for the window. | CRM and Purchases | Channel manager |
+| **OEM pipeline (vendor leads)** | Estimated value of open opportunities for the chosen OEM. | CRM (vendor leads) | Channel manager |
+
+### Bid desk
+
+| Metric | What it counts | Data from | For |
+|---|---|---|---|
+| **Submission Buffer (Bid Liaison)** | Bids submitted at least 24 hours before the deadline ÷ bids submitted. | Tender Tracker | Bid Liaison |
+| **Ready at 72 Hours (Bid Liaison)** | Bids confirmed ready at least 72 hours before the deadline ÷ bids submitted. | Tender Tracker | Bid Liaison |
+| **Ready at 72 Hours (Technical Presales)** | The same, for presales readiness. | Tender Tracker | Technical Presales |
+| **Repeat Error Rate (Bid Liaison)** | Failed guidelines that also failed in the previous 6 months ÷ all failed guidelines. Lower is better. | Tender Tracker | Bid Liaison |
+| **Bid Quality Score (Bid Liaison)** | Average of the manager's quality checks on your bids, must-win bids counting three times. | Tender Tracker | Bid Liaison |
+| **Bid Compliance (Technical Presales)** | Share of the bids you supported that were free of a confirmed disqualification caused by you, must-win bids counting three times. | Tender Tracker | Technical Presales |
+| **Bid Decision Lead Time (Account Manager)** | Your tenders confirmed or dropped at least 5 days before the deadline ÷ tenders due. | Tender Tracker | Account managers |
+| **Bid Decision Lead Time (Head of Commercial)** | The same, across the whole desk. | Tender Tracker | Head of Commercial |
+| **Fair Workload Balance (Head of Commercial)** | Full-time Bid Liaisons within 15% of the team's average workload ÷ all full-time Bid Liaisons. | Tender Tracker | Head of Commercial |
+| **Deadline Clash-Free (Head of Commercial)** | Bids with no other deadline for the same Bid Liaison within 3 days ÷ bids due. | Tender Tracker | Head of Commercial |
+
+### Delivery
+
+| Metric | What it counts | Data from | For |
+|---|---|---|---|
+| **Delivery success rate (on time and on budget)** | Your projects handed over in the window that were both on time and on budget ÷ all of them. | Projects | Project managers |
+| **Delivery on-time completion rate** | The same, on time only. | Projects | Project managers |
+| **Delivery on-budget rate** | The same, on budget only. | Projects | Project managers |
+
+### Review behaviour
+
+| Metric | What it counts | Data from | For |
+|---|---|---|---|
+| **Team review coverage (direct reports)** | Direct reports whose due targets were all reviewed each month ÷ reports due. | Accountability | Line managers |
+| **Review acknowledgment rate** | Review packs acknowledged ÷ review packs closed (rather than signed off automatically or after escalation). | Accountability | Everyone, or managers for their team |
+| **Review acknowledgment turnaround** | Average days from a review being submitted to it being closed. Lower is better. | Accountability | Everyone |
+| **Review concern response time** | Average days a manager takes to answer concerns about reviews. | Accountability | Line managers |
+
+:::note[Good to know]
+- The bid desk metrics are not set up automatically. An administrator creates each one before it can be used, so the name in the **Metric** field may differ slightly from the list above.
+- The four market coverage metrics are switched off until an administrator turns them on.
+- **OEM-recognised revenue (USD)** counts the whole organisation's bookings for the chosen OEM, not just yours. Everyone with that metric and OEM sees the same figure.
+:::
+
+## Tasks that use this
+
+- [Check my targets](/accountability/how-to/everyone/my-targets/)
+- [Conduct a review](/accountability/how-to/line-managers/conduct-a-review/)
+- [Set up and test a metric](/accountability/how-to/hr-admin/metrics/)

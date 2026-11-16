@@ -1,0 +1,72 @@
+---
+title: Set up and test a metric
+description: Define a metric that reads a target's result from Odoo data (records to count or sum, a ratio, or developer-written logic), test it for a person and dates, and attach it to targets.
+module: accountability
+pageType: how-to
+roles: [accountability-admin]
+tags: [metrics, targets]
+keywords: [metric, KPI formula, automatic, data source, calculation, pipeline, revenue, worksheet, test, measure, automatic review]
+where: [Accountability, Organisation, Metrics]
+before:
+  - You are an accountability administrator. Only administrators see <strong>Organisation › Metrics</strong>.
+  - You know which records the figure comes from (for example posted customer invoices) and which field links them to a person.
+related: [accountability/concepts/metrics, accountability/calculations/metric-families, accountability/concepts/targets, accountability/how-to/hr-admin/settings]
+sources:
+  - tritel_accountability_framework/views/accountability_metric_views.xml
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/wizard/metric_test_wizard.py
+  - tritel_accountability_framework/views/accountability_target_views.xml
+sidebar: { order: 4 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A **metric** works out a target's actual from data already in Odoo, so nobody has to type it in. Once a target uses a metric, it shows a provisional current value, and after each review window the system can prepare the review with the figure filled in.
+
+<Illustration name="accountability/howto-metric-form" caption="A metric and its test window. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Accountability › Organisation › Metrics** and click **New** (or open a metric to change it).
+2. Type the name, for example *Invoiced revenue*.
+3. Choose the **Kind**:
+   - **Aggregate (count / sum / average of records)**: count or add up records.
+   - **Ratio (numerator ÷ denominator)**: divide one metric by another, or by the target's reference target for the window.
+   - **Coded (developer-defined)**: logic written by a developer; choose it in **Coded Logic** and read **How the coded logic works**.
+
+   Fill in **Unit** (for example *KES*) and a unique **Code**. Leave **Wait Before Automatic Review (days)** at 0 to use the default wait (the metric's own, or the company setting).
+4. For an aggregate, fill in **Records to measure**:
+   - **Model**: where the records are, then the **Filter** (which records count).
+   - **Aggregation**: **Count of records**, **Sum of a field** or **Average of a field**, and the **Field** to add up.
+   - **Person Field**: the user or employee each record belongs to. **Scope**: **The target employee only**, or **The employee and everyone below them in the reporting line**.
+   - **Time Basis**: **Snapshot — what is open on the review date**, or **Within the review window, by a date field** with its **Date Field**.
+5. In the **Rule** tab, check the generated **Formula** and write the **Narrative** in plain words. Optionally, add **Worksheet columns** and **Flags** (records to highlight for checking). Save.
+6. Click **Test this metric**.
+7. In **Test Metric**, choose an **Employee** and the **From** and **To** dates (and a **Reference Target** for a ratio).
+8. Click **Evaluate**. Check the **Value** and **How it was calculated** against what you expect. Nothing is saved.
+
+To use the metric, open a target, and in **Data Source** choose it in **Metric** (the field reads *Entered manually* until you do). Then set **Measure Over** and **Automatic Reviews**.
+
+## What happens next
+
+- The target shows a **Provisional** current value, refreshed every night. It is never part of the score.
+- With **Automatic Reviews** set to *Create a draft review for the reviewer to confirm*, the nightly job creates a draft review after each window closes and the wait has passed. The manager gets a *Confirm Metric Review* to-do. If there was nothing to measure, a **Not Applicable** review is recorded instead.
+- If the metric fails for a target, the manager gets a *Fix Metric* to-do.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *'Invoiced revenue': an aggregate needs a model and a person field.* | **Model** or **Person Field** is empty. | Fill both in. |
+| *'Invoiced revenue': a window-based metric needs a date field.* | **Time Basis** is the review window but **Date Field** is empty. | Choose the date field. |
+| *'Invoiced revenue': the filter is not a valid domain.* | The **Filter** can't be read. | Rebuild it with the filter editor. |
+| *'Pipeline coverage': a ratio needs a numerator.* / *choose the denominator metric.* / *a ratio can't use itself.* | The ratio is incomplete or points at itself. | Pick a different numerator and denominator. |
+| *Metric codes must be unique.* | Another metric has the same **Code**. | Change the code. |
+| *The window must start before it ends.* | In **Test Metric**, **From** is after **To**. | Swap the dates. |
+| *Choose the reference target this ratio is measured against.* | You tested a ratio without a **Reference Target**. | Pick the person's target to divide by. |
+| *Only Accountability Administrators can make reviews submit automatically. Choose 'Create a draft review' instead.* | A manager chose automatic submission on a target. | Only administrators can choose it. |
+
+:::note[Good to know]
+- Several metrics (bid desk and bid quality, for example) are not created automatically. An administrator adds them here.
+- Some market-coverage metrics are installed but archived. Use the **Archived** filter to find and restore them.
+- "OEM-recognised revenue" counts bookings for the whole company, not per person. Everyone whose target uses it for the same OEM gets the same figure.
+:::

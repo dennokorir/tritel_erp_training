@@ -1,0 +1,61 @@
+---
+title: Change the Accountability settings
+description: Change the company-wide Accountability settings — how managers' scores combine, the rating scale, progress briefs, review deadlines, automatic metric reviews, cascade reminders and escalation contacts.
+module: accountability
+pageType: how-to
+roles: [accountability-admin]
+tags: [settings, ratings]
+keywords: [settings, configuration, rating scale, bands, own team weighting, 40 60, acknowledgment window, deadline, progress briefs, escalation contacts, reminders]
+where: [Accountability, Organisation, Settings]
+before:
+  - You are an accountability administrator. Only administrators see <strong>Organisation › Settings</strong>.
+  - You have agreed the change with HR. Most settings affect everyone's scores or deadlines straight away.
+related: [accountability/concepts/ratings-and-briefs, accountability/calculations/own-team-overall, accountability/calculations/ratings, accountability/how-to/hr-admin/access-rights]
+sources:
+  - tritel_accountability_framework/views/accountability_config_views.xml
+  - tritel_accountability_framework/models/accountability_config.py
+  - tritel_accountability_framework/models/accountability_rating.py
+  - tritel_accountability_framework/models/accountability_progress_brief.py
+sidebar: { order: 5 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+There is one settings page per company. It controls how scores are combined and rated, when people are reminded, and who decides escalated reviews.
+
+<Illustration name="accountability/howto-settings-form" caption="The Accountability settings. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Accountability › Organisation › Settings**. The company's settings open directly.
+2. **Composite Score Weights**: a manager's overall score is **Own Performance Weight (%)** of their own score plus **Team Average Weight (%)** of their team's (40 and 60 by default). **Min. Headcount for Team Weighting** is how many direct reports a manager needs before the team part applies (2 by default).
+3. **Performance Rating Scale**: set where each rating starts: **Needs Improvement from**, **Meets Expectations from**, **Exceeds Expectations from**, **Outstanding from**. Below the first is Unsatisfactory. Under **What each level means**, edit the description shown for each level.
+4. **Progress Briefs**: tick **Send progress briefs** and choose **Brief checkpoints** (**Monthly** or **Quarterly**). **Send briefs now** sends the latest checkpoint's briefs at once, skipping anyone who already has one.
+5. **Review Workflow**: **Acknowledgment Window (days)** is how long staff have to acknowledge a review before it is signed off automatically (5 by default). The same number of days applies to acknowledging new priorities.
+6. **Automatic Metric Reviews**: **Metric Settle Period (days)** is how long to wait after a window closes before the automatic review is created, so late entries count. **Metric Review Confirmation Deadline (days)** is when the manager's *Confirm Metric Review* to-do falls due.
+7. **Cascade Notifications** and **Notifications**:
+   - **Cascade Action Deadline (days)**: due date for cascade to-dos. **Cascade Reminder Interval (days)**: how often to remind about unadopted cascades (0 turns reminders off).
+   - **Review Escalation Contacts**: who decides an escalated review when the reviewer has no manager of their own. Leave empty to use HR.
+   - **Notify on Standalone Employees**: who is told when someone has no manager and no team.
+8. Save. Every change is logged at the bottom of the page.
+
+## What happens next
+
+- A new rating boundary re-rates every target and every score at once.
+- New weights and the headcount apply at the next nightly recalculation.
+- New deadlines apply to reviews and changes submitted from now on; existing deadlines are not moved.
+- **Resync Access Rights** is covered in [Fix someone's access](/accountability/how-to/hr-admin/access-rights/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *The rating boundaries must rise from left to right, between 0 and 100: Needs Improvement &lt; Meets &lt; Exceeds &lt; Outstanding.* | A boundary is lower than the one before it, or above 100. | Make each boundary higher than the last. |
+| *Only Accountability Administrators can open the settings.* | Someone without the Administrator role opened Settings from a link. | Ask an administrator. |
+| *This company already has accountability settings. Open them from the Settings menu.* | Someone tried to create a second settings page. | Use **Organisation › Settings**. |
+| *Nobody is set up to handle escalations. Ask an administrator to set Review escalation contacts in the accountability settings.* | An employee escalated a review, but the reviewer has no manager and there are no contacts or HR users. | Add **Review escalation contacts**. |
+
+:::note[Good to know]
+- The two weights are not checked to add up to 100. Keep them at a total of 100 yourself.
+- Briefs are sent only for checkpoints reached in the last 7 days, and the 2-day reminder before a review deadline and the 7-day "late session" rule can't be changed here.
+- The Performance Overview always describes managers' scores as *40% Own + 60% Team Avg*, even after you change the weights.
+:::

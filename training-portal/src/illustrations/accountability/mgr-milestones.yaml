@@ -1,0 +1,33 @@
+type: screen
+title: Setting milestone dates and confirming a stage
+desc: A milestone target's form with the Start and End dates, the stage list with Stage, Start, Due, Weight, Status and Timing, and the Confirm and Send Back buttons on a stage awaiting confirmation, numbered 1 to 5.
+source: tritel_accountability_framework/views/accountability_target_views.xml (accountability_target_view_form, Milestone / Task Target section and milestone_ids list)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, {label: My Team, active: true}, My Actions]
+  breadcrumb: [Team Targets, Launch the partner portal]
+blocks:
+  - buttons: [{label: Request Review}, {label: Close}, {label: Timeline, n: 5}]
+    status: {steps: [Draft, Active, Pending Review, Reviewed], current: Active}
+  - title: {text: Launch the partner portal, sub: "Employee A · Milestone"}
+  - heading: Milestone / Task Target
+  - fields:
+      - [{label: Scoring Mode, value: Weighted milestones (partial credit)}, {label: Start, value: 01/02/2026, n: 1}]
+      - [{label: "", value: ""}, {label: End, value: 30/11/2026}]
+  - table:
+      columns: [No., Stage, Start, Due, "Weight (%)", Status, Timing, ""]
+      widths: [0.6, 2.4, 1.3, 1.3, 1, 1.6, 1.6, 1.8]
+      n: 2
+      rows:
+        - [1, Agree the scope, 01/02/2026, 31/03/2026, "30", {text: Confirmed, badge: true, tone: good}, On Time, ""]
+        - {cells: [2, Build and test, 01/04/2026, 31/07/2026, "40", {text: Awaiting Confirmation, badge: true, tone: warn}, On Time, {text: "Confirm · Send Back", bold: true, tone: accent}], highlight: true, n: 3}
+        - [3, Go live, 01/08/2026, 30/11/2026, "30", {text: Open, badge: true, tone: muted}, Due in 14 day(s), ""]
+  - dialog:
+      title: Send Stage Back
+      n: 4
+      blocks:
+        - fields:
+            - [{label: Stage, value: Build and test}]
+            - [{label: Reason, value: "Testing sign-off is still missing."}]
+        - buttons: [{label: Save, primary: true}, {label: Cancel}]

@@ -1,0 +1,60 @@
+---
+title: Plan a review session
+description: Create a review session for your direct reports for one finished month or quarter, then load their targets so you can score them.
+module: accountability
+pageType: how-to
+roles: [line-manager]
+tags: [reviews, review sessions]
+keywords: [review session, monthly review, quarterly review, appraisal, performance review, one-to-one, cutoff, review cycle, batch review, start review]
+where: [Accountability, My Team, Review Sessions]
+before:
+  - The month or quarter you want to review has ended. Sessions only cover finished windows.
+  - An accountability period contains the cutoff date.
+  - Sessions follow the org chart. You can only review your own direct reports.
+related: [accountability/concepts/reviews, accountability/workflows/review-session, accountability/how-to/line-managers/conduct-a-review, accountability/reports/session-coverage]
+sources:
+  - tritel_accountability_framework/views/accountability_review_session_views.xml
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/models/cadence.py
+  - tritel_accountability_framework/static/src/session_coverage/accountability_session_coverage.xml
+sidebar: { order: 6 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A **review session** is one sitting in which you review all your direct reports for one finished window, for example **Q3 2026**. Each person gets one **review** in the session, holding a line for every target that is due. You plan the session here, then score it (see [Conduct a review](/accountability/how-to/line-managers/conduct-a-review/)).
+
+<Illustration name="accountability/mgr-review-session" caption="A new review session for a quarter, before its targets are loaded. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Accountability › My Team › Review Sessions**. The board opens on **My Sessions**. Switch to the list view and click **New**. (Shortcut: on **Organisation › Session Coverage**, click a **✕ Not run** cell in your row to start a session already filled in.)
+2. Choose the **Review Cadence**. A quarterly session also picks up monthly and weekly targets; a monthly session picks up monthly and weekly ones.
+3. Check the **Review Cutoff**: the last day of the window you are reviewing. It defaults to the latest finished window, and **Covers** shows the start and end. Each target is reviewed for its own last window ending by the cutoff (for example September for a monthly target in a Q3 session).
+4. Leave **Scope** on **All my direct reports**, or choose **Selected direct reports** and pick the people under **Employees**.
+5. Save. The session is named from the window, for example *Q3 2026 — Quarterly Review*. The **Employees** tab is empty for now.
+6. Click **Populate & Start**. Your reports' due targets are loaded, one review per person appears on the **Employees** tab, and the session moves to **In Progress**.
+
+**Launch Session** starts the session without loading targets. Use **Refresh Targets** later to load them.
+
+## What happens next
+
+- The session stays **In Progress** while you score. **Refresh Targets** adds any targets added since, and drops lines for targets that were withdrawn or fully cascaded.
+- The session moves to **Done** by itself once every person's review has been submitted.
+- A session that is not **Done** more than 7 days after the cutoff is marked **Late** (the card shows, for example, *Late · 10 days*). Managers above you and HR see this on **Session Coverage**.
+- While nothing has been submitted you can still use **Back to Draft** to change the cadence, cutoff or scope. Changing the cutoff or cadence clears the figures already entered.
+- People exempt from accountability on the cutoff date are left out of **All my direct reports**. If you pick one under **Selected direct reports** you get the warning *Exempt from accountability*: only their development targets are reviewed, and they never count.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *The cutoff must end a finished quarterly window. Q4 2026 has not ended yet; the latest you can review is Q3 2026 (cutoff 2026-09-30).* | The cutoff is in a window that is still running. | Pick the latest finished window shown in the message. |
+| *Q3 2026 — Quarterly Review already exists for Employee B (In Progress). Open that session instead.* | You already have a session for this cadence and cutoff. | Open the existing session from the board. |
+| *No accountability period contains the cutoff 2026-09-30. Create the period first or choose another cutoff.* | No period covers that date. | Choose another cutoff, or ask your administrator. |
+| *Employee D is not a direct report of Employee B. Sessions follow the org chart.* | You picked someone who doesn't report to you. | Remove them. If HR has the wrong manager on record, ask HR to fix it. |
+| *You can only run review sessions for your own direct reports. Ask an accountability administrator to set up a session for another reviewer.* | You tried to set someone else as **Reviewer**. | Run sessions as yourself. |
+| *2 review(s) from this session have already been created (…). A session can only be moved back while nothing has been finalised.* | You clicked **Back to Draft** or **Reopen** after submitting reviews. | Work on the submitted reviews instead. |
+
+:::note[Good to know]
+**Mark Done** closes the session straight away without any checks. Reviews still in draft stay in draft and those employees are not notified. To finish a session properly, submit the reviews (or use **Submit All Reviews**): the session then closes by itself.
+:::

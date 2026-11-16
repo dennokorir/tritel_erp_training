@@ -1,0 +1,34 @@
+type: matrix
+title: Who can do what with targets
+desc: Permission grid for targets and objectives, showing what everyone, line managers, HR and accountability administrators can do, from seeing targets to approving scorecard changes and running periods.
+source: tritel_accountability_framework/security/ir.model.access.csv, security/target_rules.xml, models/accountability_target_weights.py, models/accountability_scorecard_request.py, models/accountability_target_milestones.py, views/menu.xml
+columns: [Everyone, Line manager, HR, Accountability administrator]
+labelWidth: 300
+rows:
+  - {group: Seeing targets}
+  - {action: See my own targets, score and rating, cells: [y, y, y, y]}
+  - {action: See the targets of the managers above me, cells: [y, y, y, y]}
+  - {action: See my team's targets and scores, cells: [n, p, y, y]}
+  - {group: Setting targets}
+  - {action: Create a draft target for myself, cells: [y, y, y, y]}
+  - {action: Create and activate targets for someone else, cells: [n, p, n, y]}
+  - {action: Change weights (Rebalance Weights), cells: [n, p, n, y]}
+  - {action: Push a target down to my team, cells: [n, p, n, y]}
+  - {action: Adopt or decline a target pushed to me, cells: [y, y, y, y]}
+  - {action: Ask my manager for a share (Request Cascade), cells: [y, y, y, y]}
+  - {action: Approve or deny a pull request, cells: [n, p, n, y]}
+  - {group: Changing a live scorecard}
+  - {action: Propose a change to my own target, cells: [y, y, y, y]}
+  - {action: Withdraw, close or change a live target, cells: [n, p, y, y]}
+  - {action: Approve a scorecard change after the deadline, cells: [n, p, y, p]}
+  - {action: Acknowledge my new priorities, cells: [y, y, y, y]}
+  - {group: Milestones}
+  - {action: Mark my own stage done, cells: [y, y, y, y]}
+  - {action: Confirm or send back a stage, cells: [n, p, n, p]}
+  - {action: Reopen a confirmed stage, cells: [n, n, n, y]}
+  - {group: Objectives and periods}
+  - {action: Create, activate and close objectives, cells: [n, y, n, y]}
+  - {action: Copy last year's objectives, cells: [n, n, y, y]}
+  - {action: Propose next year's targets, cells: [n, p, y, y]}
+  - {action: Open, close and reset periods, cells: [n, n, n, y]}
+legend: {p: "Partly: only for your own team or reporting line, or only when named (see the notes)"}

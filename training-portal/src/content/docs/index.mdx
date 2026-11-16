@@ -1,0 +1,66 @@
+---
+title: Tritel Systems Training
+description: Learn the systems Tritel runs on — performance and targets, project delivery, tenders and the board portal — with pictures of every screen.
+template: splash
+module: general
+pageType: home
+tags: [start here]
+keywords: [training, help, how do I, guide, manual, user guide, ERP, Odoo]
+hero:
+  tagline: Short, illustrated guides to the systems Tritel runs on. Find your role below, or search for any task.
+  actions:
+    - text: Start here
+      link: /getting-started/logging-in/
+      icon: right-arrow
+    - text: Find your role
+      link: '#start-here-by-role'
+      variant: minimal
+---
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+import Illustration from '../../components/Illustration.astro';
+
+## The systems
+
+<CardGrid>
+  <Card title="Accountability Framework" icon="star">
+    Targets, scores and reviews for every member of staff. Everyone uses it for their own targets; line managers set targets and run reviews; HR runs the periods.
+
+    [Open the Accountability guide →](/accountability/)
+  </Card>
+  <Card title="Project Delivery" icon="rocket">
+    Turns a won tender into a delivery project with an approved budget, then tracks spend, handover and close-out. Used by Delivery and Finance & Accounts.
+
+    *Guide coming next.*
+  </Card>
+  <Card title="Tenders and Channel" icon="document">
+    Every bid from opportunity to result, the bid desk, project summaries, customer activities, and OEM bookings. Used by Commercial and Channel.
+
+    *Guide coming next.*
+  </Card>
+  <Card title="Board portal" icon="seti:pipeline">
+    What board members see: performance, financial position, payroll, profitability, cheques to sign, and the MD's quarterly review.
+
+    *Guide coming next.*
+  </Card>
+</CardGrid>
+
+## Start here by role
+
+<CardGrid>
+  <LinkCard title="Everyone" description="Your targets, your reviews and your My Actions list." href="/roles/everyone/" />
+  <LinkCard title="Line managers" description="Setting team targets and running reviews." href="/roles/line-managers/" />
+  <LinkCard title="Commercial" description="Account Managers, Bid Liaison, Head of Commercial." href="/roles/commercial/" />
+  <LinkCard title="Channel" description="Technical Presales, Head of Channel, Channel users." href="/roles/channel/" />
+  <LinkCard title="Delivery" description="Delivery project managers and the Head of Delivery." href="/roles/delivery/" />
+  <LinkCard title="Finance & Accounts" description="Budget approval, close-out and costs." href="/roles/finance-and-accounts/" />
+  <LinkCard title="HR" description="Periods, objectives, the targets library and settings." href="/roles/hr/" />
+  <LinkCard title="MD and board" description="The MD's quarterly review and the board portal." href="/roles/md-and-board/" />
+</CardGrid>
+
+## How the pages work
+
+Every task page starts with **who can do it**, **where to find it** and **what you need first**. The picture of the screen has numbered markers that match the numbered steps below it.
+
+<Illustration name="general/form-parts" caption="Numbers on a picture match the numbered steps in the text." />
+
+Can't find something? Use **Search** at the top (Ctrl + K), the [A–Z index](/reference/index/) or the [glossary](/reference/glossary/).

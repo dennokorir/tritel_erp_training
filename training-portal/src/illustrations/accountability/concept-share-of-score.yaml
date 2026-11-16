@@ -1,0 +1,22 @@
+type: screen
+title: Weight and share of score on a target
+desc: The Assignment group and the Share of Score strip of a target form, showing the Weight with the Rebalance Weights and Withdraw links, the share from today with its rank, the composition bar and the hint underneath, numbered 1 to 4.
+source: tritel_accountability_framework/views/accountability_target_views.xml (Assignment group and Share of Score block); models/accountability_target_weights.py (share_label, share_hint)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, {label: My Team, active: true}, My Actions]
+  breadcrumb: [Team Targets, Customer visits per month]
+blocks:
+  - title: {text: Customer visits per month, sub: "Target · Employee A · FY 2026"}
+  - fields:
+      - [{label: Weight, value: "2", n: 1}, {label: Objective, value: Grow revenue}]
+  - buttons: [{label: Rebalance Weights, n: 2}, {label: Withdraw}]
+  - note: {text: "Share of Score  25% of the score from today (weight 2 of 8) · #2 of 5", tone: accent, n: 3}
+  - bars:
+      - {label: Grow qualified pipeline, value: 37.5, max: 100, tone: accent}
+      - {label: Customer visits per month, value: 25, max: 100, tone: good}
+      - {label: Invoiced revenue, value: 25, max: 100, tone: accent}
+      - {label: Delivery on-time completion, value: 12.5, max: 100, tone: muted}
+  - text: "For FY 2026 as a whole: 21.4% of the score (weight 1 until 30 Jun, 2 from 1 Jul). A 10-point gain on this target adds about 2.1 points to the FY 2026 score."
+    n: 4

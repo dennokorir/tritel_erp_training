@@ -1,0 +1,45 @@
+---
+title: Session Coverage
+description: A grid of managers against review windows showing who ran their review sessions, who is late and who hasn't started, with each manager's on-time record.
+module: accountability
+pageType: report
+roles: [line-manager, hr, accountability-admin]
+tags: [review sessions, reports]
+keywords: [session coverage, review compliance, missed reviews, late reviews, managers not reviewing, review discipline, monthly reviews done, appraisal completion]
+where: [Accountability, Organisation, Session Coverage]
+related: [accountability/how-to/line-managers/plan-a-review-session, accountability/how-to/hr-admin/compliance-and-coverage, accountability/workflows/review-session, accountability/reports/review-analysis]
+sources:
+  - tritel_accountability_framework/static/src/session_coverage/accountability_session_coverage.xml
+  - tritel_accountability_framework/static/src/session_coverage/accountability_session_coverage.js
+  - tritel_accountability_framework/models/accountability_review_session.py
+sidebar: { order: 3 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+**Accountability › Organisation › Session Coverage** answers one question: *is every manager running their review sessions?* There is one row per manager and one column per review window. HR and administrators see every manager. A line manager sees the managers in their own reporting line, including themselves.
+
+<Illustration name="accountability/report-session-coverage" caption="Session Coverage for monthly sessions. The numbers match the list below." />
+
+## Reading the grid
+
+1. **Period.** Choose the period.
+2. **Cadence.** **Monthly**, **Quarterly**, **Semi-annual** or **Annual**. The columns follow it: one per month, quarter, half or year.
+3. **A manager's row.** **Manager** (with job title), **Team** (how many direct reports), then one cell per window:
+   - **✓ Done**, with the session's average score.
+   - **◔ … scored**: the session is in progress, with the share of targets scored so far, and *late … days* once it is more than 7 days past the cutoff.
+   - **✎ Draft**: created but not started.
+   - **✕ Not run**: the window has finished and the manager has no session for it.
+   - **not yet due**: the window hasn't finished.
+   - **—**: none of the manager's team had a target due in that window, so no session is expected.
+4. **Run on time.** Finished windows whose session was done within 7 days of the cutoff, out of all finished windows that needed one (missing sessions count against it). Green from 80%, amber from 50%, red below.
+5. **Hover or click a cell.** Hovering shows the details, for example *done 9 day(s) after the cutoff · average 72%*. Clicking a session cell opens it. Clicking **✕ Not run** in your own row starts a session already filled in with you, the cadence and the cutoff.
+
+## What the numbers depend on
+
+- A window is expected only when at least one direct report had a live target at that cadence, or a finer one, due in it.
+- "Done" means the session reached **Done**, which happens when every review in it has been submitted (or the reviewer used **Mark Done**).
+- The 7-day limit is fixed and is the same one that marks sessions **Late** on the Review Sessions board.
+
+:::note[Good to know]
+Only the manager themselves (or an administrator) can start a missing session from this grid. Managers higher up see the **✕** but can't click it: they follow up with the manager instead. To act on a gap, see [Plan a review session](/accountability/how-to/line-managers/plan-a-review-session/).
+:::

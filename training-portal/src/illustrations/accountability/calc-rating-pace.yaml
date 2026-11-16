@@ -1,0 +1,15 @@
+type: calc
+title: Rating on pace
+desc: Worked example of a running-total target of 12,000,000 rated on pace at a 30 September checkpoint, where 7,500,000 against an expected 8,975,342 gives 83.6% and Outstanding, while the score against the full target is 62.5%.
+source: tritel_accountability_framework/models/accountability_rating.py (_rating_values, _rating_for)
+heading: Revenue target rated on pace at 30 Sep 2026
+inputs:
+  - {label: Target Value, value: "12,000,000"}
+  - {label: Checkpoint, value: "30 Sep"}
+  - {label: Actual to date, value: "7,500,000"}
+steps:
+  - {label: "Share of the period gone = 273 ÷ 365 days", value: "74.8%"}
+  - {label: "Expected by checkpoint = 12,000,000 × 74.8%", value: "8,975,342"}
+  - {label: "Rating score = 7,500,000 ÷ 8,975,342 × 100", value: "83.6%"}
+result: {label: Rating, value: "Outstanding", tone: good}
+note: "The Score (%) stays 7,500,000 ÷ 12,000,000 = 62.5% (Meets Expectations). Once the period is closed, the rating reads the score."

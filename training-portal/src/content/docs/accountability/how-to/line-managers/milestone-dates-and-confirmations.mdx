@@ -1,0 +1,69 @@
+---
+title: Set milestone dates and confirm milestones
+description: Give a milestone target its dates and stages before it goes live, then confirm or send back each stage your team member marks as done.
+module: accountability
+pageType: how-to
+roles: [line-manager]
+tags: [milestones, targets]
+keywords: [milestone, stage, project target, deliverable, confirm stage, sign off milestone, send back, due date, timeline, gantt, task target]
+where: [Accountability, My Team, Team Targets]
+before:
+  - The target's type is <strong>Milestone</strong>.
+  - You are the target owner's manager. Only you (or an accountability administrator, if the owner has no manager with a user account) can confirm their stages.
+related: [accountability/workflows/milestone-stage, accountability/calculations/milestone-scores, accountability/how-to/everyone/update-a-milestone, accountability/how-to/line-managers/set-team-targets]
+sources:
+  - tritel_accountability_framework/views/accountability_target_views.xml
+  - tritel_accountability_framework/views/accountability_milestone_views.xml
+  - tritel_accountability_framework/static/src/components/stages/accountability_stages.xml
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/models/accountability_target_milestones.py
+  - tritel_accountability_framework/models/accountability_scorecard_request.py
+  - tritel_accountability_framework/wizard/milestone_action_wizard.py
+sidebar: { order: 5 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A milestone target is a piece of work delivered in **stages**, each with a due date. With weighted scoring, each confirmed stage adds its **Weight (%)** to the score. Your team member marks a stage done; it only counts once **you confirm it**.
+
+<Illustration name="accountability/mgr-milestones" caption="A milestone target with one stage awaiting confirmation, and the Send Stage Back window. The numbers match the steps below." />
+
+## Steps
+
+### Set the dates before activating
+
+Do this while the target is still a **Draft**: open it from **Team Targets** (click the target).
+
+1. Under **Milestone / Task Target**, choose the **Scoring Mode** and set the target's **Start** and **End**. Both must fall inside the period.
+2. In the stage list, add each stage with its **Stage** name, optional **Start**, **Due** date and **Weight (%)**. With **Weighted milestones (partial credit)** the weights must total 100. Every stage needs a due date between the target's start and end. Save, then activate the target as usual (see [Set targets for my team](/accountability/how-to/line-managers/set-team-targets/)).
+
+### Confirm or send back a stage
+
+3. When your team member marks a stage done, you get a **Confirm Milestone Stage** to-do. Open the target (from **My Actions** or **Team Targets**). The stage shows **Awaiting Confirmation**. On Team Targets, open **Stages** under the target to see the same list.
+4. Check the work, then:
+   - click **Confirm** if it is done. The stage becomes **Confirmed** and counts towards the score; or
+   - click **Send Back**, write the **Reason** (what still needs doing) and click **Save**. The stage goes back to **Open** and the owner sees *Sent back:* with your reason.
+5. Click **Timeline** on the target to see its stages on a chart. **My Team › Milestone Timeline** shows the stages of everyone in your reporting line.
+
+## What happens next
+
+- **Confirmed:** the stage's weight is added to the target's score at once, and the owner is told.
+- **Sent back:** the owner is told, finishes the work and marks it done again.
+- **Reminders:** the owner is reminded 7, 3 and 1 days before a stage is due. Once a stage is overdue, the owner and you are reminded every week.
+- **On a live target** you can still change the target's dates and the stages' names and dates. The **Timing** column shows *Due in 14 day(s)*, *Overdue by 2 day(s)* and so on. A **Sequence check** warning such as *Starts before Build and test (#2)* is only a warning.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *'Launch the partner portal' isn't ready: - Add the target's start and end dates. - Stage 'Go live' needs a due date. - Stage weights must total 100% (they total 90%).* | Dates or stages are incomplete when activating. | Fix each item listed, save, then activate. |
+| *Stage weights on a live target are locked: they decide its score.* | You changed a stage weight after activation. | Ask your accountability administrator to correct it. |
+| *'Launch the partner portal' is live: its stages and their weights are part of what it is measured against. Ask an administrator to correct them.* | You added a stage to a live weighted target. | Ask your accountability administrator. |
+| *Please say why the stage is being sent back.* | The **Reason** box was empty. | Write what still needs doing. |
+| *This stage isn't waiting for confirmation.* | The owner withdrew the mark, or it was already confirmed. | Refresh the page. |
+| *Only the owner's manager can confirm or send back this stage.* | You are not the owner's manager. | Their manager confirms it. |
+| *This stage can't be updated: its target isn't live, or the period is closed.* | The target is a draft or closed, or the period has ended. | Nothing to confirm on this target. |
+| *Only an Accountability Administrator can reopen a confirmed stage.* | You want to undo a confirmation. | Ask your accountability administrator. |
+
+:::note[Good to know]
+You never confirm your own stages, even if you are an administrator: the owner's manager does. If you confirmed a stage by mistake, only an accountability administrator can **Reopen** it.
+:::

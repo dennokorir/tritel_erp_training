@@ -1,0 +1,29 @@
+type: screen
+title: The Team Reviews board
+desc: The Team Reviews board grouped by whose move it is, with the search filters, Reviewer's Move, Employee's Move, With Escalation and Closed columns, cards with Your move badges, next-step lines and the Remind and Answer buttons, numbered 1 to 5.
+source: tritel_accountability_framework/views/accountability_review_pack_views.xml (accountability_team_reviews_view_kanban, accountability_team_reviews_view_search)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, {label: My Team, active: true}, My Actions, Organisation]
+  breadcrumb: [Team Reviews]
+blocks:
+  - search: {facets: ["Open + Closed in Last 30 Days", "Segment (Waiting On)"], placeholder: "Search…", filters: [Filters, Group By], n: 1}
+  - kanban:
+      - title: "Reviewer's Move"
+        count: 2
+        n: 2
+        cards:
+          - {title: Employee A, lines: ["Q3 2026 — Quarterly Review", "Employee B to answer the concern on 1 target(s)", "1 day(s) in step · 64.3%"], tag: Answer, tagTone: accent, tone: bad, n: 3}
+          - {title: Employee C, lines: ["Q3 2026 — Quarterly Review", "Employee B to score and submit", "4 day(s) in step · 0.0%"], tone: warn}
+      - title: "Employee's Move"
+        count: 1
+        cards:
+          - {title: Employee D, lines: ["Q3 2026 — Quarterly Review", "Employee to acknowledge or raise a concern by 10 Oct", "2 day(s) in step · 78.5%"], tag: Remind, tagTone: accent, n: 4}
+      - title: With Escalation
+        count: 0
+      - title: Closed
+        count: 1
+        n: 5
+        cards:
+          - {title: Employee E, lines: ["Q3 2026 — Quarterly Review", "Closed: acknowledged on 8 Oct"], tone: good}

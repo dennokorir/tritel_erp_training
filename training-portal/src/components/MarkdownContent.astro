@@ -1,0 +1,55 @@
+---
+/* Wraps every page's content (Starlight component override).
+   - Search: hidden Pagefind filters (Module, Role) and synonym keywords from frontmatter.
+   - How-to pages: the "Who can do this · Where · Before you start" header.
+   - Related pages at the foot. */
+import Default from '@astrojs/starlight/components/MarkdownContent.astro';
+import { getEntry } from 'astro:content';
+import { roleById, MODULE_LABELS } from '../data/site';
+
+const { entry } = Astro.locals.starlightRoute;
+const d = entry.data as any;
+const isHowTo = d.pageType === 'how-to';
+const roles = (d.roles ?? []).map((id: string) => roleById[id]).filter(Boolean);
+const related = (
+  await Promise.all((d.related ?? []).map(async (slug: string) => {
+    const e = await getEntry('docs', slug.replace(/^\/|\/$/g, '').replace(/\/index$/, ''));
+    if (!e) throw new Error(`"${entry.id}": related page "${slug}" does not exist`);
+    return { href: `/${e.id}/`, title: e.data.title };
+  }))
+);
+---
+<Default>
+  <div data-pagefind-ignore="all" hidden>
+    <span data-pagefind-filter={`Module:${MODULE_LABELS[d.module] ?? d.module}`}></span>
+    {roles.map((r: any) => <span data-pagefind-filter={`Role:${r.label}`}></span>)}
+    <span data-pagefind-meta={`type:${d.pageType}`}></span>
+  </div>
+  {d.keywords?.length > 0 && <p class="tp-search-only" aria-hidden="true" data-pagefind-weight="3">{d.keywords.join(' · ')}</p>}
+
+  {isHowTo && (
+    <aside class="tp-meta" aria-label="About this task" data-pagefind-ignore>
+      <dl>
+        <dt>Who can do this</dt>
+        <dd class="tp-badges">{roles.map((r: any) => <a class="tp-badge" href={`/roles/${r.department}/`}>{r.label}</a>)}</dd>
+        {d.where && (<>
+          <dt>Where</dt>
+          <dd class="tp-crumbs">{d.where.map((p: string, i: number) => <>{i > 0 && <i aria-hidden="true">›</i>}<span>{p}</span></>)}</dd>
+        </>)}
+        {d.before && (<>
+          <dt>Before you start</dt>
+          <dd><ul>{d.before.map((b: string) => <li set:html={b} />)}</ul></dd>
+        </>)}
+      </dl>
+    </aside>
+  )}
+
+  <slot />
+
+  {related.length > 0 && (
+    <nav class="tp-related" aria-label="Related pages" data-pagefind-ignore>
+      <h2>Related pages</h2>
+      <ul>{related.map((r) => <li><a href={r.href}>{r.title}</a></li>)}</ul>
+    </nav>
+  )}
+</Default>

@@ -1,0 +1,59 @@
+---
+title: Snapshots and Compare
+description: See a person's performance as it stood at a month end, freeze it as a snapshot that never changes, and compare a frozen snapshot with today's figures.
+module: accountability
+pageType: report
+roles: [everyone, line-manager, hr]
+tags: [snapshots, reports, scores]
+keywords: [snapshot, freeze, as at, month end, historic score, compare, what changed, PDF, performance record, quarter end, audit trail]
+where: [Accountability, My Performance, Performance Snapshots]
+related: [accountability/concepts/snapshots-and-as-at, accountability/how-to/everyone/read-briefs-and-snapshots, accountability/reports/performance-overview, accountability/how-to/line-managers/team-scores]
+sources:
+  - tritel_accountability_framework/static/src/components/snapshot/snapshot_panel.xml
+  - tritel_accountability_framework/static/src/components/snapshot/snapshot_panel.js
+  - tritel_accountability_framework/views/accountability_snapshot_views.xml
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/static/src/team_targets/accountability_team_targets.xml
+sidebar: { order: 2 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+A **snapshot** is a person's overall rating and target results as at one date. A **rebuilt** snapshot is worked out on the spot from today's data. A **frozen** snapshot is a saved copy that never changes. Comparing the two shows what has changed since, for example a late review that moved a score.
+
+You can open the snapshot panel from three places:
+
+- **Team Targets**: pick a person, then a month end in the **As at** list above their targets.
+- **Performance Overview**: open a person's panel, then **Open snapshot** or **❄ Compare with frozen**.
+- **My Performance › Performance Snapshots**: the list of frozen snapshots. Open one, then click **Compare with today's rebuild**, or **Print PDF**.
+
+<Illustration name="accountability/report-snapshot-compare" caption="A frozen snapshot compared with today's rebuild on Team Targets. The numbers match the list below." />
+
+## Reading the panel
+
+1. **As at.** The month end you chose. Snapshots exist for month ends only, plus today.
+2. **Rebuilt / Frozen.** When a frozen snapshot exists, switch between today's rebuild and the frozen copy. If there are several, pick one by the date it was taken and how (**Taken by hand**, **Month end** or **Period close**).
+3. **Since it was frozen.** What has changed between the frozen copy and today's rebuild: **Overall**, **Rating moved**, **Score changed**, **Reviews since**, **Weight changed**, **Counts now** (a target added) and **No longer counts**. *nothing has changed.* means the two agree.
+4. **Overall.** The rating and overall score. For managers, the own and team scores follow.
+5. **Targets.** For each target: **Actual**, **Target value**, **Expected by then** and the **Score**, with its rating. A running-total target is rated *on pace*: against what should have been reached by its last review, shown as a percentage of the period. A target with *No result by this date* doesn't count.
+6. **PDF** prints the frozen snapshot.
+7. **Freeze snapshot** saves the rebuilt snapshot as it is now. Add an optional note (for example *Q3 review meeting*) and click **Freeze as at 30 Sep 2026**.
+
+## Who can see and freeze
+
+- You can see your own snapshots and those of the people below you. HR and administrators see everyone.
+- Managers can freeze snapshots for people below them, never for themselves. HR and administrators can freeze anyone's.
+- Frozen snapshots can't be changed. Only an accountability administrator can delete one.
+- The system also freezes everyone with targets automatically after each month end, and once more when a period closes.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *You cannot freeze snapshots for: Employee B.* | You tried to freeze your own snapshot, or someone outside your line. | Ask your manager or HR. |
+| *You can only see snapshots for yourself and the people in your reporting line.* | The person isn't in your reporting line. | Ask HR. |
+| *A frozen snapshot cannot be changed. Freeze a new one instead.* | You tried to edit a frozen snapshot. | Freeze a new one. |
+| *Only accountability administrators can delete a frozen snapshot.* | You tried to delete one. | Ask your administrator. |
+
+:::note[Good to know]
+A rebuilt snapshot uses each manager's role as it stands today and today's supervisor assessments, so an old date can look slightly different from what people saw at the time. That is why snapshots are frozen at each month end: the frozen copy is the record of what was known then. People exempt on the date have no snapshot.
+:::

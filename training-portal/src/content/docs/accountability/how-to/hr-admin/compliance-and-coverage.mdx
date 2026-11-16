@@ -1,0 +1,67 @@
+---
+title: Check compliance and session coverage
+description: Use Session Coverage to see which managers have run their review sessions for each window, and Compliance to see how many cascaded targets have been adopted.
+module: accountability
+pageType: how-to
+roles: [line-manager, hr, accountability-admin]
+tags: [reviews, cascading, reports]
+keywords: [compliance, coverage, review sessions, missed reviews, overdue, late, adoption rate, cascade, follow up, audit]
+where: [Accountability, Organisation, Session Coverage]
+before:
+  - <strong>Session Coverage</strong> is for line managers (their own reporting line), HR and administrators (everyone).
+  - <strong>Compliance</strong> is for accountability administrators only.
+related: [accountability/reports/session-coverage, accountability/reports/compliance, accountability/how-to/line-managers/plan-a-review-session, accountability/workflows/review-session, accountability/workflows/cascade]
+sources:
+  - tritel_accountability_framework/static/src/session_coverage/accountability_session_coverage.xml
+  - tritel_accountability_framework/static/src/session_coverage/accountability_session_coverage.js
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/static/src/compliance/accountability_compliance.xml
+  - tritel_accountability_framework/static/src/compliance/accountability_compliance.js
+sidebar: { order: 6 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Two screens show whether the process is being followed. **Session Coverage** answers "has every manager reviewed their team for each month or quarter?". **Compliance** answers "have cascaded targets been adopted?".
+
+<Illustration name="accountability/howto-session-coverage" caption="Session Coverage. The numbers match steps 1 to 5." />
+
+## Steps
+
+### Session coverage
+
+1. Open **Accountability › Organisation › Session Coverage**.
+2. Pick the period and the cadence: **Monthly**, **Quarterly**, **Semi-annual** or **Annual**.
+3. Read the grid: one row per manager, with their **Team** size, and one column per review window.
+   - **✓ Done** with the session's average.
+   - **◔ 75% scored**: in progress. **✎ Draft**: created but not started. Either may say *late 10 days*.
+   - **✕ Not run**: the window has finished and there is no session.
+   - **not yet due**, or **—** when no team targets were due in that window.
+4. Check **Run on time**, for example **2 / 3**: finished windows whose session was done within 7 days of the cutoff, out of all finished windows. Green is 80% or more; red is under half.
+5. Click a cell to open its session. On a **✕ Not run** cell, a manager (for their own row) or an administrator can click to start the missing session, already filled in.
+
+<Illustration name="accountability/howto-compliance" caption="Cascade Compliance. The numbers match steps 6 to 9." />
+
+### Cascade compliance (administrators)
+
+6. Open **Accountability › Organisation › Compliance** and pick the period.
+7. Read the tiles: **Total Cascades**, **Adopted ✓**, **Pending ⏳**, **Declined ✗** and **Adoption Rate**.
+8. Click an objective to open it. Under **Cascade Recipients**, each recipient's objective and targets are listed with their status: **Adopted**, **Pending** or **Declined**.
+9. On a **Pending** target, click **Remind** to nudge the recipient.
+
+## What happens next
+
+- A session started from a **✕ Not run** cell opens as a draft for that manager, cadence and cutoff. The manager then runs it as normal. See [Plan a review session](/accountability/how-to/line-managers/plan-a-review-session/).
+- **Remind** sends the recipient a reminder to adopt or decline the share. Unadopted cascades are also reminded automatically (see the cascade reminder interval in the settings).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *You can only run review sessions for your own direct reports. Ask an accountability administrator to set up a session for another reviewer.* | A manager started a missing session for someone else. | Only that manager or an administrator can start it. |
+| *Sep 2026 — Monthly Review already exists for Employee B (Draft). Open that session instead.* | A session for that manager, cadence and cutoff already exists. | Open the existing session. |
+
+:::note[Good to know]
+- A window counts as expected when any direct report had a live target at that cadence or finer due in it. Exempt staff and development targets are left out.
+- A session closed with **Mark Done** shows as done even if some reviews were never submitted. Open the session to check.
+- HR managers can open sessions here but can't start or edit them.
+:::
