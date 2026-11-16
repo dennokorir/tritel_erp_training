@@ -1,0 +1,21 @@
+type: screen
+title: Add a result to one target
+desc: The window that opens when the MD clicks a target in the board review, with the Result, Comment and Evidence fields and the Save button, numbered 5 to 8.
+source: e_board/views/md_review_views.xml (accountability_board_review_view_form, line form)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, {label: My Actions, active: true}]
+  breadcrumb: [My Actions, "Board review · Employee A · Q3 2026"]
+blocks:
+  - dialog:
+      title: "Open: Targets"
+      blocks:
+        - fields:
+            - [{label: Target, value: Open Branch A}]
+            - [{label: Result, value: "75", n: 5}]
+            - [{label: Unit, value: "%"}]
+            - [{label: Score (%), value: "75.00"}]
+            - [{label: Comment, value: "Lease signed and fit-out done; staff start in October.", n: 6}]
+            - [{label: Evidence, value: "Attach a file", n: 7}]
+        - buttons: [{label: Save, primary: true, n: 8}, {label: Discard}]

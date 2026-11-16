@@ -1,0 +1,55 @@
+---
+title: Read the Financial Position
+description: Read what the company is owed against what it owes today, open the outstanding invoice and order lists, and filter them by age.
+module: board
+pageType: how-to
+roles: [board]
+tags: [portal, receivables, payables]
+keywords: [cash position, debtors, creditors, AR, AP, aging, ageing, receivables, payables, outstanding invoices, backlog, exposure, board pack, net position]
+where: [Portal, E-Board, Financial Position]
+before:
+  - You have a board portal login.
+related: [board/calculations/financial-position, board/concepts/as-at-figures, board/how-to/exclude-or-hide-orders, board/how-to/read-performance, board/faq]
+sources:
+  - e_board/controllers/e_board_controller.py
+  - e_board/views/portal_position_templates.xml
+  - e_board/views/portal_position_detail_templates.xml
+  - e_board/models/sale_order.py
+  - e_board/models/purchase_order.py
+sidebar: { order: 8 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+The **Financial Position** tab sets everything the company is owed against everything it owes, as it stands today. Use it to answer "are we owed more than we owe, and how old is it?"
+
+<Illustration name="board/b2-financial-position" caption="The Financial Position on 16 Nov 2026. The numbers match the steps below." />
+
+## Steps
+
+1. Click **Financial Position**. The **Net Position** at the top is receivables minus payables, with the verdict **Favourable** (0 or more) or **Adverse** (below 0). The sentence under it gives both totals and how many open transactions make them up.
+2. Under **Receivables — Owed to Us** and **Payables — We Owe**, **By source** splits each total in two:
+   - **Sales Invoices — outstanding** / **Purchase Invoices — outstanding**: what is unpaid on posted invoices and bills.
+   - **Sales Orders — outstanding balance** / **Purchase Orders — outstanding balance**: what confirmed orders have not yet been invoiced or billed, with the number of orders *excluded*.
+
+   Click a row to open its list.
+3. **Receivables aging** and **Payables aging** sort the money into **Current (0–30 d)**, **31–60 days**, **61–90 days** and **Over 90 days**. Click a cell to open the invoices in that age band.
+4. **Top customers by exposure** and **Top vendors by exposure** show the five largest unpaid balances. Click a name to see that customer's or vendor's open invoices.
+5. **Methodology** at the bottom explains the rules in a few lines.
+
+In an invoice list (**Sales Invoices Outstanding** or **Purchase Invoices Outstanding**), use **Filter by age:** **All**, **0–30 d**, **31–60 d**, **61–90 d** or **90+ d**. The **Age** column shows *Not yet due* or how many days overdue. The largest balances come first.
+
+<Illustration name="board/b2-position-orders" caption="The order list opened from Sales Orders — outstanding balance." />
+
+1. In an order list, each row shows the order **Total**, what is **Invoiced** (or **Billed**), what is still **To Invoice** (or **Unbilled**), the **Residual** unpaid on its invoices and the **Total Exposure**. **Ready to Invoice** and **Pending Delivery** show why it is not invoiced yet.
+2. **Excluded from position report** lists orders that finance excluded, with their **Reason for Exclusion**. They are not in the totals above.
+
+## What happens next
+
+Nothing changes in Odoo. The figures are worked out each time you open the page; see [Receivables, payables, backlog and exposure](/board/calculations/financial-position/).
+
+:::note[Good to know]
+- This tab is a snapshot of today. The year and quarter you picked on **Performance** don't apply here, except in the invoice lists opened from **Sales →** or **Purchases →**, which show only invoices dated in that period.
+- The aging cells on the main page include the order balances, aged from the order date. The lists behind the cells show invoices only, so a cell's list can add up to less than the cell.
+- **Current (0–30 d)** includes invoices that are not yet due.
+- Finance can take an order out of the totals with **Exclude from Board Position** (you still see it in the excluded section) or out of every list with **Hide from Board Portal**. A hidden order's invoices still count: in the unpaid invoices here, and in **Revenue** and **Total Spend** on the Performance tab. See [Exclude or hide an order](/board/how-to/exclude-or-hide-orders/).
+:::

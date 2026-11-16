@@ -1,0 +1,18 @@
+type: calc
+title: Organisation score and rating
+desc: Worked example of the Performance tab's organisation figures with three objectives, giving an Organisation Score of 57% while the rating label reads Meets Expectations, because the label uses the pace-adjusted rating scores.
+source: e_board/models/accountability_board_summary.py (_board_org_summary); tritel_accountability_framework/models/accountability_target_weights.py (_weighted_mean)
+heading: FY 2026, three top-level objectives
+inputs:
+  - {label: "Objective A · weight 2", value: "score 60 · rating score 75"}
+  - {label: "Objective B · weight 1", value: "score 50 · rating score 50"}
+  - {label: "Objective C · weight 1", value: "targets, no results yet"}
+steps:
+  - {label: "Organisation Score: (60 × 2 + 50 × 1) ÷ (2 + 1). C is left out", value: "56.7 → 57%"}
+  - {label: "Rating: (75 × 2 + 50 × 1) ÷ (2 + 1) = 66.7, between 60 and 70", value: "Meets Expectations", tone: good}
+  - {label: "Objective statuses: A 75 · B 50 · C no result", value: "Exceeds · Needs Improvement · Not yet measured"}
+  - {label: "Objectives Meeting Expectations: only A is at Meets or better", value: "1 of 3"}
+  - {label: "Targets Reviewed: 26 of 40 targets", value: "65%"}
+  - {label: "Staff with Targets: 28 of 35 staff", value: "80%"}
+result: {label: Organisation Score tile, value: "57% · Meets Expectations · based on 2 of 3 objectives", tone: accent}
+note: The score alone (57) would be Needs Improvement. The label follows the rating scores, which judge running totals against what is expected so far.

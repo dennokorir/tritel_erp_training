@@ -1,0 +1,32 @@
+# Board portal: every status of the MD's quarterly board review, one entry per status.
+# Written from e_board/models/accountability_board_review.py; see the workflow page for diagrams.
+
+# ── Board review (the MD's quarter) ─────────────────────────────────────
+- module: board
+  workflow: "MD board review"
+  link: "/board/workflows/md-review/"
+  state: "Being prepared"
+  meaning: "Opened by the system after the quarter, with metric results filled in. The MD adds the other results, comments and evidence."
+  next: "With the board (Submit to the Board)"
+  who: "The MD"
+- module: board
+  workflow: "MD board review"
+  link: "/board/workflows/md-review/"
+  state: "With the board"
+  meaning: "Submitted and locked. The Board Reviewer checks it on the portal. Reminder after 7 days; open to the Backup Board Reviewer after 14 days."
+  next: "Signed off (Sign Off)"
+  who: "Board Reviewer, or the Backup Board Reviewer after 14 days"
+- module: board
+  workflow: "MD board review"
+  link: "/board/workflows/md-review/"
+  state: "Signed off"
+  meaning: "The board's results are written to the MD's targets as signed-off reviews. The MD can add a comment."
+  next: "Acknowledged (Acknowledge)"
+  who: "The MD"
+- module: board
+  workflow: "MD board review"
+  link: "/board/workflows/md-review/"
+  state: "Acknowledged"
+  meaning: "Closed. The MD's comment is sent to the board member who signed off."
+  next: "—"
+  who: "—"

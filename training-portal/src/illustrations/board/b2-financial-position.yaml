@@ -1,0 +1,41 @@
+type: screen
+title: Board Financial Position
+desc: The Financial Position tab with the Net Position verdict, the Receivables and Payables columns with their By source rows, the aging cells and the top customers, numbered 1 to 5.
+source: e_board/views/portal_position_templates.xml (portal_position)
+frame:
+  app: E-Board
+  menu: [Performance, {label: Financial Position, active: true}, Payroll, Profitability, PDC Cheques]
+blocks:
+  - title: {text: Financial Position, sub: "Open receivables vs payables — all active unclosed transactions · Snapshot date 16 Nov 2026"}
+  - tiles:
+      - {label: "Net Position · KES", value: "+800K  Favourable", tone: good, n: 1}
+  - text: "The company is owed KES 3.0M across 9 open transactions against obligations of KES 2.2M across 7 open transactions."
+  - columns:
+      - panel: true
+        blocks:
+          - heading: "Receivables — Owed to Us · 3.0M KES"
+          - table:
+              columns: [By source, KES, "%"]
+              widths: [4, 1.4, 1]
+              rows:
+                - {cells: ["Sales Invoices — outstanding · 7 invoices", "2.0M", "66.7%"], n: 2}
+                - ["Sales Orders — outstanding balance · 2 orders · 1 excluded", "1.0M", "33.3%"]
+          - tiles:
+              - {label: "Current (0–30 d)", value: "1.2M", n: 3}
+              - {label: "31–60 days", value: "800K"}
+              - {label: "61–90 days", value: "580K"}
+              - {label: "Over 90 days", value: "420K", tone: bad}
+          - fields:
+              - [{label: Top customers by exposure, value: "Customer A · 900K", n: 4}]
+      - panel: true
+        blocks:
+          - heading: "Payables — We Owe · 2.2M KES"
+          - table:
+              columns: [By source, KES, "%"]
+              widths: [4, 1.4, 1]
+              rows:
+                - ["Purchase Invoices — outstanding · 5 bills", "1.5M", "68.2%"]
+                - ["Purchase Orders — outstanding balance · 2 orders · 0 excluded", "700K", "31.8%"]
+          - fields:
+              - [{label: Top vendors by exposure, value: "Supplier A · 600K"}]
+  - note: {text: "Methodology: Receivables = outstanding balance on posted sales invoices plus the uninvoiced residual of confirmed sales orders …", tone: muted, n: 5}

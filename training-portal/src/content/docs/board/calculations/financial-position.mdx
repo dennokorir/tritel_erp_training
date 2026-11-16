@@ -1,0 +1,67 @@
+---
+title: Receivables, payables, backlog and exposure
+description: How the Financial Position works out receivables, payables, the order backlog, total exposure, the aging bands and the Net Position verdict, and which orders are left out.
+module: board
+pageType: calculation
+roles: [board, finance]
+tags: [receivables, payables]
+keywords: [cash position, debtors, creditors, AR, AP, aging, ageing, backlog, uninvoiced orders, unbilled, exposure, net position, favourable, adverse]
+related: [board/how-to/financial-position, board/concepts/as-at-figures, board/how-to/exclude-or-hide-orders, board/how-to/read-performance]
+sources:
+  - e_board/controllers/e_board_controller.py
+  - e_board/views/portal_position_templates.xml
+  - e_board/views/portal_position_detail_templates.xml
+  - e_board/models/sale_order.py
+  - e_board/models/purchase_order.py
+sidebar: { order: 3 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+The Financial Position is a snapshot of today. It adds up what is still open, whenever it started, and converts everything to KES.
+
+## The totals
+
+- **Receivables** = what is unpaid on posted customer invoices (not paid or partly paid) + what confirmed sales orders have not yet invoiced.
+- **Payables** = the same for posted vendor bills and confirmed purchase orders.
+- **Net Position** = Receivables − Payables. **Favourable** when 0 or more, **Adverse** below 0.
+
+<Illustration name="board/b2-calc-position" caption="Receivables of 3,000,000 against payables of 2,200,000." />
+
+## One order: backlog and exposure
+
+For each confirmed order that is still waiting to be invoiced (or billed), or waiting for delivery (or receipt):
+
+- **Total** = the order total including tax, converted to KES at the rate of the order date.
+- **Invoiced** (or **Billed**) = posted invoices on the order minus posted credit notes, converted at each invoice's date.
+- **To Invoice** (or **Unbilled**) = Total − Invoiced, never below 0. This is the order's backlog, and the only part added to Receivables or Payables. Orders with nothing left to invoice are not listed.
+- **Residual** = what is unpaid on the order's invoices.
+- **Total Exposure** = To Invoice + Residual: everything still to come from (or go to) that party on the order.
+
+<Illustration name="board/b2-calc-exposure" caption="An order half invoiced, with part of the invoice still unpaid." />
+
+## Aging
+
+| Band | Invoices | Orders |
+|---|---|---|
+| **Current (0–30 d)** | Up to 30 days past the due date, including not yet due | Up to 30 days since the order date |
+| **31–60 days** | 31 to 60 days past due | 31 to 60 days old |
+| **61–90 days** | 61 to 90 days past due | 61 to 90 days old |
+| **Over 90 days** | More than 90 days past due | More than 90 days old |
+
+An invoice with no due date is aged from its invoice date.
+
+## Orders left out
+
+| Flag on the order | Order backlog in the totals | Listed | Its invoices |
+|---|---|---|---|
+| None | Yes | In the order list | Counted |
+| **Exclude from Board Position** | No | In **Excluded from position report**, with the reason | Counted |
+| **Hide from Board Portal** | No | Nowhere on the Financial Position | Counted |
+
+## Edge cases
+
+- **Credit notes on an order** reduce what counts as invoiced, so the backlog can grow back.
+- **Over-invoiced orders** have a backlog of 0, never a negative one.
+- **Foreign currency**: orders are converted at the order date's rate and invoices at the invoice date's rate, so on a part-invoiced foreign-currency order the backlog in KES can differ a little from the order's own figures.
+- **Tax**: order and invoice amounts here include tax.
+- **The Performance tab's dates** don't apply, except in the invoice lists opened from **Sales →** or **Purchases →**, which keep only invoices dated in that period.

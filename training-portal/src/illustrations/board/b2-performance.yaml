@@ -1,0 +1,36 @@
+type: screen
+title: Board Performance tab
+desc: The Performance tab of the board portal with the year and quarter buttons, the five headline tiles, the As at list, the four organisation tiles, the Strategic Objectives table and the Commercial Performance section, numbered 1 to 7.
+source: e_board/views/portal_e_board_templates.xml (portal_e_board)
+frame:
+  app: E-Board
+  menu: [{label: Performance, active: true}, Financial Position, Payroll, Profitability, PDC Cheques]
+blocks:
+  - title: {text: E-Board, sub: "Executive performance overview · 01 Jul 2026 – 30 Sep 2026 · Q3 2026"}
+  - buttons: [{label: "Period: 2026", n: 1}, {label: "2025"}, {label: "Quarter: Q1"}, {label: Q2}, {label: Q3, primary: true, n: 2}, {label: Q4}]
+  - tiles:
+      - {label: "Revenue · 30 invoices · 12 orders", value: "60.0M", tone: good, n: 3}
+      - {label: "Total Spend · 45 invoices · 20 orders", value: "40.0M", tone: bad}
+      - {label: "Net Position · Revenue minus spend", value: "+20.0M KES", tone: good}
+      - {label: "Win Rate · 18 decided tenders", value: "33%", tone: warn}
+  - fields:
+      - [{label: As at, value: "Today", n: 4}]
+  - tiles:
+      - {label: "Organisation Score · Meets Expectations · based on 2 of 3 objectives", value: "57%", n: 5}
+      - {label: "Objectives Meeting Expectations · 1 not yet measured", value: "1 of 3"}
+      - {label: "Targets Reviewed · 26 of 40 targets", value: "65%"}
+      - {label: "Staff with Targets · 28 of 35 staff", value: "80%"}
+  - heading: "Strategic Objectives · FY 2026 · Year to Date"
+    n: 6
+  - table:
+      columns: [Objective, "%", Reviewed, Status]
+      widths: [4, 1, 1.4, 2.4]
+      rows:
+        - [Objective B, "50", "6 of 10", {text: Needs Improvement, badge: true, tone: warn}]
+        - [Objective A, "60", "20 of 26", {text: Exceeds Expectations, badge: true, tone: good}]
+        - [Objective C, "–", "0 of 4", {text: Not yet measured, badge: true, tone: muted}]
+  - heading: "Commercial Performance — Tenders & Pipeline  ·  Profitability →"
+    n: 7
+  - columns:
+      - {panel: true, blocks: [{heading: "Revenue — Sales Invoices  ·  Sales →"}, {text: "Total Invoiced KES 60.0M · Collected KES 45.0M · Outstanding KES 15.0M"}]}
+      - {panel: true, blocks: [{heading: "Procurement — Purchase Invoices  ·  Purchases →"}, {text: "Total Invoiced KES 40.0M · Paid KES 32.0M · Outstanding KES 8.0M"}]}

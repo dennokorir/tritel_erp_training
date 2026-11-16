@@ -1,0 +1,52 @@
+---
+title: Payroll employer cost
+description: How the Payroll tab works out gross pay, net pay, the total employer cost, headcount, the year-on-year change, pay composition and pay by department from confirmed payslips.
+module: board
+pageType: calculation
+roles: [board, finance, hr]
+tags: [payroll]
+keywords: [payroll cost, staff costs, wage bill, cost to company, employer cost, NSSF, housing levy, PAYE, SHA, NHIF, headcount, year on year, payslips]
+related: [board/how-to/payroll, board/concepts/the-board-portal]
+sources:
+  - e_board/controllers/e_board_controller.py
+  - e_board/views/portal_payroll_templates.xml
+sidebar: { order: 4 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+The Payroll tab adds up payslip lines. It uses payslips of the company that are **done** or **paid**, are not refunds, and whose pay period lies inside the year you picked: 1 January to 31 December, or to today for the current year.
+
+## Which payslip lines
+
+| Figure | Payslip line (salary rule code) |
+|---|---|
+| Gross pay | P030 |
+| Net pay | P120 |
+| PAYE | P105 |
+| Employee NSSF | P055 |
+| Employer NSSF | P065 |
+| NHIF/SHA | P106 |
+| Employee Housing Levy | P110 |
+| Employer Housing Levy | P118 |
+
+## The figures
+
+- **YTD Gross Payroll** = gross pay on all those payslips.
+- **Net Pay to Employees** = net pay on them.
+- **Total Employer Cost** (and **Total Cost to Company**) = gross pay + employer NSSF + employer Housing Levy.
+- **Active Headcount** = the number of different employees with at least one of those payslips.
+- **vs prior year** = (gross − last year's gross) ÷ last year's gross × 100, to one decimal. Last year runs from 1 January to the same day and month. With no payslips last year: *No prior-year data*.
+- **Pay Composition** = net pay, PAYE, employee NSSF, NHIF/SHA and employee Housing Levy, each as a share of those five added together.
+- **Payroll by Department** = gross pay by the department on each payslip, with **% of Total** = the department's gross ÷ **YTD Gross Payroll**. Payslips with no department appear as *Unassigned*.
+
+<Illustration name="board/b2-calc-payroll" caption="Gross pay of 10,000,000 costs the company 10,350,000." />
+
+Amounts on the tiles are shown in millions to two decimals (10.35M) or, below a million, in thousands (350K).
+
+## Edge cases
+
+- **The current month**: a payslip counts only once its pay period has ended, so mid-month the current month's payslips are missing from every figure, and from last year's comparison too.
+- **Draft or refund payslips** never count.
+- **Employer pension or other benefits** outside these lines are not in **Total Employer Cost**.
+- **Pay Composition** won't add up to gross pay when there are other deductions, such as loans or pension, which are not shown.
+- **Headcount** counts anyone paid during the year, including staff who have left.

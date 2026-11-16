@@ -1,0 +1,99 @@
+---
+title: Board portal FAQ
+description: Short answers to the questions board members and the MD ask most about the board portal's figures, cheques, commission lines and the MD's quarterly review.
+module: board
+pageType: faq
+roles: [board, md]
+tags: [faq, portal]
+keywords: [FAQ, help, why, board pack, directors, revenue, net position, organisation score, cheque, signatory, commission, confidential, MD review, sign off, payroll]
+related: [board/index, board/who-can-do-what, board/calculations/organisation-score, board/calculations/financial-position, board/calculations/md-review-figures]
+sources:
+  - e_board/controllers/e_board_controller.py
+  - e_board/controllers/md_review.py
+  - e_board/models/accountability_board_review.py
+  - e_board/models/accountability_board_summary.py
+  - e_board/views/portal_e_board_templates.xml
+  - e_board/views/portal_md_review_templates.xml
+  - tritel_pdc/models/pdc_cheque.py
+sidebar: { order: 3 }
+---
+
+## How do I get to the board portal?
+
+Sign in with the account from your invitation. Board members land on **E-Board** straight away; you can also go to **/my/board**. See [Invite a board member](/board/how-to/invite-board-members/).
+
+## Why didn't the accountability figures change when I picked a quarter?
+
+They build up over the year, so the quarter buttons only choose which period to show. To look back, use the **As at** list. See [Read the Performance tab](/board/how-to/read-performance/).
+
+## The Organisation Score is 57% but the label says Meets Expectations. Which is right?
+
+Both. The score is the plain result so far. The label judges running totals, such as revenue, against what is expected by now. See [Organisation score and rating](/board/calculations/organisation-score/).
+
+## Does Revenue include VAT?
+
+Yes. **Revenue** and **Total Spend** add up posted invoices and bills including tax. The order counts and values under them use amounts before tax.
+
+## Why is Net Position on the Performance tab different from the Financial Position?
+
+They measure different things. On **Performance** it is invoiced revenue minus invoiced spend for the dates you picked. On **Financial Position** it is everything owed to the company minus everything it owes, today. See [Receivables, payables, backlog and exposure](/board/calculations/financial-position/).
+
+## Why does an order appear under "Excluded from position report"?
+
+Finance ticked **Exclude from Board Position** on it and gave a reason, shown in **Reason for Exclusion**. Its unbilled amount is left out of the totals. See [Exclude or hide an order](/board/how-to/exclude-or-hide-orders/).
+
+## An order is hidden from the board. Why does its invoice still count?
+
+**Hide from Board Portal** removes the order from the Financial Position lists only. Its invoices are ordinary invoices, so they still count in **Revenue**, **Total Spend** and the unpaid invoice totals.
+
+## Why do the aging cells add up to more than the invoice list behind them?
+
+The cells include the unbilled order balances, aged from the order date. The lists behind the cells show invoices only.
+
+## Why is this month missing from the Payroll tab?
+
+A payslip counts once its pay period has ended. The current month's payslips appear after the month end. See [Payroll employer cost](/board/calculations/payroll-cost/).
+
+## What does Total Employer Cost include?
+
+Gross pay plus employer NSSF plus the employer's Housing Levy. Employee deductions are already inside gross pay.
+
+## Who can see the commission line I added?
+
+Nobody sees its description on the portal: everyone, you included, sees *— Confidential —*. The amount counts in the tender's costs. In Odoo only tender administrators can read the description. See [Read Profitability and add a commission line](/board/how-to/profitability/).
+
+## Can I change another board member's commission line?
+
+No. Only the person who added a line sees **Edit** and **Delete** on it.
+
+## How many signatures does a cheque need?
+
+Usually 2. Finance can set another number per cheque or per bank account. **Authorisation** shows how many are in, for example **1/2**.
+
+## I signed the wrong cheque. Can I undo it?
+
+Not from the portal. Tell finance, who manage the cheque in Odoo. See [Sign post-dated cheques](/board/how-to/sign-cheques/).
+
+## Does a fully signed cheque get paid automatically?
+
+No. Full signatures move it to **Fully Authorised**; finance still issues, deposits and clears it.
+
+## I am the Board Reviewer. Why is there no MD Review tab?
+
+The tab appears only when a review is waiting for you or you have signed one. A review opens the day after a quarter ends and reaches you when the MD submits it. You get an email, *Board review to sign off*, with a link.
+
+## Why does Sign Off ask me to say why I changed a result?
+
+Any result different from the one proposed needs a comment. It is saved with the review, so the MD can see the reason. The message is *Say why you changed the result for Grow revenue.* See [How the MD review figures are worked out](/board/calculations/md-review-figures/).
+
+## What happens if the Board Reviewer is away?
+
+After 7 days the reviewer gets a reminder. After 14 days the review opens to the Backup Board Reviewer too, if one is named, and whoever signs first closes it. See [Review and sign off the MD's quarter](/board/how-to/review-the-md/).
+
+## As the MD, can I change a result after submitting?
+
+No. Once submitted, the review can't be changed. The board member can change any result when signing off, with a comment. You can reply in **Your Comment** when you acknowledge. See [Acknowledge the board's sign-off](/board/how-to/acknowledge-the-board-review/).
+
+## Who can see who visited the board portal?
+
+System administrators, on the **Access Log** tab. See [Check the board portal access log](/board/how-to/access-log/).

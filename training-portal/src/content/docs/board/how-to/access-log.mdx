@@ -1,0 +1,42 @@
+---
+title: Check the board portal access log
+description: As a system administrator, see who opened which board portal page, which cheques were signed and which commission lines were added, and filter the log by person, page, action and date.
+module: board
+pageType: how-to
+roles: [system-admin]
+tags: [portal, audit]
+keywords: [audit trail, access log, activity log, who viewed, board activity, login history, cheque signed, commission added, IP address, governance]
+where: [Portal, E-Board, Access Log]
+before:
+  - You are a system administrator. The <strong>Access Log</strong> tab appears only for you.
+related: [board/who-can-do-what, board/how-to/sign-cheques, board/how-to/profitability, board/how-to/invite-board-members]
+sources:
+  - e_board/controllers/e_board_controller.py
+  - e_board/controllers/md_review.py
+  - e_board/models/access_log.py
+  - e_board/views/portal_access_log_templates.xml
+sidebar: { order: 12 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Every visit to a board portal page and every action there (signing a cheque, adding, editing or deleting a commission line, searching, signing off the MD review) is written to the access log. Check it when you need to show who saw or did what.
+
+<Illustration name="board/b2-access-log" caption="The access log filtered to cheque signatures. The numbers match the steps below." />
+
+## Steps
+
+1. Open the board portal (**/my/board**) and click **Access Log**. The tiles show today's **Page Views Today**, **Active Users Today** (*of 5 board members*) and **Actions Taken Today** (with how many cheques were signed and commissions added). They always count today, whatever filter you use.
+2. Under **Filter**, choose a **User**, a **Page** and an **Action** (**View**, **Sign**, **Add**, **Edit**, **Delete** or **Search**), and a **From** and **To** date. Click **Apply**. **Clear** removes the filters.
+3. **Portal Activity** lists the entries, newest first: **Timestamp**, **User**, **Page**, **Action**, **Detail** and **IP Address**. **Detail** gives the context, for example the period viewed, the search typed, or the cheque reference and amount signed.
+4. The log shows 20 entries a page. Use **‹ Prev** and **Next ›** to move between pages.
+
+## What happens next
+
+Nothing: the log is read-only. Entries are written automatically and can't be changed from the portal.
+
+:::note[Good to know]
+- The **Page** names are those the log records: **Board Overview** (the Performance tab), **Financial Position**, **Payroll**, **Profitability**, **Tender Detail**, **Cheques** and **MD Review**.
+- The **User** list offers board members only. Visits by administrators are recorded too; choose **All Users** to see them.
+- **From** and **To** both include the whole day.
+- There is no menu for the log in Odoo; it is read here on the portal.
+:::

@@ -1,0 +1,17 @@
+type: matrix
+title: Who can do what in the MD review
+desc: Permission grid for the MD's quarterly review, showing that the MD prepares, submits and acknowledges, the Board Reviewer (or the backup after 14 days) signs off in the portal, and accountability administrators read every review and name the reviewers.
+source: e_board/models/accountability_board_review.py, e_board/controllers/md_review.py, e_board/security/md_review_rules.xml, e_board/views/md_review_views.xml, e_board/views/md_review_accountability_views.xml
+columns: [Board member, Board Reviewer or backup, MD, Accountability administrator, Finance or sales staff, System administrator]
+labelWidth: 280
+rows:
+  - {group: In the portal}
+  - {action: See the MD Review tab, cells: [n, p, n, n, n, n]}
+  - {action: Read a review and download its evidence, cells: [n, p, n, n, n, n]}
+  - {action: Change a result and Sign Off, cells: [n, p, n, n, n, n]}
+  - {group: In Odoo}
+  - {action: Add results and Submit to the Board, cells: [n, n, y, n, n, n]}
+  - {action: Acknowledge and write Your Comment, cells: [n, n, y, n, n, n]}
+  - {action: Read every board review (Board Reviews menu), cells: [n, n, p, y, n, n]}
+  - {action: Name the Board Reviewer and backup, cells: [n, n, n, y, n, n]}
+legend: {p: "Partly: see the notes under the picture"}

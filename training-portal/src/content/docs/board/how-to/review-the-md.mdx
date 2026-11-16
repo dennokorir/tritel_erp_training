@@ -1,0 +1,62 @@
+---
+title: Review and sign off the MD's quarter
+description: As the Board Reviewer, open the Managing Director's quarterly review on the Board portal, check each result, change any you disagree with and sign off.
+module: board
+pageType: how-to
+roles: [board]
+tags: [reviews, portal]
+keywords: [MD appraisal, managing director review, board sign-off, sign off, quarterly review, board reviewer, approve results, governance, directors, CEO review]
+where: [Board portal, MD Review]
+before:
+  - You are named as <strong>Board Reviewer</strong> in Accountability Settings, or as <strong>Backup Board Reviewer</strong> and the review has waited 14 days.
+  - The MD has submitted the quarter. You get an email <em>Board review to sign off</em> with an <strong>Open the review</strong> link.
+related: [board/concepts/md-quarterly-review, board/workflows/md-review, board/calculations/md-review-figures, board/faq]
+sources:
+  - e_board/controllers/md_review.py
+  - e_board/views/portal_md_review_templates.xml
+  - e_board/models/accountability_board_review.py
+sidebar: { order: 3 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Each quarter the MD submits their results to you. You check each one, accept it or change it with a reason, and sign off. Your sign-off becomes the MD's review for the quarter.
+
+<Illustration name="board/b1-review-list" caption="The MD Review tab and its list. The numbers match steps 1 and 2." />
+
+## Steps
+
+1. Click **Open the review** in the email. Or, on any Board portal page, click the **MD Review** tab; the yellow number is how many reviews are waiting for you.
+2. Click the review marked **With the board**, for example *Board review · Employee A · Q3 2026*.
+
+<Illustration name="board/b1-review-sign" caption="One review on the portal. The numbers match steps 3 to 7." />
+
+3. Read each target card: the dates it covers, the unit and the target, and whether the result was *Calculated by the system* or *Entered by Employee A*. Read the MD's comment, the calculation box under it, and open any **Evidence** files.
+4. To accept a result, leave the **Result** box as it is. Its label shows the proposed figure and the score it gives, for example **Result (proposed 90,000,000.00, scores 75.0%)**.
+5. To change a result, type the new figure in **Result**.
+6. Whenever you change a result, say why in **Comment (required if you change the result)**. You may add a comment to any target.
+7. When every card is done, click **Sign Off** at the bottom of the page.
+
+Cards marked **Nothing to measure** need nothing from you.
+
+## What happens next
+
+- The page reloads and shows *Signed off by Board member A on 12 Oct 2026*. Each card shows the **Board result** and its **Score**, with your comment.
+- Your results are written to the MD's targets at once as signed-off reviews, marked **Signed by the Board**. The MD's scores and the organisation figures update.
+- The MD gets a to-do and an email to acknowledge. When they do, you get an email *Board review acknowledged* with their comment, and the comment appears on the review.
+- If the review had been opened to the backup, the other reviewer is told nothing more is needed.
+- The review stays in your **MD Review** list, marked **Signed off**, for you to look back on.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Enter a result for Grow revenue.* | A **Result** box is empty or has something that isn't a number. | Type a number. Commas are fine, for example 90,000,000. |
+| *Say why you changed the result for Open Branch A.* | You changed a result without a comment. | Write the reason in **Comment (required if you change the result)** and click **Sign Off** again. What you typed is kept. |
+| *This review has already been signed off, or is not yours to sign.* | The other reviewer signed first, or you are no longer the named reviewer. | Refresh the **MD Review** list. Nothing more is needed. |
+
+:::note[Good to know]
+- The score in each **Result** label is for the proposed figure. If you change the result, the new score shows after you sign off.
+- The **MD Review** tab appears only when a review is waiting for you or you have signed one. Other board members don't see it.
+- Once you click **Sign Off** the review can't be reopened, so check every card first.
+- After 14 days the Backup Board Reviewer, if one is named, can sign off too. Whoever signs first closes the review.
+:::

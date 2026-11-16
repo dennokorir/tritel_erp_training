@@ -1,0 +1,49 @@
+---
+title: Acknowledge the board's sign-off
+description: As the Managing Director, read the results the board signed off for your quarter, add a comment if you wish, and acknowledge the review.
+module: board
+pageType: how-to
+roles: [md]
+tags: [reviews, my actions]
+keywords: [MD appraisal, managing director, acknowledge, board sign-off, quarterly review, board result, accept review, governance, directors]
+where: [Accountability, My Actions]
+before:
+  - The Board Reviewer has signed off your quarter. You get an <em>Acknowledge Board Review</em> to-do, due in 5 days, and an email <em>The board has signed off</em>.
+related: [board/workflows/md-review, board/concepts/md-quarterly-review, board/how-to/prepare-the-md-review]
+sources:
+  - e_board/models/accountability_board_review.py
+  - e_board/views/md_review_views.xml
+  - e_board/views/portal_md_review_templates.xml
+sidebar: { order: 2 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+When the Board Reviewer signs off your quarter, their results are written to your targets straight away. You then read what they decided and acknowledge it, with a comment for them if you wish.
+
+<Illustration name="board/b1-acknowledge" caption="A signed-off board review. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Accountability › My Actions**. Under **Board reviews**, click the review whose status reads **Signed off**. Or click the **Acknowledge Board Review** to-do.
+2. Check **Signed By** and **Signed On**.
+3. In the **Targets** list, compare your **Result** and **Score (%)** with the **Board Result** and **Board Score (%)**. Where the board changed a result, the reason is in **Board Comment**. Optionally, write a reply in **Your Comment**.
+4. Click **Acknowledge**.
+
+## What happens next
+
+- The review moves to **Acknowledged** and your to-do is marked done. **Your Comment** can no longer be changed.
+- The board member who signed off gets an email *Board review acknowledged: Board review · Employee A · Q3 2026* with your comment, and sees the comment on the review in the portal.
+- Your scores do not change when you acknowledge: they were updated at sign-off. Each target's reviews show the board member under **Signed by the Board**.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *You can comment once the board has signed off.* | You tried to write **Your Comment** before the sign-off, or after acknowledging. | Comment while the review is **Signed off**. |
+| *There is no board sign-off to acknowledge.* | The review is not **Signed off**: it is still with the board, or already acknowledged. | Refresh the page and check the status bar. |
+| *Only Employee A can do this.* | Someone other than the MD clicked **Acknowledge**. | Only the MD can acknowledge their own review. |
+
+:::note[Good to know]
+- There is no concern or escalation step for a board review, and nothing is acknowledged automatically. If you disagree with the board's results, say so in **Your Comment** and take it up with the board directly.
+- You reach the review through **My Actions** or the to-do. The email from the board says to *Open Board Reviews*, but that menu is for Accountability administrators.
+:::

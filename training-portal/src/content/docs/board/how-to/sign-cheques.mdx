@@ -1,0 +1,49 @@
+---
+title: Sign post-dated cheques
+description: Find the post-dated cheques waiting for board signatures, check them against the bill or purchase order they pay, and add your signature.
+module: board
+pageType: how-to
+roles: [board]
+tags: [portal, cheques]
+keywords: [cheque, PDC, post-dated cheque, signatory, sign cheque, authorise, authorisation, approve payment, supplier payment, board approval]
+where: [Portal, E-Board, PDC Cheques]
+before:
+  - You have a board portal login.
+  - Finance has entered the cheque in Odoo. Only cheques in <strong>Draft</strong> or <strong>Issued</strong> status appear here.
+related: [board/concepts/the-board-portal, board/how-to/access-log, board/who-can-do-what, board/faq]
+sources:
+  - e_board/controllers/e_board_controller.py
+  - e_board/views/portal_cheques_templates.xml
+  - tritel_pdc/models/pdc_cheque.py
+  - tritel_pdc/models/pdc_cheque_signature.py
+  - tritel_pdc/models/account_journal.py
+sidebar: { order: 11 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Finance writes post-dated cheques to pay suppliers. Each one needs a set number of board signatures (2 unless finance sets another number). The **PDC Cheques** tab lists the cheques still to be cleared so that you can check and sign them.
+
+<Illustration name="board/b2-cheques" caption="Cheques grouped by the vendor bill they pay. The numbers match the steps below." />
+
+## Steps
+
+1. Click **PDC Cheques**. The tiles count **Awaiting My Signature** (*Cheques you have not yet signed* and not yet fully signed), **Fully Authorised** (*All required signatures obtained*) and **Overdue / Critical** (*Due within 3 days or already overdue*).
+2. Under **Show:**, click **Needs My Signature** to see only the cheques waiting for you. **Fully Authorised** shows the finished ones; **All** shows everything.
+3. Choose how to list them: **By document** (the default) groups the cheques under the **Vendor Bill** or **Purchase Order** they pay; **Flat list** shows one row per cheque with **Linked To** and **Tender** columns.
+4. In **By document**, check the heading above the cheques: the **Bill Amount** or **PO Amount**, the **Total Cheques**, and whether the bill is **Fully covered**, **Partially covered** or **Over-covered** by the cheques.
+5. Check the cheque row: **Cheque Ref**, **Cheque No.**, **Bank**, **Due Date**, **Urgency** and **Amount (KES)**. Then click **Sign**.
+6. The row now shows **✓ Signed**. **Authorisation** shows how many of the required signatures are in (for example **2/2**) and **✓ Authorised** once all are.
+
+## What happens next
+
+- Your name and the time are added to the cheque's **Signatures** tab in Odoo, where finance sees them.
+- When the number of signatures reaches the number required, the cheque counts as fully signed and moves to **Fully Authorised**. Its status in Odoo doesn't change: finance still issues, deposits and clears it.
+- Your signature is recorded in the [access log](/board/how-to/access-log/) with the cheque reference and amount.
+
+:::note[Good to know]
+- You can sign a cheque once. Clicking **Sign** again does nothing.
+- A signature can't be withdrawn from the portal. If you signed the wrong cheque, tell finance.
+- A cheque that pays two bills appears under both. Cheques linked to no bill or order are listed under *Not linked to a document*.
+- **Urgency** reads **Normal**, **Soon** (7 days or less), **Critical** (3 days or less) or **Overdue**, from the date on the cheque.
+- If nothing is waiting, the page says *No cheques are awaiting your signature.*
+:::

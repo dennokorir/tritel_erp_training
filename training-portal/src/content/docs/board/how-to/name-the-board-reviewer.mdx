@@ -1,0 +1,53 @@
+---
+title: Name the Board Reviewer and backup
+description: As an Accountability administrator, choose the board member who reviews the Managing Director each quarter, and optionally a backup who can sign off after 14 days.
+module: board
+pageType: how-to
+roles: [accountability-admin]
+tags: [settings, reviews]
+keywords: [board reviewer, backup reviewer, MD appraisal, managing director review, quarterly review, settings, governance, directors, configure board review]
+where: [Accountability, Organisation, Settings]
+before:
+  - You are an <strong>Accountability administrator</strong>.
+  - The board member has been invited and has set up their portal account. See <a href="/board/how-to/invite-board-members/">Invite a board member</a>.
+related: [board/concepts/md-quarterly-review, board/workflows/md-review, board/how-to/invite-board-members, accountability/how-to/hr-admin/settings]
+sources:
+  - e_board/models/accountability_extensions.py
+  - e_board/views/md_review_accountability_views.xml
+  - e_board/models/accountability_board_review.py
+sidebar: { order: 5 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+The Board Reviewer is the board member who checks and signs off the Managing Director's results each quarter. Naming one switches the MD's targets to board review: from then on, only the board's sign-off gives them results.
+
+<Illustration name="board/b1-name-reviewer" caption="Accountability Settings, with the board review section. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Accountability › Organisation › Settings**.
+2. Scroll to **Board Review of the Top-Level Employee**, below **Notifications**.
+3. In **Board Reviewer**, choose the board member. Only board portal users are offered.
+4. Optionally, in **Backup Board Reviewer**, choose a different board member. The backup can sign off once a review has waited 14 days.
+5. Save the settings.
+
+## What happens next
+
+- A note is added to the settings' history, for example *The board reviewers of the top-level employee were changed by Employee C. Reviewer: Board member A. Backup: Board member B.* Everyone named before or after gets an email *Board reviewers changed*.
+- The MD's targets can no longer be reviewed in the usual way: **Request Review** is hidden and **Actual Value** can't be typed in.
+- On the next daily run, a review opens for the most recent finished quarter if there isn't one yet, and the MD is asked to prepare it. After that, one opens after each quarter.
+- A review that is **With the board** can be signed off by whoever is named now.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Board member A cannot review the top-level employee: board reviewers must be board portal users who are not employees.* | The person is a staff user, isn't a board portal user, or is linked to an employee. | [Invite them as a board member](/board/how-to/invite-board-members/) from a contact that is not an employee. |
+| *The backup must be a different person from the board reviewer.* | You chose the same person twice. | Choose someone else as backup, or leave it empty. |
+| *Name the board reviewer before the backup.* | **Backup Board Reviewer** is filled in but **Board Reviewer** is empty. | Fill in **Board Reviewer** first. |
+
+:::note[Good to know]
+- The MD, to the system, is the employee with no manager who has people reporting to them. If the MD has a manager set in Employees, or has no direct reports, no board review opens and their targets are reviewed as usual. Check the org chart.
+- If you remove the Board Reviewer, no new reviews open and the MD's targets go back to the usual reviews. A review that was already submitted can't then be signed off until a reviewer is named again.
+- Without a backup, the reviewer gets a single reminder after 7 days and nothing more.
+:::

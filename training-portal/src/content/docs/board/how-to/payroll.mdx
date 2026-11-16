@@ -1,0 +1,46 @@
+---
+title: Read the Payroll tab
+description: Pick a year on the board portal's Payroll tab and read gross pay, net pay, the employer's total cost, headcount, the monthly trend, pay composition and pay by department.
+module: board
+pageType: how-to
+roles: [board]
+tags: [portal, payroll]
+keywords: [payroll cost, staff costs, salaries, wage bill, employer cost, cost to company, NSSF, housing levy, PAYE, SHA, NHIF, headcount, board pack]
+where: [Portal, E-Board, Payroll]
+before:
+  - You have a board portal login.
+related: [board/calculations/payroll-cost, board/concepts/the-board-portal, board/faq]
+sources:
+  - e_board/controllers/e_board_controller.py
+  - e_board/views/portal_payroll_templates.xml
+sidebar: { order: 9 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+The **Payroll** tab shows the year's staff costs from confirmed payslips: no names, only totals by month and by department.
+
+<Illustration name="board/b2-payroll" caption="The Payroll tab for 2026 to date. The numbers match the steps below." />
+
+## Steps
+
+1. Click **Payroll**, then a year under **Year**. The current year runs from 1 January to today; a past year runs to 31 December. The dates are under the **Payroll** heading.
+2. Read the four tiles:
+   - **YTD Gross Payroll**: gross pay on the year's payslips, with the change against the same months of last year (for example *+11.1% vs prior year*), or *No prior-year data*.
+   - **Net Pay to Employees**: what staff took home, *After all statutory deductions*.
+   - **Total Employer Cost**: *Gross + ER NSSF + Housing Levy (ER)*.
+   - **Active Headcount**: the number of different employees *With confirmed payslips this period*.
+3. **Employer add-ons** breaks the employer's extra cost into **Employer NSSF** and **Housing Levy (ER)**, and repeats the **Total Cost to Company**.
+4. **Monthly Gross vs Net Pay** shows a pair of bars for each month: **Gross Pay** and **Net Pay**.
+5. **Pay Composition** splits pay into **Net Pay**, **PAYE**, **NSSF**, **NHIF/SHA** and **Housing**, each with its share. The figure in the middle is gross pay.
+6. **Payroll by Department** lists each department's **Headcount**, **YTD Gross** and **% of Total** gross, largest first.
+
+## What happens next
+
+Nothing changes in Odoo. See [Payroll employer cost](/board/calculations/payroll-cost/) for how each figure is worked out.
+
+:::note[Good to know]
+- Only payslips that are done or paid count. Draft payslips and refund payslips don't.
+- A payslip counts once its whole pay period has ended. In the middle of November, the November payslips are not in the figures yet, even if they are confirmed.
+- If there are no confirmed payslips for the year, the tiles show 0 and **Payroll by Department** says *No payroll data for this period.*
+- **Pay Composition** shares are of the five parts added together, not of gross pay, so other deductions (such as loans) are not shown.
+:::

@@ -1,0 +1,16 @@
+type: calc
+title: Order backlog and total exposure
+desc: Worked example of one sales order of KES 1,160,000 including VAT, invoiced 580,000 with 200,000 of that still unpaid, giving 580,000 to invoice and a Total Exposure of 780,000.
+source: e_board/controllers/e_board_controller.py (_order_exposure, e_position_orders)
+heading: S00101 for Customer A (KES, VAT included)
+inputs:
+  - {label: Order total, value: "1,160,000"}
+  - {label: Posted invoices less credit notes, value: "580,000"}
+  - {label: Still unpaid on those invoices, value: "200,000"}
+steps:
+  - {label: "To Invoice: 1,160,000 − 580,000 (never below 0)", value: "580,000"}
+  - {label: "Invoiced: 1,160,000 − 580,000", value: "580,000 · 50.0%"}
+  - {label: "Residual: unpaid on the order's invoices", value: "200,000"}
+  - {label: "Total Exposure: 580,000 + 200,000", value: "780,000"}
+result: {label: Total Exposure, value: "780,000", tone: warn}
+note: Only the 580,000 To Invoice is added to the order line of Receivables. The 200,000 is already counted under unpaid sales invoices.

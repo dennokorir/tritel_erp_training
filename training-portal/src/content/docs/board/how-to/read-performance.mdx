@@ -1,0 +1,54 @@
+---
+title: Read the Performance tab
+description: Pick a year or quarter on the board portal's Performance tab and read the revenue, spend, tender, accountability and expense figures it shows.
+module: board
+pageType: how-to
+roles: [board]
+tags: [portal, scores, tenders]
+keywords: [board pack, directors, dashboard, revenue, sales, spend, net position, win rate, tenders won, pipeline, organisation score, KPI, expenses]
+where: [Portal, E-Board, Performance]
+before:
+  - You have a board portal login. Signing in takes you straight to <strong>E-Board</strong>.
+related: [board/concepts/the-board-portal, board/concepts/as-at-figures, board/calculations/organisation-score, board/how-to/financial-position, board/how-to/profitability, board/faq]
+sources:
+  - e_board/controllers/e_board_controller.py
+  - e_board/views/portal_e_board_templates.xml
+  - e_board/models/accountability_board_summary.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+sidebar: { order: 7 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+The **Performance** tab is the board's summary of the company: invoiced revenue and spend, tenders, the organisation's accountability results and the biggest expense accounts. You open it at the start of a board meeting or when you prepare the board pack.
+
+<Illustration name="board/b2-performance" caption="The Performance tab for Q3 2026. The numbers match the steps below." />
+
+## Steps
+
+1. Under **Period**, click a year. The page shows 1 January to 31 December of that year, and the badge at the top right shows the year.
+2. To narrow it to a quarter, click **Q1**, **Q2**, **Q3** or **Q4** under **Quarter**. The dates under **E-Board** change to that quarter.
+3. Read the five headline tiles:
+   - **Revenue**: the total of posted customer invoices dated in the period, tax included. The caption counts the invoices and the sales orders confirmed in the period.
+   - **Total Spend**: the same for posted vendor bills, with the purchase orders confirmed in the period.
+   - **Net Position**: **Revenue** minus **Total Spend** (*Revenue minus spend*). Green when 0 or more, red below.
+   - **Won Tenders**: the expected revenue of won tenders, with *won of total* underneath.
+   - **Win Rate**: won tenders as a share of decided tenders. Green from 50%, amber from 30%, red below.
+4. In the **Accountability** block, the **As at** list starts on **Today**. Pick a past month end to see the figures as they stood then. The page says *Figures as they stood on 30 Sep 2026, rebuilt from the reviews covering up to that date.*
+5. Read the four accountability tiles: **Organisation Score**, **Objectives Meeting Expectations**, **Targets Reviewed** and **Staff with Targets**. See [Organisation score and rating](/board/calculations/organisation-score/).
+6. **Strategic Objectives** lists each top-level objective with its **Score**, **%**, **Reviewed** (targets with a signed review, *x of y*) and **Status**. The weakest objectives come first.
+7. Scroll down for **Commercial Performance — Tenders & Pipeline** (win rate, pipeline value and tenders by stage), **Revenue — Sales Invoices** and **Procurement — Purchase Invoices** (**Total Invoiced**, **Collected** or **Paid**, **Outstanding**, and the top five customers or vendors) and **Expenses by Account** (the eight biggest expense accounts on vendor bills). Click **Profitability →**, **Sales →** or **Purchases →** to open the detail.
+
+## What happens next
+
+- Nothing changes in Odoo: this page only reads figures. Each visit is recorded in the [access log](/board/how-to/access-log/).
+- **Sales →** and **Purchases →** open the outstanding invoices dated in the period you picked. See [Read the Financial Position](/board/how-to/financial-position/).
+- **Profitability →** opens the won tenders of the matching tender period. See [Read Profitability](/board/how-to/profitability/).
+
+:::note[Good to know]
+- The accountability figures build up over the year, so the quarter buttons don't change them. The page says so: *Scores build up over the year, so the quarter buttons don't change them.* To look back, use **As at** instead.
+- If no accountability period covers your dates, the block shows *No accountability period covers the selected dates.*
+- The **Organisation Score** and the rating word under it can tell different stories, for example 57% with *Meets Expectations*. The word judges running totals such as revenue against what is expected by now. See [Organisation score and rating](/board/calculations/organisation-score/).
+- Tender figures follow the tender periods that overlap your dates. If tender periods run for a whole year, picking a quarter still shows that year's tenders.
+- **Revenue** and **Total Spend** include tax and count invoices and bills only; credit notes are not taken off. The order counts and values use amounts before tax.
+- An order hidden from the board portal is left out of the Financial Position lists only. Its invoices still count in **Revenue** and **Total Spend** here.
+:::

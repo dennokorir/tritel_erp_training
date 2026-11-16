@@ -1,0 +1,27 @@
+type: screen
+title: Invite a board member
+desc: The Contacts list with one contact ticked and the Invite as Board Viewer window open, showing Board Members, Personal Message (optional) and the Send Invitation button, numbered 1 to 5.
+source: e_board/views/board_invite_wizard_views.xml (view_board_invite_wizard_form, action_partner_board_invite)
+frame:
+  grid: true
+  app: Contacts
+  menu: [{label: Contacts, active: true, n: 1}]
+  breadcrumb: [Contacts]
+blocks:
+  - buttons: [{label: "Action ▾", n: 2}]
+  - table:
+      columns: ["", Name, Email]
+      widths: [0.5, 4, 4]
+      rows:
+        - {cells: ["☑", Board member A, boardmember.a@example.com], highlight: true}
+        - ["☐", Customer A, info@customer-a.example.com]
+  - dialog:
+      title: Invite as Board Viewer
+      n: 3
+      blocks:
+        - title: {text: Invite Board Viewer}
+        - fields:
+            - [{label: Board Members, value: Board member A}]
+            - [{label: Personal Message (optional), value: "Welcome to the board portal.", n: 4}]
+        - text: "Board members without an existing portal account will receive a sign-up invitation email. Those already on the portal will be granted access immediately and notified by email."
+        - buttons: [{label: Send Invitation, primary: true, n: 5}, {label: Cancel}]

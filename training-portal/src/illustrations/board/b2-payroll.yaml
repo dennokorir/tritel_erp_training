@@ -1,0 +1,45 @@
+type: screen
+title: Board Payroll tab
+desc: The Payroll tab with the Year buttons, the four payroll tiles, the Employer add-ons strip, the monthly gross and net chart, the Pay Composition chart and the Payroll by Department table, numbered 1 to 6.
+source: e_board/views/portal_payroll_templates.xml (portal_payroll)
+frame:
+  app: E-Board
+  menu: [Performance, Financial Position, {label: Payroll, active: true}, Profitability, PDC Cheques]
+blocks:
+  - title: {text: Payroll, sub: "Staff costs and statutory deductions · 01 Jan 2026 – 16 Nov 2026"}
+  - buttons: [{label: "Year: 2026", primary: true, n: 1}, {label: "2025"}]
+  - tiles:
+      - {label: "YTD Gross Payroll · +11.1% vs prior year", value: "10.00M", n: 2}
+      - {label: "Net Pay to Employees · After all statutory deductions", value: "7.00M"}
+      - {label: "Total Employer Cost · Gross + ER NSSF + Housing Levy (ER)", value: "10.35M"}
+      - {label: "Active Headcount · With confirmed payslips this period", value: "35 employees"}
+  - fields:
+      - [{label: "Employer add-ons · Employer NSSF", value: "200K KES", n: 3}, {label: "Housing Levy (ER) · Total Cost to Company", value: "150K KES · 10.35M KES"}]
+  - columns:
+      - panel: true
+        blocks:
+          - heading: Monthly Gross vs Net Pay
+            n: 4
+          - bars:
+              - {label: Sep, value: 1000000, max: 1200000, tone: accent}
+              - {label: Oct, value: 1000000, max: 1200000, tone: accent}
+              - {label: Nov, value: 0, max: 1200000, tone: muted}
+      - panel: true
+        blocks:
+          - heading: Pay Composition
+            n: 5
+          - table:
+              columns: [Part, KES, "%"]
+              widths: [2, 1.6, 1]
+              rows:
+                - [Net Pay, "7.00M", "72.7%"]
+                - [PAYE, "2.00M", "20.8%"]
+                - [NHIF/SHA, "275K", "2.9%"]
+  - heading: Payroll by Department
+    n: 6
+  - table:
+      columns: [Department, Headcount, YTD Gross, "% of Total"]
+      widths: [3, 1.2, 1.6, 1.4]
+      rows:
+        - [Department A, "12", "4,000,000", "40.0%"]
+        - [Department B, "9", "3,000,000", "30.0%"]

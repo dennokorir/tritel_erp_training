@@ -1,0 +1,17 @@
+type: matrix
+title: Who can use the board pages
+desc: Permission grid for the board portal pages, showing that board members and the Board Reviewer can open the five board tabs, sign cheques and add commission lines, that only the person who added a commission line can change it, and that only system administrators see the Access Log.
+source: e_board/controllers/e_board_controller.py, e_board/security/security.xml, e_board/views/portal_e_board_templates.xml
+columns: [Board member, Board Reviewer or backup, MD, Accountability administrator, Finance or sales staff, System administrator]
+labelWidth: 280
+rows:
+  - {group: Reading}
+  - {action: "Open Performance, Financial Position, Payroll, Profitability and PDC Cheques", cells: [y, y, n, n, n, y]}
+  - {action: Open the outstanding invoice and order lists, cells: [y, y, n, n, n, y]}
+  - {group: Acting}
+  - {action: Sign a post-dated cheque, cells: [y, y, n, n, n, y]}
+  - {action: Add a commission or facilitation line, cells: [y, y, n, n, n, y]}
+  - {action: Edit or delete a commission line, cells: [p, p, n, n, n, p]}
+  - {group: Oversight}
+  - {action: Open the Access Log, cells: [n, n, n, n, n, y]}
+legend: {p: "Only lines you added yourself"}

@@ -1,0 +1,22 @@
+type: screen
+title: PDC cheques for signing
+desc: The PDC Cheques tab with the Awaiting My Signature, Fully Authorised and Overdue / Critical tiles, the Show filters, the Flat list and By document buttons, a vendor bill heading with its coverage, and the cheque table with the Sign button, numbered 1 to 6.
+source: e_board/views/portal_cheques_templates.xml (portal_cheques)
+frame:
+  app: E-Board
+  menu: [Performance, Financial Position, Payroll, Profitability, {label: PDC Cheques, active: true}]
+blocks:
+  - title: {text: PDC Cheques for Signing, sub: "Post dated cheques awaiting board authorisation — grouped by linked document"}
+  - tiles:
+      - {label: "Awaiting My Signature · Cheques you have not yet signed", value: "3", tone: warn, n: 1}
+      - {label: "Fully Authorised · All required signatures obtained", value: "5", tone: good}
+      - {label: "Overdue / Critical · Due within 3 days or already overdue", value: "1", tone: bad}
+  - buttons: [{label: "Show: All", primary: true, n: 2}, {label: Needs My Signature}, {label: Fully Authorised}, {label: Flat list, n: 3}, {label: By document}]
+  - fields:
+      - [{label: "Vendor Bill BILL/2026/0042 · Supplier A · 2 cheques", value: "Bill Amount KES 1,000,000", n: 4}, {label: Total Cheques, value: "1,000,000 · Fully covered"}]
+  - table:
+      columns: [Cheque Ref, Cheque No., Due Date, Urgency, Amount (KES), Authorisation, Action]
+      widths: [1.6, 1.2, 1.6, 1.2, 1.4, 1.4, 1.2]
+      rows:
+        - {cells: [PDC/2026/0007, "000123", "18 Nov 2026 · 2 days", {text: Critical, badge: true, tone: bad}, "500,000", "1/2", {text: Sign, bold: true}], n: 5}
+        - {cells: [PDC/2026/0008, "000124", "18 Dec 2026 · 32 days", {text: Normal, badge: true, tone: good}, "500,000", "2/2 ✓ Authorised", "✓ Signed"], n: 6}

@@ -1,0 +1,63 @@
+---
+title: Prepare and submit the quarterly review
+description: As the Managing Director, add your results, comments and evidence to the board review that opens after each quarter, then submit it to the Board Reviewer.
+module: board
+pageType: how-to
+roles: [md]
+tags: [reviews, my actions]
+keywords: [MD appraisal, managing director, quarterly review, board review, self-assessment, results, evidence, submit to board, board pack, governance]
+where: [Accountability, My Actions]
+before:
+  - You are the top-level employee (the MD) and a Board Reviewer is named in Accountability Settings.
+  - A quarter has ended. You get a <em>Prepare Board Review</em> to-do, due in 7 days, and an email when the review opens.
+related: [board/concepts/md-quarterly-review, board/workflows/md-review, board/how-to/acknowledge-the-board-review, board/calculations/md-review-figures]
+sources:
+  - e_board/models/accountability_board_review.py
+  - e_board/views/md_review_views.xml
+  - e_board/models/accountability_extensions.py
+  - tritel_accountability_framework/static/src/my_actions/accountability_my_actions.xml
+sidebar: { order: 1 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+After each quarter the system opens a review of your targets for the board. Results that come from a metric are already filled in. You add the rest, explain them, attach evidence and submit the review to the Board Reviewer.
+
+<Illustration name="board/b1-prepare-review" caption="Your board review while it is being prepared. The numbers match steps 1 to 4." />
+
+## Steps
+
+1. Open **Accountability › My Actions**. Under **Board reviews**, click the review, for example *Board review · Employee A · Q3 2026* (its status reads **Being prepared**). Or click the **Prepare Board Review** to-do in your activities.
+2. Check **Quarter From** and **Quarter To**.
+3. Look down the **Targets** list. Lines with **Metric** ticked were calculated by the system: you can't change their **Result**, but you may add a comment and evidence. Every other line needs your result and a comment. Each line's **Window From** and **Window To** show the dates it covers.
+4. Click a line that needs your input. The window shown below opens.
+
+<Illustration name="board/b1-prepare-line" caption="One target, with the Result, Comment and Evidence boxes. The numbers match steps 5 to 8." />
+
+5. Type the **Result**. For a milestone target, type how far it is complete, as a percentage (for example 75). The **Score (%)** updates.
+6. Write a **Comment** that explains the result to the board.
+7. Attach supporting files under **Evidence**. The Board Reviewer can download them from the portal.
+8. Click **Save**. Repeat steps 4 to 8 for each line.
+9. Click **Submit to the Board**, then **Ok** when asked *Submit this quarter to the board? You can't change it afterwards.*
+
+## What happens next
+
+- The review moves to **With the board** and can no longer be changed. Your to-do is marked done.
+- The Board Reviewer gets an email with a link to the review on the portal. They accept or change each result and sign off.
+- If they have not signed off after 7 days they are reminded. After 14 days the Backup Board Reviewer, if one is named, can sign off too.
+- When the board signs off, you get an **Acknowledge Board Review** to-do. See [Acknowledge the board's sign-off](/board/how-to/acknowledge-the-board-review/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Add your result and a comment for: Open Branch A* | A line you have to fill in has no **Comment**. | Open each line named and write a comment, then submit again. |
+| *'Grow revenue' comes from a metric. The board member can adjust it.* | You tried to change the **Result** of a line calculated by the system. | Leave it. Explain in the **Comment** if you think it is wrong; the Board Reviewer can change it. |
+| *This review has been submitted, so it can no longer be changed.* | The review is already **With the board**. | Nothing more can be added. Contact the Board Reviewer if something is missing. |
+| *No board reviewer is named in the accountability configuration.* | The Board Reviewer was removed from Accountability Settings. | Ask an Accountability administrator to [name the Board Reviewer](/board/how-to/name-the-board-reviewer/). |
+| *Only Employee A can do this.* | Someone other than the MD clicked **Submit to the Board**. | Only the MD can submit their own review. |
+
+:::note[Good to know]
+- The MD has no **Board Reviews** menu. You reach the review through **My Actions** (group **Board reviews**: *Prepare the quarter for the board, or acknowledge its sign-off.*) or through the to-do.
+- Submitting checks only that each line you fill in has a comment. A line left with a **Result** of 0 but a comment is accepted, so check every result before you submit.
+- Metric results were worked out when the review opened. If something was posted later, say so in the **Comment**; the Board Reviewer can adjust the result.
+:::

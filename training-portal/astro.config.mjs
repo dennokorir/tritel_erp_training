@@ -76,6 +76,18 @@ export default defineConfig({
             { label: 'FAQ', link: '/tenders/faq/' },
           ],
         },
+        {
+          label: 'Board portal',
+          items: [
+            { label: 'Overview', link: '/board/' },
+            group('Concepts', 'board/concepts', true),
+            group('Workflows', 'board/workflows', true),
+            group('How-to', 'board/how-to', true),
+            group("How it's calculated", 'board/calculations', true),
+            { label: 'Who can do what', link: '/board/who-can-do-what/' },
+            { label: 'FAQ', link: '/board/faq/' },
+          ],
+        },
         group('End-to-end journeys', 'end-to-end', true),
         group('Learning paths by role', 'roles', true),
         group('Reference', 'reference', true),

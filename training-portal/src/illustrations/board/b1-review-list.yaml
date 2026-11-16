@@ -1,0 +1,17 @@
+type: screen
+title: The MD Review tab
+desc: The MD Review list on the Board portal, reached from the MD Review tab, with one review waiting for sign-off and one already signed off, numbered 1 and 2.
+source: e_board/views/portal_md_review_templates.xml (portal_md_review_tab, portal_md_reviews)
+frame:
+  app: E-Board
+  menu: [Performance, Financial Position, Payroll, Profitability, PDC Cheques, {label: MD Review (1), active: true, n: 1}]
+blocks:
+  - text: "← Board overview"
+  - title: {text: MD Review, sub: "Quarterly reviews of the Managing Director's targets. Waiting reviews need your sign-off."}
+  - table:
+      columns: [Review, Status]
+      widths: [5, 2]
+      n: 2
+      rows:
+        - {cells: ["Board review · Employee A · Q3 2026", {text: With the board, badge: true, tone: warn}], highlight: true}
+        - ["Board review · Employee A · Q2 2026", {text: Signed off, badge: true, tone: muted}]

@@ -1,0 +1,26 @@
+type: screen
+title: Board portal access log
+desc: The Access Log tab, shown to system administrators only, with the Page Views Today, Active Users Today and Actions Taken Today tiles, the User, Page, Action, From and To filters with Apply and Clear, the Portal Activity table and the page buttons, numbered 1 to 4.
+source: e_board/views/portal_access_log_templates.xml (portal_access_log)
+frame:
+  app: E-Board
+  menu: [Performance, Financial Position, Payroll, Profitability, PDC Cheques, {label: Access Log, active: true}]
+blocks:
+  - title: {text: Access Log, sub: "All portal page visits and actions — updated in real time · Admin only"}
+  - tiles:
+      - {label: "Page Views Today · portal page views", value: "24", n: 1}
+      - {label: "Active Users Today · of 5 board members", value: "3"}
+      - {label: "Actions Taken Today · 2 cheques signed, 1 commission added", value: "3"}
+  - fields:
+      - [{label: User, value: All Users, n: 2}, {label: Page, value: All Pages}]
+      - [{label: Action, value: Sign}, {label: "From · To", value: "01/11/2026 · 16/11/2026"}]
+  - buttons: [{label: Apply, primary: true}, {label: Clear}]
+  - heading: "Portal Activity · Showing 2 of 2 entries"
+    n: 3
+  - table:
+      columns: [Timestamp, User, Page, Action, Detail, IP Address]
+      widths: [1.8, 1.6, 1.4, 1, 2.6, 1.4]
+      rows:
+        - ["16 Nov 2026 10:05", Board member A, Cheques, {text: Sign, badge: true, tone: good}, "PDC/2026/0007 · KES 500,000", 192.0.2.10]
+        - ["15 Nov 2026 16:40", Board member B, Cheques, {text: Sign, badge: true, tone: good}, "PDC/2026/0007 · KES 500,000", 192.0.2.24]
+  - buttons: [{label: "‹ Prev"}, {label: "Page 1 of 1"}, {label: "Next ›", n: 4}]

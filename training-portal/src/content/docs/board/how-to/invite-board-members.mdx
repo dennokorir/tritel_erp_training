@@ -1,0 +1,46 @@
+---
+title: Invite a board member
+description: Give a board member access to the Board portal by sending them an invitation from their contact, and know what they receive.
+module: board
+pageType: how-to
+roles: [system-admin, accountability-admin]
+tags: [access, portal]
+keywords: [invite director, board access, add board member, portal access, board viewer, onboarding, new director, sign up, board login, e-board]
+where: [Contacts, Action, Invite as Board Viewer]
+before:
+  - You are a <strong>System administrator</strong> or an <strong>Accountability administrator</strong>. Only these roles see <strong>Invite as Board Viewer</strong>.
+  - The board member has a contact with an email address.
+related: [board/index, board/how-to/name-the-board-reviewer, board/who-can-do-what, getting-started/logging-in]
+sources:
+  - e_board/models/board_invite_wizard.py
+  - e_board/views/board_invite_wizard_views.xml
+  - e_board/data/mail_template_board_invite.xml
+  - e_board/models/res_users.py
+  - e_board/models/res_partner.py
+sidebar: { order: 4 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Board members use the Board portal as portal users. You invite them from their contact: the system emails them and gives them the **Board Viewer** role, which opens every board page. You can invite several board members at once.
+
+<Illustration name="board/b1-invite" caption="Inviting a board member from the Contacts list. The numbers match the steps below." />
+
+## Steps
+
+1. Open the **Contacts** app and find the board member's contact. Create one first if needed, with their name and email.
+2. Tick the contact in the list (tick several to invite them together), or open the contact. Then click **Action** and choose **Invite as Board Viewer**.
+3. The **Invite as Board Viewer** window opens with the contacts under **Board Members**. Add or remove contacts there; only contacts with an email address can be chosen.
+4. Optionally, type a **Personal Message (optional)**. It is shown in the invitation email.
+5. Click **Send Invitation**.
+
+## What happens next
+
+- **A board member with no portal account** gets an email *You're invited to Tritel Executive Board Portal*, with your message and a **Set up my account →** button. They choose a password; when the account is created, the **Board Viewer** role is added. The email says the link is valid for 24 hours.
+- **A board member who already has a portal account** gets the **Board Viewer** role at once and an email *Your board portal access is ready — Tritel* with an **Open Board Portal →** button.
+- When they sign in and open **/my**, they land on the Board portal's **Performance** tab.
+- To make them the Board Reviewer or backup, see [Name the Board Reviewer and backup](/board/how-to/name-the-board-reviewer/).
+
+:::note[Good to know]
+- If the set-up link no longer works, send the invitation again from the same contact.
+- Invite board members as portal users from their own contacts. The Board Reviewer and backup must be board portal users who are not employees.
+:::

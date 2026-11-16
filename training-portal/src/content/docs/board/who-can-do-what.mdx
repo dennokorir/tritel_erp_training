@@ -1,0 +1,68 @@
+---
+title: Who can do what
+description: Who can open the board portal, sign cheques, add commission lines, see the access log, take part in the MD's quarterly review, set the board flags on orders and invite board members.
+module: board
+pageType: reference
+roles: [board, md, accountability-admin, finance, system-admin, everyone]
+tags: [permissions, access]
+keywords: [access rights, permissions, roles, board viewer, directors, who can sign, signatory, board reviewer, backup reviewer, invite board member, can't see board portal]
+related: [board/index, board/faq, board/how-to/invite-board-members, board/how-to/name-the-board-reviewer, board/how-to/exclude-or-hide-orders, roles/md-and-board]
+sources:
+  - e_board/security/security.xml
+  - e_board/security/ir.model.access.csv
+  - e_board/security/md_review_rules.xml
+  - e_board/controllers/e_board_controller.py
+  - e_board/controllers/md_review.py
+  - e_board/models/accountability_board_review.py
+  - e_board/models/accountability_extensions.py
+  - e_board/views/md_review_views.xml
+  - e_board/views/sale_order_views.xml
+  - e_board/views/purchase_order_views.xml
+  - e_board/views/board_invite_wizard_views.xml
+  - tritel_pdc/views/pdc_cheque_views.xml
+sidebar: { order: 2 }
+---
+import Illustration from '../../../components/Illustration.astro';
+
+The board portal has one role of its own, **Board Viewer**. The Board Reviewer and the backup are board members named in Accountability Settings, not separate roles.
+
+## The roles
+
+| Who | How they get it |
+|---|---|
+| **Board member** | A portal user with the **Board Viewer** role, usually given by accepting an invitation. See [Invite a board member](/board/how-to/invite-board-members/). |
+| **Board Reviewer** and **Backup Board Reviewer** | Board members named in **Accountability › Organisation › Settings**. They must be portal users, not employees. See [Name the Board Reviewer and backup](/board/how-to/name-the-board-reviewer/). |
+| **MD** | The top-level employee: no manager, with people reporting to them. |
+| **Accountability administrator** | Given on the user's access rights under Accountability. |
+| **Finance or sales staff** | Staff who can edit sales or purchase orders and post-dated cheques. |
+| **System administrator** | Odoo's Settings administrator. |
+
+Each column shows what that role adds. A person with two roles has the rights of both.
+
+## Board pages
+
+<Illustration name="board/b2-matrix-pages" caption="Who can open the board tabs, sign cheques, add commission lines and read the access log." />
+
+- **Edit or delete a commission line**: only the board member who added it, and only from the portal.
+- Staff, the MD and accountability administrators work in Odoo. They don't use the board portal unless they are also given the **Board Viewer** role.
+
+## The MD's quarterly review
+
+<Illustration name="board/b2-matrix-md-review" caption="Who prepares, signs off, acknowledges and reads the MD's quarterly review." />
+
+Notes on the "partly" marks:
+
+- **Board Reviewer or backup**: the Board Reviewer can open and sign a review while it is **With the board**. The backup can do the same once the review has waited 14 days and been opened to them. Whoever signs first closes it, and that person can still read it afterwards. The **MD Review** tab appears only for someone with such a review.
+- **MD**: the MD sees their own reviews only, through **My Actions** or the to-do on the review.
+
+## Back-office flags and settings
+
+<Illustration name="board/b2-matrix-backoffice" caption="Who sets the order flags and cheque signatures, invites board members and names the reviewers." />
+
+- **Exclude from Board Position** and **Hide from Board Portal** are on the **Other Info** tab of a sales order and the **Other Information** tab of a purchase order, under **Board Position Report**. Anyone who can edit the order can set them; a reason is required.
+- The number of signatures a cheque needs is set on the cheque's **Signatures** tab (**Required Signatures**). New cheques take the default from the bank journal's **Required Signatories (PDC)**, usually 2.
+- **Invite as Board Viewer** is in the **Action** menu of the contacts list and form.
+
+:::note[Good to know]
+The board sees totals only. The Performance tab shows no names or individual scores, and the Payroll tab shows no individual pay. The MD's own targets are seen in detail only by the Board Reviewer (or the backup) who signs them off.
+:::

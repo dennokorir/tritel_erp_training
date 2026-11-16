@@ -1,0 +1,22 @@
+type: screen
+title: Outstanding sales order balance
+desc: The Outstanding Sales Order Balance page opened from the Financial Position, with the orders table showing Total, Invoiced, To Invoice, Residual and Total Exposure, and the excluded section with its reason, numbered 1 to 2.
+source: e_board/views/portal_position_detail_templates.xml (portal_position_orders)
+frame:
+  app: E-Board
+  menu: [Performance, {label: Financial Position, active: true}, Payroll, Profitability, PDC Cheques]
+  breadcrumb: [Financial Position, Outstanding Sales Order Balance]
+blocks:
+  - table:
+      columns: [Order, Partner, Status, Total, Invoiced, To Invoice, Residual, Total Exposure]
+      widths: [1.4, 1.6, 1.8, 1.3, 1.3, 1.3, 1.2, 1.5]
+      rows:
+        - {cells: [S00101, Customer A, {text: Ready to Invoice, badge: true, tone: accent}, "1,160,000", "580,000", "580,000", "200,000", {text: "780,000", bold: true}], n: 1}
+        - [S00102, Customer B, {text: Pending Delivery, badge: true, tone: warn}, "420,000", "0", "420,000", "0", "420,000"]
+  - heading: Excluded from position report · 1 order
+    n: 2
+  - table:
+      columns: [Order, Partner, To Invoice, Reason for Exclusion]
+      widths: [1.4, 1.6, 1.4, 4]
+      rows:
+        - [S00095, Customer C, "300,000", Order under dispute with the customer]

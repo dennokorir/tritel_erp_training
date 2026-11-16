@@ -1,0 +1,67 @@
+---
+title: Read Profitability and add a commission line
+description: Compare estimated and actual gross profit on won tenders, see which tenders have missing data, and add, edit or delete your own confidential commission or facilitation line on a tender's business case.
+module: board
+pageType: how-to
+roles: [board]
+tags: [portal, business case, tenders]
+keywords: [GP, gross profit, margin, P&L, profitability, business case, commission, facilitation fee, agency fee, confidential, won tenders, variance, board pack]
+where: [Portal, E-Board, Profitability]
+before:
+  - You have a board portal login.
+  - To add a commission line, the tender must have a business case.
+related: [tenders/concepts/business-cases, tenders/calculations/business-case-margin, board/how-to/read-performance, board/faq, board/who-can-do-what]
+sources:
+  - e_board/controllers/e_board_controller.py
+  - e_board/views/portal_profitability_templates.xml
+  - e_board/views/portal_profitability_detail_templates.xml
+  - tritel_tender_tracker/models/tender_business_case.py
+sidebar: { order: 10 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+The **Profitability** tab lists every won tender with its estimated gross profit (from the business case) and its actual gross profit (from confirmed sales and purchase orders). On a tender's page you can also add a commission or facilitation cost that only you can change.
+
+<Illustration name="board/b2-profitability" caption="The Profitability list. The numbers match the steps below." />
+
+## Read the list
+
+1. Click **Profitability**. **All Periods** shows every won tender; click a tender period to narrow the list.
+2. To find a tender, type part of its reference, name or customer in **Search Ref No, Tender, Customer…** and click **Search**. **✕ Clear** removes the search.
+3. Use **All**, **Ready for Analysis** (no missing data) or **⚠ Analysis Gaps** (something missing) to filter the rows. The tiles above add up the rows shown: **Won Tenders**, **Estimated GP**, **Actual GP** and **Analysis Gaps**.
+4. Each row shows **Revenue**, **Est. GP**, **Est. Margin**, **Actual GP**, **Actual Margin**, **Variance** (actual minus estimated GP) and **BC Status** (**Draft**, **Submitted**, **Approved**, **Rejected** or **No BC**).
+5. A warning sign next to the reference means data is missing. Click it to see what, for example *No business case*, *Business case is in Draft — costs may be incomplete*, *No confirmed Sales Orders* or *No confirmed Purchase Orders*. Click **Understood** to close it. Click the reference itself to open the tender.
+
+## Add, edit or delete a commission line
+
+<Illustration name="board/b2-profitability-detail" caption="A won tender's page with your own commission line. The numbers match the steps below." />
+
+1. On the tender's page, the tiles show the business case's **Revenue**, **Total Cost**, **Gross Profit** and **Margin**.
+2. **Cost Breakdown** lists every cost line. Commission lines show *— Confidential —* instead of a description, for everyone. Your own lines have **Edit** and **Delete** links.
+3. Scroll to **Add Commission / Facilitation Line**.
+4. Type a **Description**, which is required (for example *Agency facilitation fee*), and choose the **Currency** (KES by default).
+5. Enter the **Quantity** and **Unit Amount**, then click **Add Line**. The page reloads with the new line and the new totals.
+6. **Actual vs Estimated** (won tenders only) compares **Actual Revenue**, **Actual Cost**, **Actual GP** and **Actual Margin** with the estimate, and shows the **GP Variance**.
+
+To change your line, click **Edit** on it: the form becomes **Edit Commission Line**. Change the fields and click **Save Changes**, or **Cancel**. To remove it, click **Delete** and confirm *Delete this commission line?*
+
+## What happens next
+
+- The line is added to the tender's business case under **Commissions & Facilitation**. It raises **Total Cost** and lowers **Gross Profit**, **Margin** and **Estimated GP** straight away, so the **Variance** moves too. **Actual GP** doesn't change: it comes from the orders.
+- A line in another currency is converted to KES at the day's rate when you save it.
+- In Odoo the description stays masked for staff; only tender administrators can read it.
+- Adding, editing and deleting are recorded in the [access log](/board/how-to/access-log/).
+
+## Common mistakes
+
+| What you see | Why it happens | What to do |
+|---|---|---|
+| The page reloads and no line was added. | The **Description** was empty. | Type a description and click **Add Line** again. |
+| *No business case has been created for this tender yet.* and no form | The tender has no business case. | Ask the bid team to create one. See [business cases](/tenders/concepts/business-cases/). |
+| No **Edit** or **Delete** on a commission line | Another board member added it. | Ask them to change it. |
+
+:::note[Good to know]
+- **Actual GP** uses confirmed order totals including tax, while the estimate uses the business case lines. A difference can come from tax alone. See [business case margin](/tenders/calculations/business-case-margin/).
+- A negative quantity or amount is saved as 0.
+- Your own line also shows *— Confidential —* in the table. Click **Edit** to see what you wrote.
+:::

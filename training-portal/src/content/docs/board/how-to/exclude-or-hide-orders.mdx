@@ -1,0 +1,55 @@
+---
+title: Exclude or hide an order from the board
+description: Keep a sales or purchase order out of the Board portal's Financial Position totals with Exclude from Board Position, or off its lists entirely with Hide from Board Portal.
+module: board
+pageType: how-to
+roles: [finance]
+tags: [finance, purchase orders]
+keywords: [board position, exclude order, hide order, board pack, financial position, backlog, disputed order, LPO, sales order, purchase order, receivables, payables]
+where: [Sales, Orders, Other Info]
+before:
+  - You can edit sales orders (Sales) or purchase orders (Purchase).
+  - The order is confirmed and not fully invoiced. Only these orders appear in the Financial Position's order lists.
+related: [board/concepts/as-at-figures, board/how-to/financial-position, board/calculations/financial-position]
+sources:
+  - e_board/views/sale_order_views.xml
+  - e_board/views/purchase_order_views.xml
+  - e_board/models/sale_order.py
+  - e_board/models/purchase_order.py
+  - e_board/controllers/e_board_controller.py
+  - e_board/views/portal_position_detail_templates.xml
+sidebar: { order: 6 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+The Board portal's **Financial Position** counts what is still to be invoiced on confirmed orders. When an order should not count, for example because it is disputed or will be cancelled, you can exclude it from the totals and give a reason the board can read, or hide it completely.
+
+<Illustration name="board/b1-exclude-hide" caption="The Board Position Report section of a sales order. The numbers match the steps below." />
+
+## Steps
+
+1. Open the order: **Sales › Orders** for a sales order, or **Purchase › Orders** for a purchase order.
+2. Open the **Other Info** tab (sales order) or the **Other Information** tab (purchase order).
+3. To keep it out of the totals but listed, tick **Exclude from Board Position** and type the **Exclusion Reason**. The board sees this reason.
+4. To keep it off the Financial Position entirely, tick **Hide from Board Portal** and type the **Hide Reason**. The board does not see this reason.
+5. Save the order.
+
+To undo either, untick the box and save.
+
+## What happens next
+
+- **Excluded:** the order's uninvoiced amount leaves the receivables or payables totals. On the order detail page of the Financial Position it is listed under **Excluded from position report**, with your reason under **Reason for Exclusion**. The main page shows how many orders are excluded.
+- **Hidden:** the order disappears from every Financial Position list and total, including the excluded section.
+- To find marked orders, use the filters **Excluded from Board Position** and **Hidden from Board Portal** in the Sales or Purchase order list.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Invalid fields: Exclusion Reason* | You ticked **Exclude from Board Position** without a reason. | Type the **Exclusion Reason**, then save. |
+| *Invalid fields: Hide Reason* | You ticked **Hide from Board Portal** without a reason. | Type the **Hide Reason**, then save. |
+
+:::note[Good to know]
+- **Hide from Board Portal** hides the order from the Financial Position order lists only. Its invoices still count in **Revenue** and **Total Spend** on the Performance tab and in the outstanding invoice lists, and the order still counts in the Performance tab's order count.
+- If both boxes are ticked, the order is hidden.
+:::

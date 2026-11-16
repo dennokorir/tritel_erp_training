@@ -1,0 +1,59 @@
+---
+title: Organisation score and rating
+description: How the Performance tab works out the Organisation Score, its rating label, each objective's status, Objectives Meeting Expectations, Targets Reviewed and Staff with Targets, live or as at a past month end.
+module: board
+pageType: calculation
+roles: [board, md, accountability-admin]
+tags: [scores, ratings]
+keywords: [organisation score, company score, strategic objectives, rating, meets expectations, KPI, balanced scorecard, performance, board pack, pace, year to date]
+related: [board/how-to/read-performance, board/concepts/as-at-figures, accountability/calculations/objective-achievement, accountability/calculations/ratings, accountability/calculations/weights-over-time, accountability/concepts/snapshots-and-as-at]
+sources:
+  - e_board/models/accountability_board_summary.py
+  - e_board/views/portal_e_board_templates.xml
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_target_weights.py
+  - tritel_accountability_framework/models/accountability_rating.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+sidebar: { order: 2 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+The **Accountability** block on the Performance tab sums up the whole company's targets with no names. It uses the newest accountability period (not in draft) that overlaps the year or quarter you picked.
+
+## Each objective
+
+For each top-level objective, counting the targets of its sub-objectives too:
+
+- **Counted targets** are the live targets that are not drafts, not development-only and not fully passed down to a team.
+- **Measured targets** are the counted ones with a result (a signed review, an entered figure or a finished milestone stage). A result of 0% counts.
+- **Score** (the **%** column) = the average of the measured targets' scores, weighted by each target's weight over the time it was in force. With no measured target the score is *–*.
+- **Status** comes from the same average of the targets' **rating scores**. A rating score is the target's score, except for running totals (such as revenue for the year so far) in an open period: those are judged against what is expected by their last review. For example, half way through the year with 50,000,000 expected of 100,000,000 and 45,000,000 achieved, the score is 45% but the rating score is 90%.
+- The rating levels come from Accountability Settings (by default **Unsatisfactory** below 50, **Needs Improvement** from 50, **Meets Expectations** from 60, **Exceeds Expectations** from 70, **Outstanding** from 80). An objective with targets but no result is **Not yet measured**; one with no counted target is **No targets set**.
+- **Reviewed** = counted targets with at least one signed review, *x of y*.
+
+## The tiles
+
+- **Organisation Score** = the average of the objectives' scores, weighted by each objective's weight. Objectives with no score are left out. Shown as a whole number.
+- The caption under it is the rating of the weighted average of the objectives' rating scores, then *based on X of Y objectives*, where X leaves out objectives that are not yet measured or have no targets.
+- **Objectives Meeting Expectations** = objectives whose status is **Meets Expectations** or better, *N of M*, with *n not yet measured* underneath.
+- **Targets Reviewed** = counted targets with a signed review ÷ all counted targets.
+- **Staff with Targets** = staff taking part in the period who own a counted target ÷ all staff taking part. Staff exempt from accountability are not counted.
+
+<Illustration name="board/b2-calc-org-score" caption="The score says 57% but the label says Meets Expectations, because the label uses the rating scores." />
+
+The table lists objectives worst status first, then lowest score first.
+
+## As at a past month end
+
+When you pick a month end in **As at**, every target is rebuilt as it stood that day: only reviews covering up to that date count, and the weights in force that day are used. The same formulas then apply. The date is kept inside the period, and the list offers **Today** (while the period runs) and each past month end, with *· quarter end* every third month of the period.
+
+## Edge cases
+
+- **Nothing measured yet**: the score shows *–* and the caption reads *Not yet measured · based on 0 of 3 objectives*.
+- **Objective weights all 0**: the objectives count equally.
+- **Quarter buttons**: they choose the period, not a slice of it. The figures are always the period to date (*Year to Date*), or as at the chosen date.
+- **No period**: *No accountability period covers the selected dates.*
+
+:::note[Good to know]
+The **Organisation Score** and its label use different figures on purpose: the score is the plain result so far, and the label judges running totals against what is expected by now. Early in the year a modest score with a good label usually means the company is on pace. To compare like with like, read the **Status** column, which uses the same figures as the label.
+:::

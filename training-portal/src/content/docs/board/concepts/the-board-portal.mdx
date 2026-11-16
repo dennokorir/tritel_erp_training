@@ -1,0 +1,63 @@
+---
+title: What the board sees
+description: Each tab of the Board portal in one paragraph (Performance, Financial Position, Payroll, Profitability, PDC Cheques and MD Review), with where its figures come from.
+module: board
+pageType: concept
+roles: [board, md, accountability-admin, system-admin, finance]
+tags: [portal, reports]
+keywords: [board pack, board dashboard, e-board, directors, governance, revenue, receivables, payables, payroll, gross profit, post-dated cheques, organisation score]
+related: [board/index, board/concepts/as-at-figures, board/concepts/md-quarterly-review, board/how-to/read-performance, board/how-to/financial-position, board/how-to/payroll, board/how-to/profitability, board/how-to/sign-cheques]
+sources:
+  - e_board/controllers/e_board_controller.py
+  - e_board/models/accountability_board_summary.py
+  - e_board/views/portal_e_board_templates.xml
+  - e_board/views/portal_position_templates.xml
+  - e_board/views/portal_payroll_templates.xml
+  - e_board/views/portal_profitability_templates.xml
+  - e_board/views/portal_cheques_templates.xml
+  - e_board/views/portal_md_review_templates.xml
+sidebar: { order: 1 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+The Board portal reads the same invoices, orders, tenders, payslips, cheques and accountability targets that staff work with in Odoo. Nothing is typed in separately for the board. Most figures are worked out each time a page opens, so they are always current. The pages show totals and lists for the company; on the **Performance** tab, accountability figures are organisation totals only, with no names, individual scores or department figures.
+
+Every visit to a board page, and every action such as signing a cheque, is recorded in the **Access Log**, which System administrators can read.
+
+<Illustration name="board/b1-board-performance" caption="The Performance tab: the tab bar (1), the year and quarter buttons (2), the headline tiles (3), the As at selector (4) and the accountability tiles (5)." />
+
+## The tabs
+
+**Performance.** Pick a year, or a quarter of it, with the buttons at the top. The five tiles show **Revenue** (posted customer invoices dated in that range), **Total Spend** (posted vendor bills), **Net Position** (*Revenue minus spend*), **Won Tenders** and **Win Rate** (won tenders out of those won, lost or dropped). Below them, the accountability block shows the **Organisation Score**, **Objectives Meeting Expectations**, **Targets Reviewed** and **Staff with Targets**, with one row per strategic objective. You can see these figures today or **As at** a past month end. Further down are **Commercial Performance — Tenders & Pipeline**, **Revenue — Sales Invoices**, **Procurement — Purchase Invoices** and **Expenses by Account**. See [Read the Performance tab](/board/how-to/read-performance/).
+
+**Financial Position.** A snapshot, on today's date, of **Receivables — Owed to Us** against **Payables — We Owe**. Receivables are unpaid customer invoices plus confirmed sales orders not yet fully invoiced; payables are the same for vendor bills and purchase orders. The page shows the **Net Position** (favourable or adverse), aging, and the top customers and vendors by exposure. The year and quarter buttons do not apply here. Finance staff can keep an order out of the totals or off the page; see ["As at" figures and what's left out](/board/concepts/as-at-figures/). See [Read the Financial Position](/board/how-to/financial-position/).
+
+**Payroll.** Figures for a calendar year from confirmed payslips: **YTD Gross Payroll**, **Net Pay to Employees**, **Total Employer Cost** (gross pay plus the employer's NSSF and Housing Levy) and **Active Headcount**, with month-by-month and department views and the **Pay Composition**. See [Read the Payroll tab](/board/how-to/payroll/).
+
+**Profitability.** Every won tender with its revenue and gross profit, taken from the tender's business case: **Estimated GP**, **Actual GP** and the variance. **Analysis Gaps** lists won tenders whose figures are incomplete, for example with no business case or no confirmed order. Open a tender to see its business case; a board member can add a commission or facilitation line with **Add Commission / Facilitation Line**. Other people see those lines as *— Confidential —*. See [Read Profitability and add a commission line](/board/how-to/profitability/).
+
+**PDC Cheques.** **PDC Cheques for Signing**: post-dated cheques waiting for board authorisation, with **Awaiting My Signature**, **Fully Authorised** and **Overdue / Critical** counts, and a **Sign** button on each cheque you have not signed. See [Sign post-dated cheques](/board/how-to/sign-cheques/).
+
+**MD Review.** Only the Board Reviewer, and the backup once a review is opened to them, see this tab. It lists the Managing Director's quarterly reviews; the reviewer checks each result and signs off. See [The MD's quarterly review](/board/concepts/md-quarterly-review/).
+
+## Key terms
+
+| On screen | What it means |
+|---|---|
+| **E-Board** | The title of the Performance tab and the name of the portal. |
+| **Board Viewer** | The role that opens every board page. It is given when a board member is invited. |
+| **Organisation Score** | The weighted average of the strategic objectives' scores. Its caption gives the rating and how many objectives it is based on. |
+| **Snapshot date** | The date the Financial Position was worked out: always today. |
+| **Access Log** | The record of every board page visit and action, for System administrators. |
+
+:::note[Good to know]
+The **Organisation Score** tile shows the plain score, but its rating label and each objective's **Status** come from the score rated on pace (running totals judged against what is expected by their last review). The two can disagree: for example, a score of 62% labelled **Exceeds Expectations**. See [Organisation score and rating](/board/calculations/organisation-score/).
+:::
+
+## Tasks that use this
+
+- [Read the Performance tab](/board/how-to/read-performance/)
+- [Read the Financial Position](/board/how-to/financial-position/)
+- [Sign post-dated cheques](/board/how-to/sign-cheques/)
+- [Review and sign off the MD's quarter](/board/how-to/review-the-md/)
+- [Exclude or hide an order from the board](/board/how-to/exclude-or-hide-orders/)

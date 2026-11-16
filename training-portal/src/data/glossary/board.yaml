@@ -1,0 +1,122 @@
+# Board portal terms (e_board). One or two plain sentences each.
+# Generic words (position, review, cheque) are given specific names here so they don't link on other pages.
+- term: Board portal
+  aliases: [E-Board]
+  definition: The private part of Tritel's website for the Board of Directors, at /my/board. It shows performance, financial position, payroll, profitability, cheques to sign and, for the Board Reviewer, the MD's quarterly reviews.
+  module: board
+  see: [board/index, board/concepts/the-board-portal]
+- term: Board Viewer
+  definition: The role that opens every Board portal page. A board member gets it when they are invited from their contact.
+  module: board
+  see: [board/how-to/invite-board-members]
+- term: Board member
+  aliases: [board members]
+  definition: A director who uses the Board portal as a portal user with the Board Viewer role. Board members are not Odoo staff users.
+  module: board
+  see: [board/index]
+- term: Managing Director
+  aliases: [top-level employee]
+  definition: Tritel's most senior employee. In Accountability this is the employee with no manager who has people reporting to them; once a Board Reviewer is named, their targets are reviewed by the board each quarter.
+  module: board
+  see: [board/concepts/md-quarterly-review]
+- term: Board review
+  aliases: [Board Reviews, MD quarterly review]
+  definition: The Managing Director's review for one quarter, opened by the system after the quarter ends, prepared by the MD and signed off by the Board Reviewer on the portal.
+  module: board
+  see: [board/concepts/md-quarterly-review, board/workflows/md-review]
+- term: Board Reviewer
+  definition: The board member named in Accountability Settings who checks and signs off the Managing Director's quarterly review. Nobody else can review the MD's targets while one is named.
+  module: board
+  see: [board/how-to/name-the-board-reviewer, board/how-to/review-the-md]
+- term: Backup Board Reviewer
+  definition: An optional second board member who can also sign off a board review once it has waited 14 days. Whoever signs first closes it.
+  module: board
+  see: [board/how-to/name-the-board-reviewer, board/workflows/md-review]
+- term: Submit to the Board
+  definition: The button the MD clicks to send a prepared board review to the Board Reviewer. After it, nothing in the review can be changed.
+  module: board
+  see: [board/how-to/prepare-the-md-review]
+- term: Board sign-off
+  aliases: [Signed by the Board]
+  definition: The Board Reviewer's decision on a board review. It writes the board's results to the MD's targets as signed-off reviews, which show the board member under Signed by the Board.
+  module: board
+  see: [board/how-to/review-the-md]
+- term: Board Result
+  aliases: [Board Score]
+  definition: The result the Board Reviewer signed off for one of the MD's targets, and the score it gives. It starts as the MD's or the metric's result.
+  module: board
+  see: [board/calculations/md-review-figures]
+- term: Nothing to Measure
+  definition: A board review line whose metric reported nothing to measure for the quarter. It needs no result and becomes a not-applicable review at sign-off.
+  module: board
+  see: [board/concepts/md-quarterly-review]
+- term: From a Metric
+  aliases: [Calculated by the system]
+  definition: A board review line whose result the system worked out from a metric when the review opened. The MD can't change it; the Board Reviewer can.
+  module: board
+  see: [board/concepts/md-quarterly-review]
+- term: Window From
+  aliases: [Window To]
+  definition: The dates a board review line covers - the quarter, or the period start to the quarter end for a target measured over the year to date.
+  module: board
+  see: [board/concepts/md-quarterly-review]
+- term: Prepare Board Review
+  definition: The to-do the MD gets when a board review opens, due in 7 days. It is marked done when the review is submitted.
+  module: board
+  see: [board/how-to/prepare-the-md-review]
+- term: Acknowledge Board Review
+  definition: The to-do the MD gets when the board signs off, due in 5 days. It is marked done when the MD clicks Acknowledge.
+  module: board
+  see: [board/how-to/acknowledge-the-board-review]
+- term: Organisation Score
+  definition: The Board portal's headline accountability figure - the weighted average of the strategic objectives' scores. Its rating label is worked out from the scores rated on pace, so the two can differ.
+  module: board
+  see: [board/calculations/organisation-score]
+- term: Objectives Meeting Expectations
+  definition: On the Board portal, how many strategic objectives are rated Meets Expectations or better, out of all of them.
+  module: board
+  see: [board/calculations/organisation-score]
+- term: Targets Reviewed
+  definition: On the Board portal, the share of counted targets that have at least one signed-off review.
+  module: board
+  see: [board/calculations/organisation-score]
+- term: Staff with Targets
+  definition: On the Board portal, the share of staff taking part in Accountability who own at least one counted target.
+  module: board
+  see: [board/calculations/organisation-score]
+- term: Financial Position
+  definition: The Board portal tab that sets what customers owe Tritel against what Tritel owes suppliers, as at today, from unpaid invoices and confirmed orders not yet fully invoiced.
+  module: board
+  see: [board/how-to/financial-position, board/calculations/financial-position]
+- term: Net Position
+  definition: On the Board portal, Revenue minus Total Spend on the Performance tab, or receivables minus payables on the Financial Position tab.
+  module: board
+  see: [board/concepts/the-board-portal]
+- term: Exclude from Board Position
+  aliases: [Excluded from Board Position, Exclusion Reason, Excluded from position report]
+  definition: A tick on a sales or purchase order that leaves its uninvoiced amount out of the Financial Position totals. The order is still listed, with its reason, in the excluded section.
+  module: board
+  see: [board/how-to/exclude-or-hide-orders, board/concepts/as-at-figures]
+- term: Hide from Board Portal
+  aliases: [Hidden from Board Portal, Hide Reason]
+  definition: A tick on a sales or purchase order that removes it from every Financial Position list and total. Its invoices still count elsewhere on the portal.
+  module: board
+  see: [board/how-to/exclude-or-hide-orders, board/concepts/as-at-figures]
+- term: PDC cheque
+  aliases: [PDC Cheques, post-dated cheque, post-dated cheques]
+  definition: A post-dated cheque to a supplier that needs board signatures. Board members sign them on the PDC Cheques tab of the Board portal.
+  module: board
+  see: [board/how-to/sign-cheques]
+- term: Analysis Gaps
+  definition: The Board portal's list of won tenders whose profit figures are incomplete, for example with no business case, no cost lines or no confirmed order.
+  module: board
+  see: [board/how-to/profitability]
+- term: Board Access Log
+  aliases: [Access Log]
+  definition: The record of every Board portal page visit and action, such as signing a cheque. Only System administrators can see it, on the portal.
+  module: board
+  see: [board/how-to/access-log]
+- term: Invite as Board Viewer
+  definition: The Contacts action that emails a board member an invitation and gives them the Board Viewer role. Only System administrators and Accountability administrators see it.
+  module: board
+  see: [board/how-to/invite-board-members]

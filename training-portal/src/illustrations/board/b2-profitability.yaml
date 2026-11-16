@@ -1,0 +1,23 @@
+type: screen
+title: Board Profitability list
+desc: The Profitability tab listing won tenders, with the period buttons, the search box, the four tiles, the All, Ready for Analysis and Analysis Gaps buttons, and the gross profit table with a warning sign on a tender with missing data, numbered 1 to 5.
+source: e_board/views/portal_profitability_templates.xml (portal_profitability)
+frame:
+  app: E-Board
+  menu: [Performance, Financial Position, Payroll, {label: Profitability, active: true}, PDC Cheques]
+blocks:
+  - title: {text: Profitability, sub: "All Periods — won tenders gross profit analysis"}
+  - buttons: [{label: All Periods, primary: true, n: 1}, {label: FY 2026}, {label: FY 2025}]
+  - search: {placeholder: "Search Ref No, Tender, Customer…", filters: [Search], n: 2}
+  - tiles:
+      - {label: "Won Tenders · Awarded tenders", value: "2"}
+      - {label: "Estimated GP · From business cases", value: "2.7M", tone: good}
+      - {label: "Actual GP · From confirmed SO/PO", value: "2.6M"}
+      - {label: "Analysis Gaps · Tender with missing data", value: "1", tone: warn}
+  - buttons: [{label: "All (2)", primary: true, n: 3}, {label: Ready for Analysis}, {label: "⚠ Analysis Gaps (1)"}]
+  - table:
+      columns: [Ref No, Tender / Customer, Revenue, Est. GP, Est. Margin, Actual GP, Variance, BC Status]
+      widths: [1.6, 2.6, 1.3, 1.2, 1.1, 1.2, 1.2, 1.3]
+      rows:
+        - {cells: [{text: TND-2026-001, bold: true}, "Network upgrade · Customer A", "10,000,000", "2,700,000", "27.0%", "2,600,000", "−100,000", {text: Approved, badge: true, tone: good}], n: 4}
+        - {cells: [{text: "TND-2026-004 ⚠", bold: true}, "Data centre · Customer B", "8,000,000", "0", "0.0%", "0", "0", {text: No BC, badge: true, tone: bad}], n: 5}

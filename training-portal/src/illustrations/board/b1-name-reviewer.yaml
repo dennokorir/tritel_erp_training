@@ -1,0 +1,18 @@
+type: screen
+title: Name the Board Reviewer
+desc: The Accountability Settings form with the Board Review of the Top-Level Employee section, showing the Board Reviewer and Backup Board Reviewer fields, numbered 1 to 4.
+source: e_board/views/md_review_accountability_views.xml (accountability_config_view_form_board)
+frame:
+  grid: true
+  app: Accountability
+  menu: [My Performance, My Actions, {label: Organisation, active: true, n: 1}]
+  breadcrumb: [Accountability Settings]
+blocks:
+  - heading: Notifications
+  - fields: [[{label: Review Escalation Contacts, value: Employee C}]]
+  - heading: Board Review of the Top-Level Employee
+    n: 2
+  - text: "Once a reviewer is named, the top-level employee's targets are reviewed only by the board each quarter, and nobody else can review them. Any change is emailed to the board members affected."
+  - fields:
+      - [{label: Board Reviewer, value: Board member A, n: 3}]
+      - [{label: Backup Board Reviewer, value: Board member B, n: 4}]

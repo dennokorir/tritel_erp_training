@@ -1,0 +1,17 @@
+type: calc
+title: Financial position totals
+desc: Worked example of the Financial Position, where receivables of KES 3,000,000 (2,000,000 unpaid on invoices plus 1,000,000 not yet invoiced on two orders) against payables of KES 2,200,000 give a Net Position of +800,000, Favourable; an excluded order of 300,000 is left out.
+source: e_board/controllers/e_board_controller.py (_get_receivables_data, _get_payables_data, e_position)
+heading: Snapshot on 16 Nov 2026 (KES)
+inputs:
+  - {label: Unpaid on posted sales invoices, value: "2,000,000"}
+  - {label: "Not yet invoiced: S00101 + S00102", value: "580,000 + 420,000"}
+  - {label: "Not yet invoiced: S00095 (excluded)", value: "300,000"}
+  - {label: Unpaid on posted vendor bills, value: "1,500,000"}
+  - {label: Not yet billed on purchase orders, value: "700,000"}
+steps:
+  - {label: "Receivables: 2,000,000 + 1,000,000. S00095 is listed apart, not added", value: "3,000,000"}
+  - {label: "Payables: 1,500,000 + 700,000", value: "2,200,000"}
+  - {label: "Net Position: 3,000,000 − 2,200,000", value: "+800,000"}
+result: {label: Net Position, value: "+800K · Favourable", tone: good}
+note: Below zero the verdict reads Adverse. The figures are today's open items, whatever year or quarter you picked on the Performance tab.

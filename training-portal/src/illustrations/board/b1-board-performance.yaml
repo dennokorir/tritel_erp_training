@@ -1,0 +1,22 @@
+type: screen
+title: The Board portal's Performance tab
+desc: The E-Board Performance page on the portal, with the tab bar, the year and quarter buttons, the five headline tiles, the As at selector and the four accountability tiles.
+source: e_board/views/portal_e_board_templates.xml (portal_e_board)
+frame:
+  app: E-Board
+  menu: [{label: Performance, active: true, n: 1}, Financial Position, Payroll, Profitability, PDC Cheques, MD Review]
+blocks:
+  - title: {text: E-Board, sub: "Executive performance overview · 01 Jan 2026 – 31 Dec 2026"}
+  - buttons: [{label: "2026", primary: true, n: 2}, {label: Q1}, {label: Q2}, {label: Q3}, {label: Q4}]
+  - tiles:
+      - {label: Revenue, value: "30.0M", tone: good, n: 3}
+      - {label: Total Spend, value: "18.0M", tone: bad}
+      - {label: Net Position, value: "12.0M"}
+      - {label: Won Tenders, value: "9.0M", tone: accent}
+      - {label: Win Rate, value: "33%", tone: warn}
+  - fields: [[{label: As at, value: Today, n: 4}]]
+  - tiles:
+      - {label: Organisation Score, value: "70%", n: 5}
+      - {label: Objectives Meeting Expectations, value: "1 of 3"}
+      - {label: Targets Reviewed, value: "65%"}
+      - {label: Staff with Targets, value: "80%"}

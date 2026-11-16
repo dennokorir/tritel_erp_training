@@ -1,0 +1,15 @@
+type: matrix
+title: Who sets the board flags and settings
+desc: Permission grid for the back-office settings behind the board portal, showing that finance or sales staff set the order flags and cheque signatures, accountability administrators and system administrators invite board members, and accountability administrators name the reviewers.
+source: e_board/views/sale_order_views.xml, e_board/views/purchase_order_views.xml, e_board/views/board_invite_wizard_views.xml (board-invite-access), tritel_pdc/views/pdc_cheque_views.xml, e_board/views/md_review_accountability_views.xml
+columns: [Board member, Board Reviewer or backup, MD, Accountability administrator, Finance or sales staff, System administrator]
+labelWidth: 280
+rows:
+  - {group: Orders}
+  - {action: Tick Exclude from Board Position or Hide from Board Portal, cells: [n, n, n, n, y, n]}
+  - {action: Find excluded or hidden orders with the search filters, cells: [n, n, n, n, y, n]}
+  - {group: Cheques}
+  - {action: Set how many signatures a cheque needs, cells: [n, n, n, n, y, n]}
+  - {group: People}
+  - {action: Invite as Board Viewer, cells: [n, n, n, y, n, y]}
+  - {action: Name the Board Reviewer and backup, cells: [n, n, n, y, n, n]}

@@ -1,0 +1,17 @@
+type: screen
+title: Exclude or hide an order from the board
+desc: A sales order's Other Info tab with the Board Position Report section, showing Exclude from Board Position with its Exclusion Reason and Hide from Board Portal, numbered 1 to 4.
+source: e_board/views/sale_order_views.xml (sale_order_form_e_board)
+frame:
+  grid: true
+  app: Sales
+  menu: [{label: Orders, active: true, n: 1}, To Invoice, Products, Reporting]
+  breadcrumb: [Orders, S00042]
+blocks:
+  - title: {text: S00042, sub: Customer A}
+  - tabs: {items: [Order Lines, Optional Products, Other Info], active: Other Info, n: 2}
+  - heading: Board Position Report
+  - fields:
+      - [{label: Exclude from Board Position, value: "☑", n: 3}]
+      - [{label: Exclusion Reason, value: "Disputed; credit note expected"}]
+      - [{label: Hide from Board Portal, value: "☐", n: 4}]

@@ -1,0 +1,15 @@
+type: calc
+title: MD review line score
+desc: Worked example of one line in the MD's quarterly review, a revenue target of KES 120,000,000 where the MD's result of 90,000,000 scores 75.0% and the board's changed result of 96,000,000 scores 80.0% and needs a comment.
+source: e_board/models/accountability_board_review.py (_score_for, _board_sign); tritel_accountability_framework/models/accountability_target.py (_projected_score, _quantitative_score)
+heading: "Q3 2026 · Grow revenue · higher is better (KES)"
+inputs:
+  - {label: Target, value: "120,000,000"}
+  - {label: Result proposed by the MD, value: "90,000,000"}
+  - {label: Result the board enters, value: "96,000,000"}
+steps:
+  - {label: "Proposed score: 90,000,000 ÷ 120,000,000 × 100", value: "75.0%"}
+  - {label: "Board score: 96,000,000 ÷ 120,000,000 × 100", value: "80.0%"}
+  - {label: "Board result differs from the proposal (by 6,000,000)", value: "Comment required", tone: warn}
+result: {label: Board Score, value: "80.0%", tone: good}
+note: A score never goes above 100%. With no comment, Sign Off stops with "Say why you changed the result for Grow revenue."

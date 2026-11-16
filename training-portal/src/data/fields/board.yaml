@@ -1,0 +1,177 @@
+# Field reference for the Board portal (E-Board), grouped by screen. Labels are exactly as on screen.
+# Source: e_board portal templates (portal_e_board, portal_position, portal_position_detail, portal_payroll,
+# portal_profitability, portal_profitability_detail, portal_cheques, portal_access_log, portal_md_review),
+# e_board views (md_review_views.xml, md_review_accountability_views.xml, sale_order_views.xml,
+# purchase_order_views.xml, board_invite_wizard_views.xml) and controllers/e_board_controller.py.
+screens:
+  - name: Performance tab
+    where: Portal › E-Board › Performance
+    fields:
+      - {label: Period, meaning: "Year buttons. The page shows 1 January to 31 December of the year chosen.", where: Selector}
+      - {label: Quarter, meaning: "Q1 to Q4 narrow the commercial figures to that quarter of the chosen year.", where: Selector}
+      - {label: Revenue, meaning: "Posted customer invoices dated in the period, tax included. The caption counts invoices and the sales orders confirmed in the period.", where: Headline tiles}
+      - {label: Total Spend, meaning: "Posted vendor bills dated in the period, tax included, with the purchase orders confirmed in the period.", where: Headline tiles}
+      - {label: Net Position, meaning: "Revenue minus Total Spend. Green at 0 or more, red below.", where: Headline tiles}
+      - {label: Won Tenders, meaning: "Expected revenue of won tenders in the tender periods overlapping the dates, with won of total.", where: Headline tiles}
+      - {label: Win Rate, meaning: "Won tenders ÷ decided tenders (won, lost or dropped) × 100. Green from 50%, amber from 30%.", where: Headline tiles}
+      - {label: As at, meaning: "Today, or a past month end of the accountability period. A past date rebuilds the accountability figures as they stood then.", where: Accountability}
+      - {label: Organisation Score, meaning: "Weighted average of the top-level objectives' scores. The caption gives the rating and how many objectives it is based on.", where: Accountability}
+      - {label: Objectives Meeting Expectations, meaning: "Objectives rated Meets Expectations or better, N of M, with how many are not yet measured.", where: Accountability}
+      - {label: Targets Reviewed, meaning: "Counted targets with at least one signed review, as a share of all counted targets.", where: Accountability}
+      - {label: Staff with Targets, meaning: "Staff taking part in the period who own a counted target, as a share of all staff taking part.", where: Accountability}
+      - {label: Strategic Objectives, meaning: "One row per top-level objective: Objective, Score, %, Reviewed (x of y) and Status, weakest first.", where: Accountability}
+      - {label: "Commercial Performance — Tenders & Pipeline", meaning: "Win rate, pipeline value of opportunities with a deadline in the period, and tenders by stage (Bidding, Evaluation, Won, Prequalified, Lost / Closed).", where: Commercial}
+      - {label: "Revenue — Sales Invoices", meaning: "Total Invoiced, Collected and Outstanding on invoices dated in the period, and the top five customers.", where: Commercial}
+      - {label: "Procurement — Purchase Invoices", meaning: "Total Invoiced, Paid and Outstanding on bills dated in the period, and the top five vendors.", where: Commercial}
+      - {label: Expenses by Account, meaning: "The eight largest expense accounts on posted vendor bills dated in the period.", where: Commercial}
+
+  - name: Financial Position
+    where: Portal › E-Board › Financial Position
+    fields:
+      - {label: Snapshot date, meaning: "Today. The figures are all items still open today.", where: Header}
+      - {label: Net Position, meaning: "Receivables minus payables, with the verdict Favourable (0 or more) or Adverse.", where: Header}
+      - {label: "Receivables — Owed to Us", meaning: "Unpaid on posted sales invoices plus not yet invoiced on confirmed sales orders.", where: Receivables}
+      - {label: "Payables — We Owe", meaning: "Unpaid on posted vendor bills plus not yet billed on confirmed purchase orders.", where: Payables}
+      - {label: "Sales Invoices — outstanding", meaning: "Unpaid or part-paid posted customer invoices. Opens the invoice list.", where: By source}
+      - {label: "Sales Orders — outstanding balance", meaning: "Not yet invoiced on confirmed sales orders, with the number excluded. Opens the order list.", where: By source}
+      - {label: "Purchase Invoices — outstanding", meaning: "Unpaid or part-paid posted vendor bills.", where: By source}
+      - {label: "Purchase Orders — outstanding balance", meaning: "Not yet billed on confirmed purchase orders, with the number excluded.", where: By source}
+      - {label: "Receivables aging / Payables aging", meaning: "Current (0–30 d), 31–60 days, 61–90 days, Over 90 days: invoices by days past due, order balances by days since the order date.", where: Aging}
+      - {label: "Top customers by exposure / Top vendors by exposure", meaning: "The five largest unpaid invoice balances by customer or vendor.", where: Counterparties}
+      - {label: Methodology, meaning: "A short statement of the rules used.", where: Footer}
+
+  - name: Outstanding invoices list
+    where: Portal › E-Board › Financial Position › a Sales or Purchase Invoices row, or an aging cell
+    fields:
+      - {label: Invoices shown, meaning: "Rows shown of all open invoices in the list.", where: Summary}
+      - {label: Total outstanding, meaning: "Unpaid amount of the rows shown.", where: Summary}
+      - {label: Oldest, meaning: "Days past due of the oldest invoice.", where: Summary}
+      - {label: "Filter by age:", meaning: "All, 0–30 d, 31–60 d, 61–90 d, 90+ d.", where: Filters}
+      - {label: Outstanding, meaning: "Amount still unpaid on the invoice.", where: Table}
+      - {label: Age, meaning: "Not yet due, or the number of days overdue.", where: Table}
+
+  - name: Outstanding order balance
+    where: Portal › E-Board › Financial Position › a Sales or Purchase Orders row
+    fields:
+      - {label: Total, meaning: "Order total including tax, in KES at the order date's rate.", where: Table}
+      - {label: "Invoiced / Billed", meaning: "Posted invoices or bills on the order, less credit notes.", where: Table}
+      - {label: "To Invoice / Unbilled", meaning: "Total minus Invoiced, never below 0. Only this part counts in the Financial Position.", where: Table}
+      - {label: Residual, meaning: "Unpaid on the order's posted invoices or bills.", where: Table}
+      - {label: Total Exposure, meaning: "To Invoice plus Residual.", where: Table}
+      - {label: Status, meaning: "Ready to Invoice, or Pending Delivery (still to be delivered or received).", where: Table}
+      - {label: Excluded from position report, meaning: "Orders marked Exclude from Board Position, left out of the totals.", where: Excluded section}
+      - {label: Reason for Exclusion, meaning: "The Exclusion Reason finance gave on the order.", where: Excluded section}
+
+  - name: Payroll tab
+    where: Portal › E-Board › Payroll
+    fields:
+      - {label: Year, meaning: "The year shown: 1 January to 31 December, or to today for the current year.", where: Selector}
+      - {label: YTD Gross Payroll, meaning: "Gross pay on done or paid payslips in the year, with the change against the same months last year.", where: Tiles}
+      - {label: Net Pay to Employees, meaning: "Net pay on those payslips.", where: Tiles}
+      - {label: Total Employer Cost, meaning: "Gross pay plus employer NSSF plus employer Housing Levy.", where: Tiles}
+      - {label: Active Headcount, meaning: "Different employees with a done or paid payslip in the year.", where: Tiles}
+      - {label: Employer NSSF, meaning: "The employer's NSSF contribution.", where: Employer add-ons}
+      - {label: Housing Levy (ER), meaning: "The employer's Housing Levy.", where: Employer add-ons}
+      - {label: Total Cost to Company, meaning: "Same as Total Employer Cost.", where: Employer add-ons}
+      - {label: Monthly Gross vs Net Pay, meaning: "Gross and net pay for each month of the year.", where: Charts}
+      - {label: Pay Composition, meaning: "Net Pay, PAYE, NSSF, NHIF/SHA and Housing as shares of those five together.", where: Charts}
+      - {label: Payroll by Department, meaning: "Headcount, YTD Gross and % of Total by department.", where: Table}
+
+  - name: Profitability list
+    where: Portal › E-Board › Profitability
+    fields:
+      - {label: All Periods, meaning: "All won tenders; the other buttons narrow to one tender period.", where: Filters}
+      - {label: "Search Ref No, Tender, Customer…", meaning: "Finds tenders by reference, name or customer.", where: Filters}
+      - {label: "All / Ready for Analysis / Analysis Gaps", meaning: "Every row, rows with no missing data, or rows with missing data.", where: Filters}
+      - {label: Won Tenders, meaning: "Number of tenders in the list.", where: Tiles}
+      - {label: Estimated GP, meaning: "Gross profit from the business cases of the tenders listed.", where: Tiles}
+      - {label: Actual GP, meaning: "Confirmed sales orders minus confirmed purchase orders, for the tenders listed.", where: Tiles}
+      - {label: Analysis Gaps, meaning: "Tenders with missing data.", where: Tiles}
+      - {label: "Est. GP / Est. Margin", meaning: "Business case revenue minus costs, and that as a share of revenue.", where: Table}
+      - {label: "Actual GP / Actual Margin", meaning: "Confirmed order revenue minus confirmed order cost, and that as a share of revenue.", where: Table}
+      - {label: Variance, meaning: "Actual GP minus estimated GP.", where: Table}
+      - {label: BC Status, meaning: "Draft, Submitted, Approved, Rejected, or No BC.", where: Table}
+
+  - name: Tender business case
+    where: Portal › E-Board › Profitability › a tender's Ref No
+    fields:
+      - {label: Revenue, meaning: "The tender's expected revenue in KES (Expected bid).", where: Tiles}
+      - {label: Total Cost, meaning: "All cost lines in KES.", where: Tiles}
+      - {label: Gross Profit, meaning: "Revenue minus Total Cost.", where: Tiles}
+      - {label: Margin, meaning: "Gross Profit ÷ Revenue.", where: Tiles}
+      - {label: Cost Breakdown, meaning: "Every cost line: Category, Description, Currency, Qty, Unit Price, Subtotal (line CCY), CC Equiv (KES). Commission lines show — Confidential —.", where: Table}
+      - {label: Description, meaning: "Required. What the commission or facilitation cost is for. Never shown in the table.", where: Add Commission / Facilitation Line}
+      - {label: Currency, meaning: "Currency of the amount; KES by default.", where: Add Commission / Facilitation Line}
+      - {label: Quantity, meaning: "Number of units; 1 by default.", where: Add Commission / Facilitation Line}
+      - {label: Unit Amount, meaning: "Amount per unit.", where: Add Commission / Facilitation Line}
+      - {label: Actual vs Estimated, meaning: "Actual Revenue, Actual Cost, Actual GP, Actual Margin and GP Variance from confirmed orders.", where: Section}
+
+  - name: PDC Cheques
+    where: Portal › E-Board › PDC Cheques
+    fields:
+      - {label: Awaiting My Signature, meaning: "Cheques you have not signed that are not yet fully signed.", where: Tiles}
+      - {label: Fully Authorised, meaning: "Cheques with all required signatures.", where: Tiles}
+      - {label: "Overdue / Critical", meaning: "Cheques due within 3 days or already overdue.", where: Tiles}
+      - {label: "Show:", meaning: "All, Needs My Signature or Fully Authorised.", where: Filters}
+      - {label: "Flat list / By document", meaning: "One row per cheque, or cheques grouped under the bill or purchase order they pay.", where: Filters}
+      - {label: "Bill Amount / PO Amount", meaning: "Total of the linked bill or purchase order.", where: Document heading}
+      - {label: Total Cheques, meaning: "Cheques under the bill or order added up, marked Fully covered, Partially covered or Over-covered.", where: Document heading}
+      - {label: Urgency, meaning: "Normal, Soon (7 days or less), Critical (3 days or less) or Overdue.", where: Table}
+      - {label: Authorisation, meaning: "Signatures in of signatures required, for example 1/2.", where: Table}
+      - {label: Action, meaning: "Sign, or ✓ Signed once you have signed.", where: Table}
+
+  - name: Access Log
+    where: Portal › E-Board › Access Log (system administrators)
+    fields:
+      - {label: Page Views Today, meaning: "Board portal page views today.", where: Tiles}
+      - {label: Active Users Today, meaning: "Different people who used the portal today, of all board members.", where: Tiles}
+      - {label: Actions Taken Today, meaning: "Actions other than views today, with cheques signed and commissions added.", where: Tiles}
+      - {label: "User / Page / Action / From / To", meaning: "Filters for the activity list.", where: Filter}
+      - {label: Detail, meaning: "Context of the entry, such as the period viewed, search typed or cheque signed.", where: Portal Activity}
+      - {label: IP Address, meaning: "Network address the visit came from.", where: Portal Activity}
+
+  - name: MD Review (portal)
+    where: Portal › E-Board › MD Review › a review
+    fields:
+      - {label: "Result (proposed …, scores …%)", meaning: "The board's result for the target, pre-filled with the proposal.", where: Each target}
+      - {label: Comment (required if you change the result), meaning: "Why the board changed the result.", where: Each target}
+      - {label: Calculated by the system, meaning: "The result came from a metric.", where: Each target}
+      - {label: Nothing to measure, meaning: "The metric found no data; the target is not scored.", where: Each target}
+      - {label: Evidence, meaning: "Files the MD attached; click to download.", where: Each target}
+      - {label: Board result, meaning: "After sign-off: the result and Score the board signed.", where: Each target}
+
+  - name: Board review (Odoo)
+    where: Accountability › My Performance › Board Reviews, or the MD's to-do
+    fields:
+      - {label: Quarter From, meaning: "First day of the quarter reviewed.", where: Form}
+      - {label: Quarter To, meaning: "Last day of the quarter reviewed.", where: Form}
+      - {label: Signed By, meaning: "The board member who signed off.", where: Form}
+      - {label: Metric, meaning: "Ticked when the result came from a metric.", where: Targets}
+      - {label: Result, meaning: "The proposed result: the metric value, or what the MD typed.", where: Targets}
+      - {label: Score (%), meaning: "Score of the proposed result.", where: Targets}
+      - {label: Comment, meaning: "The MD's comment. Required on every target without a metric.", where: Targets}
+      - {label: Board Result, meaning: "The result the board signed.", where: Targets}
+      - {label: Board Score (%), meaning: "Score of the board result.", where: Targets}
+      - {label: Board Comment, meaning: "Why the board changed the result.", where: Targets}
+      - {label: How It Was Calculated, meaning: "The metric's explanation.", where: Targets}
+      - {label: Your Comment, meaning: "The MD's reply to the sign-off, written before Acknowledge.", where: Form}
+
+  - name: Board Position Report on orders
+    where: "Sales › an order › Other Info tab; Purchase › an order › Other Information tab"
+    fields:
+      - {label: Exclude from Board Position, meaning: "Leaves the order's unbilled amount out of the Financial Position totals; it is still listed as excluded.", where: Board Position Report}
+      - {label: Exclusion Reason, meaning: "Required when excluding. Shown to the board as Reason for Exclusion.", where: Board Position Report}
+      - {label: Hide from Board Portal, meaning: "Leaves the order out of every Financial Position list. Its invoices still count.", where: Board Position Report}
+      - {label: Hide Reason, meaning: "Required when hiding. Not shown to the board.", where: Board Position Report}
+
+  - name: Accountability Settings
+    where: Accountability › Organisation › Settings
+    fields:
+      - {label: Board Reviewer, meaning: "The board member who reviews the MD each quarter. Must be a board portal user who is not an employee.", where: Board Review of the Top-Level Employee}
+      - {label: Backup Board Reviewer, meaning: "Can sign off too once a review has waited 14 days. Must differ from the Board Reviewer.", where: Board Review of the Top-Level Employee}
+
+  - name: Invite as Board Viewer
+    where: Contacts › select contacts › Action › Invite as Board Viewer
+    fields:
+      - {label: Board Members, meaning: "The contacts to invite; each needs an email address.", where: Window}
+      - {label: Personal Message (optional), meaning: "A note added to the invitation email.", where: Window}

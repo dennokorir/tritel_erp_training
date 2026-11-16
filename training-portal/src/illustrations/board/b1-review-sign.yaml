@@ -1,0 +1,24 @@
+type: screen
+title: Review and sign off the quarter
+desc: One MD review on the Board portal, with a target card showing the dates, unit and target, who entered the result, the MD's comment, the calculation, evidence, the Result and Comment boxes and the Sign Off button, numbered 3 to 7.
+source: e_board/views/portal_md_review_templates.xml (portal_md_review)
+frame:
+  app: E-Board
+  breadcrumb: [All reviews, "Board review · Employee A · Q3 2026"]
+blocks:
+  - title: {text: "Board review · Employee A · Q3 2026", sub: "01 Jul 2026 to 30 Sep 2026"}
+  - columns:
+      - panel: true
+        blocks:
+          - heading: Grow revenue
+          - text: "01 Jan 2026 to 30 Sep 2026 · KES · Target 120,000,000.00 · Calculated by the system"
+          - note: {text: "Posted customer invoices, 1 Jan to 30 Sep 2026: 90,000,000", tone: muted, n: 3}
+          - fields: [[{label: "Result (proposed 90,000,000.00, scores 75.0%)", value: "90,000,000.00", n: 4}, {label: Comment (required if you change the result), value: ""}]]
+      - panel: true
+        blocks:
+          - heading: Open Branch A
+          - text: "01 Jul 2026 to 30 Sep 2026 · % · Entered by Employee A"
+          - text: "Employee A: Lease signed and fit-out done; staff start in October."
+          - text: "Evidence: lease.pdf"
+          - fields: [[{label: "Result (proposed 75.00, scores 75.0%)", value: "60.00", n: 5}, {label: Comment (required if you change the result), value: "Staff not yet in post.", n: 6}]]
+  - buttons: [{label: Sign Off, primary: true, n: 7}]
