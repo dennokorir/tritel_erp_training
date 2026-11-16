@@ -1,0 +1,16 @@
+type: calc
+title: Achieved revenue reaches the target
+desc: Worked example of Employee A's Achieved revenue (attributed) target for FY 2026, measured period to date, where KES 52,000,000 attributed by 30 June plus KES 8,000,000 from TND-2026-001 gives KES 60,000,000 against a KES 120,000,000 target, a score of 50% in the Q3 review.
+source: tritel_accountability_framework/models/accountability_target.py (_score_quantitative); tritel_accountability_framework/models/accountability_metric.py
+heading: "Employee A, Achieved revenue (attributed), Q3 2026 review"
+inputs:
+  - {label: Target Value (FY 2026), value: "120,000,000"}
+  - {label: Measure Over, value: "Period to date"}
+  - {label: Window, value: "1 Jan to 30 Sep"}
+steps:
+  - {label: "Attributed wins with an award date from 1 Jan to 30 Jun", value: "52,000,000"}
+  - {label: "Add TND-2026-001 (award date 14 Aug, 80 points)", value: "+ 8,000,000"}
+  - {label: "Actual fetched by the review for 1 Jan to 30 Sep", value: "60,000,000"}
+  - {label: "Score = Actual ÷ Target × 100", value: "60,000,000 ÷ 120,000,000 × 100"}
+result: {label: Score (%), value: "50%", tone: warn}
+note: The review waits for the Metric Settle Period (3 days by default) after 30 September, then the nightly job prepares it for the line manager to confirm.

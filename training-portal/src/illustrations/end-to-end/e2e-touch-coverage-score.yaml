@@ -1,0 +1,15 @@
+type: calc
+title: Customer touches reach the target
+desc: Worked example of Employee A's Pipeline status coverage for Q4 2026, where 8 of 10 opportunities updated in October, 9 of 12 in November and 10 of 12 in December give 27 of 34, or 79.4%, scored 73.5% on a target with a floor of 50 and an ideal of 90.
+source: tritel_accountability_framework/models/metric_hook_activity.py; tritel_accountability_framework/models/accountability_target.py
+heading: "Employee A, Pipeline status coverage, Q4 2026"
+inputs:
+  - {label: "October", value: "8 of 10"}
+  - {label: "November", value: "9 of 12"}
+  - {label: "December", value: "10 of 12"}
+steps:
+  - {label: "Add the months together: 27 updated ÷ 34 due × 100", value: "79.4%"}
+  - {label: "Target: at or above floor, Compliance Floor 50, Ideal Target 90", value: "floor 50, ideal 90"}
+  - {label: "Score = (79.4 − 50) ÷ (90 − 50) × 100", value: "73.5%"}
+result: {label: Score for this review, value: "73.5%", tone: warn}
+note: An opportunity is updated in a month when its owner logged a done customer touch against it, dated that month and entered within 7 days of the month end. The floor and ideal here are an example; your target sets its own.

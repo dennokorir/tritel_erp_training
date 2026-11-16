@@ -1,0 +1,17 @@
+type: calc
+title: OEM bookings reach the target
+desc: Worked example of OEM A in FY 2026, where confirmed bookings of USD 85,000 in the first half and USD 35,000 in Q3 give USD 120,000 period to date against a USD 200,000 target, a score of 60%; a draft booking of USD 10,000 is not counted.
+source: tritel_accountability_framework/models/metric_hook_oem.py; crm_tender/models/crm_oem_booking.py
+heading: "OEM A, OEM-recognised revenue (USD), Q3 2026 review"
+inputs:
+  - {label: Target Value (FY 2026), value: "USD 200,000"}
+  - {label: Measure Over, value: "Period to date"}
+  - {label: Window, value: "1 Jan to 30 Sep"}
+steps:
+  - {label: "Confirmed bookings with a Booking Date from 1 Jan to 30 Jun", value: "USD 85,000"}
+  - {label: "BK-1004, Confirmed, Booking Date 12 Jul", value: "+ USD 20,000"}
+  - {label: "BK-1005, Confirmed, Booking Date 28 Sep", value: "+ USD 15,000"}
+  - {label: "BK-1006, still Draft", value: "not counted"}
+  - {label: "Score = USD 120,000 ÷ USD 200,000 × 100", value: "60%"}
+result: {label: Score (%), value: "60%", tone: warn}
+note: The figure is organisation-wide for OEM A. The automatic review waits 30 days after 30 September, so BK-1006 still counts in Q3 if it is confirmed before then and its purchase orders were confirmed in the quarter.

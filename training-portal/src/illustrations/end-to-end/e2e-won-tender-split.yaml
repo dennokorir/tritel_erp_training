@@ -1,0 +1,15 @@
+type: calc
+title: One won tender split by attribution
+desc: Worked example of TND-2026-001, won for KES 10,000,000 with an award date of 14 Aug 2026, credited 80 points to the Account Manager (KES 8,000,000), 90 points to the Bid Liaison (KES 9,000,000) and 85 points to Technical Presales (KES 8,500,000), all counted in Q3 2026.
+source: tritel_tender_tracker/models/target.py (achieved_value); tritel_accountability_framework/models/accountability_metric.py (achieved revenue metrics)
+heading: "TND-2026-001: won, Award Date 14 Aug 2026"
+inputs:
+  - {label: Gross Value (Expected Revenue), value: "KES 10,000,000"}
+  - {label: Award Date, value: "14 Aug 2026"}
+  - {label: Counts in, value: "Q3 2026"}
+steps:
+  - {label: "Account Manager: Pipelining 40 + Bid Submission Support 10 + Post-Submission Influence 30 = 80 points", value: "10,000,000 × 80 ÷ 100"}
+  - {label: "Bid Liaison: Bid Submission Support 60 + Post-Submission Influence 30 = 90 points", value: "10,000,000 × 90 ÷ 100"}
+  - {label: "Technical Presales: Pipelining 45 + Bid Submission Support 40 = 85 points", value: "10,000,000 × 85 ÷ 100"}
+result: {label: "Achieved Value: AM / BL / Presales", value: "8.0M / 9.0M / 8.5M", tone: good}
+note: Each role is credited on its own scale out of 100, so the three shares add up to more than the tender's value. A won tender with no attribution line, or 0 points, counts as 0.

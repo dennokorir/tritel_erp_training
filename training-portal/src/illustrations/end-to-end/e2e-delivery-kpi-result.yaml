@@ -1,0 +1,17 @@
+type: calc
+title: A project's result reaches the Delivery KPI
+desc: Worked example of PRJ-2026-001 with an approved completion date of 30 Sep 2026 and 10 approved client-delay days, handed over on 14 Oct (4 days late, within the 7-day grace) for a final cost of KES 7,850,000 against an approved budget of KES 8,000,000, so on time and on budget, counted in the project manager's Q4 2026 rates.
+source: tritel_project_delivery/models/closeout.py; tritel_accountability_framework/models/metric_hook_delivery.py
+heading: "PRJ-2026-001, closed by finance"
+inputs:
+  - {label: Approved completion, value: "30 Sep 2026"}
+  - {label: Approved client delay, value: "10 days"}
+  - {label: Confirmed handover, value: "14 Oct 2026"}
+  - {label: Final cost (before VAT), value: "7,850,000"}
+steps:
+  - {label: "Deadline = 30 Sep + 10 days", value: "10 Oct 2026"}
+  - {label: "Days late = 14 Oct − 10 Oct; within the 7-day grace", value: "4 → On time"}
+  - {label: "Final cost 7,850,000 against an approved budget of 8,000,000", value: "On budget"}
+  - {label: "Q4 2026 for Employee D: 3 closed projects, 2 both on time and on budget", value: "2 ÷ 3 × 100"}
+result: {label: Delivery success rate, Q4 2026, value: "66.7%", tone: warn}
+note: The project counts in Q4 because its confirmed handover date is in Q4, not because of the day it closed. The metric waits 30 days after the quarter so finance can close projects first.
