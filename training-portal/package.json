@@ -5,13 +5,13 @@
   "version": "0.1.0",
   "description": "Tritel Systems Training Portal: end-user guides for the Accountability Framework, Project Delivery, Tenders and the Board portal.",
   "engines": {
-    "node": ">=22"
+    "node": ">=22.23.4"
   },
   "scripts": {
     "generate": "node scripts/build-index.mjs",
-    "dev": "npm run generate && ASTRO_TELEMETRY_DISABLED=1 astro dev",
-    "build": "npm run generate && ASTRO_TELEMETRY_DISABLED=1 astro build && node scripts/check-links.mjs",
-    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview"
+    "dev": "npm run generate && node scripts/run-astro.mjs dev",
+    "build": "npm run generate && node scripts/run-astro.mjs build && node scripts/check-links.mjs",
+    "preview": "node scripts/run-astro.mjs preview"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "7.3.9",
