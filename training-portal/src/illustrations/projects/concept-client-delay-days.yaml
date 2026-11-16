@@ -1,0 +1,14 @@
+type: calc
+title: Approved client delay days
+desc: Worked example of two approved client delays that overlap, where the shared days count once, giving 12 approved client delay days instead of 18.
+source: tritel_project_delivery/models/closeout.py (_compute_days, _approved_delay_days)
+heading: Two approved delays that overlap
+inputs:
+  - {label: "Delay 1: From – To", value: "1 Mar – 10 Mar 2026"}
+  - {label: "Delay 2: From – To", value: "5 Mar – 12 Mar 2026"}
+steps:
+  - {label: "Days on each delay = To − From + 1", value: "10 and 8"}
+  - {label: "Calendar days covered by either delay", value: "1 Mar – 12 Mar"}
+  - {label: "Days shared by both (counted once)", value: "5 Mar – 10 Mar"}
+result: {label: Approved client delay (days), value: "12 (not 18)", tone: good}
+note: Only approved delays count. Delays that are in draft, waiting for approval or rejected add nothing.

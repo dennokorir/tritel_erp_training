@@ -1,0 +1,115 @@
+---
+title: Projects FAQ
+description: Short answers to the questions staff ask most about delivery baselines, budgets, tracking, revisions, handovers, client delays, closing and the Delivery KPI.
+module: projects
+pageType: faq
+roles: [delivery-pm, head-delivery, delivery-finance, md, everyone]
+tags: [faq, budget, close-out]
+keywords: [FAQ, help, why can't I, over budget, not scored, completion date locked, MD approval, contingency, exchange rate, margin, costs after close, KPI]
+related: [projects/index, projects/who-can-do-what, projects/calculations/tracking-figures, projects/calculations/close-and-kpi, projects/calculations/revisions-and-approvals]
+sources:
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/my_actions.py
+  - tritel_project_delivery/models/tender_import.py
+  - tritel_accountability_framework/models/metric_hook_delivery.py
+sidebar: { order: 3 }
+---
+
+## Why can't I edit the completion date?
+
+Once a baseline is approved, the project's end date comes from it: *The completion date of Customer A network upgrade comes from its approved baseline. Request a revision to change it.* Click **Request Revision** on the **Delivery** tab, change the **Completion date** and give a reason. See [Request a revision](/projects/how-to/delivery-pm/request-a-revision/).
+
+## Why can't I change the cost items on my baseline?
+
+Only a **Draft** can be edited. A baseline waiting for approval must be returned to draft by an approver, or withdrawn. An approved one needs a revision. The message is *Baseline v1 is Approved and can no longer be edited. Return it to draft or request a revision.*
+
+## Why won't my baseline confirm: "needs a quantity and a unit cost"?
+
+Every cost item except contingency needs a quantity and a unit cost above 0, and a **Pay from** month. Starter items arrive with a unit cost of 0: price them or delete the ones that don't apply. See [How a cost item's amount is worked out](/projects/calculations/cost-items/).
+
+## Why does it say my contingency is over the limit?
+
+Contingency can be at most the **Contingency cap (%)** (5% by default) of the **Budget total**, and the total includes the contingency itself. 6% of the other costs is 5.7% of the total, which is too much. See [the contingency cap](/projects/calculations/cost-items/).
+
+## Why did my budget total change after finance approved it?
+
+Foreign-currency items use today's rate until finance clicks **Approve Budget**. The rate of that day is then fixed and the amounts are worked out again, so the total can move a little. See [When the exchange rate is fixed](/projects/calculations/cost-items/).
+
+## Why does my revision need the MD?
+
+Its budget is more than 10% above the original (v1), or its completion date more than 30 days after the original's, using the limits in Delivery Settings. It is always measured against v1, never against the version before. See [What changed, and which approvals a revision needs](/projects/calculations/revisions-and-approvals/).
+
+## Why does my revision say it "changes nothing"?
+
+A revision must change the budget, the completion date or a milestone. Moving only payment months, the basis or the reference of items does not count. See [revisions](/projects/calculations/revisions-and-approvals/).
+
+## Why does my purchase order say "Over the delivery plan"?
+
+The order is bigger than what is left on its budget line after other open orders and costs already posted. It is a warning only: the buyer can still confirm, and the project manager is told. See [the warning on a purchase order](/projects/calculations/tracking-figures/).
+
+## Why is my project "Over plan" when Budget left is positive?
+
+The status looks at each budget line. One line over its plan makes the whole project **Over plan**, even if other lines, such as contingency, still have money left. See [tracking figures](/projects/calculations/tracking-figures/).
+
+## Why doesn't my purchase order count as committed?
+
+Only confirmed orders count, and only lines carrying the project's cost account. Draft orders and untagged lines count nowhere. The Head of Delivery or Delivery Finance can tag tender orders. See [Tag orders to their project](/projects/how-to/approvers/tag-orders-to-a-project/).
+
+## Why do the smart buttons show different figures from the tracking table?
+
+The buttons and the **Budget status** show the last refresh (every night, or when someone clicks **Refresh**). The table on the **Delivery** tab is worked out each time you open the project. Click **Refresh** to bring them together.
+
+## Why is my project never "Fully committed"?
+
+Contingency sits on a reserve account nobody posts to, so its line is never used up. The project is **Fully committed** only when every line is. See [tracking figures](/projects/calculations/tracking-figures/).
+
+## Why does the tender show a different margin from the baseline?
+
+After approval the baseline uses the exchange rate fixed on the day the budget was approved; the tender uses today's rate. They also count other projects' draft revisions differently. See [Expected revenue and margin left](/projects/calculations/margin/).
+
+## Why is my project in "Projects over their approved budget"?
+
+At least one budget line has more committed and spent than planned. Check that the costs belong to the project, then request a revision if the plan was too low. See [Projects over their approved budget](/projects/reports/projects-over-budget/).
+
+## When is my baseline due?
+
+14 days after the tender's award date, by default. After that the project manager and the Head of Delivery get a *Delivery baseline overdue* to-do, once. See [Baseline due date](/projects/calculations/baseline-due/).
+
+## How are overlapping client delays counted?
+
+Each calendar day counts once, however many approved delays cover it. Only **Approved** delays count. See [Client delay days](/projects/calculations/delay-days/).
+
+## Can I change a client delay after it is rejected?
+
+No. A rejected delay stays rejected and can't go back to draft. To ask again, log a new delay with its evidence and submit it. See [Log a client delay](/projects/how-to/delivery-pm/log-a-client-delay/).
+
+## My project shows 5 days late but On time. Why?
+
+**Days late** is counted before the grace. A handover up to 7 days after the deadline (by default) is still **On time**. See [Close figures and the Delivery KPI](/projects/calculations/close-and-kpi/).
+
+## Why is my project "Not scored"?
+
+It was closed without an approved baseline or without a **Confirmed** handover. Its final cost is recorded, but it is left out of the Delivery KPIs. See [the result](/projects/calculations/close-and-kpi/).
+
+## Why can't finance close my project?
+
+The **Close Project** window lists what is in the way, for example *The handover must be recorded and confirmed by the Head of Delivery first.* or *A client delay is waiting for approval.* See [Close or reopen a project](/projects/how-to/approvers/close-a-project/).
+
+## Costs were posted after my project closed. Does my result change?
+
+No. They show as **Costs after close** and finance gets a to-do. The final cost and result stay frozen unless finance reopens and closes the project again. See [Review costs posted after close](/projects/how-to/approvers/review-costs-after-close/).
+
+## Why doesn't the Delivery KPI count my project yet?
+
+A project counts in the window of its confirmed handover date, and only once finance has closed it. Automatic reviews also wait 30 days after the window ends. See [The Delivery KPIs](/projects/calculations/close-and-kpi/).
+
+## Who can see my project's budget?
+
+Everyone with access to the Project app. There is no restriction by project. See [Who can do what](/projects/who-can-do-what/).
+
+## Why can't I see Delivery Settings or Cost Types?
+
+They sit under **Project › Configuration**, which needs **Project Administrator** access as well as the Head of Delivery or Delivery Finance role. See [Who can do what](/projects/who-can-do-what/).

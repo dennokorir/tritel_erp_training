@@ -1,0 +1,270 @@
+# Project Delivery: every status of every workflow, one entry per status.
+# Written from tritel_project_delivery (models and views); see the workflow pages for diagrams.
+
+# ── Delivery baseline (each version) ─────────────────────────────────────
+- module: projects
+  workflow: "Delivery baseline"
+  link: "/projects/workflows/baseline/"
+  state: "Draft"
+  meaning: "The version is being written: cost items, pay months, completion date, milestones and, for a revision, the reason. Only a draft can be edited or deleted."
+  next: "Waiting for approval (Confirm for Approval); Withdrawn (Withdraw)"
+  who: "Delivery project manager"
+- module: projects
+  workflow: "Delivery baseline"
+  link: "/projects/workflows/baseline/"
+  state: "Waiting for approval"
+  meaning: "Locked and with the approvers. The Head of Delivery approves the dates, Delivery Finance the budget (when needed) and the MD large revisions, in any order."
+  next: "Approved (when the last needed approval is given); Draft (Return to Draft); Withdrawn (Withdraw)"
+  who: "Head of Delivery, Delivery Finance, MD; the system; Delivery project manager"
+- module: projects
+  workflow: "Delivery baseline"
+  link: "/projects/workflows/baseline/"
+  state: "Approved"
+  meaning: "In force. The project's completion date, milestones, Odoo budget and budget tracking follow it. Exchange rates are fixed."
+  next: "Superseded (when a later version is approved)"
+  who: "The system"
+- module: projects
+  workflow: "Delivery baseline"
+  link: "/projects/workflows/baseline/"
+  state: "Superseded"
+  meaning: "Replaced by a later approved version. Kept for history; its Odoo budget is cancelled."
+  next: "—"
+  who: "—"
+- module: projects
+  workflow: "Delivery baseline"
+  link: "/projects/workflows/baseline/"
+  state: "Withdrawn"
+  meaning: "Abandoned before approval. It stays on record but no longer counts, and can be deleted."
+  next: "—"
+  who: "—"
+
+# ── Project baseline status (Baseline field on the project) ──────────────
+- module: projects
+  workflow: "Project baseline status"
+  link: "/projects/workflows/baseline/"
+  state: "No baseline"
+  meaning: "The delivery project has no baseline in draft, waiting or approved."
+  next: "Baseline in draft (Draft Baseline or Open Delivery Project)"
+  who: "Delivery project manager"
+- module: projects
+  workflow: "Project baseline status"
+  link: "/projects/workflows/baseline/"
+  state: "Baseline in draft"
+  meaning: "Version 1 is being written. Past Baseline due, the project is flagged as overdue."
+  next: "Waiting for approval (Confirm for Approval)"
+  who: "Delivery project manager"
+- module: projects
+  workflow: "Project baseline status"
+  link: "/projects/workflows/baseline/"
+  state: "Waiting for approval"
+  meaning: "Version 1 is with the approvers."
+  next: "Approved (all approvals given); Baseline in draft (Return to Draft)"
+  who: "Head of Delivery, Delivery Finance; the system"
+- module: projects
+  workflow: "Project baseline status"
+  link: "/projects/workflows/baseline/"
+  state: "Approved"
+  meaning: "An approved version is in force and no other version is open."
+  next: "Revision pending (Request Revision)"
+  who: "Delivery project manager"
+- module: projects
+  workflow: "Project baseline status"
+  link: "/projects/workflows/baseline/"
+  state: "Revision pending"
+  meaning: "An approved version is in force and a revision is in draft or waiting for approval."
+  next: "Approved (revision approved or withdrawn)"
+  who: "Approvers; the system; Delivery project manager"
+
+# ── Project handover ─────────────────────────────────────────────────────
+- module: projects
+  workflow: "Project handover"
+  link: "/projects/workflows/handover/"
+  state: "Draft"
+  meaning: "The handover date, certificate and note are recorded but not sent. It can be edited or deleted."
+  next: "Waiting for confirmation (Submit for Confirmation)"
+  who: "Delivery project manager"
+- module: projects
+  workflow: "Project handover"
+  link: "/projects/workflows/handover/"
+  state: "Waiting for confirmation"
+  meaning: "With the Head of Delivery. It can no longer be edited."
+  next: "Confirmed (Confirm Handover); Returned (Return)"
+  who: "Head of Delivery"
+- module: projects
+  workflow: "Project handover"
+  link: "/projects/workflows/handover/"
+  state: "Confirmed"
+  meaning: "The handover date is accepted. It counts for the on-time result, and finance can close the project."
+  next: "Returned (Return)"
+  who: "Head of Delivery"
+- module: projects
+  workflow: "Project handover"
+  link: "/projects/workflows/handover/"
+  state: "Returned"
+  meaning: "Sent back with a note. The project manager can correct it and submit it again, or delete it."
+  next: "Waiting for confirmation (Submit for Confirmation)"
+  who: "Delivery project manager"
+
+# ── Project handover status (Handover smart button on the project) ───────
+- module: projects
+  workflow: "Project handover status"
+  link: "/projects/workflows/handover/"
+  state: "Not recorded"
+  meaning: "No handover has been recorded for the project."
+  next: "Draft (Record Handover)"
+  who: "Delivery project manager"
+- module: projects
+  workflow: "Project handover status"
+  link: "/projects/workflows/handover/"
+  state: "Draft"
+  meaning: "A handover is being recorded."
+  next: "Waiting (Submit for Confirmation)"
+  who: "Delivery project manager"
+- module: projects
+  workflow: "Project handover status"
+  link: "/projects/workflows/handover/"
+  state: "Waiting"
+  meaning: "A handover is waiting for the Head of Delivery to confirm it."
+  next: "Confirmed (Confirm Handover); Returned (Return)"
+  who: "Head of Delivery"
+- module: projects
+  workflow: "Project handover status"
+  link: "/projects/workflows/handover/"
+  state: "Confirmed"
+  meaning: "A confirmed handover exists. Finance can close the project."
+  next: "Closed (Close Project)"
+  who: "Delivery Finance"
+- module: projects
+  workflow: "Project handover status"
+  link: "/projects/workflows/handover/"
+  state: "Returned"
+  meaning: "The latest handover was returned to the project manager."
+  next: "Waiting (Submit for Confirmation)"
+  who: "Delivery project manager"
+- module: projects
+  workflow: "Project handover status"
+  link: "/projects/workflows/handover/"
+  state: "Closed"
+  meaning: "The project is closed by finance."
+  next: "Confirmed (Reopen)"
+  who: "Delivery Finance"
+
+# ── Client delay ─────────────────────────────────────────────────────────
+- module: projects
+  workflow: "Client delay"
+  link: "/projects/workflows/client-delay/"
+  state: "Draft"
+  meaning: "Logged but not sent. The dates, reason and evidence can be changed, and it can be deleted."
+  next: "Waiting for approval (Submit for Approval)"
+  who: "Delivery project manager"
+- module: projects
+  workflow: "Client delay"
+  link: "/projects/workflows/client-delay/"
+  state: "Waiting for approval"
+  meaning: "With the Head of Delivery. It can no longer be edited, and the project can't be closed while it waits."
+  next: "Approved (Approve); Rejected (Reject)"
+  who: "Head of Delivery"
+- module: projects
+  workflow: "Client delay"
+  link: "/projects/workflows/client-delay/"
+  state: "Approved"
+  meaning: "Its days count in Approved client delay (days) and move the on-time deadline. Overlapping days count once."
+  next: "Rejected (Reject)"
+  who: "Head of Delivery"
+- module: projects
+  workflow: "Client delay"
+  link: "/projects/workflows/client-delay/"
+  state: "Rejected"
+  meaning: "Not accepted, with the Head of Delivery's note. Its days don't count. This is final; log a new delay if needed."
+  next: "—"
+  who: "—"
+
+# ── Close-out ────────────────────────────────────────────────────────────
+- module: projects
+  workflow: "Close-out"
+  link: "/projects/workflows/close-out/"
+  state: "Open"
+  meaning: "The project is not closed. Baselines, handovers and client delays can be worked on."
+  next: "Closed (Close Project, once nothing blocks it)"
+  who: "Delivery Finance"
+- module: projects
+  workflow: "Close-out"
+  link: "/projects/workflows/close-out/"
+  state: "Closed"
+  meaning: "The final cost and the on-time and on-budget result are frozen. No handover, client delay or revision can be started or changed."
+  next: "Open (Reopen); Costs after close (the system, when costs change)"
+  who: "Delivery Finance; the system"
+- module: projects
+  workflow: "Close-out"
+  link: "/projects/workflows/close-out/"
+  state: "Costs after close"
+  meaning: "Still closed, but spent plus open orders differ from the figures at close. The result does not change."
+  next: "Closed (Mark reviewed); Open (Reopen)"
+  who: "Delivery Finance"
+
+# ── Close-out result (Result on the Handover & close tab) ────────────────
+- module: projects
+  workflow: "Close-out result"
+  link: "/projects/workflows/close-out/"
+  state: "On time and on budget"
+  meaning: "Handed over within the grace days of the deadline, and the final cost is not above the approved budget."
+  next: "Cleared on Reopen"
+  who: "Delivery Finance"
+- module: projects
+  workflow: "Close-out result"
+  link: "/projects/workflows/close-out/"
+  state: "Late"
+  meaning: "On budget, but handed over more than the grace days after the deadline."
+  next: "Cleared on Reopen"
+  who: "Delivery Finance"
+- module: projects
+  workflow: "Close-out result"
+  link: "/projects/workflows/close-out/"
+  state: "Over budget"
+  meaning: "On time, but the final cost is above the approved budget."
+  next: "Cleared on Reopen"
+  who: "Delivery Finance"
+- module: projects
+  workflow: "Close-out result"
+  link: "/projects/workflows/close-out/"
+  state: "Late and over budget"
+  meaning: "Neither on time nor on budget."
+  next: "Cleared on Reopen"
+  who: "Delivery Finance"
+- module: projects
+  workflow: "Close-out result"
+  link: "/projects/workflows/close-out/"
+  state: "Not scored"
+  meaning: "Closed without an approved baseline, a confirmed handover or a completion date. It doesn't count in the Delivery KPI."
+  next: "Cleared on Reopen"
+  who: "Delivery Finance"
+
+# ── Budget status ────────────────────────────────────────────────────────
+- module: projects
+  workflow: "Budget status"
+  link: "/projects/workflows/budget-status/"
+  state: "No approved budget"
+  meaning: "No baseline has been approved yet, so there is nothing to track against."
+  next: "On track (baseline approved)"
+  who: "The system"
+- module: projects
+  workflow: "Budget status"
+  link: "/projects/workflows/budget-status/"
+  state: "On track"
+  meaning: "No budget line is over its plan and at least one still has room."
+  next: "Fully committed; Over plan (as orders and bills come in)"
+  who: "The system (nightly or on Refresh)"
+- module: projects
+  workflow: "Budget status"
+  link: "/projects/workflows/budget-status/"
+  state: "Fully committed"
+  meaning: "Every budget line has used at least 99.5% of its plan (committed plus spent), and none is over."
+  next: "Over plan; On track (if room opens up)"
+  who: "The system (nightly or on Refresh)"
+- module: projects
+  workflow: "Budget status"
+  link: "/projects/workflows/budget-status/"
+  state: "Over plan"
+  meaning: "At least one budget line has committed plus spent above its plan. Nothing is blocked."
+  next: "On track or Fully committed (revision approved, or orders cancelled)"
+  who: "The system, after a revision is approved"

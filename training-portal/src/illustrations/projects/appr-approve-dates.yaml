@@ -1,0 +1,29 @@
+type: screen
+title: A baseline waiting for the dates approval
+desc: The Delivery Baseline form opened from Waiting for My Approval, with the Approve Dates and Return to Draft buttons, the completion date, the Milestones tab with planned dates and the Approvals tab, numbered 1 to 6.
+source: tritel_project_delivery/views/baseline_views.xml (baseline_form)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true, n: 1}, Reporting, Configuration]
+  breadcrumb: [Waiting for My Approval, "PRJ Customer A network upgrade · baseline v1"]
+blocks:
+  - buttons: [{label: Approve Dates, primary: true, n: 5}, {label: Return to Draft, n: 6}]
+    status: {steps: [Draft, Waiting for approval, Approved], current: Waiting for approval}
+  - smart: [{label: Project, value: ""}, {label: Tender, value: ""}, {label: Margin left, value: "KES 450,000"}]
+  - title: {text: PRJ Customer A network upgrade, sub: "Baseline v1 · Original"}
+  - fields:
+      - [{label: Completion date, value: 30/06/2026, bold: true, n: 2}, {label: Expected revenue, value: "1,500,000.00"}]
+      - [{label: Budget total, value: "1,050,000.00"}, {label: Margin left, value: "450,000.00", tone: good}]
+      - [{label: Contingency, value: "50,000.00"}, {label: Margin left (%), value: "30.0"}]
+      - [{label: Project manager, value: Employee A}]
+  - tabs: {items: [Costs, Summary by category, Milestones, Approvals], active: Milestones, n: 3}
+  - table:
+      columns: [Milestone, Planned date]
+      widths: [4, 2]
+      n: 4
+      rows:
+        - [Site survey and design approved, 15/03/2026]
+        - [Equipment delivered to site, 30/04/2026]
+        - [Testing and commissioning complete, 15/06/2026]
+        - [Handover, 30/06/2026]

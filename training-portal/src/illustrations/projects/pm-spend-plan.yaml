@@ -1,0 +1,28 @@
+type: screen
+title: The spend plan by month
+desc: The Summary by category tab of a draft baseline with the budget by category and the Spend plan by month table, with a row per month, a column per category, month and running totals, and the Total and Planned to date rows, numbered 4.
+source: tritel_project_delivery/views/baseline_views.xml (baseline_form, Summary by category tab); models/phasing.py (_compute_spend_plan)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
+  breadcrumb: [Delivery Projects, PRJ Customer A network upgrade · baseline v1]
+blocks:
+  - tabs: {items: [Costs, Summary by category, Milestones, Approvals], active: Summary by category}
+  - table:
+      columns: [Category, What goes in, Amount (before VAT)]
+      widths: [2.4, 4.6, 1.8]
+      rows:
+        - [Equipment and hardware, "Switches, servers, access points, cameras, UPS…", "500,000"]
+        - [Subcontractors, "Installation, civil, cabling and specialist works…", "300,000"]
+        - [Contingency, "Reserve for known risks; no actuals post here", "40,000"]
+  - heading: Spend plan by month
+    n: 4
+  - table:
+      columns: [Month, Equipment and hardware, Subcontractors, Contingency, Month total, Running total]
+      widths: [1.4, 2, 1.7, 1.5, 1.5, 1.5]
+      rows:
+        - ["Mar 2026", "500,000", "150,000", "32,500", {text: "682,500", bold: true}, "682,500"]
+        - ["Apr 2026", "—", "150,000", "7,500", {text: "157,500", bold: true}, "840,000"]
+        - [{text: Total, bold: true}, {text: "500,000", bold: true}, {text: "300,000", bold: true}, {text: "40,000", bold: true}, {text: "840,000", bold: true}, ""]
+        - [{text: Planned to date, tone: muted}, "500,000", "300,000", "40,000", "840,000", ""]

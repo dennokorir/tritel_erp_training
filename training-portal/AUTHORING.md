@@ -116,6 +116,8 @@ blocks:                          # drawn top to bottom
   - columns: [{panel: true, blocks: [...]}, {panel: true, blocks: [...]}]  # side-by-side panels
 ```
 Tones: `good`, `warn`, `bad`, `accent`, `muted`. Table cells may be strings or `{text, badge, tone, bold}`.
+**Quote any cell that contains a comma** (`"Freight, clearing and delivery"`): unquoted, YAML splits it into two
+cells. The renderer refuses a row whose cell count doesn't match the columns.
 Rows may be `{cells: [...], highlight: true, n: 3}`.
 Draw only what the steps need: the buttons, fields and tabs the reader must find. 6–12 rows of content at most.
 Callout numbers must match the numbered steps on the page.
@@ -141,7 +143,8 @@ legend: {p: Own team only}
 
 ### Mermaid
 Use fenced ```` ```mermaid ```` blocks for state diagrams, swimlanes, system maps and journeys. Keep to
-`stateDiagram-v2` and `flowchart LR/TD`. Quote labels that contain punctuation: `A["Draft (new)"]`. Use
+`stateDiagram-v2` and `flowchart TD` (top to bottom: `LR` chains come out 2,000–3,000 px wide). Keep arrow
+labels short; put lists such as "who approves what" in a `note right of <state>` instead of on an arrow. Quote labels that contain punctuation: `A["Draft (new)"]`. Use
 business names, never model names. One diagram per idea; no more than ~12 nodes.
 
 ## Glossary, states and fields

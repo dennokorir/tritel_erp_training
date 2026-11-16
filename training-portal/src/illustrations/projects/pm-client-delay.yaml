@@ -1,0 +1,20 @@
+type: screen
+title: Logging a client delay
+desc: A new client delay form with the Submit for Approval button, the status bar, the project, the Delay from and to dates, the Days count, the Evidence file and the reason box, numbered 2 to 5.
+source: tritel_project_delivery/views/closeout_views.xml (client_delay_form)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
+  breadcrumb: [Delivery Projects, PRJ Customer A network upgrade, Client Delay]
+blocks:
+  - buttons: [{label: Submit for Approval, primary: true, n: 5}]
+    status: {steps: [Draft, Waiting for approval, Approved], current: Draft}
+  - fields:
+      - [{label: Project, value: PRJ Customer A network upgrade}]
+      - [{label: Delay, value: "01/05/2026  to  10/05/2026", bold: true, n: 2}]
+      - [{label: Days, value: "10"}]
+      - [{label: Evidence, value: "site-access-email.pdf", n: 4}]
+  - heading: What the client delayed, and why
+    n: 3
+  - text: "Site not available: Customer A could not give access to the server room until the landlord's works finished."

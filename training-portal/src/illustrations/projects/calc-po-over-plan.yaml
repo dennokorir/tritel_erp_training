@@ -1,0 +1,16 @@
+type: calc
+title: Over the delivery plan warning
+desc: Worked example of the warning on a purchase order, where the order's 100,000 is more than the 80,000 left on the Direct project costs line, so the order shows Over the delivery plan by 20,000.
+source: tritel_project_delivery/models/tracking.py (_compute_delivery_over_plan, button_confirm)
+heading: Purchase order P00045 on the Direct project costs line
+inputs:
+  - {label: Planned, value: "700,000"}
+  - {label: Other open orders, value: "170,000"}
+  - {label: Spent, value: "450,000"}
+  - {label: This order, value: "100,000"}
+steps:
+  - {label: "Room left: 700,000 − 170,000 − 450,000", value: "80,000"}
+  - {label: "This order's amount not yet billed, before VAT", value: "100,000"}
+  - {label: "Over by: 100,000 − 80,000", value: "20,000", tone: warn}
+result: {label: On the order, value: "Over the delivery plan.", tone: warn}
+note: "Customer A network upgrade · Direct project costs: this order is 100,000; 80,000 was left in the plan (over by 20,000). The buyer can still confirm; the project manager is told."

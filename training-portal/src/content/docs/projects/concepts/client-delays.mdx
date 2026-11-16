@@ -1,0 +1,55 @@
+---
+title: Client delays
+description: What a client delay is, how it is logged and approved, and how approved delay days move the on-time deadline of a delivery project.
+module: projects
+pageType: concept
+roles: [delivery-pm, head-delivery, delivery-finance]
+tags: [client delays, handover]
+keywords: [client delay, customer delay, site access, extension of time, EOT, delay claim, waiting on client, hold-up, force majeure, on time]
+related: [projects/workflows/client-delay, projects/how-to/delivery-pm/log-a-client-delay, projects/how-to/approvers/approve-a-client-delay, projects/calculations/delay-days, projects/concepts/delivery-kpi]
+sources:
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/my_actions.py
+  - tritel_project_delivery/views/closeout_views.xml
+sidebar: { order: 9 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+A **client delay** is a period when the client held the work up: the site wasn't ready, access to the server room wasn't granted, the client's own contractor was late. Tritel shouldn't be marked late for days it couldn't work. So the project manager logs each delay, the Head of Delivery approves it, and the approved days are added to the approved completion date before the project's on-time result is worked out.
+
+A client delay records:
+
+- **Delay**: the **From** and **To** dates. **Days** counts both ends: 1 to 10 March is 10 days.
+- **What the client delayed, and why**: for example *Site not available: client could not grant access to the server room until the landlord's works finished.*
+- **Evidence**: a client letter, site-access email or meeting minutes (optional).
+
+The project manager clicks **Log Client Delay** on the project, fills it in and clicks **Submit for Approval**. The Head of Delivery clicks **Approve**, or **Reject** with a **Note when rejecting**. Only **Approved** delays count. All of a project's delays are listed on its **Handover & close** tab, with the total **Approved client delay (days)**.
+
+## Overlapping delays count once
+
+The system counts calendar days, not delays. If two approved delays cover some of the same days, those days count once.
+
+<Illustration name="projects/concept-client-delay-days" caption="Two overlapping approved delays add 12 days, not 18." />
+
+## How the days are used
+
+At close, the deadline for the on-time result is:
+
+**Approved completion date** + **Approved client delay (days)**
+
+and the handover can be up to the grace days (7 by default) after that and still count as on time. So 10 approved delay days on a project due on 31 March move its deadline to 10 April. See [The Delivery KPI](/projects/concepts/delivery-kpi/).
+
+Approved delays don't change the baseline or the project's end date. If the work needs a new completion date for planning, request a revision instead (or as well).
+
+:::note[Good to know]
+- Only a draft delay can be edited or deleted. Once submitted, its dates and reason are fixed.
+- A **Rejected** delay can't be reopened. The Head of Delivery can also reject a delay that was already approved. If a rejected delay should count after all, log it again as a new delay.
+- A delay waiting for approval stops finance from closing the project. Decide it first.
+:::
+
+## Tasks that use this
+
+- [Log a client delay](/projects/how-to/delivery-pm/log-a-client-delay/)
+- [Approve or reject a client delay](/projects/how-to/approvers/approve-a-client-delay/)
+- [Client delay days](/projects/calculations/delay-days/)
+- [Client delay workflow](/projects/workflows/client-delay/)

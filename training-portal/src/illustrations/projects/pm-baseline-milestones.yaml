@@ -1,0 +1,27 @@
+type: screen
+title: Setting the completion date and milestone dates
+desc: A draft delivery baseline with the Completion date field and the Milestones tab listing the standard milestones with their planned dates and an Add a line link, numbered 1 to 4.
+source: tritel_project_delivery/views/baseline_views.xml (baseline_form, Milestones tab)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
+  breadcrumb: [Delivery Projects, PRJ Customer A network upgrade · baseline v1]
+blocks:
+  - buttons: [{label: Confirm for Approval, primary: true}, {label: Withdraw}]
+    status: {steps: [Draft, Waiting for approval, Approved], current: Draft}
+  - title: {text: PRJ Customer A network upgrade, sub: "Baseline v1 · Original"}
+  - fields:
+      - [{label: Completion date, value: 30/06/2026, bold: true, n: 1}, {label: Expected revenue, value: "KES 1,500,000"}]
+      - [{label: Budget total, value: "KES 1,050,000"}, {label: Margin left, value: "KES 450,000", tone: good}]
+  - tabs: {items: [Costs, Summary by category, Milestones, Approvals], active: Milestones, n: 2}
+  - table:
+      columns: [Milestone, Planned date]
+      widths: [5, 2]
+      rows:
+        - {cells: [Site survey and design approved, 15/03/2026], n: 3}
+        - [Equipment delivered to site, 15/04/2026]
+        - [Installation complete, 31/05/2026]
+        - [Testing and commissioning complete, 15/06/2026]
+        - [Handover, 30/06/2026]
+        - {cells: [{text: Add a line, tone: accent}, ""], n: 4}

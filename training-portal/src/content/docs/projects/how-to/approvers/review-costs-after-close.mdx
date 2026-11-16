@@ -1,0 +1,55 @@
+---
+title: Review costs posted after close
+description: As Delivery Finance, check costs posted or ordered on a project after it closed, then mark them reviewed to keep the project closed, or reopen it so they count.
+module: projects
+pageType: how-to
+roles: [delivery-finance]
+tags: [close-out, budget tracking, my actions]
+keywords: [costs after close, late bills, late invoices, post-closure costs, accruals, reopen project, overrun, variance, final cost, mark reviewed]
+where: [Project, My Actions]
+before:
+  - You have the <strong>Delivery Finance</strong> role.
+  - A closed project has costs posted, or orders confirmed, on its cost account since it closed. A daily check gives every finance user a <em>Costs after close</em> to-do.
+related: [projects/workflows/close-out, projects/how-to/approvers/close-a-project, projects/concepts/handover-and-close-out, projects/calculations/close-and-kpi, projects/how-to/delivery-pm/my-actions]
+sources:
+  - tritel_project_delivery/models/action_followups.py
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/views/closeout_views.xml
+  - tritel_project_delivery/data/closeout_data.xml
+  - tritel_project_delivery/models/my_actions.py
+sidebar: { order: 8 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+After a project closes, its final cost and result stay frozen. If a late bill is posted or a new order is confirmed on its cost account, the difference shows as **costs after close**. You decide whether it should change the result.
+
+<Illustration name="projects/appr-costs-after-close" caption="A closed project with costs after close. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Project › My Actions** and find **Costs after close**. Each item shows the amount since close, for example *KES 15,000 since close*. Click **Open**, or open the to-do.
+2. On the project, open the **Handover & close** tab.
+3. Read the **Costs after close** alert, and compare it with the frozen **Result** figures: **Final cost (before VAT)**, **Spent at close** and **Open orders at close**. Use the **Spent so far** and **Committed** buttons at the top to see the new lines.
+4. If the costs should not change the result (for example, they were already in the final cost as an adjustment), click **Mark reviewed**.
+5. If they should count, click **Reopen** at the top, give the reason, and then [close the project again](/projects/how-to/approvers/close-a-project/) with the new figures.
+
+You can also click **Mark reviewed** or **Reopen** straight from the item on My Actions.
+
+## What happens next
+
+- **After Mark reviewed:** the project stays closed. The alert shows *Reviewed by* your name and the date. Your *Costs after close* to-do is marked done, the project's chatter records the amount reviewed, and the item leaves My Actions.
+- If the costs change again later, the item comes back and the daily check sends a new to-do.
+- **After Reopen:** the final cost and result are cleared, and the earlier figures go into the chatter. The project is open again until you close it.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Only finance can mark costs after close as reviewed.* | You don't have the Delivery Finance role. | Ask a finance user. |
+| *Give the reason for reopening.* | You clicked **Reopen Project** with an empty reason. | Type why it is reopened. |
+
+:::note[Good to know]
+- The amount is the change since close: today's spent plus open orders, minus the spent and open orders frozen at close. A bill posted against an order that was already open at close does not add to it, because the cost simply moves from open orders to spent.
+- The amount can be negative, for example when an open order is cancelled after close.
+- Marking reviewed never changes the KPI result. Only reopening and closing again does.
+:::

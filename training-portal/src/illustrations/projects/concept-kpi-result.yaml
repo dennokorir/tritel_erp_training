@@ -1,0 +1,19 @@
+type: calc
+title: A project's on-time and on-budget result
+desc: Worked example of the result frozen when finance closes a project, handed over 5 days after its deadline (within the 7-day grace) and below its approved budget, giving On time and on budget.
+source: tritel_project_delivery/models/closeout.py (_closeout_results); models/delivery_settings.py (date_grace_days)
+heading: Result at close
+inputs:
+  - {label: Approved completion date, value: "31 Mar 2026"}
+  - {label: Approved client delay (days), value: "10"}
+  - {label: Handover date, value: "15 Apr 2026"}
+  - {label: "Completion date grace (days)", value: "7"}
+  - {label: Final cost, value: "1,020,000"}
+  - {label: Approved budget, value: "1,050,000"}
+steps:
+  - {label: "Deadline = 31 Mar + 10 days", value: "10 Apr 2026"}
+  - {label: "Days late = 15 Apr − 10 Apr", value: "5"}
+  - {label: "On time: 5 is not more than the 7-day grace", value: "Yes"}
+  - {label: "On budget: 1,020,000 is not above 1,050,000", value: "Yes"}
+result: {label: Result, value: On time and on budget, tone: good}
+note: "Days late is recorded before the grace, so this project shows 5 days late and On time. Handed over on 20 Apr it would be 10 days late: Late."

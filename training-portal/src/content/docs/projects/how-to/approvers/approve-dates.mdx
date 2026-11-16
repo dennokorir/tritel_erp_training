@@ -1,0 +1,63 @@
+---
+title: Approve a baseline's dates
+description: As Head of Delivery, check the completion date and milestone dates of a delivery baseline, then approve them or return the baseline to the project manager with a note.
+module: projects
+pageType: how-to
+roles: [head-delivery]
+tags: [baselines, approvals, my actions]
+keywords: [approve baseline, sign off dates, completion date, milestones, schedule approval, project plan, return baseline, send back, revision approval, Head of Delivery]
+where: [Project, Delivery, Waiting for My Approval]
+before:
+  - You have the <strong>Head of Delivery</strong> role. Every baseline, the original and every revision, needs your approval.
+  - "The project manager has clicked <strong>Confirm for Approval</strong>. You get a to-do called <em>Approve delivery baseline: dates</em>."
+related: [projects/concepts/approvals, projects/workflows/baseline, projects/concepts/baselines, projects/how-to/approvers/approve-budget, projects/how-to/delivery-pm/fix-a-returned-baseline]
+sources:
+  - tritel_project_delivery/views/baseline_views.xml
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/action_followups.py
+  - tritel_project_delivery/models/my_actions.py
+  - tritel_project_delivery/views/menus.xml
+sidebar: { order: 1 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A **delivery baseline** is the plan a project is measured against: a completion date, milestone dates and a budget. The Head of Delivery approves the **dates** of every baseline. Finance approves the budget separately, and the MD also approves a large revision.
+
+<Illustration name="projects/appr-approve-dates" caption="A baseline waiting for your dates approval. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Project › Delivery › Waiting for My Approval**. The list shows only the baselines waiting for you. Click the baseline. You can also open it from **Project › My Actions**, under **Baselines to approve: dates**, or from the to-do.
+2. Check the **Completion date**. On a revision, the **Change** box also shows **Days vs previous** and **Days vs original**, and **Reason for revision** says why it changed.
+3. Open the **Milestones** tab.
+4. Check each milestone's **Planned date**. They must make sense in order, and none can fall after the completion date. On a revision, the **Changes** tab lists the cost items that were added, changed or removed.
+5. If the dates are right, click **Approve Dates**.
+6. If something needs fixing, open the **Approvals** tab, type what needs to change in **Note for the project manager**, then click **Return to Draft**.
+
+From **My Actions** you can do the same without opening the baseline: click **Approve dates**, or click **Return**, type the note in the box that opens, and click **Return** again.
+
+## What happens next
+
+- **After Approve Dates:** your name goes in **Dates approved by** on the **Approvals** tab and your to-do is removed. If finance or the MD still has to approve, the baseline stays **Waiting for approval**.
+- **When the last approval is in,** the baseline becomes **Approved** and is locked:
+  - the project's completion date and milestone dates are set from the baseline;
+  - foreign-currency rates are fixed and the Odoo budget is created on the project's cost account;
+  - on a revision, the previous approved version becomes **Superseded** and its Odoo budget is cancelled;
+  - the project manager gets a message (not a to-do) with a summary.
+- **After Return to Draft:** the baseline goes back to **Draft** and every approval already given is cleared, including finance's. All approvers' to-dos are removed. The project manager gets a *Delivery baseline returned* to-do with your note, and sees it in a yellow **Returned** banner. They fix it and [confirm it again](/projects/how-to/delivery-pm/fix-a-returned-baseline/), and everyone approves again.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Write a note for the project manager before returning the baseline.* | You clicked **Return to Draft** with an empty **Note for the project manager**. | Type the note on the **Approvals** tab first. |
+| *You cannot give this approval, or it has already been given.* | Another Head of Delivery approved it first, or you are not in the Head of Delivery group. | Refresh the page and check **Dates approved by**. |
+| *This baseline is not waiting for approval.* | It was returned, withdrawn or approved while you had it open. | Refresh and check the status bar. |
+| *Only a baseline waiting for approval can be returned.* | Same as above: it is no longer waiting. | Refresh the page. |
+| *Baseline v1 is Waiting for approval and can no longer be edited. Return it to draft or request a revision.* | You tried to change a date or milestone yourself. | Return it with a note saying what to change. |
+
+:::note[Good to know]
+- Any one Head of Delivery can approve. When one does, the item leaves the other Heads' lists.
+- **Return to Draft** shows only while your own approval is still pending. Once you have approved, you no longer see it; finance or the MD can still return the baseline while their approval is pending.
+- Returning clears approvals that others have already given. Agree with finance before you return a baseline they have approved.
+:::

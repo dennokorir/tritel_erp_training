@@ -1,0 +1,24 @@
+type: screen
+title: Budget tracking on a project
+desc: The Budget tracking table on a project's Delivery tab, with the Over plan status badge, Figures as of and Refresh, and one row per budget line showing Planned, Expected by now, Committed, Spent, Left, Forecast at completion and Status, numbered 1 to 5.
+source: tritel_project_delivery/views/tracking_views.xml (project_form_tracking); models/tracking.py (_compute_tracking_html, _row_status)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
+  breadcrumb: [Delivery Projects, PRJ Customer A network upgrade]
+blocks:
+  - tabs: {items: [Description, Settings, Delivery, "Handover & close"], active: Delivery}
+  - heading: Budget tracking
+  - fields:
+      - [{label: Budget status, value: Over plan, n: 1}, {label: "Figures as of", value: "18/05/2026 02:00   ⟳ Refresh", n: 2}]
+  - table:
+      columns: [Budget line, Planned, Expected by now, Committed, Spent, Left, Forecast at completion, Status]
+      widths: [3, 1.6, 1.6, 1.6, 1.6, 1.6, 1.8, 1.8]
+      n: 3
+      rows:
+        - ["Direct project costs", "950,000", "950,000", "200,000", "650,000", "100,000", "950,000", {text: On track, badge: true, tone: good}]
+        - {cells: ["Project travel and site", "50,000", "50,000", "—", "62,000", {text: "-12,000", tone: bad}, "62,000", {text: Over plan, badge: true, tone: bad}], highlight: true, n: 4}
+        - {cells: ["Project contingency", "50,000", "50,000", "—", "—", "50,000", "50,000", {text: On track, badge: true, tone: good}], n: 5}
+        - [{text: Whole budget, bold: true}, {text: "1,050,000", bold: true}, {text: "1,050,000", bold: true}, {text: "200,000", bold: true}, {text: "712,000", bold: true}, {text: "138,000", bold: true}, "", ""]
+  - text: "Committed: confirmed purchase orders not yet billed. Spent: posted costs on the project's cost account (expense accounts only). Amounts before VAT."

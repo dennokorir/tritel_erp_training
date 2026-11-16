@@ -1,0 +1,37 @@
+type: screen
+title: A delivery project
+desc: The project form with the Record Handover, Log Client Delay and Close Project buttons, the delivery smart buttons, and the Delivery tab showing the tender link, the approved baseline and the Request Revision button, numbered 1 to 5.
+source: tritel_project_delivery/views/project_views.xml (project_form_delivery); views/closeout_views.xml (project_form_closeout); views/buttons_views.xml
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
+  breadcrumb: [Delivery Projects, PRJ Customer A network upgrade]
+blocks:
+  - buttons: [{label: Record Handover, n: 1}, {label: Log Client Delay}, {label: Close Project, primary: true}]
+  - smart:
+      - {label: Baseline, value: Approved v1, tone: good, n: 2}
+      - {label: Delivery budget, value: "1,050,000"}
+      - {label: "Left · on track", value: "338,000", tone: good}
+      - {label: Cost account, value: PRJ Customer A}
+      - {label: Handover, value: Not recorded}
+  - title: {text: PRJ Customer A network upgrade, sub: "Customer A · Project manager: Employee A"}
+  - tabs: {items: [Description, Settings, Delivery, "Handover & close"], active: Delivery, n: 3}
+  - columns:
+      - panel: true
+        blocks:
+          - heading: Tender
+          - fields:
+              - [{label: Tender, value: TND-2026-001}]
+              - [{label: Award date, value: 02/03/2026}]
+              - [{label: Contract value, value: "1,500,000"}]
+              - [{label: Baseline due, value: 16/03/2026}]
+      - panel: true
+        blocks:
+          - heading: Approved baseline
+          - fields:
+              - [{label: Baseline, value: Approved, n: 4}]
+              - [{label: Baseline version, value: "1"}]
+              - [{label: Approved completion date, value: 31/05/2026}]
+              - [{label: Approved delivery budget, value: "1,050,000"}]
+  - buttons: [{label: Request Revision, primary: true, n: 5}]

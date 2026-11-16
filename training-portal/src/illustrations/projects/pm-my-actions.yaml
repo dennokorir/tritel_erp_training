@@ -1,0 +1,37 @@
+type: screen
+title: Projects My Actions
+desc: The My Actions screen in the Project app with the To do, Overdue and Waiting on others tiles, a link card, the Baselines sent back to you and Handovers to record groups with their buttons, a Return note box, and the Waiting on others group with a Remind button, numbered 1 to 5.
+source: tritel_project_delivery/static/src/my_actions/project_my_actions.xml (MyActions, MyActionsGroup); models/my_actions.py
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, {label: My Actions, active: true, n: 1}, Delivery, Reporting]
+  breadcrumb: [My Actions]
+blocks:
+  - tiles:
+      - {label: To do, value: "2", tone: warn}
+      - {label: Overdue, value: "1", tone: bad}
+      - {label: Waiting on others, value: "1"}
+  - table:
+      columns: ["", "", ""]
+      widths: [0.6, 6, 1.8]
+      rows:
+        - {cells: [{text: "4", bold: true, tone: accent}, "Projects not linked to a won tender · Link them so they are measured.", {text: Projects to link, bold: true}], n: 2}
+  - heading: "Baselines sent back to you  1"
+  - table:
+      columns: [Item, Waited, Buttons]
+      widths: [6, 1, 2.6]
+      rows:
+        - {cells: ["PRJ Customer A network upgrade · v1 · Attach Supplier B's quote", "2 days", "Open"], n: 3}
+  - heading: "Handovers to record  1"
+  - table:
+      columns: [Item, Waited, Buttons]
+      widths: [6, 1, 2.6]
+      rows:
+        - {cells: ["PRJ Customer C office Wi-Fi · Customer C · Approved completion 31 Oct 2026", {text: "16 days", tone: bad}, {text: "Record handover · Log client delay · Open", bold: true}], n: 4}
+  - heading: "Waiting on others  1"
+  - table:
+      columns: [Item, Waiting on, Waited, Buttons]
+      widths: [4.4, 2, 1, 2.2]
+      rows:
+        - {cells: ["PRJ Customer D CCTV · PRJ Customer D CCTV · baseline v1 · approval", "Head of Delivery and Finance", "3 days", {text: "Remind · Open", bold: true}], n: 5}

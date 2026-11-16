@@ -1,0 +1,20 @@
+type: screen
+title: A large revision on the MD's My Actions
+desc: The Projects My Actions screen with the To do, Overdue and Waiting on others tiles, and the Revisions to approve (MD) group showing a revision with its budget and date change against v1 and the Approve, Return and Open buttons, numbered 1 to 3.
+source: tritel_project_delivery/static/src/my_actions/project_my_actions.xml; models/my_actions.py (get_project_my_actions)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, {label: My Actions, active: true, n: 1}, Reporting]
+  breadcrumb: [My Actions]
+blocks:
+  - tiles: [{label: To do, value: "1", tone: warn}, {label: Overdue, value: "0"}, {label: Waiting on others, value: "0"}]
+  - heading: "Revisions to approve (MD)  1"
+    n: 2
+  - text: This revision moves the budget or the completion date past the limits in Delivery Settings.
+  - table:
+      columns: [Item, Waiting, ""]
+      widths: [6, 1.2, 3.4]
+      rows:
+        - cells: ["PRJ Customer A network upgrade — Employee A · Customer A · Revision v3 · completion 09/08/2026 · +14% budget, +40 days vs v1", "2 days", {text: "Approve · Return · Open", bold: true}]
+          n: 3

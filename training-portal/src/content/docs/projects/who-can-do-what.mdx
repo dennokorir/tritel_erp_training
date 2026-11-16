@@ -1,0 +1,75 @@
+---
+title: Who can do what
+description: Who can open delivery projects, build and approve baselines, record handovers and delays, close projects, tag orders and change the delivery set-up, and what everyone with project access can see.
+module: projects
+pageType: reference
+roles: [delivery-pm, head-delivery, delivery-finance, md, everyone, system-admin]
+tags: [permissions, access]
+keywords: [access rights, permissions, roles, who can approve, can't see Delivery menu, Configuration missing, MD approval, project administrator, visibility, privacy, security]
+related: [projects/concepts/approvals, projects/faq, projects/index, projects/how-to/approvers/delivery-settings, roles/delivery]
+sources:
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/security/ir.model.access.csv
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/baseline_views.xml
+  - tritel_project_delivery/views/project_views.xml
+  - tritel_project_delivery/views/closeout_views.xml
+  - tritel_project_delivery/views/tracking_views.xml
+  - tritel_project_delivery/views/tender_views.xml
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/models/budget_mapping.py
+  - tritel_project_delivery/models/my_actions.py
+  - tritel_project_delivery/wizards/open_project_wizard.py
+sidebar: { order: 2 }
+---
+import Illustration from '../../../components/Illustration.astro';
+
+Project Delivery has three roles of its own, plus the MD, who is one named person.
+
+## The roles
+
+| Role | How you get it |
+|---|---|
+| **Delivery PM** | A system administrator ticks **Delivery Project Manager** under **Project Delivery** on your user's access rights. It includes access to the Project app and its milestones. |
+| **Head of Delivery** | Given the same way (**Head of Delivery**). It includes everything a Delivery PM can do. |
+| **Delivery Finance** | Given the same way (**Delivery Finance**). It includes access to the Project app, but not the Delivery PM role. |
+| **MD** | The one user named as **MD** in **Delivery Settings**. This is not an access right: it only lets that person give the MD approval on large revisions. |
+| **Everyone with project access** | Any user who can open the Project app. |
+
+The MD column below shows only what being named MD adds. The MD also has the rights of whichever other column applies to them. To open a baseline at all, the MD needs project access.
+
+## Projects and baselines
+
+<Illustration name="projects/matrix-baselines" caption="Who can open delivery projects, build baselines and approve or return them." />
+
+Notes on the "partly" marks:
+
+- **See every delivery project, baseline, budget and cost item**: the MD only with project access. The **Delivery** menu needs the Delivery PM or Delivery Finance role, so an MD without either works from the to-do on the baseline or from **Project › My Actions**.
+- **Add, change and delete cost items and milestones on a draft**: Delivery Finance can change existing cost items, budget lines and milestones on a draft, but can't add or delete them and can't **Confirm for Approval**.
+- **Return to Draft with a note**: the button shows only while the baseline still waits for your own approval (dates for the Head of Delivery, budget for Delivery Finance, MD approval for the MD). Write the **Note for the project manager** first.
+
+**Approve Dates**, **Approve Budget** and **MD Approve** appear only while the baseline waits for that approval and it hasn't been given. Finance approval is needed only for an original baseline or a revision that changes the budget; MD approval only for a revision above the limits. See [which approvals a revision needs](/projects/calculations/revisions-and-approvals/).
+
+## Handover, close, tracking and set-up
+
+<Illustration name="projects/matrix-closeout-setup" caption="Who records and confirms handovers and delays, closes projects, tags orders and changes the set-up." />
+
+Notes on the "partly" marks:
+
+- **See budget tracking** and **Refresh**: the MD only with project access.
+- **Projects over their approved budget in My Actions**: the Head of Delivery sees every delivery project over plan. Everyone else, Delivery Finance included, sees only projects where they are the **Project Manager**.
+- **Delivery Settings**, **Budget Categories**, **Starter Items**, **Cost Types** and **Standard Milestones** sit under **Project › Configuration › Delivery**, which appears only for users who are also **Project Administrator** (see below). **Apply mapping** can also be used by accounting advisers. The Head of Delivery and Delivery Finance can add and change budget categories but not delete them; deactivate one instead.
+
+Some buttons depend on accounting or purchase access rather than a delivery role: **Vendor bills**, **Odoo budget lines**, **Automatic tagging rules** and **Odoo Budget** need accounting access, **Purchase orders** needs purchase access, and **Spent so far** and **Cost account** open the accounting records only for users with accounting access. See [the project form at a glance](/projects/reports/project-at-a-glance/).
+
+## Who can see a project's budget?
+
+Everyone with project access. There is no restriction by project, project manager or department.
+
+:::note[Good to know]
+Nothing limits people to their own projects. Every user with project access can read every delivery baseline, cost item, budget figure, handover and client delay in the company, including other project managers' projects. Changes are still limited by role as shown above.
+
+The **Configuration** menu of the Project app needs **Project Administrator** access. A Head of Delivery or Delivery Finance user without it can't reach **Delivery Settings**, **Cost Types** or the other set-up lists, even though their role allows the changes. Ask a system administrator to add it.
+:::

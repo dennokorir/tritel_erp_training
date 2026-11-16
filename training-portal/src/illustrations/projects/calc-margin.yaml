@@ -1,0 +1,14 @@
+type: calc
+title: Margin left
+desc: Worked example of the margin left on a baseline, with expected revenue of 1,500,000, this baseline at 1,050,000 and another delivery project on the same tender at 300,000, leaving 150,000 or 10.0%.
+source: tritel_project_delivery/models/tender_import.py (_compute_revenue)
+heading: Baseline v1 for Customer A network upgrade, tender TND-2026-001
+inputs:
+  - {label: Expected revenue, value: "1,500,000"}
+  - {label: This baseline, value: "1,050,000"}
+  - {label: Other project, value: "300,000"}
+steps:
+  - {label: "Margin left: 1,500,000 − 1,050,000 − 300,000", value: "150,000"}
+  - {label: "Margin left (%): 150,000 ÷ 1,500,000 × 100", value: "10.0%"}
+result: {label: Margin left, value: "KES 150,000", tone: good}
+note: The other project counts with its latest version that is draft, waiting or approved. Below zero, the baseline shows Costs are over the expected revenue.

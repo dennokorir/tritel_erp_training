@@ -1,0 +1,18 @@
+type: calc
+title: Budget tracking figures
+desc: Worked example of budget tracking with three budget lines, showing Left, Forecast at completion and the status of each line, and why one line over its plan makes the project Over plan although 88,000 is left overall.
+source: tritel_project_delivery/models/tracking.py (_tracking_figures, _row_status, _refresh_tracking)
+heading: Budget tracking for Customer A network upgrade
+inputs:
+  - {label: Planned, value: "850,000"}
+  - {label: Committed, value: "200,000"}
+  - {label: Spent, value: "562,000"}
+steps:
+  - {label: "Direct project costs: 700,000 − 200,000 − 450,000. Used 650,000 is below 99.5% of 700,000 (696,500)", value: "50,000 · On track"}
+  - {label: "Project travel and site: 100,000 − 0 − 112,000. Used is more than planned", value: "−12,000 · Over plan", tone: bad}
+  - {label: "Project contingency: 50,000 − 0 − 0", value: "50,000 · On track"}
+  - {label: "Whole budget, Left: 850,000 − 200,000 − 562,000", value: "88,000"}
+  - {label: "Forecast at completion, the larger of planned or used on each line: 700,000 + 112,000 + 50,000", value: "862,000"}
+  - {label: "Spent so far: 562,000 ÷ 850,000, rounded", value: "Spent 66%"}
+result: {label: Budget status, value: "Over plan", tone: bad}
+note: One budget line over its plan makes the whole project Over plan. The Budget left button shows 88,000 in red.

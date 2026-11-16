@@ -27,7 +27,7 @@ You find it in the **Accountability** app. It has four menus: **My Performance**
 Most figures come from the work you already record in Odoo. A **metric** reads them and proposes the result for a target. Reviews make the result official. Scores, ratings and reports are worked out from the reviewed results.
 
 ```mermaid
-flowchart LR
+flowchart TD
   ORG["HR org chart (who reports to whom)"] --> T
   SRC["CRM, Tender Tracker, Projects, Accounting"] --> M["Metrics"]
   P["Period and objectives"] --> T["Targets"]
@@ -58,7 +58,7 @@ flowchart LR
 ## The year in one picture
 
 ```mermaid
-flowchart LR
+flowchart TD
   A["Period opens (Draft → Active)"] --> B["Objectives set"]
   B --> C["Targets set and activated"]
   C --> D["Targets cascaded down the line"]

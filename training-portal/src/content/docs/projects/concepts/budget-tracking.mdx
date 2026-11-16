@@ -1,0 +1,71 @@
+---
+title: "Budget tracking: planned, committed, spent, left"
+description: How an approved delivery budget is tracked against purchase orders and posted costs, what each figure means, and how buyers are warned before an order goes over the plan.
+module: projects
+pageType: concept
+roles: [delivery-pm, head-delivery, delivery-finance, finance]
+tags: [budgets, tracking]
+keywords: [budget tracking, budget vs actual, variance, overrun, overspend, committed, spent, balance, burn, forecast, LPO, PO, purchase order, vendor bill]
+related: [projects/workflows/budget-status, projects/how-to/delivery-pm/track-the-budget, projects/calculations/tracking-figures, projects/reports/projects-over-budget, projects/concepts/odoo-budget-and-cost-account]
+sources:
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/models/buttons.py
+  - tritel_project_delivery/models/whole_orders.py
+  - tritel_project_delivery/views/tracking_views.xml
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/whole_orders_views.xml
+sidebar: { order: 6 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Once a baseline is approved, the project's **Delivery** tab shows a **Budget tracking** table. It compares the approved plan with what has been ordered and what has been paid for, line by line, in the same words the budget was planned in. All amounts are before VAT and in KES.
+
+The figures are refreshed every night, and whenever someone clicks **Refresh** next to **Figures as of**. Before the baseline is approved the table says *Tracking starts once the baseline is approved.*
+
+<Illustration name="projects/concept-budget-tracking" caption="Budget tracking on a project with one line over plan. The numbers match the list below." />
+
+1. **Budget status** for the whole project. One line over plan makes the whole project **Over plan**.
+2. **Figures as of**: when the figures were last worked out. **Refresh** works them out again now.
+3. One row per **budget line**. Each row is an Odoo budgetary position, with the budget categories it holds listed underneath. Categories that share a position share a row, because the ledger can't tell them apart.
+4. A row over plan: committed and spent together are more than planned, so **Left** is negative and shown in red.
+5. The **Project contingency** row never fills up, because nothing is posted to it. See [Contingency](/projects/concepts/contingency/).
+
+## What each figure means
+
+| Column | Meaning |
+|---|---|
+| **Planned** | The approved budget for this line. |
+| **Expected by now** | What the spend plan says should have gone out by the end of this month. |
+| **Committed** | Confirmed purchase orders on the cost account that are not yet billed, before VAT. |
+| **Spent** | Costs posted on the cost account, on expense accounts only (no payments, bank or VAT lines). |
+| **Left** | Planned minus committed minus spent. |
+| **Forecast at completion** | Planned, or committed plus spent if that is higher. |
+| **Status** | **On track**, **Fully committed** or **Over plan** for this line. See [Budget status](/projects/workflows/budget-status/). |
+
+A row called **Not split yet** collects costs on accounts that are outside every position, and categories that have no position yet.
+
+## Where else you see it
+
+- **Smart buttons on the project:** **Spent so far** (with *Spent 68%* of planned), **Committed**, and **Budget left**, which is green when on track, amber when fully committed and red when over plan. **Budget left** opens the same table in a window, with any confirmed tender orders whose lines are not tagged to the project.
+- **Delivery Projects list:** the **Committed**, **Spent**, **Left**, **Forecast at completion** and **Budget status** columns, with totals.
+- **My Actions:** **Projects over their approved budget**, for the project manager (own projects) and the Head of Delivery (all projects).
+
+## The warning on purchase orders
+
+A purchase order whose lines carry a delivery project's cost account shows a **Left in delivery plan** smart button. If the order would take a budget line over its plan, it shows a yellow banner: **Over the delivery plan.** *You can still confirm; the project manager will be told.* followed by, for example, *PRJ Customer A network upgrade · Project travel and site: this order is 20,000; 8,000 was left in the plan (over by 12,000).*
+
+The warning does not block the order. When it is confirmed, the system notes *Over the delivery plan when confirmed* on the order and sends the project manager *Order over the delivery plan: P00123* on the baseline.
+
+:::note[Good to know]
+- **Committed** for an order in another currency is converted at today's rate, so it can move a little from day to day until the bill is posted.
+- An order or bill counts only if its lines carry the project's cost account. Untagged tender order lines are left out until the Head of Delivery or finance tags them.
+- Which row a purchase order line falls in follows its product's category, mapped through the cost types. A product in an unexpected category can land in **Direct project costs**.
+:::
+
+## Tasks that use this
+
+- [Track the budget](/projects/how-to/delivery-pm/track-the-budget/)
+- [Planned, expected to date, committed, spent, left, forecast and status](/projects/calculations/tracking-figures/)
+- [Projects over their approved budget](/projects/reports/projects-over-budget/)
+- [Tag orders to their project](/projects/how-to/approvers/tag-orders-to-a-project/)
+- [Request a revision](/projects/how-to/delivery-pm/request-a-revision/)

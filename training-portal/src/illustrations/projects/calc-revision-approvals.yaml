@@ -1,0 +1,18 @@
+type: calc
+title: Revision approvals
+desc: Worked example of revision v3, which is 100,000 and 25 days above v2 and 14.3% and 40 days above the original, so it needs the Head of Delivery, finance and the MD.
+source: tritel_project_delivery/models/baseline.py (_compute_changes, _compute_needs)
+heading: Revision v3 of Customer A network upgrade
+inputs:
+  - {label: "v1 · 31 Mar 2027", value: "1,050,000"}
+  - {label: "v2 · 15 Apr 2027", value: "1,100,000"}
+  - {label: "v3 · 10 May 2027", value: "1,200,000"}
+steps:
+  - {label: "Budget vs previous: 1,200,000 − 1,100,000", value: "+100,000"}
+  - {label: "Days vs previous: 15 Apr to 10 May", value: "25"}
+  - {label: "Budget vs original (%): 150,000 ÷ 1,050,000 × 100", value: "14.3%"}
+  - {label: "Days vs original: 31 Mar to 10 May", value: "40"}
+  - {label: "Finance: cost items changed, so yes", value: "Needed"}
+  - {label: "MD: 14.3% is more than 10%, and 40 days is more than 30", value: "Needed", tone: warn}
+result: {label: Approvals, value: "Head, finance and MD", tone: warn}
+note: The MD limits are measured against v1, never against the version before, so a large change can't be split into small revisions.

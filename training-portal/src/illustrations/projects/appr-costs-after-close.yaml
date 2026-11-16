@@ -1,0 +1,21 @@
+type: screen
+title: Costs posted after a project closed
+desc: The Handover and close tab of a closed project, with the Costs after close alert and its Mark reviewed button, the Reopen button and the frozen Result figures, numbered 1 to 5.
+source: tritel_project_delivery/views/closeout_views.xml (project_form_closeout)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, {label: My Actions, n: 1}, Delivery, Reporting, Configuration]
+  breadcrumb: [My Actions, PRJ Customer A network upgrade]
+blocks:
+  - buttons: [{label: Reopen, n: 5}]
+  - title: {text: PRJ Customer A network upgrade}
+  - tabs: {items: [Tasks, Delivery, Handover & close], active: Handover & close, n: 2}
+  - note: {text: "Costs after close: 15,000.00 posted or ordered since the project closed. The final cost and result stay as closed; finance can reopen it if this should count.", tone: warn, n: 3}
+  - buttons: [{label: Mark reviewed, n: 4}]
+  - heading: Result
+  - fields:
+      - [{label: Result, value: On time and on budget, tone: good}, {label: Final cost (before VAT), value: "1,020,000.00"}]
+      - [{label: On time, value: "☑"}, {label: Approved budget at close, value: "1,050,000.00"}]
+      - [{label: On budget, value: "☑"}, {label: Spent at close, value: "980,000.00"}]
+      - [{label: Closed on, value: "20/07/2026 11:00"}, {label: Open orders at close, value: "40,000.00"}]

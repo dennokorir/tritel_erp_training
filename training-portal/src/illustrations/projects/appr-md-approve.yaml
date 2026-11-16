@@ -1,0 +1,27 @@
+type: screen
+title: A revision waiting for the MD
+desc: The Delivery Baseline form of a revision, with the MD Approve and Return to Draft buttons, the Change box comparing the revision with the previous version and the original, the reason for the revision and the Changes tab listing added and changed cost items, numbered 4 to 8.
+source: tritel_project_delivery/views/baseline_views.xml (baseline_form), views/tracking_views.xml (baseline_form_changes)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions]
+  breadcrumb: [My Actions, "PRJ Customer A network upgrade · baseline v3"]
+blocks:
+  - buttons: [{label: MD Approve, primary: true, n: 7}, {label: Return to Draft, n: 8}]
+    status: {steps: [Draft, Waiting for approval, Approved], current: Waiting for approval}
+  - title: {text: PRJ Customer A network upgrade, sub: "Baseline v3 · Revision"}
+  - fields:
+      - [{label: Completion date, value: 09/08/2026}, {label: Budget vs previous, value: "150,000.00", n: 4}]
+      - [{label: Budget total, value: "1,200,000.00"}, {label: Days vs previous, value: "25"}]
+      - [{label: Contingency, value: "50,000.00"}, {label: Budget vs original (%), value: "14.3", bold: true, tone: warn}]
+      - [{label: Project manager, value: Employee A}, {label: Days vs original, value: "40", bold: true, tone: warn}]
+  - fields:
+      - [{label: Reason for revision, value: "Client added two branch sites; equipment lead time moved delivery by five weeks.", n: 5}]
+  - tabs: {items: [Costs, Changes, Summary by category, Milestones, Approvals], active: Changes, n: 6}
+  - table:
+      columns: ["", Item, v2, v3, Change]
+      widths: [1.4, 4, 1.6, 1.6, 1.6]
+      rows:
+        - [{text: Added, tone: good}, Branch site switches, "0", "100,000", "+100,000"]
+        - [{text: Changed, tone: warn}, "Structured cabling (qty 1.0 → 1.2)", "250,000", "300,000", "+50,000"]

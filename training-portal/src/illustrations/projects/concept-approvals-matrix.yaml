@@ -1,0 +1,25 @@
+type: matrix
+title: Who approves what in Project Delivery
+desc: Permission grid showing what delivery project managers, the Head of Delivery, Delivery Finance and the MD can do with baselines, handovers, client delays and close-out.
+source: tritel_project_delivery/security/delivery_security.xml, security/ir.model.access.csv, models/baseline.py, models/closeout.py, models/tracking.py, views/baseline_views.xml, views/closeout_views.xml
+columns: [Delivery PM, Head of Delivery, Delivery Finance, MD]
+labelWidth: 300
+rows:
+  - {group: Baselines}
+  - {action: "Open a delivery project, draft a baseline", cells: [y, y, n, n]}
+  - {action: Confirm for Approval, cells: [y, y, n, n]}
+  - {action: Approve Dates (every version), cells: [n, y, n, n]}
+  - {action: Approve Budget (original and budget changes), cells: [n, n, y, n]}
+  - {action: MD Approve (large revisions), cells: [n, n, n, y]}
+  - {action: Return to Draft, cells: [n, p, p, p]}
+  - {action: Withdraw a draft or waiting baseline, cells: [y, y, n, n]}
+  - {group: Handover and client delays}
+  - {action: Record and submit a handover, cells: [y, y, n, n]}
+  - {action: Confirm or return a handover, cells: [n, y, n, n]}
+  - {action: Log and submit a client delay, cells: [y, y, n, n]}
+  - {action: Approve or reject a client delay, cells: [n, y, n, n]}
+  - {group: Money and close-out}
+  - {action: Tag tender orders to the project, cells: [n, y, y, n]}
+  - {action: Close or reopen a project, cells: [n, n, y, n]}
+  - {action: Mark costs after close reviewed, cells: [n, n, y, n]}
+legend: {p: "Only while your own approval is still pending"}

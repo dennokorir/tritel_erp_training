@@ -1,0 +1,15 @@
+type: calc
+title: Client delay days
+desc: Worked example of three client delays where two approved delays overlap, giving 12 approved days rather than 18, and a rejected delay is left out.
+source: tritel_project_delivery/models/closeout.py (_compute_days, _approved_delay_days)
+heading: Client delays on Customer A network upgrade
+inputs:
+  - {label: "Delay 1 · Approved", value: "1–10 Mar"}
+  - {label: "Delay 2 · Approved", value: "5–12 Mar"}
+  - {label: "Delay 3 · Rejected", value: "20–22 Mar"}
+steps:
+  - {label: "Days on each delay, both ends counted: 10, 8 and 3", value: "21 in the list"}
+  - {label: "Leave out delay 3: it is not approved", value: "1–10 and 5–12 Mar"}
+  - {label: "Count each calendar day once: 1 Mar to 12 Mar", value: "12 days"}
+result: {label: Approved client delay (days), value: "12", tone: good}
+note: Weekends and public holidays count. The total under the Days column adds every delay, so it shows 21 here.

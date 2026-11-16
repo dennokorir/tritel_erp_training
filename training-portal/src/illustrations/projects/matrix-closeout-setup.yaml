@@ -1,0 +1,25 @@
+type: matrix
+title: Who can do what at handover, close and set-up
+desc: Permission grid for handovers, client delays, closing, budget tracking, tagging orders and the delivery set-up screens, for delivery project managers, the Head of Delivery, Delivery Finance, the MD and everyone with project access.
+source: tritel_project_delivery/security/ir.model.access.csv, views/menus.xml, views/closeout_views.xml, views/tracking_views.xml, views/buttons_views.xml, models/closeout.py, models/tracking.py, models/budget_mapping.py, models/my_actions.py
+columns: [Delivery PM, Head of Delivery, Delivery Finance, MD, Everyone with project access]
+labelWidth: 290
+rows:
+  - {group: Handover and client delays}
+  - {action: Record and submit a handover, cells: [y, y, n, n, n]}
+  - {action: Log and submit a client delay, cells: [y, y, n, n, n]}
+  - {action: Confirm or return a handover, cells: [n, y, n, n, n]}
+  - {action: Approve or reject a client delay, cells: [n, y, n, n, n]}
+  - {group: Closing}
+  - {action: Close or reopen a project, cells: [n, n, y, n, n]}
+  - {action: Mark costs after close reviewed, cells: [n, n, y, n, n]}
+  - {group: Budget tracking and orders}
+  - {action: See budget tracking and the smart buttons, cells: [y, y, y, p, y]}
+  - {action: Refresh the tracking figures, cells: [y, y, y, p, y]}
+  - {action: Tag tender orders to the project, cells: [n, y, y, n, n]}
+  - {action: Projects over their approved budget in My Actions, cells: [p, y, p, n, p]}
+  - {group: Set-up (Project › Configuration › Delivery)}
+  - {action: Delivery Settings and Apply mapping, cells: [n, p, p, n, n]}
+  - {action: Budget Categories and Starter Items, cells: [n, p, p, n, n]}
+  - {action: Cost Types and Standard Milestones, cells: [n, p, n, n, n]}
+legend: {p: "Partly: see the notes under the picture"}

@@ -1,0 +1,17 @@
+type: calc
+title: Odoo budget lines
+desc: Worked example of the Odoo budget created on approval for a project starting 15 Jan 2027 with completion on 31 Mar 2027, showing the budget period, one line per month with planned spend and one zero line for the months after.
+source: tritel_project_delivery/models/phasing.py (_sync_budget)
+heading: Odoo budget for baseline v1, approved in January 2027
+inputs:
+  - {label: Project start, value: "15 Jan 2027"}
+  - {label: Completion date, value: "31 Mar 2027"}
+  - {label: Runs past completion, value: "180 days"}
+steps:
+  - {label: "Budget period: project start to completion + 180 days", value: "15 Jan–27 Sep 2027"}
+  - {label: "Direct project costs (switches and installation share it): 15–31 Jan", value: "−120,000"}
+  - {label: "Direct project costs: 1–28 Feb, then 1–31 Mar", value: "−240,000 each"}
+  - {label: "Direct project costs: 1 Apr–27 Sep, no planned spend, one line", value: "0"}
+  - {label: "Project contingency: Jan, Feb, Mar, then 1 Apr–27 Sep", value: "−6,000 · −12,000 · −12,000 · 0"}
+result: {label: Odoo budget lines, value: "8", tone: accent}
+note: Planned amounts are negative because they are costs. Late bills dated up to 27 Sep 2027 still fall inside a line.

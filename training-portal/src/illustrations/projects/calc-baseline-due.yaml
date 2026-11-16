@@ -1,0 +1,15 @@
+type: calc
+title: Baseline due date
+desc: Worked example of the baseline due date, 14 days after an award on 1 Mar 2027, and the overdue to-do sent the next day if the project still has no baseline or only a draft.
+source: tritel_project_delivery/models/project.py (_compute_baseline_due_date, _cron_delivery_baseline_due)
+heading: Customer A network upgrade, awarded 1 Mar 2027
+inputs:
+  - {label: Award date, value: "1 Mar 2027"}
+  - {label: Baseline due after award, value: "14 days"}
+steps:
+  - {label: "Baseline due: 1 Mar 2027 + 14 days", value: "15 Mar 2027"}
+  - {label: "15 Mar: still due today, nothing is sent", value: "—"}
+  - {label: "16 Mar: daily check finds No baseline or Baseline in draft", value: "Overdue", tone: bad}
+  - {label: "To-do Delivery baseline overdue for the project manager and every Head of Delivery", value: "Once only"}
+result: {label: Baseline due, value: "15 Mar 2027", tone: accent}
+note: With no award date on the tender, the count starts from the day the project was created.

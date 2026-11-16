@@ -1,0 +1,30 @@
+type: screen
+title: Closing a project
+desc: The Close Project window over a delivery project, showing Spent, Open orders, Proposed final cost, Adjustment, Final cost and Approved budget, the result preview, and the Close Project button, numbered 1 to 4.
+source: tritel_project_delivery/views/closeout_views.xml (close_wizard_form); models/closeout.py (DeliveryCloseWizard)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
+  breadcrumb: [Delivery Projects, PRJ Customer A network upgrade]
+blocks:
+  - buttons: [{label: Log Client Delay}, {label: Close Project, primary: true}]
+  - dialog:
+      title: Close Project
+      blocks:
+        - text: The final cost is frozen for the budget KPI. Costs posted after closing show on the project as costs after close; they do not change the result unless you reopen it.
+        - columns:
+            - panel: false
+              blocks:
+                - fields:
+                    - [{label: Spent, value: "980,000", n: 1}]
+                    - [{label: Open orders, value: "40,000"}]
+                    - [{label: Proposed final cost, value: "1,020,000"}]
+                    - [{label: Adjustment, value: "0", n: 2}]
+                    - [{label: Final cost, value: "1,020,000"}]
+            - panel: false
+              blocks:
+                - fields:
+                    - [{label: Approved budget, value: "1,050,000"}]
+        - note: {text: "On time and on budget · Handover 15 Apr 2026 against approved 31 Mar 2026 + 10 days client delay: 5 days late (grace 7). Final cost 1,020,000 against approved budget 1,050,000.", tone: good, n: 3}
+        - buttons: [{label: Close Project, primary: true, n: 4}, {label: Cancel}]

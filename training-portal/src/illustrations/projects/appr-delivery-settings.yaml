@@ -1,0 +1,41 @@
+type: screen
+title: Delivery Settings
+desc: The Delivery Settings form with the KPI rules, MD approval of revisions and Budgets and cost accounts sections, the Odoo budget mapping section with accounts and positions, and the Apply mapping button, numbered 1 to 6.
+source: tritel_project_delivery/views/delivery_settings_views.xml (delivery_settings_form)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, Delivery, Reporting, {label: Configuration, active: true, n: 1}]
+  breadcrumb: [Delivery Settings]
+blocks:
+  - title: {text: Delivery Settings}
+  - columns:
+      - blocks:
+          - heading: KPI rules
+            n: 2
+          - fields:
+              - [{label: Completion date grace (days), value: "7"}]
+              - [{label: Baseline due after award (days), value: "14"}]
+              - [{label: Contingency cap (%), value: "5.00"}]
+      - blocks:
+          - heading: MD approval of revisions
+            n: 3
+          - fields:
+              - [{label: MD, value: Employee D}]
+              - [{label: MD approval above budget increase (%), value: "10.00"}]
+              - [{label: MD approval above date extension (days), value: "30"}]
+  - heading: Budgets and cost accounts
+    n: 4
+  - fields:
+      - [{label: New cost accounts, value: "◉ A new plan per project, named after it  ○ One shared plan for all delivery projects"}]
+      - [{label: Budget runs past completion (days), value: "180"}, {label: VAT rate (%), value: "16.00"}]
+  - heading: Odoo budget mapping
+    n: 5
+  - columns:
+      - blocks:
+          - heading: Direct project costs
+          - fields: [[{label: Accounts, value: "500000 Cost of sales"}], [{label: Position, value: Direct project costs}]]
+      - blocks:
+          - heading: Project contingency
+          - fields: [[{label: Reserve account, value: "500900 Project Contingency Reserve"}], [{label: Position, value: Project contingency}]]
+  - buttons: [{label: Apply mapping, primary: true, n: 6}]

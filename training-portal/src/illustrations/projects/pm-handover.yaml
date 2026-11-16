@@ -1,0 +1,19 @@
+type: screen
+title: Recording a handover
+desc: A new handover form with the Submit for Confirmation button, the status bar, the Project, Handover date and Handover certificate fields and the note box, numbered 2 to 5.
+source: tritel_project_delivery/views/closeout_views.xml (handover_form)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
+  breadcrumb: [Delivery Projects, PRJ Customer A network upgrade, Handover]
+blocks:
+  - buttons: [{label: Submit for Confirmation, primary: true, n: 5}]
+    status: {steps: [Draft, Waiting for confirmation, Confirmed], current: Draft}
+  - fields:
+      - [{label: Project, value: PRJ Customer A network upgrade}]
+      - [{label: Handover date, value: 03/07/2026, bold: true, n: 2}]
+      - [{label: Handover certificate, value: "completion-certificate.pdf", n: 3}]
+  - heading: Note
+    n: 4
+  - text: "Network handed over to Customer A's IT manager, who signed the certificate. Snag list: label two patch panels on floor 2 by 10/07/2026."

@@ -1,0 +1,19 @@
+type: calc
+title: Cost item amounts
+desc: Worked example of four cost items on a baseline, showing VAT taken out of a VAT-inclusive price, a US dollar item converted to KES, contingency as 5% of the other costs, the contingency cap check and the budget total of KES 1,050,000.
+source: tritel_project_delivery/models/baseline.py (_sync_items, action_confirm), models/cost_item.py
+heading: Baseline v1 for Customer A network upgrade
+inputs:
+  - {label: Switches (incl. VAT), value: "10 × 58,000"}
+  - {label: Licences (USD), value: "2 × 1,000"}
+  - {label: Travel and site, value: "1 × 240,000"}
+  - {label: Contingency, value: "5%"}
+steps:
+  - {label: "Switches: 580,000 includes VAT at 16%, so 580,000 ÷ 1.16", value: "500,000"}
+  - {label: "Licences: USD 2,000 × rate 130.00 (today's rate until finance fixes it)", value: "260,000"}
+  - {label: "Travel and site: already in KES, no VAT included", value: "240,000"}
+  - {label: "All costs except contingency", value: "1,000,000"}
+  - {label: "Contingency: 5% of other costs × 1,000,000", value: "50,000"}
+  - {label: "Cap check at Confirm for Approval: 5% × 1,050,000 = 52,500, and 50,000 is not above it", value: "Passes", tone: good}
+result: {label: Budget total, value: "KES 1,050,000", tone: good}
+note: Every Total (before VAT) is in KES and rounded to the cent. The budget total includes the contingency.

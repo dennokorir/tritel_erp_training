@@ -1,0 +1,25 @@
+type: screen
+title: Baseline and tender smart buttons
+desc: The smart buttons on a delivery baseline (Odoo Budget, Project, Tender, Baseline versions and Margin left) and on a won tender (Delivery projects, Delivery budgets, Margin left and Untagged order lines), numbered 1 to 9.
+source: tritel_project_delivery/views/buttons_views.xml (baseline_form_buttons, tender_form_buttons), views/baseline_views.xml, views/tender_views.xml
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
+  breadcrumb: [All Baselines, Customer A network upgrade · baseline v2]
+blocks:
+  - heading: On the baseline
+  - smart:
+      - {label: Odoo Budget, value: "Odoo Budget", n: 1}
+      - {label: Project, value: "Project", n: 2}
+      - {label: Tender, value: "Tender", n: 3}
+  - smart:
+      - {label: Revisions, value: "1", n: 4}
+      - {label: Margin left, value: "150,000", tone: good, n: 5}
+  - divider: true
+  - heading: On the won tender TND-2026-001
+  - smart:
+      - {label: Delivery, value: "2", n: 6}
+      - {label: Delivery budgets, value: "1,350,000", n: 7}
+      - {label: Margin left, value: "150,000", n: 8}
+      - {label: Untagged lines, value: "2", tone: warn, n: 9}

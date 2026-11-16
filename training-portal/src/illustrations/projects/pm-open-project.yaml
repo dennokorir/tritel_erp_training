@@ -1,0 +1,24 @@
+type: screen
+title: Opening a delivery project from a won tender
+desc: A won tender in Tender Manager with the Open Delivery Project button, and the Open Delivery Project window with the won tender, client, award date, existing project, project name, project manager, start date and cost account, numbered 1 to 7.
+source: tritel_project_delivery/views/tender_views.xml (tender_form_delivery); wizards/open_project_wizard_views.xml (delivery_project_open_wizard_form)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [{label: Tenders, active: true, n: 1}, My Actions, Configuration]
+  breadcrumb: [All Tenders, Customer A network upgrade]
+blocks:
+  - buttons: [{label: Open Delivery Project, primary: true, n: 2}]
+    status: {steps: [Draft, Bidding, Evaluation, Won], current: Won}
+  - dialog:
+      title: Open Delivery Project
+      blocks:
+        - text: "The project gets the client, the tender link, a cost account (finance's existing one if it matches), the standard delivery stages and milestones, and a draft baseline with the standard starter items."
+        - fields:
+            - [{label: Won tender, value: Customer A network upgrade, n: 3}, {label: Existing project, value: "", n: 4}]
+            - [{label: Client, value: Customer A}, {label: Project name, value: PRJ Customer A network upgrade}]
+            - [{label: Award Date, value: 02/02/2026}, {label: Project manager, value: Employee A, n: 5}]
+            - [{label: "", value: ""}, {label: Start date, value: 09/02/2026}]
+            - [{label: Cost account, value: "Leave empty to create a new cost account", tone: muted, n: 6}]
+        - text: "A new cost account will be created in a new plan named after the project."
+        - buttons: [{label: Open Delivery Project, primary: true, n: 7}, {label: Cancel}]

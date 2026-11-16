@@ -1,0 +1,31 @@
+type: screen
+title: A baseline revision
+desc: A delivery baseline form for revision v2 in Draft, with the Confirm for Approval button, the status bar, the completion date and budget total, the Change group comparing it with earlier versions, the Reason for revision and the tabs, numbered 1 to 6.
+source: tritel_project_delivery/views/baseline_views.xml (baseline_form); views/tracking_views.xml (baseline_form_changes)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
+  breadcrumb: [All Baselines, "PRJ Customer A network upgrade · baseline v2"]
+blocks:
+  - buttons: [{label: Confirm for Approval, primary: true, n: 1}, {label: Withdraw}]
+    status: {steps: [Draft, Waiting for approval, Approved], current: Draft, n: 2}
+  - title: {text: PRJ Customer A network upgrade, sub: "Baseline v2 · Revision"}
+  - columns:
+      - panel: false
+        blocks:
+          - fields:
+              - [{label: Completion date, value: 15/06/2026, n: 3}]
+              - [{label: Budget total, value: "1,155,000"}]
+              - [{label: Contingency, value: "55,000"}]
+              - [{label: Project manager, value: Employee A}]
+      - panel: true
+        blocks:
+          - heading: Change
+          - fields:
+              - [{label: Budget vs previous, value: "105,000", n: 4}]
+              - [{label: Days vs previous, value: "15"}]
+              - [{label: Budget vs original (%), value: "10.0"}]
+              - [{label: Days vs original, value: "15"}]
+  - fields: [[{label: Reason for revision, value: "Client added two sites to the scope.", n: 5}]]
+  - tabs: {items: [Costs, Changes, Summary by category, Milestones, Approvals], active: Costs, n: 6}

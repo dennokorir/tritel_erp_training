@@ -1,0 +1,74 @@
+---
+title: Maintain cost types, categories, starter items and standard milestones
+description: Keep the lists behind every delivery baseline up to date - the cost types project managers pick, the budget categories they roll up to, the starter items on every new baseline, and the standard milestones on every new project.
+module: projects
+pageType: how-to
+roles: [head-delivery, delivery-finance]
+tags: [settings, budgets]
+keywords: [cost type, budget category, cost category, starter items, template costs, standard milestones, milestone template, budgetary position, configuration, master data, chart of accounts]
+where: [Project, Configuration, Delivery, Cost Types]
+before:
+  - You can see <strong>Project › Configuration</strong> (Project Administrator access; see Good to know).
+  - <strong>Cost Types</strong> and <strong>Standard Milestones</strong> are for the Head of Delivery. <strong>Budget Categories</strong> and <strong>Starter Items</strong> are for the Head of Delivery and Delivery Finance.
+related: [projects/concepts/cost-items-and-categories, projects/concepts/contingency, projects/concepts/odoo-budget-and-cost-account, projects/how-to/approvers/delivery-settings, projects/how-to/delivery-pm/build-a-baseline]
+sources:
+  - tritel_project_delivery/views/delivery_settings_views.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/models/cost_item.py
+  - tritel_project_delivery/models/starter_item.py
+  - tritel_project_delivery/models/whole_orders.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/security/ir.model.access.csv
+sidebar: { order: 11 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Project managers list costs in plain language: they pick a **cost type** such as *Equipment we supply*, and the type decides which **budget category** the amount is summarised in. Categories are what finance approves and what the Odoo budget is built from. **Starter items** and **standard milestones** give every new project a head start.
+
+<Illustration name="projects/appr-cost-types" caption="The Cost Types list. The numbers match steps 1 to 4." />
+
+## Steps
+
+### Cost types
+
+1. Open **Project › Configuration › Delivery › Cost Types**.
+2. Click **New**. A blank row opens at the bottom of the list.
+3. Fill in **Type** (the name project managers see), **Hint** (one line shown when they pick it), **Budget category**, and optionally **Product categories**. Click away from the row to save it. Drag the handle on the left to change the order.
+4. To stop using a type, switch off the toggle at the end of its row. It stays on old baselines but can't be picked on new cost items.
+
+### Budget categories
+
+5. Open **Project › Configuration › Delivery › Budget Categories**. Each row has a **Name**, **What goes in**, a **Budgetary position** and a **Contingency** tick for the reserve category. Edit a row in place, or click **New**.
+6. To stop using a category, switch off its toggle. Categories can't be deleted.
+
+### Starter items
+
+7. Open **Project › Configuration › Delivery › Starter Items**. Set **What**, **Type**, **Qty**, **Unit** and **Unit cost** (company currency, before VAT; leave 0 for the project manager to price). For a contingency type, set **% of other costs** instead. **Note** becomes the item's reference.
+
+### Standard milestones
+
+8. Open **Project › Configuration › Delivery › Standard Milestones**. Add, rename, reorder or switch off milestones by **Name**.
+
+## What happens next
+
+- **Cost types:** new and changed types are offered on cost items straight away. If you change a type's **Budget category**, draft baselines move the amount when they are next changed or confirmed. Approved baselines keep their category totals.
+- **Product categories:** in budget tracking, an order line's committed amount counts under the category of the cost type whose product categories match the ordered product. Without a match, services count as *Work by a subcontractor* and goods as *Equipment we supply*.
+- **Budget categories:** a category's **Budgetary position** decides which Odoo budget line it lands on when a baseline is approved. A category with no position goes on the **Direct project costs** position. **Apply mapping** in [Delivery Settings](/projects/how-to/approvers/delivery-settings/) sets the positions of the standard categories for you, and overwrites them each time it runs.
+- **Starter items** are added to the first draft baseline when a project manager opens a delivery project from a won tender, or links an existing project that has no baseline yet. Existing baselines and revisions are not changed.
+- **Standard milestones** are copied onto a project when it is opened from a won tender or linked to one, unless the project already has a milestone with the same name. Existing projects are not changed.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Starter items cannot have negative values (Travel and site costs).* | **Qty**, **Unit cost** or **% of other costs** is below 0. | Enter 0 or more. |
+| *Accounts 500000 are in both "Project travel and site" and the fallback "Direct project costs". Remove them from "Direct project costs" first, or the same cost would count twice.* | The **Budgetary position** you chose shares a ledger account with the direct project costs position. | Fix the accounts in [Delivery Settings](/projects/how-to/approvers/delivery-settings/), or choose another position. |
+
+:::note[Good to know]
+- **Project › Configuration** is shown only to Project Administrators. Head of Delivery and Delivery Finance users also need that access to reach these lists.
+- The **Budget category** field on a cost type says *Set once by finance*, but only the Head of Delivery can change cost types. Agree the mapping with finance.
+- The **Contingency** tick marks the reserve. Cost types in a contingency category can be priced as a **% of other costs**, and the total in contingency categories is limited by the **Contingency cap (%)** in Delivery Settings.
+- A starter item left at 0 stops the project manager from confirming the baseline until they price it or delete it. Use 0 only for costs that most projects really have.
+- Switch off rather than delete. A cost type that is used on a cost item can't be deleted.
+:::

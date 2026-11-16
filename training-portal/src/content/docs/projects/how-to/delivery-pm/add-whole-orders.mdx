@@ -1,0 +1,62 @@
+---
+title: Enter a supplier order or quote in a baseline
+description: Key a supplier order or quote into a baseline as one cost item per cost type, with the order number as the reference and the quote attached. Orders are not imported automatically.
+module: projects
+pageType: how-to
+roles: [delivery-pm]
+tags: [baselines, budgets]
+keywords: [purchase order, PO, LPO, sales order, SO, import order, whole order, supplier quote, quotation, budget, cost sheet, BOQ]
+where: [Project, Delivery, Delivery Projects]
+before:
+  - The baseline is in <strong>Draft</strong> and you are the project manager.
+  - You have the supplier's quote or purchase order, or the sales order you are delivering.
+related: [projects/how-to/delivery-pm/build-a-baseline, projects/concepts/cost-items-and-categories, projects/calculations/cost-items, projects/how-to/delivery-pm/track-the-budget, projects/how-to/approvers/tag-orders-to-a-project]
+sources:
+  - tritel_project_delivery/models/whole_orders.py
+  - tritel_project_delivery/models/tender_import.py
+  - tritel_project_delivery/views/baseline_views.xml
+  - tritel_project_delivery/views/budget_mapping_views.xml
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/__manifest__.py
+sidebar: { order: 4 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Baselines are keyed by hand from estimates and quotes. There is no button that pulls a whole purchase order or sales order into a baseline. When a supplier has quoted for, or you have ordered, a whole package, key it as one cost item for each type of cost in the order.
+
+<Illustration name="projects/pm-whole-order" caption="One supplier order keyed as two cost items, one per type. The numbers match the steps below." />
+
+## Steps
+
+1. Open the draft baseline and go to the **Costs** tab.
+2. Click **Add a line** for the first part of the order:
+   - **What**: the supplier and what the order covers, for example *Supplier A order: switches and optics*.
+   - **Type**: the type that fits this part, for example **Equipment we supply**.
+   - **Qty**: 1, and **Unit**: lot.
+   - **Currency**: the order's currency.
+   - **Unit cost**: the order amount for this part, before VAT. If you only have the VAT-inclusive amount, type that and tick **Incl. VAT**.
+   - **Pay from** (and **Pay until** if it is paid in stages): when the supplier will be paid.
+   - **Basis**: **Quoted**. **Reference**: the order or quote number. Attach the PDF in **Quote file**.
+3. If the order mixes types (for example equipment and installation), add one line per type, so that each budget category gets its share.
+4. Check **Total (before VAT)** on each line and the total under the table.
+5. For a foreign-currency order, the amount is converted at today's rate until finance approves the budget.
+6. On **Summary by category**, **Quote files attached** shows how many quoted lines have a file, for example *2 of 2 quoted lines*.
+
+For a **sales order**, don't key the selling prices. Key what Tritel will buy or pay to deliver it: equipment, subcontractors, travel and so on.
+
+## What happens next
+
+- The items count in the baseline like any other cost item, and the approvers see the reference and the quote.
+- After approval, what the supplier's order actually commits is tracked separately: a confirmed purchase order counts as **Committed** only when its lines carry the project's cost account. Orders raised on the project's tender get it automatically when the tender has one delivery project. See [Track the budget](/projects/how-to/delivery-pm/track-the-budget/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *"Supplier A order: installation" needs a quantity and a unit cost.* | The quantity or the amount is 0. | Use 1 lot and the order amount. |
+| *"Pay until" is before "Pay from" on Supplier A order: installation.* | The months are the wrong way round. | Swap them, or clear **Pay until** if it is paid in one month. |
+| *Baseline v1 is Approved; its budget and milestones can no longer be edited.* | The baseline is approved. | [Request a revision](/projects/how-to/delivery-pm/request-a-revision/) to add the order. |
+
+:::note[Good to know]
+Baselines drafted in the first months of the module may contain items that were imported from tender orders at the time. They keep the order they came from as read-only history, and revisions copy them like any other item. New orders can't be imported; key them as shown above.
+:::

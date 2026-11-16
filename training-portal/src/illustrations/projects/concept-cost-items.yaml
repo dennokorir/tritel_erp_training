@@ -1,0 +1,26 @@
+type: screen
+title: Cost items on a baseline
+desc: The Costs tab of a draft delivery baseline listing five cost items with their type, quantity, currency, unit cost, payment month, basis and total before VAT, and the Quoted and Foreign currency shares underneath, numbered 1 to 5.
+source: tritel_project_delivery/views/baseline_views.xml (baseline_form, page costs); models/cost_item.py
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
+  breadcrumb: [Delivery Projects, PRJ Customer A network upgrade, baseline v1]
+blocks:
+  - buttons: [{label: Confirm for Approval, primary: true}, {label: Withdraw}]
+    status: {steps: [Draft, Waiting for approval, Approved], current: Draft}
+  - tabs: {items: [Costs, Summary by category, Milestones, Approvals], active: Costs}
+  - text: List what the project will pay for. Pick the type that fits; the accounts behind it are set by finance. Amounts are worked out before VAT and in KES.
+  - table:
+      columns: [What, Type, Qty, Currency, Unit cost, Pay from, Basis, "Total (before VAT)"]
+      widths: [3, 3, 1, 1.3, 1.5, 1.6, 1.4, 2]
+      n: 1
+      rows:
+        - ["48-port PoE switches", Equipment we supply, "5", USD, "1,000", Mar 2026, {text: Quoted, badge: true, tone: good}, "650,000"]
+        - [Installation by subcontractor, Work by a subcontractor, "1", KES, "250,000", Apr 2026, {text: Quoted, badge: true, tone: good}, "250,000"]
+        - {cells: ["Freight, clearing and delivery to site", Shipping and clearance, "1", KES, "58,000", Mar 2026, {text: Estimate, badge: true, tone: warn}, "50,000"], n: 2}
+        - [Travel and site costs, Travel and site costs, "10", KES, "5,000", Apr 2026, {text: Estimate, badge: true, tone: warn}, "50,000"]
+        - {cells: [Contingency, Contingency, "", "", "5% of other costs", "", "", "50,000"], n: 3}
+        - {cells: ["", "", "", "", "", "", Total, {text: "1,050,000", bold: true}], n: 4}
+  - note: {text: "Quoted: 90%   Foreign currency: 65%   Foreign-currency amounts use today's rate until finance approves the budget.", tone: warn, n: 5}

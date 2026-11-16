@@ -1,0 +1,69 @@
+---
+title: Change the Delivery settings
+description: Set the KPI rules, the MD and the MD approval limits, how new cost accounts are created, the VAT rate, and how budget categories map to Odoo budget positions.
+module: projects
+pageType: how-to
+roles: [head-delivery, delivery-finance]
+tags: [settings, budgets, approvals]
+keywords: [delivery settings, configuration, grace period, baseline due, contingency cap, MD threshold, approval limit, VAT, cost account, analytic plan, budgetary position, budget mapping]
+where: [Project, Configuration, Delivery, Delivery Settings]
+before:
+  - You have the <strong>Head of Delivery</strong> or <strong>Delivery Finance</strong> role, and you can see <strong>Project › Configuration</strong> (see Good to know).
+  - There is one settings page per company. Agree changes to the KPI rules and MD limits with management first; they change how projects are measured.
+related: [projects/concepts/approvals, projects/concepts/odoo-budget-and-cost-account, projects/concepts/contingency, projects/concepts/delivery-kpi, projects/how-to/approvers/cost-types-and-categories]
+sources:
+  - tritel_project_delivery/views/delivery_settings_views.xml
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/models/budget_mapping.py
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/security/ir.model.access.csv
+sidebar: { order: 10 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+**Delivery Settings** hold the rules every delivery project follows: when a handover still counts as on time, when a baseline is due, how much contingency is allowed, who the MD is, and how budgets reach Odoo Budgets.
+
+<Illustration name="projects/appr-delivery-settings" caption="The Delivery Settings page. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Project › Configuration › Delivery › Delivery Settings**. The settings page opens directly.
+2. Under **KPI rules**, set:
+   - **Completion date grace (days)**: a handover up to this many days after the deadline still counts as on time (7 by default);
+   - **Baseline due after award (days)**: when a project without an approved baseline is flagged (14);
+   - **Contingency cap (%)**: the most contingency a baseline may carry, as a share of its total (5).
+3. Under **MD approval of revisions**, choose the **MD** (one person) and the limits: **MD approval above budget increase (%)** (10) and **MD approval above date extension (days)** (30).
+4. Under **Budgets and cost accounts**, set:
+   - **New cost accounts**: **A new plan per project, named after it** or **One shared plan for all delivery projects**. If you choose the shared plan, also pick the **Shared plan for project cost accounts**;
+   - **Budget runs past completion (days)**: how long the Odoo budget runs after the completion date, so late bills still count (180);
+   - **VAT rate (%)**: the VAT taken out of prices entered with **Incl. VAT** (16).
+5. Under **Odoo budget mapping** (usually finance), choose the ledger **Accounts** for **Direct project costs**, **Project travel and site** and **Project bonds and insurance**, and the **Reserve account** for **Project contingency**. Each account may sit in one group only.
+6. Click **Apply mapping**. Odoo saves the page and confirms *Budget mapping applied. New approvals create Odoo budget lines per position and month.*
+
+Changes to the other settings are saved when you leave the page, or when you click the save icon.
+
+## What happens next
+
+- **Completion date grace (days)** is used when finance closes a project, and is frozen on the project as **Grace at close (days)**. Projects already closed keep the grace they closed with.
+- **Baseline due after award (days)** moves every project's **Baseline due** date at once.
+- **Contingency cap (%)**, **VAT rate (%)** and **Budget runs past completion (days)** apply to baselines confirmed from now on. The VAT rate is the default for new cost items; existing items keep theirs.
+- The **MD** and the MD limits apply at once, including to revisions already waiting (see Good to know).
+- **New cost accounts** applies only when a delivery project is opened without an existing cost account.
+- **Apply mapping** creates or updates the four budget positions (**Direct project costs**, **Project travel and site**, **Project bonds and insurance**, **Project contingency**) and links each budget category to one. Baselines approved from then on get Odoo budget lines per position and month. Odoo budgets already created are not changed.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Delivery settings cannot be negative.* | A number is below 0. | Enter 0 or more. |
+| *Choose at least one direct project cost account (usually 500000 Cost of sales).* | **Accounts** under **Direct project costs** is empty. | Add at least one account. |
+| *Account 600000 is in both "Direct project costs" and "Travel and site". Each account may sit in one position only, or the same cost would count twice.* | The same ledger account is in two groups. | Remove it from one of them. |
+| *Only finance or the Head of Delivery can change the budget mapping.* | You are not in either group (or an accounting adviser). | Ask finance or the Head of Delivery. |
+| *Set the shared plan for project cost accounts in Delivery Settings first.* | A project manager opened a project while **One shared plan** is chosen and no plan is set. | Pick the **Shared plan for project cost accounts**. |
+
+:::note[Good to know]
+- **Project › Configuration** is shown only to Project Administrators. Head of Delivery and Delivery Finance users also need that access to reach Delivery Settings, Cost Types and the other lists. Ask your system administrator.
+- The yellow box under **Odoo budget mapping** lists what is still to do, for example *Categories without a budgetary position: Logistics. Press Apply mapping.* Until the mapping is applied, those categories are budgeted together on the direct project costs position.
+- The MD limits are read live. Lowering them can make a revision already waiting need the MD, but the MD gets no to-do for it, only an item on their My Actions. Raising them can mean the MD's approval is no longer needed, but their to-do stays, and if the MD's was the only approval missing, the revision stays **Waiting for approval** with nobody able to approve it. Change the limits when no revision is waiting, if you can.
+- The contingency reserve account is one nobody posts to, so contingency shows as planned only and never fills up in budget tracking.
+:::

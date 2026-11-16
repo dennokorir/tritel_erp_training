@@ -1,0 +1,31 @@
+type: screen
+title: Project smart buttons
+desc: The top of a delivery project with its smart buttons, Delivery baseline, Approved delivery budget, Spent so far, Committed, Budget left, Cost account, Won tender, Handover, Purchase orders, Vendor bills, Odoo budget lines, Untagged tender order lines and Automatic tagging rules, numbered 1 to 13.
+source: tritel_project_delivery/views/buttons_views.xml (project_form_buttons), views/closeout_views.xml (project_form_closeout), models/buttons.py (_compute_buttons)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
+  breadcrumb: [Delivery Projects, Customer A network upgrade]
+blocks:
+  - buttons: [{label: Log Client Delay}, {label: Close Project, primary: true}]
+  - smart:
+      - {label: 2 revisions, value: "Approved v3", n: 1}
+      - {label: Delivery budget, value: "1,050,000", n: 2}
+      - {label: Spent 54%, value: "562,000", n: 3}
+      - {label: Committed, value: "200,000", n: 4}
+  - smart:
+      - {label: "Left · over plan", value: "288,000", tone: bad, n: 5}
+      - {label: "Plan: Customer A…", value: "Customer A netw…", n: 6}
+      - {label: TND-2026-001, value: "Tender", n: 7}
+      - {label: Handover, value: "Waiting", tone: warn, n: 8}
+  - smart:
+      - {label: Orders, value: "3", n: 9}
+      - {label: Bills, value: "4", n: 10}
+      - {label: Odoo budget lines, value: "8", n: 11}
+      - {label: Untagged lines, value: "2", tone: warn, n: 12}
+  - smart:
+      - {label: Tagging rules, value: "1", n: 13}
+  - title: {text: Customer A network upgrade, sub: Customer A}
+  - tabs: {items: [Description, Settings, Delivery, "Handover & close"], active: Delivery}
+  - note: {text: "Buttons 9 to 13 appear only for people with purchase, accounting or delivery set-up access (see the list).", tone: muted}

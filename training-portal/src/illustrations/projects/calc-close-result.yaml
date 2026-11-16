@@ -1,0 +1,18 @@
+type: calc
+title: Close result
+desc: Worked example of closing a project, with the final cost of 1,020,000 against an approved budget of 1,050,000, and a handover 5 days after the deadline that is still on time because of the 7-day grace.
+source: tritel_project_delivery/models/closeout.py (_closeout_figures, _closeout_results, _delivery_close)
+heading: Closing Customer A network upgrade
+inputs:
+  - {label: Approved completion, value: "31 Mar 2027"}
+  - {label: Approved client delay, value: "10 days"}
+  - {label: Handover date, value: "15 Apr 2027"}
+  - {label: Approved budget, value: "1,050,000"}
+steps:
+  - {label: "Deadline: 31 Mar 2027 + 10 days", value: "10 Apr 2027"}
+  - {label: "Days late: 10 Apr to 15 Apr", value: "5"}
+  - {label: "On time: 5 is not more than the 7-day grace", value: "Yes", tone: good}
+  - {label: "Final cost: Spent 980,000 + Open orders 40,000 + Adjustment 0", value: "1,020,000"}
+  - {label: "On budget: 1,020,000 is not more than 1,050,000", value: "Yes", tone: good}
+result: {label: Result, value: "On time and on budget", tone: good}
+note: Days late stays 5. The grace is not taken off it; it only decides On time. A handover on 20 Apr would be 10 days late and Late.

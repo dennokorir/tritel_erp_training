@@ -1,0 +1,57 @@
+---
+title: Confirm or return a handover
+description: As Head of Delivery, check the handover date and certificate the project manager submitted, then confirm the handover so finance can close the project, or return it with a note.
+module: projects
+pageType: how-to
+roles: [head-delivery]
+tags: [handover, approvals, my actions]
+keywords: [handover, hand over, completion certificate, acceptance certificate, practical completion, go-live, sign off, confirm handover, return handover, on time]
+where: [Project, Delivery, Handovers]
+before:
+  - You have the <strong>Head of Delivery</strong> role.
+  - The project manager has clicked <strong>Submit for Confirmation</strong>. Every Head of Delivery gets a to-do called <em>Confirm project handover</em>.
+related: [projects/workflows/handover, projects/concepts/handover-and-close-out, projects/how-to/delivery-pm/record-a-handover, projects/how-to/approvers/close-a-project, projects/calculations/close-and-kpi]
+sources:
+  - tritel_project_delivery/views/closeout_views.xml
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/action_followups.py
+  - tritel_project_delivery/models/my_actions.py
+sidebar: { order: 4 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+The **handover** is the date the client took over the work. Only a handover you have confirmed counts for the on-time part of the Delivery KPI, so check the date against the evidence before you confirm.
+
+<Illustration name="projects/appr-confirm-handover" caption="A handover waiting for your confirmation. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Project › Delivery › Handovers**. The list opens on **Waiting for confirmation**. Click the handover. You can also use **Project › My Actions**, under **Handovers to confirm**, where each item says whether a certificate is attached.
+2. Check the **Handover date**. It should be the date the client took over the work, the date on the certificate where there is one.
+3. Open the **Handover certificate**, if there is one. It is optional.
+4. Read the project manager's note: what was handed over, who signed for the client, and anything outstanding.
+5. If it is right, click **Confirm Handover**.
+6. If something needs to change, type it in **Note when returning** under **Head of Delivery**, then click **Return**.
+
+From **My Actions** you can click **Confirm**, or **Return** and type the note in the box that opens.
+
+## What happens next
+
+- **After Confirm Handover:** the handover is **Confirmed** and the project's **Handover** button shows **Confirmed**. The project's chatter records the date. The *Confirm project handover* to-dos are removed from every Head of Delivery.
+- Every Delivery Finance user gets a *Close delivery project* to-do, and the project appears under **Projects to close** on their My Actions. Finance then [closes the project](/projects/how-to/approvers/close-a-project/).
+- **After Return:** the handover is **Returned**. Whoever submitted it (or the project manager) gets a *Handover returned* to-do with your note, and sees it in a yellow **Returned** banner. They fix it and submit it again.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Write a note explaining what needs to change, then return it.* | **Note when returning** is empty. | Type the note first, then click **Return**. |
+| *Only a submitted handover can be confirmed.* | It was already confirmed or returned. | Refresh the page and check the status bar. |
+| *Only a submitted or confirmed handover can be returned.* | It is still a draft, or already returned. | Leave it for the project manager. |
+| *Only the Head of Delivery can confirm a handover.* | You don't have the Head of Delivery role. | Ask a Head of Delivery to confirm it. |
+| *PRJ Customer A network upgrade is closed. Finance can reopen it first.* | The project is already closed. | Ask finance to reopen it if the handover must change. |
+
+:::note[Good to know]
+- You can also **Return** a handover you have already confirmed, as long as the project is not closed. The project then has no confirmed handover. Finance's *Close delivery project* to-do stays, but finance cannot close a project with an approved baseline until a handover is confirmed again.
+- A project can have only one handover waiting or confirmed at a time.
+:::

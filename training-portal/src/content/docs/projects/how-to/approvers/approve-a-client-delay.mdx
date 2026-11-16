@@ -1,0 +1,57 @@
+---
+title: Approve or reject a client delay
+description: As Head of Delivery, check a client delay the project manager logged, then approve it so its days move the on-time deadline, or reject it with a note.
+module: projects
+pageType: how-to
+roles: [head-delivery]
+tags: [client delays, approvals, my actions]
+keywords: [client delay, customer delay, extension of time, EOT, site access, held up, excusable delay, approve delay, reject delay, on time]
+where: [Project, Delivery, Client Delays]
+before:
+  - You have the <strong>Head of Delivery</strong> role.
+  - The project manager has clicked <strong>Submit for Approval</strong>. Every Head of Delivery gets a to-do called <em>Approve client delay</em>.
+related: [projects/workflows/client-delay, projects/concepts/client-delays, projects/calculations/delay-days, projects/how-to/delivery-pm/log-a-client-delay, projects/calculations/close-and-kpi]
+sources:
+  - tritel_project_delivery/views/closeout_views.xml
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/my_actions.py
+sidebar: { order: 5 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A **client delay** is a period when the client held up the work, for example by not giving site access. Approved delay days are added to the approved completion date before the system checks whether the handover was on time.
+
+<Illustration name="projects/appr-client-delay" caption="A client delay waiting for your approval. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Project › Delivery › Client Delays**. The list opens on **Waiting for approval**. Click the delay. You can also use **Project › My Actions**, under **Client delays to approve**.
+2. Check the **Delay** dates. **Days** counts both the first and the last day.
+3. Open the **Evidence**, if there is one: a client letter, a site-access email or meeting minutes. It is optional.
+4. Read what the client delayed, and why.
+5. If the delay is justified, click **Approve**.
+6. If not, type the reason in **Note when rejecting** under **Head of Delivery**, then click **Reject**.
+
+From **My Actions** you can click **Approve**, or **Reject** and type the note in the box that opens.
+
+## What happens next
+
+- **After Approve:** the delay is **Approved**. Its days count in **Approved client delay (days)** on the project's **Handover & close** tab. When finance closes the project, those days are added to the approved completion date before working out the days late. Your to-do is removed.
+- **After Reject:** the delay is **Rejected** and your note shows in a yellow **Rejected** banner and in the delay's chatter. Its days do not count. The project manager gets no to-do, so tell them.
+- A delay waiting for approval stops finance from closing the project.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Write a note explaining why, then reject it.* | **Note when rejecting** is empty. | Type the note first, then click **Reject**. |
+| *Only a submitted client delay can be approved.* | It was already approved or rejected. | Refresh and check the status bar. |
+| *Only a submitted or approved client delay can be rejected.* | It is still a draft or already rejected. | Leave it for the project manager. |
+| *Only the Head of Delivery can approve a client delay.* | You don't have the Head of Delivery role. | Ask a Head of Delivery to decide it. |
+| *PRJ Customer A network upgrade is closed. Finance can reopen it first.* | The project is already closed. | Ask finance to reopen it if the delay must count. |
+
+:::note[Good to know]
+- Overlapping delays count once. Two approved delays of 1–10 May and 5–12 May add 12 days, not 18.
+- A rejection is final: a rejected delay can't go back to draft. If the project manager has better evidence, they log a new delay.
+- You can also **Reject** a delay you approved earlier, while the project is open. Its days stop counting.
+:::

@@ -1,0 +1,91 @@
+---
+title: Budget status
+description: The four budget statuses of a delivery project (No approved budget, On track, Fully committed, Over plan), what moves a project between them, and what happens when it goes over plan.
+module: projects
+pageType: workflow
+roles: [delivery-pm, head-delivery, delivery-finance, finance]
+tags: [budgets, tracking, workflows]
+keywords: [budget status, over budget, overrun, overspend, fully committed, on track, variance, red flag, budget alert, LPO, PO]
+related: [projects/concepts/budget-tracking, projects/how-to/delivery-pm/track-the-budget, projects/calculations/tracking-figures, projects/reports/projects-over-budget, projects/how-to/delivery-pm/request-a-revision]
+sources:
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/models/buttons.py
+  - tritel_project_delivery/models/my_actions.py
+  - tritel_project_delivery/views/tracking_views.xml
+  - tritel_project_delivery/views/buttons_views.xml
+sidebar: { order: 5 }
+---
+
+Every delivery project has a **Budget status**. Nobody sets it by hand: the system works it out from the approved budget and the orders and costs on the project's cost account, every night and whenever someone clicks **Refresh** in **Budget tracking**. It can move in either direction as orders are confirmed, bills are posted, orders are cancelled or a revision is approved.
+
+```mermaid
+stateDiagram-v2
+  state "No approved budget" as none
+  state "On track" as ontrack
+  state "Fully committed" as full
+  state "Over plan" as over
+  [*] --> none: Project opened (the system)
+  none --> ontrack: Baseline approved (the system)
+  ontrack --> full: Every budget line used up to its plan (the system)
+  ontrack --> over: Any budget line used beyond its plan (the system)
+  full --> over: Any budget line used beyond its plan (the system)
+  over --> ontrack: Revision approved, or orders cancelled (the system)
+  full --> ontrack: Revision approved, or orders cancelled (the system)
+```
+
+"Used" means **Committed** (confirmed purchase orders not yet billed) plus **Spent** (posted costs), both before VAT.
+
+| Status | What it means | Moves to | Who moves it |
+|---|---|---|---|
+| **No approved budget** | No baseline has been approved yet, so there is nothing to track against. | **On track** when the first baseline is approved | The system, after the approvers approve |
+| **On track** | No budget line is over its plan, and at least one still has room. Shown green. | **Fully committed** or **Over plan** as orders and bills come in | The system |
+| **Fully committed** | Every budget line has used at least 99.5% of its plan, and none is over. Shown amber. | **Over plan** if any line goes over; **On track** if room opens up again | The system |
+| **Over plan** | At least one budget line has used more than its plan. Shown red. | **On track** or **Fully committed** when a revision adds budget, or orders are cancelled or reduced | The system, after the project manager requests a revision and it is approved |
+
+Each row in the **Budget tracking** table has its own status with the same rules: **On track**, **Fully committed** (at least 99.5% of the row's plan used) or **Over plan** (more than the row's plan used). The project is **Over plan** if any row is, and **Fully committed** only if every row is.
+
+## Who does what
+
+```mermaid
+flowchart TD
+  subgraph Buyer["Buyer"]
+    B1["Purchase order: Left in delivery plan"]
+    B2["Confirm order"]
+  end
+  subgraph Sys["System"]
+    S1["Over the delivery plan warning"]
+    S2["Notice to the project manager"]
+    S3["Nightly refresh: Over plan"]
+  end
+  subgraph PM["Delivery project manager"]
+    P1["Open tracking"]
+    P2["Request revision"]
+  end
+  subgraph Appr["Approvers"]
+    A1["Approve the revision"]
+  end
+  B1 --> S1 --> B2 --> S2 --> P1
+  S3 --> P1 --> P2 --> A1 --> S3
+```
+
+## What the system does automatically
+
+- **Nightly refresh:** every active delivery project's figures and status are worked out again. **Figures as of** shows when.
+- **Before an order is confirmed:** a purchase order that would take a budget line over its plan shows **Over the delivery plan.** *You can still confirm; the project manager will be told.* It does not block.
+- **When such an order is confirmed:** the order's chatter records *Over the delivery plan when confirmed*, and the project manager gets *Order over the delivery plan: P00123* on the baseline.
+- **My Actions:** an **Over plan** project appears under **Projects over their approved budget**: for its project manager (with **Open tracking** and **Request revision**) and for the Head of Delivery (all projects). A project that already has a revision in progress is listed under **Revisions in progress** instead.
+- **Smart button:** **Budget left** on the project turns green, amber or red with the status, and its subtitle reads, for example, *Left · over plan*.
+
+:::note[Good to know]
+- The **Project contingency** row never fills, because nothing is posted to its account. A project with contingency will rarely reach **Fully committed** as a whole, even when every other line is used up.
+- The status changes only when the figures are refreshed. After confirming an order or posting a bill, click **Refresh** to see the effect at once.
+- **Over plan** doesn't stop anything. It is a signal to act: check the orders, or request a revision.
+:::
+
+## Related tasks
+
+- [Track the budget](/projects/how-to/delivery-pm/track-the-budget/)
+- [Request a revision](/projects/how-to/delivery-pm/request-a-revision/)
+- [Projects over their approved budget](/projects/reports/projects-over-budget/)
+- [Planned, expected to date, committed, spent, left, forecast and status](/projects/calculations/tracking-figures/)
+- [Budget tracking](/projects/concepts/budget-tracking/)

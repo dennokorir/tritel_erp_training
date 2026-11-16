@@ -1,0 +1,59 @@
+---
+title: Tag orders to their project
+description: Give purchase order lines raised on a won tender the delivery project's cost account, so they count as committed and spent in the project's budget tracking.
+module: projects
+pageType: how-to
+roles: [head-delivery, delivery-finance]
+tags: [budget tracking, purchase orders, my actions]
+keywords: [tag orders, LPO, PO, purchase order, analytic account, cost account, cost centre, untagged lines, committed, actuals, allocate cost]
+where: [Project, Delivery, Delivery Projects]
+before:
+  - You have the <strong>Head of Delivery</strong> or <strong>Delivery Finance</strong> role.
+  - The project was opened from a won tender and has a cost account, and some purchase order lines on that tender carry no cost account.
+related: [projects/concepts/odoo-budget-and-cost-account, projects/concepts/budget-tracking, projects/how-to/delivery-pm/track-the-budget, projects/calculations/tracking-figures, projects/reports/project-at-a-glance]
+sources:
+  - tritel_project_delivery/wizards/tag_orders_wizard.py
+  - tritel_project_delivery/wizards/tag_orders_wizard_views.xml
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/tracking_views.xml
+  - tritel_project_delivery/models/my_actions.py
+sidebar: { order: 6 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A project's budget tracking only counts order lines and bills that carry the project's **cost account**. Buyers sometimes raise a purchase order on the tender without it. Those lines count as neither committed nor spent until you **tag** them.
+
+<Illustration name="projects/appr-tag-orders" caption="Tagging a tender's untagged order lines. The numbers match the steps below." />
+
+## Steps
+
+1. Open the project from **Project › Delivery › Delivery Projects** and click the amber **Untagged tender order lines** button (it shows **Untagged lines** and a count). Other ways in:
+   - **Project › My Actions**: the line *Tender order lines not tagged to their project*, then **Tag orders**, which lists the projects that have some;
+   - the project's **Delivery** tab, next to **Budget tracking**: **Tag tender orders**;
+   - the won tender's **Untagged order lines** button.
+2. The **Tag Tender Orders** window opens. It names the cost account the lines will get, and lists every line on the tender's purchase orders that has no cost account. All lines start ticked.
+3. Check each line: **Order**, **Status**, **Supplier**, **What** and **Amount (before VAT)**. Switch off **Tag** on any line that does not belong to this project.
+4. Click **Tag Ticked Lines**. Nothing changes until you do.
+
+## What happens next
+
+- The ticked lines get the project's cost account in full. Confirmed orders that are not yet billed now count as **Committed** on the project. Bills created from them afterwards normally carry the same cost account, so they count as **Spent**.
+- The project's chatter records how many lines were tagged, with which cost account and by whom.
+- Budget tracking is refreshed at once, so **Budget left** and the **Budget status** may change. If an order now takes a budget line over its plan, the project shows **Over plan**.
+- The **Untagged tender order lines** button disappears when no lines are left.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Tick the lines to tag.* | You switched off **Tag** on every line, then clicked **Tag Ticked Lines**. | Switch on the lines you want, or click **Cancel**. |
+| *Only the Head of Delivery or finance can tag orders.* | You don't have the Head of Delivery or Delivery Finance role. | Ask one of them to tag the lines. |
+
+:::note[Good to know]
+- Bills already posted keep their own cost account. Only the order line changes, so **Already billed** lines may still not count as spent. Ask finance to correct the bill if it should.
+- The list includes RFQs (not yet confirmed) as well as confirmed orders. Cancelled orders are left out.
+- When a tender has more than one delivery project, the same untagged lines appear in each project's window. Tag each line from the project it belongs to, and switch off the others.
+- When a tender has exactly one delivery project, new order lines on it get the project's cost account automatically. With several projects, buyers must pick the cost account on each line.
+- Lines tagged to a different cost account are not listed here. The **Budget left** pop-up lists confirmed tender orders with lines not tagged to this project.
+:::

@@ -1,0 +1,24 @@
+type: calc
+title: Spend plan by month
+desc: Worked example of the spend plan, with switches paid over three months, installation over two, and a 30,000 contingency spread in proportion to the other spend in each month.
+source: tritel_project_delivery/models/phasing.py (_phasing, _compute_spend_plan)
+heading: Spend plan by month, January to March 2027
+inputs:
+  - {label: Switches, value: "360,000"}
+  - {label: "Pay from / until", value: "Jan–Mar"}
+  - {label: Installation, value: "240,000"}
+  - {label: "Pay from / until", value: "Feb–Mar"}
+  - {label: Contingency, value: "30,000"}
+steps:
+  - {label: "Switches: 360,000 ÷ 3 months", value: "120,000 a month"}
+  - {label: "Installation: 240,000 ÷ 2 months (Feb and Mar)", value: "120,000 a month"}
+  - {label: "Other spend: Jan 120,000 · Feb 240,000 · Mar 240,000", value: "600,000"}
+  - {label: "Contingency in Jan: 30,000 × 120,000 ÷ 600,000", value: "6,000"}
+  - {label: "Contingency in Feb: 30,000 × 240,000 ÷ 600,000", value: "12,000"}
+  - {label: "Contingency in Mar: the rest, 30,000 − 6,000 − 12,000", value: "12,000"}
+result: {label: Month totals, value: "126,000 · 252,000 · 252,000", tone: accent}
+bars:
+  - {label: Jan 2027, value: 126000, max: 252000, display: "126,000"}
+  - {label: Feb 2027, value: 252000, max: 252000, display: "252,000"}
+  - {label: Mar 2027, value: 252000, max: 252000, display: "252,000"}
+note: Each month is rounded to the cent and the last month takes what is left, so the months always add up to the item.

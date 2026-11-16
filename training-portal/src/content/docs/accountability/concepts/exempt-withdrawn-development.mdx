@@ -49,7 +49,7 @@ A development target can't be rebalanced or withdrawn: those only apply to score
 Sometimes a target stops making sense part-way through the year: a project is cancelled, or the person changes role. The manager (or HR, or an administrator) clicks **Withdraw** next to the target's weight. This opens a scorecard change with a **From** date and a reason. Before the target-setting deadline it applies at once; after it, it waits for approval.
 
 ```mermaid
-flowchart LR
+flowchart TD
   A["Target live from 1 Jan"] --> B["Withdraw, from 1 Jul"]
   B --> C{"Any result by then?"}
   C -- Yes --> D["Counts for 1 Jan – 30 Jun only"]

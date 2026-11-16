@@ -1,0 +1,57 @@
+---
+title: Budget by category, spend by month and the Odoo budget lines
+description: How cost items add up to the budget by category, how the spend plan spreads each item over its payment months, how contingency follows the other spend, and which Odoo budget lines approval creates.
+module: projects
+pageType: calculation
+roles: [delivery-pm, head-delivery, delivery-finance, finance]
+tags: [budget, baselines, phasing]
+keywords: [spend plan, phasing, cash flow, burn rate, monthly budget, budget by category, budgetary position, Odoo budget, analytic budget, pay months, tail]
+related: [projects/concepts/cost-items-and-categories, projects/concepts/odoo-budget-and-cost-account, projects/how-to/delivery-pm/phase-the-spend, projects/calculations/cost-items, projects/calculations/tracking-figures]
+sources:
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/phasing.py
+  - tritel_project_delivery/models/budget_mapping.py
+  - tritel_project_delivery/views/baseline_views.xml
+sidebar: { order: 2 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+The **Summary by category** tab of a baseline shows the budget two ways: by category, and by month in the **Spend plan by month** table. When the baseline is approved, the same figures become lines in an Odoo budget.
+
+## Budget by category
+
+Each cost item's **Type** belongs to one budget category (for example **Work by a subcontractor** goes to Subcontractors). The **Budget by category** list adds up the **Total (before VAT)** of the items in each category, one line per category. You can't type in it: it is rebuilt every time a cost item changes. This list is what finance approves.
+
+## Spend plan by month
+
+- Each item (except contingency) is spread evenly over the months from **Pay from** to **Pay until**. With no **Pay until**, the whole amount falls in the **Pay from** month. Both dates are moved to the 1st of their month.
+- Each month's share is rounded to the cent, and the last month takes what is left.
+- Contingency is spread over the same months in proportion to the other spend in each month. If nothing else has a payment month yet, it all falls in the month of the **Completion date**.
+- The table shows a **Month total** and a **Running total** for each month, a **Total** row and a **Planned to date** row: every month up to and including the current one. The current month is highlighted.
+
+<Illustration name="projects/calc-spend-plan" caption="Switches over three months, installation over two, and contingency following the shape of the other spend." />
+
+## The Odoo budget lines
+
+When the baseline is approved, the system creates an Odoo budget named *Customer A network upgrade · delivery budget v1*, confirmed and validated. People with accounting access can open it from the **Odoo Budget** button on the baseline.
+
+- **Period.** From the project's start date (else the award date) to the **Completion date** plus **Budget runs past completion (days)** (180 by default), so late bills still count. If a payment month is earlier than the start, or later than that end, the budget stretches to cover it.
+- **One series per budgetary position.** Categories that share a position share one series. The five direct categories (equipment, software, subcontractors, installation materials and logistics) all sit on **Direct project costs**. A category with no position of its own goes with the direct costs.
+- **One line per month with planned spend**, dated from the 1st to the last day of the month. The first line starts on the project start date and the last line runs to the end of the budget.
+- **Months with nothing planned** between or after are merged into one line of 0.
+- Planned amounts are negative, because they are costs.
+
+<Illustration name="projects/calc-odoo-budget-lines" caption="The Odoo budget for the same plan: two series, four lines each." />
+
+When a revision is approved, the earlier version's Odoo budget is cancelled and a new one is created for the new version.
+
+## Edge cases
+
+- **Paid too late.** A payment month after the completion date plus the tail stops confirmation: *These costs are paid after the completion date plus 180 days (27 Sep 2027): Support contract.*
+- **Paid before the project starts.** This is allowed. The tab shows *1 item(s) paid before the project start: Switches* and the note is posted on the baseline when you confirm.
+- **Contingency not yet on its own position.** Until finance applies the budget mapping with a reserve account, contingency is budgeted with the direct project costs and the baseline shows *Odoo budget mapping is not finished.*
+- **Rounding.** 100,000 over three months is 33,333.33, 33,333.33 and 33,333.34.
+
+:::note[Good to know]
+The spend plan does not change what finance approves. Approval is on the category totals; the months only shape the **Expected by now** column in tracking and the dates of the Odoo budget lines.
+:::

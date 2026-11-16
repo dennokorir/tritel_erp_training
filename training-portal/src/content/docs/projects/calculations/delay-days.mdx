@@ -1,0 +1,40 @@
+---
+title: Client delay days
+description: How the days on a client delay are counted, and how approved delays add up into the project's approved client delay with overlapping days counted once.
+module: projects
+pageType: calculation
+roles: [delivery-pm, head-delivery, delivery-finance]
+tags: [client delays, close-out]
+keywords: [client delay, extension of time, EOT, site access, held up, waiting on client, delay days, overlapping delays, on time, deadline]
+related: [projects/concepts/client-delays, projects/workflows/client-delay, projects/how-to/delivery-pm/log-a-client-delay, projects/how-to/approvers/approve-a-client-delay, projects/calculations/close-and-kpi]
+sources:
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/views/closeout_views.xml
+sidebar: { order: 6 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+A client delay records a period when the client held the work up. Approved delays move the deadline that the on-time result is measured against.
+
+## The rule
+
+- **Days** on one delay = **To** − **From** + 1. Both the first and the last day count, so 1 to 10 March is 10 days.
+- **Approved client delay (days)** on the project = the number of different calendar days covered by its **Approved** delays. A day covered by two approved delays counts once.
+- Delays that are **Draft**, **Waiting for approval** or **Rejected** don't count.
+- At close, the approved days are added to the approved completion date to give the deadline. See [Close figures and the Delivery KPI](/projects/calculations/close-and-kpi/).
+
+<Illustration name="projects/calc-delay-days" caption="Two approved delays overlap on 5 to 10 March. The project has 12 approved days, not 18." />
+
+## Edge cases
+
+- **Calendar days.** Weekends and public holidays count.
+- **Any dates.** A delay counts wherever its dates fall, before the project start or after the completion date. Check the dates before approving.
+- **Same start and end.** A one-day delay (From and To the same day) is 1 day.
+- **End before start** is refused: *The delay ends before it starts.*
+- **Frozen at close.** Closing records the approved days as **Approved client delay at close (days)**. Delays can't be logged, approved or rejected on a closed project: *Customer A network upgrade is closed. Finance can reopen it first.*
+
+:::note[Good to know]
+The total under the **Days** column of the client delays list adds every delay in the list, overlaps and rejected delays included. The figure that counts is **Approved client delay (days)** on the project's **Handover & close** tab.
+
+A rejected delay stays rejected: it can't go back to draft. The Head of Delivery can also reject a delay that was already approved, which takes its days off again.
+:::

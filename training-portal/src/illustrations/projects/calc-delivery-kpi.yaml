@@ -1,0 +1,18 @@
+type: calc
+title: Delivery KPI rate
+desc: Worked example of the delivery KPIs for Employee A in a quarter, where only two projects are counted, so the previous quarter is added and the success rate is 2 of 3, or 66.7%.
+source: tritel_accountability_framework/models/metric_hook_delivery.py (_dl_collect, _dl_result)
+heading: Employee A, Q2 2027 (1 Apr to 30 Jun)
+inputs:
+  - {label: "PRJ-2027-004", value: "Success"}
+  - {label: "PRJ-2027-005", value: "Late"}
+  - {label: "PRJ-2027-006", value: "Not closed"}
+  - {label: "Q1: PRJ-2027-001", value: "Success"}
+steps:
+  - {label: "Confirmed handovers dated in Q2: 3. Closed and scored: 2", value: "2 counted"}
+  - {label: "Fewer than 3 counted, so Q1 (same length, just before) is added", value: "3 counted"}
+  - {label: "Delivery success rate: on time and on budget, 2 of 3", value: "66.7%"}
+  - {label: "Delivery on-time completion rate: 2 of 3", value: "66.7%"}
+  - {label: "Delivery on-budget rate: 3 of 3", value: "100%"}
+result: {label: Delivery success rate, value: "66.7%", tone: warn}
+note: PRJ-2027-006 is listed as not yet closed and not counted. It counts in Q2 once finance closes it, because the window follows the handover date.

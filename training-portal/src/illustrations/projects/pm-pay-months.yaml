@@ -1,0 +1,21 @@
+type: screen
+title: Setting the months each cost is paid
+desc: The Costs tab of a draft baseline showing the Pay from and Pay until columns for three items, including contingency with no months, numbered 1 to 3.
+source: tritel_project_delivery/views/baseline_views.xml (baseline_form, Costs tab); models/phasing.py
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
+  breadcrumb: [Delivery Projects, PRJ Customer A network upgrade · baseline v1]
+blocks:
+  - title: {text: PRJ Customer A network upgrade, sub: "Baseline v1 · Original"}
+  - fields:
+      - [{label: Completion date, value: 30/06/2026}, {label: Budget total, value: "KES 840,000"}]
+  - tabs: {items: [Costs, Summary by category, Milestones, Approvals], active: Costs}
+  - table:
+      columns: [What, Type, Unit cost, Pay from, Pay until, Total (before VAT)]
+      widths: [3, 2.6, 1.6, 1.4, 1.4, 1.8]
+      rows:
+        - {cells: [48-port PoE switches, Equipment we supply, "50,000", {text: 01/03/2026, bold: true}, "", "500,000"], n: 1}
+        - {cells: [Structured cabling, Work by a subcontractor, "300,000", {text: 01/03/2026, bold: true}, {text: 01/04/2026, bold: true}, "300,000"], n: 2}
+        - {cells: [Contingency, Contingency, "5 % of other costs", "", "", {text: "40,000", tone: muted}], n: 3}

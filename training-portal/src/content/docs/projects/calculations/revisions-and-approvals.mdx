@@ -1,0 +1,56 @@
+---
+title: What changed, and which approvals a revision needs
+description: How a revision is compared with the version before and with the original, and the rules that decide whether the Head of Delivery, finance and the MD must approve it.
+module: projects
+pageType: calculation
+roles: [delivery-pm, head-delivery, delivery-finance, md]
+tags: [baselines, approvals, revisions]
+keywords: [revision, change request, variation, re-baseline, budget increase, extension of time, EOT, MD approval, sign off, threshold, approval matrix]
+related: [projects/concepts/approvals, projects/concepts/baselines, projects/workflows/baseline, projects/how-to/delivery-pm/request-a-revision, projects/how-to/approvers/approve-a-large-revision]
+sources:
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/views/baseline_views.xml
+sidebar: { order: 5 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+A revision is a new version of an approved baseline, started with **Request Revision**. The **Change** box on the revision shows how far it moves the budget and the completion date, and those figures decide who has to approve it.
+
+## What the Change box shows
+
+- **Budget vs previous** = this version's **Budget total** − the total of the version it was copied from.
+- **Days vs previous** = days between the two **Completion date**s.
+- **Budget vs original (%)** = (this total − the v1 total) ÷ the v1 total × 100.
+- **Days vs original** = days between v1's completion date and this one.
+
+The **Changes** tab lists each cost item as **Added**, **Changed** (with what changed, for example *qty 10.0 → 12.0* or *renamed from "Switches"*) or **Removed**, with the amount in both versions and the difference.
+
+## Who must approve
+
+| Approver | Needed when |
+|---|---|
+| Head of Delivery (**Approve Dates**) | Always: every original and every revision |
+| Finance (**Approve Budget**) | The original, and a revision whose budget changed |
+| MD (**MD Approve**) | A revision whose **Budget vs original (%)** is above **MD approval above budget increase (%)** (10 by default), or whose **Days vs original** is above **MD approval above date extension (days)** (30 by default) |
+
+"The budget changed" means a category total changed, or a cost item was added, removed or had its **What**, **Type**, **Qty**, **Unit cost**, **Currency**, **Incl. VAT**, **VAT %** or **% of other costs** changed. The approvals can come in any order. The baseline becomes **Approved** when the last one needed is in.
+
+<Illustration name="projects/calc-revision-approvals" caption="Revision v3 is 14.3% and 40 days beyond the original, so it also needs the MD." />
+
+## Edge cases
+
+- **Exactly on the limit does not need the MD.** A revision at 1,155,000 against a v1 of 1,050,000 is exactly 10.0% above, and 30 days later is exactly 30: neither is *above* the limit.
+- **Only increases count.** A smaller budget or an earlier completion date never needs the MD.
+- **Measured from v1.** Three revisions of +5% each are 15.8% above the original by the third, which needs the MD.
+- **No MD named.** Confirming stops with *This revision needs the MD, but no MD is set in Delivery Settings.*
+- **No reason.** *Explain the reason for this revision.*
+- **Nothing changed.** *This revision changes nothing compared with v2.* A change counts if the budget changed (as above), the completion date moved, or a milestone was added, removed, renamed or moved.
+- **A date-only revision** needs the Head of Delivery but not finance (and the MD only if it goes more than 30 days past v1).
+
+:::note[Good to know]
+Changing only the **Pay from** or **Pay until** months, the **Basis**, the **Reference** or the quote file of items is not counted as a change. A revision that only re-phases the spend stops with *This revision changes nothing compared with v2.* To re-phase, the revision also has to change something that counts.
+
+Renaming a cost item counts as a budget change, so it brings finance in even though no amount moved.
+:::

@@ -137,6 +137,8 @@ const BLOCKS = {
     let yy = y + 26;
     (t.rows || []).forEach((r, ri) => {
       const cells = Array.isArray(r) ? r : r.cells; const meta = Array.isArray(r) ? {} : r;
+      // A comma inside an unquoted YAML cell silently splits it into two: catch that here
+      if (cells.length !== cols.length) throw new Error(`table row ${ri + 1} has ${cells.length} cells for ${cols.length} columns: ${JSON.stringify(cells).slice(0, 120)}`);
       if (ri === t.highlight || meta.highlight) c.add(`<rect x="${X}" y="${yy}" width="${IW}" height="28" fill="var(--tp-ill-accent)" opacity="0.14"/>`);
       cells.forEach((v, i) => {
         const cell = typeof v === 'object' && v !== null ? v : { text: v };

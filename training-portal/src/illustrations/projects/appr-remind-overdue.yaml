@@ -1,0 +1,22 @@
+type: screen
+title: Overdue baselines on the Head's My Actions
+desc: The Projects My Actions screen for the Head of Delivery, with the Baselines overdue on your team group listing projects past their baseline due date, their project manager, status and the Remind button, numbered 1 to 4.
+source: tritel_project_delivery/static/src/my_actions/project_my_actions.xml; models/my_actions.py (get_project_my_actions, _ma_remind)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, {label: My Actions, active: true, n: 1}, Delivery, Reporting, Configuration]
+  breadcrumb: [My Actions]
+blocks:
+  - tiles: [{label: To do, value: "4", tone: warn}, {label: Overdue, value: "2", tone: bad}, {label: Waiting on others, value: "0"}]
+  - heading: "Baselines overdue on your team  2"
+    n: 2
+  - text: No approved baseline yet. A reminder messages the project manager.
+  - table:
+      columns: [Item, Waiting, ""]
+      widths: [6, 1.2, 3]
+      rows:
+        - cells: ["PRJ Customer A network upgrade — Employee A · Customer A · No baseline · due 15 Mar 2026", {text: "6 days", tone: bad}, {text: "Remind · Open", bold: true}]
+          n: 3
+        - cells: ["PRJ Customer B data centre — Employee B · Customer B · Baseline in draft · due 18 Mar 2026 · reminded today", {text: "3 days", tone: bad}, "Open"]
+          n: 4

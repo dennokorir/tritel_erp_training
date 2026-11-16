@@ -1,0 +1,56 @@
+---
+title: Expected revenue and margin left
+description: How the baseline works out the tender's expected revenue in KES and the margin left after this and the tender's other delivery projects, and why the tender can show a different margin.
+module: projects
+pageType: calculation
+roles: [delivery-pm, head-delivery, delivery-finance, md, account-manager]
+tags: [budget, margin]
+keywords: [margin, GP, gross profit, contract value, expected revenue, profitability, over revenue, exchange rate, tender value, budget vs revenue]
+related: [projects/concepts/baselines, projects/calculations/cost-items, projects/reports/project-at-a-glance, projects/how-to/approvers/approve-budget]
+sources:
+  - tritel_project_delivery/models/tender_import.py
+  - tritel_project_delivery/models/buttons.py
+  - tritel_project_delivery/views/baseline_views.xml
+  - tritel_project_delivery/views/buttons_views.xml
+sidebar: { order: 4 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+The **Expected revenue** box on a baseline shows how much of the tender's value is left after the delivery budget. It is a ceiling check, not an accounting margin: it compares the tender's expected revenue with planned costs before VAT.
+
+## The rule
+
+- **Expected revenue** = the tender's **Expected Revenue** × the rate from the tender's currency to KES. A KES tender uses 1. Before the budget is approved, the rate is today's. When the budget is approved, the rate is fixed with the cost items' rates and kept as the baseline's **Revenue rate**.
+- **Other projects on this tender** = for each other delivery project opened from the same tender, the **Budget total** of its latest version that is a draft, waiting for approval or approved. This and **Projects sharing the revenue** show only when two or more projects share the tender.
+- **Margin left** = Expected revenue − this baseline's **Budget total** − Other projects on this tender.
+- **Margin left (%)** = Margin left ÷ Expected revenue × 100. With no expected revenue it shows 0.
+
+<Illustration name="projects/calc-margin" caption="Two delivery projects share tender TND-2026-001. 150,000, or 10.0%, is left." />
+
+## When costs are above the revenue
+
+If **Margin left** is below zero the baseline shows a red banner: **Costs are over the expected revenue.** *You can still confirm; the approvers will see this.* When you confirm, the approvers' to-dos and the baseline's chatter say *Costs are over the expected revenue by KSh 50,000.* Nothing is blocked.
+
+## The margin on the tender
+
+The won tender has its own **Delivery budgets** and **Margin left** buttons:
+
+- **Delivery budgets** = for each delivery project on the tender, its approved baseline's total, or if none is approved, its latest draft or waiting version.
+- **Margin left** = the tender's Expected Revenue converted at **today's** rate − Delivery budgets. It is red below zero.
+
+<Illustration name="projects/calc-margin-rates" caption="A US dollar tender: the baseline keeps the rate fixed at approval, the tender uses today's rate." />
+
+## Edge cases
+
+- **Contingency counts** as cost, because it is part of the Budget total.
+- **A tender with no Expected Revenue** gives an Expected revenue of 0 and a negative margin, with the red banner.
+- **Withdrawn and superseded versions** of other projects are never counted.
+
+:::note[Good to know]
+The baseline and the tender can show different margins for the same project, for two reasons:
+
+1. **Exchange rate.** After the budget is approved, the baseline uses the rate fixed on approval; the tender always uses today's rate.
+2. **Which version of the other projects counts.** The baseline counts each other project's latest draft, waiting or approved version, so a draft revision counts as soon as it exists. The tender counts the approved version first and looks at drafts only when nothing is approved yet.
+
+Neither figure is wrong. Use the baseline's figure when approving a budget, and the tender's figure for today's view.
+:::

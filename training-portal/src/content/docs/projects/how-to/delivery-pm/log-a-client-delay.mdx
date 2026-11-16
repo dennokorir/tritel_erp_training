@@ -1,0 +1,57 @@
+---
+title: Log a client delay
+description: Record a period when the client held the work up, with the reason and evidence, and submit it so the Head of Delivery can approve it; approved days move the on-time deadline.
+module: projects
+pageType: how-to
+roles: [delivery-pm]
+tags: [client delays, handover]
+keywords: [client delay, delay, extension of time, EOT, site access, hold-up, waiting on client, excusable delay, delay days, evidence, deadline]
+where: [Project, Delivery, Delivery Projects]
+before:
+  - The client held up the work, for example by not giving site access or approvals.
+  - You have the dates, and if possible some evidence (a letter, email or meeting minutes).
+  - You are a Delivery Project Manager, and the project is not closed.
+related: [projects/concepts/client-delays, projects/workflows/client-delay, projects/calculations/delay-days, projects/how-to/delivery-pm/record-a-handover, projects/how-to/approvers/approve-a-client-delay]
+sources:
+  - tritel_project_delivery/views/closeout_views.xml
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/my_actions.py
+sidebar: { order: 12 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A **client delay** is a period when the client held the work up. Once the Head of Delivery approves it, its days are added to the approved completion date before the handover is checked for being on time. Log each delay as soon as it happens, while the evidence is fresh.
+
+<Illustration name="projects/pm-client-delay" caption="A new client delay, ready to submit. The numbers match the steps below." />
+
+## Steps
+
+1. Open the project and click **Log Client Delay** at the top. You can also click **Log client delay** in **Project › My Actions** under **Handovers to record**.
+2. Set the **Delay** dates: the first and the last day the client held the work up. **Days** counts both days, so 01/05/2026 to 10/05/2026 is 10 days.
+3. In **What the client delayed, and why**, explain what happened. This is required.
+4. Attach the **Evidence**: the client's letter, the site-access email or meeting minutes. It is optional, but the Head of Delivery decides on it.
+5. Save, then click **Submit for Approval**.
+
+## What happens next
+
+- The delay is **Waiting for approval** and can't be edited. Every Head of Delivery gets an *Approve client delay* to-do. You can **Remind** them from My Actions under **Waiting on others**.
+- **If it is approved**, it becomes **Approved**. The project's **Handover & close** tab shows the total in **Approved client delay (days)**. Days covered by more than one approved delay count once: 1 to 10 March and 5 to 12 March make 12 days, not 18.
+- **If it is rejected**, it becomes **Rejected**, with a yellow banner showing the Head of Delivery's note. A rejected delay doesn't count and can't be edited or submitted again.
+- A delay you saved but didn't submit stays in **Draft** and is listed in My Actions under **Client delays to submit**.
+- Finance can't close the project while a client delay is waiting for approval.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *The delay ends before it starts.* | The second date is earlier than the first. | Swap the dates. |
+| *Only a draft client delay can be edited.* | You tried to change a delay that has been submitted, approved or rejected. | Ask the Head of Delivery about it. |
+| *Only a draft client delay can be submitted.* | It has already been submitted. | Refresh the page and check the status bar. |
+| *Only draft client delays can be deleted.* | You tried to delete a submitted, approved or rejected delay. | Leave it; only drafts can be deleted. |
+| *Only delivery project managers can log a client delay.* | Your user is not a Delivery Project Manager. | Ask the project manager to log it. |
+| *PRJ Customer A network upgrade is closed. Finance can reopen it first.* | The project has been closed. | Ask finance to reopen it if the delay must be counted. |
+
+:::note[Good to know]
+- A rejected delay can't be sent back to draft. If the situation changes, talk to the Head of Delivery before logging a new delay for the same period.
+- The Head of Delivery can also reject a delay that was already approved. Its days then stop counting.
+:::

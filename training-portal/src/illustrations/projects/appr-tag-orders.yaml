@@ -1,0 +1,28 @@
+type: screen
+title: Tagging tender orders to a project
+desc: The project form with the Untagged tender order lines button, and the Tag Tender Orders window listing the tender's order lines with a Tag switch, order, status, supplier, description, amount and Already billed, and the Tag Ticked Lines button, numbered 1 to 4.
+source: tritel_project_delivery/views/buttons_views.xml (project_form_buttons), wizards/tag_orders_wizard_views.xml (tag_orders_wizard_form)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting, Configuration]
+  breadcrumb: [Delivery Projects, PRJ Customer A network upgrade]
+blocks:
+  - smart:
+      - {label: Delivery baseline, value: Approved v1}
+      - {label: Budget left, value: "KES 300,000", tone: good}
+      - {label: Untagged lines, value: "3", tone: warn, n: 1}
+  - dialog:
+      title: Tag Tender Orders
+      n: 2
+      blocks:
+        - text: "These purchase order lines on the tender have no cost account. Tagging gives them cost account PRJ Customer A network upgrade, so they count as committed and spent on this project."
+        - table:
+            columns: [Tag, Order, Status, Supplier, What, Amount (before VAT), Already billed]
+            widths: [1, 1.6, 2, 2, 3, 2.2, 1.6]
+            n: 3
+            rows:
+              - ["●", P00041, {text: Purchase order, badge: true, tone: good}, Supplier A, 48-port PoE switches, "350,000", "☐"]
+              - ["●", P00041, {text: Purchase order, badge: true, tone: good}, Supplier A, Installation and testing, "40,000", "☑"]
+              - ["○", P00047, {text: RFQ, badge: true, tone: muted}, Supplier B, Fibre patch cords, "15,000", "☐"]
+        - buttons: [{label: Tag Ticked Lines, primary: true, n: 4}, {label: Cancel}]

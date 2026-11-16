@@ -1,0 +1,21 @@
+type: screen
+title: A handover waiting for confirmation
+desc: The Handover form opened from the Handovers list, with the Confirm Handover and Return buttons, the handover date, the certificate, the project manager's note and the Note when returning box, numbered 1 to 6.
+source: tritel_project_delivery/views/closeout_views.xml (handover_form)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true, n: 1}, Reporting, Configuration]
+  breadcrumb: [Handovers, Handover of PRJ Customer A network upgrade]
+blocks:
+  - buttons: [{label: Confirm Handover, primary: true, n: 5}, {label: Return, n: 6}]
+    status: {steps: [Draft, Waiting for confirmation, Confirmed], current: Waiting for confirmation}
+  - fields:
+      - [{label: Project, value: PRJ Customer A network upgrade}, {label: Submitted by, value: Employee A}]
+      - [{label: Handover date, value: 15/07/2026, bold: true, n: 2}, {label: Submitted on, value: "16/07/2026 09:30"}]
+      - [{label: Handover certificate, value: completion-certificate.pdf, n: 3}]
+  - text: "Handed over all four sites. Client IT manager signed. Snag list: label two patch panels."
+    n: 4
+  - heading: Head of Delivery
+  - fields:
+      - [{label: Note when returning, value: "Required to return it", tone: muted}]

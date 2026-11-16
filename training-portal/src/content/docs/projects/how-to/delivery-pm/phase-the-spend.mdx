@@ -1,0 +1,56 @@
+---
+title: Plan when the money goes out
+description: Give each cost item the month or months it will be paid, then check the spend plan by month that the Odoo budget and the expected-to-date figure are built from.
+module: projects
+pageType: how-to
+roles: [delivery-pm]
+tags: [baselines, budgets]
+keywords: [phasing, cash flow, cashflow, spend plan, payment schedule, monthly budget, payment months, budget by month, S-curve, forecast]
+where: [Project, Delivery, Delivery Projects]
+before:
+  - The baseline is in <strong>Draft</strong> and its cost items are listed.
+  - You know roughly when each supplier, subcontractor or expense will be paid.
+related: [projects/calculations/budget-lines-and-phasing, projects/concepts/budget-tracking, projects/concepts/odoo-budget-and-cost-account, projects/how-to/delivery-pm/build-a-baseline, projects/how-to/delivery-pm/send-for-approval]
+sources:
+  - tritel_project_delivery/models/phasing.py
+  - tritel_project_delivery/models/cost_item.py
+  - tritel_project_delivery/views/baseline_views.xml
+sidebar: { order: 5 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Each cost item needs the month the money goes out. From those months the system builds a **spend plan by month**. After approval it becomes the monthly lines of the Odoo budget, and tracking compares what has been spent with what was **expected by now**.
+
+<Illustration name="projects/pm-pay-months" caption="Pay from and Pay until on the Costs tab. The numbers match steps 1 to 3." />
+
+## Steps
+
+1. On the **Costs** tab, set **Pay from** on each item: the month the money goes out. Pick any day; the system changes it to the 1st of that month.
+2. If an item is paid over several months, also set **Pay until**. The amount is split evenly across the months, from **Pay from** to **Pay until**. Leave **Pay until** empty when it is paid in one month.
+3. Leave the **Contingency** line without months. It is spread across the months in the same proportions as the other costs.
+4. Open **Summary by category** and read **Spend plan by month**. There is one row per month and one column per budget category, then **Month total** and **Running total**. The current month is highlighted. **Total** and **Planned to date** are at the bottom.
+5. If a yellow note says, for example, *1 item(s) paid before the project start: Performance bond and insurance*, check those months. Payments before the project's start date are allowed, but make sure they are right.
+
+<Illustration name="projects/pm-spend-plan" caption="The spend plan for the three items above. The number matches step 4." />
+
+In this example the switches (500,000) are paid in March, the cabling (300,000) in March and April (150,000 each month), and the 5% contingency (40,000) follows the same shape: 650,000 of the 800,000 other costs fall in March, so March gets 32,500 and April 7,500.
+
+## What happens next
+
+- Nothing is sent to anyone until you confirm the baseline. The approvers see the same spend plan.
+- When you confirm, any items paid before the project start are noted in the baseline's chatter.
+- After approval, the Odoo budget gets one line per month with planned spend, and the project's budget tracking shows **Expected by now**: the plan for every month up to the current one.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *"Structured cabling" needs the month it will be paid.* | **Pay from** is empty on a cost item. | Set **Pay from**. Only the contingency line can be left without months. |
+| *"Pay until" is before "Pay from" on Structured cabling.* | The months are the wrong way round. | Swap the two months. |
+| *These costs are paid after the completion date plus 180 days (27 Dec 2026): Retention release.* | An item is paid more than 180 days after the **Completion date** (the number of days is set in Delivery Settings). | Bring the payment month forward, or check the completion date. |
+
+:::note[Good to know]
+- Until at least one item has a payment month, the tab shows *The spend plan appears once costs have payment months.*
+- If no item has months, the contingency is placed in the completion month.
+- The monthly amounts are rounded; the last month takes any remainder, so the months always add up to the item's total.
+:::

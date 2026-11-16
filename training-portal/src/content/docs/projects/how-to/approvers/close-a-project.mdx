@@ -1,0 +1,69 @@
+---
+title: Close or reopen a project
+description: As Delivery Finance, confirm a delivery project's final cost and close it, which freezes its on-time and on-budget result for the Delivery KPI, or reopen a closed project with a reason.
+module: projects
+pageType: how-to
+roles: [delivery-finance]
+tags: [close-out, delivery kpi, my actions]
+keywords: [close project, closure, final cost, project close-out, completion, reopen project, adjustment, accrual, on budget, overrun, variance, KPI]
+where: [Project, Delivery, Delivery Projects]
+before:
+  - You have the <strong>Delivery Finance</strong> role.
+  - The Head of Delivery has confirmed the handover. You get a <em>Close delivery project</em> to-do, and the project shows under <strong>Projects to close</strong> on your My Actions.
+  - No baseline is in draft or waiting, and no handover or client delay is waiting for a decision.
+related: [projects/workflows/close-out, projects/concepts/handover-and-close-out, projects/calculations/close-and-kpi, projects/concepts/delivery-kpi, projects/how-to/approvers/review-costs-after-close]
+sources:
+  - tritel_project_delivery/views/closeout_views.xml
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/action_followups.py
+  - tritel_project_delivery/models/my_actions.py
+sidebar: { order: 7 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Closing a project records its **final cost** and freezes its result: on time, on budget, or both. The Delivery KPI reads this frozen result, so close only when the costs are complete or you know what is still to come.
+
+<Illustration name="projects/appr-close-project" caption="Closing a project. The numbers match the steps below." />
+
+## Steps
+
+1. Open the project and click **Close Project** at the top. Or open **Project › My Actions** and click **Close project** under **Projects to close**.
+2. In the **Close Project** window, check the figures: **Spent** (posted costs on the project's cost account, before VAT), **Open orders** (confirmed order lines not yet billed) and **Proposed final cost** (the two added up). **Approved budget** is the latest approved baseline's total.
+3. If you know of a cost that is not posted yet, or a cost that is not this project's, enter it as an **Adjustment** (a minus figure takes a cost out). **Final cost** updates.
+4. If you entered an adjustment, explain it in the box below the figures.
+5. Read the result preview, for example *On time and on budget*, with the days late and the final cost against the budget.
+6. Click **Close Project**.
+
+### Reopen a closed project
+
+1. Open the project and click **Reopen** at the top. (From My Actions, **Reopen** is on items under **Costs after close**.)
+2. In the **Reopen Project** window, type why it is reopened.
+3. Click **Reopen Project**.
+
+## What happens next
+
+- **After closing:** the project's **Handover** button shows **Closed**. The **Handover & close** tab shows the frozen **Result**, **On time**, **On budget**, **Final cost (before VAT)**, the figures at close and **Days late**. A summary is posted in the project's chatter, and every finance user's *Close delivery project* to-do is removed.
+- The Delivery KPI in Accountability uses this result for the project manager. A project that is **Not scored** (no approved baseline or no confirmed handover) is not counted.
+- The project leaves the delivery lists on My Actions. Nobody can record a handover, log a client delay or start a revision until it is reopened.
+- Costs posted or ordered later do not change the result. They show as [costs after close](/projects/how-to/approvers/review-costs-after-close/).
+- **After reopening:** the final cost and result are cleared. The earlier figures and your reason are posted in the project's chatter. Closing again works out new figures.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *This project cannot close yet.* (red box in the window, with the reasons below) | Something is still open. The window lists each reason and hides the **Close Project** button. | Deal with each reason, then try again. |
+| *Baseline v2 is draft. Approve or withdraw it first.* | A revision is still in draft or waiting for approval. | Ask the project manager to finish or withdraw it, or the approvers to decide it. |
+| *The handover must be recorded and confirmed by the Head of Delivery first.* | The project has an approved baseline but no confirmed handover. | Ask the Head of Delivery to [confirm the handover](/projects/how-to/approvers/confirm-a-handover/). |
+| *A handover is waiting for confirmation.* / *A client delay is waiting for approval.* | The Head of Delivery has not decided it yet. | Ask them to decide it. |
+| *Explain the adjustment to the final cost.* | You entered an **Adjustment** with no explanation. | Type why in the box below the figures. |
+| *Give the reason for reopening.* | The reason box is empty. | Type the reason. |
+| *Only finance can close or reopen a delivery project.* | You don't have the Delivery Finance role. | Ask a finance user to do it. |
+
+:::note[Good to know]
+- **Days late** is shown before the grace period. A project handed over 5 days after its deadline shows *5 days late (grace 7)* and still counts as **On time**. The deadline is the approved completion date plus the approved client delay days.
+- **On budget** means the final cost is no more than the approved budget, contingency included. There is no tolerance.
+- The final cost includes open orders that are not billed yet. If an order will not be billed, take it out with a minus adjustment.
+- **Close Project** appears on every project, not only delivery projects. A project without an approved baseline closes as **Not scored**; its final cost is still recorded.
+- If the project has no cost account, **Spent** and **Open orders** are 0. Use the adjustment if it had costs.
+:::

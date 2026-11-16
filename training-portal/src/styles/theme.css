@@ -97,7 +97,10 @@
 .tp-figure figcaption { font-size: var(--sl-text-sm); color: var(--sl-color-gray-3); margin-top: .4rem; }
 
 /* Mermaid diagrams scroll inside their box too */
-pre.mermaid, .mermaid { overflow-x: auto; }
+/* Diagram box: a plain block that scrolls sideways; the diagram keeps the width set by
+   public/mermaid-size.js (a flex box would shrink it back to the column) */
+pre.mermaid { display: block !important; overflow-x: auto; }
+pre.mermaid > svg { display: block; margin-inline: auto; flex-shrink: 0; max-width: none !important; height: auto; }
 
 /* Glossary auto-links: quiet dotted underline */
 a.tp-term { text-decoration: underline dotted; text-underline-offset: .2em; color: inherit; }

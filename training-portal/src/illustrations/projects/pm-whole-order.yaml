@@ -1,0 +1,25 @@
+type: screen
+title: Keying a whole order as cost items
+desc: The Costs tab of a draft baseline where a supplier's purchase order is keyed as two cost items, one per type, each with quantity 1, unit lot, the order amount before VAT in US dollars, Quoted basis and the order number as Reference, with the indicative-rate warning and the quote files check, numbered 1 to 6.
+source: tritel_project_delivery/views/baseline_views.xml (baseline_form, Costs tab); views/budget_mapping_views.xml (baseline_form_quote_files)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
+  breadcrumb: [Delivery Projects, PRJ Customer A network upgrade · baseline v1]
+blocks:
+  - buttons: [{label: Confirm for Approval, primary: true}, {label: Withdraw}]
+    status: {steps: [Draft, Waiting for approval, Approved], current: Draft}
+  - title: {text: PRJ Customer A network upgrade, sub: "Baseline v1 · Original"}
+  - tabs: {items: [Costs, Summary by category, Milestones, Approvals], active: Costs, n: 1}
+  - table:
+      columns: [What, Type, Qty, Unit, Currency, Unit cost, Pay from, Basis, Reference, Total (before VAT)]
+      widths: [2.8, 2.2, 0.7, 0.8, 1.1, 1.2, 1.2, 1.1, 1.6, 1.6]
+      rows:
+        - {cells: ["Supplier A order: switches and optics", Equipment we supply, "1", lot, USD, "4,000", 03/2026, {text: Quoted, tone: good}, PO-2026-001, "520,000"], n: 2}
+        - {cells: ["Supplier A order: installation", Work by a subcontractor, "1", lot, USD, "1,000", 04/2026, {text: Quoted, tone: good}, PO-2026-001, "130,000"], n: 3}
+        - [Contingency, Contingency, "", "", "", "5 % of other costs", "", "", "", {text: "32,500", tone: muted}]
+        - {cells: ["", "", "", "", "", "", "", "", "", {text: "682,500", bold: true}], n: 4}
+  - note: {text: "Foreign-currency amounts use today's rate until finance approves the budget.", tone: warn, n: 5}
+  - heading: "Summary by category › Checks › Quote files attached: 2 of 2 quoted lines"
+    n: 6

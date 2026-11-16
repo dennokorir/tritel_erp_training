@@ -13,13 +13,19 @@ export default defineConfig({
   markdown: { remarkPlugins: [remarkGlossaryLinks] },
   integrations: [
     // Must come before Starlight so ```mermaid blocks are claimed first
-    mermaid({ theme: 'neutral', autoTheme: true, enableLog: false }),
+    mermaid({
+      theme: 'neutral', autoTheme: true, enableLog: false,
+      // Draw diagrams at their natural size (wide ones scroll sideways in their box) instead of
+      // shrinking them to the column, which made large state diagrams unreadable
+      mermaidConfig: { flowchart: { useMaxWidth: false }, state: { useMaxWidth: false }, themeVariables: { fontSize: '16px' } },
+    }),
     starlight({
       title: 'Tritel Systems Training',
       description: 'How to use the Accountability Framework, Project Delivery, Tenders and the Board portal at Tritel.',
       logo: { src: './src/assets/mark.svg', alt: '' },
       favicon: '/favicon.svg',
       customCss: ['./src/styles/theme.css'],
+      head: [{ tag: 'script', attrs: { src: '/mermaid-size.js', defer: true } }],
       components: { MarkdownContent: './src/components/MarkdownContent.astro' },
       lastUpdated: false,
       pagination: true,
@@ -39,6 +45,20 @@ export default defineConfig({
             group("How it's calculated", 'accountability/calculations', true),
             { label: 'Who can do what', link: '/accountability/who-can-do-what/' },
             { label: 'FAQ', link: '/accountability/faq/' },
+          ],
+        },
+        {
+          label: 'Projects',
+          items: [
+            { label: 'Overview', link: '/projects/' },
+            group('Concepts', 'projects/concepts', true),
+            group('Workflows', 'projects/workflows', true),
+            group('How-to: delivery project managers', 'projects/how-to/delivery-pm', true),
+            group('How-to: approvers, finance and set-up', 'projects/how-to/approvers', true),
+            group('Reports', 'projects/reports', true),
+            group("How it's calculated", 'projects/calculations', true),
+            { label: 'Who can do what', link: '/projects/who-can-do-what/' },
+            { label: 'FAQ', link: '/projects/faq/' },
           ],
         },
         group('End-to-end journeys', 'end-to-end', true),

@@ -1,0 +1,60 @@
+---
+title: Projects over their approved budget
+description: The My Actions list of delivery projects over plan on at least one budget line, who sees which projects, and how to read the budget tracking window behind the Budget left button.
+module: projects
+pageType: report
+roles: [delivery-pm, head-delivery, delivery-finance]
+tags: [tracking, my actions]
+keywords: [over budget, overrun, cost overrun, budget variance, over plan, exceeded budget, burn rate, tracking popup, my actions, request revision]
+where: [Project, My Actions]
+related: [projects/calculations/tracking-figures, projects/workflows/budget-status, projects/how-to/delivery-pm/my-actions, projects/how-to/delivery-pm/request-a-revision, projects/how-to/delivery-pm/track-the-budget]
+sources:
+  - tritel_project_delivery/models/my_actions.py
+  - tritel_project_delivery/static/src/my_actions/project_my_actions.xml
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/whole_orders_views.xml
+  - tritel_project_delivery/models/tracking.py
+sidebar: { order: 2 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+**Project › My Actions** lists what is waiting on you. The group **Projects over their approved budget** shows the delivery projects whose **Budget status** is **Over plan**: committed and spent are above the plan on at least one budget line.
+
+<Illustration name="projects/report-over-budget" caption="Two projects over plan in My Actions. The numbers match the list below." />
+
+## Reading the list
+
+1. **Overdue tile.** Every project in this group is counted as overdue as well as to do.
+2. **The group** and its hint: *Committed and spent are above the approved budget in at least one category.*
+3. **Each project** shows *planned 850,000 · committed and spent 762,000*: the whole approved budget and everything ordered or spent. A Head of Delivery also sees the project manager's name.
+4. **Buttons.** **Open tracking** and **Open** both open the project form; the budget tracking table is on its **Delivery** tab. **Request revision** starts a revision of the approved baseline. It shows only to the project's own manager, if they are a delivery project manager, and only while the baseline status is **Approved**.
+5. **Who sees what.** The Head of Delivery sees every open delivery project that is over plan. Everyone else sees only the projects where they are the **Project Manager**.
+
+A project leaves the list when its status is no longer **Over plan** at the next refresh, when it closes, or as soon as a revision is started. A project with a revision in draft or waiting is listed under **Revisions in progress** instead, marked *over its approved budget*.
+
+## The budget tracking window
+
+Click **Budget left** on the project (or **Margin left** on its approved baseline) to open **Budget tracking · Customer A network upgrade**.
+
+<Illustration name="projects/report-tracking-popup" caption="The tracking window for the same project. Travel is the line over plan." />
+
+1. **Status badge**: the project's **Budget status**.
+2. **Figures as of**: when the figures were last refreshed.
+3. **One row per budget line**, with **Planned**, **Expected by now**, **Committed**, **Spent**, **Left** (red below zero), **Forecast at completion** and **Status**. A dash means 0.
+4. **Whole budget**: the totals.
+5. **Confirmed tender orders with lines not tagged to this project**: confirmed orders on the tender with lines that carry no delivery project's cost account, with **Order**, **Supplier** and **Lines not tagged** (for example *2 of 5*). Those lines count nowhere until someone tags them.
+6. **Close** shuts the window.
+
+How each figure is worked out is on [Planned, expected, committed, spent, left and status](/projects/calculations/tracking-figures/).
+
+## What to do about it
+
+- Find the line marked **Over plan** and check its orders and bills from **Committed** and **Spent so far**.
+- If a cost belongs to another project, ask finance to move it.
+- If the plan was too low, **Request revision**. A revision above the limits in Delivery Settings also needs the MD. See [Request a revision](/projects/how-to/delivery-pm/request-a-revision/).
+
+:::note[Good to know]
+A project can be in this list while its whole-budget figures look fine, for example *planned 850,000 · committed and spent 762,000*. One line over its plan is enough; money left on other lines, including contingency, does not offset it.
+
+The list reads the stored **Budget status**, which is refreshed every night and when someone clicks **Refresh**. A cost posted this morning may not show here until tomorrow.
+:::

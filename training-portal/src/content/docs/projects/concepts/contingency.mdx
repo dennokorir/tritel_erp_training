@@ -1,0 +1,58 @@
+---
+title: Contingency
+description: What a project's contingency is, how it is priced, the cap it must stay under, and how it shows in the spend plan, the Odoo budget and budget tracking.
+module: projects
+pageType: concept
+roles: [delivery-pm, head-delivery, delivery-finance]
+tags: [baselines, budgets]
+keywords: [contingency, risk reserve, buffer, provision, allowance, cap, 5 percent, unforeseen costs, reserve account]
+related: [projects/concepts/cost-items-and-categories, projects/concepts/budget-tracking, projects/calculations/cost-items, projects/how-to/delivery-pm/build-a-baseline, projects/how-to/approvers/delivery-settings]
+sources:
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/phasing.py
+  - tritel_project_delivery/models/budget_mapping.py
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/data/starter_item_data.xml
+  - tritel_project_delivery/views/delivery_settings_views.xml
+sidebar: { order: 4 }
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+**Project contingency** is a reserve in the baseline for known risks: a supplier price rise, an extra site visit, a delay at customs. It is a cost item of type *Contingency*, in the **Contingency** budget category. Every new baseline starts with one, at 5% of the other costs.
+
+You price contingency in one of two ways:
+
+- **As a share:** fill in **% of other costs**. The amount follows the other items: if they go up, so does the contingency.
+- **As an amount:** leave the percentage empty and give it a **Unit cost**.
+
+If you give it neither, confirming stops with *Give the contingency a percentage or an amount.*
+
+## The cap
+
+Contingency may not be more than a set share of the **Budget total**. The share is **Contingency cap (%)** in **Delivery Settings**, 5% by default. The budget total includes the contingency itself. The check runs when you click **Confirm for Approval**.
+
+<Illustration name="projects/concept-contingency-cap" caption="Contingency at 5% of the other costs stays within a 5% cap." />
+
+## Where contingency shows
+
+| Where | What you see |
+|---|---|
+| Baseline | **Contingency** next to the **Budget total**. The contingency line is greyed in the cost items. |
+| Spend plan by month | Contingency has no pay months of its own. It is spread over the months in the same proportion as the other costs. If no other cost has a pay month yet, it sits in the completion month. |
+| Odoo budget | Its own line, **Project contingency**, on the reserve account (500900 *Project Contingency Reserve*). Nobody posts to that account, so the line shows as planned only. |
+| Budget tracking | Its own row, **Project contingency**, with nothing committed or spent. Its planned amount counts in **Left**. |
+
+To use contingency in practice, you request a revision that moves the money from the contingency item to the cost that needs it. See [Request a revision](/projects/how-to/delivery-pm/request-a-revision/).
+
+:::note[Good to know]
+- Because nothing is ever posted to the contingency row, it never fills up. A project with contingency will rarely show **Fully committed** overall, and **Left** includes the unused contingency.
+- Until finance sets a contingency reserve account in **Delivery Settings**, contingency is budgeted together with the direct project costs.
+- Contingency counts in the approved budget that the final cost is compared with at close. Unused contingency makes it easier to finish on budget.
+:::
+
+## Tasks that use this
+
+- [Build a baseline with the cost item builder](/projects/how-to/delivery-pm/build-a-baseline/)
+- [How a cost item's amount is worked out](/projects/calculations/cost-items/)
+- [Change the Delivery settings](/projects/how-to/approvers/delivery-settings/)

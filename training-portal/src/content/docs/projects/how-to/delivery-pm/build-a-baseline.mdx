@@ -1,0 +1,76 @@
+---
+title: Build a baseline with the cost item builder
+description: List everything the project will pay for on the draft baseline, in plain language, and check the budget total, contingency and margin before you send it for approval.
+module: projects
+pageType: how-to
+roles: [delivery-pm]
+tags: [baselines, budgets]
+keywords: [budget, BOQ, bill of quantities, cost sheet, costing, estimate, quote, supplier quote, contingency, VAT, margin, worksheet]
+where: [Project, Delivery, Delivery Projects]
+before:
+  - The project is a delivery project and you are its project manager.
+  - "You have the costs at hand: the BOQ, supplier quotes and your own estimates."
+related: [projects/concepts/baselines, projects/concepts/cost-items-and-categories, projects/concepts/contingency, projects/calculations/cost-items, projects/calculations/margin, projects/how-to/delivery-pm/phase-the-spend, projects/how-to/delivery-pm/set-dates-and-milestones, projects/how-to/delivery-pm/send-for-approval]
+sources:
+  - tritel_project_delivery/views/baseline_views.xml
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/budget_mapping_views.xml
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/cost_item.py
+  - tritel_project_delivery/models/tender_import.py
+  - tritel_project_delivery/models/budget_mapping.py
+sidebar: { order: 3 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+The **baseline** is the plan the project is measured against: what it will cost, when the money goes out, and when it will be finished. You build the cost part on the **Costs** tab, one **cost item** per thing the project pays for. The system works out the totals by budget category, so you never pick ledger accounts yourself.
+
+<Illustration name="projects/pm-baseline-costs" caption="A draft baseline with the starter items and two new cost items. The numbers match the steps below." />
+
+## Steps
+
+1. Open the draft baseline. From **Project › Delivery › Delivery Projects**, open the project and click the **Delivery baseline** smart button (it shows **Draft v1**), or click **Open Baseline in Progress** on the **Delivery** tab. If the button shows **No baseline**, click **Draft Baseline** on the **Delivery** tab instead.
+2. Deal with the starter items at the top of the **Costs** tab, if there are any. A baseline started by **Open Delivery Project** or **Link to Won Tender** comes with them. Type a **Unit cost** for each one that applies, and delete the ones that don't (the bin icon at the end of the row). **Contingency** is already set to 5 in **% of other costs**. A baseline started with **Draft Baseline** or **Start baseline** has no starter items: add a **Contingency** line yourself if the project needs one.
+3. Click **Add a line** for each thing the project pays for, and fill in:
+   - **What**: a plain description, for example *48-port PoE switches*.
+   - **Type**: the kind of cost, for example **Equipment we supply** or **Work by a subcontractor**. The type decides the budget category.
+   - **Qty** and **Unit** (units, days, lot, metres).
+   - **Currency**: KES unless the quote is in another currency, for example USD.
+   - **Unit cost**: the price of one unit in that currency. If the price includes VAT, tick **Incl. VAT** and the VAT is taken out.
+   - **Pay from** and **Pay until**: the months the money goes out. See [Plan when the money goes out](/projects/how-to/delivery-pm/phase-the-spend/).
+   - **Basis**: **Quoted** when you have a supplier quote, **Estimate** when you don't.
+   - **Reference**: the quote or order number. Attach the quote in **Quote file** if you have it.
+4. Check **Total (before VAT)** on each line and the total under the table. The line under the table shows **Quoted** (the share of costs backed by a quote) and **Foreign currency**.
+5. Check the figures at the top: **Budget total** (contingency included), **Contingency**, and under **Expected revenue**, **Margin left** and **Margin left (%)**.
+6. Open **Summary by category** to see the totals per budget category and the spend plan by month. Then set the dates on the **Milestones** tab and confirm the baseline for approval.
+
+Your changes are saved as you go when you click **Save** (the cloud icon). The baseline stays in **Draft** until you confirm it.
+
+## What happens next
+
+- The **Summary by category** tab is rebuilt every time you change an item. This is what finance approves and what the Odoo budget is made from.
+- Foreign-currency items are converted at today's rate. The line under the table says *Foreign-currency amounts use today's rate until finance approves the budget.* The rate is fixed when the budget is approved.
+- If the costs are above the tender's expected revenue, a red banner says *Costs are over the expected revenue. You can still confirm; the approvers will see this.*
+- Nobody else is notified while you work. When the baseline is ready, set the [completion date and milestones](/projects/how-to/delivery-pm/set-dates-and-milestones/) and [send it for approval](/projects/how-to/delivery-pm/send-for-approval/).
+
+## Common mistakes
+
+Most of these appear when you click **Confirm for Approval**.
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *"Travel and site costs" needs a quantity and a unit cost.* | A starter item (or any item) still has a 0 quantity or unit cost. | Price it, or delete the line if the project doesn't need it. |
+| *"48-port PoE switches" needs the month it will be paid.* | **Pay from** is empty. | Set **Pay from** on that line. |
+| *Give the contingency a percentage or an amount.* | The contingency line has neither a **% of other costs** nor a **Unit cost**. | Type a percentage, or delete the line if there is no contingency. |
+| *Contingency is 5.7% of the budget; the limit is 5.0%.* | Contingency is above the share allowed in Delivery Settings (5% of the budget total by default). | Lower the contingency percentage or amount. |
+| *List the costs: what the project will pay for.* | The **Costs** tab is empty. | Add the cost items. |
+| *The budget total must be above zero.* | Every item adds up to 0. | Check quantities and unit costs. |
+| *Quantities, costs and percentages cannot be negative (48-port PoE switches).* | A negative number was typed. | Enter positive figures. To show a saving, lower the cost instead. |
+| *Baseline v1 is Waiting for approval; its budget and milestones can no longer be edited.* | The baseline has already been confirmed. | Ask an approver to return it, or wait and request a revision once it is approved. |
+
+:::note[Good to know]
+- All amounts are before VAT and in the company currency (KES), whatever the item's currency.
+- **Margin left** compares the budget with the tender's expected revenue. If other delivery projects share the same tender, their budgets are taken off too, and **Other projects on this tender** shows how much.
+- A blue banner *Odoo budget mapping is not finished.* is for finance. You can carry on building and confirming the baseline.
+- Delivery Finance users can also change the items on a draft baseline. If figures change that you didn't change, check the baseline's chatter.
+:::

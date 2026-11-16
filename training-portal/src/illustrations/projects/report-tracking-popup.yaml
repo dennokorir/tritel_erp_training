@@ -1,0 +1,30 @@
+type: screen
+title: Budget tracking window
+desc: The Budget tracking window that opens from the Budget left button, with the status badge, the Figures as of time, one row per budget line with planned, expected by now, committed, spent, left, forecast and status, the Whole budget total and the list of tender orders with lines not tagged to the project, numbered 1 to 6.
+source: tritel_project_delivery/views/buttons_views.xml (project_tracking_popup), views/whole_orders_views.xml (project_tracking_popup_unbudgeted), models/tracking.py (_compute_tracking_html)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
+  breadcrumb: [Delivery Projects, Customer A network upgrade]
+blocks:
+  - dialog:
+      title: "Budget tracking · Customer A network upgrade"
+      blocks:
+        - buttons: [{label: Over plan, n: 1}, {label: "Figures as of 30/06/2027 06:00", n: 2}]
+        - table:
+            columns: [Budget line, Planned, Expected by now, Committed, Spent, Left, Forecast, Status]
+            widths: [2.2, 1.2, 1.2, 1.2, 1.2, 1.1, 1.2, 1.4]
+            rows:
+              - ["Direct project costs", "700,000", "700,000", "200,000", "450,000", "50,000", "700,000", {text: On track, badge: true, tone: good}]
+              - {cells: ["Project travel and site", "100,000", "100,000", "—", "112,000", {text: "-12,000", tone: bad}, "112,000", {text: Over plan, badge: true, tone: bad}], n: 3}
+              - ["Project contingency", "50,000", "50,000", "—", "—", "50,000", "50,000", {text: On track, badge: true, tone: good}]
+              - {cells: [{text: Whole budget, bold: true}, {text: "850,000", bold: true}, {text: "850,000", bold: true}, {text: "200,000", bold: true}, {text: "562,000", bold: true}, {text: "88,000", bold: true}, "", ""], n: 4}
+        - text: "Committed: confirmed purchase orders not yet billed. Spent: posted costs on the project's cost account (expense accounts only). Amounts before VAT."
+        - heading: "Confirmed tender orders with lines not tagged to this project (1)"
+          n: 5
+        - table:
+            columns: [Order, Supplier, Lines not tagged]
+            widths: [1.5, 2, 1.5]
+            rows: [["P00052", "Supplier A", "2 of 5"]]
+        - buttons: [{label: Close, n: 6}]

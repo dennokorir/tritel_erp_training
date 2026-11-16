@@ -1,0 +1,22 @@
+type: screen
+title: A client delay waiting for approval
+desc: The Client Delay form opened from the Client Delays list, with the Approve and Reject buttons, the delay dates and days, the evidence, the reason and the Note when rejecting box, numbered 1 to 6.
+source: tritel_project_delivery/views/closeout_views.xml (client_delay_form)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true, n: 1}, Reporting, Configuration]
+  breadcrumb: [Client Delays, "Client delay, 10 days"]
+blocks:
+  - buttons: [{label: Approve, primary: true, n: 5}, {label: Reject, n: 6}]
+    status: {steps: [Draft, Waiting for approval, Approved], current: Waiting for approval}
+  - fields:
+      - [{label: Project, value: PRJ Customer A network upgrade}, {label: Submitted by, value: Employee A}]
+      - [{label: Delay, value: "01/05/2026  to  10/05/2026", n: 2}]
+      - [{label: Days, value: "10", bold: true}]
+      - [{label: Evidence, value: site-access-email.pdf, n: 3}]
+  - text: "Site not available: Customer A could not grant access to the server room until the landlord's works finished."
+    n: 4
+  - heading: Head of Delivery
+  - fields:
+      - [{label: Note when rejecting, value: "Required to reject it", tone: muted}]

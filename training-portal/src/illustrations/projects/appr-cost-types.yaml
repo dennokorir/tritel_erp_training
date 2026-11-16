@@ -1,0 +1,23 @@
+type: screen
+title: Cost Types list
+desc: The Cost Types list under Project Configuration, an editable list with the Type, Hint, Budget category, Product categories and active switch columns, one type switched off, and a New button, numbered 1 to 4.
+source: tritel_project_delivery/views/delivery_settings_views.xml (delivery_cost_type_tree), views/menus.xml
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, Delivery, Reporting, {label: Configuration, active: true, n: 1}]
+  breadcrumb: [Cost Types]
+blocks:
+  - buttons: [{label: New, primary: true, n: 2}]
+  - table:
+      columns: [Type, Hint, Budget category, Product categories, Active]
+      widths: [3, 4, 3, 2.5, 1]
+      n: 3
+      rows:
+        - [Equipment we supply, "Switches, servers, access points, cameras, racks, UPS", Equipment and hardware, Network hardware, "●"]
+        - [Software and licences, "Licences, subscriptions, vendor support contracts", Software and licences, Software, "●"]
+        - [Work by a subcontractor, "Installation, civil works, cabling or specialist work", Subcontractors, "", "●"]
+        - [Travel and site costs, "Transport, accommodation, per diem, fuel", Travel and site expenses, "", "●"]
+        - [Contingency, "Reserve for known risks, as a share of the other costs", Contingency, "", "●"]
+        - cells: [{text: Site power hire, tone: muted}, {text: "Generators for sites without power", tone: muted}, {text: Logistics, tone: muted}, "", "○"]
+          n: 4

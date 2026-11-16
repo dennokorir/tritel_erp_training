@@ -1,0 +1,16 @@
+type: calc
+title: Contingency and its cap
+desc: Worked example of a contingency item at 5% of the other costs, and the check against the 5% contingency cap when the baseline is confirmed for approval.
+source: tritel_project_delivery/models/baseline.py (_sync_items, action_confirm); models/delivery_settings.py (contingency_cap_pct)
+heading: Contingency at 5% of the other costs, cap 5%
+inputs:
+  - {label: Other cost items, value: "1,000,000"}
+  - {label: "% of other costs", value: "5"}
+  - {label: "Contingency cap (%)", value: "5"}
+steps:
+  - {label: "Contingency = other costs × 5 ÷ 100", value: "50,000"}
+  - {label: "Budget total = other costs + contingency", value: "1,050,000"}
+  - {label: "Limit = budget total × cap ÷ 100", value: "52,500"}
+  - {label: "Contingency share = 50,000 ÷ 1,050,000", value: "4.8%"}
+result: {label: Confirm for Approval, value: "Allowed (50,000 is within 52,500)", tone: good}
+note: "The cap is measured against the whole budget, contingency included. At 6% of the other costs (60,000 of 1,060,000) the limit is 53,000, and confirming stops with: Contingency is 5.7% of the budget; the limit is 5.0%."

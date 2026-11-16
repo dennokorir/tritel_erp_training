@@ -1,0 +1,21 @@
+type: screen
+title: Projects over their approved budget
+desc: Projects My Actions with the To do, Overdue and Waiting on others tiles and the Projects over their approved budget group, showing a project's planned and committed-and-spent figures with the Open tracking, Request revision and Open buttons, numbered 1 to 5.
+source: tritel_project_delivery/models/my_actions.py (get_project_my_actions, budget_over group), static/src/my_actions/project_my_actions.xml
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, {label: My Actions, active: true}, Delivery, Reporting]
+  breadcrumb: [My Actions]
+blocks:
+  - tiles: [{label: To do, value: "4", tone: warn}, {label: Overdue, value: "2", tone: bad, n: 1}, {label: Waiting on others, value: "1"}]
+  - heading: "Projects over their approved budget  2"
+    n: 2
+  - text: "Committed and spent are above the approved budget in at least one category."
+  - table:
+      columns: [Project, Figures, Buttons]
+      widths: [2.2, 3, 3]
+      rows:
+        - {cells: [{text: Customer A network upgrade, bold: true}, "planned 850,000 · committed and spent 762,000", "Open tracking · Request revision · Open"], n: 3}
+        - {cells: [{text: Customer B data centre, bold: true}, "planned 400,000 · committed and spent 455,000", "Open tracking · Open"], n: 4}
+  - note: {text: "A Head of Delivery sees every delivery project here, with its project manager's name. Others see the projects they manage.", tone: muted, n: 5}

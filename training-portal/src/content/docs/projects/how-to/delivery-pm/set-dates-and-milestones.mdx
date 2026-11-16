@@ -1,0 +1,54 @@
+---
+title: Set the completion date and milestones
+description: Give the baseline its completion date and a planned date for every milestone; on approval they become the project's locked end date and milestone deadlines.
+module: projects
+pageType: how-to
+roles: [delivery-pm]
+tags: [baselines, milestones]
+keywords: [completion date, end date, deadline, go-live, practical completion, milestones, programme, schedule, timeline, Gantt, project plan]
+where: [Project, Delivery, Delivery Projects]
+before:
+  - The baseline is in <strong>Draft</strong> and you are the project manager.
+  - You have agreed the programme with the client (contract completion date and key stages).
+related: [projects/concepts/baselines, projects/concepts/delivery-kpi, projects/calculations/close-and-kpi, projects/how-to/delivery-pm/send-for-approval, projects/how-to/delivery-pm/request-a-revision]
+sources:
+  - tritel_project_delivery/views/baseline_views.xml
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/models/my_actions.py
+sidebar: { order: 6 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+The baseline's dates are the **Completion date** and a **Planned date** for each milestone. The Head of Delivery approves them. Once approved, the completion date is what your handover is measured against for the on-time KPI.
+
+<Illustration name="projects/pm-baseline-milestones" caption="The completion date and the Milestones tab. The numbers match the steps below." />
+
+## Steps
+
+1. On the draft baseline, set the **Completion date**. It may already be filled in from the project's end date.
+2. Open the **Milestones** tab. The project's milestones are listed, including the standard ones added when the project was opened. They start without dates.
+3. Give every milestone a **Planned date**. Each one must be on or before the completion date.
+4. Click **Add a line** to add a milestone the project needs. Delete milestones that don't apply. The list sorts itself by date when you save.
+
+## What happens next
+
+- When you confirm the baseline, the Head of Delivery approves the dates.
+- On approval, the project's end date becomes the **Completion date** and is locked. The project's milestones get the planned dates, and any milestone you added is created on the project.
+- After the completion date has passed with no handover recorded, the project shows in **Project › My Actions** under **Handovers to record**.
+- Milestones past their date that are not marked reached show under **Overdue milestones**, with a **Mark reached** button.
+- To change the dates after approval, [request a revision](/projects/how-to/delivery-pm/request-a-revision/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Set the completion date.* | You confirmed the baseline without a **Completion date**. | Set it, then confirm again. |
+| *Give every milestone a date: Installation complete, Handover.* | Some milestones have no **Planned date**. | Date them, or delete those that don't apply. |
+| *Milestones cannot fall after the completion date: Handover.* | A milestone is dated after the completion date. | Move the milestone, or move the completion date. |
+| *The completion date of PRJ Customer A network upgrade comes from its approved baseline. Request a revision to change it.* | You tried to change the end date on the project itself. | Request a revision of the baseline instead. |
+| *Baseline v1 is Waiting for approval and can no longer be edited. Return it to draft or request a revision.* | The baseline has been confirmed. | Ask an approver to return it if the dates are wrong. |
+
+:::note[Good to know]
+Deleting a milestone from a baseline does not delete it from the project. It simply gets no new date. If it no longer applies, ask a project administrator to remove it from the project.
+:::

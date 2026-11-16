@@ -1,0 +1,27 @@
+type: screen
+title: A baseline waiting for the budget approval
+desc: The Delivery Baseline form for Delivery Finance, with the Approve Budget and Return to Draft buttons, the budget total and margin, the Costs tab with quoted and estimated items, and the Summary by category tab, numbered 1 to 6.
+source: tritel_project_delivery/views/baseline_views.xml (baseline_form), views/budget_mapping_views.xml
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true, n: 1}, Reporting, Configuration]
+  breadcrumb: [Waiting for My Approval, "PRJ Customer A network upgrade · baseline v1"]
+blocks:
+  - buttons: [{label: Approve Budget, primary: true, n: 5}, {label: Return to Draft, n: 6}]
+    status: {steps: [Draft, Waiting for approval, Approved], current: Waiting for approval}
+  - title: {text: PRJ Customer A network upgrade, sub: "Baseline v1 · Original"}
+  - fields:
+      - [{label: Budget total, value: "1,050,000.00", bold: true, n: 2}, {label: Expected revenue, value: "1,500,000.00"}]
+      - [{label: Contingency, value: "50,000.00"}, {label: Margin left, value: "450,000.00", tone: good}]
+  - tabs: {items: [Costs, Summary by category, Milestones, Approvals], active: Costs, n: 3}
+  - table:
+      columns: [What, Type, Qty, Unit cost, Pay from, Basis, Total (before VAT)]
+      widths: [3.5, 3, 1, 2, 2, 1.6, 2.4]
+      rows:
+        - [48-port PoE switches, Equipment we supply, "10", "70,000", 01/03/2026, {text: Quoted, badge: true, tone: good}, "700,000"]
+        - [Structured cabling, Work by a subcontractor, "1", "250,000", 01/04/2026, {text: Estimate, badge: true, tone: warn}, "250,000"]
+        - [Travel and site costs, Travel and site costs, "1", "50,000", 01/03/2026, {text: Estimate, badge: true, tone: warn}, "50,000"]
+        - [Contingency 5%, Contingency, "", "", 01/06/2026, "", "50,000"]
+  - text: "Quoted: 70%   Foreign currency: 0%"
+    n: 4

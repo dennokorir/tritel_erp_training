@@ -1,0 +1,66 @@
+---
+title: Request a revision
+description: Start a new version of an approved baseline to change the budget, completion date or milestones, explain why, and send it for approval; large changes also need the MD.
+module: projects
+pageType: how-to
+roles: [delivery-pm, head-delivery]
+tags: [baselines, revisions]
+keywords: [revision, re-baseline, rebaseline, change request, variation, scope change, budget increase, extension of time, EOT, new version, MD approval]
+where: [Project, Delivery, Delivery Projects]
+before:
+  - The project has an <strong>Approved</strong> baseline, and no other version is in draft or waiting.
+  - The project is not closed.
+  - You are a Delivery Project Manager or the Head of Delivery.
+related: [projects/concepts/baselines, projects/concepts/approvals, projects/calculations/revisions-and-approvals, projects/workflows/baseline, projects/how-to/delivery-pm/send-for-approval, projects/how-to/approvers/approve-a-large-revision]
+sources:
+  - tritel_project_delivery/views/project_views.xml
+  - tritel_project_delivery/views/baseline_views.xml
+  - tritel_project_delivery/views/tracking_views.xml
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/my_actions.py
+sidebar: { order: 9 }
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+An approved baseline is locked. When the scope, costs or programme change, you **request a revision**: a new version of the baseline, copied from the approved one, which you change and send for approval. The approved version stays in force until the revision is approved.
+
+<Illustration name="projects/pm-request-revision" caption="Request Revision on the project's Delivery tab. The number matches step 1." />
+
+## Steps
+
+1. Open the project and go to the **Delivery** tab. Click **Request Revision**. You can also click **Request revision** on the project in **Project › My Actions** when it is listed under **Projects over their approved budget**.
+2. A new baseline opens: **Baseline v2 · Revision**, in **Draft**, with the same costs, dates and milestones as the approved version. No starter items are added.
+3. Fill in **Reason for revision**: what changed and why, for example scope added by the client or a supplier price change.
+4. Make the changes: add, change or delete cost items on **Costs**, move the **Completion date**, change dates on **Milestones**.
+5. Check the **Change** figures: **Budget vs previous**, **Days vs previous**, **Budget vs original (%)** and **Days vs original**. The **Changes** tab lists every item **Added**, **Changed** or **Removed**, with the amount in each version.
+6. Click **Confirm for Approval**.
+
+<Illustration name="projects/pm-revision-form" caption="A revision being prepared. The numbers match steps 2 to 6." />
+
+## What happens next
+
+- **The Head of Delivery always approves** a revision.
+- **Finance also approves** if any cost item or category total changed. A revision that only moves dates doesn't need finance.
+- **The MD also approves** if the revision is too far from the original baseline (version 1): by default, a budget more than 10% above it, or a completion date more than 30 days later. In the example above the budget is 14.3% above the original, so the MD must approve.
+- While the revision waits, the project's **Baseline** shows **Revision pending** and tracking carries on against the approved version.
+- On approval, the revision becomes **Approved** and the previous version **Superseded**. The old Odoo budget is cancelled and a new one is created. The project's end date and milestones take the new dates.
+- Foreign-currency items you did not change keep their fixed rate. Items whose price, quantity, currency or VAT changed get the rate on the day the budget is approved.
+- If the revision is no longer needed, click **Withdraw**, or click **Withdraw** next to it in **Project › My Actions** under **Revisions in progress**. The approved version stays as it was.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Explain the reason for this revision.* | **Reason for revision** is empty. | Write the reason, then confirm again. |
+| *This revision changes nothing compared with v1.* | The costs, completion date and milestones are the same as the approved version. | Make the change, or withdraw the revision. |
+| *This revision needs the MD, but no MD is set in Delivery Settings.* | The revision crosses the MD limits but nobody is named as MD. | Ask the Head of Delivery to set the **MD** in Delivery Settings, then confirm again. |
+| *PRJ Customer A network upgrade is closed. Finance can reopen it first.* | The project has been closed. | Ask finance to reopen the project if the baseline really must change. |
+| *Baseline v1 is Approved; its budget and milestones can no longer be edited.* | You tried to edit the approved version instead of the revision. | Open the revision (**Open Baseline in Progress** on the **Delivery** tab). |
+
+:::note[Good to know]
+- The MD limits are measured against the **original** baseline, not the previous version. Several small revisions add up, so the third small increase may need the MD even if the first two didn't.
+- Only increases count towards the MD limits. A lower budget or an earlier date never needs the MD.
+- **Request Revision** is shown only when nothing else is in progress. If a revision is already in draft or waiting, the button is **Open Baseline in Progress**.
+:::
