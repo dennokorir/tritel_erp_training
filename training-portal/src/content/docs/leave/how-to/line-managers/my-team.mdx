@@ -1,0 +1,57 @@
+---
+title: Use My Team
+description: As a manager, see who in your team is in this week, the requests waiting for you, and every team member's balance with Low and Not taking leave flags, then open anyone's time off.
+module: leave
+pageType: how-to
+roles: [line-manager, hr]
+tags: [time off, my team]
+keywords: [my team, team leave, leave balances, team balances, who is off, manager dashboard, leave planning, low balance, not taking leave, untaken leave, reportees]
+where: [Time Off, Home]
+before:
+  - Someone in Odoo reports to you (you are their manager on their employee form), or you are on the <strong>Company-wide Time Off View</strong> list.
+related: [leave/concepts/balances, leave/calculations/busy-days-and-flags, leave/how-to/line-managers/approve-time-off, leave/how-to/everyone/team-presence, leave/concepts/who-sees-what, leave/how-to/everyone/on-the-portal]
+sidebar: { order: 1 }
+sources:
+  - tritel_hr_leave/models/leave_home.py
+  - tritel_hr_leave/static/src/home/leave_home.xml
+  - tritel_hr_leave/static/src/home/leave_home.js
+  - tritel_hr_leave/views/leave_home_views.xml
+  - tritel_hr_leave/views/leave_home_portal.xml
+  - tritel_hr_leave/controllers/leave_home.py
+  - tritel_hr_leave/models/presence.py
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+**My Team** is the first page managers see in the Time Off app. It answers three questions at once: who is away this week, what is waiting for your decision, and who has too little leave left or isn't taking it.
+
+<Illustration name="leave/my-team" caption="My Team. The numbers match the steps below." />
+
+## Steps
+
+1. Open the **Time Off** app. It opens on **Home**, which shows **My Team** if people report to you. Use **My Team** and **My Leave** at the top to switch between your team and your own leave.
+2. The line under the buttons shows your own balance, your sick days left and any of your requests still waiting. **My Leave →** opens your own page.
+3. **Who is in this week** shows your team for the current week, people with time off first. Each coloured code is a leave type (for example **AL**). A striped code is a request not yet approved, and **½** is a half day. Click a name to see that person's time off, or a code to open the request (when you're allowed to open it). **Month view** opens [Team Presence](/leave/how-to/everyone/team-presence/).
+4. **Waiting for you** lists the requests you can decide, with their step and how many working days they have waited. Click one to open it, or use **Approvals dashboard** to approve several. See [Approve, refuse or ask about time off](/leave/how-to/line-managers/approve-time-off/).
+5. Under **Team balances**, choose who to list: **Direct reports**, **Everyone below me** (your whole reporting line), or **Everyone in the company** if you are on the company-wide list. With more than your direct reports you can also pick a department. Type in **Search** to find a person.
+6. Read each person's main leave type: **Allocated**, **Taken**, **Requested** and **Balance** (Balance = Allocated − Taken − Requested), a **Used this year** bar, and **Sick left**. The last column is a flag: **OK**, **Low**, **Not taking leave** or **No allocation**. The totals above the table count each flag.
+7. Click a person to open their time off: their balances, their requests this year and the days they took each month.
+
+## What happens next
+
+- Nothing changes when you look: My Team is read-only. To decide a request, open it from **Waiting for you** or the Approvals dashboard.
+- The same page is on the portal at **My Team's Leave** (`/my/team-leave`), with the same scope choices. Click a name there to open their time off. See [Use My Leave and Team Presence on the portal](/leave/how-to/everyone/on-the-portal/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *This person's time off can't be shown.* (or *You can't see Employee A's time off.*) | The person isn't below you in the reporting line. | Ask HR, or check their manager on the employee form. |
+| No **My Team** button, only **My Leave** | Nobody active reports to you in Odoo. | Ask HR to set you as the manager on your team's employee forms. |
+
+:::note[Good to know]
+- **Who is in this week** shows up to 12 people. The line under it says how many more there are, with a link to Team Presence.
+- The flags use the company settings: **Low** at 3 days balance or fewer, and **Not taking leave** when 60% or more of the year's allocation is still unused from October on. See [Busy days, Low and Not taking leave](/leave/calculations/busy-days-and-flags/).
+- The main leave type is the one that builds up monthly (usually annual leave), else the largest allocation. Sick leave is shown separately, in **Sick left**. It is found by the word "sick" in the leave type's name.
+- Accounts hidden from the Time Off views (service accounts) are never listed.
+:::

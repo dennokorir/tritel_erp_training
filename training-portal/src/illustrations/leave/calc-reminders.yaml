@@ -1,0 +1,18 @@
+# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: shows tritel_hr_leave:cron:ir_cron_tritel_leave_reminders, tritel_hr_leave:field:hr.leave.tritel_waiting_since, tritel_hr_leave:field:hr.leave.tritel_reminded_on
+# docs-sync: shows tritel_hr_leave:field:hr.leave.tritel_escalated_on, tritel_hr_leave:field:hr.leave.tritel_escalated_to_ids
+type: calc
+title: Reminder and escalation
+desc: Worked example of a request waiting since Monday 16 Nov 2026 for leave from Tuesday 1 Dec, with the default settings, reminded on Wednesday 18 Nov after 2 working days and escalated on Friday 20 Nov after 4.
+source: tritel_hr_leave/models/hr_leave_approval.py (_tritel_working_days, _tritel_waited, _cron_tritel_leave_reminders)
+heading: Employee A, Annual Leave, 1 – 3 Dec 2026
+inputs:
+  - {label: Waiting since, value: "Mon 16 Nov 2026"}
+  - {label: Remind after, value: "2 working days"}
+  - {label: Escalate after, value: "4 working days"}
+steps:
+  - {label: "Wed 18 Nov: working days waited (Tue, Wed)", value: "2 → reminder to Employee D"}
+  - {label: "Thu 19 Nov: working days waited", value: "3 → nothing new"}
+  - {label: "Fri 20 Nov: working days waited (Tue to Fri)", value: "4 → escalated to Employee D's manager"}
+result: {label: Escalated on, value: "20/11/2026", tone: warn}
+note: The day the request arrived doesn't count, nor do weekends and public holidays. Still waiting for the manager on Wed 2 Dec (the day after the leave started), it is refused.

@@ -1,0 +1,16 @@
+# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: shows tritel_hr_leave:client_action:action_my_leave
+type: calc
+title: How a balance is worked out
+desc: A worked example of an annual leave balance for Employee A, with 15 days allocated, 2 days taken and 1 day requested giving a balance of 12 days, and 16.75 days expected by 31 December.
+source: tritel_hr_leave/models/leave_home.py (_balances, _accrual)
+heading: Annual leave in November 2026
+inputs:
+  - {label: Allocated so far, value: "15"}
+  - {label: "Taken (approved, including days still to come)", value: "2"}
+  - {label: "Requested (waiting for approval)", value: "1"}
+steps:
+  - {label: "Balance = Allocated − Taken − Requested", value: "15 − 2 − 1"}
+  - {label: "By 31 Dec = Allocated + accruals still to come this year", value: "15 + 1.75"}
+result: {label: Balance, value: "12 days", tone: good}
+note: "The balance is what can still be requested today. By 31 Dec shows only for leave that builds up on an accrual plan."

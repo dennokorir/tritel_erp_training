@@ -1,0 +1,23 @@
+# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: shows tritel_hr_leave:field:hr.leave.tritel_waiting_since, tritel_hr_leave:field:hr.leave.tritel_reminded_on, tritel_hr_leave:field:hr.leave.tritel_escalated_on
+# docs-sync: shows tritel_hr_leave:field:hr.leave.tritel_escalated_to_ids, tritel_hr_leave:field:hr.leave.tritel_query_open
+type: screen
+title: The Approval group on a request
+desc: A time off request waiting for the manager, with the Approval group showing when it started waiting, the reminder and escalation dates, who it was escalated to and an open question, numbered 1 to 5.
+source: tritel_hr_leave/views/leave_approval_views.xml (hr_leave_view_form_tritel_approval)
+frame:
+  grid: true
+  app: Time Off
+  menu: [Home, My Time Off, Overview, {label: Approvals, active: true}, Reporting, Configuration]
+  breadcrumb: [Time Off, Employee A on Annual Leave]
+blocks:
+  - buttons: [{label: Approve, primary: true}, {label: Refuse}]
+    status: {steps: [To Approve, Second Approval, Approved], current: To Approve}
+  - title: {text: Employee A on Annual Leave, sub: "3 days · 01/12/2026 to 03/12/2026"}
+  - fields:
+      - [{label: Time Off Type, value: Annual Leave}, {label: Employee, value: Employee A}]
+  - heading: Approval
+  - fields:
+      - [{label: Waiting since, value: "17/11/2026 09:00", n: 1}, {label: Reminder sent, value: 19/11/2026, n: 2}]
+      - [{label: Escalated on, value: 23/11/2026, n: 3}, {label: Escalated to, value: Employee C, n: 4}]
+      - [{label: Question open, value: "☑", n: 5}]

@@ -1,0 +1,43 @@
+# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: shows tritel_hr_leave:menu:menu_leave_home, tritel_hr_leave:client_action:action_leave_home
+type: screen
+title: My Team
+desc: The Time Off app's Home on the My Team page, with your own balance, who is in this week, requests waiting for you, and the team balances table with its scope buttons and flags, numbered 1 to 7.
+source: tritel_hr_leave/static/src/home/leave_home.xml (TimeOffHome), tritel_hr_leave/views/leave_home_views.xml
+frame:
+  grid: true
+  app: Time Off
+  menu: [{label: Home, active: true, n: 1}, My Time Off, Overview, Approvals, Reporting, Configuration]
+  breadcrumb: [Time Off]
+blocks:
+  - buttons: [{label: My Team, primary: true}, {label: My Leave}, {label: Team Presence}, {label: Request time off}]
+  - note: {text: "You: Annual Leave balance: 12 days · 6 sick left · My Leave →", tone: accent, n: 2}
+  - columns:
+      - panel: true
+        blocks:
+          - heading: Who is in this week
+          - table:
+              columns: [Person, Mon 30, Tue 1, Wed 2, Thu 3, Fri 4]
+              widths: [3, 1, 1, 1, 1, 1]
+              n: 3
+              rows:
+                - [Employee A, "", {text: AL, badge: true, tone: accent}, {text: AL, badge: true, tone: accent}, "", ""]
+                - [Employee B, "", "", "", {text: SO, badge: true, tone: warn}, ""]
+      - panel: true
+        blocks:
+          - heading: Waiting for you
+          - table:
+              columns: [Request]
+              n: 4
+              rows:
+                - ["Employee C · Annual Leave · 2 days · 08 Dec – 09 Dec 2026 · manager approval · waiting 1d"]
+  - heading: Team balances
+  - buttons: [{label: Direct reports (3), primary: true, n: 5}, {label: Everyone below me (5)}]
+  - table:
+      columns: [Person, Allocated, Taken, Requested, Balance, Sick left, ""]
+      widths: [3, 1, 1, 1, 1, 1, 2]
+      n: 6
+      rows:
+        - {cells: [Employee A, "15", "5", "2", {text: "8", bold: true}, "10", {text: OK, badge: true, tone: good}], highlight: true, n: 7}
+        - [Employee B, "10", "8", "0", {text: "2", bold: true}, "7", {text: Low, badge: true, tone: bad}]
+        - [Employee C, "18", "2", "2", {text: "14", bold: true}, "10", {text: Not taking leave, badge: true, tone: warn}]

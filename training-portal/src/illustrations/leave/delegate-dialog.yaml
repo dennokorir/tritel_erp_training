@@ -1,0 +1,27 @@
+# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: shows tritel_approvals_dashboard:model:approval.delegation
+type: screen
+title: Delegate My Approvals
+desc: The Approvals Dashboard header with the Delegate My Approvals button, the window that opens with a name search, a chosen colleague, an optional reason and the Enable Delegation button, and the Delegating to banner shown afterwards, numbered 1 to 6.
+source: tritel_approvals_dashboard/static/src/dashboard/approvals_dashboard.xml (DelegationDialog, delegation toggle)
+frame:
+  grid: true
+  app: Approvals
+  menu: []
+  breadcrumb: [Approvals Dashboard]
+blocks:
+  - buttons: [{label: "⇄ Delegate My Approvals", n: 1}, {label: My Queue, primary: true}, {label: All Pipeline}]
+  - dialog:
+      title: Delegate My Approvals
+      blocks:
+        - text: While your delegation is active, the person you select will see your pending approval requests and can approve or refuse them on your behalf. The audit trail will record both names.
+        - search: {facets: [], placeholder: "Search by name…", filters: [], n: 2}
+        - table:
+            columns: [Person]
+            rows:
+              - {cells: ["Employee B ✓"], highlight: true, n: 3}
+              - [Employee C]
+        - fields: [[{label: Reason (optional), value: "Annual leave, 1 – 12 Dec", n: 4}]]
+        - text: "Delegate to: Employee B"
+        - buttons: [{label: Enable Delegation, primary: true, n: 5}, {label: Cancel}]
+  - note: {text: "⇄ Delegating to Employee B  ✕", tone: accent, n: 6}

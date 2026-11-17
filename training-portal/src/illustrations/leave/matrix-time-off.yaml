@@ -1,0 +1,30 @@
+# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: shows tritel_hr_leave:model:tritel.presence.admin, tritel_hr_leave:menu:menu_presence_admin, tritel_hr_leave:menu:menu_tritel_leave_approval_settings
+# docs-sync: shows tritel_hr_leave:route:/tritel_hr_leave/presence/export, tritel_hr_leave:view_ext:hr.view_employee_form:button:hide-from-time-off-views, tritel_hr_leave:field:hr.employee.tritel_leave_hidden
+type: matrix
+title: Who can do what in Time Off
+desc: Permission grid for My Leave, Team Presence, My Team, approving time off and the Time Off settings, for any employee, line managers, Time Off officers, Time Off administrators and people on the Company-wide Time Off View list.
+source: tritel_hr_leave/models/presence.py (_company_wide, _is_admin, _scope), models/leave_home.py (_can_see, get_my_team), models/hr_leave_approval.py (_tritel_role), models/employee_visibility.py, views/presence_views.xml, views/leave_approval_views.xml, views/employee_visibility_views.xml, security/ir.model.access.csv
+columns: [Any employee, Line manager, Time Off officer, Time Off administrator, Company-wide list]
+labelWidth: 280
+rows:
+  - {group: Your own time off}
+  - {action: See My Leave and request time off, cells: [y, y, y, y, y]}
+  - {action: "Answer an approver's question", cells: [y, y, y, y, y]}
+  - {group: Team Presence}
+  - {action: See colleagues with the same manager as In or Away, cells: [y, y, y, y, y]}
+  - {action: See leave types and requests for everyone below them, cells: [n, y, p, p, y]}
+  - {action: See everyone in the company in full, cells: [n, n, n, y, y]}
+  - {action: Download Excel, cells: [n, n, n, y, y]}
+  - {group: My Team}
+  - {action: "Open My Team (direct reports, everyone below)", cells: [n, y, p, p, y]}
+  - {action: "Everyone in the company, and anyone's leave history", cells: [n, n, n, n, y]}
+  - {group: Approving}
+  - {action: "Approve, refuse or ask as the time-off approver, delegate or after escalation", cells: [n, y, p, p, p]}
+  - {action: "Decide anyone else's waiting request in Time Off", cells: [n, n, y, y, n]}
+  - {group: Settings}
+  - {action: Change Approvals & Presence, cells: [n, n, n, y, n]}
+  - {action: Edit the Company-wide Time Off View list, cells: [n, n, n, y, n]}
+  - {action: Hide or show an employee from their form, cells: [n, n, n, y, y]}
+  - {action: Hide or show several employees from the Employees list, cells: [n, n, n, y, n]}
+legend: {p: Only if they also have people reporting to them}

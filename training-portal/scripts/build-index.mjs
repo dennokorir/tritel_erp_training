@@ -16,7 +16,7 @@ const DOCS = 'src/content/docs';
 const REF = path.join(DOCS, 'reference');
 const GENERATED = new Set(['reference/glossary.md', 'reference/states.md']);
 const isGenerated = (rel) => GENERATED.has(rel) || rel.startsWith('reference/tags/') || rel.startsWith('reference/fields/');
-const MODULE_LABELS = { general: 'General', accountability: 'Accountability', projects: 'Projects', tenders: 'Tenders', board: 'Board', 'end-to-end': 'End-to-end', reference: 'Reference' };
+const MODULE_LABELS = { general: 'General', accountability: 'Accountability', projects: 'Projects', tenders: 'Tenders', board: 'Board', leave: 'Time Off', 'end-to-end': 'End-to-end', reference: 'Reference' };
 
 const load = (p, dflt = []) => (fs.existsSync(p) ? yaml.load(fs.readFileSync(p, 'utf8')) ?? dflt : dflt);
 const write = (rel, body) => { const p = path.join(DOCS, rel); fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, body); };

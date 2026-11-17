@@ -1,0 +1,31 @@
+# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: shows tritel_hr_leave:route:/my/leave, tritel_hr_leave:route:/my/team-leave, tritel_hr_leave:route:/my/team-leave/<int:employee_id>, tritel_hr_leave:route:/my/presence
+type: screen
+title: Time off on the portal
+desc: The portal home page with the My Leave, My Team's Leave and Team Presence links, and the My Team's Leave page with the Direct reports, Everyone below me and Everyone in the company buttons, the search box and the team balances table, numbered 1 to 5.
+source: tritel_hr_leave/views/leave_home_portal.xml (portal_my_home_leave, portal_team_leave), tritel_hr_leave/views/presence_views.xml (portal_my_home_presence)
+frame:
+  app: Tritel portal
+  breadcrumb: [Home, "My Team's Leave"]
+blocks:
+  - columns:
+      - panel: true
+        blocks:
+          - heading: Portal home (/my)
+          - buttons: [{label: My Leave, n: 1}]
+          - buttons: [{label: "My Team's Leave", n: 2}]
+          - buttons: [{label: Team Presence, n: 3}]
+      - panel: true
+        blocks:
+          - title: {text: "My Team's Leave"}
+          - text: "You: Annual Leave balance: 12 days · 8 sick left · 1 waiting"
+          - buttons: [{label: Direct reports (3), primary: true, n: 4}, {label: Everyone below me (5)}]
+          - search: {placeholder: "Search"}
+          - table:
+              columns: [Person, Allocated, Taken, Requested, Balance, Sick left, ""]
+              widths: [3, 2, 2, 2, 2, 2, 2]
+              n: 5
+              rows:
+                - [Employee B, "15", "4", "0", "11", "10", {text: OK, badge: true, tone: good}]
+                - [Employee C, "15", "12", "1", "2", "6", {text: Low, badge: true, tone: bad}]
+                - [Employee D, "15", "1", "0", "14", "10", {text: Not taking leave, badge: true, tone: warn}]

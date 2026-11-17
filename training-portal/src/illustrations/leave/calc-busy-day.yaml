@@ -1,0 +1,19 @@
+# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: shows (no tracked code element: layout or general picture)
+type: calc
+title: Busy day
+desc: Worked example of the busy day threshold, with 12 people shown and the default 20%, so a day is busy when 3 or more of them are away; Tuesday has 3 people away and is flagged busy.
+source: tritel_hr_leave/models/presence.py (_busy_threshold, get_presence_data)
+heading: Team Presence, week of 30 Nov 2026
+inputs:
+  - {label: People shown, value: "12"}
+  - {label: "Busy when this % are away", value: "20%"}
+steps:
+  - {label: "Threshold = 12 × 20%, rounded up (never fewer than 2)", value: "2.4 → 3"}
+  - {label: "Away on Tue 1 Dec (approved time off)", value: "3"}
+result: {label: Tue 1 Dec, value: "Busy", tone: bad}
+bars:
+  - {label: Mon, value: 1, max: 12}
+  - {label: Tue, value: 3, max: 12, tone: bad}
+  - {label: Wed, value: 2, max: 12}
+note: Requests not yet approved don't count, and a public holiday is never flagged busy.

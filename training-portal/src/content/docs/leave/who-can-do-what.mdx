@@ -1,0 +1,63 @@
+---
+title: Who can do what
+description: Who sees whose time off in Team Presence and My Team, who can approve, refuse or ask about a request, who downloads Team Presence, and who changes the Time Off settings, the company-wide list and hidden accounts.
+module: leave
+pageType: reference
+roles: [everyone, line-manager, hr, system-admin]
+tags: [permissions, access]
+keywords: [access rights, permissions, who can approve leave, who sees my leave, time off officer, time off administrator, HR access, can't see team, leave approver, delegate]
+related: [leave/concepts/who-sees-what, leave/concepts/approval-steps, leave/how-to/hr/company-wide-view, leave/how-to/hr/hide-service-accounts, leave/faq, leave/index]
+sidebar: { order: 2 }
+sources:
+  - tritel_hr_leave/models/presence.py
+  - tritel_hr_leave/models/leave_home.py
+  - tritel_hr_leave/models/hr_leave_approval.py
+  - tritel_hr_leave/models/employee_visibility.py
+  - tritel_hr_leave/controllers/presence.py
+  - tritel_hr_leave/controllers/leave_home.py
+  - tritel_hr_leave/views/presence_views.xml
+  - tritel_hr_leave/views/leave_approval_views.xml
+  - tritel_hr_leave/views/employee_visibility_views.xml
+  - tritel_hr_leave/security/ir.model.access.csv
+  - tritel_approvals_dashboard/models/approval_delegation.py
+  - tritel_approvals_dashboard/security/ir.model.access.csv
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+---
+import Illustration from '../../../components/Illustration.astro';
+
+Tritel's Time Off screens decide who sees whom from the reporting line, not from Odoo's Time Off rights alone. Approving follows a separate rule: whose turn the request is waiting for.
+
+## The roles
+
+| Who | How they get it |
+|---|---|
+| **Any employee** | Has a user linked to their employee record. |
+| **Line manager** | Has active people below them in the reporting line (the **Manager** field on employee records). |
+| **Time-off approver** | The **Time Off** approver on the employee's record, or else their manager. Usually the line manager. |
+| **Time Off officer** | **Time Off › Officer** in the user's access rights. |
+| **Time Off administrator** | **Time Off › Administrator** in the user's access rights. |
+| **Company-wide list** | A row on **Time Off › Configuration › Company-wide Time Off View**, typically HR. System administrators count as being on it. See [Give HR the company-wide view](/leave/how-to/hr/company-wide-view/). |
+
+<Illustration name="leave/matrix-time-off" caption="Who can do what in Time Off." />
+
+## Seeing other people's time off
+
+- **Team Presence:** you always see yourself in full, and colleagues with the same manager as **In** or **Away** only, never the leave type or waiting requests. Managers see everyone below them in full. Time Off administrators and the company-wide list see everyone in full. See [Who sees whose time off](/leave/concepts/who-sees-what/).
+- **My Team** and leave histories: managers see the people below them; the company-wide list sees everyone. Time Off officer and administrator rights don't widen this.
+
+## Deciding a request
+
+A waiting request can be decided by the person whose turn it is: the time-off approver at the manager step, or the leave type's responsible person at the HR step. While an approver has delegated their approvals, their delegate can give the manager's approval too, and once a request is escalated, the people it was escalated to can decide it. Time Off officers can still decide anyone's request in Time Off itself, except their own. See [Approval steps, delegates and escalation](/leave/concepts/approval-steps/).
+
+**Refuse** needs a reason and **Ask** needs a question. Trying to decide a request that isn't waiting for you stops with *You can't decide Employee A's Annual Leave: it is waiting for Employee B.*
+
+## Settings
+
+- **Approvals & Presence** and the **Company-wide Time Off View** list are under **Time Off › Configuration**, which only Time Off administrators see.
+- **Hide from Time Off views** on an employee's form: Time Off administrators and the company-wide list. The same action for several employees at once, in the Employees list's **Action** menu, is for Time Off administrators only.
+- Any user can turn on delegation of their own approvals from the Approvals dashboard. Approvals administrators also manage everyone's delegations under **Approvals › Delegation Management**. See [Delegate my approvals while I'm away](/leave/how-to/line-managers/delegate-approvals/).
+
+:::note[Good to know]
+- A Time Off administrator who is not on the company-wide list sees everyone in Team Presence but only their own reporting line on **My Team**.
+- Records hidden from the Time Off views don't appear for anyone, whatever their rights.
+:::

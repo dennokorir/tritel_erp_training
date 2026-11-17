@@ -1,0 +1,66 @@
+---
+title: Busy days, Low and Not taking leave
+description: When Team Presence flags a day as busy, and when My Team flags a person as Low or Not taking leave, with worked examples and the settings behind them.
+module: leave
+pageType: calculation
+roles: [line-manager, hr]
+tags: [time off, my team]
+keywords: [busy day, too many people away, leave clash, low balance, not taking leave, unused leave, leave flags, burnout, untaken leave, threshold]
+related: [leave/how-to/line-managers/my-team, leave/how-to/everyone/team-presence, leave/concepts/balances, leave/how-to/hr/settings]
+sidebar: { order: 2 }
+sources:
+  - tritel_hr_leave/models/presence.py
+  - tritel_hr_leave/models/leave_home.py
+  - tritel_hr_leave/models/hr_leave_approval.py
+  - tritel_hr_leave/static/src/home/leave_home.xml
+  - tritel_hr_leave/static/src/presence/team_presence.xml
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Two kinds of warning help managers plan leave. **Team Presence** flags **busy days**, when too many of the people shown are away at once. **My Team** flags people whose balance is **Low**, or who are **Not taking leave** late in the year. Both use company settings that HR can change.
+
+## Busy days
+
+A day is **busy** when the number of people **away** reaches a threshold: the share of the people shown set in the settings (**20%** by default), rounded up, and **never fewer than 2**.
+
+<Illustration name="leave/calc-busy-day" caption="12 people shown at 20%: a day is busy from 3 people away." />
+
+- **Away** means approved time off, including colleagues you see only as **Away**. Requests not yet approved don't count, and a half day counts as one person away.
+- **People shown** means the rows on screen after your filters. Filtering to one department, or ticking **Only people away**, changes the threshold.
+- A public holiday is never flagged busy.
+- Busy days show in red in the **Away each day** row of the grid, and as a red top edge on the calendar. The summary line counts them: *2 busy days*.
+
+## Low and Not taking leave
+
+My Team flags each person on their main leave type (the one that builds up monthly, usually annual leave, else the largest allocation):
+
+| Flag | When |
+|---|---|
+| **No allocation** | They have no allocation for any leave type that needs one. |
+| **Low** | **Balance** is **3 days** or fewer. |
+| **Not taking leave** | From **October** on, **60%** or more of what was allocated this year is still in **Balance**. |
+| **OK** | None of the above. |
+
+**Balance** is Allocated − Taken − Requested: what can still be requested. See [Balances: allocated, taken, requested](/leave/concepts/balances/).
+
+<Illustration name="leave/calc-team-flags" caption="14 of 18 days still in balance in November: Not taking leave." />
+
+### Edge cases
+
+- **Low is checked first.** In November, someone with 2 days left is **Low**, not **Not taking leave**, even if 2 days is a large share of a small allocation.
+- **Before October**, nobody is flagged **Not taking leave**, however much is left.
+- **Allocated** counts everything allocated so far this year, including days carried over or granted, so a large carry-over makes **Not taking leave** more likely.
+- **Requested** days count as used: a person with a big request waiting won't be flagged **Not taking leave**.
+- Sick leave never decides a flag; it is shown separately as **Sick left**.
+
+## The settings
+
+**Time Off › Configuration › Approvals & Presence** (Time Off administrators):
+
+- **Team Presence: busy when this % of the people shown are away**: 20 by default (1 to 100).
+- **My Team: flag as low at or below (days balance)**: 3 by default.
+- **My Team: flag "not taking leave" at (% of allocation in balance)**: 60 by default.
+- **From month (1–12)**: 10 (October) by default.
+
+See [Set reminders, escalation and flags](/leave/how-to/hr/settings/). The line under the **Team balances** table always shows the values in use.

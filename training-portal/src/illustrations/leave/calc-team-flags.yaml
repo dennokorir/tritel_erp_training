@@ -1,0 +1,17 @@
+# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: shows (no tracked code element: layout or general picture)
+type: calc
+title: Low and Not taking leave
+desc: Worked example of the My Team flags in November with the default settings, where Employee C has 14 of 18 allocated days still in balance, 78%, which is at least 60% from October on, so the flag is Not taking leave.
+source: tritel_hr_leave/models/leave_home.py (_flag)
+heading: Employee C, Annual Leave, November 2026
+inputs:
+  - {label: Allocated, value: "18"}
+  - {label: Taken, value: "2"}
+  - {label: Requested, value: "2"}
+steps:
+  - {label: "Balance = 18 − 2 − 2", value: "14"}
+  - {label: "Low? Balance 3 days or fewer", value: "No"}
+  - {label: "From month 10: share still in balance = 14 ÷ 18", value: "78% ≥ 60%"}
+result: {label: Flag, value: "Not taking leave", tone: warn}
+note: Low is checked first. With 3 days or fewer in balance the flag is Low, whatever the month.

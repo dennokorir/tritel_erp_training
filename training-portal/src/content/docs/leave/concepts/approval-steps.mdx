@@ -1,0 +1,80 @@
+---
+title: Approval steps, delegates and escalation
+description: Who decides a time off request at each step, how a delegate covers for an approver who is away, what escalation does, and what the Approval group on a request shows.
+module: leave
+pageType: concept
+roles: [line-manager, hr, everyone]
+tags: [time off, approvals]
+keywords: [leave approval, approver, time off approver, second approval, HR approval, delegate, acting approver, escalation, reminder, who approves my leave, leave officer]
+related: [leave/workflows/time-off-request, leave/how-to/line-managers/approve-time-off, leave/how-to/line-managers/delegate-approvals, leave/calculations/reminders-and-escalation, leave/how-to/everyone/answer-a-question, leave/who-can-do-what]
+sidebar: { order: 3 }
+sources:
+  - tritel_hr_leave/models/hr_leave_approval.py
+  - tritel_hr_leave/models/leave_approval_lists.py
+  - tritel_hr_leave/views/leave_approval_views.xml
+  - tritel_hr_leave/static/src/approvals/leave_dashboard.xml
+  - tritel_hr_leave/static/src/approvals/leave_dashboard.js
+  - tritel_approvals_dashboard/models/approval_delegation.py
+  - tritel_approvals_dashboard/models/approval_request.py
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Every time off request waits on one **step** at a time, and each step belongs to one person. Depending on the leave type, a request needs the manager's approval, HR's approval, or the manager first and then HR. Tritel adds three things on top of Odoo's own Time Off: a delegate can cover for an approver who is away, a request that waits too long is escalated, and the approver can ask the employee a question before deciding.
+
+## The steps
+
+The leave type decides the steps: its **Approval** setting, under **Time Off Requests** on the type in **Time Off › Configuration › Time Off Types**.
+
+| Approval | Steps | Who owns each step |
+|---|---|---|
+| **By Employee's Approver** | One step: manager approval | The employee's time off approver: the **Time Off** approver under **Approvers** on their employee form (**Work Information** tab), or else their manager |
+| **By Time Off Officer** | One step: HR approval | The leave type's **Responsible Time Off Officer** |
+| **By Employee's Approver and Time Off Officer** | Step 1 of 2: manager, then step 2 of 2: HR | The approver first, then the leave type's **Responsible Time Off Officer** |
+| **No Validation** | None: approved straight away | Nobody |
+
+While a request waits for the manager it is **To Approve**. After the manager approves a two-step request it is **Second Approval**, waiting for HR. See the [time off request workflow](/leave/workflows/time-off-request/).
+
+## Who else can decide
+
+Besides the owner of the step:
+
+- **A delegate** can decide the **manager step** while the approver's delegation is active. An approver sets this up on the Approvals dashboard with **Delegate My Approvals**. Delegation doesn't apply to the HR step. See [Delegate my approvals while I'm away](/leave/how-to/line-managers/delegate-approvals/).
+- **Whoever it was escalated to** can decide either step once the daily job has escalated the request. That is the waiting approver's own manager. If the approver has no manager, it is the person named in the [settings](/leave/how-to/hr/settings/), or else the Time Off administrators.
+- **Time Off officers** keep their usual rights in the Time Off app for other people's requests, though not their own. Their requests aren't listed for them on the dashboard.
+
+When a delegate or an escalation recipient decides, a note on the request records it, for example *Approved by Employee B for Employee A (delegation).* or *Approved by Employee C after escalation (waiting for Employee A).*
+
+## Where a waiting request shows
+
+Requests waiting for you, as owner, delegate or after escalation, appear in three places:
+
+- **Time Off to Approve** on the **Approvals Dashboard** (the **Approvals** app, **My Queue** tab), with **Approve**, **Refuse** and **Ask**;
+- **Time off to approve** in **My Actions**, in Accountability and in the Tender Manager;
+- **Waiting for you** on **My Team** in the Time Off app.
+
+How to act on them: [Approve, refuse or ask about time off](/leave/how-to/line-managers/approve-time-off/).
+
+## The Approval group on a request
+
+<Illustration name="leave/request-approval-group" caption="The Approval group on a request waiting for the manager. The numbers match the list below." />
+
+1. **Waiting since**: when the request reached the step it is waiting on. The clock restarts at each step, so a request the manager approved starts a new wait for HR.
+2. **Reminder sent**: the day the approver was reminded.
+3. **Escalated on**: the day it was escalated.
+4. **Escalated to**: who can now decide it as well.
+5. **Question open**: the approver asked the employee a question that isn't answered yet. It clears when the employee replies on the request.
+
+The group appears on the request form approvers use (for example from **Time Off › Approvals › Time Off**). Reminder and escalation are each sent once per step. How the days are counted: [Reminders, escalation and automatic refusal](/leave/calculations/reminders-and-escalation/).
+
+:::note[Good to know]
+- People hidden from the Time Off views (service accounts) are left out: their requests aren't listed for approvers and aren't chased by the daily job.
+- A delegate approves on the Approvals dashboard. The **Approve** button on the request form follows Odoo's own rules, which don't know about delegation.
+:::
+
+## Tasks that use this
+
+- [Approve, refuse or ask about time off](/leave/how-to/line-managers/approve-time-off/)
+- [Delegate my approvals while I'm away](/leave/how-to/line-managers/delegate-approvals/)
+- [Answer a question on my request](/leave/how-to/everyone/answer-a-question/)
+- [Set reminders, escalation and flags](/leave/how-to/hr/settings/)

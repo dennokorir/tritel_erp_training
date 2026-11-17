@@ -1,0 +1,42 @@
+---
+title: Answer a question on my request
+description: When your approver asks a question about your time off request instead of deciding it, read it on the request and reply there, so they can approve or refuse.
+module: leave
+pageType: how-to
+roles: [everyone]
+tags: [time off, approvals]
+keywords: [question on leave, approver question, reply to manager, leave query, more information, clarification, leave request message, chatter, why is my leave not approved]
+where: [Time Off, My Time Off, My Time Off]
+before:
+  - Your approver clicked <strong>Ask</strong> on your request. You get a notification with the question, in Odoo and usually by email.
+related: [leave/how-to/everyone/my-leave, leave/concepts/approval-steps, leave/how-to/line-managers/approve-time-off, leave/workflows/time-off-request]
+sidebar: { order: 4 }
+sources:
+  - tritel_hr_leave/models/hr_leave_approval.py
+  - tritel_hr_leave/static/src/approvals/leave_dashboard.js
+  - tritel_hr_leave/views/leave_approval_views.xml
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+An approver who needs more information before deciding can **Ask** you a question instead of approving or refusing. The question is posted on your request, and your request stays waiting until they decide. Reply on the request itself, so the answer stays with it.
+
+<Illustration name="leave/answer-question" caption="A question on a request, and the reply. The numbers match the steps below." />
+
+## Steps
+
+1. Open the request. Click the notification, or open **Time Off › My Time Off › My Time Off** and click the request.
+2. Read the question in the messages under the request. It starts *Question from Employee A:* and ends *Reply here on the request.*
+3. Click **Send message**.
+4. Type your answer and click **Send**.
+
+## What happens next
+
+- Your reply goes to the people following the request, who include your time-off approver.
+- As soon as you reply, the question counts as answered: the approver's lists stop showing *Question open, waiting for the reply*.
+- The request is still waiting. Your approver now approves or refuses it. See [Time off request workflow](/leave/workflows/time-off-request/).
+
+:::note[Good to know]
+- Any message you post on the request closes the question, including a **Log note**. A log note doesn't notify anyone, so use **Send message** for your answer.
+- Asking a question doesn't stop the clock: the daily reminders and escalation carry on, and a request still waiting for your manager is refused automatically if the leave starts first. Reply quickly. See [Reminders, escalation and automatic refusal](/leave/calculations/reminders-and-escalation/).
+:::

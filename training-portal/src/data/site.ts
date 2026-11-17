@@ -7,5 +7,5 @@ export const roleById = Object.fromEntries(ROLES.map((r) => [r.id, r]));
 
 export const MODULE_LABELS: Record<string, string> = {
   general: 'General', accountability: 'Accountability', projects: 'Projects', tenders: 'Tenders',
-  board: 'Board', 'end-to-end': 'End-to-end', reference: 'Reference',
+  board: 'Board', leave: 'Time Off', 'end-to-end': 'End-to-end', reference: 'Reference',
 };

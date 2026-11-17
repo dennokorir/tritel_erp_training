@@ -1,0 +1,30 @@
+# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: shows tritel_hr_leave:field:hr.leave.tritel_query_open
+type: screen
+title: Time Off to Approve
+desc: The Approvals Dashboard's My Queue tab with the Time Off to Approve section, one request card with its step, wait, balance after and who else is away, the Approve, Refuse and Ask buttons, and the Refuse time off window, numbered 1 to 6.
+source: tritel_hr_leave/static/src/approvals/leave_dashboard.xml, tritel_hr_leave/static/src/approvals/leave_dashboard.js, tritel_approvals_dashboard/static/src/dashboard/approvals_dashboard.xml
+frame:
+  grid: 1
+  app: Approvals
+  menu: []
+  breadcrumb: [Approvals Dashboard]
+blocks:
+  - search: {facets: [], placeholder: "Search reference, vendor, requestor…", filters: []}
+  - buttons: [{label: "⇄ Delegate My Approvals"}, {label: My Queue, primary: true}, {label: All Pipeline}]
+  - heading: "Time Off to Approve · 2 waiting"
+  - table:
+      columns: [Request]
+      n: 2
+      rows:
+        - {cells: ["Time off · Employee A · Analyst — Annual Leave · 3 days · 01 Dec – 03 Dec 2026 · starts in 2 days"], highlight: true}
+        - ["step 1 of 2: manager, then HR · waiting 3 working days · balance after: 9 days · also away then: Employee B"]
+        - ["You cover for Employee D · Question open, waiting for the reply · “Family visit”"]
+  - buttons: [{label: Approve, primary: true, n: 3}, {label: Refuse, n: 4}, {label: Ask, n: 5}]
+  - dialog:
+      title: Refuse time off
+      n: 6
+      blocks:
+        - text: Tell Employee A why. They are notified on the request.
+        - fields: [[{label: Reason, value: "Year-end close: please move to the following week."}]]
+        - buttons: [{label: Refuse, primary: true}, {label: Cancel}]

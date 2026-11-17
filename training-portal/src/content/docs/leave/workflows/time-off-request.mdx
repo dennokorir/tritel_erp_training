@@ -1,0 +1,107 @@
+---
+title: Time off request workflow
+description: Every status of a time off request, from To Approve to Second Approval, Approved or Refused, who moves it at each step, and what the two daily jobs do to requests that wait too long.
+module: leave
+pageType: workflow
+roles: [everyone, line-manager, hr]
+tags: [time off, workflows]
+keywords: [leave status, time off status, to approve, second approval, approved, refused, leave workflow, auto refuse, expired leave request, escalation, reminder]
+related: [leave/concepts/approval-steps, leave/how-to/line-managers/approve-time-off, leave/calculations/reminders-and-escalation, leave/how-to/hr/settings, leave/how-to/everyone/my-leave]
+sidebar: { order: 1 }
+sources:
+  - tritel_hr_leave/models/hr_leave_approval.py
+  - tritel_hr_leave/models/hr_leave.py
+  - tritel_hr_leave/data/leave_approval_cron.xml
+  - tritel_hr_leave/data/ir_cron_data.xml
+  - tritel_hr_leave/views/leave_approval_views.xml
+  - tritel_approvals_dashboard/models/approval_delegation.py
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+---
+
+A **time off request** moves through Odoo's own Time Off statuses. Tritel's additions change who can move it (delegates and escalation), and add two daily jobs that chase or close requests that wait too long. How many steps a request has depends on its leave type: see [Approval steps, delegates and escalation](/leave/concepts/approval-steps/).
+
+```mermaid
+stateDiagram-v2
+%% docs-sync: shows tritel_hr_leave:cron:ir_cron_tritel_leave_reminders, tritel_hr_leave:cron:ir_cron_cancel_expired_leave_requests, tritel_hr_leave:field:hr.leave.tritel_escalated_to_ids, tritel_hr_leave:field:hr.leave.tritel_waiting_since
+  state "To Submit" as draft
+  state "To Approve" as confirm
+  state "Second Approval" as validate1
+  state "Approved" as validate
+  state "Refused" as refuse
+  [*] --> confirm: Request time off (employee)
+  draft --> confirm: Confirm (employee)
+  confirm --> validate: Approve (one step)
+  confirm --> validate1: Approve (manager, two steps)
+  validate1 --> validate: Validate or Approve (HR)
+  confirm --> refuse: Refuse, or a daily job
+  validate1 --> refuse: Refuse, or the expiry job
+  draft --> refuse: Expiry job
+  validate --> refuse: Refuse (approver or HR)
+  note right of confirm
+    Reminder, then escalation,
+    by the reminders job.
+    Delegates can decide
+    the manager step.
+  end note
+```
+
+| Status | What it means | Moves to | Who moves it |
+|---|---|---|---|
+| **To Submit** | Saved but not sent for approval. Rare: a new request normally goes straight to **To Approve**. | **To Approve** with **Confirm** | The employee |
+| **To Approve** | Waiting for its first (or only) step: the manager for most types, HR for HR-only types. | **Approved** (one step) or **Second Approval** (two steps) with **Approve**; **Refused** with **Refuse** | The owner of the step, their delegate (manager step), whoever it was escalated to, or a Time Off officer. Also refused by a daily job (below). |
+| **Second Approval** | The manager approved; waiting for HR. | **Approved** with **Validate** (or **Approve** on the dashboard); **Refused** with **Refuse** | The leave type's **Responsible Time Off Officer**, whoever it was escalated to, or a Time Off officer. Also refused by the expiry job (below). |
+| **Approved** | Approved. It counts as taken in balances and shows in Team Presence. | **Refused** with **Refuse** | An approver or HR |
+| **Refused** | Not granted. The employee is told on the request, with the reason when an approver gave one. | — | — |
+
+## Who does what
+
+```mermaid
+flowchart TD
+%% docs-sync: shows tritel_hr_leave:cron:ir_cron_tritel_leave_reminders, tritel_hr_leave:cron:ir_cron_cancel_expired_leave_requests, tritel_hr_leave:field:hr.leave.tritel_reminded_on, tritel_hr_leave:field:hr.leave.tritel_escalated_on, tritel_hr_leave:field:hr.leave.tritel_query_open
+  subgraph EMP["Employee"]
+    E1["Requests time off"]
+    E2["Replies to a question"]
+  end
+  subgraph APR["Approver (or delegate)"]
+    A1["Approve, Refuse or Ask"]
+  end
+  subgraph ESC["Waiting person's manager (after escalation)"]
+    X1["Approve or Refuse"]
+  end
+  subgraph HR["HR (Responsible Time Off Officer)"]
+    H1["Validate or Refuse"]
+  end
+  subgraph SYS["System, daily"]
+    S1["Reminder to the approver"]
+    S2["Escalation"]
+    S3["Refused: leave started, still waiting for the manager"]
+    S4["Refused: last day passed, still waiting"]
+  end
+  E1 --> A1
+  A1 -.->|"Ask"| E2 --> A1
+  A1 -->|"two steps"| H1
+  A1 -.->|"no decision"| S1 --> S2 --> X1
+  A1 -.->|"leave starts"| S3
+  H1 -.->|"no decision"| S2
+  H1 -.->|"last day passes"| S4
+```
+
+## What the system does automatically
+
+Two jobs run every day. The expiry job runs first, in the early hours. The reminders job runs later in the morning.
+
+**HR Leave: Cancel Expired Pending Requests** refuses every request still **To Submit**, **To Approve** or **Second Approval** whose last day has passed. That includes requests waiting for HR. The employee gets Odoo's usual message, *Your Annual Leave planned on … has been refused*.
+
+**Time Off: Approval Reminders and Escalation** looks at each request that is **To Approve** or **Second Approval**:
+
+1. **Refuse once the leave has started:** a request still waiting for the **manager** after its first day is refused on the next run (the leave's second day), with the note *Refused automatically: it was still waiting for approval when the leave started (01 Dec 2026). Request it again if you still need it.* This applies while **Refuse requests still waiting for the manager when the leave starts** is ticked in the settings (it is by default).
+2. **Escalate:** after 4 working days of waiting, or from 2 days before the leave starts once it has waited at least a working day, the request is escalated to the approver's own manager. They get a to-do and can decide it.
+3. **Remind:** after 2 working days, the approver (and their delegate, for the manager step) gets a reminder note on the request.
+
+Each reminder and escalation happens once per step, and the numbers are company settings. The day counting, with an example: [Reminders, escalation and automatic refusal](/leave/calculations/reminders-and-escalation/).
+
+:::note[Good to know]
+- The **Approvals & Presence** settings screen says a request the manager approved that is still waiting for HR is *escalated, never refused*. That is true of the reminders job. But the expiry job refuses any request still waiting once its last day has passed, the HR step included.
+- This matters most for leave recorded after the fact, such as sick leave entered on return: approve it the same day it is entered, or the next night's job refuses it. If that happens, the employee requests it again and HR approves it straight away.
+- Approved time off stays approved: neither job touches it.
+:::

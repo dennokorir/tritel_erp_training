@@ -1,0 +1,59 @@
+---
+title: Set reminders, escalation and flags
+description: As a Time Off administrator, choose when waiting time off requests are reminded, escalated and refused, who gets escalations when an approver has no manager, when Team Presence calls a day busy, and when My Team flags a balance.
+module: leave
+pageType: how-to
+roles: [hr]
+tags: [time off, settings]
+keywords: [leave settings, reminder, escalation, auto refuse, approval reminder, busy day, low balance, not taking leave, unused leave, configuration, leave approval]
+where: [Time Off, Configuration, Approvals & Presence]
+before:
+  - You are a <strong>Time Off administrator</strong>. The menu is hidden from everyone else.
+related: [leave/calculations/reminders-and-escalation, leave/calculations/busy-days-and-flags, leave/concepts/approval-steps, leave/workflows/time-off-request, leave/faq]
+sidebar: { order: 1 }
+sources:
+  - tritel_hr_leave/views/leave_approval_views.xml
+  - tritel_hr_leave/models/hr_leave_approval.py
+  - tritel_hr_leave/models/leave_home.py
+  - tritel_hr_leave/models/hr_leave.py
+  - tritel_hr_leave/data/leave_approval_cron.xml
+  - tritel_hr_leave/data/ir_cron_data.xml
+  - tritel_hr_leave/security/ir.model.access.csv
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A daily job follows every time off request that is waiting for a decision: it reminds the approver, escalates the request if it waits too long, and refuses it if the leave starts while it still waits for the manager. The same window sets when Team Presence marks a day as busy and when My Team flags a balance as low or unused. Set it once; the values apply to your current company.
+
+<Illustration name="leave/hr-settings" caption="The Approvals & Presence window. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Time Off › Configuration › Approvals & Presence**. A window opens with the current values.
+2. Set the timings, all in working days (Monday to Friday, less public holidays):
+   - **Remind the approver after (working days)**: when the approver gets a reminder (2 to start with).
+   - **Escalate after (working days)**: when the request goes to the approver's own manager (4 to start with).
+   - **Or escalate this many days before the leave starts**: escalate earlier when the leave is this close (2 to start with).
+   - **Refuse requests still waiting for the manager when the leave starts**: ticked to start with.
+3. In **Escalate to, when the approver has no manager**, choose who gets escalations for approvers with no manager in Odoo, typically the HR manager. Leave it empty to send them to the Time Off administrators.
+4. Under **Team Presence**, set **Team Presence: busy when this % of the people shown are away** (20 to start with).
+5. Under **My Team balances**, set **My Team: flag as low at or below (days balance)** (3), **My Team: flag "not taking leave" at (% of allocation in balance)** (60) and **From month (1–12)** (10, October).
+6. Click **Save**. *Time off settings saved.* appears and the window closes.
+
+## What happens next
+
+- From the next daily run, waiting requests are reminded, escalated and refused with the new timings. Each reminder and each escalation is sent once per step. See [Reminders, escalation and automatic refusal](/leave/calculations/reminders-and-escalation/).
+- Team Presence and My Team use the new thresholds straight away. See [Busy days, Low and Not taking leave](/leave/calculations/busy-days-and-flags/).
+- Out-of-range values are brought back in range when you save: the busy share and the "not taking leave" share between 1 and 100, the month between 1 and 12, and negative days to 0.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Remind after at least 1 working day, and escalate later than the reminder.* | **Remind the approver after** is 0, or **Escalate after** is not more than it. | Set the reminder to 1 day or more and the escalation later. |
+
+:::note[Good to know]
+- **A second daily job refuses requests whose dates have passed.** The job **HR Leave: Cancel Expired Pending Requests** runs every day. It refuses every request still in **To Submit**, **To Approve** or **Second Approval** whose last day is before today, including requests the manager approved that are waiting for HR. So, although this window says a request waiting for HR is *escalated, never refused*, that holds only until the leave's last day has passed. Sick leave recorded after the fact must be approved on the day it is recorded, or the job refuses it early the next morning. The refusal comes without an explanation note. A system administrator can switch the job off under **Settings › Technical › Scheduled Actions** (developer mode).
+- **Refuse requests still waiting for the manager when the leave starts** only applies to requests at the manager's step. Their first day must have passed; the employee and the approver are notified with *Refused automatically: it was still waiting for approval when the leave started …*
+- The values belong to the company you are working in. If you switch companies, set them again there.
+:::
