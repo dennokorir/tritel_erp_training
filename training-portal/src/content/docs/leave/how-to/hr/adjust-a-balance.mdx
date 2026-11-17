@@ -1,0 +1,66 @@
+---
+title: Adjust a leave balance
+description: As a Time Off officer, add days to or take days off someone's leave allocation from Leave Coverage, with a reason that is kept with the balance.
+module: leave
+pageType: how-to
+roles: [hr]
+tags: [time off, allocations, balances]
+keywords: [adjust balance, correct balance, add leave days, remove leave days, top up leave, deduct leave, compensation days, balance correction, leave adjustment, wrong balance, extra days]
+where: [Time Off, Manage, Leave Coverage]
+before:
+  - You are a <strong>Time Off officer</strong>.
+  - The person has an approved allocation of the leave type for the year. If not, allocate it first.
+related: [leave/how-to/hr/leave-coverage, leave/concepts/allocations, leave/concepts/balances, leave/faq]
+sidebar: { order: 7 }
+sources:
+  - tritel_hr_leave/models/leave_coverage.py
+  - tritel_hr_leave/static/src/coverage/leave_coverage.xml
+  - tritel_hr_leave/static/src/coverage/leave_coverage.js
+  - tritel_hr_leave/views/leave_coverage_views.xml
+verified_commit: 83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Sometimes a balance needs correcting: days given back for working on a public holiday, a correction after a mistake, or days taken off a grant. **Adjust balance** in Leave Coverage raises or lowers the person's allocation by the days you enter and keeps your reason with it, so anyone can see later why the balance changed.
+
+<Illustration name="leave/hr-adjust-balance" caption="Adjusting Employee A's Annual Leave in Leave Coverage. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Time Off › Manage › Leave Coverage** and, if needed, choose the year with **‹** and **›**.
+2. Click the person's cell for the leave type. The panel on the right shows **Allocated**, **Taken**, **Requested** and **Left**, the lines that make up the allocation, and the **Adjust Annual Leave** form (named after the leave type).
+
+   If you clicked the person's name instead, the panel lists every leave type: click **Adjust balance** under the one to change.
+3. In **Days (negative to take off)**, enter the days to add, for example *1*, or a negative number to take days off, for example *-2*. Half days are fine (*0.5*).
+4. In **Reason**, say why, for example *Worked on a public holiday*.
+5. Click **Apply**. *Adjusted: 18.5 → 19.5 days allocated.* appears, and the figures update.
+
+## What happens next
+
+- The allocation's days go up or down by what you entered, so **Allocated** and **Left** change at once, here and on the person's **My Leave**.
+- The adjustment is logged:
+  - in the panel, as a line **Adjustment:** and your reason, with the date, your name and *included above*;
+  - in the summary at the top of Leave Coverage, in **N adjustments in 2026**;
+  - as a note on the allocation, for example *Adjusted by +1 days by Employee H: Worked on a public holiday (18.5 → 19.5).*
+
+### Which allocation changes
+
+An adjustment changes one allocation: the person's approved allocation of that leave type in force on the **Figures as at** date (today for this year), the earning one first if there are two. If none is in force on that date, it changes the latest approved one in the year.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Enter the number of days to add, or a negative number to take off.* | **Days** is empty or 0. | Enter the days. |
+| *Give a reason for the adjustment; it is kept with the balance.* | **Reason** is empty. | Say why you're adjusting. |
+| *That would leave Employee A with less Annual Leave than they have already taken (5 days). The most you can take off is 13.5 days.* | You're taking off more days than are left after the approved leave already taken. | Take off no more than the number shown. |
+| *That would take the whole allocation away. The most you can take off is 29.99 days.* | Taking off would leave a granted allocation (such as a yearly grant) at 0 days or less. | Take off fewer days. To remove the allocation altogether, open it from **Time Off › Manage › All Allocations**. |
+| *Annual Leave earns up to a limit of 30 days unused, and the next monthly run would remove anything above it. The most you can add now is 2 days.* | The accrual plan caps how many unused days the allocation can hold, and the next monthly run would take off anything above it. | Add no more than the number shown. |
+| *Employee A has no approved Annual Leave allocation for 2026 to adjust. Allocate it first.* | There's nothing approved to adjust for that year. | Allocate it first (see [Find and fill allocation gaps with Leave Coverage](/leave/how-to/hr/leave-coverage/)), or approve the allocation that is waiting. |
+
+:::note[Good to know]
+- **Adjusting a past year changes that year's allocation.** For a **Yearly grant** such as Sick Off, that is last year's grant, which has ended, so days added can't be used now. An allocation that **earns monthly** has no end date, so in any year you adjust the same running allocation.
+- The check on days already taken counts approved leave only. Requests still waiting for approval aren't counted.
+- The adjustment count in the summary goes by the date the adjustment was made, not the year of the allocation.
+- **Adjust balance** only shows when there is an approved allocation to change.
+:::

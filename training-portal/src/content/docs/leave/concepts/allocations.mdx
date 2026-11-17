@@ -1,0 +1,103 @@
+---
+title: "How staff get leave: allocations"
+description: How each leave type is given to staff (Earns monthly, Yearly grant or On request), who counts as staff, when an allocation starts, what the Kind column and the Allocated, Taken, Requested and Left figures mean, and the longest single request.
+module: leave
+pageType: concept
+roles: [hr, everyone]
+tags: [time off, allocations, balances]
+keywords: [allocation, leave allocation, leave entitlement, entitlement, annual leave, sick off, sick days, accrual, accrued leave, earns monthly, yearly grant, new joiner, join date, maternity leave, paternity leave, overtime, leave days]
+related: [leave/how-to/hr/leave-coverage, leave/how-to/hr/set-up-leave-types, leave/how-to/hr/adjust-a-balance, leave/concepts/balances, leave/how-to/everyone/my-leave, leave/menus, leave/faq]
+sidebar: { order: 4 }
+sources:
+  - tritel_hr_leave/models/leave_type_rules.py
+  - tritel_hr_leave/models/leave_coverage.py
+  - tritel_hr_leave/models/hr_leave_allocation.py
+  - tritel_hr_leave/views/leave_type_rules_views.xml
+  - tritel_hr_leave/views/leave_allocation_views.xml
+  - tritel_hr_leave/static/src/coverage/leave_coverage.xml
+  - tritel_hr_leave/migrations/16.0.1.6.0/post-migrate.py
+verified_commit: 83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Before someone can take a leave type that needs an allocation, they must have been given days of it: an **allocation**. An allocation is a record in the Time Off app that gives one person days of one leave type for a period. Their balance comes from it (see [Balances: allocated, taken, requested](/leave/concepts/balances/)).
+
+Each leave type that needs an allocation says **How staff get it**. That setting tells HR, and the **Leave Coverage** screen, whether everyone should have the leave type or only the people who ask for it.
+
+| How staff get it | What it means | Allocation that staff get |
+|---|---|---|
+| **Earns monthly (accrual plan)** | Everyone should have it. It builds up over time on an accrual plan (a **Monthly Earning Plan**). | One allocation per person with no end date, starting when they joined. It keeps earning from year to year and carries over as the plan allows. |
+| **Yearly grant** | Everyone should have it. A fixed number of days for each calendar year. | One allocation per person per year, of **Days each year**, running to 31 December. |
+| **On request** | Nobody is expected to have it until it's needed. | Allocated by HR when someone needs it. |
+
+## Tritel's set-up
+
+This is how the leave types are set up at Tritel today. Time Off administrators can change it under **Time Off › Configuration › Leave Types** (see [Set how staff get each leave type](/leave/how-to/hr/set-up-leave-types/)).
+
+| Leave type | How staff get it |
+|---|---|
+| Annual Leave | **Earns monthly**, on its accrual plan. Allocations have no end date. |
+| Sick Off | **Yearly grant** of 30 days. |
+| Maternity and Paternity leave | Need no allocation, but one request is at most 90 days (Maternity) or 14 days (Paternity). |
+| Overtime | **On request**. |
+
+There is no Public Holiday leave type: public holidays come from **Time Off › Configuration › Public Holidays**.
+
+## Who counts as staff
+
+For allocations, staff are employees who:
+
+- are active (not archived),
+- have a **join date** on or before 31 December of the year you're looking at, and
+- are not hidden from the Time Off views.
+
+The join date is the **first contract date** on the employee record: the start date of their first contract. If there was a break of more than a few days between two contracts, it is the start of the contract after the break.
+
+People with no join date (no contract yet, and service accounts) can't be allocated automatically. **Leave Coverage** lists them apart, under **No join date**.
+
+## When an allocation starts
+
+An allocation for a year starts on **1 January**, or on the person's **join date** in the year they join.
+
+<Illustration name="leave/calc-allocations" caption="Employee B joined on 1 June: both allocations start that day." />
+
+## Kind of allocation
+
+Allocation lists (**Time Off › My Leave › My Allocations** and **Time Off › Manage › All Allocations**) have a **Kind** column:
+
+| Kind | Meaning |
+|---|---|
+| **Earns monthly** | Builds up on an accrual plan. |
+| **Yearly grant** | A yearly-grant leave type, from a date in a year to 31 December of the same year. |
+| **Granted** | A set number of days given once, for example overtime, or a grant with other dates. |
+| **Group grant** | The record HR made for several people at once (a department or the whole company). Each person gets their own copy, which is the one that counts. |
+
+Allocations that have ended are greyed out.
+
+## The figures
+
+| Label | Meaning |
+|---|---|
+| **Allocated** | Days given so far: what has been earned, carried over or granted. |
+| **Taken** | Approved leave of this type, including approved days still to come. |
+| **Requested** | Leave waiting for approval. Shown in Leave Coverage. |
+| **Left** | In Leave Coverage: **Allocated − Taken − Requested**, what can still be requested. In the allocation lists: **Allocated − Taken** for that one allocation. |
+
+Leave Coverage shows **Figures as at** a date: today when you look at this year, 31 December for a past year, and 1 January for a future year.
+
+## Most days in one request
+
+Any leave type can limit how long one request may be with **Most days in one request** (0 means no limit). It's how leave that needs no allocation, such as Maternity and Paternity, is kept in bounds. A longer request stops with, for example, *Paternity Leave can be requested for at most 14 days at a time; this request is 15 days.*
+
+:::note[Good to know]
+- A **Yearly grant** gives the full **Days each year**, even to someone who joins late in the year. Employee B, who joined in June, gets all 30 days of Sick Off for that year. Take days off with [Adjust a leave balance](/leave/how-to/hr/adjust-a-balance/) if that isn't right.
+- The limit on one request is checked when a request is made or its dates change, not when it is approved. A request made before the limit was set can still be approved.
+- **Left** in the allocation lists doesn't subtract requests still waiting for approval, so it can be higher than the figure in Leave Coverage or on **My Leave**.
+:::
+
+## Tasks that use this
+
+- [Set how staff get each leave type](/leave/how-to/hr/set-up-leave-types/)
+- [Find and fill allocation gaps with Leave Coverage](/leave/how-to/hr/leave-coverage/)
+- [Adjust a leave balance](/leave/how-to/hr/adjust-a-balance/)
+- [Check my leave and request time off](/leave/how-to/everyone/my-leave/)

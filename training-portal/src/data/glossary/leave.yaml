@@ -52,7 +52,8 @@
   definition: "On a time off request: when it reached the step it is waiting on. Reminders and escalations count working days from here."
   module: leave
   see: [leave/calculations/reminders-and-escalation]
-- term: Company-wide Time Off View
+- term: Company-wide Viewers
+  aliases: [Company-wide Time Off View]
   definition: "A list of people, typically HR, who see the whole company in Team Presence and My Team and can open anyone's leave history."
   module: leave
   see: [leave/how-to/hr/company-wide-view, leave/concepts/who-sees-what]
@@ -65,3 +66,34 @@
   definition: "A daily job that refuses any time off request still waiting (To Submit, To Approve or Second Approval) once its last day has passed, including requests waiting for HR."
   module: leave
   see: [leave/how-to/hr/settings, leave/calculations/reminders-and-escalation]
+- term: Leave Coverage
+  definition: "A Time Off screen for Time Off officers showing every member of staff against every leave type that needs an allocation, for one year. It shows who is missing an allocation and lets HR allocate it or adjust a balance."
+  module: leave
+  see: [leave/how-to/hr/leave-coverage, leave/how-to/hr/adjust-a-balance]
+- term: Allocation
+  aliases: [leave allocation, allocations]
+  definition: "A record in the Time Off app that gives one person days of one leave type for a period. A leave type that needs an allocation can only be taken from one."
+  module: leave
+  see: [leave/concepts/allocations, leave/how-to/hr/leave-coverage]
+- term: Earns monthly
+  definition: "A leave type every member of staff should have, which builds up over time on an accrual plan, such as Annual Leave. Each person has one allocation with no end date."
+  module: leave
+  see: [leave/concepts/allocations, leave/how-to/hr/set-up-leave-types]
+- term: Yearly grant
+  definition: "A leave type every member of staff should have as a fixed number of days for each calendar year, such as Sick Off. Each year's allocation runs to 31 December."
+  module: leave
+  see: [leave/concepts/allocations, leave/how-to/hr/set-up-leave-types]
+- term: On request
+  definition: "A leave type given only to people who need it, such as Overtime. Leave Coverage doesn't count anyone without one as missing."
+  module: leave
+  see: [leave/concepts/allocations, leave/how-to/hr/set-up-leave-types]
+- term: Allocation kind
+  aliases: [Kind (allocation)]
+  definition: "The Kind column in the allocation lists: Earns monthly, Yearly grant, Granted (a set number of days given once) or Group grant (the record that gave several people their own copy)."
+  module: leave
+  see: [leave/concepts/allocations]
+- term: Balance adjustment
+  aliases: [adjust balance]
+  definition: "A change of a set number of days, up or down, to someone's leave allocation, made in Leave Coverage with a reason. It is logged on the allocation and counted in Leave Coverage."
+  module: leave
+  see: [leave/how-to/hr/adjust-a-balance]

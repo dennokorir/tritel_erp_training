@@ -1,12 +1,12 @@
 ---
 title: Give HR the company-wide view
-description: As a Time Off administrator, add HR staff to the Company-wide Time Off View list so they see everyone in Team Presence and My Team, can open anyone's leave history, download Team Presence and hide service accounts.
+description: As a Time Off administrator, add HR staff to the Company-wide Viewers list so they see everyone in Team Presence and My Team, can open anyone's leave history, download Team Presence and hide service accounts.
 module: leave
 pageType: how-to
 roles: [hr]
 tags: [time off, access]
-keywords: [HR view, see everyone, company-wide, all staff leave, leave history, presence administrator, access, permissions, whole company]
-where: [Time Off, Configuration, Company-wide Time Off View]
+keywords: [HR view, see everyone, company-wide, all staff leave, leave history, presence administrator, access, permissions, whole company, company-wide viewers, company-wide time off view]
+where: [Time Off, Configuration, Company-wide Viewers]
 before:
   - You are a <strong>Time Off administrator</strong>. The menu is hidden from everyone else.
   - The person has an internal user (not a portal login).
@@ -18,18 +18,18 @@ sources:
   - tritel_hr_leave/models/leave_home.py
   - tritel_hr_leave/models/employee_visibility.py
   - tritel_hr_leave/security/ir.model.access.csv
-verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+verified_commit: 83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
-Managers see their own reporting line in the Time Off screens, and everyone else sees only themselves and their close colleagues. HR usually needs the whole company. The **Company-wide Time Off View** list gives named people that view, without making them Time Off administrators.
+Managers see their own reporting line in the Time Off screens, and everyone else sees only themselves and their close colleagues. HR usually needs the whole company. The **Company-wide Viewers** list gives named people that view, without making them Time Off administrators.
 
-<Illustration name="leave/hr-company-wide-view" caption="The Company-wide Time Off View list. The numbers match the steps below." />
+<Illustration name="leave/hr-company-wide-view" caption="The Company-wide Viewers list. The numbers match the steps below." />
 
 ## Steps
 
 1. Open **Time Off › Configuration**.
-2. Click **Company-wide Time Off View**, then **New**. A blank row opens at the bottom of the list.
+2. Click **Company-wide Viewers**, then **New**. A blank row opens at the bottom of the list.
 3. Choose the **User** and, if you like, say **Why** they need it, for example *HR Officer, keeps the leave records*.
 4. Click **Save**.
 

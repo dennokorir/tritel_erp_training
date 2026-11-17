@@ -1,14 +1,14 @@
-# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: verified_commit 83d4cd697910
 # docs-sync: shows tritel_hr_leave:menu:menu_presence_admin, tritel_hr_leave:model:tritel.presence.admin
 type: screen
-title: The Company-wide Time Off View list
-desc: The Company-wide Time Off View list under Time Off › Configuration, edited in place, with a new row whose User and Why are being filled in and saved, numbered 1 to 4.
+title: The Company-wide Viewers list
+desc: The Company-wide Viewers list under Time Off › Configuration, edited in place, with a new row whose User and Why are being filled in and saved, numbered 1 to 4.
 source: tritel_hr_leave/views/presence_views.xml (presence_admin_tree, action_presence_admin, menu_presence_admin)
 frame:
   grid: true
   app: Time Off
-  menu: [Home, My Time Off, Team Presence, Overview, Approvals, Reporting, {label: Configuration, active: true, n: 1}]
-  breadcrumb: [Company-wide Time Off View]
+  menu: [Home, My Leave, Team Presence, To Approve, Manage, Reporting, {label: Configuration, active: true, n: 1}]
+  breadcrumb: [Company-wide Viewers]
 blocks:
   - buttons: [{label: New, primary: true, n: 2}]
   - table:

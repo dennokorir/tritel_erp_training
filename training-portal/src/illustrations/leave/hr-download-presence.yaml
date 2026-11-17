@@ -1,4 +1,4 @@
-# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: verified_commit 83d4cd697910
 # docs-sync: shows tritel_hr_leave:route:/tritel_hr_leave/presence/export, tritel_hr_leave:menu:menu_team_presence, tritel_hr_leave:client_action:action_team_presence
 type: screen
 title: Downloading Team Presence
@@ -7,7 +7,7 @@ source: tritel_hr_leave/static/src/presence/team_presence.xml (TeamPresence), tr
 frame:
   grid: true
   app: Time Off
-  menu: [Home, My Time Off, {label: Team Presence, active: true, n: 1}, Overview, Approvals, Reporting, Configuration]
+  menu: [Home, My Leave, {label: Team Presence, active: true, n: 1}, To Approve, Manage, Reporting, Configuration]
   breadcrumb: [Team Presence]
 blocks:
   - buttons: [{label: Week}, {label: Month, primary: true, n: 2}, {label: "‹"}, {label: November 2026}, {label: "›"}, {label: Grid, primary: true}, {label: Calendar}, {label: Download Excel, n: 4}]

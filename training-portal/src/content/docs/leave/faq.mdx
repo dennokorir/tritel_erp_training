@@ -17,7 +17,9 @@ sources:
   - tritel_hr_leave/models/leave_home.py
   - tritel_hr_leave/models/employee_visibility.py
   - tritel_hr_leave/views/leave_home_views.xml
-verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+  - tritel_hr_leave/models/leave_type_rules.py
+  - tritel_hr_leave/models/leave_coverage.py
+verified_commit: 83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02
 ---
 
 ## Why was my request refused when nobody refused it?
@@ -59,8 +61,20 @@ The column only shows for a leave type with "sick" in its name that the person h
 
 ## Why can't I see Download Excel?
 
-The download is for Time Off administrators and people on the Company-wide Time Off View list. See [Download Team Presence to Excel](/leave/how-to/hr/download-presence/).
+The download is for Time Off administrators and people on the Company-wide Viewers list. See [Download Team Presence to Excel](/leave/how-to/hr/download-presence/).
 
 ## Why did the Time Off app open on a different page?
 
 **Time Off** opens on **Home**: **My Team** if people report to you, otherwise **My Leave**. Switch between them with the buttons at the top. See [Check my leave and request time off](/leave/how-to/everyone/my-leave/).
+
+## Why can't I request more than 14 days of paternity leave?
+
+Some leave types limit how long one request can be: at Tritel, Paternity leave is at most 14 days and Maternity leave at most 90. A longer request stops with, for example, *Paternity Leave can be requested for at most 14 days at a time; this request is 15 days.* Shorten the dates or split the leave into two requests, and talk to HR if you need more. See [How staff get leave: allocations](/leave/concepts/allocations/).
+
+## Someone new has no annual leave. What do I do?
+
+Ask a Time Off officer to open **Time Off › Manage › Leave Coverage**, find the person's **Missing** cell and allocate it. The allocation starts on their join date and is approved straight away. If their cell says **No join date**, their contract (with its start date) must be added first. See [Find and fill allocation gaps with Leave Coverage](/leave/how-to/hr/leave-coverage/).
+
+## How do I give someone extra days, or take some off?
+
+A Time Off officer opens the person's cell in **Leave Coverage** and uses **Adjust balance** with the days and a reason. The reason is kept with the balance. See [Adjust a leave balance](/leave/how-to/hr/adjust-a-balance/).

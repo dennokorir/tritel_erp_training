@@ -5,8 +5,8 @@ module: leave
 pageType: how-to
 roles: [hr]
 tags: [time off, settings]
-keywords: [leave settings, reminder, escalation, auto refuse, approval reminder, busy day, low balance, not taking leave, unused leave, configuration, leave approval]
-where: [Time Off, Configuration, Approvals & Presence]
+keywords: [leave settings, reminder, escalation, auto refuse, approval reminder, busy day, low balance, not taking leave, unused leave, configuration, leave approval, approvals and reminders, approvals and presence]
+where: [Time Off, Configuration, Approvals and Reminders]
 before:
   - You are a <strong>Time Off administrator</strong>. The menu is hidden from everyone else.
 related: [leave/calculations/reminders-and-escalation, leave/calculations/busy-days-and-flags, leave/concepts/approval-steps, leave/workflows/time-off-request, leave/faq]
@@ -19,17 +19,17 @@ sources:
   - tritel_hr_leave/data/leave_approval_cron.xml
   - tritel_hr_leave/data/ir_cron_data.xml
   - tritel_hr_leave/security/ir.model.access.csv
-verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+verified_commit: 83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
 A daily job follows every time off request that is waiting for a decision: it reminds the approver, escalates the request if it waits too long, and refuses it if the leave starts while it still waits for the manager. The same window sets when Team Presence marks a day as busy and when My Team flags a balance as low or unused. Set it once; the values apply to your current company.
 
-<Illustration name="leave/hr-settings" caption="The Approvals & Presence window. The numbers match the steps below." />
+<Illustration name="leave/hr-settings" caption="The Approvals and Reminders window. The numbers match the steps below." />
 
 ## Steps
 
-1. Open **Time Off › Configuration › Approvals & Presence**. A window opens with the current values.
+1. Open **Time Off › Configuration › Approvals and Reminders**. A window opens with the current values.
 2. Set the timings, all in working days (Monday to Friday, less public holidays):
    - **Remind the approver after (working days)**: when the approver gets a reminder (2 to start with).
    - **Escalate after (working days)**: when the request goes to the approver's own manager (4 to start with).

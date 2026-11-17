@@ -101,6 +101,7 @@ export default defineConfig({
             group('How-to: HR', 'leave/how-to/hr', true),
             group("How it's calculated", 'leave/calculations', true),
             { label: 'Who can do what', link: '/leave/who-can-do-what/' },
+            { label: 'Time Off menus', link: '/leave/menus/' },
             { label: 'FAQ', link: '/leave/faq/' },
           ],
         },

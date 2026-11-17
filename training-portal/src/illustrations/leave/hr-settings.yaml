@@ -1,17 +1,17 @@
-# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: verified_commit 83d4cd697910
 # docs-sync: shows tritel_hr_leave:menu:menu_tritel_leave_approval_settings, tritel_hr_leave:wizard:tritel.leave.approval.settings
 type: screen
-title: Approvals & Presence settings
-desc: The Approvals & Presence window from Time Off › Configuration, with the reminder and escalation settings, the person to escalate to, the Team Presence busy-day share and the My Team balance flags, numbered 1 to 6.
+title: Approvals and Reminders settings
+desc: The Approvals and Reminders window from Time Off › Configuration, with the reminder and escalation settings, the person to escalate to, the Team Presence busy-day share and the My Team balance flags, numbered 1 to 6.
 source: tritel_hr_leave/views/leave_approval_views.xml (view_tritel_leave_approval_settings), tritel_hr_leave/models/hr_leave_approval.py (LeaveApprovalSettings)
 frame:
   grid: true
   app: Time Off
-  menu: [Home, My Time Off, Team Presence, Overview, Approvals, Reporting, {label: Configuration, active: true, n: 1}]
+  menu: [Home, My Leave, Team Presence, To Approve, Manage, Reporting, {label: Configuration, active: true, n: 1}]
   breadcrumb: [Time Off]
 blocks:
   - dialog:
-      title: Approvals & Presence
+      title: Approvals and Reminders
       blocks:
         - text: A daily job follows each time off request waiting for approval. Days are working days (Monday to Friday, less public holidays). Each reminder and escalation is sent once per step.
         - fields:

@@ -1,4 +1,4 @@
-# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: verified_commit 83d4cd697910
 # docs-sync: shows tritel_hr_leave:menu:menu_leave_home, tritel_hr_leave:client_action:action_leave_home
 type: screen
 title: My Team
@@ -7,7 +7,7 @@ source: tritel_hr_leave/static/src/home/leave_home.xml (TimeOffHome), tritel_hr_
 frame:
   grid: true
   app: Time Off
-  menu: [{label: Home, active: true, n: 1}, My Time Off, Overview, Approvals, Reporting, Configuration]
+  menu: [{label: Home, active: true, n: 1}, My Leave, Team Presence, To Approve]
   breadcrumb: [Time Off]
 blocks:
   - buttons: [{label: My Team, primary: true}, {label: My Leave}, {label: Team Presence}, {label: Request time off}]

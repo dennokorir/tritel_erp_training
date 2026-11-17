@@ -1,4 +1,4 @@
-# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: verified_commit 83d4cd697910
 # docs-sync: shows tritel_hr_leave:field:hr.leave.tritel_query_open
 type: screen
 title: A question on a time off request
@@ -7,8 +7,8 @@ source: hr_holidays/views/hr_leave_views.xml (hr_leave_view_form), tritel_hr_lea
 frame:
   grid: true
   app: Time Off
-  menu: [Home, {label: My Time Off, active: true, n: 1}, Team Presence, Overview]
-  breadcrumb: [My Time Off, Annual Leave]
+  menu: [Home, {label: My Leave, active: true, n: 1}, Team Presence]
+  breadcrumb: [My Requests, Annual Leave]
 blocks:
   - buttons: [{label: Cancel}]
     status: {steps: [To Approve, Approved], current: To Approve}

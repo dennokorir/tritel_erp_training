@@ -1,4 +1,4 @@
-# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: verified_commit 83d4cd697910
 # docs-sync: shows tritel_hr_leave:field:hr.leave.tritel_waiting_since, tritel_hr_leave:field:hr.leave.tritel_reminded_on, tritel_hr_leave:field:hr.leave.tritel_escalated_on
 # docs-sync: shows tritel_hr_leave:field:hr.leave.tritel_escalated_to_ids, tritel_hr_leave:field:hr.leave.tritel_query_open
 type: screen
@@ -8,8 +8,8 @@ source: tritel_hr_leave/views/leave_approval_views.xml (hr_leave_view_form_trite
 frame:
   grid: true
   app: Time Off
-  menu: [Home, My Time Off, Overview, {label: Approvals, active: true}, Reporting, Configuration]
-  breadcrumb: [Time Off, Employee A on Annual Leave]
+  menu: [Home, My Leave, Team Presence, {label: To Approve, active: true}]
+  breadcrumb: [Leave Requests, Employee A on Annual Leave]
 blocks:
   - buttons: [{label: Approve, primary: true}, {label: Refuse}]
     status: {steps: [To Approve, Second Approval, Approved], current: To Approve}

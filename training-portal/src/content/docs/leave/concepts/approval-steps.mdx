@@ -5,7 +5,7 @@ module: leave
 pageType: concept
 roles: [line-manager, hr, everyone]
 tags: [time off, approvals]
-keywords: [leave approval, approver, time off approver, second approval, HR approval, delegate, acting approver, escalation, reminder, who approves my leave, leave officer]
+keywords: [leave approval, approver, time off approver, second approval, HR approval, delegate, acting approver, escalation, reminder, who approves my leave, leave officer, leave types]
 related: [leave/workflows/time-off-request, leave/how-to/line-managers/approve-time-off, leave/how-to/line-managers/delegate-approvals, leave/calculations/reminders-and-escalation, leave/how-to/everyone/answer-a-question, leave/who-can-do-what]
 sidebar: { order: 3 }
 sources:
@@ -16,7 +16,8 @@ sources:
   - tritel_hr_leave/static/src/approvals/leave_dashboard.js
   - tritel_approvals_dashboard/models/approval_delegation.py
   - tritel_approvals_dashboard/models/approval_request.py
-verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+  - tritel_hr_leave/views/menus_by_role.xml
+verified_commit: 83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -24,7 +25,7 @@ Every time off request waits on one **step** at a time, and each step belongs to
 
 ## The steps
 
-The leave type decides the steps: its **Approval** setting, under **Time Off Requests** on the type in **Time Off › Configuration › Time Off Types**.
+The leave type decides the steps: its **Approval** setting, under **Time Off Requests** on the type in **Time Off › Configuration › Leave Types**.
 
 | Approval | Steps | Who owns each step |
 |---|---|---|
@@ -65,7 +66,7 @@ How to act on them: [Approve, refuse or ask about time off](/leave/how-to/line-m
 4. **Escalated to**: who can now decide it as well.
 5. **Question open**: the approver asked the employee a question that isn't answered yet. It clears when the employee replies on the request.
 
-The group appears on the request form approvers use (for example from **Time Off › Approvals › Time Off**). Reminder and escalation are each sent once per step. How the days are counted: [Reminders, escalation and automatic refusal](/leave/calculations/reminders-and-escalation/).
+The group appears on the request form approvers use (for example from **Time Off › To Approve › Leave Requests**). Reminder and escalation are each sent once per step. How the days are counted: [Reminders, escalation and automatic refusal](/leave/calculations/reminders-and-escalation/).
 
 :::note[Good to know]
 - People hidden from the Time Off views (service accounts) are left out: their requests aren't listed for approvers and aren't chased by the daily job.

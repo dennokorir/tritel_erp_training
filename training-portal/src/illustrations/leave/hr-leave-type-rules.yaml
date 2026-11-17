@@ -1,0 +1,23 @@
+# docs-sync: verified_commit 83d4cd697910
+# docs-sync: shows tritel_hr_leave:menu:hr_holidays.hr_holidays_status_menu_configuration, tritel_hr_leave:selection:hr.leave.type.tritel_allocation_mode, tritel_hr_leave:field:hr.leave.type.tritel_accrual_plan_id, tritel_hr_leave:field:hr.leave.type.tritel_yearly_days, tritel_hr_leave:field:hr.leave.type.tritel_max_days_per_request
+type: screen
+title: A leave type's allocation settings
+desc: The Sick Off leave type form under Time Off › Configuration › Leave Types, with Most days in one request under Time Off Requests and, under Allocation Requests, How staff get it set to Yearly grant with 30 days each year, numbered 1 to 6.
+source: hr_holidays/views/hr_leave_type_views.xml (edit_holiday_status_form), tritel_hr_leave/views/leave_type_rules_views.xml (hr_leave_type_form_tritel_rules)
+frame:
+  grid: true
+  app: Time Off
+  menu: [Home, My Leave, Team Presence, To Approve, Manage, Reporting, {label: Configuration, active: true, n: 1}]
+  breadcrumb: [Leave Types, Sick Off]
+blocks:
+  - buttons: [{label: Save, primary: true, n: 6}, {label: Discard}]
+  - title: {text: Sick Off, sub: Time Off Type, n: 2}
+  - heading: Time Off Requests
+  - fields:
+      - [{label: Approval, value: "By Employee's Approver and Time Off Officer"}]
+      - [{label: Kind of Time Off, value: Absence}, {label: Most days in one request, value: "0.00", n: 5}]
+  - heading: Allocation Requests
+  - fields:
+      - [{label: Requires allocation, value: "● Yes  ○ No Limit"}, {label: Employee Requests, value: "● Not Allowed"}]
+      - [{label: How staff get it, value: "○ Earns monthly (accrual plan)  ● Yearly grant  ○ On request", n: 3}]
+      - [{label: Days each year, value: "30.00", n: 4}]

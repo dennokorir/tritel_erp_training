@@ -1,6 +1,6 @@
 ---
 title: Who sees whose time off
-description: Who sees whom in Team Presence, on My Team and in a person's leave history, what "In or Away only" means, how the Company-wide Time Off View list widens it, and how service accounts are left out.
+description: Who sees whom in Team Presence, on My Team and in a person's leave history, what "In or Away only" means, how the Company-wide Viewers list widens it, and how service accounts are left out.
 module: leave
 pageType: concept
 roles: [everyone, line-manager, hr]
@@ -15,7 +15,7 @@ sources:
   - tritel_hr_leave/controllers/leave_home.py
   - tritel_hr_leave/controllers/presence.py
   - tritel_hr_leave/static/src/presence/team_presence.xml
-verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+verified_commit: 83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02
 ---
 
 Who you see in the Time Off pages follows the **reporting line**: the **Manager** set on each employee's record. Your leave type and your requests are shown to you, to the people above you and to HR. Colleagues who share your manager only see whether you are in or away.
@@ -23,7 +23,7 @@ Who you see in the Time Off pages follows the **reporting line**: the **Manager*
 ```mermaid
 flowchart TD
 %% docs-sync: shows tritel_hr_leave:menu:menu_team_presence, tritel_hr_leave:client_action:action_team_presence, tritel_hr_leave:route:/my/presence, tritel_hr_leave:route:/my/team-leave/<int:employee_id>
-  HR["Time Off administrators, people on the Company-wide Time Off View list, System administrators"] --> ALL["Everyone, in full"]
+  HR["Time Off administrators, people on the Company-wide Viewers list, System administrators"] --> ALL["Everyone, in full"]
   M["Anyone with people below them"] --> TEAM["Themselves and everyone below them, in full"]
   M --> PEER["Colleagues with the same manager: In or Away only"]
   E["Everyone else"] --> SELF["Themselves, in full"]
@@ -47,11 +47,11 @@ Clicking a coloured day opens the request itself only if your normal access to T
 |---|---|
 | **Team Presence** (and **/my/presence**) | As in the diagram above. |
 | **Your team this week** on My Leave | Colleagues with the same manager as you, as **In all week** or **Away Mon, Tue**. |
-| **My Team** (and **/my/team-leave**) | Your direct reports, or **Everyone below me**. People on the Company-wide Time Off View list (and System administrators) also get **Everyone in the company**, and get My Team even when nobody reports to them. |
-| **A person's leave history** (clicking a name on My Team, or **/my/team-leave/…** on the portal) | Your own, anyone below you in the reporting line, or anyone at all if you are on the Company-wide Time Off View list or a System administrator. |
+| **My Team** (and **/my/team-leave**) | Your direct reports, or **Everyone below me**. People on the Company-wide Viewers list (and System administrators) also get **Everyone in the company**, and get My Team even when nobody reports to them. |
+| **A person's leave history** (clicking a name on My Team, or **/my/team-leave/…** on the portal) | Your own, anyone below you in the reporting line, or anyone at all if you are on the Company-wide Viewers list or a System administrator. |
 | **Approvals** | Only the requests you are asked to decide. See [Approval steps, delegates and escalation](/leave/concepts/approval-steps/). |
 
-Time Off administrators see everyone in Team Presence. To see everyone on My Team and open anyone's leave history as well, they need to be on the Company-wide Time Off View list. See [Give HR the company-wide view](/leave/how-to/hr/company-wide-view/).
+Time Off administrators see everyone in Team Presence. To see everyone on My Team and open anyone's leave history as well, they need to be on the Company-wide Viewers list. See [Give HR the company-wide view](/leave/how-to/hr/company-wide-view/).
 
 ## Service accounts
 
