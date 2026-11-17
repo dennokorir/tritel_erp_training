@@ -32,6 +32,7 @@ export default defineConfig({
       tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
       sidebar: [
         group('Getting started', 'getting-started'),
+        { label: "What's new", link: '/whats-new/' },
         {
           label: 'Accountability',
           items: [
@@ -72,6 +73,7 @@ export default defineConfig({
             group('Channel (OEMs and compliance)', 'tenders/channel', true),
             group('Commercial Targets', 'tenders/commercial-targets', true),
             group("How it's calculated", 'tenders/calculations', true),
+            { label: 'Configuration', link: '/tenders/configuration/' },
             { label: 'Who can do what', link: '/tenders/who-can-do-what/' },
             { label: 'FAQ', link: '/tenders/faq/' },
           ],

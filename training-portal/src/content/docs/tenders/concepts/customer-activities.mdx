@@ -32,7 +32,9 @@ sources:
   - tritel_tender_tracker/views/res_partner.xml
   - tritel_tender_tracker/views/tender_views.xml
   - tritel_tender_tracker/wizards/partner_activity_wizards.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_tender_tracker/data/last_seen_stages.xml
+  - tritel_tender_tracker/models/deal_touch_strip.py
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -61,6 +63,17 @@ A touch is either **Planned** or **Done**. Logging a touch saves it as done stra
 5. Each row's last-touch colour: **≤ 30 days**, **31–90**, or **> 90 or never**.
 
 The screen is at **Tender Manager › Tender Customers › Customer Activities**. The tender and opportunity forms also show a **Customer touches** strip, and the customer form a **Touchpoints** button that opens the customer's timeline.
+
+## On the customer's form
+
+<Illustration name="tenders/cust-customer-form" caption="A customer's form. The numbers match the list below." />
+
+1. **Tenders** opens every tender for the customer, whether open, won or lost. **Touchpoints** opens the customer's timeline.
+2. **Last Seen**: the date of the customer's latest done touch. It moves forward by itself when a touch is marked done; you can't type it.
+3. **Last Seen Stage**: the band that date falls in: **Last Seen 30 Days**, **Last Seen 60 Days**, **Last Seen 90 Days**, **Last Seen 120 Days**, **Last Seen Over 120 Days** or **Never Seen**. A nightly job keeps it up to date.
+4. **Go To Market Activities**: every touch logged for the customer, planned and done. The list is read-only here: log or plan touches from **Customer Activities**.
+
+The customer list shows **Last Seen** as a countdown (for example *Yesterday* or *45 days ago*), and the customer cards show a grey **Last Seen** strip.
 
 ## Who sees what
 

@@ -27,7 +27,8 @@ sources:
   - tritel_tender_tracker/models/models.py
   - tritel_tender_tracker/models/partner_activity_touchpoints.py
   - tritel_tender_tracker/views/tender_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - crm_tender/views/purchase_views.xml
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -57,6 +58,17 @@ A purchase line can only be booked, and only counts as awaiting OEM confirmation
 | *1 line(s) are already in an OEM booking (BK-1001); remove them from the booking before changing their OEM.* | You changed the OEM on a line that is already booked. | Remove the line from the booking first, then change its OEM. |
 | An access error when you save a line in the list | Changing a purchase line in place needs Purchase rights, which a Channel Manager may not have. | Tick the line and use **Action › Set OEM** instead. |
 | Fewer lines tagged than you ticked | **Set OEM** skips lines that are already in a booking. | Nothing to do: booked lines keep their OEM. |
+
+## The OEM on a purchase order
+
+<Illustration name="tenders/ch-purchase-order-oem" caption="A purchase order with OEM lines. The numbers match the list below." />
+
+1. **Has OEM** is ticked when at least one line of the order has an OEM. It is worked out by itself; you can't change it.
+2. The order lines have an **OEM** column (you can hide it from the column menu). Purchase users can set or change it here, line by line.
+3. The **OEM** smart button appears when the order has OEM lines.
+4. It opens **OEM Purchase Order Lines**: this order's lines, grouped by OEM.
+
+Only lines on confirmed orders (**Purchase Order** or **Locked**) count as awaiting an OEM booking or appear in **Untagged Purchases**. Lines on draft or cancelled orders don't.
 
 :::note[Good to know]
 - The list starts on **1 Jan 2026**. Lines on orders confirmed before that don't appear, even without an OEM.

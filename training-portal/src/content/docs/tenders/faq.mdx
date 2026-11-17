@@ -9,6 +9,10 @@ keywords: [FAQ, help, why can't I, missing bid liaison, reopen tender, portal, b
 related: [tenders/index, tenders/who-can-do-what, tenders/workflows/tender-status, tenders/calculations/bid-quality-score, tenders/calculations/oem-bookings]
 sidebar: { order: 3 }
 sources:
+  - tritel_tender_tracker/models/digest.py
+  - tritel_tender_tracker/views/digest_views.xml
+  - tritel_tender_tracker/data/digest_data.xml
+  - tritel_tender_tracker/views/sale_order_views.xml
   - tritel_tender_tracker/models/models.py
   - tritel_tender_tracker/models/tender_workflow.py
   - tritel_tender_tracker/models/bid_desk.py
@@ -42,7 +46,7 @@ sources:
   - tritel_tender_tracker/wizards/bid_desk_wizards.py
   - tritel_tender_tracker/wizards/tender_dropped.py
   - tritel_tender_tracker/wizards/tenders_assignment_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
 ---
 
 ## Why can't I see a tender on the portal?
@@ -140,3 +144,11 @@ A line from a later purchase order was added, or an order was cancelled and conf
 ## Why can't I see OEM Bookings or Untagged Purchases?
 
 **OEM Bookings** needs a Channel role or purchasing administrator rights. **Untagged Purchases** is for Channel Managers only. See [Who can do what](/tenders/who-can-do-what/).
+
+## What is the weekly Tenders/Commercial digest email?
+
+Odoo sends a weekly summary email called **Tenders/Commercial Periodic Digest** to the people subscribed to it. Next to the usual CRM and revenue figures, it has two Tender Manager figures: **Activities Logged** (customer touches dated in the period) and **Tenders** (tenders created in the period). A system administrator chooses the recipients and figures under **Settings › Technical › Digest Emails** (developer mode), in the **Commercial/Tenders** group.
+
+## Why can't I find the tender when I link a sales order?
+
+The **Tender** field on a sales order only offers **Won** tenders for the order's customer. Check the tender's status and customer. See [Link orders and invoices to a tender](/tenders/how-to/bids/link-orders-and-invoices/).

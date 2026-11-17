@@ -30,7 +30,8 @@ sources:
   - tritel_tender_tracker/views/res_partner.xml
   - tritel_tender_tracker/views/tender_views.xml
   - tritel_tender_tracker/wizards/tender_lost.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_tender_tracker/models/hr_employee_roles.py
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -93,6 +94,8 @@ Owners are also set without anyone asking: saving a tender or opportunity with a
 ## Target accounts
 
 A **target account** is a customer Tritel has chosen to pursue, with a **Target Tier**: **Strategic**, **Growth** or **Maintain**. Anyone can **Propose as Target**; the Head of Commercial or a Tender administrator then **Approve**s it (tier **Growth** unless set) or **Decline**s it, or sets a tier directly with **Target: Strategic**, **Target: Growth** or **Target: Maintain**. They do this on the customer form or in **Tender Manager › Tender Customers › Classify Accounts**, which also offers **Apply Suggested Sector** to fill in sectors and segments in bulk. The steps are in the [customer activity and target account workflow](/tenders/workflows/customer-activity/).
+
+Once a customer is proposed or made a target, its form also shows **Target Note**: a free-text line for why it was chosen or what the plan is. **Classify Accounts** has the same column, hidden by default.
 
 ## How it counts in Accountability
 

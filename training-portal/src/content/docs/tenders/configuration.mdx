@@ -1,0 +1,66 @@
+---
+title: Tender Manager configuration
+description: Every list under Tender Manager › Configuration (tender tags, customer tags, activity types, last seen stages and the rest), what each one controls, and who can change it.
+module: tenders
+pageType: reference
+roles: [head-commercial, head-channel, tender-admin]
+tags: [tenders, customers]
+keywords: [configuration, settings, set up, tender tags, customer tags, activity types, touch types, last seen stages, lost reasons, drop reasons, cancel reasons, master data]
+related: [tenders/index, tenders/who-can-do-what, tenders/concepts/customer-activities, tenders/concepts/tenders-and-statuses]
+sidebar: { order: 3 }
+sources:
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/views/res_partner.xml
+  - tritel_tender_tracker/views/partner_activity_touchpoints_views.xml
+  - tritel_tender_tracker/views/target_period_views.xml
+  - tritel_tender_tracker/views/bid_desk_views.xml
+  - tritel_tender_tracker/views/bid_quality_views.xml
+  - tritel_tender_tracker/views/project_summary_views.xml
+  - tritel_tender_tracker/views/tender_workflow_views.xml
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/res_partner.py
+  - tritel_tender_tracker/models/partner_activity_touchpoints.py
+  - tritel_tender_tracker/data/last_seen_stages.xml
+  - tritel_tender_tracker/data/activity_types.xml
+  - tritel_tender_tracker/security/ir.model.access.csv
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+---
+import Illustration from '../../../components/Illustration.astro';
+
+**Tender Manager › Configuration** holds the lists that the rest of the app picks from: tender tags and reasons, the bid desk's lists, the summary headings, and the types and bands used for customer touches. Most are set up once and rarely change.
+
+<Illustration name="tenders/config-activity-types" caption="The Configuration menu, with Activity Types open. The numbers match the steps below." />
+
+## Tenders and bids
+
+| Menu | What it holds | More |
+|---|---|---|
+| **Target Periods** | The quarters or years tenders and opportunities are filed into. | [Target periods](/tenders/commercial-targets/target-periods/) |
+| **Stages** | The columns of the tender board. | [Tenders, statuses and the board](/tenders/concepts/tenders-and-statuses/) |
+| **Tags** | Free labels for tenders, each with a colour. You pick them in the tender's **Tags** field. Two tags can't have the same name (*Tag name already exists!*). Archive a tag rather than deleting it. | — |
+| **Lost Reasons**, **Drop Reasons** | The reasons offered when a tender is lost or dropped, and which ones count as a disqualification. | [Record the result](/tenders/how-to/bids/record-the-result/) |
+| **Cancel Reasons** | The reasons offered when a tender is cancelled. | [Tender status workflow](/tenders/workflows/tender-status/) |
+| **Standard Bid Documents**, **Bid Desk Team**, **Bid Quality Guidelines** | The bid readiness checklist, the people counted for fair workload, and the bid quality questions. Head of Commercial and Tender administrators only. | [Bid readiness](/tenders/concepts/bid-readiness/), [The bid desk](/tenders/concepts/bid-desk-workload/) |
+| **Pillars**, **Summary Headings** | The pillars and the headings of a project summary. | [Project summaries](/tenders/concepts/project-summaries/) |
+
+## Customers and touches
+
+| Menu | What it holds |
+|---|---|
+| **Customer Tags** | The tags on customer records (the same tags as in Contacts), such as a sector or *Government*. They show in the customer's **Tags** field, and you can search customers by them. |
+| **Activity Types** | The kinds of customer touch, such as **Procurement Plan**, **Customer Meeting** and **Workshop**. Each type has a **Channel**. A touch of that type takes that channel unless the person logging it changes it. |
+| **Last Seen Stages** | The bands a customer's **Last Seen** date is sorted into, from **Last Seen 30 Days** to **Never Seen**. |
+
+## Steps: add an activity type
+
+1. Open **Tender Manager › Configuration**.
+2. Click **Activity Types**.
+3. Click **New**. A blank row opens at the bottom of the list.
+4. Type the name, for example *Site Survey*. Leave **Channel** empty to let the system choose from the name (*Site Survey* becomes **Visit**), or choose one. Drag the handle at the start of a row to change the order the types are offered in.
+
+:::note[Good to know]
+- Every member of staff who can open **Tender Manager › Configuration** can change **Tags**, **Customer Tags**, **Activity Types** and **Last Seen Stages**. Agree changes with the Head of Commercial first.
+- **Last Seen Stages** are matched to customers by their **Name** (for example *31_60*), and the bands are fixed at 30, 60, 90 and 120 days. You can change the **Description** that people see, but don't rename, add or delete stages: customers would stop being sorted into them.
+- Changing an activity type's **Channel** also changes it on every touch of that type already logged, including touches where someone picked a different channel by hand.
+:::
