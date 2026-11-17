@@ -1,0 +1,19 @@
+# docs-sync: verified_commit 83d4cd697910
+# docs-sync: shows tritel_hr_leave:selection:hr.leave.type.tritel_allocation_mode, tritel_hr_leave:field:hr.leave.type.tritel_yearly_days, tritel_hr_leave:field:hr.leave.allocation.tritel_kind
+type: calc
+title: Allocations for someone who joins mid-year
+desc: Worked example for Employee B, who joined on 1 June 2026, showing that both allocations start on the join date, that the Sick Off yearly grant is the full 30 days until 31 December, and that Annual Leave left is 8.75 earned minus 2 taken minus 1 requested, 5.75 days.
+source: tritel_hr_leave/models/leave_coverage.py (_start, _allocation_values, get_ledger), tritel_hr_leave/models/leave_type_rules.py
+heading: Employee B, joined 1 June 2026, figures as at 17 Nov 2026
+inputs:
+  - {label: Join date (first contract date), value: "1 Jun 2026"}
+  - {label: "Annual Leave earned so far (dummy plan)", value: "8.75"}
+  - {label: "Annual Leave taken (approved)", value: "2"}
+  - {label: "Annual Leave requested (waiting)", value: "1"}
+steps:
+  - {label: "Allocations start on the later of 1 Jan 2026 and the join date", value: "1 Jun 2026"}
+  - {label: "Sick Off, Yearly grant: Days each year, 1 Jun → 31 Dec 2026", value: "30"}
+  - {label: "Annual Leave, Earns monthly: open-ended from 1 Jun 2026", value: "8.75 so far"}
+  - {label: "Annual Leave left = Allocated − Taken − Requested", value: "8.75 − 2 − 1"}
+result: {label: Annual Leave left, value: "5.75 days", tone: good}
+note: "A yearly grant is the full Days each year, even for someone who joins in June. The earning allocation has no end date: it keeps earning into next year."

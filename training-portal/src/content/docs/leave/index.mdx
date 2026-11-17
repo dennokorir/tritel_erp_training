@@ -1,0 +1,92 @@
+---
+title: Time Off
+description: What Tritel adds to Odoo's Time Off app (the Time Off home, Team Presence, approvals on the Approvals dashboard and My Actions, reminders and the portal pages), who uses each part, and where to start.
+module: leave
+pageType: overview
+roles: [everyone, line-manager, hr]
+tags: [start here, time off]
+keywords: [leave, time off, holiday, annual leave, sick leave, leave balance, leave days, absence, who is off, out of office, leave approval, leave request, vacation, leave coverage, time off menus]
+related: [leave/concepts/balances, leave/concepts/who-sees-what, leave/concepts/approval-steps, leave/how-to/everyone/my-leave, leave/how-to/everyone/team-presence, leave/who-can-do-what]
+sidebar: { order: 1 }
+sources:
+  - tritel_hr_leave/__manifest__.py
+  - tritel_hr_leave/views/leave_home_views.xml
+  - tritel_hr_leave/views/presence_views.xml
+  - tritel_hr_leave/views/leave_approval_views.xml
+  - tritel_hr_leave/views/leave_home_portal.xml
+  - tritel_hr_leave/views/employee_visibility_views.xml
+  - tritel_hr_leave/models/leave_home.py
+  - tritel_hr_leave/models/presence.py
+  - tritel_hr_leave/models/hr_leave_approval.py
+  - tritel_hr_leave/models/leave_approval_lists.py
+  - tritel_hr_leave/models/hr_leave.py
+  - tritel_hr_leave/data/ir_cron_data.xml
+  - tritel_hr_leave/data/leave_approval_cron.xml
+  - tritel_hr_leave/views/menus_by_role.xml
+  - tritel_hr_leave/views/leave_coverage_views.xml
+verified_commit: 83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02
+---
+
+Tritel uses Odoo's **Time Off** app for leave: you request time off there, your manager approves it, and HR keeps the allocations and leave types. Tritel has added a few things on top so that everyone can see their balance at a glance, managers can see who is in, and requests don't sit waiting:
+
+- **The Time Off home.** The app opens on it. Everyone gets **My Leave**: their balance first, then their requests and who in their team is away this week. Anyone with people reporting to them also gets **My Team**: who is in this week, what is waiting for their approval, and their team's balances.
+- **Team Presence.** A week or a month of who is in, who is away and who has asked for time off, as a grid or a calendar.
+- **Approvals alongside other approvals.** Requests waiting for you appear on the **Approvals dashboard** and in **My Actions**, where you can **Approve**, **Refuse** or **Ask** a question. While an approver is away, the person they delegated to can give the manager's approval.
+- **Reminders and escalation.** A daily job reminds the approver, escalates requests that wait too long, and refuses requests whose dates pass while they are still waiting.
+- **The portal.** **My Leave**, **My Team's Leave** and **Team Presence** are also on the portal (**/my**).
+- **Leave Coverage.** For HR: who is missing an allocation for each leave type, filled in one click, and balance adjustments kept with a reason.
+- **Menus by role.** Everyone sees **My Leave** and **Team Presence**; approvers get **To Approve**; HR gets **Manage**, **Reporting** and **Configuration**.
+
+## How the parts fit together
+
+```mermaid
+flowchart TD
+%% docs-sync: shows tritel_hr_leave:menu:menu_leave_home, tritel_hr_leave:client_action:action_leave_home, tritel_hr_leave:menu:menu_my_leave, tritel_hr_leave:client_action:action_my_leave, tritel_hr_leave:menu:menu_team_presence, tritel_hr_leave:client_action:action_team_presence, tritel_hr_leave:route:/my/leave, tritel_hr_leave:route:/my/team-leave, tritel_hr_leave:route:/my/presence
+  E["Employee requests time off"] --> W["Waiting for approval"]
+  W --> A["Approver: Approvals dashboard or My Actions"]
+  W --> J["Daily job: reminder, escalation, refusal"]
+  J --> A
+  A --> H["HR step (some leave types)"]
+  A --> OK["Approved"]
+  H --> OK
+  OK --> B["Balance on My Leave and My Team"]
+  OK --> P["Away on Team Presence"]
+  W --> P
+```
+
+## Who uses what
+
+| Who | What they use |
+|---|---|
+| **Everyone** | **Time Off › Home** (**My Leave**) to check their balance and request time off; **Team Presence** to see who is in; the portal pages. See [Check my leave and request time off](/leave/how-to/everyone/my-leave/). |
+| **Line managers** (anyone with people reporting to them) | **My Team** on the Time Off home; approving, refusing and asking from the Approvals dashboard or My Actions; delegating approvals while away. See [Use My Team](/leave/how-to/line-managers/my-team/) and [Approve, refuse or ask about time off](/leave/how-to/line-managers/approve-time-off/). |
+| **HR** | Everyone's presence and balances, the HR approval step, allocations and balance adjustments in Leave Coverage, how each leave type is allocated, the reminder settings, the Excel download and hiding service accounts. See [Find and fill allocation gaps with Leave Coverage](/leave/how-to/hr/leave-coverage/) and [Set reminders, escalation and flags](/leave/how-to/hr/settings/). |
+
+Who sees whose time off depends on the reporting line: see [Who sees whose time off](/leave/concepts/who-sees-what/).
+
+## Where things are
+
+| Menu or page | What it is |
+|---|---|
+| **Time Off › Home** | Opens **My Team** if people report to you (or you are on the company-wide list), otherwise **My Leave**. |
+| **Time Off › My Leave** | **My Requests**, **My Calendar** (where you request time off) and **My Allocations**. |
+| **Time Off › Team Presence** | Who is in, away or waiting for approval, by week or month. |
+| **Approvals** (the Approvals dashboard) | **Time Off to Approve**, with **Approve**, **Refuse** and **Ask**. |
+| **Time Off › To Approve › Leave Requests** | The same requests in Odoo's list, opening on **Waiting for me** (Time Off approvers). |
+| **Time Off › Manage** | **Leave Coverage**, **All Allocations**, **All Leave Requests** and **Company Calendar** (Time Off officers). See [Find and fill allocation gaps with Leave Coverage](/leave/how-to/hr/leave-coverage/). |
+| **Time Off › Reporting** | **Leave Taken** and **Balances** (Time Off officers). |
+| **Time Off › Configuration › Leave Types** | How staff get each leave type and the longest request (Time Off administrators). See [Set how staff get each leave type](/leave/how-to/hr/set-up-leave-types/). |
+| **Time Off › Configuration › Approvals and Reminders** | Reminder, escalation and flag settings (Time Off administrators). |
+| **Time Off › Configuration › Company-wide Viewers** | People who see the whole company (Time Off administrators). |
+| **/my/leave**, **/my/team-leave**, **/my/presence** | The same pages on the portal. See [Use My Leave and Team Presence on the portal](/leave/how-to/everyone/on-the-portal/). |
+
+For every menu and who sees it, see [Time Off menus](/leave/menus/).
+
+## Start here
+
+- [Balances: allocated, taken, requested](/leave/concepts/balances/)
+- [Check my leave and request time off](/leave/how-to/everyone/my-leave/)
+- [See who is in with Team Presence](/leave/how-to/everyone/team-presence/)
+- [Approval steps, delegates and escalation](/leave/concepts/approval-steps/)
+- [Time off request workflow](/leave/workflows/time-off-request/)
+- [Who can do what](/leave/who-can-do-what/)

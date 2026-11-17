@@ -1,0 +1,126 @@
+# Field reference for Time Off (tritel_hr_leave), grouped by screen. Labels are exactly as on screen.
+# Source: tritel_hr_leave views (leave_approval_views.xml, presence_views.xml, employee_visibility_views.xml,
+# leave_home_portal.xml), the Time Off home and Team Presence screens (static/src/home/leave_home.xml,
+# static/src/presence/team_presence.xml) and models (presence.py, leave_home.py, hr_leave_approval.py).
+screens:
+  - name: My Leave
+    where: Time Off › Home › My Leave; portal /my/leave
+    fields:
+      - {label: "<type> balance", meaning: "What you can still request of your main leave type: Allocated − Taken − Requested.", where: Top}
+      - {label: allocated so far, meaning: "Days allocated this year, including any accrued, carried over or granted.", where: Under the balance}
+      - {label: taken, meaning: "Approved time off this year, including approved days still to come.", where: Under the balance}
+      - {label: requested, meaning: "Time off waiting for approval.", where: Under the balance}
+      - {label: by 31 Dec, meaning: "For leave that builds up each month: what you will have been allocated by the end of the year.", where: Under the balance}
+      - {label: Next, meaning: "The date and size of the next accrual.", where: Top}
+      - {label: "<sick type> left", meaning: "Sick days left of the allocation, with the days taken this year.", where: Top}
+      - {label: Waiting for approval, meaning: "Your oldest waiting request and how many more are waiting.", where: Top}
+      - {label: "Requests in <year>", meaning: "This year's requests with their status: Waiting for approval, Waiting for HR, Approved or Refused.", where: Left}
+      - {label: Your team this week, meaning: "Colleagues with the same manager, In all week or Away on which days.", where: Right}
+      - {label: Taken each month, meaning: "Approved days taken each month this year, sick leave left out.", where: Bottom}
+
+  - name: My Team
+    where: Time Off › Home › My Team; portal /my/team-leave
+    fields:
+      - {label: You, meaning: "Your own balance, sick days left and waiting requests.", where: Top line}
+      - {label: Who is in this week, meaning: "Your team's week, as in Team Presence, busiest people first, up to 12.", where: Left}
+      - {label: Waiting for you, meaning: "Time off requests you can decide now.", where: Right}
+      - {label: "Direct reports, Everyone below me, Everyone in the company", meaning: "Who the balances table lists. Everyone in the company is only for the Company-wide Viewers list.", where: Team balances}
+      - {label: Allocated, meaning: "Main leave type allocated this year, accrued plus carried over or granted.", where: Team balances}
+      - {label: Taken, meaning: "Approved this year, including approved days still to come.", where: Team balances}
+      - {label: Requested, meaning: "Waiting for approval.", where: Team balances}
+      - {label: Balance, meaning: "Allocated − Taken − Requested: what can still be requested.", where: Team balances}
+      - {label: Used this year, meaning: "A bar of taken and requested days against the allocation.", where: Team balances}
+      - {label: Sick left, meaning: "Sick days left, when the person has a sick leave allocation.", where: Team balances}
+      - {label: "Low, Not taking leave, No allocation, OK", meaning: "The flag on each person, from the thresholds HR sets.", where: Team balances}
+
+  - name: Team Presence
+    where: Time Off › Team Presence; portal /my/presence
+    fields:
+      - {label: "Week, Month", meaning: "The period shown: Monday to Friday of one week, or every working day of a month.", where: Toolbar}
+      - {label: "Grid, Calendar", meaning: "People by day, or a month calendar listing who is away each day.", where: Toolbar}
+      - {label: Download Excel, meaning: "The period as shown, with these filters, as an Excel file. Time Off administrators and the Company-wide Viewers list only.", where: Toolbar}
+      - {label: Department, meaning: "Show one department.", where: Filters}
+      - {label: Type, meaning: "Show or hide each leave type. Only applies to people you see in full.", where: Filters}
+      - {label: "Status: Approved, Requested", meaning: "Show approved time off, requests waiting for approval, or both.", where: Filters}
+      - {label: Only people away, meaning: "Leave out people with no time off in the period.", where: Filters}
+      - {label: Showing, meaning: "Whose presence you see: Everyone, Your reporting line or You and your team.", where: Summary}
+      - {label: busy days, meaning: "Days when at least the busy share of the people shown are away.", where: Summary}
+      - {label: Away today, meaning: "Who is away today, this week only.", where: Summary}
+      - {label: Away each day, meaning: "How many people are away each day; busy days in red, public holidays as PH.", where: Grid}
+      - {label: In or Away only, meaning: "Under a colleague's name: you see whether they are in, not why.", where: Grid}
+      - {label: Days, meaning: "Days away in the period, half days as 0.5.", where: Grid}
+
+  - name: Time off request
+    where: Time Off › To Approve › Leave Requests or Manage › All Leave Requests, a request (Approval section)
+    fields:
+      - {label: Waiting since, meaning: "When the request reached the step it is waiting on.", where: Approval}
+      - {label: Reminder sent, meaning: "When the approver was reminded.", where: Approval}
+      - {label: Escalated on, meaning: "When the request was escalated.", where: Approval}
+      - {label: Escalated to, meaning: "Who it was escalated to; they can now decide it.", where: Approval}
+      - {label: Question open, meaning: "The approver asked a question that the employee hasn't answered yet.", where: Approval}
+
+  - name: Approvals and Reminders
+    where: Time Off › Configuration › Approvals and Reminders
+    fields:
+      - {label: Remind the approver after (working days), meaning: "When the approver is reminded of a waiting request. 2 to start with.", where: Window}
+      - {label: Escalate after (working days), meaning: "When the request goes to the approver's own manager. 4 to start with.", where: Window}
+      - {label: Or escalate this many days before the leave starts, meaning: "Escalate earlier when the leave is this close. 2 to start with.", where: Window}
+      - {label: Refuse requests still waiting for the manager when the leave starts, meaning: "Refuse requests at the manager's step once the leave has started. On to start with.", where: Window}
+      - {label: "Escalate to, when the approver has no manager", meaning: "Who gets escalations when the approver has no manager. Empty: the Time Off administrators.", where: Window}
+      - {label: "Team Presence: busy when this % of the people shown are away", meaning: "The busy-day share. 20 to start with.", where: Team Presence}
+      - {label: "My Team: flag as low at or below (days balance)", meaning: "Balance at which a person is flagged Low. 3 to start with.", where: My Team balances}
+      - {label: "My Team: flag \"not taking leave\" at (% of allocation in balance)", meaning: "Share of the allocation still in balance that flags Not taking leave. 60 to start with.", where: My Team balances}
+      - {label: From month (1–12), meaning: "Month from which Not taking leave is flagged. 10 (October) to start with.", where: My Team balances}
+
+  - name: Company-wide Viewers
+    where: Time Off › Configuration › Company-wide Viewers
+    fields:
+      - {label: User, meaning: "The person who gets the whole-company view.", where: List}
+      - {label: Why, meaning: "A note on why they need it.", where: List}
+
+  - name: Employee form (Time Off)
+    where: Employees › Employees, an employee
+    fields:
+      - {label: Hide from Time Off views, meaning: "Button at the top, and a tick box on the HR Settings tab under Status: leave this record out of the Time Off people lists.", where: "Header, HR Settings"}
+      - {label: Show in Time Off views, meaning: "Button at the top: bring a hidden record back.", where: Header}
+
+  - name: Leave Coverage
+    where: Time Off › Manage › Leave Coverage
+    fields:
+      - {label: "‹ ›, This year", meaning: "Move to the previous or next year, or back to this one.", where: Top}
+      - {label: Figures as at, meaning: "The date the figures are worked out on: today for this year, 31 December for a past year, 1 January for a future year.", where: Top}
+      - {label: All departments, meaning: "Show one department and its sub-departments.", where: Filters}
+      - {label: Search people, meaning: "Show people whose name contains what you type.", where: Filters}
+      - {label: Gaps only, meaning: "Show only people missing an allocation.", where: Filters}
+      - {label: Include awaiting approval, meaning: "Also count allocations waiting for approval as gaps. Off to start with.", where: Filters}
+      - {label: "No join date (N)", meaning: "Also list people with no first contract date, in their own group.", where: Filters}
+      - {label: "people with gaps, of N staff", meaning: "How many staff are missing at least one allocation they should have.", where: Summary}
+      - {label: "N / N <leave type>", meaning: "For each leave type everyone should have: how many staff have an approved allocation.", where: Summary}
+      - {label: "Allocate to everyone missing (N)", meaning: "Allocate the leave type to everyone in the company missing it, after Yes to Allocate to N?.", where: Summary}
+      - {label: "adjustments in <year>", meaning: "Balance adjustments made that year.", where: Summary}
+      - {label: "x left of y · earning", meaning: "An approved allocation: y allocated, x still to request. earning: it builds up monthly.", where: Grid}
+      - {label: "Awaiting approval, Missing, No join date, On request", meaning: "No approved allocation: one is waiting, one is needed, the person can't be allocated, or none is expected.", where: Grid}
+      - {label: "Allocated, Taken, Requested, Left", meaning: "The person's figures for the leave type; Left is Allocated − Taken − Requested.", where: Panel}
+      - {label: "Allocate <leave type> (<how>)", meaning: "Create and approve this year's allocation for the person.", where: Panel}
+      - {label: Adjust balance, meaning: "Open the form to add or take off days.", where: Panel}
+      - {label: Days (negative to take off), meaning: "Days to add, or a negative number to take off.", where: Panel}
+      - {label: Reason, meaning: "Why; kept with the adjustment and noted on the allocation.", where: Panel}
+
+  - name: "Leave type: how staff get it"
+    where: Time Off › Configuration › Leave Types, a leave type
+    fields:
+      - {label: How staff get it, meaning: "Earns monthly (accrual plan), Yearly grant or On request. Shown when Requires allocation is Yes.", where: Allocation Requests}
+      - {label: Accrual plan, meaning: "The plan new allocations earn on. Needed for Earns monthly.", where: Allocation Requests}
+      - {label: Days each year, meaning: "Days granted for each calendar year, from 1 January or the join date. Needed for Yearly grant.", where: Allocation Requests}
+      - {label: Most days in one request, meaning: "The longest single request allowed, in days. 0 means no limit.", where: Time Off Requests}
+
+  - name: Allocations list
+    where: Time Off › Manage › All Allocations; Time Off › My Leave › My Allocations
+    fields:
+      - {label: Kind, meaning: "Earns monthly, Yearly grant, Granted or Group grant.", where: List}
+      - {label: Allocated, meaning: "Days in the allocation.", where: List}
+      - {label: Taken, meaning: "Days of approved leave taken from it.", where: List}
+      - {label: Left, meaning: "Allocated − Taken. Requests waiting for approval aren't taken off.", where: List}
+      - {label: Current, meaning: "Allocations still in force: no end date, or ending today or later. On to start with in All Allocations.", where: Filters}
+      - {label: Expired, meaning: "Allocations that have ended. They are greyed out in the list.", where: Filters}
+      - {label: Per person, meaning: "Hide the group grant records; each person's own copy stays. On to start with in All Allocations.", where: Filters}

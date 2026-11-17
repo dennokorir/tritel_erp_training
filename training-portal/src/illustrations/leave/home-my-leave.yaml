@@ -1,0 +1,39 @@
+# docs-sync: verified_commit 83d4cd697910
+# docs-sync: shows tritel_hr_leave:menu:menu_leave_home, tritel_hr_leave:client_action:action_leave_home, tritel_hr_leave:menu:menu_my_leave, tritel_hr_leave:client_action:action_my_leave
+type: screen
+title: My Leave
+desc: The My Leave page of the Time Off app for Employee A, with the annual leave balance, the next accrual, sick leave left, a request waiting for approval, this year's requests and the team this week, and the Request time off button, numbered 1 to 7.
+source: tritel_hr_leave/static/src/home/leave_home.xml (TimeOffHome, LeaveBalance), tritel_hr_leave/views/leave_home_views.xml
+frame:
+  grid: true
+  app: Time Off
+  menu: [{label: Home, active: true, n: 1}, My Leave, Team Presence]
+  breadcrumb: [Time Off]
+blocks:
+  - buttons: [{label: My Team}, {label: My Leave, primary: true, n: 2}, {label: Team Presence}, {label: Request time off, n: 7}]
+  - tiles:
+      - {label: Annual Leave balance, value: "12 days", tone: good, n: 3}
+      - {label: "Next: +1.75 on 1 Dec", value: "", tone: accent, n: 4}
+      - {label: Sick Leave left, value: "8 of 10", tone: muted}
+      - {label: Waiting for approval, value: "1 day", tone: warn, n: 5}
+  - text: "15 allocated so far · 2 taken · 1 requested · 16.75 by 31 Dec"
+  - columns:
+      - panel: true
+        blocks:
+          - heading: Requests in 2026
+          - table:
+              columns: [Status, Type, Days and dates]
+              widths: [3, 3, 4]
+              n: 6
+              rows:
+                - [{text: Waiting for approval, badge: true, tone: warn}, Annual Leave, "1 day · 4 Dec 2026"]
+                - [{text: Approved, badge: true, tone: good}, Annual Leave, "2 days · 10 – 11 Aug 2026"]
+      - panel: true
+        blocks:
+          - heading: Your team this week
+          - table:
+              columns: [Colleague, This week]
+              widths: [3, 3]
+              rows:
+                - [Employee B, In all week]
+                - [Employee C, "Away Mon, Tue"]

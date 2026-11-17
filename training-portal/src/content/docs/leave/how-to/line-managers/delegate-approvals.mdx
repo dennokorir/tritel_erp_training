@@ -1,0 +1,59 @@
+---
+title: Delegate my approvals while I'm away
+description: Before you go on leave, let a colleague give your manager approval on time off requests (and your other approvals) from the Approvals dashboard, then switch the delegation off when you are back.
+module: leave
+pageType: how-to
+roles: [line-manager]
+tags: [time off, approvals]
+keywords: [delegate, delegation, acting approver, cover, out of office, away, approve on my behalf, stand-in, backup approver, leave approver away]
+where: [Approvals, Approvals Dashboard]
+before:
+  - You approve other people's time off (you are their time off approver or manager).
+  - The colleague who will cover has an Odoo user.
+related: [leave/concepts/approval-steps, leave/how-to/line-managers/approve-time-off, leave/calculations/reminders-and-escalation, leave/workflows/time-off-request]
+sidebar: { order: 3 }
+sources:
+  - tritel_approvals_dashboard/static/src/dashboard/approvals_dashboard.xml
+  - tritel_approvals_dashboard/static/src/dashboard/approvals_dashboard.js
+  - tritel_approvals_dashboard/models/approval_request.py
+  - tritel_approvals_dashboard/models/approval_delegation.py
+  - tritel_approvals_dashboard/views/approval_delegation_views.xml
+  - tritel_hr_leave/models/hr_leave_approval.py
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+If you approve your team's time off, name a **delegate** before you go away. While the delegation is active, the delegate sees the requests waiting for your manager approval and can approve, refuse or ask about them. Otherwise those requests wait, then get escalated to your own manager.
+
+<Illustration name="leave/delegate-dialog" caption="Delegate My Approvals on the Approvals Dashboard. The numbers match the steps below." />
+
+## Steps
+
+1. Open the **Approvals** app and click **⇄ Delegate My Approvals** at the top of the **Approvals Dashboard**.
+2. In *Delegate My Approvals*, type part of your colleague's name in **Search by name…**.
+3. Click the colleague. A tick marks them, and *Delegate to: Employee B* appears below.
+4. If you like, type a **Reason (optional)**, for example *Annual leave, 1 – 12 Dec*.
+5. Click **Enable Delegation**. The message says *Delegation enabled. Your pending approvals will be visible to your delegate.*
+6. The dashboard header now shows **⇄ Delegating to Employee B**. When you are back, click **✕** next to it. The message says *Delegation cleared.*
+
+## What happens next
+
+- Your delegate sees your waiting time off requests under **Time Off to Approve** on their dashboard, marked *You cover for Employee A*, and in their **My Actions**, marked *for Employee A*. This includes requests that arrive while the delegation is on.
+- When they decide, a note on the request records it, for example *Approved by Employee B for Employee A (delegation).*
+- Daily reminders about requests waiting for you also go to your delegate.
+- The delegation covers your other approval requests on the dashboard too, not only time off.
+- You can still decide the requests yourself while the delegation is on.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Could not enable delegation — An approver cannot delegate to themselves.* | You picked yourself. | Pick a colleague. |
+| **Enable Delegation** stays greyed out | Nobody is selected yet. | Click a name in the list. |
+
+:::note[Good to know]
+- Delegation covers the **manager step** only. Requests waiting for HR's approval (**Second Approval**, or HR-only leave types) stay with HR.
+- You can have one active delegation. Enabling a new one replaces the old one.
+- A delegation has no end date: it stays on until you clear it. Set a reminder to switch it off when you are back.
+- Approvals administrators can see and change everyone's delegations under **Approvals › Delegation Management**.
+:::

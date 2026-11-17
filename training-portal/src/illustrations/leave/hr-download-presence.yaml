@@ -1,0 +1,23 @@
+# docs-sync: verified_commit 83d4cd697910
+# docs-sync: shows tritel_hr_leave:route:/tritel_hr_leave/presence/export, tritel_hr_leave:menu:menu_team_presence, tritel_hr_leave:client_action:action_team_presence
+type: screen
+title: Downloading Team Presence
+desc: Team Presence in Time Off for a Time Off administrator, set to Month, November 2026, filtered on one department, with the Download Excel button at the right of the toolbar and a few rows of the grid below, numbered 1 to 4.
+source: tritel_hr_leave/static/src/presence/team_presence.xml (TeamPresence), tritel_hr_leave/controllers/presence.py (presence_export)
+frame:
+  grid: true
+  app: Time Off
+  menu: [Home, My Leave, {label: Team Presence, active: true, n: 1}, To Approve, Manage, Reporting, Configuration]
+  breadcrumb: [Team Presence]
+blocks:
+  - buttons: [{label: Week}, {label: Month, primary: true, n: 2}, {label: "‹"}, {label: November 2026}, {label: "›"}, {label: Grid, primary: true}, {label: Calendar}, {label: Download Excel, n: 4}]
+  - search: {facets: ["Department: Finance", "Status: Approved, Requested"], placeholder: "Search person or role", filters: [Only people away, Clear filters], n: 3}
+  - text: "Showing: Everyone · 3 people · 2 away at some point · 3.5 person-days away · busiest Thu 5 Nov (2 away) · 1 busy day · 1 requested day waiting"
+  - table:
+      columns: [Person, Mo 2, Tu 3, We 4, Th 5, Fr 6, Days]
+      widths: [3, 1, 1, 1, 1, 1, 1]
+      rows:
+        - [Away each day, "1", "", "", {text: "2", tone: bad, bold: true}, "1", "3.5"]
+        - [Employee A, AL, "", "", AL, AL, "3"]
+        - [Employee B, "", "", "", {text: "SO", tone: warn}, "", ""]
+        - [Employee C, "", "", "", AL½, "", "0.5"]

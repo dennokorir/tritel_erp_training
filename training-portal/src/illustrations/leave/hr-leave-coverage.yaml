@@ -1,0 +1,38 @@
+# docs-sync: verified_commit 83d4cd697910
+# docs-sync: shows tritel_hr_leave:menu:menu_manage, tritel_hr_leave:menu:menu_leave_coverage, tritel_hr_leave:client_action:action_leave_coverage
+type: screen
+title: Leave Coverage
+desc: The Leave Coverage grid for 2026 with the year buttons, the filters, the summary counts with Allocate to everyone missing, a grid of people by leave type in which Employee B is missing Annual Leave, and the side panel offering to allocate it, numbered 1 to 7.
+source: tritel_hr_leave/static/src/coverage/leave_coverage.xml (tritel_hr_leave.LeaveCoverage), tritel_hr_leave/models/leave_coverage.py (get_coverage, get_ledger, allocate)
+frame:
+  grid: true
+  app: Time Off
+  menu: [Home, My Leave, Team Presence, To Approve, {label: Manage, active: true, n: 1}, Reporting, Configuration]
+  breadcrumb: [Leave Coverage]
+blocks:
+  - buttons: [{label: "‹"}, {label: "2026", n: 2}, {label: "›"}, {label: "Figures as at 2026-11-17"}]
+  - buttons: [{label: All departments ▾, n: 3}, {label: Search people}]
+  - buttons: [{label: Gaps only}, {label: Include awaiting approval}, {label: "No join date (1)"}]
+  - tiles:
+      - {label: "people with gaps, of 12 staff", value: "1", tone: bad, n: 4}
+      - {label: "adjustments in 2026", value: "1"}
+  - tiles:
+      - {label: "Annual Leave · Earns monthly", value: "11 / 12"}
+      - {label: "Sick Off · 30 days a year", value: "11 / 12"}
+  - buttons: [{label: "Allocate to everyone missing (1)", n: 7}]
+  - table:
+        columns: [Person, "Annual Leave", "Sick Off", "Overtime"]
+        widths: [2, 3, 2, 2]
+        rows:
+          - [{text: "Sales · 3", bold: true}, "", "", ""]
+          - [Employee A, "12.5 left of 16.5 · earning", "28 left of 30", On request]
+          - {cells: ["Employee B", {text: "Missing · Click to allocate", tone: bad, bold: true}, "30 left of 30", On request], highlight: true, n: 5}
+          - [Employee C, "6 left of 18 · earning", {text: Awaiting approval, badge: true, tone: warn}, "2 left of 2"]
+          - [{text: "No join date · 1", bold: true}, "", "", ""]
+          - [Employee D, {text: No join date, tone: muted}, {text: No join date, tone: muted}, On request]
+  - columns:
+      - panel: true
+        blocks:
+          - title: {text: Employee B, sub: "Annual Leave · 2026 · Sales · joined 2026-06-01"}
+          - text: No allocation for 2026.
+          - buttons: [{label: "Allocate Annual Leave (Earns monthly)", primary: true, n: 6}]

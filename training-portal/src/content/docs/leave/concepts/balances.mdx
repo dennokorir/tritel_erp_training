@@ -1,0 +1,63 @@
+---
+title: "Balances: allocated, taken, requested"
+description: What Allocated, Taken, Requested and Balance mean on My Leave and My Team, how leave that builds up on an accrual plan is shown, which leave type a page leads with, and how sick leave is shown.
+module: leave
+pageType: concept
+roles: [everyone, line-manager, hr]
+tags: [time off, balances]
+keywords: [leave balance, days left, leave days, annual leave, accrual, accrued leave, carried over, carry forward, sick days, how many days do I have, remaining leave, allocation]
+related: [leave/how-to/everyone/my-leave, leave/how-to/line-managers/my-team, leave/calculations/busy-days-and-flags, leave/index]
+sidebar: { order: 1 }
+sources:
+  - tritel_hr_leave/models/leave_home.py
+  - tritel_hr_leave/static/src/home/leave_home.xml
+  - tritel_hr_leave/static/src/home/leave_home.js
+  - tritel_hr_leave/views/leave_home_portal.xml
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Your leave balance is how many days you can still ask for. **My Leave** and **My Team** show it with the three figures it comes from, all taken from Odoo's own Time Off figures, so they match the rest of the app.
+
+| Label | Meaning |
+|---|---|
+| **Allocated** | Days you have been given for the year so far: leave that has built up on an accrual plan, plus anything carried over or granted. |
+| **Taken** | Approved time off this year, **including approved days still to come**. |
+| **Requested** | Time off waiting for approval. |
+| **Balance** | What can still be requested: **Allocated − Taken − Requested**. |
+
+<Illustration name="leave/calc-balance" caption="How a balance is worked out." />
+
+## Leave that builds up each month
+
+When your leave builds up on an accrual plan (annual leave usually does), My Leave also shows:
+
+- **by 31 Dec**: the days you will have been allocated by the end of the year, if nothing changes. It adds the accruals still to come this year to what you have now, and stops at the plan's maximum if it has one.
+- **Next**, for example *+1.75 on 1 Dec*: the next amount to be added and when.
+
+## Which leave type comes first
+
+Only leave types you have an allocation for this year are shown. The page leads with one of them:
+
+1. a type that builds up on an accrual plan; otherwise
+2. the type with the largest allocation.
+
+Sick leave comes last: it leads only if it's the only type you have. Otherwise a type whose name contains "sick" gets its own card instead, **Sick Leave left**: the days allocated minus the days taken, with *N days taken this year*. Requests waiting for approval are not taken off this figure. Any other types show as small chips, for example *Compassionate Leave: 3 balance*.
+
+**My Team** shows the leading type's figures for each person, and **Sick left** in its own column.
+
+## Taken each month
+
+The **Taken each month** chart counts approved days of leave that needs an allocation, by the month the leave starts. Sick leave is left out.
+
+:::note[Good to know]
+- If you have no allocation for any type, My Leave says *No annual leave allocated to you yet.* Ask HR to allocate your leave. Your requests and your team still show.
+- The card under the balance says the leave *builds up each month*, whatever the accrual plan's frequency. The **Next** date is always the plan's real next date.
+- Leave types that don't need an allocation (unpaid leave, for example) never have a balance, so they don't appear on the cards or in the chart.
+:::
+
+## Tasks that use this
+
+- [Check my leave and request time off](/leave/how-to/everyone/my-leave/)
+- [Use My Team](/leave/how-to/line-managers/my-team/)
+- [Busy days, Low and Not taking leave](/leave/calculations/busy-days-and-flags/)

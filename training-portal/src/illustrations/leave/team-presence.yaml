@@ -1,0 +1,26 @@
+# docs-sync: verified_commit 83d4cd697910
+# docs-sync: shows tritel_hr_leave:menu:menu_team_presence, tritel_hr_leave:client_action:action_team_presence
+type: screen
+title: Team Presence
+desc: Team Presence for a week in grid layout, with the Week and Month buttons, the period arrows, the Grid and Calendar buttons, the filters, the summary line, the Away each day row and colour-coded leave per person, numbered 1 to 7.
+source: tritel_hr_leave/static/src/presence/team_presence.xml (TeamPresence), tritel_hr_leave/models/presence.py
+frame:
+  grid: true
+  app: Time Off
+  menu: [Home, My Leave, {label: Team Presence, active: true, n: 1}, To Approve]
+  breadcrumb: [Team Presence]
+blocks:
+  - buttons: [{label: Week, primary: true, n: 2}, {label: Month}, {label: "‹  16 Nov to 20 Nov 2026  ›", n: 3}, {label: Grid, primary: true, n: 4}, {label: Calendar}]
+  - search: {facets: [All departments, "Type: Annual Leave, Sick Leave", "Status: Approved, Requested"], placeholder: "Search person or role", filters: [Only people away, Clear filters], n: 5}
+  - note: {text: "Showing: Your reporting line · 4 people · 2 away at some point · 3.5 person-days away · busiest Wed 18 Nov · 2 away · 1 busy day · 1 requested day waiting", tone: muted, n: 6}
+  - table:
+      columns: [Person, Mon 16, Tue 17, Wed 18, Thu 19, Fri 20, Days]
+      widths: [4, 2, 2, 2, 2, 2, 1]
+      n: 7
+      rows:
+        - {cells: [Away each day, "", "1", {text: "2", bold: true, tone: bad}, "1", "", "3.5"], highlight: true}
+        - [{text: DEPARTMENT A, bold: true}, "", "", "", "", "", ""]
+        - [Employee A, "", "", "", "", "", ""]
+        - [Employee B, "", {text: Annual Leave, badge: true, tone: accent}, {text: Annual Leave, badge: true, tone: accent}, {text: "Annual Leave · AM", badge: true, tone: accent}, "", "2.5"]
+        - [Employee C, "", "", {text: "Requested: Sick Leave", badge: true, tone: warn}, "", "", ""]
+        - [Employee D · In or Away only, "", "", {text: Away, badge: true, tone: muted}, "", "", "1"]

@@ -1,0 +1,58 @@
+---
+title: Reminders, escalation and automatic refusal
+description: How the daily jobs count working days on a waiting time off request, when they remind the approver, escalate to the approver's manager, and refuse requests whose leave has started or ended.
+module: leave
+pageType: calculation
+roles: [line-manager, hr, everyone]
+tags: [time off, approvals]
+keywords: [leave reminder, escalation, auto refuse, automatic refusal, expired leave request, working days, waiting days, overdue approval, leave not approved, refused automatically]
+related: [leave/workflows/time-off-request, leave/concepts/approval-steps, leave/how-to/hr/settings, leave/how-to/line-managers/approve-time-off, leave/how-to/line-managers/delegate-approvals]
+sidebar: { order: 1 }
+sources:
+  - tritel_hr_leave/models/hr_leave_approval.py
+  - tritel_hr_leave/models/hr_leave.py
+  - tritel_hr_leave/data/leave_approval_cron.xml
+  - tritel_hr_leave/data/ir_cron_data.xml
+  - tritel_hr_leave/views/leave_approval_views.xml
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Two jobs run every day. **HR Leave: Cancel Expired Pending Requests** runs first, in the early hours. **Time Off: Approval Reminders and Escalation** runs later in the morning. Between them, a request can't wait forever: the approver is reminded, then the approver's manager is asked to step in, and a request nobody decided is refused once its dates have gone by.
+
+## How the waiting days are counted
+
+The clock starts at **Waiting since**: when the request reached the step it is waiting on. It restarts when the request moves on, for example from the manager to HR. The days waited are the **working days after that day, up to and including today**: Monday to Friday, less the company's public holidays. The day the request arrived doesn't count.
+
+## The rules, with the default settings
+
+Each morning, for each request that is **To Approve** or **Second Approval**, the reminders job checks these in order and does at most one thing:
+
+1. **Refuse:** if it is waiting for the **manager** and the leave started before today, it is refused. *Refused automatically: it was still waiting for approval when the leave started (01 Dec 2026). Request it again if you still need it.* Requests waiting for HR are never refused by this job.
+2. **Escalate** (once per step): if it has waited **4 working days**, or it starts within **2 days** and has waited at least 1 working day. It goes to the waiting person's own manager, who gets a to-do, and a note tells the employee and the approver: *Waiting 4 working days for Employee D: escalated to Employee E, who can now decide it.*
+3. **Remind** (once per step, and only if not escalated): if it has waited **2 working days**. A note goes to the approver and, for the manager step, their delegate: *Reminder: Employee A has waited 2 working days for your decision on Annual Leave (starts in 13 days).*
+
+<Illustration name="leave/calc-reminders" caption="A request reminded after 2 working days and escalated after 4." />
+
+The expiry job then catches anything left: every request still **To Submit**, **To Approve** or **Second Approval** whose **last day has passed** is refused, whatever step it is waiting on. The employee gets Odoo's usual *Your Annual Leave planned on … has been refused*.
+
+### Example: the request above
+
+- **Mon 16 Nov:** Employee A asks for 1 to 3 December. **Waiting since** is 16 Nov.
+- **Wed 18 Nov:** 2 working days (Tue, Wed): reminder to the approver, Employee D. **Reminder sent** shows 18/11/2026.
+- **Fri 20 Nov:** 4 working days: escalated to Employee D's manager. **Escalated on** and **Escalated to** fill in.
+- **Wed 2 Dec:** if it is still waiting for the manager, the reminders job refuses it. If the manager had approved and it was waiting for HR instead, it would stay open until the expiry job refuses it on Fri 4 Dec, the day after its last day.
+
+## Edge cases
+
+- **Close to the start date:** a request made on Thursday 26 Nov for leave starting Monday 30 Nov is escalated as soon as it has waited 1 working day and starts within 2 days. That can happen at a weekend, because the job runs every day.
+- **Who it is escalated to:** the waiting person's manager in Odoo. If they have none (or the manager is the employee asking), it goes to the person named under **Escalate to, when the approver has no manager**, or else to every Time Off administrator. If there is nobody at all, the request is only reminded.
+- **Reminder and escalation happen once per step.** A two-step request can be reminded and escalated once while it waits for the manager, and again while it waits for HR.
+- **Older requests** made before the module tracked **Waiting since** count from when they were created, or for HR, from when they last changed.
+- **Hidden accounts:** the reminders job skips people hidden from the Time Off views. The expiry job doesn't.
+- **Settings:** the numbers, the escalation fallback and **Refuse requests still waiting for the manager when the leave starts** are company settings. Untick that box and the reminders job stops refusing, but the expiry job still refuses requests whose last day has passed. See [Set reminders, escalation and flags](/leave/how-to/hr/settings/).
+
+:::note[Good to know]
+- The settings screen says a request waiting for HR is *escalated, never refused*. That is true of the reminders job only: the expiry job refuses it once its last day has passed.
+- So leave recorded after the fact, such as sick leave entered on return, must be approved the day it is entered. Otherwise the next night's run refuses it, and the employee has to request it again.
+:::

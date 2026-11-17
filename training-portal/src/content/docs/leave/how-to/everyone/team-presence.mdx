@@ -1,0 +1,60 @@
+---
+title: See who is in with Team Presence
+description: Open Team Presence to see who is in, away or waiting for approval for a week or a month, as a grid or a calendar, filter it by department, leave type and status, and read the busy days and colour codes.
+module: leave
+pageType: how-to
+roles: [everyone, line-manager, hr]
+tags: [time off, team presence]
+keywords: [who is in, who is off, who is away, out of office, leave calendar, team calendar, absence planner, holiday planner, staff availability, busy days, public holiday, leave chart]
+where: [Time Off, Team Presence]
+before:
+  - Your Odoo user is linked to your employee record.
+related: [leave/concepts/who-sees-what, leave/calculations/busy-days-and-flags, leave/how-to/hr/download-presence, leave/how-to/everyone/on-the-portal, leave/how-to/line-managers/my-team]
+sidebar: { order: 2 }
+sources:
+  - tritel_hr_leave/views/presence_views.xml
+  - tritel_hr_leave/static/src/presence/team_presence.xml
+  - tritel_hr_leave/static/src/presence/team_presence.js
+  - tritel_hr_leave/models/presence.py
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+**Team Presence** shows, day by day, who is in, who is away and who has asked for time off. Use it to plan cover, check a week before you book leave, or see how busy a month is. What you see depends on your place in the reporting line: see [Who sees whose time off](/leave/concepts/who-sees-what/).
+
+<Illustration name="leave/team-presence" caption="Team Presence for a week, as a grid. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Time Off › Team Presence**. (The **Team Presence** button on the Time Off home opens it too.)
+2. Click **Week** or **Month**. Only working days, Monday to Friday, are shown.
+3. Use **‹** and **›** to move to the previous or next week or month. **This week** or **This month** brings you back.
+4. Click **Grid** for one row per person, or **Calendar** for one box per day with the names of the people away.
+5. Narrow it down if you need to:
+   - **Department**: one department, or **All departments**.
+   - **Type**: click a leave type to hide or show it. Each type has its own colour.
+   - **Status**: **Approved**, **Requested**, or both.
+   - **Only people away**: leaves out anyone who is in for the whole period.
+   - **Search person or role**: matches a name, job title or department.
+   - **Clear filters** puts everything back.
+6. Read the summary line: who you are seeing (**Showing: Everyone**, **Your reporting line** or **You and your team**), how many people, how many are away at some point, the person-days away, the busiest day, the number of **busy days** and the requested days waiting. On the current week, **Away today** lists who is away today, or says *Everyone you can see is in.*
+7. Read the grid:
+   - **Away each day** counts the people away on each day. A count in red is a busy day; **PH** is a public holiday.
+   - Each person's day shows their leave type (in the month view, a short code such as **AL**). **AM**, **PM** or **½** is a half day. A striped day with a dashed border (*Requested: …*) is waiting for approval. **Away** is a colleague's approved time off, without the type.
+   - **Days** is the days away in the period.
+   - Click a person's row to highlight it across every day; click again or press **Esc** to clear it. Click a coloured day to open the request, if you are allowed to open it.
+
+In the calendar, each day shows *2 away*, the names of the people away (click one to open the request), and **+3 more** when there are more than four. A busy day has a red line along the top.
+
+## What happens next
+
+- Nothing changes: Team Presence only shows time off. To request leave, use **Request time off** on [My Leave](/leave/how-to/everyone/my-leave/).
+- The page remembers your choice of week or month, grid or calendar, and your filters in this browser, and opens on the current week or month next time.
+
+:::note[Good to know]
+- A day is **busy** when at least 20% of the people shown are away, and never fewer than 2 people. HR can change the percentage. See [Busy days, Low and Not taking leave](/leave/calculations/busy-days-and-flags/).
+- The legend at the bottom explains each code, for example *AL = Annual Leave*. Codes are the initials of the leave type's name.
+- Requests waiting for approval show only for people you see in full, never for colleagues you see as **In or Away only**.
+- HR also has a **Download Excel** button. See [Download Team Presence to Excel](/leave/how-to/hr/download-presence/).
+- If nobody matches your filters, the page says *Nobody matches these filters.* with a **Clear filters** link.
+:::

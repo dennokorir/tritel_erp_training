@@ -1,0 +1,61 @@
+---
+title: Set how staff get each leave type
+description: As a Time Off administrator, set on each leave type whether staff earn it monthly, get a yearly grant or get it on request, which accrual plan or how many days a year, and the most days one request may cover.
+module: leave
+pageType: how-to
+roles: [hr]
+tags: [time off, allocations, settings]
+keywords: [leave type, time off type, allocation rules, accrual plan, earns monthly, yearly grant, on request, days per year, entitlement, maximum days, request limit, maternity, paternity, configuration]
+where: [Time Off, Configuration, Leave Types]
+before:
+  - You are a <strong>Time Off administrator</strong>. The menu is hidden from everyone else.
+  - For a leave type that earns monthly, its accrual plan exists under <strong>Time Off › Configuration › Monthly Earning Plans</strong>.
+related: [leave/concepts/allocations, leave/how-to/hr/leave-coverage, leave/how-to/hr/adjust-a-balance, leave/menus, leave/faq]
+sidebar: { order: 5 }
+sources:
+  - tritel_hr_leave/models/leave_type_rules.py
+  - tritel_hr_leave/views/leave_type_rules_views.xml
+  - tritel_hr_leave/views/menus_by_role.xml
+  - tritel_hr_leave/models/leave_coverage.py
+verified_commit: 83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Each leave type says how staff get it: they earn it monthly, get a fixed grant each year, or are given it only when they need it. Leave Coverage uses this to show who is missing an allocation and to create it in one click. The same form can cap how many days one request may cover. Set it when you add a leave type or change how one is given.
+
+<Illustration name="leave/hr-leave-type-rules" caption="The Sick Off leave type, a yearly grant of 30 days. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Time Off › Configuration › Leave Types**.
+2. Open the leave type, or click **New** to add one.
+3. Under **Allocation Requests**, with **Requires allocation** set to **Yes**, choose **How staff get it**:
+   - **Earns monthly (accrual plan)**: everyone should have it, and it builds up over time (Annual Leave).
+   - **Yearly grant**: everyone should have it, a fixed number of days each calendar year (Sick Off).
+   - **On request**: given only when someone needs it (Overtime).
+4. Fill in the field that appears:
+   - for **Earns monthly**, the **Accrual plan** new allocations earn on;
+   - for **Yearly grant**, the **Days each year**, given from 1 January (or the join date in the year someone joins).
+5. If one request should be limited, under **Time Off Requests** set **Most days in one request**, for example 14. Leave it at 0 for no limit. This works for leave types that need no allocation too.
+6. Click **Save**.
+
+## What happens next
+
+- **Leave Coverage** shows the leave type as a column. For **Earns monthly** and **Yearly grant**, anyone without an allocation shows as **Missing**, and Time Off officers can allocate it in one click. For **On request**, people without one show **On request**. See [Find and fill allocation gaps with Leave Coverage](/leave/how-to/hr/leave-coverage/).
+- Existing allocations don't change. The new setting applies to allocations made from now on.
+- With **Most days in one request** set, a longer request can't be saved. See [How staff get leave: allocations](/leave/concepts/allocations/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *"Annual Leave" earns monthly: choose the accrual plan it earns on.* | **How staff get it** is **Earns monthly** but **Accrual plan** is empty. | Choose the plan. Create it first under **Monthly Earning Plans** if needed. |
+| *"Sick Off" is a yearly grant: enter the days granted each year.* | **How staff get it** is **Yearly grant** but **Days each year** is 0. | Enter the days, for example 30. |
+| *Paternity Leave can be requested for at most 14 days at a time; this request is 15 days.* | Shown to staff when a request is longer than **Most days in one request**. | The employee shortens the dates or splits the leave into two requests. |
+
+:::note[Good to know]
+- **How staff get it** only shows when **Requires allocation** is **Yes**. A type with **No Limit** needs no allocation and doesn't appear in Leave Coverage; use **Most days in one request** to keep it in bounds.
+- **Days each year** is given in full, even to someone who joins late in the year.
+- The request limit is checked when a request is made or its dates change, not on approval, so a request made before you set the limit can still be approved.
+- A leave type counted in hours shows its figures in hours in Leave Coverage (for example *6h left*).
+:::

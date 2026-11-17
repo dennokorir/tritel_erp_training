@@ -1,0 +1,20 @@
+# docs-sync: verified_commit 83d4cd697910
+# docs-sync: shows tritel_hr_leave:menu:menu_presence_admin, tritel_hr_leave:model:tritel.presence.admin
+type: screen
+title: The Company-wide Viewers list
+desc: The Company-wide Viewers list under Time Off › Configuration, edited in place, with a new row whose User and Why are being filled in and saved, numbered 1 to 4.
+source: tritel_hr_leave/views/presence_views.xml (presence_admin_tree, action_presence_admin, menu_presence_admin)
+frame:
+  grid: true
+  app: Time Off
+  menu: [Home, My Leave, Team Presence, To Approve, Manage, Reporting, {label: Configuration, active: true, n: 1}]
+  breadcrumb: [Company-wide Viewers]
+blocks:
+  - buttons: [{label: New, primary: true, n: 2}]
+  - table:
+      columns: [User, Why]
+      widths: [3, 5]
+      rows:
+        - [Employee A, HR Manager]
+        - {cells: [Employee B, "HR Officer, keeps the leave records"], highlight: true, n: 3}
+  - buttons: [{label: Save, primary: true, n: 4}, {label: Discard}]

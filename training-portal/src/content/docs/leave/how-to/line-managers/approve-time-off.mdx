@@ -1,0 +1,65 @@
+---
+title: Approve, refuse or ask about time off
+description: Decide the time off requests waiting for you, as approver, delegate or after escalation, from the Approvals dashboard, My Actions or the request itself, and ask the employee a question first if you need to.
+module: leave
+pageType: how-to
+roles: [line-manager, hr]
+tags: [time off, approvals]
+keywords: [approve leave, refuse leave, reject leave, decline time off, leave request, approvals dashboard, my actions, ask employee, query, delegate, escalated leave, second approval, waiting for me, to approve, leave requests]
+where: [Approvals, Approvals Dashboard]
+before:
+  - A request is waiting for you; you are the employee's time off approver, the leave type's Responsible Time Off Officer, the approver's delegate, or it was escalated to you.
+related: [leave/concepts/approval-steps, leave/workflows/time-off-request, leave/how-to/line-managers/delegate-approvals, leave/how-to/line-managers/my-team, leave/how-to/everyone/answer-a-question, leave/calculations/reminders-and-escalation]
+sidebar: { order: 2 }
+sources:
+  - tritel_hr_leave/models/hr_leave_approval.py
+  - tritel_hr_leave/models/leave_approval_lists.py
+  - tritel_hr_leave/static/src/approvals/leave_dashboard.xml
+  - tritel_hr_leave/static/src/approvals/leave_dashboard.js
+  - tritel_approvals_dashboard/static/src/dashboard/approvals_dashboard.xml
+  - tritel_approvals_dashboard/views/dashboard_views.xml
+  - tritel_hr_leave/models/leave_waiting_filter.py
+  - tritel_hr_leave/views/menus_by_role.xml
+verified_commit: 83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Time off requests waiting for you appear on the **Approvals Dashboard**, next to your other approvals, with what you need to decide: the dates, the step, how long it has waited, the balance after, and who else is away then. You can approve, refuse with a reason, or ask the employee a question first.
+
+<Illustration name="leave/approve-dashboard" caption="Time Off to Approve on the Approvals Dashboard, with the Refuse time off window. The numbers match the steps below." />
+
+## Steps
+
+1. Open the **Approvals** app. It opens on the **Approvals Dashboard**, on the **My Queue** tab.
+2. Under **Time Off to Approve**, read the request. The first line is the person, leave type, days and dates; *starts in 2 days*, *starts today* or *dates have passed* warn you when it's close. The second line gives the step (for example *step 1 of 2: manager, then HR*), how many working days it has waited, the **balance after** approving it, and who with the same manager is **also away then**. A third line shows *You cover for Employee D* or *Escalated to you from Employee D* when you decide for someone else, *Question open, waiting for the reply*, and the employee's reason in quotes. Click the name to open the full request.
+3. To approve, click **Approve**. A message confirms it, for example *Employee A's Annual Leave approved.*
+4. To refuse, click **Refuse**, type the reason in *Refuse time off*, and click **Refuse**. The employee gets the reason on the request.
+5. To ask first, click **Ask**, type your question in *Ask about this time off*, and click **Send question**. The message says *Question sent to Employee A.* The request stays waiting for you.
+6. When the employee replies on the request, the *Question open* line disappears. Then decide with **Approve** or **Refuse**.
+
+You can also start from **My Actions** (in Accountability or the Tender Manager): the **Time off to approve** group lists the same requests and opens each one. Or start from **Waiting for you** on [My Team](/leave/how-to/line-managers/my-team/).
+
+As a time-off approver you also have **Time Off › To Approve › Leave Requests**, which lists them in Odoo. It opens on the **Waiting for me** filter, which follows the same rule as the dashboard: requests at your step, as a delegate, or escalated to you. Clear the filter to see every request you are allowed to see. Use the dashboard to decide as a delegate: see below.
+
+## What happens next
+
+- **Approved, one step:** the request is **Approved**. It counts as taken and shows in Team Presence.
+- **Approved, step 1 of 2:** it moves to **Second Approval** and waits for HR, with a new waiting clock. It leaves your list.
+- **Refused:** the request is **Refused**, and the employee is notified with your reason.
+- **For someone else:** when you decide as a delegate or after escalation, a note on the request says so, for example *Approved by Employee B for Employee D (delegation).*
+- **Asked:** your question is posted on the request and sent to the employee. **Question open** is ticked on the request until they reply there.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *You can't decide Employee A's Annual Leave: it is waiting for Employee D.* | Someone else owns this step, for example the delegation ended or the request moved on. | Refresh the dashboard. If it should be yours, ask the approver to delegate, or ask HR. |
+| *You can't decide Employee A's Annual Leave: it is waiting for HR.* | It is no longer waiting for a decision: someone else already approved or refused it. | Refresh the dashboard. |
+| *This time off request no longer exists.* | The employee cancelled or deleted it. | Nothing to do. |
+
+:::note[Good to know]
+- Requests that are close (starting within 2 days) or already escalated are highlighted, and count as overdue in My Actions.
+- A delegate and an escalation recipient should decide on the dashboard. The buttons on the request form follow Odoo's own approval rules, which don't know about delegation.
+- Time Off officers can still decide other people's requests in **Time Off › Manage › All Leave Requests**. The dashboard and **Waiting for me** list only the requests waiting for you as approver, delegate or after escalation.
+- Undecided requests are reminded, escalated and eventually refused by daily jobs. See [Reminders, escalation and automatic refusal](/leave/calculations/reminders-and-escalation/).
+:::

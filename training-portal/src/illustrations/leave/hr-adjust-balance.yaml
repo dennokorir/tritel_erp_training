@@ -1,0 +1,39 @@
+# docs-sync: verified_commit 83d4cd697910
+# docs-sync: shows tritel_hr_leave:client_action:action_leave_coverage, tritel_hr_leave:model:tritel.leave.adjustment
+type: screen
+title: Adjust a balance in Leave Coverage
+desc: Leave Coverage with Employee A's Annual Leave cell selected and the side panel open, showing the Allocated, Taken, Requested and Left totals, the statement lines including an earlier adjustment, and the Adjust Annual Leave form with Days, Reason and Apply, numbered 1 to 5.
+source: tritel_hr_leave/static/src/coverage/leave_coverage.xml (tritel_hr_leave.LeaveCoverage, the panel), tritel_hr_leave/models/leave_coverage.py (get_ledger, adjust)
+frame:
+  grid: true
+  app: Time Off
+  menu: [Home, My Leave, Team Presence, To Approve, {label: Manage, active: true, n: 1}, Reporting, Configuration]
+  breadcrumb: [Leave Coverage]
+blocks:
+  - table:
+      columns: [Person, "Annual Leave", "Sick Off"]
+      widths: [2, 3, 3]
+      rows:
+        - [{text: "Sales · 3", bold: true}, "", ""]
+        - {cells: [Employee A, "12.5 left of 18.5 · earning", "28 left of 30"], highlight: true, n: 2}
+        - [Employee C, "6 left of 18 · earning", "25 left of 30"]
+  - columns:
+      - panel: true
+        blocks:
+          - title: {text: Employee A, sub: "Annual Leave · 2026 · Sales · joined 2024-03-01"}
+          - tiles:
+              - {label: Allocated, value: "18.5"}
+              - {label: Taken, value: "5"}
+              - {label: Requested, value: "1"}
+              - {label: Left, value: "12.5", tone: good}
+          - table:
+              columns: [Statement, Days]
+              widths: [6, 1]
+              rows:
+                - ["Earned so far, including anything carried over", "+18.5"]
+                - ["Adjustment: Compensation for weekend travel", "+2"]
+          - heading: Adjust Annual Leave
+          - fields:
+              - [{label: Days (negative to take off), value: "1", n: 3}]
+              - [{label: Reason, value: "Worked on a public holiday", n: 4}]
+          - buttons: [{label: Apply, primary: true, n: 5}]

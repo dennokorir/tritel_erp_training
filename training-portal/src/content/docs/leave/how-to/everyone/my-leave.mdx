@@ -1,0 +1,65 @@
+---
+title: Check my leave and request time off
+description: Open My Leave in the Time Off app to see your balance, your next accrual, sick leave left, requests waiting and this year's requests, see who in your team is away this week, and request time off.
+module: leave
+pageType: how-to
+roles: [everyone]
+tags: [time off, balances]
+keywords: [my leave, leave balance, how many days, request leave, apply for leave, book holiday, annual leave, sick leave, leave status, pending leave, time off request, my allocations, my requests, my calendar, too many days, maximum days]
+where: [Time Off, Home]
+before:
+  - Your Odoo user is linked to your employee record. If it isn't, My Leave says so; ask HR to link it.
+related: [leave/concepts/balances, leave/how-to/everyone/team-presence, leave/how-to/everyone/answer-a-question, leave/workflows/time-off-request, leave/how-to/everyone/on-the-portal]
+sidebar: { order: 1 }
+sources:
+  - tritel_hr_leave/views/leave_home_views.xml
+  - tritel_hr_leave/static/src/home/leave_home.xml
+  - tritel_hr_leave/static/src/home/leave_home.js
+  - tritel_hr_leave/models/leave_home.py
+  - tritel_hr_leave/views/menus_by_role.xml
+  - tritel_hr_leave/models/hr_leave_allocation.py
+  - tritel_hr_leave/views/leave_allocation_views.xml
+  - tritel_hr_leave/models/leave_type_rules.py
+verified_commit: 83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+**My Leave** answers "how many days do I have?" before anything else. It shows your balance, what is waiting for approval, your requests this year and who in your team is away this week, and has a **Request time off** button.
+
+<Illustration name="leave/home-my-leave" caption="My Leave. The numbers match the steps below." />
+
+## Steps
+
+1. Open the **Time Off** app. It opens on **Home**.
+2. If people report to you, Home opens on **My Team**: click **My Leave** at the top.
+3. Read your balance, for example **Annual Leave balance 12 days**. The line underneath shows how it is made up: *15 allocated so far · 2 taken · 1 requested*, and, for leave that builds up on an accrual plan, the total *by 31 Dec*. See [Balances: allocated, taken, requested](/leave/concepts/balances/).
+4. Next to it, **Next** shows your next accrual (for example *+1.75 on 1 Dec*), and **Sick Leave left** shows your sick days left and how many you have taken this year.
+5. **Waiting for approval** shows your first request still waiting, with its days and dates and whether it is **Waiting for approval** (your manager) or **Waiting for HR**. *+1 more* means another request is waiting too.
+6. **Requests in 2026** lists your requests this year with their status: **Waiting for approval**, **Waiting for HR**, **Approved** or **Refused**. Beside it, **Your team this week** shows the colleagues who share your manager, as *In all week* or *Away Mon, Tue*. **Taken each month** charts the days you have taken.
+7. To ask for time off, click **Request time off**. **My Calendar** opens (also under **Time Off › My Leave › My Calendar**). Click **New Time Off** (or click a day in the calendar), choose the **Time Off Type** and the **Dates**, add a **Description**, and save.
+
+## What happens next
+
+- Your request goes to your time-off approver, usually your manager, and shows under **Waiting for approval**. Some leave types also need HR's approval: after your manager approves, the request shows **Waiting for HR**.
+- Your **Requested** figure goes up and your **Balance** goes down by the days asked for, until the request is decided.
+- Your manager and HR see the request in Team Presence, striped, until it is approved.
+- If your approver asks a question, you are notified and reply on the request. See [Answer a question on my request](/leave/how-to/everyone/answer-a-question/).
+- If the request is still waiting for your manager when the leave starts, it is refused automatically, and you are told to request it again. See [Time off request workflow](/leave/workflows/time-off-request/).
+
+## If the request is too long
+
+Some leave types cap how many days one request can cover: at Tritel, Maternity is at most 90 days and Paternity at most 14. A longer request stops with, for example, *Paternity Leave can be requested for at most 14 days at a time; this request is 15 days.* Shorten the dates, or split the leave into two requests. See [How staff get leave: allocations](/leave/concepts/allocations/).
+
+## See your allocations
+
+**Time Off › My Leave › My Allocations** lists the leave you have been given, one row per allocation:
+
+- **Kind**: **Earns monthly** (it builds up on an accrual plan, as annual leave does), **Yearly grant** (a fixed number of days for the calendar year, as sick leave is) or **Granted** (given once, for example overtime).
+- **Allocated**, **Taken** and **Left**: the days in the allocation, the days taken from it, and what remains.
+- Allocations that have ended are greyed out.
+
+:::note[Good to know]
+- The request list shows up to 8 requests. Use **Time Off › My Leave › My Requests** for all of them.
+- **Your team this week** only lists colleagues with the same manager as you, and only as in or away. For more, open **Team Presence** at the top.
+- The same page is on the portal at **/my/leave**. See [Use My Leave and Team Presence on the portal](/leave/how-to/everyone/on-the-portal/).
+:::

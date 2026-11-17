@@ -1,0 +1,99 @@
+# Time Off terms (tritel_hr_leave). One or two plain sentences each.
+# Generic words (balance, low, home, delegate) are given specific names here so they don't link on other pages.
+- term: Team Presence
+  definition: "The Time Off screen that shows who is in, away or waiting for approval, by week or month, as a grid or a calendar. What you see depends on your place in the reporting line."
+  module: leave
+  see: [leave/how-to/everyone/team-presence, leave/concepts/who-sees-what]
+- term: Time Off home
+  definition: "The page the Time Off app opens on: My Team for people with others reporting to them, My Leave for everyone else."
+  module: leave
+  see: [leave/index, leave/how-to/everyone/my-leave]
+- term: My Leave
+  definition: "Your own time off page: your balance first, then this year's requests and who on your team is away this week. Also on the portal at /my/leave."
+  module: leave
+  see: [leave/how-to/everyone/my-leave, leave/how-to/everyone/on-the-portal]
+- term: Leave balance
+  definition: "What you can still request: Allocated minus Taken (approved, including days still to come) minus Requested (waiting for approval)."
+  module: leave
+  see: [leave/concepts/balances]
+- term: Accrual plan
+  aliases: [accrued leave]
+  definition: "An Odoo rule that builds up annual leave over the year, for example a set number of days each month. My Leave shows the next accrual and the total expected by 31 December."
+  module: leave
+  see: [leave/concepts/balances]
+- term: Not taking leave
+  definition: "A My Team flag: late in the year, much of the person's allocation is still unused. HR sets the share and the month it starts from."
+  module: leave
+  see: [leave/calculations/busy-days-and-flags, leave/how-to/hr/settings]
+- term: Busy day
+  aliases: [busy days]
+  definition: "A day in Team Presence when at least a set share of the people shown are away (20% to start with, never fewer than 2 people). It is marked in red."
+  module: leave
+  see: [leave/calculations/busy-days-and-flags]
+- term: Time-off approver
+  aliases: [time off approver]
+  definition: "The person who gives the manager's approval on someone's time off: the Time Off approver on their employee record, or else their manager."
+  module: leave
+  see: [leave/concepts/approval-steps]
+- term: Approval delegation
+  aliases: [Delegate My Approvals]
+  definition: "While it is switched on, the person you choose can give the manager's approval on your team's time off for you. The HR step stays with HR."
+  module: leave
+  see: [leave/how-to/line-managers/delegate-approvals, leave/concepts/approval-steps]
+- term: Time off escalation
+  definition: "When a request waits too long, or the leave is about to start, the daily job passes it to the approver's own manager (or the person HR names), who can then decide it."
+  module: leave
+  see: [leave/calculations/reminders-and-escalation, leave/workflows/time-off-request]
+- term: Question open
+  definition: "Shown on a time off request after the approver clicked Ask and before the employee replied on the request."
+  module: leave
+  see: [leave/how-to/everyone/answer-a-question, leave/how-to/line-managers/approve-time-off]
+- term: Waiting since
+  definition: "On a time off request: when it reached the step it is waiting on. Reminders and escalations count working days from here."
+  module: leave
+  see: [leave/calculations/reminders-and-escalation]
+- term: Company-wide Viewers
+  aliases: [Company-wide Time Off View]
+  definition: "A list of people, typically HR, who see the whole company in Team Presence and My Team and can open anyone's leave history."
+  module: leave
+  see: [leave/how-to/hr/company-wide-view, leave/concepts/who-sees-what]
+- term: Hidden from Time Off views
+  aliases: [Hide from Time Off views]
+  definition: "Set on employee records that aren't people taking leave, such as a shared mailbox. They are left out of Team Presence, the Time Off home and the approvals lists."
+  module: leave
+  see: [leave/how-to/hr/hide-service-accounts]
+- term: Expired request refusal
+  definition: "A daily job that refuses any time off request still waiting (To Submit, To Approve or Second Approval) once its last day has passed, including requests waiting for HR."
+  module: leave
+  see: [leave/how-to/hr/settings, leave/calculations/reminders-and-escalation]
+- term: Leave Coverage
+  definition: "A Time Off screen for Time Off officers showing every member of staff against every leave type that needs an allocation, for one year. It shows who is missing an allocation and lets HR allocate it or adjust a balance."
+  module: leave
+  see: [leave/how-to/hr/leave-coverage, leave/how-to/hr/adjust-a-balance]
+- term: Allocation
+  aliases: [leave allocation, allocations]
+  definition: "A record in the Time Off app that gives one person days of one leave type for a period. A leave type that needs an allocation can only be taken from one."
+  module: leave
+  see: [leave/concepts/allocations, leave/how-to/hr/leave-coverage]
+- term: Earns monthly
+  definition: "A leave type every member of staff should have, which builds up over time on an accrual plan, such as Annual Leave. Each person has one allocation with no end date."
+  module: leave
+  see: [leave/concepts/allocations, leave/how-to/hr/set-up-leave-types]
+- term: Yearly grant
+  definition: "A leave type every member of staff should have as a fixed number of days for each calendar year, such as Sick Off. Each year's allocation runs to 31 December."
+  module: leave
+  see: [leave/concepts/allocations, leave/how-to/hr/set-up-leave-types]
+- term: On request
+  definition: "A leave type given only to people who need it, such as Overtime. Leave Coverage doesn't count anyone without one as missing."
+  module: leave
+  see: [leave/concepts/allocations, leave/how-to/hr/set-up-leave-types]
+- term: Allocation kind
+  aliases: [Kind (allocation)]
+  definition: "The Kind column in the allocation lists: Earns monthly, Yearly grant, Granted (a set number of days given once) or Group grant (the record that gave several people their own copy)."
+  module: leave
+  see: [leave/concepts/allocations]
+- term: Balance adjustment
+  aliases: [adjust balance]
+  definition: "A change of a set number of days, up or down, to someone's leave allocation, made in Leave Coverage with a reason. It is logged on the allocation and counted in Leave Coverage."
+  module: leave
+  see: [leave/how-to/hr/adjust-a-balance]

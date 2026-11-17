@@ -1,0 +1,22 @@
+# docs-sync: verified_commit 83d4cd697910
+# docs-sync: shows tritel_hr_leave:field:hr.leave.tritel_query_open
+type: screen
+title: A question on a time off request
+desc: Employee B's annual leave request waiting for approval, with the approver's question in the messages under the form and the Send message box where Employee B types the reply, numbered 1 to 4.
+source: hr_holidays/views/hr_leave_views.xml (hr_leave_view_form), tritel_hr_leave/models/hr_leave_approval.py (tritel_ask, message_post)
+frame:
+  grid: true
+  app: Time Off
+  menu: [Home, {label: My Leave, active: true, n: 1}, Team Presence]
+  breadcrumb: [My Requests, Annual Leave]
+blocks:
+  - buttons: [{label: Cancel}]
+    status: {steps: [To Approve, Approved], current: To Approve}
+  - fields:
+      - [{label: Time Off Type, value: Annual Leave}, {label: Dates, value: "4 Dec 2026 → 4 Dec 2026"}]
+      - [{label: Duration, value: "1 day"}, {label: Description, value: Family event}]
+  - divider: true
+  - buttons: [{label: Send message, primary: true, n: 3}, {label: Log note}]
+  - note: {text: "Question from Employee A: Can Employee C cover your client calls that day? Reply here on the request.", tone: warn, n: 2}
+  - text: "Your reply: Yes, Employee C has agreed to cover them."
+  - buttons: [{label: Send, primary: true, n: 4}]

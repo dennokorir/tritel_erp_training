@@ -6,7 +6,7 @@ import * as yaml from 'js-yaml';
 
 const roleIds = (yaml.load(fs.readFileSync('src/data/roles.yaml', 'utf8')) as { id: string }[]).map((r) => r.id);
 
-export const MODULES = ['general', 'accountability', 'projects', 'tenders', 'board', 'end-to-end', 'reference'] as const;
+export const MODULES = ['general', 'accountability', 'projects', 'tenders', 'board', 'leave', 'end-to-end', 'reference'] as const;
 
 export const collections = {
   docs: defineCollection({

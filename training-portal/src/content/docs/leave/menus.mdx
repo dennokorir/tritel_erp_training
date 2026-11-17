@@ -1,0 +1,121 @@
+---
+title: Time Off menus
+description: Every menu in the Time Off app, what each item opens and who sees it, the Waiting for me filter on To Approve › Leave Requests, and the old Odoo names each menu replaced.
+module: leave
+pageType: reference
+roles: [everyone, line-manager, hr, system-admin]
+tags: [time off, access]
+keywords: [time off menu, where is, menu missing, My Time Off, Overview, Approvals, Allocations, by Employee, by Type, Time Off Types, Accrual Plans, Stress Days, renamed menu]
+related: [leave/who-can-do-what, leave/how-to/hr/leave-coverage, leave/concepts/allocations, leave/how-to/everyone/my-leave, leave/how-to/line-managers/approve-time-off, leave/concepts/approval-steps, leave/index]
+sidebar: { order: 3 }
+sources:
+  - tritel_hr_leave/views/menus_by_role.xml
+  - tritel_hr_leave/models/leave_waiting_filter.py
+  - tritel_hr_leave/models/leave_reports.py
+  - tritel_hr_leave/views/leave_home_views.xml
+  - tritel_hr_leave/views/presence_views.xml
+  - tritel_hr_leave/views/leave_coverage_views.xml
+  - tritel_hr_leave/views/leave_approval_views.xml
+verified_commit: 83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02
+---
+import Illustration from '../../../components/Illustration.astro';
+
+The menus you see in the **Time Off** app depend on your Time Off role. Each role sees everything the role before it sees, plus its own menus: everyone gets **Home**, **My Leave** and **Team Presence**; Time Off approvers add **To Approve**; Time Off officers add **Manage** and **Reporting**; Time Off administrators add **Configuration**.
+
+| Role | How they get it |
+|---|---|
+| **Everyone** | Has a user linked to their employee record. |
+| **Time Off approver** | Odoo gives this right automatically to anyone set as the **Time Off** approver on an employee's record (by default the employee's manager), and takes it away when they no longer approve for anyone. |
+| **Time Off officer** | **Time Off › Officer** in the user's access rights. |
+| **Time Off administrator** | **Time Off › Administrator** in the user's access rights. |
+
+<Illustration name="leave/matrix-menus" caption="Which Time Off menus each role sees." />
+
+## Home
+
+**Time Off › Home** is where the app opens. If people report to you, it opens on **My Team**, with a **My Leave** tab at the top; otherwise it opens on **My Leave**, your balance page. Everyone sees it. See [Check my leave and request time off](/leave/how-to/everyone/my-leave/) and [Use My Team](/leave/how-to/line-managers/my-team/).
+
+## My Leave
+
+Everyone sees these.
+
+| Item | What it opens |
+|---|---|
+| **My Requests** | The list of your own leave requests and their status. |
+| **My Calendar** | Your own time off on a calendar, with **New Time Off** to ask for more. **Request time off** on Home opens the same screen. |
+| **My Allocations** | The days you have been given for each leave type. See [How staff get leave: allocations](/leave/concepts/allocations/). |
+
+## Team Presence
+
+**Time Off › Team Presence** shows who is in and who is away. Everyone sees the menu; what you see inside depends on your place in the reporting line. See [See who is in with Team Presence](/leave/how-to/everyone/team-presence/) and [Who sees whose time off](/leave/concepts/who-sees-what/).
+
+## To Approve
+
+Time Off approvers, officers and administrators see this menu.
+
+| Item | What it opens |
+|---|---|
+| **Leave Requests** | Leave requests, opening on the **Waiting for me** filter. |
+
+**Waiting for me** shows the requests you are asked to decide: as the employee's time-off approver, as the leave type's responsible person at the HR step, as someone's delegate, or because a request was escalated to you. It is the same rule as **Time Off to Approve** on the Approvals dashboard, so both show the same requests. Clear the filter in the search bar to see every request you are allowed to see. See [Approve, refuse or ask about time off](/leave/how-to/line-managers/approve-time-off/) and [Approval steps, delegates and escalation](/leave/concepts/approval-steps/).
+
+You don't need this menu to approve. A delegate, or someone a request was escalated to, decides from the Approvals dashboard or **My Actions**.
+
+## Manage
+
+Time Off officers and administrators see this menu: HR's company-wide screens.
+
+| Item | What it opens |
+|---|---|
+| **Leave Coverage** | People against leave types, with gaps in allocations shown in red. See [Find and fill allocation gaps with Leave Coverage](/leave/how-to/hr/leave-coverage/). |
+| **All Allocations** | Every allocation in the company. Only Time Off officers can approve allocations. See [Adjust a leave balance](/leave/how-to/hr/adjust-a-balance/). |
+| **All Leave Requests** | Every leave request in the company, without the **Waiting for me** filter. |
+| **Company Calendar** | Everyone's time off on one calendar, including requests still waiting. Staff use **Team Presence** instead. |
+
+## Reporting
+
+Time Off officers and administrators see this menu.
+
+| Item | What it opens |
+|---|---|
+| **Leave Taken** | Leave requests by employee, as a chart, a pivot table or a calendar. |
+| **Balances** | Each allocation as days added and each request as days taken off, per person and leave type, so the totals are balances. See [Balances: allocated, taken, requested](/leave/concepts/balances/). |
+
+## Configuration
+
+Only Time Off administrators see this menu.
+
+| Item | What it opens |
+|---|---|
+| **Leave Types** | Each leave type and how staff get it. See [Set how staff get each leave type](/leave/how-to/hr/set-up-leave-types/). |
+| **Monthly Earning Plans** | The plans by which leave builds up each month (Odoo's accrual plans). See [How staff get leave: allocations](/leave/concepts/allocations/). |
+| **Public Holidays** | The company's public holidays. |
+| **Company-wide Viewers** | The people who see everyone's time off. See [Give HR the company-wide view](/leave/how-to/hr/company-wide-view/). |
+| **Approvals and Reminders** | Reminders, escalation and flags. See [Set reminders, escalation and flags](/leave/how-to/hr/settings/). |
+
+## Renamed menus
+
+If you knew Odoo's own Time Off menus, this is where each item went.
+
+| Old name | Now |
+|---|---|
+| **My Time Off** | **My Leave** |
+| **My Time Off › My Time Off** (your request list) | **My Leave › My Requests** |
+| **My Time Off › Dashboard** (your calendar) | **My Leave › My Calendar** |
+| **Overview** | **Manage › Company Calendar**, now for Time Off officers and administrators only |
+| **Approvals** | **To Approve** |
+| **Approvals › Time Off** | **To Approve › Leave Requests** |
+| **Approvals › Allocations** | **Manage › All Allocations**, now for Time Off officers and administrators only |
+| **Approvals › Leave Coverage** | **Manage › Leave Coverage** |
+| **Reporting › by Employee** | **Reporting › Leave Taken** |
+| **Reporting › by Type** | **Reporting › Balances** |
+| **Configuration › Time Off Types** | **Configuration › Leave Types** |
+| **Configuration › Accrual Plans** | **Configuration › Monthly Earning Plans** |
+| **Configuration › Company-wide Time Off View** | **Configuration › Company-wide Viewers** |
+| **Configuration › Approvals & Presence** | **Configuration › Approvals and Reminders** |
+| **Configuration › Stress Days** | Hidden: no stress days are set up. |
+| **My Time Off › My Leave** (a second link to the balance page) | Hidden: the balance page is **Home**. |
+
+:::note[Good to know]
+These names and places are set by Tritel's Time Off module on top of Odoo's. If an administrator updates only Odoo's **Time Off** app, Odoo's old names and places come back until Tritel's Time Off module is updated as well. Update both together.
+:::

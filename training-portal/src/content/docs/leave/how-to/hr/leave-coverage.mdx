@@ -1,0 +1,78 @@
+---
+title: Find and fill allocation gaps with Leave Coverage
+description: As a Time Off officer, see who has an allocation for each leave type in a year, find people missing one, and allocate it to one person or to everyone missing it in one click.
+module: leave
+pageType: how-to
+roles: [hr]
+tags: [time off, allocations]
+keywords: [leave coverage, allocation gaps, missing allocation, allocate leave, new joiner, new staff, no annual leave, bulk allocation, entitlement, sick off, annual leave, join date, first contract date]
+where: [Time Off, Manage, Leave Coverage]
+before:
+  - You are a <strong>Time Off officer</strong>. The <strong>Manage</strong> menu is hidden from everyone else.
+  - Each leave type says <strong>How staff get it</strong> (set by a Time Off administrator under <strong>Configuration › Leave Types</strong>).
+related: [leave/concepts/allocations, leave/how-to/hr/adjust-a-balance, leave/how-to/hr/set-up-leave-types, leave/concepts/balances, leave/menus, leave/faq]
+sidebar: { order: 6 }
+sources:
+  - tritel_hr_leave/models/leave_coverage.py
+  - tritel_hr_leave/static/src/coverage/leave_coverage.xml
+  - tritel_hr_leave/static/src/coverage/leave_coverage.js
+  - tritel_hr_leave/views/leave_coverage_views.xml
+  - tritel_hr_leave/views/menus_by_role.xml
+  - tritel_hr_leave/models/leave_type_rules.py
+verified_commit: 83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+**Leave Coverage** shows every member of staff against every leave type that needs an allocation, for one year. It shows at a glance who is missing an allocation they should have, such as a new joiner with no annual leave, and lets you create it in one click. Use it at the start of each year and whenever someone joins.
+
+<Illustration name="leave/hr-leave-coverage" caption="Leave Coverage for 2026: Employee B is missing Annual Leave. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Time Off › Manage › Leave Coverage**. It opens on this year.
+2. To look at another year, use **‹** and **›** beside the year. **This year** brings you back. The figures are **Figures as at** today for this year, 31 December for a past year and 1 January for a future year.
+3. Narrow the list if you need to:
+   - **All departments**: pick one department (its sub-departments are included).
+   - **Search people**: type part of a name.
+   - **Gaps only**: show only people missing an allocation.
+   - **Include awaiting approval**: also count allocations still waiting for approval as gaps. It is off to start with.
+   - **No join date (N)**: also list the people with no join date, in their own group at the bottom.
+
+   The screen remembers your department and these switches next time.
+4. Read the summary at the top:
+   - **N people with gaps, of M staff**.
+   - For each leave type everyone should have, how many have it, for example **11 / 12** **Annual Leave · Earns monthly**.
+   - **N adjustments in 2026**: balance adjustments made that year.
+5. Find the gaps in the grid. People are grouped by department; each cell shows one leave type:
+
+   | Cell | Meaning |
+   |---|---|
+   | ***x* left of *y*** | An approved allocation: *y* allocated, *x* still to request. **· earning** means it builds up monthly. |
+   | **Awaiting approval** | An allocation exists but isn't approved yet. |
+   | **Missing** · **Click to allocate** | The person should have this leave type and has no allocation. |
+   | **No join date** | The person has no first contract date, so they can't be allocated. |
+   | **On request** | The leave type is given on request, and the person has none. That's expected. |
+
+   Click a cell to open that leave type for the person in a panel on the right. Click a name to see all their leave types, with **Missing N leave types** if any. **Esc** or **✕** closes the panel.
+6. To allocate to one person, click their **Missing** cell, then **Allocate Annual Leave (Earns monthly)** (the button names the leave type). *Allocated to Employee B.* appears.
+7. To allocate to everyone missing a leave type, click **Allocate to everyone missing (N)** under its count in the summary. It asks **Allocate to N?**: click **Yes**, or **Cancel**. *Annual Leave: allocated to 2 people.* appears.
+
+## What happens next
+
+Each allocation made here:
+
+- starts on 1 January, or on the person's join date in the year they joined;
+- is **approved straight away**, so the days can be requested at once;
+- for a leave type that **earns monthly**: has no end date, is on the leave type's accrual plan, and catches up at once on the months already due since it started;
+- for a **yearly grant**: is the leave type's **Days each year**, ends on 31 December, and is named after the leave type and year, for example *Sick Off 2026*;
+- gets the note *Allocated from Leave Coverage by* and your name.
+
+If there is nothing to allocate (someone else has just done it, for example), a warning says why, such as *Already has one*. The grid refreshes and the person's cell shows *x* left of *y*. The allocation also appears in **Time Off › Manage › All Allocations** and on the person's **My Leave**. To correct one afterwards, see [Adjust a leave balance](/leave/how-to/hr/adjust-a-balance/).
+
+:::note[Good to know]
+- **Allocate to everyone missing (N)** allocates to everyone missing the leave type **in the whole company**, even when you have picked a department. The number on the button counts only the people in the department you picked.
+- **Include awaiting approval** only changes what counts as a gap on screen. Neither allocate button creates a second allocation for someone whose allocation is waiting for approval; approve it instead.
+- A **Yearly grant** gives the full **Days each year**, even to someone who joins in November.
+- Staff here are active employees with a join date on or before 31 December of the year shown who aren't hidden from the Time Off views. Someone joining next year doesn't appear until you look at next year.
+- For an **On request** leave type, the panel says *Allocated on request: use Time Off › Approvals › Allocations.* That list is now **Time Off › Manage › All Allocations**.
+:::

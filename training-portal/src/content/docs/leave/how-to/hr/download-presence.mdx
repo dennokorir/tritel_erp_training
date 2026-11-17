@@ -1,0 +1,52 @@
+---
+title: Download Team Presence to Excel
+description: As HR, download the week or month shown in Team Presence, with its filters, as an Excel file with the day-by-day grid, totals per person and leave type, and a sheet saying what was included.
+module: leave
+pageType: how-to
+roles: [hr]
+tags: [time off, reports]
+keywords: [export, excel, xlsx, download, leave report, absence report, attendance, month report, leave days per person, presence export]
+where: [Time Off, Team Presence]
+before:
+  - You are a <strong>Time Off administrator</strong> or on the <strong>Company-wide Viewers</strong> list. The button is hidden from everyone else.
+related: [leave/how-to/everyone/team-presence, leave/how-to/hr/company-wide-view, leave/calculations/busy-days-and-flags, leave/how-to/everyone/on-the-portal]
+sidebar: { order: 4 }
+sources:
+  - tritel_hr_leave/models/presence.py
+  - tritel_hr_leave/controllers/presence.py
+  - tritel_hr_leave/static/src/presence/team_presence.xml
+  - tritel_hr_leave/static/src/presence/team_presence.js
+  - tritel_hr_leave/views/presence_views.xml
+verified_commit: 83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+The download is exactly what Team Presence shows: the same period, the same people and the same filters. Use it for a monthly absence report, or to send a department head their team's month.
+
+<Illustration name="leave/hr-download-presence" caption="Team Presence set to a month and one department, with Download Excel. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Time Off › Team Presence**.
+2. Choose **Week** or **Month**, and move to the period with **‹** and **›**.
+3. Set the filters you want: **Department**, the leave **Type** buttons, **Approved** and **Requested** under **Status**, **Only people away**, or a name in **Search person or role**.
+4. Click **Download Excel**. The file is saved as, for example, *team-presence-month-2026-11-01.xlsx*.
+
+The portal page **/my/presence** has the same **Download Excel** button.
+
+## What happens next
+
+The file has three sheets:
+
+| Sheet | What it holds |
+|---|---|
+| **Presence** | One row per person (**Person**, **Job**, **Department**), grouped by department, and one column per working day, Monday to Friday. The top row, **Away each day**, counts people away; busy days are in red and public holidays show *PH*. Each day off shows the leave type in its colour: the full name for a week, a short code for a month (*AL* for Annual Leave). A **?** marks days requested but not yet approved, **½** a half day. **Days away** totals each row. |
+| **Totals** | Per person, the approved days of each leave type, **Requested (days)** and **Total away (days)**. |
+| **Filters** | The **Period**, who downloaded it (**Shown to**), the **Scope**, the filters used, the **Busy day** threshold, the meaning of every code, and when it was **Downloaded**. |
+
+:::note[Good to know]
+- Only Monday to Friday are included. Weekends never appear, even for people who work them.
+- **Total away (days)** counts approved time off only. Waiting requests are in **Requested (days)**.
+- People hidden from the Time Off views are left out. See [Hide service accounts from Time Off](/leave/how-to/hr/hide-service-accounts/).
+- Anyone else opening the download link directly gets a "not found" page.
+:::

@@ -1,0 +1,31 @@
+# docs-sync: verified_commit 83d4cd697910
+# docs-sync: shows tritel_hr_leave:menu:menu_tritel_leave_approval_settings, tritel_hr_leave:wizard:tritel.leave.approval.settings
+type: screen
+title: Approvals and Reminders settings
+desc: The Approvals and Reminders window from Time Off › Configuration, with the reminder and escalation settings, the person to escalate to, the Team Presence busy-day share and the My Team balance flags, numbered 1 to 6.
+source: tritel_hr_leave/views/leave_approval_views.xml (view_tritel_leave_approval_settings), tritel_hr_leave/models/hr_leave_approval.py (LeaveApprovalSettings)
+frame:
+  grid: true
+  app: Time Off
+  menu: [Home, My Leave, Team Presence, To Approve, Manage, Reporting, {label: Configuration, active: true, n: 1}]
+  breadcrumb: [Time Off]
+blocks:
+  - dialog:
+      title: Approvals and Reminders
+      blocks:
+        - text: A daily job follows each time off request waiting for approval. Days are working days (Monday to Friday, less public holidays). Each reminder and escalation is sent once per step.
+        - fields:
+            - [{label: Remind the approver after (working days), value: "2", n: 2}]
+            - [{label: Escalate after (working days), value: "4"}]
+            - [{label: Or escalate this many days before the leave starts, value: "2"}]
+            - [{label: Refuse requests still waiting for the manager when the leave starts, value: "☑"}]
+            - [{label: "Escalate to, when the approver has no manager", value: Employee A, n: 3}]
+        - heading: Team Presence
+        - fields:
+            - [{label: "Team Presence: busy when this % of the people shown are away", value: "20", n: 4}]
+        - heading: My Team balances
+        - fields:
+            - [{label: "My Team: flag as low at or below (days balance)", value: "3", n: 5}]
+            - [{label: "My Team: flag \"not taking leave\" at (% of allocation in balance)", value: "60"}]
+            - [{label: From month (1–12), value: "10"}]
+        - buttons: [{label: Save, primary: true, n: 6}, {label: Cancel}]

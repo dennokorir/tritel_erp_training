@@ -1,0 +1,39 @@
+# Time Off: every status of a time off request, one entry per status (Odoo 16 labels).
+# Written from hr_holidays (core) and tritel_hr_leave/models/hr_leave_approval.py and hr_leave.py; see the workflow page.
+
+# ── Time off request ────────────────────────────────────────────────────
+- module: leave
+  workflow: "Time off request"
+  link: "/leave/workflows/time-off-request/"
+  state: "To Submit"
+  meaning: "Saved but not sent for approval. Rare: new requests normally go straight to To Approve. Refused by the daily expiry job once its last day has passed."
+  next: "To Approve (Confirm)"
+  who: "The employee"
+- module: leave
+  workflow: "Time off request"
+  link: "/leave/workflows/time-off-request/"
+  state: "To Approve"
+  meaning: "Waiting for its first or only step: the employee's time off approver, or HR for HR-only types. Reminded after 2 working days and escalated after 4 (company settings). Refused automatically when the leave starts while still waiting for the manager, or by the expiry job once its last day has passed."
+  next: "Approved or Second Approval (Approve); Refused (Refuse)"
+  who: "The owner of the step, their delegate (manager step), whoever it was escalated to, or a Time Off officer"
+- module: leave
+  workflow: "Time off request"
+  link: "/leave/workflows/time-off-request/"
+  state: "Second Approval"
+  meaning: "The manager approved; waiting for HR, the leave type's Responsible Time Off Officer. Escalated if it waits, and refused by the expiry job once its last day has passed."
+  next: "Approved (Validate, or Approve on the Approvals dashboard); Refused (Refuse)"
+  who: "The Responsible Time Off Officer, whoever it was escalated to, or a Time Off officer"
+- module: leave
+  workflow: "Time off request"
+  link: "/leave/workflows/time-off-request/"
+  state: "Approved"
+  meaning: "Granted. Counts as taken in balances and shows in Team Presence. The daily jobs never touch it."
+  next: "Refused (Refuse)"
+  who: "An approver or HR"
+- module: leave
+  workflow: "Time off request"
+  link: "/leave/workflows/time-off-request/"
+  state: "Refused"
+  meaning: "Not granted, by an approver (with a reason) or by a daily job. The employee is told on the request."
+  next: "—"
+  who: "—"

@@ -1,0 +1,28 @@
+# docs-sync: verified_commit 83d4cd697910
+# docs-sync: shows tritel_hr_leave:menu:menu_manage, tritel_hr_leave:menu:menu_all_leave_requests, tritel_hr_leave:menu:hr_holidays.menu_hr_holidays_my_leaves, tritel_hr_leave:menu:hr_holidays.hr_leave_menu_my, tritel_hr_leave:menu:hr_holidays.hr_leave_menu_new_request, tritel_hr_leave:menu:hr_holidays.menu_open_allocation, tritel_hr_leave:menu:tritel_hr_leave.menu_my_leave
+# docs-sync: shows tritel_hr_leave:menu:hr_holidays.menu_hr_holidays_approvals, tritel_hr_leave:menu:hr_holidays.menu_open_department_leave_approve, tritel_hr_leave:menu:tritel_hr_leave.menu_leave_coverage, tritel_hr_leave:menu:hr_holidays.hr_holidays_menu_manager_approve_allocations, tritel_hr_leave:menu:hr_holidays.menu_hr_holidays_dashboard
+# docs-sync: shows tritel_hr_leave:menu:hr_holidays.menu_hr_holidays_report, tritel_hr_leave:menu:hr_holidays.menu_hr_available_holidays_report_tree, tritel_hr_leave:menu:hr_holidays.menu_hr_holidays_summary_all
+# docs-sync: shows tritel_hr_leave:menu:hr_holidays.menu_hr_holidays_configuration, tritel_hr_leave:menu:hr_holidays.hr_holidays_status_menu_configuration, tritel_hr_leave:menu:hr_holidays.hr_holidays_accrual_menu_configuration, tritel_hr_leave:menu:tritel_hr_leave.menu_presence_admin, tritel_hr_leave:menu:tritel_hr_leave.menu_tritel_leave_approval_settings, tritel_hr_leave:menu:hr_holidays.hr_holidays_stress_day_menu_configuration
+type: matrix
+title: Time Off menus by role
+desc: Which Time Off menu items everyone, Time Off approvers, Time Off officers and Time Off administrators see, from Home and My Leave to To Approve, Manage, Reporting and Configuration.
+source: tritel_hr_leave/views/menus_by_role.xml, views/leave_home_views.xml, views/presence_views.xml, views/leave_coverage_views.xml, views/leave_approval_views.xml; hr_holidays/views/hr_holidays_views.xml
+columns: [Everyone, Time Off approver, Time Off officer, Time Off administrator]
+labelWidth: 280
+rows:
+  - {group: Your own time off}
+  - {action: "Home (My Team or My Leave)", cells: [y, y, y, y]}
+  - {action: "My Leave › My Requests, My Calendar, My Allocations", cells: [y, y, y, y]}
+  - {action: Team Presence, cells: [y, y, y, y]}
+  - {group: To Approve}
+  - {action: "To Approve › Leave Requests", cells: [n, y, y, y]}
+  - {group: Manage}
+  - {action: "Manage › Leave Coverage", cells: [n, n, y, y]}
+  - {action: "Manage › All Allocations", cells: [n, n, y, y]}
+  - {action: "Manage › All Leave Requests", cells: [n, n, y, y]}
+  - {action: "Manage › Company Calendar", cells: [n, n, y, y]}
+  - {group: Reporting}
+  - {action: "Reporting › Leave Taken, Balances", cells: [n, n, y, y]}
+  - {group: Configuration}
+  - {action: "Configuration › Leave Types, Monthly Earning Plans, Public Holidays", cells: [n, n, n, y]}
+  - {action: "Configuration › Company-wide Viewers, Approvals and Reminders", cells: [n, n, n, y]}

@@ -15,7 +15,8 @@ sources:
   - tritel_project_delivery/views/my_actions_views.xml
   - tritel_tender_tracker/controllers/portal_tender.py
   - tritel_tender_tracker/views/project_summary_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_hr_leave/models/leave_approval_lists.py
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
 ---
 import Illustration from '../../../components/Illustration.astro';
 
@@ -35,5 +36,7 @@ Each system has a **My Actions** screen that lists the work waiting for you, so 
 3. **Waiting on others** counts items you started that someone else must act on next.
 4. Items are grouped by kind of work, with a count for each group.
 5. Each item has its own buttons, for example **Acknowledge** or **Approve**. Click the item itself to open the full record.
+
+**Time off to approve** appears in **Accountability › My Actions** and **Tender Manager › My Actions** when a time off request is waiting for you: as the approver, as their delegate, or after it was escalated to you. It counts as overdue once it has been escalated or the leave starts within two days. See [Approve, refuse or ask about time off](/leave/how-to/line-managers/approve-time-off/).
 
 When you act on an item, it leaves your list. If an item no longer applies (for example the target was withdrawn or the tender dropped), the system clears it for you.

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "1.1.0",
+  "version": "1.3.0",
   "modules": {
     "accountability": {
       "title": "Accountability Framework",
@@ -24,8 +24,8 @@
       "addons_path": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "repo_root": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "track_ref": "origin/16.0",
-      "last_synced_commit": "5c65842fdc84ad076ab9c765615755de221683e8",
-      "last_synced_at": "2026-11-17T12:37:55+00:00",
+      "last_synced_commit": "83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02",
+      "last_synced_at": "2026-11-17T19:15:37+00:00",
       "pages_dir": "src/content/docs/accountability",
       "items": {
         "tritel_accountability_framework:client_action:accountability_cascade_dashboard_action": {
@@ -3987,8 +3987,8 @@
       "addons_path": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "repo_root": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "track_ref": "origin/16.0",
-      "last_synced_commit": "5c65842fdc84ad076ab9c765615755de221683e8",
-      "last_synced_at": "2026-11-17T12:37:55+00:00",
+      "last_synced_commit": "83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02",
+      "last_synced_at": "2026-11-17T19:15:37+00:00",
       "pages_dir": "src/content/docs/projects",
       "items": {
         "tritel_project_delivery:client_action:action_project_my_actions": {
@@ -7237,8 +7237,8 @@
       "addons_path": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "repo_root": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "track_ref": "origin/16.0",
-      "last_synced_commit": "5c65842fdc84ad076ab9c765615755de221683e8",
-      "last_synced_at": "2026-11-17T12:37:55+00:00",
+      "last_synced_commit": "83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02",
+      "last_synced_at": "2026-11-17T19:15:37+00:00",
       "pages_dir": "src/content/docs/tenders",
       "items": {
         "crm_tender:field:hr.employee.certification_count": {
@@ -13504,8 +13504,8 @@
       "addons_path": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "repo_root": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "track_ref": "origin/16.0",
-      "last_synced_commit": "5c65842fdc84ad076ab9c765615755de221683e8",
-      "last_synced_at": "2026-11-17T12:37:55+00:00",
+      "last_synced_commit": "83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02",
+      "last_synced_at": "2026-11-17T19:15:37+00:00",
       "pages_dir": "src/content/docs/board",
       "items": {
         "e_board:cron:cron_board_reviews": {
@@ -14129,9 +14129,766 @@
       "excluded": {
         "e_board:selection:accountability.board.review.line.target_type": "Technical: copy of the target type on a review line."
       }
+    },
+    "leave": {
+      "title": "Time Off",
+      "addons": [
+        "tritel_hr_leave"
+      ],
+      "watch": [
+        {
+          "addon": "tritel_approvals_dashboard",
+          "reason": "Time Off to Approve section and approver delegation"
+        }
+      ],
+      "addons_path": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
+      "repo_root": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
+      "track_ref": "origin/16.0",
+      "last_synced_commit": "83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02",
+      "last_synced_at": "2026-11-17T19:15:37+00:00",
+      "pages_dir": "src/content/docs/leave",
+      "items": {
+        "tritel_hr_leave:client_action:action_leave_home": {
+          "kind": "client_action",
+          "label": "Time Off",
+          "file": "tritel_hr_leave/views/leave_home_views.xml",
+          "pages": [
+            "leave/how-to/everyone/my-leave",
+            "leave/how-to/line-managers/my-team",
+            "leave/index"
+          ],
+          "illustrations": [
+            "leave/home-my-leave",
+            "leave/index#mermaid-1",
+            "leave/my-team"
+          ]
+        },
+        "tritel_hr_leave:client_action:action_my_leave": {
+          "kind": "client_action",
+          "label": "My Leave",
+          "file": "tritel_hr_leave/views/leave_home_views.xml",
+          "pages": [
+            "leave/concepts/balances",
+            "leave/how-to/everyone/my-leave",
+            "leave/index"
+          ],
+          "illustrations": [
+            "leave/calc-balance",
+            "leave/home-my-leave",
+            "leave/index#mermaid-1"
+          ]
+        },
+        "tritel_hr_leave:client_action:action_team_presence": {
+          "kind": "client_action",
+          "label": "Team Presence",
+          "file": "tritel_hr_leave/views/presence_views.xml",
+          "pages": [
+            "leave/concepts/who-sees-what",
+            "leave/how-to/everyone/team-presence",
+            "leave/how-to/hr/download-presence",
+            "leave/index"
+          ],
+          "illustrations": [
+            "leave/hr-download-presence",
+            "leave/index#mermaid-1",
+            "leave/team-presence"
+          ]
+        },
+        "tritel_hr_leave:cron:ir_cron_cancel_expired_leave_requests": {
+          "kind": "cron",
+          "label": "HR Leave: Cancel Expired Pending Requests",
+          "file": "tritel_hr_leave/data/ir_cron_data.xml",
+          "pages": [
+            "leave/calculations/reminders-and-escalation",
+            "leave/faq",
+            "leave/how-to/hr/hide-service-accounts",
+            "leave/how-to/hr/settings",
+            "leave/workflows/time-off-request"
+          ],
+          "illustrations": [
+            "leave/workflows/time-off-request#mermaid-1",
+            "leave/workflows/time-off-request#mermaid-2"
+          ]
+        },
+        "tritel_hr_leave:cron:ir_cron_tritel_leave_reminders": {
+          "kind": "cron",
+          "label": "Time Off: Approval Reminders and Escalation",
+          "file": "tritel_hr_leave/data/leave_approval_cron.xml",
+          "pages": [
+            "leave/calculations/reminders-and-escalation",
+            "leave/concepts/approval-steps",
+            "leave/how-to/hr/settings",
+            "leave/workflows/time-off-request"
+          ],
+          "illustrations": [
+            "leave/calc-reminders",
+            "leave/workflows/time-off-request#mermaid-1",
+            "leave/workflows/time-off-request#mermaid-2"
+          ]
+        },
+        "tritel_hr_leave:field:hr.employee.tritel_leave_hidden": {
+          "kind": "field",
+          "label": "Hide from Time Off views",
+          "file": "tritel_hr_leave/models/employee_visibility.py",
+          "pages": [
+            "leave/faq",
+            "leave/how-to/hr/hide-service-accounts"
+          ],
+          "illustrations": [
+            "leave/hr-hide-service-accounts",
+            "leave/matrix-time-off"
+          ]
+        },
+        "tritel_hr_leave:field:hr.leave.tritel_escalated_on": {
+          "kind": "field",
+          "label": "Escalated on",
+          "file": "tritel_hr_leave/models/hr_leave_approval.py",
+          "pages": [
+            "leave/calculations/reminders-and-escalation",
+            "leave/concepts/approval-steps",
+            "leave/workflows/time-off-request"
+          ],
+          "illustrations": [
+            "leave/calc-reminders",
+            "leave/request-approval-group",
+            "leave/workflows/time-off-request#mermaid-2"
+          ]
+        },
+        "tritel_hr_leave:field:hr.leave.tritel_escalated_to_ids": {
+          "kind": "field",
+          "label": "Escalated to",
+          "file": "tritel_hr_leave/models/hr_leave_approval.py",
+          "pages": [
+            "leave/calculations/reminders-and-escalation",
+            "leave/concepts/approval-steps",
+            "leave/workflows/time-off-request"
+          ],
+          "illustrations": [
+            "leave/calc-reminders",
+            "leave/request-approval-group",
+            "leave/workflows/time-off-request#mermaid-1"
+          ]
+        },
+        "tritel_hr_leave:field:hr.leave.tritel_query_open": {
+          "kind": "field",
+          "label": "Question open",
+          "file": "tritel_hr_leave/models/hr_leave_approval.py",
+          "pages": [
+            "leave/concepts/approval-steps",
+            "leave/how-to/everyone/answer-a-question",
+            "leave/how-to/line-managers/approve-time-off",
+            "leave/workflows/time-off-request"
+          ],
+          "illustrations": [
+            "leave/answer-question",
+            "leave/approve-dashboard",
+            "leave/request-approval-group",
+            "leave/workflows/time-off-request#mermaid-2"
+          ]
+        },
+        "tritel_hr_leave:field:hr.leave.tritel_reminded_on": {
+          "kind": "field",
+          "label": "Reminder sent",
+          "file": "tritel_hr_leave/models/hr_leave_approval.py",
+          "pages": [
+            "leave/calculations/reminders-and-escalation",
+            "leave/concepts/approval-steps",
+            "leave/workflows/time-off-request"
+          ],
+          "illustrations": [
+            "leave/calc-reminders",
+            "leave/request-approval-group",
+            "leave/workflows/time-off-request#mermaid-2"
+          ]
+        },
+        "tritel_hr_leave:field:hr.leave.tritel_waiting_since": {
+          "kind": "field",
+          "label": "Waiting since",
+          "file": "tritel_hr_leave/models/hr_leave_approval.py",
+          "pages": [
+            "leave/calculations/reminders-and-escalation",
+            "leave/concepts/approval-steps",
+            "leave/workflows/time-off-request"
+          ],
+          "illustrations": [
+            "leave/calc-reminders",
+            "leave/request-approval-group",
+            "leave/workflows/time-off-request#mermaid-1"
+          ]
+        },
+        "tritel_hr_leave:menu:menu_leave_home": {
+          "kind": "menu",
+          "label": "Home",
+          "file": "tritel_hr_leave/views/leave_home_views.xml",
+          "pages": [
+            "leave/how-to/everyone/my-leave",
+            "leave/how-to/line-managers/my-team",
+            "leave/index"
+          ],
+          "illustrations": [
+            "leave/home-my-leave",
+            "leave/index#mermaid-1",
+            "leave/my-team"
+          ]
+        },
+        "tritel_hr_leave:menu:menu_my_leave": {
+          "kind": "menu",
+          "label": "My Leave",
+          "file": "tritel_hr_leave/views/leave_home_views.xml",
+          "pages": [
+            "leave/concepts/balances",
+            "leave/how-to/everyone/my-leave",
+            "leave/index"
+          ],
+          "illustrations": [
+            "leave/calc-balance",
+            "leave/home-my-leave",
+            "leave/index#mermaid-1"
+          ]
+        },
+        "tritel_hr_leave:menu:menu_presence_admin": {
+          "kind": "menu",
+          "label": "Company-wide Time Off View",
+          "file": "tritel_hr_leave/views/presence_views.xml",
+          "pages": [
+            "leave/how-to/hr/company-wide-view",
+            "leave/who-can-do-what"
+          ],
+          "illustrations": [
+            "leave/hr-company-wide-view",
+            "leave/matrix-time-off"
+          ]
+        },
+        "tritel_hr_leave:menu:menu_team_presence": {
+          "kind": "menu",
+          "label": "Team Presence",
+          "file": "tritel_hr_leave/views/presence_views.xml",
+          "pages": [
+            "leave/concepts/who-sees-what",
+            "leave/how-to/everyone/team-presence",
+            "leave/how-to/hr/download-presence",
+            "leave/index"
+          ],
+          "illustrations": [
+            "leave/concepts/who-sees-what#mermaid-1",
+            "leave/hr-download-presence",
+            "leave/index#mermaid-1",
+            "leave/team-presence"
+          ]
+        },
+        "tritel_hr_leave:menu:menu_tritel_leave_approval_settings": {
+          "kind": "menu",
+          "label": "Approvals &amp; Presence",
+          "file": "tritel_hr_leave/views/leave_approval_views.xml",
+          "pages": [
+            "leave/how-to/hr/settings",
+            "leave/who-can-do-what"
+          ],
+          "illustrations": [
+            "leave/hr-settings",
+            "leave/matrix-time-off"
+          ]
+        },
+        "tritel_hr_leave:model:tritel.presence.admin": {
+          "kind": "model",
+          "label": "Company-wide Time Off View",
+          "file": "tritel_hr_leave/models/presence.py",
+          "pages": [
+            "leave/concepts/who-sees-what",
+            "leave/how-to/hr/company-wide-view",
+            "leave/who-can-do-what"
+          ],
+          "illustrations": [
+            "leave/hr-company-wide-view",
+            "leave/matrix-time-off"
+          ]
+        },
+        "tritel_hr_leave:route:/my/leave": {
+          "kind": "route",
+          "label": "/my/leave",
+          "file": "tritel_hr_leave/controllers/leave_home.py",
+          "pages": [
+            "leave/how-to/everyone/on-the-portal",
+            "leave/index"
+          ],
+          "illustrations": [
+            "leave/index#mermaid-1",
+            "leave/portal-leave"
+          ]
+        },
+        "tritel_hr_leave:route:/my/presence": {
+          "kind": "route",
+          "label": "/my/presence",
+          "file": "tritel_hr_leave/controllers/presence.py",
+          "pages": [
+            "leave/concepts/who-sees-what",
+            "leave/how-to/everyone/on-the-portal",
+            "leave/how-to/everyone/team-presence",
+            "leave/index"
+          ],
+          "illustrations": [
+            "leave/concepts/who-sees-what#mermaid-1",
+            "leave/index#mermaid-1",
+            "leave/portal-leave"
+          ]
+        },
+        "tritel_hr_leave:route:/my/team-leave": {
+          "kind": "route",
+          "label": "/my/team-leave",
+          "file": "tritel_hr_leave/controllers/leave_home.py",
+          "pages": [
+            "leave/concepts/who-sees-what",
+            "leave/how-to/everyone/on-the-portal",
+            "leave/how-to/line-managers/my-team",
+            "leave/index"
+          ],
+          "illustrations": [
+            "leave/index#mermaid-1",
+            "leave/portal-leave"
+          ]
+        },
+        "tritel_hr_leave:route:/my/team-leave/<int:employee_id>": {
+          "kind": "route",
+          "label": "/my/team-leave/<int:employee_id>",
+          "file": "tritel_hr_leave/controllers/leave_home.py",
+          "pages": [
+            "leave/concepts/who-sees-what",
+            "leave/how-to/everyone/on-the-portal"
+          ],
+          "illustrations": [
+            "leave/concepts/who-sees-what#mermaid-1",
+            "leave/portal-leave"
+          ]
+        },
+        "tritel_hr_leave:route:/tritel_hr_leave/presence/export": {
+          "kind": "route",
+          "label": "/tritel_hr_leave/presence/export",
+          "file": "tritel_hr_leave/controllers/presence.py",
+          "pages": [
+            "leave/faq",
+            "leave/how-to/hr/download-presence",
+            "leave/who-can-do-what"
+          ],
+          "illustrations": [
+            "leave/hr-download-presence",
+            "leave/matrix-time-off"
+          ]
+        },
+        "tritel_hr_leave:view_ext:hr.view_employee_form:button:hide-from-time-off-views": {
+          "kind": "view_ext",
+          "label": "Hide from Time Off views",
+          "file": "tritel_hr_leave/views/employee_visibility_views.xml",
+          "pages": [
+            "leave/how-to/hr/hide-service-accounts",
+            "leave/who-can-do-what"
+          ],
+          "illustrations": [
+            "leave/hr-hide-service-accounts",
+            "leave/matrix-time-off"
+          ]
+        },
+        "tritel_hr_leave:view_ext:hr.view_employee_form:button:show-in-time-off-views": {
+          "kind": "view_ext",
+          "label": "Show in Time Off views",
+          "file": "tritel_hr_leave/views/employee_visibility_views.xml",
+          "pages": [
+            "leave/how-to/hr/hide-service-accounts"
+          ],
+          "illustrations": [
+            "leave/hr-hide-service-accounts"
+          ]
+        },
+        "tritel_hr_leave:wizard:tritel.leave.approval.settings": {
+          "kind": "wizard",
+          "label": "Time off approval reminders",
+          "file": "tritel_hr_leave/models/hr_leave_approval.py",
+          "pages": [
+            "leave/calculations/busy-days-and-flags",
+            "leave/how-to/hr/settings"
+          ],
+          "illustrations": [
+            "leave/hr-settings"
+          ]
+        },
+        "tritel_hr_leave:view_ext:hr_holidays.hr_leave_allocation_view_tree:field:taken": {
+          "kind": "view_ext",
+          "label": "Taken",
+          "file": "tritel_hr_leave/views/leave_allocation_views.xml",
+          "pages": [
+            "leave/concepts/allocations",
+            "leave/how-to/everyone/my-leave"
+          ],
+          "illustrations": []
+        },
+        "tritel_hr_leave:menu:menu_leave_coverage": {
+          "kind": "menu",
+          "label": "Leave Coverage",
+          "file": "tritel_hr_leave/views/leave_coverage_views.xml",
+          "pages": [
+            "leave/how-to/hr/leave-coverage",
+            "leave/menus"
+          ],
+          "illustrations": [
+            "leave/hr-leave-coverage",
+            "leave/matrix-time-off"
+          ]
+        },
+        "tritel_hr_leave:client_action:action_leave_coverage": {
+          "kind": "client_action",
+          "label": "Leave Coverage",
+          "file": "tritel_hr_leave/views/leave_coverage_views.xml",
+          "pages": [
+            "leave/how-to/hr/adjust-a-balance",
+            "leave/how-to/hr/leave-coverage"
+          ],
+          "illustrations": [
+            "leave/hr-adjust-balance",
+            "leave/hr-leave-coverage"
+          ]
+        },
+        "tritel_hr_leave:menu:menu_manage": {
+          "kind": "menu",
+          "label": "Manage",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/how-to/hr/leave-coverage",
+            "leave/menus",
+            "leave/who-can-do-what"
+          ],
+          "illustrations": [
+            "leave/hr-leave-coverage",
+            "leave/matrix-menus",
+            "leave/matrix-time-off"
+          ]
+        },
+        "tritel_hr_leave:menu:menu_all_leave_requests": {
+          "kind": "menu",
+          "label": "All Leave Requests",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/how-to/line-managers/approve-time-off",
+            "leave/menus"
+          ],
+          "illustrations": [
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:menu:hr_holidays.menu_hr_holidays_my_leaves": {
+          "kind": "menu",
+          "label": "My Leave",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/index",
+            "leave/menus"
+          ],
+          "illustrations": [
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:menu:hr_holidays.hr_leave_menu_my": {
+          "kind": "menu",
+          "label": "My Requests",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/how-to/everyone/answer-a-question",
+            "leave/how-to/everyone/my-leave",
+            "leave/menus"
+          ],
+          "illustrations": [
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:menu:hr_holidays.hr_leave_menu_new_request": {
+          "kind": "menu",
+          "label": "My Calendar",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/how-to/everyone/my-leave",
+            "leave/menus"
+          ],
+          "illustrations": [
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:menu:hr_holidays.menu_open_allocation": {
+          "kind": "menu",
+          "label": "hr_holidays.menu_open_allocation",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/how-to/everyone/my-leave",
+            "leave/menus"
+          ],
+          "illustrations": [
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:menu:tritel_hr_leave.menu_my_leave": {
+          "kind": "menu",
+          "label": "tritel_hr_leave.menu_my_leave",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/menus"
+          ],
+          "illustrations": [
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:menu:hr_holidays.menu_hr_holidays_approvals": {
+          "kind": "menu",
+          "label": "To Approve",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/how-to/line-managers/approve-time-off",
+            "leave/menus",
+            "leave/who-can-do-what"
+          ],
+          "illustrations": [
+            "leave/matrix-menus",
+            "leave/matrix-time-off"
+          ]
+        },
+        "tritel_hr_leave:menu:hr_holidays.menu_open_department_leave_approve": {
+          "kind": "menu",
+          "label": "Leave Requests",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/how-to/line-managers/approve-time-off",
+            "leave/menus"
+          ],
+          "illustrations": [
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:menu:tritel_hr_leave.menu_leave_coverage": {
+          "kind": "menu",
+          "label": "tritel_hr_leave.menu_leave_coverage",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/how-to/hr/leave-coverage",
+            "leave/menus"
+          ],
+          "illustrations": [
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:menu:hr_holidays.hr_holidays_menu_manager_approve_allocations": {
+          "kind": "menu",
+          "label": "All Allocations",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/menus",
+            "leave/who-can-do-what"
+          ],
+          "illustrations": [
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:menu:hr_holidays.menu_hr_holidays_dashboard": {
+          "kind": "menu",
+          "label": "Company Calendar",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/menus"
+          ],
+          "illustrations": [
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:menu:hr_holidays.menu_hr_holidays_report": {
+          "kind": "menu",
+          "label": "hr_holidays.menu_hr_holidays_report",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/menus"
+          ],
+          "illustrations": [
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:menu:hr_holidays.menu_hr_available_holidays_report_tree": {
+          "kind": "menu",
+          "label": "Leave Taken",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/menus"
+          ],
+          "illustrations": [
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:menu:hr_holidays.menu_hr_holidays_summary_all": {
+          "kind": "menu",
+          "label": "Balances",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/menus"
+          ],
+          "illustrations": [
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:menu:hr_holidays.menu_hr_holidays_configuration": {
+          "kind": "menu",
+          "label": "hr_holidays.menu_hr_holidays_configuration",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/menus",
+            "leave/who-can-do-what"
+          ],
+          "illustrations": [
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:menu:hr_holidays.hr_holidays_status_menu_configuration": {
+          "kind": "menu",
+          "label": "Leave Types",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/how-to/hr/set-up-leave-types",
+            "leave/menus"
+          ],
+          "illustrations": [
+            "leave/hr-leave-type-rules",
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:menu:hr_holidays.hr_holidays_accrual_menu_configuration": {
+          "kind": "menu",
+          "label": "Monthly Earning Plans",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/how-to/hr/set-up-leave-types",
+            "leave/menus"
+          ],
+          "illustrations": [
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:menu:tritel_hr_leave.menu_presence_admin": {
+          "kind": "menu",
+          "label": "tritel_hr_leave.menu_presence_admin",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/how-to/hr/company-wide-view",
+            "leave/menus"
+          ],
+          "illustrations": [
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:menu:tritel_hr_leave.menu_tritel_leave_approval_settings": {
+          "kind": "menu",
+          "label": "tritel_hr_leave.menu_tritel_leave_approval_settings",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/how-to/hr/settings",
+            "leave/menus"
+          ],
+          "illustrations": [
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:menu:hr_holidays.hr_holidays_stress_day_menu_configuration": {
+          "kind": "menu",
+          "label": "hr_holidays.hr_holidays_stress_day_menu_configuration",
+          "file": "tritel_hr_leave/views/menus_by_role.xml",
+          "pages": [
+            "leave/menus"
+          ],
+          "illustrations": [
+            "leave/matrix-menus"
+          ]
+        },
+        "tritel_hr_leave:field:hr.leave.allocation.tritel_kind": {
+          "kind": "field",
+          "label": "Kind",
+          "file": "tritel_hr_leave/models/hr_leave_allocation.py",
+          "pages": [
+            "leave/concepts/allocations",
+            "leave/how-to/everyone/my-leave"
+          ],
+          "illustrations": [
+            "leave/calc-allocations"
+          ]
+        },
+        "tritel_hr_leave:field:hr.leave.allocation.tritel_left": {
+          "kind": "field",
+          "label": "Left",
+          "file": "tritel_hr_leave/models/hr_leave_allocation.py",
+          "pages": [
+            "leave/concepts/allocations",
+            "leave/how-to/everyone/my-leave"
+          ],
+          "illustrations": []
+        },
+        "tritel_hr_leave:model:tritel.leave.adjustment": {
+          "kind": "model",
+          "label": "Leave balance adjustment",
+          "file": "tritel_hr_leave/models/leave_coverage.py",
+          "pages": [
+            "leave/how-to/hr/adjust-a-balance",
+            "leave/how-to/hr/leave-coverage"
+          ],
+          "illustrations": [
+            "leave/hr-adjust-balance"
+          ]
+        },
+        "tritel_hr_leave:field:hr.leave.type.tritel_accrual_plan_id": {
+          "kind": "field",
+          "label": "Accrual plan",
+          "file": "tritel_hr_leave/models/leave_type_rules.py",
+          "pages": [
+            "leave/concepts/allocations",
+            "leave/how-to/hr/set-up-leave-types"
+          ],
+          "illustrations": [
+            "leave/hr-leave-type-rules"
+          ]
+        },
+        "tritel_hr_leave:field:hr.leave.type.tritel_yearly_days": {
+          "kind": "field",
+          "label": "Days each year",
+          "file": "tritel_hr_leave/models/leave_type_rules.py",
+          "pages": [
+            "leave/concepts/allocations",
+            "leave/how-to/hr/set-up-leave-types"
+          ],
+          "illustrations": [
+            "leave/calc-allocations",
+            "leave/hr-leave-type-rules"
+          ]
+        },
+        "tritel_hr_leave:field:hr.leave.type.tritel_max_days_per_request": {
+          "kind": "field",
+          "label": "Most days in one request",
+          "file": "tritel_hr_leave/models/leave_type_rules.py",
+          "pages": [
+            "leave/concepts/allocations",
+            "leave/how-to/everyone/my-leave",
+            "leave/how-to/hr/set-up-leave-types"
+          ],
+          "illustrations": [
+            "leave/hr-leave-type-rules"
+          ]
+        },
+        "tritel_hr_leave:selection:hr.leave.type.tritel_allocation_mode": {
+          "kind": "selection",
+          "label": "How staff get it",
+          "file": "tritel_hr_leave/models/leave_type_rules.py",
+          "pages": [
+            "leave/concepts/allocations",
+            "leave/how-to/hr/set-up-leave-types"
+          ],
+          "illustrations": [
+            "leave/calc-allocations",
+            "leave/hr-leave-type-rules"
+          ]
+        }
+      },
+      "excluded": {}
     }
   },
-  "generated_at": "2026-11-17T12:01:46+00:00",
+  "generated_at": "2026-11-17T19:15:37+00:00",
   "portal_root": "training-portal",
-  "verified_commit": "eec18b485b6c6d644069f73427c97d5c535646fc"
+  "verified_commit": "83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02"
 }
