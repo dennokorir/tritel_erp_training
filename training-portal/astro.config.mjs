@@ -25,16 +25,24 @@ export default defineConfig({
       logo: { src: './src/assets/mark.svg', alt: '' },
       favicon: '/favicon.svg',
       customCss: ['./src/styles/theme.css'],
-      head: [{ tag: 'script', attrs: { src: '/mermaid-size.js', defer: true } }],
-      components: { MarkdownContent: './src/components/MarkdownContent.astro' },
+      head: [
+        { tag: 'script', attrs: { src: '/mermaid-size.js', defer: true } },
+        // Apply a hidden "On this page" before first paint (see src/components/TwoColumnContent.astro)
+        { tag: 'script', content: "try{if(localStorage.getItem('tp-toc-hidden'))document.documentElement.setAttribute('data-toc-hidden','')}catch(e){}" },
+      ],
+      components: {
+        MarkdownContent: './src/components/MarkdownContent.astro',
+        TwoColumnContent: './src/components/TwoColumnContent.astro',
+      },
       lastUpdated: false,
       pagination: true,
       tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
       sidebar: [
-        group('Getting started', 'getting-started'),
+        group('Getting started', 'getting-started', true),
         { label: "What's new", link: '/whats-new/' },
         {
           label: 'Accountability',
+          collapsed: true,
           items: [
             { label: 'Overview', link: '/accountability/' },
             group('Concepts', 'accountability/concepts', true),
@@ -50,6 +58,7 @@ export default defineConfig({
         },
         {
           label: 'Projects',
+          collapsed: true,
           items: [
             { label: 'Overview', link: '/projects/' },
             group('Concepts', 'projects/concepts', true),
@@ -64,6 +73,7 @@ export default defineConfig({
         },
         {
           label: 'Tenders and Channel',
+          collapsed: true,
           items: [
             { label: 'Overview', link: '/tenders/' },
             group('Concepts', 'tenders/concepts', true),
@@ -80,6 +90,7 @@ export default defineConfig({
         },
         {
           label: 'Board portal',
+          collapsed: true,
           items: [
             { label: 'Overview', link: '/board/' },
             group('Concepts', 'board/concepts', true),
@@ -92,6 +103,7 @@ export default defineConfig({
         },
         {
           label: 'Time Off',
+          collapsed: true,
           items: [
             { label: 'Overview', link: '/leave/' },
             group('Concepts', 'leave/concepts', true),
