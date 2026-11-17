@@ -1,0 +1,31 @@
+# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: shows tritel_tender_tracker:menu:menu_configuration_activity_types, tritel_tender_tracker:model:res.partner.activity.type, tritel_tender_tracker:selection:res.partner.activity.type.channel
+# docs-sync: shows tritel_tender_tracker:menu:menu_customer_tags, tritel_tender_tracker:menu:menu_last_seen_stages, tritel_tender_tracker:menu:menu_action_tender_tag
+type: screen
+title: Tender Manager configuration
+desc: The Tender Manager Configuration menu open, with the Activity Types list being edited in place, a new type and its Channel being added, numbered 1 to 4.
+source: tritel_tender_tracker/views/res_partner.xml (view_activity_types_tree), tritel_tender_tracker/views/partner_activity_touchpoints_views.xml (view_res_partner_activity_type_tree_touchpoints)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [Tenders, Tender Customers, Reporting, {label: Configuration, active: true, n: 1}]
+  breadcrumb: [Activity Types]
+blocks:
+  - columns:
+      - panel: true
+        blocks:
+          - heading: Configuration
+          - text: "Target Periods · Stages · Tags · Lost Reasons · Drop Reasons · Cancel Reasons · Pillars · Summary Headings · Bid Quality Guidelines · Standard Bid Documents · Bid Desk Team"
+          - text: "Customer Tags · Activity Types · Last Seen Stages"
+          - note: {text: Activity Types, tone: accent, n: 2}
+      - panel: true
+        blocks:
+          - buttons: [{label: New, primary: true, n: 3}]
+          - table:
+              columns: [Name, Channel]
+              widths: [3, 3]
+              rows:
+                - [Procurement Plan, Document / Submission]
+                - [Customer Meeting, Meeting]
+                - [Workshop, Workshop / Demo]
+                - {cells: [Site Survey, Visit], highlight: true, n: 4}

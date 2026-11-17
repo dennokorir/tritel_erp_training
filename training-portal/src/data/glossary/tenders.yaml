@@ -247,9 +247,15 @@
   module: tenders
   see: [tenders/concepts/customer-activities]
 - term: Last Seen
-  definition: "The date of a customer's latest done touch. A nightly job sorts customers into bands from 1 to 30 days up to never seen."
+  aliases: [Last Seen Stage]
+  definition: "The date of a customer's latest done touch. A nightly job sorts customers into bands (Last Seen Stages) from 30 days up to never seen."
   module: tenders
-  see: [tenders/concepts/customer-activities]
+  see: [tenders/concepts/customer-activities, tenders/configuration]
+- term: Activity Type
+  aliases: [Activity Types]
+  definition: "The kind of customer touch, such as a customer meeting or a workshop. Each type has a default channel. The list is kept under Tender Manager › Configuration."
+  module: tenders
+  see: [tenders/configuration, tenders/concepts/customer-activities]
 - term: Coverage ladder
   aliases: [coverage rung]
   definition: "The rung each customer sits on - Anchor, Named, Prequalified, In play, Contested, Engaged or Untouched - worked out from its tenders, opportunities and touches."

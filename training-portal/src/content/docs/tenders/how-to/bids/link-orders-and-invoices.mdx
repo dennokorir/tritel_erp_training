@@ -1,0 +1,64 @@
+---
+title: Link orders and invoices to a tender
+description: Link a sales order, purchase order, customer invoice or vendor bill to the won tender it belongs to, so the tender's Sales, Purchases, Invoices and Bills buttons show it.
+module: tenders
+pageType: how-to
+roles: [account-manager, finance, tender-admin]
+tags: [tenders, bids]
+keywords: [link sales order, link purchase order, LPO, PO, invoice, vendor bill, tender reference, delivery, won tender, tender costs, order to tender, smart button]
+where: [Sales, Orders]
+before:
+  - The tender is <strong>Won</strong>. Sales and purchase orders can only be linked to won tenders.
+  - You can edit the order, invoice or bill (Sales, Purchase or Invoicing rights).
+related: [tenders/concepts/tenders-and-statuses, tenders/how-to/bids/record-the-result, tenders/concepts/opportunities-and-tenders, projects/concepts/delivery-projects]
+sidebar: { order: 12 }
+sources:
+  - tritel_tender_tracker/views/sale_order_views.xml
+  - tritel_tender_tracker/views/purchase_views.xml
+  - tritel_tender_tracker/views/account_move_views.xml
+  - tritel_tender_tracker/models/sale_order.py
+  - tritel_tender_tracker/models/purchase.py
+  - tritel_tender_tracker/models/account_move.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/models/crm_lead.py
+  - tritel_tender_tracker/models/res_partner.py
+  - tritel_tender_tracker/views/crm_lead_views.xml
+  - tritel_tender_tracker/views/res_partner.xml
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Once a tender is won, the sales orders, purchase orders, invoices and bills that deliver it should point back to it. The tender's **Sales**, **Purchases**, **Invoices** and **Bills** buttons then show everything sold, bought and billed for it in one place. Link the order when you create it. Invoices made from a linked order are linked for you.
+
+<Illustration name="tenders/bid-link-orders" caption="A sales order linked to a won tender. The numbers match the steps below." />
+
+## Steps: a sales order
+
+1. Open **Sales › Orders** and open the quotation or order (or create it).
+2. In **Tender**, under **Payment Terms**, choose the tender. The list only offers **Won** tenders for the order's customer.
+3. Save.
+4. A **Tender** smart button appears at the top of the order. Click it to open the tender.
+
+## Steps: a purchase order
+
+1. Open **Purchase › Orders** and open the request for quotation or order.
+2. In **Tender**, next to the currency, choose the tender. The list offers every **Won** tender, whatever the customer.
+3. Save. A **Tender** smart button appears.
+
+## Steps: an invoice or bill made by hand
+
+1. Open the customer invoice, credit note, vendor bill or refund.
+2. Open the **Other Info** tab. Under **Tender**, choose the tender.
+3. Save. A **Tender** smart button appears.
+
+## What happens next
+
+- The tender's buttons count the linked records: **Sales** (sales orders), **Purchases** (purchase orders), **Invoices** (customer invoices and credit notes) and **Bills** (vendor bills and refunds). Each button appears only once there is something to show, and opens the records.
+- An invoice or bill created from a linked sales or purchase order gets the same **Tender** by itself.
+- On a customer's form, the **Tenders** button lists every tender for that customer. On an opportunity, the **Tenders** button lists the tenders created from it.
+
+:::note[Good to know]
+- The **Tender** field on an invoice or bill isn't limited to won tenders, and can point to any customer's tender. Check you picked the right one.
+- Changing the **Tender** on an order later doesn't change invoices already made from it. Correct those on their **Other Info** tab.
+:::

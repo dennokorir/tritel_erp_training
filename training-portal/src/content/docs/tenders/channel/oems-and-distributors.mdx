@@ -23,7 +23,10 @@ sources:
   - tritel_tender_tracker/models/target_period.py
   - tritel_tender_tracker/security/security.xml
   - tritel_tender_tracker/views/tender_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - crm_tender/models/product.py
+  - crm_tender/models/product_template.py
+  - crm_tender/views/product_template_views.xml
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -62,6 +65,13 @@ Each OEM and each distributor has a status: **Onboarding** while the relationshi
 2. Type the name and choose the **Vendor**: the supplier contact used on purchase orders.
 3. On the **OEMs(Vendors)** tab, add the OEMs it carries.
 4. Click **Confirm**, then **OK** on *Set Active?*.
+
+## Set a product's OEM
+
+1. Open the product (for example from **Purchase › Products**) and go to its **Channel** tab.
+2. Choose the **OEM** and save.
+
+Purchase lines for that product that have no OEM yet, and aren't in an OEM booking, take the new OEM at once. Lines that already have an OEM keep it. Future lines for the product are tagged automatically.
 
 ## Why the links matter
 

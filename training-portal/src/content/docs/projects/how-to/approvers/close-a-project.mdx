@@ -24,7 +24,7 @@ sources:
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/menus.xml
   - tritel_project_delivery/views/my_actions_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -49,7 +49,7 @@ Closing a project records its **final cost** and freezes its result: on time, on
 
 ## What happens next
 
-- **After closing:** the project's **Handover** button shows **Closed**. The **Handover & close** tab shows the frozen **Result**, **On time**, **On budget**, **Final cost (before VAT)**, the figures at close and **Days late**. A summary is posted in the project's chatter, and every finance user's *Close delivery project* to-do is removed.
+- **After closing:** the project's **Handover** button shows **Closed**. The **Handover & close** tab shows the frozen **Result**, **On time**, **On budget**, **Final cost (before VAT)**, the figures at close and **Days late**, with **Closed on** and **Closed by** (when and by whom it was closed). A summary is posted in the project's chatter, and every finance user's *Close delivery project* to-do is removed.
 - The Delivery KPI in Accountability uses this result for the project manager. A project that is **Not scored** (no approved baseline or no confirmed handover) is not counted.
 - The project leaves the delivery lists on My Actions. Nobody can record a handover, log a client delay or start a revision until it is reopened.
 - Costs posted or ordered later do not change the result. They show as [costs after close](/projects/how-to/approvers/review-costs-after-close/).

@@ -1,0 +1,25 @@
+# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: shows tritel_tender_tracker:view_ext:base.view_partner_form:page:go-to-market-activities, tritel_tender_tracker:view_ext:base.view_partner_form:field:activities
+# docs-sync: shows tritel_tender_tracker:field:res.partner.last_seen, tritel_tender_tracker:field:res.partner.last_seen_stage_id, tritel_tender_tracker:view_ext:sale.res_partner_view_buttons:button:tenders
+type: screen
+title: A customer's form
+desc: A customer's form with the Tenders and Touchpoints smart buttons, the Account Manager, Last Seen and Last Seen Stage fields, and the Go To Market Activities tab listing the customer's touches, numbered 1 to 4.
+source: tritel_tender_tracker/views/res_partner.xml (view_partner_form, res_partner_view_buttons), tritel_tender_tracker/views/partner_activity_touchpoints_views.xml
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [Tenders, {label: Tender Customers, active: true}, Reporting, Configuration]
+  breadcrumb: [Customers, Customer A]
+blocks:
+  - smart: [{label: Tenders, value: "4", n: 1}, {label: Touchpoints, value: "12"}]
+  - title: {text: Customer A, sub: Company}
+  - fields:
+      - [{label: Tags, value: Government}, {label: Account Manager, value: Employee A}]
+      - [{label: Last Seen, value: 12/10/2026, n: 2}, {label: Last Seen Stage, value: Last Seen 60 Days, n: 3}]
+  - tabs: {items: [Contacts & Addresses, Sales & Purchase, Go To Market Activities], active: Go To Market Activities, n: 4}
+  - table:
+      columns: [Date, Name, Responsible, Account Manager, State]
+      widths: [2, 3, 2, 2, 2]
+      rows:
+        - [12/10/2026, Quarterly review, Employee A, Employee A, {text: Done, badge: true, tone: good}]
+        - [20/11/2026, Network workshop, Employee B, Employee A, {text: Planned, badge: true, tone: accent}]

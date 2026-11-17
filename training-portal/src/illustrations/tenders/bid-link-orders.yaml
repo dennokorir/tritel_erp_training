@@ -1,0 +1,28 @@
+# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: shows tritel_tender_tracker:view_ext:sale.view_order_form:field:tender, tritel_tender_tracker:view_ext:sale.view_order_form:button:tender
+# docs-sync: shows tritel_tender_tracker:field:sale.order.tender_id, tritel_tender_tracker:field:purchase.order.tender_id, tritel_tender_tracker:field:account.move.tender_id
+# docs-sync: shows tritel_tender_tracker:view_ext:purchase.purchase_order_form:button:tender, tritel_tender_tracker:view_ext:account.view_move_form:button:tender
+type: screen
+title: A sales order linked to a tender
+desc: A sales order for Customer A with a won tender chosen in the Tender field under Payment Terms, and the Tender smart button that appears once it is linked, numbered 1 to 4.
+source: tritel_tender_tracker/views/sale_order_views.xml (view_order_form inherit)
+frame:
+  grid: true
+  app: Sales
+  menu: [{label: Orders, active: true, n: 1}, To Invoice, Products]
+  breadcrumb: [Quotations, SO-2026-014]
+blocks:
+  - buttons: [{label: Send by Email}, {label: Confirm, primary: true}]
+    status: {steps: [Quotation, Quotation Sent, Sales Order], current: Quotation}
+  - smart: [{label: Tender, value: "", tone: accent, n: 4}]
+  - title: {text: SO-2026-014, sub: Quotation}
+  - fields:
+      - [{label: Customer, value: Customer A}, {label: Expiration, value: 31/12/2026}]
+      - [{label: Payment Terms, value: 30 Days}, {label: Tender, value: TND-2026-001, n: 2}]
+  - tabs: {items: [Order Lines, Other Info], active: Order Lines}
+  - table:
+      columns: [Product, Quantity, Unit Price, Subtotal]
+      widths: [4, 1, 2, 2]
+      rows:
+        - [Access point indoor, "10", "500.00", "5,000.00"]
+  - buttons: [{label: Save, primary: true, n: 3}, {label: Discard}]

@@ -1,0 +1,36 @@
+# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: shows crm_tender:field:purchase.order.has_oem, crm_tender:field:purchase.order.line.oem_id, crm_tender:view_ext:purchase.purchase_order_form:button:action-oem-purchase-order-lines
+type: screen
+title: OEM on a purchase order
+desc: A purchase order with the Has OEM box ticked, an OEM column on the order lines, and the OEM smart button that opens the order's lines grouped by OEM, numbered 1 to 4.
+source: crm_tender/views/purchase_views.xml (purchase_order_form inherit, view_oem_purchase_order_line_tree, view_oem_purchase_order_search)
+frame:
+  grid: true
+  app: Purchase
+  menu: [Orders, Products]
+  breadcrumb: [Requests for Quotation, PO-2026-003]
+blocks:
+  - buttons: [{label: Confirm Order, primary: true}, {label: Cancel}]
+    status: {steps: [RFQ, RFQ Sent, Purchase Order], current: Purchase Order}
+  - smart: [{label: OEM, value: "", tone: accent, n: 3}]
+  - title: {text: PO-2026-003, sub: Purchase Order}
+  - fields: [[{label: Vendor, value: Distributor A}, {label: Has OEM, value: "☑", n: 1}]]
+  - tabs: {items: [Products, Other Information], active: Products}
+  - table:
+      columns: [Product, Description, OEM, Quantity, Unit Price, Subtotal]
+      widths: [3, 3, 2, 1, 2, 2]
+      n: 2
+      rows:
+        - [Access point indoor, Access point indoor, OEM B, "10", "300.00", "3,000.00"]
+        - [Switch 24-port, Switch 24-port, OEM A, "2", "1,000.00", "2,000.00"]
+  - dialog:
+      title: OEM Purchase Order Lines
+      n: 4
+      blocks:
+        - search: {facets: ["Group By: OEM"], placeholder: "Search…", filters: [Filters, Group By]}
+        - table:
+            columns: [Order Reference, Product, OEM, Quantity, Unit Price, Subtotal]
+            widths: [2, 3, 2, 1, 2, 2]
+            rows:
+              - [PO-2026-003, Access point indoor, OEM B, "10", "300.00", "3,000.00"]
+              - [PO-2026-003, Switch 24-port, OEM A, "2", "1,000.00", "2,000.00"]

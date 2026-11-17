@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "1.0.0",
+  "version": "1.1.0",
   "modules": {
     "accountability": {
       "title": "Accountability Framework",
@@ -24,8 +24,8 @@
       "addons_path": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "repo_root": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "track_ref": "origin/16.0",
-      "last_synced_commit": "2d489c33a7b2f7519b2a010c97c84947a801f193",
-      "last_synced_at": "2026-11-17T12:01:46+00:00",
+      "last_synced_commit": "5c65842fdc84ad076ab9c765615755de221683e8",
+      "last_synced_at": "2026-11-17T12:37:55+00:00",
       "pages_dir": "src/content/docs/accountability",
       "items": {
         "tritel_accountability_framework:client_action:accountability_cascade_dashboard_action": {
@@ -3940,6 +3940,16 @@
             "accountability/mgr-rebalance",
             "accountability/mgr-withdraw"
           ]
+        },
+        "tritel_accountability_framework:view_ext:hr.view_employee_form:field:unit": {
+          "kind": "view_ext",
+          "label": "Unit",
+          "file": "tritel_accountability_framework/views/hr_employee_views.xml",
+          "pages": [
+            "accountability/concepts/targets",
+            "accountability/how-to/everyone/see-my-performance"
+          ],
+          "illustrations": []
         }
       },
       "excluded": {
@@ -3955,7 +3965,8 @@
         "tritel_accountability_framework:view_ext:hr.view_employee_form:page:reporting-history": "Technical: reporting-line history tab on the employee form (see the excluded model).",
         "tritel_accountability_framework:wizard:accountability.cascade.pull.wizard.line": "Technical: line records inside the Request Cascade window.",
         "tritel_accountability_framework:wizard:accountability.cascade.push.wizard.line": "Technical: line records inside the Push Cascade window.",
-        "tritel_accountability_framework:wizard:accountability.target.withdraw.wizard": "Unreachable in 16.0: the target's Withdraw opens the scorecard change request instead (see accountability-questions.md #30)."
+        "tritel_accountability_framework:wizard:accountability.target.withdraw.wizard": "Unreachable in 16.0: the target's Withdraw opens the scorecard change request instead (see accountability-questions.md #30).",
+        "tritel_accountability_framework:selection:accountability.milestone.target_state": "Copy of the target's status on each milestone; not shown on any screen."
       }
     },
     "projects": {
@@ -3976,8 +3987,8 @@
       "addons_path": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "repo_root": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "track_ref": "origin/16.0",
-      "last_synced_commit": "2d489c33a7b2f7519b2a010c97c84947a801f193",
-      "last_synced_at": "2026-11-17T12:01:46+00:00",
+      "last_synced_commit": "5c65842fdc84ad076ab9c765615755de221683e8",
+      "last_synced_at": "2026-11-17T12:37:55+00:00",
       "pages_dir": "src/content/docs/projects",
       "items": {
         "tritel_project_delivery:client_action:action_project_my_actions": {
@@ -7177,6 +7188,26 @@
             "projects/concept-approvals-matrix",
             "projects/matrix-closeout-setup"
           ]
+        },
+        "tritel_project_delivery:field:project.project.closed_on": {
+          "kind": "field",
+          "label": "Closed on",
+          "file": "tritel_project_delivery/models/closeout.py",
+          "pages": [
+            "projects/how-to/approvers/close-a-project"
+          ],
+          "illustrations": []
+        },
+        "tritel_project_delivery:field:project.project.tender_id": {
+          "kind": "field",
+          "label": "Tender",
+          "file": "tritel_project_delivery/models/project.py",
+          "pages": [
+            "projects/concepts/delivery-projects",
+            "projects/how-to/delivery-pm/link-an-existing-project",
+            "projects/reports/project-at-a-glance"
+          ],
+          "illustrations": []
         }
       },
       "excluded": {
@@ -7206,8 +7237,8 @@
       "addons_path": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "repo_root": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "track_ref": "origin/16.0",
-      "last_synced_commit": "2d489c33a7b2f7519b2a010c97c84947a801f193",
-      "last_synced_at": "2026-11-17T12:01:46+00:00",
+      "last_synced_commit": "5c65842fdc84ad076ab9c765615755de221683e8",
+      "last_synced_at": "2026-11-17T12:37:55+00:00",
       "pages_dir": "src/content/docs/tenders",
       "items": {
         "crm_tender:field:hr.employee.certification_count": {
@@ -8559,6 +8590,7 @@
           "file": "tritel_tender_tracker/models/digest.py",
           "pages": [
             "tenders/commercial-targets/achievements",
+            "tenders/faq",
             "tenders/how-to/bids/attribute-a-won-tender",
             "tenders/how-to/customers/portal-dashboard"
           ],
@@ -9499,6 +9531,7 @@
             "tenders/concepts/bid-readiness",
             "tenders/concepts/must-win-and-bid-quality",
             "tenders/concepts/project-summaries",
+            "tenders/configuration",
             "tenders/how-to/bids/nominate-the-team",
             "tenders/how-to/bids/record-the-result",
             "tenders/how-to/bids/score-bid-quality",
@@ -9600,6 +9633,7 @@
           "file": "tritel_tender_tracker/views/tender_views.xml",
           "pages": [
             "tenders/concepts/must-win-and-bid-quality",
+            "tenders/configuration",
             "tenders/how-to/bids/record-the-result"
           ],
           "illustrations": []
@@ -9609,7 +9643,8 @@
           "label": "Lost Reasons",
           "file": "tritel_tender_tracker/views/tender_views.xml",
           "pages": [
-            "tenders/concepts/must-win-and-bid-quality"
+            "tenders/concepts/must-win-and-bid-quality",
+            "tenders/configuration"
           ],
           "illustrations": []
         },
@@ -9625,6 +9660,7 @@
             "tenders/concepts/opportunities-and-tenders",
             "tenders/concepts/prequalifications",
             "tenders/concepts/roles-on-a-tender",
+            "tenders/configuration",
             "tenders/faq",
             "tenders/how-to/bids/attribute-a-won-tender",
             "tenders/how-to/bids/follow-up-reports",
@@ -9851,7 +9887,8 @@
           "file": "tritel_tender_tracker/views/target_period_views.xml",
           "pages": [
             "tenders/commercial-targets/index",
-            "tenders/commercial-targets/target-periods"
+            "tenders/commercial-targets/target-periods",
+            "tenders/configuration"
           ],
           "illustrations": [
             "tenders/ct-target-period",
@@ -9953,6 +9990,7 @@
           "pages": [
             "tenders/calculations/workload-points",
             "tenders/concepts/bid-desk-workload",
+            "tenders/configuration",
             "tenders/faq",
             "tenders/how-to/bids/nominate-the-team",
             "tenders/index"
@@ -9967,6 +10005,7 @@
           "file": "tritel_tender_tracker/views/tender_workflow_views.xml",
           "pages": [
             "tenders/concepts/tenders-and-statuses",
+            "tenders/configuration",
             "tenders/how-to/bids/record-the-result",
             "tenders/workflows/tender-status"
           ],
@@ -10093,6 +10132,7 @@
           "file": "tritel_tender_tracker/views/project_summary_views.xml",
           "pages": [
             "tenders/concepts/project-summaries",
+            "tenders/configuration",
             "tenders/how-to/customers/export-for-marketing",
             "tenders/how-to/customers/use-the-summary-library",
             "tenders/how-to/customers/write-a-project-summary",
@@ -10113,6 +10153,7 @@
           "pages": [
             "tenders/calculations/bid-quality-score",
             "tenders/concepts/must-win-and-bid-quality",
+            "tenders/configuration",
             "tenders/how-to/bids/score-bid-quality"
           ],
           "illustrations": [
@@ -10125,6 +10166,7 @@
           "file": "tritel_tender_tracker/views/bid_desk_views.xml",
           "pages": [
             "tenders/concepts/bid-readiness",
+            "tenders/configuration",
             "tenders/how-to/bids/confirm-the-bid",
             "tenders/how-to/bids/work-the-readiness-checklist",
             "tenders/index",
@@ -10154,6 +10196,7 @@
           "file": "tritel_tender_tracker/views/project_summary_views.xml",
           "pages": [
             "tenders/concepts/project-summaries",
+            "tenders/configuration",
             "tenders/index"
           ],
           "illustrations": [
@@ -11433,6 +11476,7 @@
             "tenders/channel/oems-and-distributors",
             "tenders/channel/tag-untagged-purchases",
             "tenders/concepts/roles-on-a-tender",
+            "tenders/configuration",
             "tenders/index",
             "tenders/who-can-do-what"
           ],
@@ -11446,6 +11490,7 @@
             "tenders/ch-untagged-purchases",
             "tenders/channel/booking-workflow#mermaid-1",
             "tenders/concepts/roles-on-a-tender#mermaid-1",
+            "tenders/config-activity-types",
             "tenders/cust-touch-log",
             "tenders/matrix-bid-desk",
             "tenders/matrix-channel",
@@ -12855,6 +12900,561 @@
             "tenders/cust-account-ownership",
             "tenders/concepts/roles-on-a-tender#mermaid-1"
           ]
+        },
+        "tritel_tender_tracker:view_ext:account.view_move_form:button:tender": {
+          "kind": "view_ext",
+          "label": "Tender",
+          "file": "tritel_tender_tracker/views/account_move_views.xml",
+          "pages": [
+            "tenders/how-to/bids/link-orders-and-invoices"
+          ],
+          "illustrations": [
+            "tenders/bid-link-orders"
+          ]
+        },
+        "tritel_tender_tracker:view_ext:crm.crm_lead_view_form:button:tenders": {
+          "kind": "view_ext",
+          "label": "Tenders",
+          "file": "tritel_tender_tracker/views/crm_lead_views.xml",
+          "pages": [
+            "tenders/concepts/opportunities-and-tenders",
+            "tenders/how-to/bids/link-orders-and-invoices"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:view_ext:crm.crm_lead_view_form:field:tenders": {
+          "kind": "view_ext",
+          "label": "Tenders",
+          "file": "tritel_tender_tracker/views/crm_lead_views.xml",
+          "pages": [
+            "tenders/concepts/opportunities-and-tenders",
+            "tenders/how-to/bids/link-orders-and-invoices"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:view_ext:crm.crm_lead_view_form:field:activities": {
+          "kind": "view_ext",
+          "label": "Activities",
+          "file": "tritel_tender_tracker/views/crm_lead_views.xml",
+          "pages": [
+            "tenders/concepts/customer-activities",
+            "tenders/concepts/opportunities-and-tenders"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:view_ext:purchase.purchase_order_form:button:tender": {
+          "kind": "view_ext",
+          "label": "Tender",
+          "file": "tritel_tender_tracker/views/purchase_views.xml",
+          "pages": [
+            "tenders/how-to/bids/link-orders-and-invoices"
+          ],
+          "illustrations": [
+            "tenders/bid-link-orders"
+          ]
+        },
+        "tritel_tender_tracker:menu:menu_customer_tags": {
+          "kind": "menu",
+          "label": "Customer Tags",
+          "file": "tritel_tender_tracker/views/res_partner.xml",
+          "pages": [
+            "tenders/configuration"
+          ],
+          "illustrations": [
+            "tenders/config-activity-types"
+          ]
+        },
+        "tritel_tender_tracker:menu:menu_configuration_activity_types": {
+          "kind": "menu",
+          "label": "Activity Types",
+          "file": "tritel_tender_tracker/views/res_partner.xml",
+          "pages": [
+            "tenders/configuration"
+          ],
+          "illustrations": [
+            "tenders/config-activity-types"
+          ]
+        },
+        "tritel_tender_tracker:menu:menu_last_seen_stages": {
+          "kind": "menu",
+          "label": "Last Seen Stages",
+          "file": "tritel_tender_tracker/views/res_partner.xml",
+          "pages": [
+            "tenders/configuration"
+          ],
+          "illustrations": [
+            "tenders/config-activity-types"
+          ]
+        },
+        "tritel_tender_tracker:view_ext:base.view_partner_form:page:go-to-market-activities": {
+          "kind": "view_ext",
+          "label": "Go To Market Activities",
+          "file": "tritel_tender_tracker/views/res_partner.xml",
+          "pages": [
+            "tenders/concepts/customer-activities"
+          ],
+          "illustrations": [
+            "tenders/cust-customer-form"
+          ]
+        },
+        "tritel_tender_tracker:view_ext:base.view_partner_form:field:activities": {
+          "kind": "view_ext",
+          "label": "Activities",
+          "file": "tritel_tender_tracker/views/res_partner.xml",
+          "pages": [
+            "tenders/concepts/customer-activities"
+          ],
+          "illustrations": [
+            "tenders/cust-customer-form"
+          ]
+        },
+        "tritel_tender_tracker:view_ext:sale.res_partner_view_buttons:button:tenders": {
+          "kind": "view_ext",
+          "label": "Tenders",
+          "file": "tritel_tender_tracker/views/res_partner.xml",
+          "pages": [
+            "tenders/concepts/customer-activities",
+            "tenders/how-to/bids/link-orders-and-invoices"
+          ],
+          "illustrations": [
+            "tenders/cust-customer-form"
+          ]
+        },
+        "tritel_tender_tracker:view_ext:sale.res_partner_view_buttons:field:tenders": {
+          "kind": "view_ext",
+          "label": "Tenders",
+          "file": "tritel_tender_tracker/views/res_partner.xml",
+          "pages": [
+            "tenders/concepts/customer-activities",
+            "tenders/how-to/bids/link-orders-and-invoices"
+          ],
+          "illustrations": [
+            "tenders/cust-customer-form"
+          ]
+        },
+        "tritel_tender_tracker:view_ext:sale.view_order_form:button:tender": {
+          "kind": "view_ext",
+          "label": "Tender",
+          "file": "tritel_tender_tracker/views/sale_order_views.xml",
+          "pages": [
+            "tenders/how-to/bids/link-orders-and-invoices"
+          ],
+          "illustrations": [
+            "tenders/bid-link-orders"
+          ]
+        },
+        "tritel_tender_tracker:view_ext:sale.view_order_form:field:tender": {
+          "kind": "view_ext",
+          "label": "Tender",
+          "file": "tritel_tender_tracker/views/sale_order_views.xml",
+          "pages": [
+            "tenders/how-to/bids/link-orders-and-invoices"
+          ],
+          "illustrations": [
+            "tenders/bid-link-orders"
+          ]
+        },
+        "tritel_tender_tracker:menu:menu_action_tender_tag": {
+          "kind": "menu",
+          "label": "Tags",
+          "file": "tritel_tender_tracker/views/tender_views.xml",
+          "pages": [
+            "tenders/configuration"
+          ],
+          "illustrations": [
+            "tenders/config-activity-types"
+          ]
+        },
+        "tritel_tender_tracker:field:account.move.tender_id": {
+          "kind": "field",
+          "label": "Tender",
+          "file": "tritel_tender_tracker/models/account_move.py",
+          "pages": [
+            "tenders/how-to/bids/link-orders-and-invoices"
+          ],
+          "illustrations": [
+            "tenders/bid-link-orders"
+          ]
+        },
+        "tritel_tender_tracker:field:res.partner.suggested_am_reason": {
+          "kind": "field",
+          "label": "Why",
+          "file": "tritel_tender_tracker/models/account_ownership.py",
+          "pages": [
+            "tenders/how-to/customers/account-ownership"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:field:res.partner.looks_like_company": {
+          "kind": "field",
+          "label": "Looks Like an Organisation",
+          "file": "tritel_tender_tracker/models/account_ownership.py",
+          "pages": [
+            "tenders/how-to/customers/account-ownership"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:field:crm.lead.tender_ids": {
+          "kind": "field",
+          "label": "Tenders",
+          "file": "tritel_tender_tracker/models/crm_lead.py",
+          "pages": [
+            "tenders/concepts/opportunities-and-tenders",
+            "tenders/how-to/bids/link-orders-and-invoices"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:field:crm.lead.tenders_count": {
+          "kind": "field",
+          "label": "Tenders",
+          "file": "tritel_tender_tracker/models/crm_lead.py",
+          "pages": [
+            "tenders/concepts/opportunities-and-tenders",
+            "tenders/how-to/bids/link-orders-and-invoices"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:field:crm.lead.period_id": {
+          "kind": "field",
+          "label": "Period",
+          "file": "tritel_tender_tracker/models/crm_lead.py",
+          "pages": [
+            "tenders/commercial-targets/target-periods",
+            "tenders/concepts/opportunities-and-tenders"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:field:crm.lead.touch_strip_data": {
+          "kind": "field",
+          "label": "Touch Strip",
+          "file": "tritel_tender_tracker/models/deal_touch_strip.py",
+          "pages": [
+            "tenders/concepts/customer-activities",
+            "tenders/concepts/opportunities-and-tenders"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:field:digest.digest.kpi_tenders": {
+          "kind": "field",
+          "label": "Tenders",
+          "file": "tritel_tender_tracker/models/digest.py",
+          "pages": [
+            "tenders/faq"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:field:hr.employee.partner_ids": {
+          "kind": "field",
+          "label": "Customer Accounts",
+          "file": "tritel_tender_tracker/models/hr_employee.py",
+          "pages": [
+            "tenders/concepts/roles-on-a-tender"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:field:hr.employee.tender_ids": {
+          "kind": "field",
+          "label": "Tenders",
+          "file": "tritel_tender_tracker/models/hr_employee.py",
+          "pages": [
+            "tenders/concepts/roles-on-a-tender"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:field:hr.employee.res_partner_activity_ids": {
+          "kind": "field",
+          "label": "Customer Activitities",
+          "file": "tritel_tender_tracker/models/hr_employee.py",
+          "pages": [
+            "tenders/concepts/roles-on-a-tender"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:field:hr.employee.am_named_share": {
+          "kind": "field",
+          "label": "Named Share (%)",
+          "file": "tritel_tender_tracker/models/hr_employee_roles.py",
+          "pages": [
+            "tenders/concepts/market-coverage",
+            "tenders/concepts/roles-on-a-tender"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:field:hr.employee.touches_recent": {
+          "kind": "field",
+          "label": "touches_recent",
+          "file": "tritel_tender_tracker/models/hr_employee_roles.py",
+          "pages": [
+            "tenders/concepts/roles-on-a-tender"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:selection:tender.initial.priority": {
+          "kind": "selection",
+          "label": "Starred",
+          "file": "tritel_tender_tracker/models/models.py",
+          "pages": [
+            "tenders/how-to/bids/create-a-tender"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:field:purchase.order.tender_id": {
+          "kind": "field",
+          "label": "tender_id",
+          "file": "tritel_tender_tracker/models/purchase.py",
+          "pages": [
+            "tenders/how-to/bids/link-orders-and-invoices"
+          ],
+          "illustrations": [
+            "tenders/bid-link-orders"
+          ]
+        },
+        "tritel_tender_tracker:field:res.partner.tender_ids": {
+          "kind": "field",
+          "label": "tender_ids",
+          "file": "tritel_tender_tracker/models/res_partner.py",
+          "pages": [
+            "tenders/concepts/customer-activities",
+            "tenders/how-to/bids/link-orders-and-invoices"
+          ],
+          "illustrations": [
+            "tenders/cust-customer-form"
+          ]
+        },
+        "tritel_tender_tracker:field:res.partner.tenders_count": {
+          "kind": "field",
+          "label": "tenders_count",
+          "file": "tritel_tender_tracker/models/res_partner.py",
+          "pages": [
+            "tenders/concepts/customer-activities",
+            "tenders/how-to/bids/link-orders-and-invoices"
+          ],
+          "illustrations": [
+            "tenders/cust-customer-form"
+          ]
+        },
+        "tritel_tender_tracker:field:res.partner.res_partner_activity_ids": {
+          "kind": "field",
+          "label": "Customer Activitities",
+          "file": "tritel_tender_tracker/models/res_partner.py",
+          "pages": [
+            "tenders/concepts/customer-activities"
+          ],
+          "illustrations": [
+            "tenders/cust-customer-form"
+          ]
+        },
+        "tritel_tender_tracker:field:res.partner.activity_count": {
+          "kind": "field",
+          "label": "Activities Count",
+          "file": "tritel_tender_tracker/models/res_partner.py",
+          "pages": [
+            "tenders/concepts/customer-activities",
+            "tenders/how-to/customers/account-ownership"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:field:res.partner.partner_activity_ids": {
+          "kind": "field",
+          "label": "partner_activity_ids",
+          "file": "tritel_tender_tracker/models/res_partner.py",
+          "pages": [
+            "tenders/concepts/customer-activities"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:field:res.partner.last_seen": {
+          "kind": "field",
+          "label": "last_seen",
+          "file": "tritel_tender_tracker/models/res_partner.py",
+          "pages": [
+            "tenders/concepts/customer-activities"
+          ],
+          "illustrations": [
+            "tenders/cust-customer-form"
+          ]
+        },
+        "tritel_tender_tracker:field:res.partner.last_seen_stage_id": {
+          "kind": "field",
+          "label": "Last Seen Stage",
+          "file": "tritel_tender_tracker/models/res_partner.py",
+          "pages": [
+            "tenders/concepts/customer-activities",
+            "tenders/configuration"
+          ],
+          "illustrations": [
+            "tenders/cust-customer-form"
+          ]
+        },
+        "tritel_tender_tracker:model:res.partner.last.seen.stages": {
+          "kind": "model",
+          "label": "Partner Last Seen Stages",
+          "file": "tritel_tender_tracker/models/res_partner.py",
+          "pages": [
+            "tenders/concepts/customer-activities",
+            "tenders/configuration"
+          ],
+          "illustrations": [
+            "tenders/config-activity-types"
+          ]
+        },
+        "tritel_tender_tracker:model:res.partner.activity.type": {
+          "kind": "model",
+          "label": "Partner Activity Type",
+          "file": "tritel_tender_tracker/models/res_partner.py",
+          "pages": [
+            "tenders/concepts/customer-activities",
+            "tenders/configuration"
+          ],
+          "illustrations": [
+            "tenders/config-activity-types"
+          ]
+        },
+        "tritel_tender_tracker:field:sale.order.tender_id": {
+          "kind": "field",
+          "label": "tender_id",
+          "file": "tritel_tender_tracker/models/sale_order.py",
+          "pages": [
+            "tenders/how-to/bids/link-orders-and-invoices"
+          ],
+          "illustrations": [
+            "tenders/bid-link-orders"
+          ]
+        },
+        "tritel_tender_tracker:field:res.partner.target_note": {
+          "kind": "field",
+          "label": "Target Note",
+          "file": "tritel_tender_tracker/models/target_accounts.py",
+          "pages": [
+            "tenders/concepts/market-coverage"
+          ],
+          "illustrations": []
+        },
+        "tritel_tender_tracker:model:tender.portal.access.log": {
+          "kind": "model",
+          "label": "Commercial Portal Access Log",
+          "file": "tritel_tender_tracker/models/tender_portal_access_log.py",
+          "pages": [
+            "tenders/concepts/the-portal"
+          ],
+          "illustrations": []
+        },
+        "crm_tender:menu:menu_configuration_root": {
+          "kind": "menu",
+          "label": "Configuration",
+          "file": "crm_tender/views/crm_oem_views.xml",
+          "pages": [
+            "tenders/channel/certifications-and-learning",
+            "tenders/channel/index"
+          ],
+          "illustrations": []
+        },
+        "crm_tender:menu:menu_crm_tag_types": {
+          "kind": "menu",
+          "label": "Tag Types",
+          "file": "crm_tender/views/crm_tag.xml",
+          "pages": [
+            "tenders/channel/vendor-opportunities"
+          ],
+          "illustrations": []
+        },
+        "crm_tender:view_ext:hr.view_employee_form:button:action-employee-certifications": {
+          "kind": "view_ext",
+          "label": "action_employee_certifications",
+          "file": "crm_tender/views/hr_employee.xml",
+          "pages": [
+            "tenders/channel/certifications-and-learning"
+          ],
+          "illustrations": []
+        },
+        "crm_tender:view_ext:product.product_template_form_view:page:channel": {
+          "kind": "view_ext",
+          "label": "Channel",
+          "file": "crm_tender/views/product_template_views.xml",
+          "pages": [
+            "tenders/channel/oems-and-distributors"
+          ],
+          "illustrations": []
+        },
+        "crm_tender:view_ext:purchase.purchase_order_form:button:action-oem-purchase-order-lines": {
+          "kind": "view_ext",
+          "label": "action_oem_purchase_order_lines",
+          "file": "crm_tender/views/purchase_views.xml",
+          "pages": [
+            "tenders/channel/tag-untagged-purchases"
+          ],
+          "illustrations": [
+            "tenders/ch-purchase-order-oem"
+          ]
+        },
+        "crm_tender:field:crm.lead.vendor_lead_ids": {
+          "kind": "field",
+          "label": "vendor_lead_ids",
+          "file": "crm_tender/models/crm_lead.py",
+          "pages": [
+            "tenders/channel/vendor-opportunities"
+          ],
+          "illustrations": []
+        },
+        "crm_tender:field:crm.tag.tag_type_id": {
+          "kind": "field",
+          "label": "tag_type_id",
+          "file": "crm_tender/models/crm_tag.py",
+          "pages": [
+            "tenders/channel/vendor-opportunities"
+          ],
+          "illustrations": []
+        },
+        "crm_tender:field:hr.employee.certification_ids": {
+          "kind": "field",
+          "label": "certification_ids",
+          "file": "crm_tender/models/hr_employee.py",
+          "pages": [
+            "tenders/channel/certifications-and-learning"
+          ],
+          "illustrations": []
+        },
+        "crm_tender:field:product.template.oem_id": {
+          "kind": "field",
+          "label": "OEM",
+          "file": "crm_tender/models/product_template.py",
+          "pages": [
+            "tenders/channel/oems-and-distributors"
+          ],
+          "illustrations": []
+        },
+        "crm_tender:field:purchase.order.has_oem": {
+          "kind": "field",
+          "label": "Has OEM",
+          "file": "crm_tender/models/purchase.py",
+          "pages": [
+            "tenders/channel/tag-untagged-purchases"
+          ],
+          "illustrations": [
+            "tenders/ch-purchase-order-oem"
+          ]
+        },
+        "crm_tender:field:purchase.order.line.oem_id": {
+          "kind": "field",
+          "label": "OEM",
+          "file": "crm_tender/models/purchase.py",
+          "pages": [
+            "tenders/channel/oems-and-distributors",
+            "tenders/channel/tag-untagged-purchases"
+          ],
+          "illustrations": [
+            "tenders/ch-purchase-order-oem"
+          ]
+        },
+        "crm_tender:selection:purchase.order.line.po_state": {
+          "kind": "selection",
+          "label": "PO Status",
+          "file": "crm_tender/models/purchase.py",
+          "pages": [
+            "tenders/channel/oem-bookings",
+            "tenders/channel/tag-untagged-purchases"
+          ],
+          "illustrations": []
         }
       },
       "excluded": {
@@ -12870,7 +13470,12 @@
         "tritel_tender_tracker:selection:tender.business.case.tender_kanban_state": "Technical: copy of the tender status on the business case.",
         "tritel_tender_tracker:wizard:tender.quality.wizard.line": "Technical: line records inside the Bid Quality Check window.",
         "tritel_tender_tracker:wizard:tender.status.selection": "Technical: helper behind the status move windows (Mark Submitted, Won, Cancel…), which are documented.",
-        "tritel_tender_tracker:wizard:tender.summary.bulk.line": "Technical: line records inside the Request Summaries window."
+        "tritel_tender_tracker:wizard:tender.summary.bulk.line": "Technical: line records inside the Request Summaries window.",
+        "tritel_tender_tracker:wizard:res.partner.activity.filter.wizard": "Old \"Customer Activities Prepare\" filter window; its menu is commented out, so users cannot open it.",
+        "tritel_tender_tracker:model:tender.minutes": "Tender opening minutes; the menu is commented out, so users cannot record them. Feeds the tender form's Competition tab, left undocumented on purpose (docs-sync 2026-11-17).",
+        "tritel_tender_tracker:model:tender.bidder": "Bidder lines of tender opening minutes; see tender.minutes.",
+        "tritel_tender_tracker:selection:prequalification.registration.priority": "Starred priority on prequalification registrations; not shown on any prequalification screen.",
+        "crm_tender:field:hr.employee.color": "Kanban card colour only; not user-facing."
       }
     },
     "board": {
@@ -12899,8 +13504,8 @@
       "addons_path": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "repo_root": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "track_ref": "origin/16.0",
-      "last_synced_commit": "2d489c33a7b2f7519b2a010c97c84947a801f193",
-      "last_synced_at": "2026-11-17T12:01:46+00:00",
+      "last_synced_commit": "5c65842fdc84ad076ab9c765615755de221683e8",
+      "last_synced_at": "2026-11-17T12:37:55+00:00",
       "pages_dir": "src/content/docs/board",
       "items": {
         "e_board:cron:cron_board_reviews": {
