@@ -118,3 +118,11 @@ a.tp-term:hover { color: var(--sl-color-accent-high); }
 
 /* Keep the site title on one line on phones */
 @media (max-width: 30rem) { .site-title { font-size: 1rem; } }
+
+/* Page width. Starlight's default middle column is 45rem; 55rem gives illustrations and diagrams more room
+   on wide screens. With "On this page" hidden (html[data-toc-hidden], see components/TwoColumnContent.astro)
+   the column widens further into the freed space. */
+:root { --sl-content-width: 55rem; }
+@media (min-width: 72rem) {
+  html[data-toc-hidden] { --sl-content-width: 70rem; }
+}
