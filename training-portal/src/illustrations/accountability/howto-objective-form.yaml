@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_my_actions_action, tritel_accountability_framework:client_action:accountability_period_browser_action, tritel_accountability_framework:menu:menu_accountability_my_actions
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_objectives
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:model:accountability.objective
+# docs-sync: shows tritel_accountability_framework:selection:accountability.objective.achievement_state, tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state
+# docs-sync: shows tritel_accountability_framework:selection:accountability.target.state
 type: screen
 title: An objective
 desc: The Objective form in Accountability with the Trace, Activate, Close and Reset to Draft buttons, the objective name, the Context and Ownership groups, and the Targets, Cascade, Reviews and Sub-objectives tabs, numbered 4 to 9.

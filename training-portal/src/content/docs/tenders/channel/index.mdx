@@ -7,6 +7,7 @@ roles: [head-channel, channel-user, account-manager, presales, finance, everyone
 tags: [channel, oem bookings, start here]
 keywords: [channel, OEM, vendor, principal, partner, distributor, deal registration, partner portal, LPO, certification, compliance certificate, OEM revenue]
 related: [tenders/channel/oems-and-distributors, tenders/channel/oem-bookings, tenders/channel/book-oem-purchases, tenders/channel/compliance, tenders/channel/certifications-and-learning, tenders/index]
+sidebar: { order: 1 }
 sources:
   - crm_tender/__manifest__.py
   - crm_tender/views/crm_oem_views.xml
@@ -15,7 +16,21 @@ sources:
   - crm_tender/security/crm_tender_security.xml
   - crm_tender/security/ir.model.access.csv
   - tritel_accountability_framework/models/metric_hook_oem.py
-sidebar: { order: 1 }
+  - crm_tender/models/crm_compliance.py
+  - crm_tender/models/crm_oem.py
+  - crm_tender/models/crm_oem_booking.py
+  - crm_tender/models/purchase.py
+  - crm_tender/views/crm_lead_views.xml
+  - crm_tender/wizards/oem_booking_add_lines.py
+  - crm_tender/wizards/oem_set_lines.py
+  - tritel_tender_tracker/models/bid_quality.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/partner_activity_touchpoints.py
+  - tritel_tender_tracker/models/target_period.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 The **Channel** app is where Tritel keeps its relationship with the manufacturers it resells (the **OEMs**) and the distributors it buys their products through. It answers three questions:
@@ -30,6 +45,7 @@ The company's compliance documents (tax, regulator and registration certificates
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows crm_tender:field:purchase.order.line.oem_booking_id, crm_tender:menu:menu_crm_untagged_purchases, crm_tender:menu:menu_distributors, crm_tender:menu:menu_hr_oem_certifications, crm_tender:menu:menu_oem_certifications, crm_tender:menu:menu_oem_courses, crm_tender:model:crm.oem.booking, crm_tender:model:crm.vendor.lead, crm_tender:selection:crm.distributor.state, crm_tender:selection:crm.oem.booking.state, crm_tender:selection:crm.oem.state, crm_tender:view_ext:crm.crm_lead_view_form:page:vendor-opportunities, crm_tender:wizard:crm.oem.booking.add.lines, crm_tender:wizard:crm.oem.set.lines, tritel_tender_tracker:selection:target.period.state
   OEM["OEM (Onboarding, Active)"] --- DIST["Distributors"]
   OEM -->|"Vendor Opportunities tab"| OPP["CRM opportunity: estimated value per OEM"]
   PO["Confirmed purchase order"] -->|"OEM set on each line"| LINE["Tagged purchase lines"]

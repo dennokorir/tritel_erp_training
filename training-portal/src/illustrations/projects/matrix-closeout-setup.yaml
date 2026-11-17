@@ -1,3 +1,13 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:cron:ir_cron_costs_after_close, tritel_project_delivery:field:project.project.after_close_amount, tritel_project_delivery:field:project.project.client_delay_ids
+# docs-sync: shows tritel_project_delivery:field:project.project.tracking_html, tritel_project_delivery:group:group_delivery_finance, tritel_project_delivery:group:group_delivery_head
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_categories, tritel_project_delivery:menu:menu_delivery_client_delays, tritel_project_delivery:menu:menu_delivery_config
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_cost_types, tritel_project_delivery:menu:menu_delivery_handovers, tritel_project_delivery:menu:menu_delivery_milestones
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:menu:menu_delivery_settings, tritel_project_delivery:menu:menu_delivery_starter_items
+# docs-sync: shows tritel_project_delivery:model:delivery.budget.category, tritel_project_delivery:model:delivery.cost.type, tritel_project_delivery:model:delivery.milestone.template
+# docs-sync: shows tritel_project_delivery:model:delivery.settings, tritel_project_delivery:model:delivery.starter.item, tritel_project_delivery:model:project.delivery.client.delay
+# docs-sync: shows tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:reopen, tritel_project_delivery:wizard:delivery.close.wizard
+# docs-sync: shows tritel_project_delivery:wizard:delivery.tag.orders.wizard
 type: matrix
 title: Who can do what at handover, close and set-up
 desc: Permission grid for handovers, client delays, closing, budget tracking, tagging orders and the delivery set-up screens, for delivery project managers, the Head of Delivery, Delivery Finance, the MD and everyone with project access.

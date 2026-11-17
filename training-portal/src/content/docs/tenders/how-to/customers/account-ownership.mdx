@@ -10,13 +10,29 @@ where: [Tender Manager, Tender Customers, Account Ownership]
 before:
   - Account managers can claim customers and propose target accounts. Assigning owners, tidying records and approving or tiering target accounts is for the Head of Commercial and Tender administrators.
 related: [tenders/concepts/market-coverage, tenders/workflows/customer-activity, tenders/how-to/customers/market-coverage, tenders/calculations/coverage-ladder]
+sidebar: { order: 10 }
 sources:
   - tritel_tender_tracker/views/account_ownership_views.xml
   - tritel_tender_tracker/models/account_ownership.py
   - tritel_tender_tracker/views/target_accounts_views.xml
   - tritel_tender_tracker/models/target_accounts.py
   - tritel_tender_tracker/views/res_partner.xml
-sidebar: { order: 10 }
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/models/crm_lead.py
+  - tritel_tender_tracker/models/market_coverage.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/res_partner.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/crm_lead_views.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/wizards/tender_summary_wizard.py
+  - tritel_tender_tracker/wizards/tenders_assignment_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

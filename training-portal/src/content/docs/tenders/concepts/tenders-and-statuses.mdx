@@ -7,6 +7,7 @@ roles: [account-manager, bid-liaison, presales, head-commercial, head-channel, t
 tags: [tenders, statuses]
 keywords: [tender, bid, RFP, RFQ, EOI, tender status, stage, kanban, board, column, pipeline, submission deadline, tender value, award]
 related: [tenders/workflows/tender-status, tenders/concepts/roles-on-a-tender, tenders/concepts/opportunities-and-tenders, tenders/how-to/bids/create-a-tender, tenders/how-to/bids/record-the-result, tenders/how-to/bids/reopen-a-tender]
+sidebar: { order: 1 }
 sources:
   - tritel_tender_tracker/models/models.py
   - tritel_tender_tracker/models/tender_workflow.py
@@ -14,7 +15,27 @@ sources:
   - tritel_tender_tracker/views/tender_workflow_views.xml
   - tritel_tender_tracker/static/src/js/tender_board_moves.js
   - tritel_tender_tracker/data/stages_data.xml
-sidebar: { order: 1 }
+  - crm_tender/models/crm_oem_booking.py
+  - crm_tender/models/hr_employee.py
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/models/bid_quality.py
+  - tritel_tender_tracker/models/crm_lead.py
+  - tritel_tender_tracker/models/hr_employee.py
+  - tritel_tender_tracker/models/hr_employee_roles.py
+  - tritel_tender_tracker/models/prequalification_models.py
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/target_period.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/wizards/bid_desk_wizards.py
+  - tritel_tender_tracker/wizards/tender_dropped.py
+  - tritel_tender_tracker/wizards/tender_lost.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -26,6 +47,7 @@ The **board** (**Tender Manager › Tenders › All Tenders**) has one column pe
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_tender_tracker:selection:tender.business.case.state, tritel_tender_tracker:selection:tender.initial.kanban_state, tritel_tender_tracker:wizard:drop.reason, tritel_tender_tracker:wizard:lost.reason, tritel_tender_tracker:wizard:tender.submission.wizard
   D["Draft"] -->|"Confirm Bid"| B["Bidding"]
   B -->|"Mark Submitted"| E["Evaluation"]
   E -->|"Won"| W["Won"]

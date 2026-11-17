@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, crm_tender:menu:menu_crm_compliance, crm_tender:menu:menu_crm_compliance_root
+# docs-sync: shows crm_tender:model:crm.compliance, tritel_tender_tracker:menu:configuration_menu, tritel_tender_tracker:menu:menu_target_periods
+# docs-sync: shows tritel_tender_tracker:menu:menu_target_root, tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tenders_section
+# docs-sync: shows tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:target.target, tritel_tender_tracker:model:tender.initial
+# docs-sync: shows tritel_tender_tracker:selection:prequalification.registration.pq_state, tritel_tender_tracker:selection:target.line.role, tritel_tender_tracker:selection:target.period.state
 type: screen
 title: A target period
 desc: The Target Period form under Tender Manager, Configuration, with the Set Active button, the Draft, Active and Closed status bar, the Period Name and dates, the totals and the read-only Role Targets tab, numbered 1 to 5.

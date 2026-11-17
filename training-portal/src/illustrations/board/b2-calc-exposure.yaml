@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows e_board:model:accountability.board.review.line
 type: calc
 title: Order backlog and total exposure
 desc: Worked example of one sales order of KES 1,160,000 including VAT, invoiced 580,000 with 200,000 of that still unpaid, giving 580,000 to invoice and a Total Exposure of 780,000.

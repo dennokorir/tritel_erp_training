@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:client_action:action_project_my_actions, tritel_project_delivery:cron:ir_cron_baseline_due, tritel_project_delivery:field:project.project.baseline_due_date
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_root
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_settings, tritel_project_delivery:menu:menu_project_my_actions, tritel_project_delivery:model:delivery.settings
+# docs-sync: shows tritel_project_delivery:selection:delivery.settings.cost_account_mode, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:delivery-projects
 type: screen
 title: Delivery Settings
 desc: The Delivery Settings form with the KPI rules, MD approval of revisions and Budgets and cost accounts sections, the Odoo budget mapping section with accounts and positions, and the Apply mapping button, numbered 1 to 6.

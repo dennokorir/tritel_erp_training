@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:cron:ir_cron_summary_overdue, tritel_tender_tracker:menu:menu_tender_customers
+# docs-sync: shows tritel_tender_tracker:menu:menu_tender_summary_tracker, tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:menu:reporting_menu
+# docs-sync: shows tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.pillar
+# docs-sync: shows tritel_tender_tracker:selection:target.line.role, tritel_tender_tracker:selection:tender.initial.summary_motion, tritel_tender_tracker:selection:tender.initial.summary_state
+# docs-sync: shows tritel_tender_tracker:selection:tender.initial.summary_tritel_role
 type: screen
 title: The project summary workspace
 desc: A project summary in Writing, with the Submit for review and Reassign buttons, the status bar, the writer, requester and due date, the Headings progress, the text written under the headings, and the Classification, Headings and What to cover panels, numbered 1 to 5.

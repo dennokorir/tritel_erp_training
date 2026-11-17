@@ -11,13 +11,24 @@ before:
   - You hold an active milestone target whose stages are scored (the target shows a <strong>Mile.</strong> badge and a <strong>Stages</strong> line).
   - The stage is <strong>Open</strong> and the work is finished. The period must still be active.
 related: [accountability/workflows/milestone-stage, accountability/calculations/milestone-scores, accountability/concepts/targets, accountability/how-to/line-managers/milestone-dates-and-confirmations]
+sidebar: { order: 3 }
 sources:
   - tritel_accountability_framework/static/src/components/stages/accountability_stages.xml
   - tritel_accountability_framework/views/accountability_milestone_views.xml
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_accountability_framework/models/accountability_milestone.py
   - tritel_accountability_framework/views/portal_performance_templates.xml
-sidebar: { order: 3 }
+  - tritel_accountability_framework/controllers/portal.py
+  - tritel_accountability_framework/data/ir_cron_data.xml
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/milestone_action_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

@@ -7,19 +7,37 @@ roles: [bid-liaison, presales, head-commercial, tender-admin]
 tags: [bid desk, readiness, workflows]
 keywords: [readiness, checklist, confirm ready, reopen checklist, 72 hours, submission receipt, proof of delivery, record submission, bid documents, deadline reminder]
 related: [tenders/concepts/bid-readiness, tenders/how-to/bids/work-the-readiness-checklist, tenders/how-to/bids/mark-submitted, tenders/calculations/readiness-progress, tenders/workflows/tender-status]
+sidebar: { order: 2 }
 sources:
   - tritel_tender_tracker/models/bid_desk.py
   - tritel_tender_tracker/wizards/bid_desk_wizards.py
   - tritel_tender_tracker/wizards/tender_move_wizard.py
   - tritel_tender_tracker/views/bid_desk_views.xml
   - tritel_tender_tracker/data/bid_desk_data.xml
-sidebar: { order: 2 }
+  - crm_tender/models/crm_compliance.py
+  - crm_tender/models/crm_oem.py
+  - crm_tender/models/crm_oem_booking.py
+  - crm_tender/security/crm_tender_security.xml
+  - crm_tender/views/crm_compliance_views.xml
+  - tritel_tender_tracker/models/bid_quality.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/prequalification_pipeline.py
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/target_period.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 Each tender has a **Readiness** status for its checklist of bid documents. It starts **Not Started**, opens when the tender moves to **Bidding**, and is **Confirmed Ready** when every document is in. The Bid Liaison, their manager or a Tender administrator can reopen it to make changes. Separately, once the bid is in, the submission is **recorded** with its receipt.
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:menu:menu_technical_presales, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.readiness.line, tritel_tender_tracker:selection:target.achievement.role, tritel_tender_tracker:selection:target.target.role, tritel_tender_tracker:selection:tender.initial.readiness_state, tritel_tender_tracker:selection:tender.portal.access.log.user_role, tritel_tender_tracker:selection:tender.readiness.line.status
   state "Not Started" as notstarted
   state "In Progress" as open
   state "Confirmed Ready" as ready
@@ -55,6 +73,7 @@ Each document on the checklist has its own status, worked out from what is attac
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:wizard:tender.submission.wizard
   state "Not recorded" as unrec
   state "Submission Recorded" as rec
   [*] --> unrec: Mark Submitted, no receipt

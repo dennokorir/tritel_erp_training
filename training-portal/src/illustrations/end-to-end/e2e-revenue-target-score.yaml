@@ -1,3 +1,7 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_accountability_framework:cron:cron_recalculate_scores, tritel_accountability_framework:model:accountability.metric
+# docs-sync: shows tritel_accountability_framework:selection:accountability.target.metric_window_basis, tritel_project_delivery:cron:ir_cron_refresh_tracking, tritel_project_delivery:field:project.project.award_date
+# docs-sync: shows tritel_tender_tracker:model:target.target, tritel_tender_tracker:model:tender.summary.heading
 type: calc
 title: Achieved revenue reaches the target
 desc: Worked example of Employee A's Achieved revenue (attributed) target for FY 2026, measured period to date, where KES 52,000,000 attributed by 30 June plus KES 8,000,000 from TND-2026-001 gives KES 60,000,000 against a KES 120,000,000 target, a score of 50% in the Q3 review.

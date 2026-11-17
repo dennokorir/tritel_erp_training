@@ -7,6 +7,7 @@ roles: [account-manager, bid-liaison, presales, head-commercial, head-channel, c
 tags: [start here, tenders, bid desk, customers]
 keywords: [tender, bid, RFP, RFQ, EOI, prequal, prequalification, pipeline, opportunity, bid desk, tender board, tender tracker, OEM, channel, case study]
 related: [tenders/concepts/tenders-and-statuses, tenders/concepts/roles-on-a-tender, tenders/concepts/opportunities-and-tenders, tenders/workflows/tender-status, tenders/concepts/the-portal, tenders/channel/index]
+sidebar: { order: 1 }
 sources:
   - tritel_tender_tracker/__manifest__.py
   - tritel_tender_tracker/views/menu.xml
@@ -16,7 +17,47 @@ sources:
   - tritel_tender_tracker/models/portal_home.py
   - tritel_tender_tracker/security/security.xml
   - tritel_project_delivery/models/tender.py
-sidebar: { order: 1 }
+  - crm_tender/models/crm_compliance.py
+  - crm_tender/models/crm_oem_booking.py
+  - crm_tender/security/crm_tender_security.xml
+  - crm_tender/views/crm_compliance_views.xml
+  - crm_tender/views/crm_oem_booking_views.xml
+  - crm_tender/views/crm_oem_views.xml
+  - tritel_tender_tracker/controllers/portal_tender.py
+  - tritel_tender_tracker/data/bid_quality_data.xml
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/models/bid_quality.py
+  - tritel_tender_tracker/models/crm_lead.py
+  - tritel_tender_tracker/models/market_coverage.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/partner_activity_touchpoints.py
+  - tritel_tender_tracker/models/prequalification_models.py
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/models/res_partner.py
+  - tritel_tender_tracker/models/summary_marketing_pack.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/report/tender_evaluation_report.py
+  - tritel_tender_tracker/report/tender_evaluation_report.xml
+  - tritel_tender_tracker/views/account_ownership_views.xml
+  - tritel_tender_tracker/views/bid_desk_views.xml
+  - tritel_tender_tracker/views/crm_lead_views.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/partner_activity_touchpoints_views.xml
+  - tritel_tender_tracker/views/project_summary_views.xml
+  - tritel_tender_tracker/views/res_partner.xml
+  - tritel_tender_tracker/views/summary_library_views.xml
+  - tritel_tender_tracker/views/target_accounts_views.xml
+  - tritel_tender_tracker/views/target_views.xml
+  - tritel_tender_tracker/views/tender_workflow_views.xml
+  - tritel_tender_tracker/wizards/bid_desk_wizards.py
+  - tritel_tender_tracker/wizards/partner_activity_wizards.py
+  - tritel_tender_tracker/wizards/summary_marketing_wizard.py
+  - tritel_tender_tracker/wizards/summary_marketing_wizard_views.xml
+  - tritel_tender_tracker/wizards/tender_lost.py
+  - tritel_tender_tracker/wizards/tenders_assignment_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 The **Tender Manager** app is where Tritel records every tender, RFQ and prequalification it considers, from the first sighting to the result. Each tender has a team (an Account Manager, a Bid Liaison and a Technical Presales engineer) and a **Status** that moves from **Draft** through **Bidding** and **Evaluation** to a result. Around that core sit the bid desk (who takes each bid, and a checklist of the documents it needs), bid quality, prequalifications, business cases, project summaries for won work, and the record of every customer touch.
@@ -27,6 +68,7 @@ The **Channel** app sits beside it. It holds the OEMs Tritel resells, the distri
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_tender_tracker:cron:ir_cron_bid_quality_reminders, tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:model:prequalification.registration, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.readiness.line, tritel_tender_tracker:selection:tender.business.case.state, tritel_tender_tracker:selection:tender.initial.kanban_state, tritel_tender_tracker:selection:tender.initial.quality_state, tritel_tender_tracker:selection:tender.initial.readiness_state, tritel_tender_tracker:wizard:lost.reason
   O["CRM opportunity"] -->|"Source/Pipeline"| T["Tender (Draft)"]
   PQ["Prequalification"] -->|"Log RFQ"| T
   T --> N["Team nominated (AM, Bid Liaison, Presales)"]
@@ -82,6 +124,7 @@ The same people also use the portal: **/my/dashboard** is the landing page for a
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows crm_tender:selection:crm.oem.booking.state, tritel_tender_tracker:cron:ir_cron_bid_quality_reminders, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.readiness.line, tritel_tender_tracker:selection:tender.business.case.state, tritel_tender_tracker:selection:tender.initial.kanban_state, tritel_tender_tracker:selection:tender.initial.quality_state, tritel_tender_tracker:wizard:lost.reason, tritel_tender_tracker:wizard:tender.submission.wizard
   A["Tender created (Draft)"] --> B["Team nominated"]
   B --> C["Confirm Bid: Bidding"]
   C --> D["Checklist confirmed ready"]

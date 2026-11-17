@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, crm_tender:menu:menu_crm_compliance, crm_tender:menu:menu_crm_compliance_root
+# docs-sync: shows crm_tender:model:crm.compliance, tritel_tender_tracker:cron:ir_cron_bid_quality_reminders, tritel_tender_tracker:field:crm.lead.technical_presales_id
+# docs-sync: shows tritel_tender_tracker:menu:menu_technical_presales, tritel_tender_tracker:model:tender.summary.heading, tritel_tender_tracker:selection:tender.initial.dq_cause
+# docs-sync: shows tritel_tender_tracker:selection:tender.initial.dq_state, tritel_tender_tracker:selection:tender.initial.quality_state
 type: calc
 title: Bid Compliance for Technical Presales
 desc: Worked example of Bid Compliance for a Technical Presales engineer, with a compliant must-win bid counting three times at 100%, a compliant bid at 100% and a confirmed disqualification caused by Technical Presales at 0%, giving 400 points over a weight of 5, or 80.0%.

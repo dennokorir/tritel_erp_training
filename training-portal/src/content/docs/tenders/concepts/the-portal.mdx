@@ -7,6 +7,7 @@ roles: [account-manager, bid-liaison, presales, head-commercial, head-channel, t
 tags: [portal, tenders]
 keywords: [portal, dashboard, commercial dashboard, my tenders, my pipeline, my customers, my summaries, my actions, mobile, phone, website, self-service, scope, visibility]
 related: [tenders/how-to/customers/portal-dashboard, tenders/how-to/bids/tender-my-actions, tenders/concepts/project-summaries, tenders/concepts/roles-on-a-tender, tenders/commercial-targets/index]
+sidebar: { order: 12 }
 sources:
   - tritel_tender_tracker/controllers/portal_tender.py
   - tritel_tender_tracker/models/portal_home.py
@@ -15,13 +16,27 @@ sources:
   - tritel_tender_tracker/views/portal_tender_detail_templates.xml
   - tritel_tender_tracker/views/portal_customer_templates.xml
   - tritel_tender_tracker/views/portal_my_actions_templates.xml
-sidebar: { order: 12 }
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/partner_activity_touchpoints_views.xml
+  - tritel_tender_tracker/views/project_summary_views.xml
+  - tritel_tender_tracker/views/res_partner.xml
+  - tritel_tender_tracker/views/target_views.xml
+  - tritel_tender_tracker/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 The **commercial portal** is a set of web pages for the tender team, built for a quick look on a laptop or phone. It shows the same tenders, opportunities, customers, summaries and to-dos as the back office, but each person sees only their own part. Every page opens from the bar at the top. Anyone with a tender role and an employee record lands on **/my/dashboard** when they open the portal.
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_tender_tracker:client_action:action_tender_my_actions, tritel_tender_tracker:menu:menu_customers, tritel_tender_tracker:menu:menu_target_dashboard, tritel_tender_tracker:menu:menu_tender_my_actions, tritel_tender_tracker:menu:menu_tender_summary_tracker, tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:model:tender.initial
   H["/my (portal home)"] --> D["/my/dashboard: Commercial Dashboard"]
   D --> T["/my/tenders: tenders by status"]
   T --> TD["/my/tenders/id: one tender"]

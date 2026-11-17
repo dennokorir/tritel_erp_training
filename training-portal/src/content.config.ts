@@ -27,6 +27,8 @@ export const collections = {
         related: z.array(z.string()).default([]),
         // Code the page was written from (module-relative paths), for drift checks. Not published.
         sources: z.array(z.string()).default([]),
+        // Commit of the module repo the page was last checked against (docs-sync)
+        verified_commit: z.string().optional(),
       }),
     }),
   }),

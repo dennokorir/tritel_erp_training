@@ -1,3 +1,7 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:client_action:action_project_my_actions, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_cost_types
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:menu:menu_project_my_actions, tritel_project_delivery:model:delivery.budget.category
+# docs-sync: shows tritel_project_delivery:model:delivery.cost.type
 type: screen
 title: Cost Types list
 desc: The Cost Types list under Project Configuration, an editable list with the Type, Hint, Budget category, Product categories and active switch columns, one type switched off, and a New button, numbered 1 to 4.

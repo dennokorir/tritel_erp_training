@@ -1,3 +1,12 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:client_action:action_tender_my_actions, tritel_tender_tracker:group:group_account_manager
+# docs-sync: shows tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:group:group_technical_presales, tritel_tender_tracker:menu:menu_customers
+# docs-sync: shows tritel_tender_tracker:menu:menu_target_root, tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tender_my_actions
+# docs-sync: shows tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:tender.bid.desk.member
+# docs-sync: shows tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.tags, tritel_tender_tracker:selection:target.achievement.role
+# docs-sync: shows tritel_tender_tracker:selection:target.period.state, tritel_tender_tracker:selection:target.target.role, tritel_tender_tracker:selection:tender.initial.kanban_state
+# docs-sync: shows tritel_tender_tracker:selection:tender.portal.access.log.user_role, tritel_tender_tracker:wizard:drop.reason, tritel_tender_tracker:wizard:tender.must.win.wizard
+# docs-sync: shows tritel_tender_tracker:wizard:tenders.assign.wizard
 type: screen
 title: Nominating the Bid Liaison
 desc: A tender in Draft with Assign links next to Account Manager, Bid Liaison and Technical Pre-sales Engineer, and the Assign Bid Liaison window showing each full-time Bid Liaison's points this quarter, open bids, nearby deadlines and a Suggested badge, with the Why This Person? box and the Assign Bid Liaison button, numbered 1 to 6.

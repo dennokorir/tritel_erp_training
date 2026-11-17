@@ -1,3 +1,7 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_tender_tracker:cron:ir_cron_bid_quality_reminders, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.quality.guideline
+# docs-sync: shows tritel_tender_tracker:model:tender.quality.line, tritel_tender_tracker:selection:tender.initial.quality_state, tritel_tender_tracker:selection:tender.quality.line.result
+# docs-sync: shows tritel_tender_tracker:wizard:tender.quality.wizard
 type: calc
 title: Quality Score on a tender
 desc: Worked example of a bid's Quality Score, with 8 guidelines of which 6 are Met, 1 is Not met and 1 is Not applicable, giving 6 out of 7, or 85.7%.

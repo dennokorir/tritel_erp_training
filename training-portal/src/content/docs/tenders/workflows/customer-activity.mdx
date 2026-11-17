@@ -7,6 +7,7 @@ roles: [account-manager, presales, head-commercial, tender-admin]
 tags: [customers, touchpoints, workflows]
 keywords: [customer activity, customer touch, touchpoint, planned visit, log touch, complete, reschedule, overdue touch, target account, propose target, approve target, decline, tier, strategic, growth, maintain]
 related: [tenders/concepts/customer-activities, tenders/concepts/market-coverage, tenders/how-to/customers/log-a-customer-activity, tenders/how-to/customers/plan-customer-touches, tenders/how-to/customers/account-ownership]
+sidebar: { order: 7 }
 sources:
   - tritel_tender_tracker/models/res_partner.py
   - tritel_tender_tracker/models/partner_activity_touchpoints.py
@@ -16,7 +17,26 @@ sources:
   - tritel_tender_tracker/views/partner_activity_touchpoints_views.xml
   - tritel_tender_tracker/views/target_accounts_views.xml
   - tritel_tender_tracker/static/src/touchpoints/common/touch_dialog.js
-sidebar: { order: 7 }
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/data/ir_cron_data.xml
+  - tritel_tender_tracker/data/tender_workflow_data.xml
+  - tritel_tender_tracker/models/hr_employee_roles.py
+  - tritel_tender_tracker/models/market_coverage.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/crm_lead_views.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/project_summary_views.xml
+  - tritel_tender_tracker/views/res_partner.xml
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/wizards/partner_activity_wizards.py
+  - tritel_tender_tracker/wizards/tender_summary_wizard.py
+  - tritel_tender_tracker/wizards/tenders_assignment_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 Two small workflows keep the customer picture current. A **customer touch** is either planned or done. A **target account** is proposed by anyone and approved, tiered or declined by the Head of Commercial.
@@ -25,6 +45,7 @@ Two small workflows keep the customer picture current. A **customer touch** is e
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows tritel_tender_tracker:client_action:action_tender_my_actions, tritel_tender_tracker:menu:menu_tender_my_actions, tritel_tender_tracker:model:res.partner.activity, tritel_tender_tracker:selection:res.partner.activity.state
   state "Planned" as planned
   state "Done" as done
   [*] --> planned: Plan touch (anyone)
@@ -48,6 +69,7 @@ On the Customer Activities screen you can only reschedule or complete touches in
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows tritel_tender_tracker:field:res.partner.is_target_account, tritel_tender_tracker:field:res.partner.target_since, tritel_tender_tracker:group:group_hod_commercial, tritel_tender_tracker:model:target.target, tritel_tender_tracker:selection:res.partner.target_tier, tritel_tender_tracker:wizard:tender.summary.wizard
   state "Not a target" as nottarget
   state "Proposed" as proposed
   state "Target account" as target
@@ -76,6 +98,7 @@ The buttons are on the customer form and in **Tender Manager › Tender Customer
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:client_action:action_tender_my_actions, tritel_tender_tracker:cron:ir_cron_partner_last_seen, tritel_tender_tracker:field:hr.employee.planned_overdue, tritel_tender_tracker:group:group_account_manager, tritel_tender_tracker:group:group_hod_commercial, tritel_tender_tracker:menu:menu_tender_my_actions, tritel_tender_tracker:model:res.partner.activity, tritel_tender_tracker:model:target.target, tritel_tender_tracker:selection:res.partner.coverage_rung, tritel_tender_tracker:selection:tender.portal.access.log.user_role, tritel_tender_tracker:wizard:tender.summary.wizard, tritel_tender_tracker:wizard:tenders.assign.wizard
   subgraph AMs["Account Manager / Presales"]
     A1["Plan touch"]
     A2["Log touch or Complete"]

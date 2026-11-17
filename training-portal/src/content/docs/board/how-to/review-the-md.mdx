@@ -11,11 +11,16 @@ before:
   - You are named as <strong>Board Reviewer</strong> in Accountability Settings, or as <strong>Backup Board Reviewer</strong> and the review has waited 14 days.
   - The MD has submitted the quarter. You get an email <em>Board review to sign off</em> with an <strong>Open the review</strong> link.
 related: [board/concepts/md-quarterly-review, board/workflows/md-review, board/calculations/md-review-figures, board/faq]
+sidebar: { order: 3 }
 sources:
   - e_board/controllers/md_review.py
   - e_board/views/portal_md_review_templates.xml
   - e_board/models/accountability_board_review.py
-sidebar: { order: 3 }
+  - e_board/controllers/e_board_controller.py
+  - e_board/data/md_review_cron.xml
+  - e_board/models/accountability_extensions.py
+  - e_board/security/security.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

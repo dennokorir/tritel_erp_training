@@ -11,12 +11,20 @@ before:
   - The period exists. Administrators create it under <strong>Organisation › Periods</strong>.
   - You are a line manager or an accountability administrator. Other staff don't see <strong>Organisation › Objectives</strong>.
 related: [accountability/concepts/periods-and-objectives, accountability/workflows/objective, accountability/calculations/objective-achievement, accountability/how-to/hr-admin/open-and-close-periods, accountability/how-to/line-managers/set-team-targets]
+sidebar: { order: 2 }
 sources:
   - tritel_accountability_framework/static/src/period_browser/accountability_period_browser.xml
   - tritel_accountability_framework/static/src/period_browser/accountability_period_browser.js
   - tritel_accountability_framework/views/accountability_objective_views.xml
   - tritel_accountability_framework/models/accountability_objective.py
-sidebar: { order: 2 }
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/hr_employee.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/hr_employee_views.xml
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

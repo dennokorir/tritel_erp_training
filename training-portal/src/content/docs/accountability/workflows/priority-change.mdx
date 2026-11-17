@@ -7,19 +7,27 @@ roles: [everyone, line-manager, hr]
 tags: [priorities, workflows]
 keywords: [priorities, weights, share of score, rebalance, acknowledge, accept, new priorities, status, deadline, reminder, scorecard changed]
 related: [accountability/how-to/everyone/acknowledge-new-priorities, accountability/concepts/weights-and-share-of-score, accountability/how-to/line-managers/rebalance-weights, accountability/workflows/scorecard-change-request]
+sidebar: { order: 11 }
 sources:
   - tritel_accountability_framework/models/accountability_priority_change.py
   - tritel_accountability_framework/models/accountability_target_weights.py
   - tritel_accountability_framework/models/accountability_score.py
   - tritel_accountability_framework/views/accountability_weight_change_views.xml
   - tritel_accountability_framework/static/src/my_actions/accountability_my_actions.js
-sidebar: { order: 11 }
+  - tritel_accountability_framework/models/accountability_scorecard_request.py
+  - tritel_accountability_framework/models/accountability_weight_change.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/review_pack_ack_wizard.py
+  - tritel_accountability_framework/wizard/target_weight_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 Your **priorities** are how much each of your targets counts towards your score (its share of score). When they change during the period, for example because your manager rebalanced your weights or a target was added or withdrawn, the system opens a **Priority Change** for you to read and acknowledge. It shows **What Changed** and **Your Score Now**. Your past reviews are never affected: they keep the weights they were submitted with.
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows tritel_accountability_framework:model:accountability.target.weight.change, tritel_accountability_framework:selection:accountability.priority.change.state, tritel_accountability_framework:wizard:accountability.review.pack.ack.wizard
   state "To acknowledge" as required
   state "Acknowledged" as done
   state "Accepted automatically" as auto

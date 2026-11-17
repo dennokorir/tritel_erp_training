@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:client_action:action_project_my_actions, tritel_project_delivery:cron:ir_cron_baseline_due, tritel_project_delivery:field:project.project.baseline_due_date
+# docs-sync: shows tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root
+# docs-sync: shows tritel_project_delivery:menu:menu_project_my_actions, tritel_project_delivery:selection:project.delivery.baseline.state, tritel_project_delivery:selection:project.delivery.client.delay.state
+# docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state
 type: screen
 title: Overdue baselines on the Head's My Actions
 desc: The Projects My Actions screen for the Head of Delivery, with the Baselines overdue on your team group listing projects past their baseline due date, their project manager, status and the Remind button, numbered 1 to 4.

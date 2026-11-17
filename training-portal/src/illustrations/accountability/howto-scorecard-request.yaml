@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_scorecard_requests, tritel_accountability_framework:selection:accountability.review.session.employee.avg_rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.line.line_rating, tritel_accountability_framework:selection:accountability.snapshot.line.rating, tritel_accountability_framework:selection:accountability.snapshot.rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.target.rating
 type: screen
 title: A scorecard change waiting for approval
 desc: The Scorecard change form in Accountability with the Approve, Decline and Cancel request buttons, the status bar, the target, kind and dates, the score and rating before and after, the approvers, the reason and the Note on the decision field, numbered 1 to 6.

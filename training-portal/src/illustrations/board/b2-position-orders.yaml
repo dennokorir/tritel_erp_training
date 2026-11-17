@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:page:delivery, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:field:delivery
 type: screen
 title: Outstanding sales order balance
 desc: The Outstanding Sales Order Balance page opened from the Financial Position, with the orders table showing Total, Invoiced, To Invoice, Residual and Total Exposure, and the excluded section with its reason, numbered 1 to 2.

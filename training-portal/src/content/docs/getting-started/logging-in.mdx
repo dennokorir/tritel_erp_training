@@ -7,7 +7,14 @@ roles: [everyone]
 tags: [start here, portal]
 keywords: [login, log in, sign in, password, portal, back office, backend, /my, website]
 sidebar: { order: 1 }
-sources: [tritel_portal_home/controllers/main.py, tritel_portal_home/models/res_users.py, e_board/models/res_users.py, tritel_tender_tracker/models/portal_home.py]
+sources:
+  - tritel_portal_home/controllers/main.py
+  - tritel_portal_home/models/res_users.py
+  - e_board/models/res_users.py
+  - tritel_tender_tracker/models/portal_home.py
+  - e_board/controllers/e_board_controller.py
+  - tritel_tender_tracker/controllers/portal_tender.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../components/Illustration.astro';
 
@@ -35,6 +42,7 @@ When you open **/my**, the portal takes you straight to your own workspace. If m
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows (no tracked code element)
   A([You open /my]) --> B{Are you a board member?}
   B -- Yes --> C[Board portal<br/>/my/board]
   B -- No --> D{Do you have a tender role?<br/>Account Manager, Bid Liaison,<br/>Technical Presales, Head of Commercial,<br/>Head of Channel}

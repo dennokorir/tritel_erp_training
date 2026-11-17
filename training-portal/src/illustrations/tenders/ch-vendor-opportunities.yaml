@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:model:crm.vendor.lead, crm_tender:view_ext:crm.crm_lead_view_form:page:vendor-opportunities, tritel_tender_tracker:menu:configuration_menu
+# docs-sync: shows tritel_tender_tracker:menu:reporting_menu, tritel_tender_tracker:model:tender.tags
 type: screen
 title: Vendor opportunities on an opportunity
 desc: A CRM opportunity with the Vendor Opportunities tab open, showing one row per OEM with the Name, Vendor, Tags and Estimated Value columns and the Add a line link, numbered 1 to 4.

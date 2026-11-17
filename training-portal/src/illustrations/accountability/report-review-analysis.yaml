@@ -1,3 +1,7 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_team_reviews, tritel_accountability_framework:selection:accountability.objective.state
+# docs-sync: shows tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.review.session.employee.closed_by, tritel_accountability_framework:selection:accountability.target.state
 type: screen
 title: Review analysis in pivot view
 desc: The Team Reviews screen switched to its pivot view, with reviewers as rows, how each review closed as columns, and the Turnaround, Concerns and Average measures, numbered 1 to 4.

@@ -1,3 +1,7 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tender_summary_tracker
+# docs-sync: shows tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:tender.initial
+# docs-sync: shows tritel_tender_tracker:selection:tender.initial.summary_customer_naming, tritel_tender_tracker:selection:tender.initial.summary_state, tritel_tender_tracker:selection:tender.summary.event.kind
 type: screen
 title: Reopen a complete summary
 desc: A Complete project summary with its approver and customer naming, the Reopen button, and the confirmation message, numbered 5.

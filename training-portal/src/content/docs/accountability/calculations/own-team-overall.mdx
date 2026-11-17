@@ -7,11 +7,25 @@ roles: [everyone, line-manager, hr, accountability-admin, md]
 tags: [scores]
 keywords: [overall score, composite, own score, team score, manager score, KPI, appraisal, 40/60, weighting, performance score]
 related: [accountability/concepts/scores, accountability/how-to/line-managers/team-scores, accountability/reports/performance-overview, accountability/calculations/ratings]
+sidebar: { order: 5 }
 sources:
   - tritel_accountability_framework/models/accountability_score.py
   - tritel_accountability_framework/models/accountability_target_weights.py
   - tritel_accountability_framework/models/accountability_config.py
-sidebar: { order: 5 }
+  - tritel_accountability_framework/controllers/portal.py
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_rating.py
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/hr_employee.py
+  - tritel_accountability_framework/views/accountability_exempt_views.xml
+  - tritel_accountability_framework/views/hr_employee_views.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/cascade_pull_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

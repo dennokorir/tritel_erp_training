@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:field:project.project.track_spent, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root
 type: calc
 title: Over the delivery plan warning
 desc: Worked example of the warning on a purchase order, where the order's 100,000 is more than the 80,000 left on the Direct project costs line, so the order shows Over the delivery plan by 20,000.

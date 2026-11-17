@@ -7,6 +7,7 @@ roles: [md, board, accountability-admin]
 tags: [reviews, portal]
 keywords: [MD appraisal, managing director review, CEO review, quarterly review, board review, board sign-off, top-level employee, governance, performance review, directors]
 related: [board/workflows/md-review, board/how-to/prepare-the-md-review, board/how-to/review-the-md, board/how-to/acknowledge-the-board-review, board/how-to/name-the-board-reviewer, board/calculations/md-review-figures, accountability/concepts/reviews]
+sidebar: { order: 2 }
 sources:
   - e_board/models/accountability_board_review.py
   - e_board/models/accountability_extensions.py
@@ -14,7 +15,10 @@ sources:
   - e_board/views/md_review_accountability_views.xml
   - e_board/views/portal_md_review_templates.xml
   - e_board/data/md_review_cron.xml
-sidebar: { order: 2 }
+  - e_board/controllers/e_board_controller.py
+  - e_board/controllers/md_review.py
+  - e_board/security/security.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 Every employee's targets are normally reviewed by their line manager. The **Managing Director** has no line manager, so their targets are reviewed by the board instead. Once an Accountability administrator names a **Board Reviewer** in Accountability Settings, the MD's targets are reviewed only this way, once a quarter.
@@ -25,6 +29,7 @@ After each calendar quarter ends, the system opens one **board review** for the 
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows e_board:cron:cron_board_reviews, e_board:field:accountability.config.board_reviewer_user_id, e_board:model:accountability.board.review.line
   Q["Quarter ends"] --> O["System opens the review: metric results filled in"]
   O --> P["MD adds the other results, comments and evidence"]
   P --> S["MD clicks Submit to the Board"]

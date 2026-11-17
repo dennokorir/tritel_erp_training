@@ -11,6 +11,7 @@ before:
   - You are the user named in <strong>MD</strong> in Delivery Settings. The MD is one person, not a group.
   - A project manager has confirmed a revision whose budget is more than 10% above the original, or whose completion date is more than 30 days after the original (the default limits). You get a to-do called <em>Approve delivery baseline revision (MD)</em>.
 related: [projects/concepts/approvals, projects/calculations/revisions-and-approvals, projects/workflows/baseline, projects/concepts/baselines, projects/how-to/approvers/delivery-settings]
+sidebar: { order: 3 }
 sources:
   - tritel_project_delivery/models/baseline.py
   - tritel_project_delivery/views/baseline_views.xml
@@ -18,7 +19,13 @@ sources:
   - tritel_project_delivery/models/my_actions.py
   - tritel_project_delivery/static/src/my_actions/project_my_actions.xml
   - tritel_project_delivery/views/my_actions_views.xml
-sidebar: { order: 3 }
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/menus.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

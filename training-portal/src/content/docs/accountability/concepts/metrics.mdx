@@ -7,6 +7,7 @@ roles: [everyone, line-manager, account-manager, bid-liaison, presales, head-com
 tags: [metrics, targets]
 keywords: [KPI, automatic KPI, data source, pipeline, revenue, coverage, bid desk, delivery KPI, provisional, auto review, measure, dashboard figure]
 related: [accountability/calculations/metric-families, accountability/how-to/hr-admin/metrics, accountability/concepts/targets, accountability/concepts/reviews]
+sidebar: { order: 3 }
 sources:
   - tritel_accountability_framework/models/accountability_metric.py
   - tritel_accountability_framework/models/accountability_target.py
@@ -21,7 +22,18 @@ sources:
   - tritel_accountability_framework/models/metric_hook_review_ack.py
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_project_delivery/scripts/seed_delivery_kpis.py
-sidebar: { order: 3 }
+  - tritel_accountability_framework/controllers/worksheet.py
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_review.py
+  - tritel_accountability_framework/models/accountability_review_concern.py
+  - tritel_accountability_framework/models/accountability_weight_change.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/metric_test_wizard.py
+  - tritel_project_delivery/models/closeout.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

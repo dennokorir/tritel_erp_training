@@ -7,12 +7,18 @@ roles: [delivery-pm, head-delivery, delivery-finance, md]
 tags: [baselines, approvals, revisions]
 keywords: [revision, change request, variation, re-baseline, budget increase, extension of time, EOT, MD approval, sign off, threshold, approval matrix]
 related: [projects/concepts/approvals, projects/concepts/baselines, projects/workflows/baseline, projects/how-to/delivery-pm/request-a-revision, projects/how-to/approvers/approve-a-large-revision]
+sidebar: { order: 5 }
 sources:
   - tritel_project_delivery/models/baseline.py
   - tritel_project_delivery/models/tracking.py
   - tritel_project_delivery/models/delivery_settings.py
   - tritel_project_delivery/views/baseline_views.xml
-sidebar: { order: 5 }
+  - tritel_project_delivery/models/cost_item.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/project_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

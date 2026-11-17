@@ -12,6 +12,7 @@ before:
   - The tender's status is <strong>Won</strong>.
   - If finance already keeps a cost account for this job, find out its name.
 related: [projects/concepts/delivery-projects, projects/concepts/odoo-budget-and-cost-account, projects/how-to/delivery-pm/link-an-existing-project, projects/how-to/delivery-pm/build-a-baseline, projects/calculations/baseline-due]
+sidebar: { order: 1 }
 sources:
   - tritel_project_delivery/views/tender_views.xml
   - tritel_project_delivery/models/tender.py
@@ -21,7 +22,16 @@ sources:
   - tritel_project_delivery/models/whole_orders.py
   - tritel_project_delivery/data/delivery_data.xml
   - tritel_project_delivery/data/starter_item_data.xml
-sidebar: { order: 1 }
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/buttons.py
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/models/starter_item.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/project_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

@@ -7,12 +7,20 @@ roles: [head-channel, channel-user, finance, tender-admin]
 tags: [channel, OEM bookings]
 keywords: [OEM revenue, OEM bookings, recognised revenue, vendor portal, distributor margin, booking date, USD, purchase cost, awaiting OEM, OEM pipeline, vendor leads, partner portal]
 related: [tenders/channel/oem-bookings, tenders/channel/book-oem-purchases, tenders/channel/booking-workflow, tenders/channel/cancelled-orders, tenders/channel/tag-untagged-purchases, tenders/channel/vendor-opportunities, accountability/calculations/metric-families]
+sidebar: { order: 7 }
 sources:
   - crm_tender/models/crm_oem_booking.py
   - crm_tender/models/purchase.py
   - crm_tender/views/crm_oem_booking_views.xml
   - tritel_accountability_framework/models/metric_hook_oem.py
-sidebar: { order: 7 }
+  - crm_tender/models/crm_oem.py
+  - crm_tender/views/crm_lead_views.xml
+  - crm_tender/views/crm_oem_views.xml
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/target_period.py
+  - tritel_tender_tracker/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

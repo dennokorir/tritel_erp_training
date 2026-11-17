@@ -7,6 +7,7 @@ roles: [head-channel, head-commercial, presales, account-manager, everyone]
 tags: [project summaries, library]
 keywords: [project summary, case study, reference, credential, past performance, client reference, write-up, library, marketing, pillar, review, approve, send back, references for a bid]
 related: [tenders/workflows/project-summary, tenders/how-to/customers/request-a-project-summary, tenders/how-to/customers/write-a-project-summary, tenders/how-to/customers/review-a-project-summary, tenders/how-to/customers/use-the-summary-library, tenders/how-to/customers/export-for-marketing]
+sidebar: { order: 9 }
 sources:
   - tritel_tender_tracker/models/project_summary.py
   - tritel_tender_tracker/models/summary_library.py
@@ -16,7 +17,22 @@ sources:
   - tritel_tender_tracker/views/project_summary_views.xml
   - tritel_tender_tracker/static/src/summary_library/summary_library.js
   - tritel_tender_tracker/data/tender_summary_heading_data.xml
-sidebar: { order: 9 }
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/controllers/portal_tender.py
+  - tritel_tender_tracker/data/ir_cron_data.xml
+  - tritel_tender_tracker/models/crm_lead.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/summary_library_views.xml
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/wizards/summary_marketing_wizard_views.xml
+  - tritel_tender_tracker/wizards/tender_summary_bulk_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -54,6 +70,7 @@ Submitting stops until everything is there, for example: *Choose the primary pil
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_tender_tracker:menu:menu_tender_summary_marketing, tritel_tender_tracker:model:tender.pillar, tritel_tender_tracker:wizard:tender.summary.marketing.wizard
   C["Complete summaries"] --> G["Gallery"]
   C --> R["Reader"]
   C --> M["Pillar × sector"]

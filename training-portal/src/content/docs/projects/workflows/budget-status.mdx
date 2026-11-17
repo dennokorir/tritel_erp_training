@@ -7,19 +7,26 @@ roles: [delivery-pm, head-delivery, delivery-finance, finance]
 tags: [budgets, tracking, workflows]
 keywords: [budget status, over budget, overrun, overspend, fully committed, on track, variance, red flag, budget alert, LPO, PO]
 related: [projects/concepts/budget-tracking, projects/how-to/delivery-pm/track-the-budget, projects/calculations/tracking-figures, projects/reports/projects-over-budget, projects/how-to/delivery-pm/request-a-revision]
+sidebar: { order: 5 }
 sources:
   - tritel_project_delivery/models/tracking.py
   - tritel_project_delivery/models/buttons.py
   - tritel_project_delivery/models/my_actions.py
   - tritel_project_delivery/views/tracking_views.xml
   - tritel_project_delivery/views/buttons_views.xml
-sidebar: { order: 5 }
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/project_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 Every delivery project has a **Budget status**. Nobody sets it by hand: the system works it out from the approved budget and the orders and costs on the project's cost account, every night and whenever someone clicks **Refresh** in **Budget tracking**. It can move in either direction as orders are confirmed, bills are posted, orders are cancelled or a revision is approved.
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows tritel_project_delivery:field:project.project.track_committed, tritel_project_delivery:model:project.delivery.baseline.line, tritel_project_delivery:model:project.delivery.commitment, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:view_ext:project.edit_project:button:committed
   state "No approved budget" as none
   state "On track" as ontrack
   state "Fully committed" as full
@@ -48,6 +55,7 @@ Each row in the **Budget tracking** table has its own status with the same rules
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_project_delivery:cron:ir_cron_refresh_tracking, tritel_project_delivery:field:project.project.track_left, tritel_project_delivery:group:group_delivery_pm, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:view_ext:project.edit_project:button:request-revision, tritel_project_delivery:view_ext:purchase.purchase_order_form:button:left-in-delivery-plan
   subgraph Buyer["Buyer"]
     B1["Purchase order: Left in delivery plan"]
     B2["Confirm order"]

@@ -8,13 +8,24 @@ tags: [tracking, my actions]
 keywords: [over budget, overrun, cost overrun, budget variance, over plan, exceeded budget, burn rate, tracking popup, my actions, request revision]
 where: [Project, My Actions]
 related: [projects/calculations/tracking-figures, projects/workflows/budget-status, projects/how-to/delivery-pm/my-actions, projects/how-to/delivery-pm/request-a-revision, projects/how-to/delivery-pm/track-the-budget]
+sidebar: { order: 2 }
 sources:
   - tritel_project_delivery/models/my_actions.py
   - tritel_project_delivery/static/src/my_actions/project_my_actions.xml
   - tritel_project_delivery/views/buttons_views.xml
   - tritel_project_delivery/views/whole_orders_views.xml
   - tritel_project_delivery/models/tracking.py
-sidebar: { order: 2 }
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/buttons.py
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/project_views.xml
+  - tritel_project_delivery/views/tender_views.xml
+  - tritel_project_delivery/views/tracking_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

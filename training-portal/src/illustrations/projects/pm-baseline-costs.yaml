@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_root
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_starter_items, tritel_project_delivery:model:delivery.starter.item, tritel_project_delivery:model:project.delivery.baseline
+# docs-sync: shows tritel_project_delivery:model:project.delivery.baseline.line, tritel_project_delivery:selection:project.delivery.baseline.state, tritel_project_delivery:selection:project.delivery.client.delay.state
+# docs-sync: shows tritel_project_delivery:selection:project.delivery.cost.item.basis, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state
 type: screen
 title: Building a baseline on the Costs tab
 desc: A draft delivery baseline with the Delivery baseline smart buttons, the budget total, contingency and margin left, and the Costs tab listing starter items and new cost items with type, quantity, unit cost, VAT, pay month, basis and total, numbered 1 to 6.

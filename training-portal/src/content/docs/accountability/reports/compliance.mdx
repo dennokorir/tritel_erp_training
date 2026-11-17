@@ -8,10 +8,18 @@ tags: [cascading, reports]
 keywords: [cascade compliance, adoption rate, cascaded targets, pending adoption, declined cascades, target alignment, traceability, remind]
 where: [Accountability, Organisation, Compliance]
 related: [accountability/concepts/cascading, accountability/workflows/cascade, accountability/how-to/line-managers/push-and-pull-targets, accountability/how-to/hr-admin/compliance-and-coverage]
+sidebar: { order: 4 }
 sources:
   - tritel_accountability_framework/static/src/compliance/accountability_compliance.xml
   - tritel_accountability_framework/static/src/compliance/accountability_compliance.js
-sidebar: { order: 4 }
+  - tritel_accountability_framework/data/ir_cron_data.xml
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/views/accountability_target_views.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/cascade_pull_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

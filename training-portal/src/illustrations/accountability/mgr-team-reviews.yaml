@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_team_reviews, tritel_accountability_framework:selection:accountability.objective.state
+# docs-sync: shows tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.priority.change.state, tritel_accountability_framework:selection:accountability.review.session.employee.waiting_on
+# docs-sync: shows tritel_accountability_framework:selection:accountability.target.state, tritel_accountability_framework:wizard:accountability.review.concern.answer.wizard, tritel_accountability_framework:wizard:accountability.review.concern.raise.wizard
+# docs-sync: shows tritel_accountability_framework:wizard:accountability.review.pack.ack.wizard
 type: screen
 title: The Team Reviews board
 desc: The Team Reviews board grouped by whose move it is, with the search filters, Reviewer's Move, Employee's Move, With Escalation and Closed columns, cards with Your move badges, next-step lines and the Remind and Answer buttons, numbered 1 to 5.

@@ -1,3 +1,7 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:field:hr.employee.accountability_exempt, tritel_accountability_framework:field:hr.employee.accountability_exempt_from, tritel_accountability_framework:field:hr.employee.accountability_exempt_reason
+# docs-sync: shows tritel_accountability_framework:field:hr.employee.accountability_exempt_until, tritel_accountability_framework:menu:menu_accountability_review_sessions, tritel_accountability_framework:menu:menu_accountability_root
+# docs-sync: shows tritel_accountability_framework:view_ext:hr.view_employee_tree:field:exempt
 type: screen
 title: Exempting an employee
 desc: An employee form in the Employees app on the Performance tab, with the grey exempt banner and the Accountability exemption group holding Exempt from Accountability, Exempt From, Exempt Until and Exemption Reason, numbered 1 to 5.

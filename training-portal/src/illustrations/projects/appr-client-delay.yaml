@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:client_action:action_project_my_actions, tritel_project_delivery:field:project.project.client_delay_ids, tritel_project_delivery:group:group_delivery_head
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_client_delays, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root
+# docs-sync: shows tritel_project_delivery:menu:menu_project_my_actions, tritel_project_delivery:model:project.delivery.client.delay, tritel_project_delivery:selection:project.delivery.baseline.state
+# docs-sync: shows tritel_project_delivery:selection:project.delivery.client.delay.state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:page:delivery
+# docs-sync: shows tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:field:delivery
 type: screen
 title: A client delay waiting for approval
 desc: The Client Delay form opened from the Client Delays list, with the Approve and Reject buttons, the delay dates and days, the evidence, the reason and the Note when rejecting box, numbered 1 to 6.

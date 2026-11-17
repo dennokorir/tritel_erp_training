@@ -1,3 +1,10 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, crm_tender:selection:crm.compliance.compliance_state, crm_tender:selection:crm.compliance.lines.state
+# docs-sync: shows crm_tender:selection:crm.oem.certification.state, tritel_tender_tracker:cron:ir_cron_prequalification_followup, tritel_tender_tracker:group:group_account_manager
+# docs-sync: shows tritel_tender_tracker:menu:menu_prequalification_pipeline, tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tenders_section
+# docs-sync: shows tritel_tender_tracker:menu:reporting_menu, tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:prequalification.registration
+# docs-sync: shows tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.initial.line, tritel_tender_tracker:selection:prequalification.registration.pq_state
+# docs-sync: shows tritel_tender_tracker:selection:target.period.state
 type: screen
 title: A prequalification
 desc: A prequalification form with the Log RFQ button and the clickable status bar, the RFQs smart button, the source tender, account manager and validity dates, the follow-up date, the Results group and the RFQs tab, numbered 1 to 6.

@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:model:project.delivery.baseline, tritel_project_delivery:selection:project.delivery.baseline.kind
+# docs-sync: shows tritel_project_delivery:selection:project.delivery.baseline.state, tritel_project_delivery:selection:project.delivery.client.delay.state, tritel_project_delivery:selection:project.delivery.handover.state
+# docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state
 type: screen
 title: Confirming a baseline for approval
 desc: A draft delivery baseline with the Confirm for Approval and Withdraw buttons, the budget figures and the Approvals tab that lists who has confirmed and approved it, numbered 1 to 4.

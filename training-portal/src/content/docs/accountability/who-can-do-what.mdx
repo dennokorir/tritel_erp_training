@@ -7,6 +7,7 @@ roles: [everyone, line-manager, hr, accountability-admin, board, system-admin]
 tags: [permissions, access]
 keywords: [access rights, permissions, roles, who can see my score, can't see My Team, supervisor, administrator, HR, privacy, security, visibility]
 related: [accountability/how-to/hr-admin/access-rights, accountability/faq, accountability/index, roles/hr]
+sidebar: { order: 2 }
 sources:
   - tritel_accountability_framework/security/ir_groups.xml
   - tritel_accountability_framework/security/ir.model.access.csv
@@ -20,7 +21,19 @@ sources:
   - tritel_accountability_framework/models/accountability_review_session.py
   - tritel_accountability_framework/views/menu.xml
   - e_board/models/accountability_extensions.py
-sidebar: { order: 2 }
+  - tritel_accountability_framework/models/accountability_config.py
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/models/accountability_review.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/accountability_target_proposal.py
+  - tritel_accountability_framework/models/hr_employee.py
+  - tritel_accountability_framework/views/accountability_scorecard_request_views.xml
+  - tritel_accountability_framework/views/accountability_target_views.xml
+  - tritel_accountability_framework/views/hr_employee_views.xml
+  - tritel_accountability_framework/wizard/cascade_pull_wizard.py
+  - tritel_accountability_framework/wizard/review_concern_wizards.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../components/Illustration.astro';
 

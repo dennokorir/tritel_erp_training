@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows e_board:model:accountability.board.review, e_board:model:accountability.board.review.line
 type: calc
 title: MD review line score
 desc: Worked example of one line in the MD's quarterly review, a revenue target of KES 120,000,000 where the MD's result of 90,000,000 scores 75.0% and the board's changed result of 96,000,000 scores 80.0% and needs a comment.

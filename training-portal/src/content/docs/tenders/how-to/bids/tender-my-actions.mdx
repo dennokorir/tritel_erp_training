@@ -10,6 +10,7 @@ where: [Tender Manager, My Actions]
 before:
   - Any internal user can open it. What you see depends on your role and on the tenders you work on.
 related: [tenders/how-to/bids/nominate-the-team, tenders/how-to/bids/score-bid-quality, tenders/how-to/bids/confirm-a-disqualification, tenders/how-to/bids/attribute-a-won-tender, tenders/how-to/bids/business-case, tenders/how-to/customers/review-a-project-summary, tenders/concepts/the-portal]
+sidebar: { order: 14 }
 sources:
   - tritel_tender_tracker/static/src/my_actions/tender_my_actions.xml
   - tritel_tender_tracker/static/src/my_actions/tender_my_actions.js
@@ -18,7 +19,30 @@ sources:
   - tritel_tender_tracker/models/bid_desk.py
   - tritel_tender_tracker/models/prequalification_pipeline.py
   - tritel_tender_tracker/views/portal_my_actions_templates.xml
-sidebar: { order: 14 }
+  - crm_tender/models/crm_oem_booking.py
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/controllers/portal_tender.py
+  - tritel_tender_tracker/data/bid_desk_data.xml
+  - tritel_tender_tracker/data/bid_quality_data.xml
+  - tritel_tender_tracker/data/tender_workflow_data.xml
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/prequalification_models.py
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/models/res_partner.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/crm_lead_views.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/partner_activity_touchpoints_views.xml
+  - tritel_tender_tracker/views/project_summary_views.xml
+  - tritel_tender_tracker/views/summary_library_views.xml
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/views/tender_workflow_views.xml
+  - tritel_tender_tracker/wizards/tender_summary_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

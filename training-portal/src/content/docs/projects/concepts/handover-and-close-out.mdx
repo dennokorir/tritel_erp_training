@@ -7,13 +7,19 @@ roles: [delivery-pm, head-delivery, delivery-finance]
 tags: [handover, close-out]
 keywords: [handover, hand over, completion certificate, acceptance certificate, practical completion, close project, project closure, final cost, final account, sign-off, reopen, late bills]
 related: [projects/workflows/handover, projects/workflows/close-out, projects/how-to/delivery-pm/record-a-handover, projects/how-to/approvers/confirm-a-handover, projects/how-to/approvers/close-a-project, projects/calculations/close-and-kpi]
+sidebar: { order: 8 }
 sources:
   - tritel_project_delivery/models/closeout.py
   - tritel_project_delivery/models/action_followups.py
   - tritel_project_delivery/models/my_actions.py
   - tritel_project_delivery/views/closeout_views.xml
   - tritel_project_delivery/data/closeout_data.xml
-sidebar: { order: 8 }
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/menus.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -21,6 +27,7 @@ Every delivery project ends in two steps: the **project handover**, when the cli
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_project_delivery:field:project.project.approved_completion_date, tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:close-project, tritel_project_delivery:view_ext:project.edit_project:button:handover, tritel_project_delivery:view_ext:project.edit_project:button:record-handover
   A["Approved completion date passes"] --> B["Record Handover (project manager)"]
   B --> C["Submit for Confirmation"]
   C --> D["Confirm Handover (Head of Delivery)"]

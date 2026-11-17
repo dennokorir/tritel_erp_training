@@ -7,6 +7,7 @@ roles: [head-commercial, bid-liaison, presales, account-manager, tender-admin]
 tags: [bid quality, must-win]
 keywords: [must win, priority tender, strategic bid, quality check, bid quality score, scoring, guidelines, disqualified, disqualification, non-responsive, rejected bid, cause, late submission, missing signature, error]
 related: [tenders/workflows/quality-and-disqualification, tenders/how-to/bids/flag-a-must-win, tenders/how-to/bids/score-bid-quality, tenders/how-to/bids/confirm-a-disqualification, tenders/calculations/bid-quality-score, tenders/calculations/late-submission]
+sidebar: { order: 6 }
 sources:
   - tritel_tender_tracker/models/bid_quality.py
   - tritel_tender_tracker/wizards/bid_quality_wizards.py
@@ -16,7 +17,21 @@ sources:
   - tritel_tender_tracker/views/bid_quality_views.xml
   - tritel_tender_tracker/data/bid_quality_data.xml
   - tritel_accountability_framework/models/metric_hook_bid_quality.py
-sidebar: { order: 6 }
+  - crm_tender/models/crm_compliance.py
+  - crm_tender/models/crm_oem_booking.py
+  - crm_tender/security/crm_tender_security.xml
+  - crm_tender/views/crm_compliance_views.xml
+  - tritel_tender_tracker/data/mail_templates.xml
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -48,6 +63,7 @@ Before the deadline, the team gets *Must-win tender closes in 7 day(s)* (and aga
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:cron:ir_cron_bid_quality_reminders, tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:model:tender.quality.line, tritel_tender_tracker:selection:tender.initial.quality_state
   S["Mark Submitted"] --> Q["Quality Check: To Score (due in 10 days)"]
   Q -->|"Score Bid (Bid Liaison's manager)"| SC["Scored: Quality Score (%)"]
   SC -->|"Change Score"| SC

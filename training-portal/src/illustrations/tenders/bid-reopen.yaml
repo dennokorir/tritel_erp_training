@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:menu:menu_target_root, tritel_tender_tracker:menu:menu_tender_customers
+# docs-sync: shows tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:tender.initial
+# docs-sync: shows tritel_tender_tracker:selection:target.period.state, tritel_tender_tracker:selection:tender.initial.kanban_state, tritel_tender_tracker:selection:tender.summary.event.kind
+# docs-sync: shows tritel_tender_tracker:wizard:lost.reason
 type: screen
 title: Reopening a tender
 desc: A Lost tender with the Reopen button, and the Reopen Tender window with its explanation, the required Reason box and the Save button, numbered 1 to 4.

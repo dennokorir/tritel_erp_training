@@ -1,3 +1,10 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_my_targets_client_action, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_review_packs
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_targets, tritel_accountability_framework:selection:accountability.config.progress_brief_frequency, tritel_accountability_framework:selection:accountability.library.entry.cadence
+# docs-sync: shows tritel_accountability_framework:selection:accountability.progress.brief.frequency, tritel_accountability_framework:selection:accountability.review.session.employee.avg_rating, tritel_accountability_framework:selection:accountability.review.session.line.line_rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.line.target_cadence, tritel_accountability_framework:selection:accountability.score.rating, tritel_accountability_framework:selection:accountability.snapshot.line.rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.snapshot.rating, tritel_accountability_framework:selection:accountability.target.cadence, tritel_accountability_framework:selection:accountability.target.rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.target.state, tritel_accountability_framework:view_ext:hr.view_employee_form:field:rating
 type: screen
 title: My Performance on the portal
 desc: The My Performance page on the website portal with the As at selector, the My Reviews button, the overall rating and Own Performance cards, and the My Targets table with the Request Review button, numbered 1 to 5.

@@ -11,11 +11,17 @@ before:
   - You are a <strong>Channel Manager</strong> or <strong>Channel Administrator</strong>, or a <strong>Purchase Administrator</strong>.
   - "A purchase order with lines in a confirmed booking has been cancelled. If you created the booking, you have a to-do: <em>PO-2026-002 was cancelled: correct this booking</em>."
 related: [tenders/channel/booking-workflow, tenders/channel/book-oem-purchases, tenders/channel/oem-bookings, tenders/calculations/oem-bookings]
+sidebar: { order: 6 }
 sources:
   - crm_tender/models/purchase.py
   - crm_tender/models/crm_oem_booking.py
   - crm_tender/views/crm_oem_booking_views.xml
-sidebar: { order: 6 }
+  - crm_tender/models/crm_oem.py
+  - crm_tender/views/crm_oem_views.xml
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/target_period.py
+  - tritel_tender_tracker/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

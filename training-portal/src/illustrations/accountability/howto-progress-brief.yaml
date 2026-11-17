@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:cron:cron_progress_briefs, tritel_accountability_framework:group:group_accountability_supervisor, tritel_accountability_framework:menu:menu_accountability_my_performance
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_progress_briefs, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:model:accountability.progress.brief
+# docs-sync: shows tritel_accountability_framework:selection:accountability.progress.brief.state, tritel_accountability_framework:selection:accountability.review.session.employee.avg_rating, tritel_accountability_framework:selection:accountability.review.session.line.line_rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.score.rating, tritel_accountability_framework:selection:accountability.snapshot.line.rating, tritel_accountability_framework:selection:accountability.snapshot.rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.target.rating
 type: screen
 title: A progress brief
 desc: A Progress Brief record in Accountability showing the brief table with Actual, Expected by then, Gap, Rating on pace and At this pace by period end, with the employee, checkpoint and sent date, numbered 1 to 4.

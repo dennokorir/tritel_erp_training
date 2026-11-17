@@ -8,6 +8,7 @@ tags: [commercial targets, periods]
 keywords: [target period, quarter, Q1, financial year, period filter, current period, close period, active period, planning horizon, pipeline period]
 where: [Tender Manager, Configuration, Target Periods]
 related: [tenders/commercial-targets/index, tenders/commercial-targets/achievements, tenders/concepts/tenders-and-statuses, reference/states]
+sidebar: { order: 2 }
 sources:
   - tritel_tender_tracker/models/target_period.py
   - tritel_tender_tracker/views/target_period_views.xml
@@ -18,7 +19,11 @@ sources:
   - tritel_tender_tracker/static/src/js/crm_period_bar.js
   - tritel_tender_tracker/controllers/portal_tender.py
   - tritel_tender_tracker/security/ir.model.access.csv
-sidebar: { order: 2 }
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/models/prequalification_pipeline.py
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

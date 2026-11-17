@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows (no tracked code element: layout or general picture)
 type: screen
 title: The parts of an Odoo screen
 desc: A list screen in the Accountability app, with the app name, the top menu, the breadcrumb, the search bar with filters, and the list of records numbered 1 to 5.

@@ -1,3 +1,7 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:cron:ir_cron_baseline_due, tritel_project_delivery:field:project.project.award_date, tritel_project_delivery:field:project.project.baseline_due_date
+# docs-sync: shows tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root
+# docs-sync: shows tritel_project_delivery:model:project.delivery.baseline, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:view_ext:project.edit_project:button:delivery-baseline
 type: calc
 title: Baseline due date
 desc: Worked example of the baseline due date, 14 days after an award on 1 Mar 2027, and the overdue to-do sent the next day if the project still has no baseline or only a draft.

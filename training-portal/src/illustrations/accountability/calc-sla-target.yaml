@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:model:accountability.target
 type: calc
 title: SLA target score
 desc: Worked example of an SLA target's score as the plain average of its three signed-off reviews, 100%, 66.7% and 0%, giving 55.6%.

@@ -7,6 +7,7 @@ roles: [everyone, account-manager, bid-liaison, presales, head-commercial, head-
 tags: [start here, end to end]
 keywords: [end to end, process, workflow, handover between teams, how does it connect, lifecycle, sales to delivery, order to cash, big picture, flow, who does what next]
 related: [end-to-end/opportunity-to-accountability, end-to-end/oem-booking-to-revenue-target, end-to-end/customer-activity-to-coverage, end-to-end/bid-desk-to-bid-kpis, end-to-end/project-to-delivery-kpi]
+sidebar: { order: 0 }
 sources:
   - tritel_tender_tracker/models/tender_workflow.py
   - tritel_tender_tracker/models/target.py
@@ -16,7 +17,37 @@ sources:
   - tritel_accountability_framework/models/accountability_metric.py
   - tritel_accountability_framework/models/accountability_target.py
   - e_board/controllers/e_board_controller.py
-sidebar: { order: 0 }
+  - crm_tender/models/crm_oem.py
+  - crm_tender/security/crm_tender_security.xml
+  - crm_tender/views/crm_oem_booking_views.xml
+  - e_board/data/md_review_cron.xml
+  - e_board/security/security.xml
+  - tritel_accountability_framework/data/ir_cron_data.xml
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_review.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/cascade_line_mixin.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/project_views.xml
+  - tritel_project_delivery/views/tender_views.xml
+  - tritel_project_delivery/views/tracking_views.xml
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/models/market_coverage.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/models/res_partner.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/account_ownership_views.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/partner_activity_touchpoints_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 Each system section of this site explains one app. The work itself doesn't stay in one app: an opportunity in CRM becomes a tender, a won tender becomes a delivery project, and what happens in all of them ends up as figures on people's targets and, in the end, on the board's summary. The journeys on these pages follow one piece of work across those handovers, step by step, and link to the guide for each step.
@@ -25,6 +56,7 @@ Each system section of this site explains one app. The work itself doesn't stay 
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows crm_tender:menu:menu_crm_oem_bookings, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:selection:accountability.objective.achievement_state, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project, tritel_project_delivery:view_ext:project.edit_project:page:delivery, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:field:delivery, tritel_tender_tracker:client_action:action_touchpoints_workspace, tritel_tender_tracker:menu:menu_customers_activities, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:selection:res.partner.coverage_rung, tritel_tender_tracker:selection:tender.initial.readiness_state
   OPP["CRM opportunity"] --> TEN["Tender"]
   TEN --> BID["Bid desk: readiness, submission, quality"]
   BID --> WON["Tender won"]

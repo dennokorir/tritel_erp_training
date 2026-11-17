@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:view_ext:project.edit_project:button:odoo-budget-lines, tritel_project_delivery:view_ext:project.edit_project:field:odoo-budget-lines
 type: calc
 title: Odoo budget lines
 desc: Worked example of the Odoo budget created on approval for a project starting 15 Jan 2027 with completion on 31 Mar 2027, showing the budget period, one line per month with planned spend and one zero line for the months after.

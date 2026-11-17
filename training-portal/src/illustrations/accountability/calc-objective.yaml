@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:field:hr.employee.accountability_target_ids, tritel_accountability_framework:model:accountability.objective, tritel_accountability_framework:selection:accountability.objective.achievement_state
+# docs-sync: shows tritel_accountability_framework:view_ext:hr.view_employee_form:button:targets, tritel_accountability_framework:view_ext:hr.view_employee_form:field:targets
 type: calc
 title: Objective achievement
 desc: Worked example of an objective's Org Average from two measured targets weighted by their period weight, giving 70%, compared with an Achievement Threshold of 70%.

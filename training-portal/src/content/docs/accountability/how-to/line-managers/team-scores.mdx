@@ -10,12 +10,21 @@ where: [Accountability, My Team, Team Scores]
 before:
   - Only people with targets in the period appear. Exempt staff are hidden unless you tick <strong>Show exempt staff</strong>.
 related: [accountability/concepts/scores, accountability/calculations/own-team-overall, accountability/calculations/ratings, accountability/concepts/snapshots-and-as-at, accountability/reports/performance-overview]
+sidebar: { order: 9 }
 sources:
   - tritel_accountability_framework/static/src/team_scores/accountability_team_scores.xml
   - tritel_accountability_framework/static/src/team_scores/accountability_team_scores.js
   - tritel_accountability_framework/models/accountability_team_scores.py
   - tritel_accountability_framework/models/accountability_snapshot.py
-sidebar: { order: 9 }
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/models/accountability_rating.py
+  - tritel_accountability_framework/models/accountability_score.py
+  - tritel_accountability_framework/models/hr_employee.py
+  - tritel_accountability_framework/views/accountability_snapshot_views.xml
+  - tritel_accountability_framework/views/hr_employee_views.xml
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

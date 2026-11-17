@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_root
+# docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:view_ext:project.edit_project:button:draft-baseline
 type: screen
 title: The spend plan by month
 desc: The Summary by category tab of a draft baseline with the budget by category and the Spend plan by month table, with a row per month, a column per category, month and running totals, and the Total and Planned to date rows, numbered 4.

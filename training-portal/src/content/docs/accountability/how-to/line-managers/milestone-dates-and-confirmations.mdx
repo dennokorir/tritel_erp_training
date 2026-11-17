@@ -11,6 +11,7 @@ before:
   - The target's type is <strong>Milestone</strong>.
   - You are the target owner's manager. Only you (or an accountability administrator, if the owner has no manager with a user account) can confirm their stages.
 related: [accountability/workflows/milestone-stage, accountability/calculations/milestone-scores, accountability/how-to/everyone/update-a-milestone, accountability/how-to/line-managers/set-team-targets]
+sidebar: { order: 5 }
 sources:
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_accountability_framework/views/accountability_milestone_views.xml
@@ -19,7 +20,17 @@ sources:
   - tritel_accountability_framework/models/accountability_target_milestones.py
   - tritel_accountability_framework/models/accountability_scorecard_request.py
   - tritel_accountability_framework/wizard/milestone_action_wizard.py
-sidebar: { order: 5 }
+  - tritel_accountability_framework/data/ir_cron_data.xml
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/models/accountability_score.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/metric_test_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

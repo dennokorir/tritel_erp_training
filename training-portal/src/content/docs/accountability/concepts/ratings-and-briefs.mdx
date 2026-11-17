@@ -7,12 +7,22 @@ roles: [everyone, line-manager, hr, accountability-admin]
 tags: [ratings, scores]
 keywords: [rating, grade, band, appraisal rating, meets expectations, outstanding, on track, behind, pace, progress report, monthly brief, email]
 related: [accountability/calculations/ratings, accountability/workflows/progress-brief, accountability/how-to/everyone/read-briefs-and-snapshots, accountability/how-to/hr-admin/settings]
+sidebar: { order: 8 }
 sources:
   - tritel_accountability_framework/models/accountability_rating.py
   - tritel_accountability_framework/models/accountability_progress_brief.py
   - tritel_accountability_framework/views/accountability_progress_brief_views.xml
   - tritel_accountability_framework/views/accountability_config_views.xml
-sidebar: { order: 8 }
+  - tritel_accountability_framework/models/accountability_config.py
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/accountability_target_library.py
+  - tritel_accountability_framework/models/hr_employee.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/hr_employee_views.xml
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

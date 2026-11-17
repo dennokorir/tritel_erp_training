@@ -12,13 +12,25 @@ before:
   - The targets are live (active). A draft's weight is typed straight on the target and counts once it is activated.
   - The period is not closed.
 related: [accountability/concepts/weights-and-share-of-score, accountability/calculations/weights-over-time, accountability/calculations/share-of-score, accountability/workflows/priority-change]
+sidebar: { order: 4 }
 sources:
   - tritel_accountability_framework/views/accountability_weight_change_views.xml
   - tritel_accountability_framework/static/src/weight_rebalance/weight_rebalance.xml
   - tritel_accountability_framework/wizard/target_weight_wizard.py
   - tritel_accountability_framework/models/accountability_target_weights.py
   - tritel_accountability_framework/static/src/team_targets/accountability_team_targets.xml
-sidebar: { order: 4 }
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_priority_change.py
+  - tritel_accountability_framework/models/accountability_score.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/accountability_weight_change.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/accountability_target_views.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/review_pack_ack_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_root
+# docs-sync: shows tritel_project_delivery:model:project.delivery.baseline, tritel_project_delivery:model:project.delivery.baseline.line, tritel_project_delivery:selection:project.delivery.baseline.state
+# docs-sync: shows tritel_project_delivery:selection:project.delivery.client.delay.state, tritel_project_delivery:selection:project.delivery.cost.item.basis, tritel_project_delivery:selection:project.project.delivery_baseline_state
+# docs-sync: shows tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:delivery-baseline, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:delivery-projects
 type: screen
 title: Cost items on a baseline
 desc: The Costs tab of a draft delivery baseline listing five cost items with their type, quantity, currency, unit cost, payment month, basis and total before VAT, and the Quoted and Foreign currency shares underneath, numbered 1 to 5.

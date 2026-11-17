@@ -7,12 +7,20 @@ roles: [account-manager, head-commercial, head-channel, tender-admin]
 tags: [business cases, approvals]
 keywords: [business case, costing, cost sheet, BOQ, margin, gross profit, GP, pricing approval, bid approval, commission, facilitation, actual vs estimated, variance]
 related: [tenders/workflows/business-case, tenders/how-to/bids/business-case, tenders/calculations/business-case-margin, tenders/how-to/bids/tender-my-actions, projects/concepts/baselines]
+sidebar: { order: 8 }
 sources:
   - tritel_tender_tracker/models/tender_business_case.py
   - tritel_tender_tracker/views/tender_business_case_views.xml
   - tritel_tender_tracker/models/models.py
   - tritel_tender_tracker/models/my_actions.py
-sidebar: { order: 8 }
+  - crm_tender/models/crm_oem_booking.py
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/wizards/tender_summary_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -50,6 +58,7 @@ Every line needs a description: *Description is required on all cost lines.*
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows crm_tender:group:group_administrator, tritel_tender_tracker:group:group_administrator, tritel_tender_tracker:group:group_hod_commercial, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:selection:tender.business.case.state, tritel_tender_tracker:selection:tender.portal.access.log.user_role, tritel_tender_tracker:selection:tender.summary.event.kind, tritel_tender_tracker:wizard:tender.summary.wizard
   D["Draft: cost lines entered"] -->|"Submit for Review (anyone)"| S["Submitted"]
   S -->|"Approve (Head of Commercial)"| A["Approved"]
   S -->|"Reject (Head of Commercial)"| R["Rejected"]

@@ -1,3 +1,12 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_administrator, crm_tender:group:group_manager, crm_tender:group:group_user
+# docs-sync: shows crm_tender:menu:menu_crm_channel_root, crm_tender:menu:menu_crm_compliance, crm_tender:menu:menu_crm_compliance_root
+# docs-sync: shows crm_tender:menu:menu_crm_oem_bookings, crm_tender:menu:menu_crm_untagged_purchases, crm_tender:menu:menu_distributors
+# docs-sync: shows crm_tender:menu:menu_hr_oem_certifications, crm_tender:menu:menu_oem_certifications, crm_tender:menu:menu_oem_courses
+# docs-sync: shows crm_tender:menu:menu_oem_learnings, crm_tender:model:crm.compliance, crm_tender:model:crm.vendor.lead
+# docs-sync: shows crm_tender:model:oem.learning.dev, crm_tender:selection:oem.learning.dev.kanban_state, crm_tender:selection:oem.learning.dev.state
+# docs-sync: shows crm_tender:view_ext:crm.crm_lead_view_form:page:vendor-opportunities, crm_tender:wizard:crm.oem.booking.add.lines, crm_tender:wizard:crm.oem.set.lines
+# docs-sync: shows tritel_tender_tracker:group:group_administrator, tritel_tender_tracker:selection:res.partner.activity.touch_channel, tritel_tender_tracker:selection:res.partner.activity.type.channel
 type: matrix
 title: Who can do what in Channel
 desc: Permission grid for the Channel app, for any internal user, Channel users, Channel Managers and Purchase administrators, covering OEM bookings, untagged purchases, OEMs, distributors, compliance, certifications and learning development.

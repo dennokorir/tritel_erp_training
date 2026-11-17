@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:field:purchase.order.line.oem_booking_id, crm_tender:field:purchase.order.line.usd_subtotal, crm_tender:menu:crm_menu_oems
+# docs-sync: shows crm_tender:menu:menu_crm_oem_bookings, crm_tender:menu:menu_crm_untagged_purchases, crm_tender:menu:menu_distributors
+# docs-sync: shows crm_tender:menu:menu_hr_oem_certifications, crm_tender:menu:menu_oem_certifications, crm_tender:model:crm.distributor
+# docs-sync: shows crm_tender:model:crm.oem.booking, crm_tender:selection:crm.oem.booking.state, tritel_tender_tracker:selection:res.partner.activity.touch_channel
+# docs-sync: shows tritel_tender_tracker:selection:res.partner.activity.type.channel, tritel_tender_tracker:selection:target.period.state, tritel_tender_tracker:selection:tender.initial.kanban_state
 type: screen
 title: A confirmed booking with a cancelled order
 desc: A confirmed OEM booking showing the red banner about purchase orders that are no longer confirmed, the Reset to Draft button, the recognised amount, the purchase line from the cancelled order and the to-do in the chatter, numbered 1 to 5.

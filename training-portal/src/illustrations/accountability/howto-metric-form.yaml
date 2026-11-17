@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_my_actions_action, tritel_accountability_framework:menu:menu_accountability_metrics, tritel_accountability_framework:menu:menu_accountability_my_actions
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:model:accountability.metric, tritel_accountability_framework:model:accountability.review
+# docs-sync: shows tritel_accountability_framework:selection:accountability.metric.aggregation, tritel_accountability_framework:selection:accountability.metric.flag.rule, tritel_accountability_framework:wizard:accountability.metric.test.wizard
 type: screen
 title: A metric and its test
 desc: The Metric form in Accountability with the Test this metric button, the Kind choice, Unit, Code and wait settings, the Records to measure group, and the Test Metric window with Employee, From, To, Evaluate and the result, numbered 1 to 8.

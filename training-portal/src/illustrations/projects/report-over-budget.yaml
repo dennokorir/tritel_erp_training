@@ -1,3 +1,7 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:field:project.project.track_committed, tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:menu:menu_delivery_config
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:model:project.delivery.commitment, tritel_project_delivery:view_ext:project.edit_project:button:committed
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:request-revision
 type: screen
 title: Projects over their approved budget
 desc: Projects My Actions with the To do, Overdue and Waiting on others tiles and the Projects over their approved budget group, showing a project's planned and committed-and-spent figures with the Open tracking, Request revision and Open buttons, numbered 1 to 5.

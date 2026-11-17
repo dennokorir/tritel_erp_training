@@ -7,18 +7,24 @@ roles: [line-manager, accountability-admin]
 tags: [objectives, workflows]
 keywords: [goal, strategic objective, KRA, key result area, status, stage, achieved, achievement, close objective, threshold]
 related: [accountability/concepts/periods-and-objectives, accountability/how-to/hr-admin/objectives, accountability/calculations/objective-achievement, accountability/workflows/period]
+sidebar: { order: 2 }
 sources:
   - tritel_accountability_framework/models/accountability_objective.py
   - tritel_accountability_framework/models/accountability_period.py
   - tritel_accountability_framework/views/accountability_objective_views.xml
   - tritel_accountability_framework/security/ir.model.access.csv
-sidebar: { order: 2 }
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 An **objective** is a goal for the period, such as "Grow recurring revenue". Targets sit under objectives, and objectives can have sub-objectives. Each objective has its own status, changed with the buttons at the top of the objective form.
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows tritel_accountability_framework:client_action:accountability_period_browser_action, tritel_accountability_framework:group:group_accountability_admin, tritel_accountability_framework:menu:menu_accountability_objectives, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:model:accountability.objective, tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.target.state
   state "Draft" as draft
   state "Active" as active
   state "Closed" as closed

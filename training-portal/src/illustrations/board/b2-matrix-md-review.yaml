@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows e_board:cron:cron_board_reviews, e_board:field:accountability.config.board_reviewer_user_id, e_board:group:group_board_viewer
+# docs-sync: shows e_board:menu:menu_accountability_board_reviews, e_board:model:accountability.board.review, e_board:model:accountability.board.review.line
 type: matrix
 title: Who can do what in the MD review
 desc: Permission grid for the MD's quarterly review, showing that the MD prepares, submits and acknowledges, the Board Reviewer (or the backup after 14 days) signs off in the portal, and accountability administrators read every review and name the reviewers.

@@ -1,3 +1,11 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, e_board:model:accountability.board.review.line, tritel_accountability_framework:model:accountability.metric
+# docs-sync: shows tritel_accountability_framework:selection:accountability.milestone.timing, tritel_accountability_framework:selection:accountability.review.session.employee.closed_by, tritel_project_delivery:field:project.project.approved_completion_date
+# docs-sync: shows tritel_project_delivery:field:project.project.close_days_late, tritel_project_delivery:field:project.project.closed_by, tritel_project_delivery:field:project.project.final_cost
+# docs-sync: shows tritel_project_delivery:field:project.project.handover_date, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root
+# docs-sync: shows tritel_project_delivery:model:project.delivery.client.delay, tritel_project_delivery:selection:project.project.close_result, tritel_project_delivery:selection:project.project.handover_state
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:handover, tritel_project_delivery:view_ext:project.edit_project:page:delivery, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:field:delivery
+# docs-sync: shows tritel_tender_tracker:model:tender.summary.heading
 type: calc
 title: A project's result reaches the Delivery KPI
 desc: Worked example of PRJ-2026-001 with an approved completion date of 30 Sep 2026 and 10 approved client-delay days, handed over on 14 Oct (4 days late, within the 7-day grace) for a final cost of KES 7,850,000 against an approved budget of KES 8,000,000, so on time and on budget, counted in the project manager's Q4 2026 rates.

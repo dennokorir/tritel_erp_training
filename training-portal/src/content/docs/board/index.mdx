@@ -7,6 +7,7 @@ roles: [board, md, accountability-admin, system-admin, finance, everyone]
 tags: [start here, portal]
 keywords: [board portal, e-board, board pack, directors, board of directors, governance, board dashboard, MD appraisal, quarterly review, sign-off, board member login]
 related: [board/concepts/the-board-portal, board/concepts/md-quarterly-review, board/concepts/as-at-figures, board/workflows/md-review, board/how-to/invite-board-members]
+sidebar: { order: 1 }
 sources:
   - e_board/__manifest__.py
   - e_board/controllers/e_board_controller.py
@@ -16,7 +17,14 @@ sources:
   - e_board/models/board_invite_wizard.py
   - e_board/models/res_users.py
   - e_board/models/accountability_board_review.py
-sidebar: { order: 1 }
+  - e_board/data/mail_template_board_invite.xml
+  - e_board/data/md_review_cron.xml
+  - e_board/models/access_log.py
+  - e_board/models/accountability_extensions.py
+  - e_board/models/purchase_order.py
+  - e_board/models/sale_order.py
+  - e_board/security/security.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 The **Board portal**, called **E-Board** on screen, is a private part of Tritel's website for the Board of Directors. It gives board members a summary of how the company is doing: sales and purchase invoices, tenders, expenses, what is owed to and by the company, payroll, the profit on won tenders and post-dated cheques waiting for signatures. Board members mostly read. They can also sign cheques, add their own commission or facilitation lines to a won tender's business case, and, for the board member named as **Board Reviewer**, sign off the Managing Director's quarter.
@@ -27,6 +35,7 @@ Board members are portal users, not Odoo staff users. When a board member opens 
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows e_board:field:accountability.config.board_reviewer_user_id, e_board:group:group_board_viewer, e_board:mail_template:mail_template_board_access_granted, e_board:mail_template:mail_template_board_invite, e_board:model:accountability.board.review, e_board:wizard:board.invite.wizard
   I["Invite as Board Viewer (Contacts)"] --> S["Board member sets up an account"]
   S --> H["/my sends them to /my/board"]
   H --> P["Performance"]

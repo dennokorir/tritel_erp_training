@@ -11,12 +11,21 @@ before:
   - "Updates come from customer activities logged on the tender or opportunity, so log them first."
   - "The Pipeline Follow Up Report is in CRM and needs access to CRM's <strong>Reporting</strong> menu."
 related: [tenders/concepts/customer-activities, tenders/how-to/customers/log-a-customer-activity, accountability/calculations/metric-families, tenders/how-to/bids/tender-my-actions]
+sidebar: { order: 15 }
 sources:
   - tritel_tender_tracker/report/tender_evaluation_report.py
   - tritel_tender_tracker/report/tender_evaluation_report.xml
   - tritel_tender_tracker/report/pipeline_report.py
   - tritel_tender_tracker/report/pipeline_report.xml
-sidebar: { order: 15 }
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/data/tender_workflow_data.xml
+  - tritel_tender_tracker/models/market_coverage.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/res_partner.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

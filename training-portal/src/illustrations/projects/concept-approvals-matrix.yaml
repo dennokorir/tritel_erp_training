@@ -1,3 +1,10 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:cron:ir_cron_costs_after_close, tritel_project_delivery:field:project.project.after_close_amount, tritel_project_delivery:field:project.project.client_delay_ids
+# docs-sync: shows tritel_project_delivery:group:group_delivery_finance, tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:menu:menu_delivery_client_delays
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_handovers, tritel_project_delivery:menu:menu_delivery_root
+# docs-sync: shows tritel_project_delivery:model:project.delivery.client.delay, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state
+# docs-sync: shows tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project, tritel_project_delivery:view_ext:project.edit_project:button:reopen, tritel_project_delivery:wizard:delivery.close.wizard
+# docs-sync: shows tritel_project_delivery:wizard:delivery.tag.orders.wizard
 type: matrix
 title: Who approves what in Project Delivery
 desc: Permission grid showing what delivery project managers, the Head of Delivery, Delivery Finance and the MD can do with baselines, handovers, client delays and close-out.

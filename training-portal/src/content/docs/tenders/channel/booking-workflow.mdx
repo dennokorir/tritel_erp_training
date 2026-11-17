@@ -7,18 +7,27 @@ roles: [head-channel, channel-user, finance]
 tags: [channel, oem bookings, workflows]
 keywords: [OEM booking status, draft, confirmed, reset to draft, confirm booking, cancelled PO, deal registration, partner portal, workflow]
 related: [tenders/channel/oem-bookings, tenders/channel/book-oem-purchases, tenders/channel/cancelled-orders, tenders/calculations/oem-bookings, reference/states]
+sidebar: { order: 10 }
 sources:
   - crm_tender/models/crm_oem_booking.py
   - crm_tender/models/purchase.py
   - crm_tender/views/crm_oem_booking_views.xml
   - crm_tender/security/ir.model.access.csv
-sidebar: { order: 10 }
+  - crm_tender/models/crm_oem.py
+  - crm_tender/security/crm_tender_security.xml
+  - crm_tender/wizards/oem_booking_add_lines.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/partner_activity_touchpoints.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 An **OEM booking** has two statuses. It is built in **Draft** and counts only once it is **Confirmed**. Channel Managers, Channel Administrators and Purchase Administrators move it; Channel Users can only look.
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows crm_tender:group:group_manager, crm_tender:selection:crm.oem.booking.state, tritel_tender_tracker:selection:res.partner.activity.touch_channel, tritel_tender_tracker:selection:res.partner.activity.type.channel
   state "Draft" as draft
   state "Confirmed" as confirmed
   [*] --> draft: New (Channel Manager)

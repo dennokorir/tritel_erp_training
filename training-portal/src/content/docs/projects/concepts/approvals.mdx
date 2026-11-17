@@ -7,6 +7,7 @@ roles: [delivery-pm, head-delivery, delivery-finance, md]
 tags: [approvals, baselines]
 keywords: [approval, sign-off, authorisation, approver, MD approval, finance approval, head of delivery, threshold, budget increase, extension of time, return, reject]
 related: [projects/workflows/baseline, projects/how-to/approvers/approve-dates, projects/how-to/approvers/approve-budget, projects/how-to/approvers/approve-a-large-revision, projects/calculations/revisions-and-approvals, projects/who-can-do-what]
+sidebar: { order: 7 }
 sources:
   - tritel_project_delivery/models/baseline.py
   - tritel_project_delivery/models/delivery_settings.py
@@ -15,7 +16,12 @@ sources:
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/baseline_views.xml
   - tritel_project_delivery/views/delivery_settings_views.xml
-sidebar: { order: 7 }
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/project_views.xml
+  - tritel_project_delivery/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

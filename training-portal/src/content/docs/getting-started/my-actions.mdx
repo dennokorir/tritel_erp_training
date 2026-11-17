@@ -7,7 +7,15 @@ roles: [everyone]
 tags: [start here, my actions]
 keywords: [my actions, to do, to-do list, inbox, pending, waiting for me, overdue, approvals]
 sidebar: { order: 5 }
-sources: [tritel_accountability_framework/static/src/my_actions/accountability_my_actions.xml, tritel_tender_tracker/models/my_actions.py, tritel_project_delivery/models/my_actions.py]
+sources:
+  - tritel_accountability_framework/static/src/my_actions/accountability_my_actions.xml
+  - tritel_tender_tracker/models/my_actions.py
+  - tritel_project_delivery/models/my_actions.py
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_project_delivery/views/my_actions_views.xml
+  - tritel_tender_tracker/controllers/portal_tender.py
+  - tritel_tender_tracker/views/project_summary_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../components/Illustration.astro';
 

@@ -1,3 +1,11 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:client_action:action_tender_my_actions, tritel_tender_tracker:cron:ir_cron_prequalification_followup
+# docs-sync: shows tritel_tender_tracker:group:group_account_manager, tritel_tender_tracker:menu:menu_action_tender_stage, tritel_tender_tracker:menu:menu_customers
+# docs-sync: shows tritel_tender_tracker:menu:menu_pipeline_report, tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tender_evaluation_report
+# docs-sync: shows tritel_tender_tracker:menu:menu_tender_my_actions, tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:menu:reporting_menu
+# docs-sync: shows tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.summary.heading
+# docs-sync: shows tritel_tender_tracker:report:action_report_pipeline, tritel_tender_tracker:report:action_report_tender_evaluation, tritel_tender_tracker:wizard:pipeline.report.wizard
+# docs-sync: shows tritel_tender_tracker:wizard:tender.evaluation.report.wizard
 type: screen
 title: The two follow-up report windows
 desc: Side by side, the Tender Follow Up Report window from Tender Manager Reporting and the Pipeline Follow Up Report window from CRM Reporting, each with From Date, To Date, Account Manager, a Status or Stages filter and the Print Report button, numbered 1 to 8.

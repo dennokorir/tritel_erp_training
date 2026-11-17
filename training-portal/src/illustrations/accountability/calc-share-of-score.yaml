@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:field:hr.employee.accountability_target_ids, tritel_accountability_framework:view_ext:hr.view_employee_form:button:targets, tritel_accountability_framework:view_ext:hr.view_employee_form:field:targets
 type: calc
 title: Share of score
 desc: Worked example of three targets with period weights 2.00, 1.50 and 0.25, showing each one's Share of Score (%) over the period and its share from today.

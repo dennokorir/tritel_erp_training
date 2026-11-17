@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:model:accountability.metric, tritel_accountability_framework:model:accountability.target
 type: calc
 title: Coverage ratio metric
 desc: Worked example of a pipeline coverage ratio where an annual revenue target of 120,000,000 is pro-rated to a 90-day quarter, 29,589,041, and a pipeline of 90,000,000 gives 3.04 times the target.

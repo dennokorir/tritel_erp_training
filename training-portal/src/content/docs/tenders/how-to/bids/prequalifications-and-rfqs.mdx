@@ -11,12 +11,24 @@ before:
   - A tender was marked <strong>Prequalified</strong>, which created the prequalification.
   - Any internal user can work a prequalification. Follow-up reminders go to its <strong>Account Manager</strong>.
 related: [tenders/concepts/prequalifications, tenders/workflows/prequalification, tenders/how-to/bids/create-a-tender, tenders/how-to/bids/record-the-result, tenders/how-to/bids/tender-my-actions]
+sidebar: { order: 8 }
 sources:
   - tritel_tender_tracker/views/tender_workflow_views.xml
   - tritel_tender_tracker/models/prequalification_pipeline.py
   - tritel_tender_tracker/views/tender_views.xml
   - tritel_tender_tracker/wizards/tender_move_wizard.py
-sidebar: { order: 8 }
+  - crm_tender/models/crm_compliance.py
+  - crm_tender/models/crm_oem.py
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/data/tender_workflow_data.xml
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/prequalification_models.py
+  - tritel_tender_tracker/models/target_period.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/wizards/partner_activity_wizards.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

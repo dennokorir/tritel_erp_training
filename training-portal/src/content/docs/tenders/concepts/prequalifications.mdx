@@ -7,13 +7,25 @@ roles: [account-manager, bid-liaison, head-commercial, tender-admin]
 tags: [prequalifications, tenders]
 keywords: [prequalification, prequal, PQ, registration, shortlist, framework, supplier registration, RFQ, request for quotation, EOI, validity, renewal]
 related: [tenders/workflows/prequalification, tenders/how-to/bids/prequalifications-and-rfqs, tenders/how-to/bids/record-the-result, tenders/concepts/tenders-and-statuses, tenders/concepts/market-coverage]
+sidebar: { order: 4 }
 sources:
   - tritel_tender_tracker/models/prequalification_pipeline.py
   - tritel_tender_tracker/models/prequalification_models.py
   - tritel_tender_tracker/wizards/tender_move_wizard.py
   - tritel_tender_tracker/views/tender_workflow_views.xml
   - tritel_tender_tracker/data/tender_workflow_data.xml
-sidebar: { order: 4 }
+  - crm_tender/models/crm_compliance.py
+  - crm_tender/models/crm_oem.py
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/target_period.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/wizards/partner_activity_wizards.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -25,6 +37,7 @@ Each RFQ the customer sends under it is logged as a new tender with **Log RFQ**.
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows crm_tender:selection:crm.compliance.compliance_state, crm_tender:selection:crm.compliance.lines.state, crm_tender:selection:crm.oem.certification.state, tritel_tender_tracker:model:prequalification.registration, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.tags, tritel_tender_tracker:selection:prequalification.registration.pq_state, tritel_tender_tracker:selection:tender.initial.kanban_state
   T["Tender in Evaluation"] -->|"Prequalified (dates, categories)"| P["Prequalification: Active"]
   P -->|"Log RFQ"| R1["RFQ tender 1"]
   P -->|"Log RFQ"| R2["RFQ tender 2"]

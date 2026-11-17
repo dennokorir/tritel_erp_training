@@ -7,12 +7,25 @@ roles: [everyone, line-manager, hr, accountability-admin, md, board]
 tags: [snapshots, scores]
 keywords: [snapshot, as at, history, month end, point in time, freeze, compare, archive, PDF, past performance, trend]
 related: [accountability/reports/snapshots-and-compare, accountability/how-to/everyone/read-briefs-and-snapshots, accountability/reports/performance-overview, accountability/how-to/line-managers/team-scores]
+sidebar: { order: 9 }
 sources:
   - tritel_accountability_framework/models/accountability_snapshot.py
   - tritel_accountability_framework/models/accountability_overview_asat.py
   - tritel_accountability_framework/views/accountability_snapshot_views.xml
   - tritel_accountability_framework/report/snapshot_report.xml
-sidebar: { order: 9 }
+  - tritel_accountability_framework/controllers/portal.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_rating.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/hr_employee.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/accountability_exempt_views.xml
+  - tritel_accountability_framework/views/accountability_progress_brief_views.xml
+  - tritel_accountability_framework/views/accountability_target_views.xml
+  - tritel_accountability_framework/views/hr_employee_views.xml
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

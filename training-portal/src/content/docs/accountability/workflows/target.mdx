@@ -7,6 +7,7 @@ roles: [everyone, line-manager, hr, accountability-admin]
 tags: [targets, workflows]
 keywords: [KPI, goal, scorecard, status, stage, activate target, request review, close target, withdraw, sign off, approval, draft target]
 related: [accountability/concepts/targets, accountability/workflows/scorecard-change-request, accountability/workflows/cascade, accountability/workflows/review-pack, accountability/how-to/line-managers/set-team-targets]
+sidebar: { order: 3 }
 sources:
   - tritel_accountability_framework/models/accountability_target.py
   - tritel_accountability_framework/models/accountability_target_weights.py
@@ -18,13 +19,29 @@ sources:
   - tritel_accountability_framework/views/accountability_scorecard_request_views.xml
   - tritel_accountability_framework/views/accountability_review_views.xml
   - tritel_accountability_framework/views/wizard_review_session_views.xml
-sidebar: { order: 3 }
+  - tritel_accountability_framework/controllers/portal.py
+  - tritel_accountability_framework/data/ir_cron_data.xml
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_priority_change.py
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/models/accountability_target_proposal.py
+  - tritel_accountability_framework/models/accountability_weight_change.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/review_pack_ack_wizard.py
+  - tritel_accountability_framework/wizard/review_session_wizard.py
+  - tritel_accountability_framework/wizard/target_weight_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 A **target** is one measurable thing on a person's scorecard, such as "Grow qualified pipeline to 100,000,000". Its status shows whether it is still being agreed, live, waiting for a review, or finished. Once a target is live, every change to it goes through a [scorecard change request](/accountability/workflows/scorecard-change-request/), so the reason and the effect on the score are recorded.
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows tritel_accountability_framework:group:group_accountability_admin, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:model:accountability.metric, tritel_accountability_framework:model:accountability.target, tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.review.state, tritel_accountability_framework:selection:accountability.target.state
   state "Draft" as draft
   state "Active" as active
   state "Pending Review" as pending

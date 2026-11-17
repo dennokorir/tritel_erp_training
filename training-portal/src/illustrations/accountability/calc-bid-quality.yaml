@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows (no tracked code element: layout or general picture)
 type: calc
 title: Bid quality score
 desc: Worked example of the Bid Quality Score for a Bid Liaison where a must-win tender counts three times, a disqualification caused by the Bid Liaison counts as 0% and an unscored bid is left out, giving 68%.

@@ -1,3 +1,7 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:group:group_account_manager, tritel_tender_tracker:menu:menu_target_dashboard
+# docs-sync: shows tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:view_ext:base.view_partner_form:button:touchpoints
+# docs-sync: shows tritel_tender_tracker:view_ext:base.view_partner_form:field:touchpoints
 type: screen
 title: Commercial portal dashboard
 desc: The My Dashboard page of the commercial portal for an account manager, with the tab bar, the Period list, the Targets, Pipeline, Tenders, Tender Success and Achievements cards, and the Customer Touchpoints and Recent Activities panels, numbered 1 to 6.

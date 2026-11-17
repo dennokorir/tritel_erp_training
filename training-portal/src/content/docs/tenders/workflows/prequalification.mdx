@@ -7,18 +7,32 @@ roles: [account-manager, bid-liaison, head-commercial, tender-admin]
 tags: [prequalifications, workflows]
 keywords: [prequalification, prequal, PQ, registration, framework, shortlist, RFQ, log RFQ, expired, renewal, follow-up, validity]
 related: [tenders/concepts/prequalifications, tenders/how-to/bids/prequalifications-and-rfqs, tenders/how-to/bids/record-the-result, tenders/workflows/tender-status]
+sidebar: { order: 4 }
 sources:
   - tritel_tender_tracker/models/prequalification_pipeline.py
   - tritel_tender_tracker/wizards/tender_move_wizard.py
   - tritel_tender_tracker/views/tender_workflow_views.xml
   - tritel_tender_tracker/data/tender_workflow_data.xml
-sidebar: { order: 4 }
+  - crm_tender/models/crm_compliance.py
+  - crm_tender/models/crm_oem.py
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/prequalification_models.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/target_period.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/wizards/partner_activity_wizards.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 A **prequalification** is created when a tender is marked **Prequalified**, and starts **Active**. While active, RFQs are logged against it and the system watches its expiry and how long it has been since the last RFQ. Its other statuses are set by hand on the status bar.
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows crm_tender:selection:crm.compliance.compliance_state, crm_tender:selection:crm.compliance.lines.state, crm_tender:selection:crm.oem.certification.state, tritel_tender_tracker:cron:ir_cron_prequalification_followup, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:selection:prequalification.registration.pq_state, tritel_tender_tracker:selection:target.period.state
   state "Applied" as applied
   state "Active" as active
   state "Expired" as expired
@@ -54,6 +68,7 @@ The status bar shows **Applied**, **Active**, **Expired** and **Closed**; **Rene
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows crm_tender:group:group_manager, crm_tender:selection:crm.compliance.compliance_state, crm_tender:selection:crm.compliance.lines.state, crm_tender:selection:crm.oem.certification.state, tritel_tender_tracker:cron:ir_cron_prequalification_followup, tritel_tender_tracker:group:group_account_manager, tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:model:prequalification.registration, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.tags, tritel_tender_tracker:selection:prequalification.registration.pq_state, tritel_tender_tracker:selection:target.achievement.role, tritel_tender_tracker:selection:target.target.role, tritel_tender_tracker:selection:tender.portal.access.log.user_role, tritel_tender_tracker:selection:tender.readiness.line.status
   subgraph AMs["Account Manager"]
     A1["Mark the tender Prequalified: dates, categories"]
     A2["Add missing dates, untick Dates Unknown"]

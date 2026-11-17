@@ -1,3 +1,11 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_my_actions_action, tritel_accountability_framework:client_action:accountability_my_targets_client_action, tritel_accountability_framework:menu:menu_accountability_my_actions
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_targets, tritel_accountability_framework:menu:menu_accountability_root
+# docs-sync: shows tritel_accountability_framework:selection:accountability.config.progress_brief_frequency, tritel_accountability_framework:selection:accountability.library.entry.cadence, tritel_accountability_framework:selection:accountability.objective.state
+# docs-sync: shows tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.progress.brief.frequency, tritel_accountability_framework:selection:accountability.review.session.employee.avg_rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.line.line_rating, tritel_accountability_framework:selection:accountability.review.session.line.target_cadence, tritel_accountability_framework:selection:accountability.snapshot.line.rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.snapshot.rating, tritel_accountability_framework:selection:accountability.target.cadence, tritel_accountability_framework:selection:accountability.target.rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.target.state, tritel_accountability_framework:view_ext:hr.view_employee_form:field:rating, tritel_accountability_framework:wizard:accountability.cascade.pull.wizard
 type: screen
 title: My Targets, cadence view
 desc: The My Targets screen in Accountability with the period selector, the summary chips, the view buttons, the cadence filter and one row per target showing progress, score, next review and status, numbered 1 to 6.

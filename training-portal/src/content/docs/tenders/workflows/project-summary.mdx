@@ -7,6 +7,7 @@ roles: [head-channel, head-commercial, presales, tender-admin]
 tags: [project summaries, workflows]
 keywords: [project summary, case study, request summary, write, submit for review, send back, approve, reopen, reassign, remind, overdue, library, customer naming]
 related: [tenders/concepts/project-summaries, tenders/how-to/customers/request-a-project-summary, tenders/how-to/customers/write-a-project-summary, tenders/how-to/customers/review-a-project-summary, tenders/how-to/customers/use-the-summary-library]
+sidebar: { order: 5 }
 sources:
   - tritel_tender_tracker/models/project_summary.py
   - tritel_tender_tracker/models/my_actions.py
@@ -15,13 +16,25 @@ sources:
   - tritel_tender_tracker/views/project_summary_views.xml
   - tritel_tender_tracker/data/ir_cron_data.xml
   - tritel_tender_tracker/data/mail_activity.xml
-sidebar: { order: 5 }
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/data/mail_templates.xml
+  - tritel_tender_tracker/models/crm_lead.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/summary_marketing_pack.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/res_partner.xml
+  - tritel_tender_tracker/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 A project summary belongs to a won tender. A manager (the Head of Channel, the Head of Commercial or a Tender administrator) requests it from a writer; the writer submits it; another manager approves it or sends it back. Approved summaries are **Complete** and appear in the library. The status shows as **Summary Status** on the summary workspace and the tender's **Project Summary** tab.
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:cron:ir_cron_summary_overdue, tritel_tender_tracker:mail_template:mail_template_tender_won_alert, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:selection:tender.initial.summary_state, tritel_tender_tracker:wizard:tender.summary.wizard
   state "Not requested" as notreq
   state "Writing" as writing
   state "In review" as review
@@ -62,6 +75,7 @@ stateDiagram-v2
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:cron:ir_cron_summary_overdue, tritel_tender_tracker:group:group_channel_manager, tritel_tender_tracker:group:group_hod_commercial, tritel_tender_tracker:mail_template:mail_template_tender_won_alert, tritel_tender_tracker:menu:menu_technical_presales, tritel_tender_tracker:model:tender.summary.heading, tritel_tender_tracker:selection:tender.business.case.line.commission_role, tritel_tender_tracker:selection:tender.initial.summary_customer_naming, tritel_tender_tracker:selection:tender.portal.access.log.user_role
   subgraph Mgr["Manager: Head of Channel / Head of Commercial"]
     M1["Request summary: writer, due date"]
     M2["Approve: customer naming"]

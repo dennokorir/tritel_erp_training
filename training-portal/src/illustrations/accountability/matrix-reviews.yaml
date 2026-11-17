@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:group:group_accountability_admin, tritel_accountability_framework:menu:menu_accountability_my_review_packs, tritel_accountability_framework:menu:menu_accountability_review_sessions
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_team_reviews, tritel_accountability_framework:model:accountability.progress.brief
+# docs-sync: shows tritel_accountability_framework:model:accountability.review, tritel_accountability_framework:model:accountability.review.session, tritel_accountability_framework:model:accountability.snapshot.line
+# docs-sync: shows tritel_accountability_framework:wizard:accountability.review.concern.escalate.wizard, tritel_accountability_framework:wizard:accountability.review.concern.raise.wizard, tritel_accountability_framework:wizard:accountability.review.pack.ack.wizard
 type: matrix
 title: Who can do what with reviews
 desc: Permission grid for reviews, showing what everyone, line managers, HR, accountability administrators and the board member can do, from requesting a review to deciding escalations and freezing snapshots.

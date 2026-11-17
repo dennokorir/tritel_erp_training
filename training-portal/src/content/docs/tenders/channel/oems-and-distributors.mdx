@@ -8,6 +8,7 @@ tags: [channel, oems]
 keywords: [OEM, vendor, principal, manufacturer, partner, distributor, supplier, partner portal, onboarding, OEM account manager, channel partner]
 where: [Channel, OEMs(Vendors)]
 related: [tenders/channel/index, tenders/channel/oem-bookings, tenders/channel/tag-untagged-purchases, tenders/channel/vendor-opportunities, tenders/channel/certifications-and-learning]
+sidebar: { order: 2 }
 sources:
   - crm_tender/models/crm_oem.py
   - crm_tender/models/crm_oem_booking.py
@@ -15,7 +16,14 @@ sources:
   - crm_tender/views/crm_oem_views.xml
   - crm_tender/views/crm_oem_booking_views.xml
   - crm_tender/security/ir.model.access.csv
-sidebar: { order: 2 }
+  - crm_tender/models/crm_tag.py
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/partner_activity_touchpoints.py
+  - tritel_tender_tracker/models/target_period.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

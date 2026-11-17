@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows e_board:group:group_board_viewer, e_board:model:e.board.access.log, e_board:selection:e.board.access.log.action
 type: screen
 title: Board portal access log
 desc: The Access Log tab, shown to system administrators only, with the Page Views Today, Active Users Today and Actions Taken Today tiles, the User, Page, Action, From and To filters with Apply and Clear, the Portal Activity table and the page buttons, numbered 1 to 4.

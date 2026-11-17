@@ -7,6 +7,7 @@ roles: [delivery-pm, head-delivery, delivery-finance, finance, md, account-manag
 tags: [end to end, delivery kpi, close-out, metrics]
 keywords: [end to end, process, workflow, handover between teams, how does it connect, lifecycle, sales to delivery, project lifecycle, on time, on budget, handover, close out, delivery KPI, project manager scorecard]
 related: [end-to-end/index, projects/concepts/delivery-kpi, projects/calculations/close-and-kpi, projects/concepts/handover-and-close-out, accountability/calculations/metric-families]
+sidebar: { order: 5 }
 sources:
   - tritel_project_delivery/wizards/open_project_wizard.py
   - tritel_project_delivery/models/tender.py
@@ -16,7 +17,45 @@ sources:
   - tritel_project_delivery/models/delivery_settings.py
   - tritel_accountability_framework/models/metric_hook_delivery.py
   - tritel_project_delivery/scripts/seed_delivery_kpis.py
-sidebar: { order: 5 }
+  - crm_tender/models/crm_compliance.py
+  - crm_tender/models/crm_oem_booking.py
+  - crm_tender/security/crm_tender_security.xml
+  - crm_tender/views/crm_compliance_views.xml
+  - e_board/controllers/md_review.py
+  - e_board/models/accountability_board_review.py
+  - tritel_accountability_framework/controllers/worksheet.py
+  - tritel_accountability_framework/data/ir_cron_data.xml
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/views/accountability_exempt_views.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/cascade_line_mixin.py
+  - tritel_project_delivery/data/closeout_data.xml
+  - tritel_project_delivery/data/delivery_data.xml
+  - tritel_project_delivery/models/buttons.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/closeout_views.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/project_views.xml
+  - tritel_project_delivery/views/tender_views.xml
+  - tritel_project_delivery/views/tracking_views.xml
+  - tritel_project_delivery/wizards/tag_orders_wizard.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/target_period.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/wizards/partner_activity_wizards.py
+  - tritel_tender_tracker/wizards/tender_summary_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../components/Illustration.astro';
 
@@ -26,6 +65,7 @@ Once a tender is won, the delivery team turns it into a **delivery project** wit
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows crm_tender:group:group_manager, tritel_accountability_framework:menu:menu_accountability_metrics, tritel_project_delivery:field:project.project.award_date, tritel_project_delivery:field:project.project.client_delay_ids, tritel_project_delivery:menu:menu_delivery_client_delays, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project, tritel_project_delivery:view_ext:project.edit_project:button:close-project, tritel_project_delivery:view_ext:project.edit_project:button:cost-account, tritel_project_delivery:view_ext:project.edit_project:button:handover, tritel_project_delivery:view_ext:project.edit_project:page:delivery, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:open-delivery-project, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:field:delivery, tritel_project_delivery:wizard:delivery.cost.account.card, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:wizard:tender.summary.wizard
   subgraph COM["Commercial"]
     C1["Tender Won, Award Date"]
   end

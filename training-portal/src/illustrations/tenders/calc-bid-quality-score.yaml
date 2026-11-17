@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:selection:tender.initial.dq_cause, tritel_tender_tracker:selection:tender.initial.dq_state
 type: calc
 title: Bid Quality Score for a quarter
 desc: Worked example of a Bid Liaison's Bid Quality Score for Q1 2026, with a must-win bid scored 90% counting three times, a bid scored 80%, a confirmed disqualification caused by the Bid Liaison at 0% and an unscored bid left out, giving 350 points over a weight of 5, or 70.0%.

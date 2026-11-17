@@ -11,12 +11,20 @@ before:
   - You are an accountability administrator. Only administrators see <strong>Organisation › Metrics</strong>.
   - You know which records the figure comes from (for example posted customer invoices) and which field links them to a person.
 related: [accountability/concepts/metrics, accountability/calculations/metric-families, accountability/concepts/targets, accountability/how-to/hr-admin/settings]
+sidebar: { order: 4 }
 sources:
   - tritel_accountability_framework/views/accountability_metric_views.xml
   - tritel_accountability_framework/models/accountability_metric.py
   - tritel_accountability_framework/wizard/metric_test_wizard.py
   - tritel_accountability_framework/views/accountability_target_views.xml
-sidebar: { order: 4 }
+  - tritel_accountability_framework/controllers/worksheet.py
+  - tritel_accountability_framework/data/ir_cron_data.xml
+  - tritel_accountability_framework/models/accountability_review.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

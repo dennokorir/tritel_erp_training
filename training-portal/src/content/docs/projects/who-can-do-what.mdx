@@ -7,6 +7,7 @@ roles: [delivery-pm, head-delivery, delivery-finance, md, everyone, system-admin
 tags: [permissions, access]
 keywords: [access rights, permissions, roles, who can approve, can't see Delivery menu, Configuration missing, MD approval, project administrator, visibility, privacy, security]
 related: [projects/concepts/approvals, projects/faq, projects/index, projects/how-to/approvers/delivery-settings, roles/delivery]
+sidebar: { order: 2 }
 sources:
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/security/ir.model.access.csv
@@ -22,7 +23,13 @@ sources:
   - tritel_project_delivery/models/budget_mapping.py
   - tritel_project_delivery/models/my_actions.py
   - tritel_project_delivery/wizards/open_project_wizard.py
-sidebar: { order: 2 }
+  - tritel_project_delivery/models/buttons.py
+  - tritel_project_delivery/models/cost_item.py
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/models/starter_item.py
+  - tritel_project_delivery/views/buttons_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../components/Illustration.astro';
 

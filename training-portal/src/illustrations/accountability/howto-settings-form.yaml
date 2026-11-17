@@ -1,3 +1,10 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:cron:cron_cascade_reminders, tritel_accountability_framework:cron:cron_metric_reviews, tritel_accountability_framework:cron:cron_progress_briefs
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_progress_briefs, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_settings
+# docs-sync: shows tritel_accountability_framework:model:accountability.config, tritel_accountability_framework:model:accountability.metric, tritel_accountability_framework:selection:accountability.config.progress_brief_frequency
+# docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.employee.avg_rating, tritel_accountability_framework:selection:accountability.review.session.line.line_rating, tritel_accountability_framework:selection:accountability.snapshot.line.rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.snapshot.rating, tritel_accountability_framework:selection:accountability.target.rating, tritel_accountability_framework:selection:accountability.target.weight.change.priority_state
 type: screen
 title: Accountability settings
 desc: The Accountability Framework Settings form with the Resync Access Rights button and the Composite Score Weights, Performance Rating Scale, Progress Briefs, Review Workflow, Automatic Metric Reviews, Cascade Notifications and Notifications sections, numbered 1 to 7.

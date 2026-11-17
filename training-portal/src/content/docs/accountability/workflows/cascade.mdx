@@ -7,6 +7,7 @@ roles: [everyone, line-manager]
 tags: [cascading, targets, workflows]
 keywords: [cascade, push down, pull, share, split target, adopt, decline, approve pull, deny, status, stage, sub-target]
 related: [accountability/concepts/cascading, accountability/how-to/line-managers/push-and-pull-targets, accountability/workflows/target, accountability/workflows/scorecard-change-request]
+sidebar: { order: 4 }
 sources:
   - tritel_accountability_framework/models/accountability_target.py
   - tritel_accountability_framework/models/accountability_scorecard_request.py
@@ -16,13 +17,20 @@ sources:
   - tritel_accountability_framework/wizard/cascade_decline_wizard.py
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_accountability_framework/static/src/my_actions/accountability_my_actions.js
-sidebar: { order: 4 }
+  - tritel_accountability_framework/data/ir_cron_data.xml
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/target_weight_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 **Cascading** passes part of a manager's target down to the people in their team. A manager can **push** a share down, or a team member can **pull** one up by asking for it. Either way, the team member gets a new target of their own (a "share"), which starts as a draft. Its **Cascade Status** tracks where the hand-over has got to.
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows tritel_accountability_framework:group:group_accountability_supervisor, tritel_accountability_framework:selection:accountability.target.cascade_state, tritel_accountability_framework:wizard:accountability.cascade.decline.wizard, tritel_accountability_framework:wizard:accountability.cascade.pull.wizard, tritel_accountability_framework:wizard:accountability.cascade.push.wizard
   state "Pull Requested" as pull
   state "Pending Adoption" as pending
   state "Adopted" as adopted

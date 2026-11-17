@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:selection:res.partner.coverage_rung, tritel_tender_tracker:selection:tender.initial.kanban_state
+# docs-sync: shows tritel_tender_tracker:wizard:lost.reason
 type: calc
 title: Where a customer sits on the ladder
 desc: Worked example of Customer A's coverage rung, with one won tender, one lost tender and an open tender. The ladder is checked from the top, and the first rung that applies is Named.

@@ -7,12 +7,22 @@ roles: [head-commercial, bid-liaison, tender-admin]
 tags: [bid desk, nominations]
 keywords: [bid desk, workload, fair share, load balancing, capacity, overloaded, clash, deadlines, assign bid liaison, effort points, full-time, bid decision]
 related: [tenders/how-to/bids/nominate-the-team, tenders/calculations/workload-points, tenders/concepts/roles-on-a-tender, tenders/concepts/bid-readiness, tenders/concepts/must-win-and-bid-quality]
+sidebar: { order: 7 }
 sources:
   - tritel_tender_tracker/models/bid_desk.py
   - tritel_tender_tracker/wizards/bid_desk_wizards.py
   - tritel_tender_tracker/views/bid_desk_views.xml
   - tritel_accountability_framework/models/metric_hook_bid_desk.py
-sidebar: { order: 7 }
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

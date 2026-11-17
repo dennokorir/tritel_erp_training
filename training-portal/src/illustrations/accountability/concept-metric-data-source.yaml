@@ -1,3 +1,11 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_my_actions_action, tritel_accountability_framework:client_action:accountability_my_targets_client_action, tritel_accountability_framework:field:hr.employee.accountability_target_ids
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_actions, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_targets
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:model:accountability.metric
+# docs-sync: shows tritel_accountability_framework:model:accountability.milestone, tritel_accountability_framework:model:accountability.target, tritel_accountability_framework:selection:accountability.cascade.line.mixin.cascade_link
+# docs-sync: shows tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.review.session.line.target_cadence
+# docs-sync: shows tritel_accountability_framework:selection:accountability.target.metric_automation, tritel_accountability_framework:selection:accountability.target.metric_window_basis, tritel_accountability_framework:selection:accountability.target.state
+# docs-sync: shows tritel_accountability_framework:view_ext:hr.view_employee_form:button:targets, tritel_accountability_framework:view_ext:hr.view_employee_form:field:targets, tritel_accountability_framework:view_ext:hr.view_employee_form:page:performance
 type: screen
 title: A target fed by a metric
 desc: The Data Source group of a target form, with the Metric, Measure Over, Automatic Reviews and Reference Target fields, the Provisional current value with its Refresh link, and the How it's calculated tab, numbered 1 to 5.

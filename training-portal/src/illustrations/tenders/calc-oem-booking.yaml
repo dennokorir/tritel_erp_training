@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:field:purchase.order.line.oem_booking_id, crm_tender:field:purchase.order.line.po_confirmed_date, crm_tender:model:crm.distributor
+# docs-sync: shows crm_tender:model:crm.oem.booking
 type: calc
 title: OEM booking figures
 desc: Worked example of an OEM booking with two purchase lines, USD 6,000 on an order confirmed on 3 Mar 2026 and KES 520,000 converted at 130 to USD 4,000 on an order confirmed on 18 Mar 2026, and USD 9,000 recognised by the OEM. Purchase Cost is USD 10,000, Distributor Margin USD 1,000 or 10.00%, and Booking Date 18 Mar 2026.

@@ -7,6 +7,7 @@ roles: [account-manager, bid-liaison, presales, head-commercial, head-channel, d
 tags: [end to end, tenders, achievements, metrics]
 keywords: [end to end, process, workflow, handover between teams, how does it connect, lifecycle, sales to delivery, order to cash, opportunity to award, win to revenue, attribution, appraisal, KPI, scorecard]
 related: [end-to-end/index, tenders/how-to/bids/attribute-a-won-tender, accountability/calculations/metric-families, projects/concepts/delivery-kpi, board/how-to/read-performance]
+sidebar: { order: 1 }
 sources:
   - tritel_tender_tracker/models/tender_workflow.py
   - tritel_tender_tracker/models/models.py
@@ -21,7 +22,50 @@ sources:
   - tritel_accountability_framework/models/metric_hook_pipeline.py
   - tritel_accountability_framework/models/metric_hook_delivery.py
   - e_board/controllers/e_board_controller.py
-sidebar: { order: 1 }
+  - crm_tender/models/crm_oem.py
+  - crm_tender/models/crm_oem_booking.py
+  - crm_tender/security/crm_tender_security.xml
+  - e_board/models/accountability_board_review.py
+  - tritel_accountability_framework/controllers/worksheet.py
+  - tritel_accountability_framework/data/ir_cron_data.xml
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_target_proposal.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/accountability_target_views.xml
+  - tritel_accountability_framework/views/hr_employee_views.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/cascade_line_mixin.py
+  - tritel_accountability_framework/wizard/metric_test_wizard.py
+  - tritel_project_delivery/data/delivery_data.xml
+  - tritel_project_delivery/models/buttons.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/closeout_views.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/my_actions_views.xml
+  - tritel_project_delivery/views/project_views.xml
+  - tritel_project_delivery/views/tender_views.xml
+  - tritel_project_delivery/views/tracking_views.xml
+  - tritel_project_delivery/wizards/tag_orders_wizard.py
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/models/crm_lead.py
+  - tritel_tender_tracker/models/partner_activity_touchpoints.py
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/models/res_partner.py
+  - tritel_tender_tracker/models/target_period.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/project_summary_views.xml
+  - tritel_tender_tracker/views/target_views.xml
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/wizards/bid_desk_wizards.py
+  - tritel_tender_tracker/wizards/tender_summary_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../components/Illustration.astro';
 
@@ -33,6 +77,7 @@ This is the main journey. An account manager works an opportunity in CRM; the cu
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_accountability_framework:selection:accountability.cascade.line.mixin.cascade_link, tritel_project_delivery:field:project.project.award_date, tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.readiness.line, tritel_tender_tracker:selection:res.partner.activity.touch_channel, tritel_tender_tracker:selection:res.partner.activity.type.channel, tritel_tender_tracker:wizard:tender.submission.wizard
   subgraph COM["Commercial"]
     C1["Opportunity in CRM"]
     C2["Create tender, link Source/Pipeline"]
@@ -64,6 +109,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows crm_tender:group:group_manager, tritel_accountability_framework:cron:cron_recalculate_scores, tritel_accountability_framework:menu:menu_accountability_metrics, tritel_accountability_framework:view_ext:hr.view_employee_form:page:performance, tritel_project_delivery:cron:ir_cron_refresh_tracking, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project, tritel_project_delivery:view_ext:project.edit_project:button:close-project, tritel_project_delivery:view_ext:project.edit_project:button:handover, tritel_project_delivery:view_ext:project.edit_project:page:delivery, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:open-delivery-project, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:field:delivery, tritel_project_delivery:wizard:delivery.cost.account.card, tritel_tender_tracker:wizard:tender.summary.wizard
   subgraph DEL["Delivery"]
     D1["Open Delivery Project"]
     D2["Baseline: costs and dates"]

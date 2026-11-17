@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:model:accountability.review.session, tritel_accountability_framework:model:accountability.target
 type: calc
 title: Session average
 desc: Worked example of a review session average where each employee's pack average counts once, 64.3% and 80.0%, and an employee with nothing counted is left out, giving 72.2%.

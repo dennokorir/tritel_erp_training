@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:field:project.project.track_committed, tritel_project_delivery:field:project.project.track_refreshed_on, tritel_project_delivery:field:project.project.tracking_html
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_root
+# docs-sync: shows tritel_project_delivery:model:project.delivery.commitment, tritel_project_delivery:view_ext:project.edit_project:button:budget-left, tritel_project_delivery:view_ext:project.edit_project:button:committed
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:cost-account, tritel_project_delivery:view_ext:project.edit_project:button:purchase-orders, tritel_project_delivery:wizard:delivery.cost.account.card
 type: screen
 title: Budget tracking window
 desc: The Budget tracking window that opens from the Budget left button, with the status badge, the Figures as of time, one row per budget line with planned, expected by now, committed, spent, left, forecast and status, the Whole budget total and the list of tender orders with lines not tagged to the project, numbered 1 to 6.

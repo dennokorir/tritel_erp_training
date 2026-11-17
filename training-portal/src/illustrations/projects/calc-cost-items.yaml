@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:model:project.delivery.cost.item, tritel_project_delivery:selection:project.project.delivery_baseline_state
 type: calc
 title: Cost item amounts
 desc: Worked example of four cost items on a baseline, showing VAT taken out of a VAT-inclusive price, a US dollar item converted to KES, contingency as 5% of the other costs, the contingency cap check and the budget total of KES 1,050,000.

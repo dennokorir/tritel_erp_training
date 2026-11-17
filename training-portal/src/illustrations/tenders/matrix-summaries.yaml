@@ -1,3 +1,14 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_administrator, crm_tender:group:group_manager, crm_tender:group:group_user
+# docs-sync: shows tritel_tender_tracker:client_action:action_tender_summary_library_views, tritel_tender_tracker:group:group_account_manager, tritel_tender_tracker:group:group_administrator
+# docs-sync: shows tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:group:group_channel_manager, tritel_tender_tracker:group:group_hod_commercial
+# docs-sync: shows tritel_tender_tracker:menu:menu_account_managers, tritel_tender_tracker:menu:menu_bid_liaisons, tritel_tender_tracker:menu:menu_technical_presales
+# docs-sync: shows tritel_tender_tracker:menu:menu_tender_pillar, tritel_tender_tracker:menu:menu_tender_summary_exports, tritel_tender_tracker:menu:menu_tender_summary_heading
+# docs-sync: shows tritel_tender_tracker:menu:menu_tender_summary_library, tritel_tender_tracker:menu:menu_tender_summary_marketing, tritel_tender_tracker:menu:menu_tender_summary_tracker
+# docs-sync: shows tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.summary.export, tritel_tender_tracker:selection:res.partner.activity.touch_channel
+# docs-sync: shows tritel_tender_tracker:selection:res.partner.activity.type.channel, tritel_tender_tracker:selection:target.achievement.role, tritel_tender_tracker:selection:target.target.role
+# docs-sync: shows tritel_tender_tracker:selection:tender.business.case.line.commission_role, tritel_tender_tracker:selection:tender.portal.access.log.user_role, tritel_tender_tracker:wizard:tender.summary.marketing.wizard
+# docs-sync: shows tritel_tender_tracker:wizard:tender.summary.wizard
 type: matrix
 title: Who can do what with project summaries
 desc: Permission grid for requesting, writing, reviewing and reopening project summaries, the Summary Tracker, the Project Summaries library, marketing exports and the summary set-up lists, for Account Managers, Bid Liaisons, Technical Presales, the Head of Commercial, the Head of Channel, Tender administrators and any other internal user.

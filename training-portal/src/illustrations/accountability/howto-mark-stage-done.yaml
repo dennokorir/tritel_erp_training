@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_my_actions_action, tritel_accountability_framework:client_action:accountability_my_targets_client_action, tritel_accountability_framework:menu:menu_accountability_my_actions
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_targets, tritel_accountability_framework:menu:menu_accountability_root
+# docs-sync: shows tritel_accountability_framework:model:accountability.milestone, tritel_accountability_framework:selection:accountability.milestone.status, tritel_accountability_framework:selection:accountability.milestone.timing
+# docs-sync: shows tritel_accountability_framework:wizard:accountability.milestone.action.wizard
 type: screen
 title: Marking a milestone stage done
 desc: A milestone target's stages in My Targets with the Mark Done button, and the Mark Stage Done window with the Completed On date and the Save button, numbered 1 to 5.

@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:wizard:tenders.assign.wizard
 type: calc
 title: Average when the tender is already assigned
 desc: Worked example showing that when TND-2026-009 is already assigned to Employee B, its 2 points are counted in Employee B's 6 points and again as this tender's points, raising the team average from 4.67 to 5.33, so Employee B is not shown as over their fair share.

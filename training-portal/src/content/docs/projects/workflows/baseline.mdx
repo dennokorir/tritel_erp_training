@@ -7,6 +7,7 @@ roles: [delivery-pm, head-delivery, delivery-finance, md]
 tags: [baselines, approvals, workflows]
 keywords: [baseline status, approval workflow, sign-off, confirm, return, send back, withdraw, superseded, revision, budget approval, MD approval, stage]
 related: [projects/concepts/baselines, projects/concepts/approvals, projects/how-to/delivery-pm/send-for-approval, projects/how-to/delivery-pm/fix-a-returned-baseline, projects/how-to/approvers/approve-dates, projects/how-to/approvers/approve-budget, projects/how-to/approvers/approve-a-large-revision]
+sidebar: { order: 1 }
 sources:
   - tritel_project_delivery/models/baseline.py
   - tritel_project_delivery/models/phasing.py
@@ -17,13 +18,22 @@ sources:
   - tritel_project_delivery/views/baseline_views.xml
   - tritel_project_delivery/views/project_views.xml
   - tritel_project_delivery/data/delivery_data.xml
-sidebar: { order: 1 }
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/cost_item.py
+  - tritel_project_delivery/models/starter_item.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/tender_views.xml
+  - tritel_project_delivery/views/tracking_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 A **delivery baseline** is drafted by the project manager, confirmed for approval, and approved in parts by the Head of Delivery, Delivery Finance and, for large revisions, the MD. The status shows on the baseline's status bar. Each version (v1, v2 and so on) goes through these statuses on its own.
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows tritel_project_delivery:group:group_delivery_finance, tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.delivery.baseline.state, tritel_project_delivery:selection:project.delivery.client.delay.state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:page:delivery, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:field:delivery
   state "Draft" as draft
   state "Waiting for approval" as waiting
   state "Approved" as approved
@@ -67,6 +77,7 @@ The project's **Baseline** field sums up its versions:
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_project_delivery:group:group_delivery_finance, tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:group:group_delivery_pm, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.delivery.baseline.state, tritel_project_delivery:selection:project.delivery.client.delay.state, tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project
   subgraph PM["Delivery project manager"]
     P1["Key costs, pay months, dates"]
     P2["Confirm for Approval"]

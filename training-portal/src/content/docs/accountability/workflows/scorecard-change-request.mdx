@@ -7,12 +7,23 @@ roles: [everyone, line-manager, hr, accountability-admin]
 tags: [scorecard changes, targets, workflows]
 keywords: [change request, approval, approve, decline, propose, withdraw target, close target, change target value, add target, deadline, status, HR approval]
 related: [accountability/how-to/line-managers/request-a-scorecard-change, accountability/how-to/hr-admin/decide-changes-and-escalations, accountability/workflows/target, accountability/workflows/period]
+sidebar: { order: 6 }
 sources:
   - tritel_accountability_framework/models/accountability_scorecard_request.py
   - tritel_accountability_framework/models/accountability_withdrawn.py
   - tritel_accountability_framework/views/accountability_scorecard_request_views.xml
   - tritel_accountability_framework/wizard/cascade_push_wizard.py
-sidebar: { order: 6 }
+  - tritel_accountability_framework/data/ir_cron_data.xml
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_priority_change.py
+  - tritel_accountability_framework/models/accountability_rating.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/hr_employee_views.xml
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 Once a target is live, its value, thresholds and place on the scorecard can't simply be edited. Every change goes through a **scorecard change request**, which records the reason and shows the **Effect** on the person's overall rating score before anything happens. There are five kinds of change:
@@ -29,6 +40,7 @@ Whether a request needs approval depends on one date: the period's **Target-Sett
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows tritel_accountability_framework:group:group_accountability_admin, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.target.state
   state "Draft" as draft
   state "Proposed by the employee" as proposed
   state "Waiting for approval" as waiting

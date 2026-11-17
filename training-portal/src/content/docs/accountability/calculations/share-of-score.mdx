@@ -7,10 +7,19 @@ roles: [everyone, line-manager, hr, accountability-admin]
 tags: [weights, scores]
 keywords: [share of score, weighting, percentage, how much does this count, composition, priority, rank, KPI weight, score breakdown]
 related: [accountability/concepts/weights-and-share-of-score, accountability/calculations/weights-over-time, accountability/how-to/line-managers/rebalance-weights, accountability/how-to/everyone/acknowledge-new-priorities]
+sidebar: { order: 4 }
 sources:
   - tritel_accountability_framework/models/accountability_target_weights.py
   - tritel_accountability_framework/views/accountability_target_views.xml
-sidebar: { order: 4 }
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_score.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/accountability_weight_change.py
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/target_weight_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:client_action:action_project_my_actions, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_settings, tritel_project_delivery:menu:menu_project_my_actions, tritel_project_delivery:model:delivery.settings
 type: screen
 title: A large revision on the MD's My Actions
 desc: The Projects My Actions screen with the To do, Overdue and Waiting on others tiles, and the Revisions to approve (MD) group showing a revision with its budget and date change against v1 and the Approve, Return and Open buttons, numbered 1 to 3.

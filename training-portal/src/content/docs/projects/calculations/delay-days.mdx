@@ -7,10 +7,15 @@ roles: [delivery-pm, head-delivery, delivery-finance]
 tags: [client delays, close-out]
 keywords: [client delay, extension of time, EOT, site access, held up, waiting on client, delay days, overlapping delays, on time, deadline]
 related: [projects/concepts/client-delays, projects/workflows/client-delay, projects/how-to/delivery-pm/log-a-client-delay, projects/how-to/approvers/approve-a-client-delay, projects/calculations/close-and-kpi]
+sidebar: { order: 6 }
 sources:
   - tritel_project_delivery/models/closeout.py
   - tritel_project_delivery/views/closeout_views.xml
-sidebar: { order: 6 }
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/menus.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

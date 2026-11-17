@@ -11,6 +11,7 @@ before:
   - The project is a delivery project and you are its project manager.
   - "You have the costs at hand: the BOQ, supplier quotes and your own estimates."
 related: [projects/concepts/baselines, projects/concepts/cost-items-and-categories, projects/concepts/contingency, projects/calculations/cost-items, projects/calculations/margin, projects/how-to/delivery-pm/phase-the-spend, projects/how-to/delivery-pm/set-dates-and-milestones, projects/how-to/delivery-pm/send-for-approval]
+sidebar: { order: 3 }
 sources:
   - tritel_project_delivery/views/baseline_views.xml
   - tritel_project_delivery/views/buttons_views.xml
@@ -19,7 +20,16 @@ sources:
   - tritel_project_delivery/models/cost_item.py
   - tritel_project_delivery/models/tender_import.py
   - tritel_project_delivery/models/budget_mapping.py
-sidebar: { order: 3 }
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/models/starter_item.py
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/project_views.xml
+  - tritel_project_delivery/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

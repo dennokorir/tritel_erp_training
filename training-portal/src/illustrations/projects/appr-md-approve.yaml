@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:client_action:action_project_my_actions, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root
+# docs-sync: shows tritel_project_delivery:menu:menu_project_my_actions, tritel_project_delivery:model:project.delivery.baseline, tritel_project_delivery:model:project.delivery.baseline.line
+# docs-sync: shows tritel_project_delivery:selection:project.delivery.baseline.kind, tritel_project_delivery:selection:project.delivery.baseline.state, tritel_project_delivery:selection:project.delivery.client.delay.state
+# docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:delivery-baseline
 type: screen
 title: A revision waiting for the MD
 desc: The Delivery Baseline form of a revision, with the MD Approve and Return to Draft buttons, the Change box comparing the revision with the previous version and the original, the reason for the revision and the Changes tab listing added and changed cost items, numbered 4 to 8.

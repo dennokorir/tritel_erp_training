@@ -7,12 +7,24 @@ roles: [everyone, line-manager, accountability-admin]
 tags: [progress briefs, workflows]
 keywords: [progress brief, monthly update, quarterly update, pace, on track, behind target, email, status, sent, send again, checkpoint]
 related: [accountability/concepts/ratings-and-briefs, accountability/how-to/everyone/read-briefs-and-snapshots, accountability/how-to/hr-admin/settings]
+sidebar: { order: 10 }
 sources:
   - tritel_accountability_framework/models/accountability_progress_brief.py
   - tritel_accountability_framework/views/accountability_progress_brief_views.xml
   - tritel_accountability_framework/views/accountability_config_views.xml
   - tritel_accountability_framework/security/progress_brief_rules.xml
-sidebar: { order: 10 }
+  - tritel_accountability_framework/models/accountability_config.py
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_rating.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/accountability_target_library.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/accountability_exempt_views.xml
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 A **progress brief** is a short email that tells an employee how their running-total targets are pacing at a checkpoint (a month end or a quarter end): the actual, what was expected by then, the gap, the rating on pace and where that pace leads by the end of the period. Their manager is copied. Each brief has a simple status: **Not sent** or **Sent**.
@@ -21,6 +33,7 @@ Briefs are switched off until an accountability administrator turns on **Send pr
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows tritel_accountability_framework:group:group_accountability_admin, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:selection:accountability.milestone.status, tritel_accountability_framework:selection:accountability.progress.brief.state
   state "Not sent" as draft
   state "Sent" as sent
   [*] --> draft: Checkpoint reached (the system)

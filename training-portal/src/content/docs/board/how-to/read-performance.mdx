@@ -10,12 +10,14 @@ where: [Portal, E-Board, Performance]
 before:
   - You have a board portal login. Signing in takes you straight to <strong>E-Board</strong>.
 related: [board/concepts/the-board-portal, board/concepts/as-at-figures, board/calculations/organisation-score, board/how-to/financial-position, board/how-to/profitability, board/faq]
+sidebar: { order: 7 }
 sources:
   - e_board/controllers/e_board_controller.py
   - e_board/views/portal_e_board_templates.xml
   - e_board/models/accountability_board_summary.py
   - tritel_accountability_framework/models/accountability_snapshot.py
-sidebar: { order: 7 }
+  - e_board/models/access_log.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

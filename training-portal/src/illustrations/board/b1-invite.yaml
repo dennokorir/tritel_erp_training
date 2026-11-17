@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows e_board:group:group_board_viewer, e_board:mail_template:mail_template_board_access_granted, e_board:mail_template:mail_template_board_invite
+# docs-sync: shows e_board:wizard:board.invite.wizard
 type: screen
 title: Invite a board member
 desc: The Contacts list with one contact ticked and the Invite as Board Viewer window open, showing Board Members, Personal Message (optional) and the Send Invitation button, numbered 1 to 5.

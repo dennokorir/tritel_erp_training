@@ -7,6 +7,7 @@ roles: [account-manager, head-commercial, head-channel, tender-admin]
 tags: [customers, coverage]
 keywords: [market coverage, coverage ladder, named account, anchor account, key account, target account, account plan, territory, account owner, unowned customer, claim account, win rate, named share, sector, segment]
 related: [tenders/how-to/customers/market-coverage, tenders/how-to/customers/account-ownership, tenders/calculations/coverage-ladder, tenders/workflows/customer-activity, tenders/concepts/customer-activities, tenders/concepts/opportunities-and-tenders]
+sidebar: { order: 11 }
 sources:
   - tritel_tender_tracker/models/market_coverage.py
   - tritel_tender_tracker/models/account_ownership.py
@@ -16,7 +17,20 @@ sources:
   - tritel_tender_tracker/views/target_accounts_views.xml
   - tritel_tender_tracker/static/src/coverage/market_coverage.xml
   - tritel_accountability_framework/models/metric_hook_coverage.py
-sidebar: { order: 11 }
+  - crm_tender/models/crm_oem.py
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/models/crm_lead.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/target_period.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/res_partner.xml
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/wizards/tender_lost.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -28,6 +42,7 @@ Every customer sits on one rung of a ladder, the highest one that applies. The s
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:field:crm.lead.account_manager_id, tritel_tender_tracker:field:res.partner.account_manager_id, tritel_tender_tracker:group:group_account_manager, tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:selection:tender.initial.kanban_state, tritel_tender_tracker:wizard:lost.reason
   A["Anchor: 2 or more wins"] --- N["Named: exactly 1 win"]
   N --- P["Prequalified: a prequalified tender, no win"]
   P --- I["In play: an open tender or opportunity"]

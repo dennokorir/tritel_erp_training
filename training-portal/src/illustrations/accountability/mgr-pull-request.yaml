@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_root
+# docs-sync: shows tritel_accountability_framework:selection:accountability.cascade.line.mixin.cascade_link, tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state
+# docs-sync: shows tritel_accountability_framework:selection:accountability.target.cascade_link, tritel_accountability_framework:selection:accountability.target.cascade_state, tritel_accountability_framework:selection:accountability.target.state
+# docs-sync: shows tritel_accountability_framework:wizard:accountability.cascade.pull.wizard
 type: screen
 title: Approving a pull request
 desc: A team member's target waiting as a pull request, with the Approve Pull and Deny Pull buttons, the Cascade section showing the source and the justification, numbered 1 to 3.

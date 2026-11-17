@@ -11,6 +11,7 @@ before:
   - The target you push from is yours, belongs to an objective, and that objective belongs to a period.
   - The people you push to are your direct reports. Exempt staff are not offered.
 related: [accountability/concepts/cascading, accountability/workflows/cascade, accountability/reports/compliance, accountability/how-to/line-managers/set-team-targets]
+sidebar: { order: 3 }
 sources:
   - tritel_accountability_framework/views/wizard_cascade_push_views.xml
   - tritel_accountability_framework/wizard/cascade_push_wizard.py
@@ -18,7 +19,16 @@ sources:
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_accountability_framework/models/accountability_target.py
   - tritel_accountability_framework/static/src/cascade_management/accountability_cascade_management.xml
-sidebar: { order: 3 }
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/cascade_pull_wizard.py
+  - tritel_accountability_framework/wizard/target_weight_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

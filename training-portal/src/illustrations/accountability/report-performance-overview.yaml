@@ -1,3 +1,7 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_cascade_dashboard_action, tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_my_performance
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_root
+# docs-sync: shows tritel_accountability_framework:model:accountability.snapshot.line, tritel_accountability_framework:selection:accountability.target.state
 type: screen
 title: The Performance Overview
 desc: The Org Performance Cascade screen with the period and As at selectors, the Trend switch, the Freeze button, the List, Organogram and Focus tabs, the KPI strip and the side panel for one person with Own, Team and Composite scores, numbered 1 to 7.

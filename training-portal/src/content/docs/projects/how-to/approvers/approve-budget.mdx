@@ -11,13 +11,21 @@ before:
   - You have the <strong>Delivery Finance</strong> role.
   - "The project manager has clicked <strong>Confirm for Approval</strong> on an original baseline, or on a revision that changes the costs. You get a to-do called <em>Approve delivery baseline: budget</em>."
 related: [projects/concepts/approvals, projects/workflows/baseline, projects/concepts/cost-items-and-categories, projects/concepts/odoo-budget-and-cost-account, projects/calculations/cost-items, projects/calculations/margin]
+sidebar: { order: 2 }
 sources:
   - tritel_project_delivery/views/baseline_views.xml
   - tritel_project_delivery/views/budget_mapping_views.xml
   - tritel_project_delivery/models/baseline.py
   - tritel_project_delivery/models/tender_import.py
   - tritel_project_delivery/models/my_actions.py
-sidebar: { order: 2 }
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/cost_item.py
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/menus.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

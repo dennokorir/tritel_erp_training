@@ -7,6 +7,7 @@ roles: [everyone, line-manager, hr, accountability-admin, md, board]
 tags: [start here, targets, reviews, scores]
 keywords: [KPI, appraisal, performance management, scorecard, objectives, OKR, performance review, targets, balanced scorecard, PMS]
 related: [accountability/concepts/targets, accountability/concepts/scores, accountability/concepts/reviews, accountability/faq]
+sidebar: { order: 1 }
 sources:
   - tritel_accountability_framework/views/menu.xml
   - tritel_accountability_framework/models/accountability_period.py
@@ -15,7 +16,23 @@ sources:
   - tritel_accountability_framework/models/accountability_review_session.py
   - tritel_accountability_framework/models/accountability_snapshot.py
   - tritel_accountability_framework/security/ir_groups.xml
-sidebar: { order: 1 }
+  - tritel_accountability_framework/controllers/portal.py
+  - tritel_accountability_framework/data/ir_cron_data.xml
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_progress_brief.py
+  - tritel_accountability_framework/models/accountability_rating.py
+  - tritel_accountability_framework/models/accountability_review.py
+  - tritel_accountability_framework/models/accountability_target_library.py
+  - tritel_accountability_framework/models/accountability_target_proposal.py
+  - tritel_accountability_framework/models/accountability_weight_change.py
+  - tritel_accountability_framework/models/hr_employee.py
+  - tritel_accountability_framework/views/accountability_progress_brief_views.xml
+  - tritel_accountability_framework/views/accountability_scorecard_request_views.xml
+  - tritel_accountability_framework/views/accountability_target_library_views.xml
+  - tritel_accountability_framework/views/hr_employee_views.xml
+  - tritel_accountability_framework/wizard/target_weight_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 The **Accountability Framework** is how Tritel sets, tracks and reviews everyone's performance in Odoo. Each year has a **period** (for example FY 2026). Inside it, leadership sets **objectives**, and every member of staff holds **targets** under those objectives. Managers pass targets down the reporting line, results are recorded in **reviews**, and each person gets a **score** and a **rating**.
@@ -28,6 +45,7 @@ Most figures come from the work you already record in Odoo. A **metric** reads t
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_accountability_framework:client_action:accountability_cascade_dashboard_action, tritel_accountability_framework:client_action:accountability_period_browser_action, tritel_accountability_framework:client_action:accountability_team_scores_client_action, tritel_accountability_framework:cron:cron_progress_briefs, tritel_accountability_framework:field:hr.employee.accountability_target_ids, tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_metrics, tritel_accountability_framework:menu:menu_accountability_objectives, tritel_accountability_framework:menu:menu_accountability_progress_briefs, tritel_accountability_framework:menu:menu_accountability_team_scores, tritel_accountability_framework:model:accountability.score, tritel_accountability_framework:view_ext:hr.view_employee_form:button:targets, tritel_accountability_framework:view_ext:hr.view_employee_form:field:targets, tritel_accountability_framework:view_ext:hr.view_employee_form:page:performance
   ORG["HR org chart (who reports to whom)"] --> T
   SRC["CRM, Tender Tracker, Projects, Accounting"] --> M["Metrics"]
   P["Period and objectives"] --> T["Targets"]
@@ -59,6 +77,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_accountability_framework:client_action:accountability_period_browser_action, tritel_accountability_framework:cron:cron_recalculate_scores, tritel_accountability_framework:field:hr.employee.accountability_target_ids, tritel_accountability_framework:menu:menu_accountability_metrics, tritel_accountability_framework:menu:menu_accountability_objectives, tritel_accountability_framework:menu:menu_accountability_review_sessions, tritel_accountability_framework:model:accountability.snapshot.line, tritel_accountability_framework:selection:accountability.config.progress_brief_frequency, tritel_accountability_framework:selection:accountability.library.entry.cadence, tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.progress.brief.frequency, tritel_accountability_framework:selection:accountability.target.cadence, tritel_accountability_framework:selection:accountability.target.state, tritel_accountability_framework:view_ext:hr.view_employee_form:button:targets, tritel_accountability_framework:view_ext:hr.view_employee_form:field:targets
   A["Period opens (Draft → Active)"] --> B["Objectives set"]
   B --> C["Targets set and activated"]
   C --> D["Targets cascaded down the line"]

@@ -11,11 +11,19 @@ before:
   - Any internal user can add and update compliance documents. The menu is in the <strong>Tender Manager</strong> app, not in <strong>Channel</strong>.
   - You have the certificate as a file (PDF or scan) and know its start and end dates.
 related: [tenders/channel/index, tenders/concepts/bid-readiness, tenders/channel/certifications-and-learning]
+sidebar: { order: 8 }
 sources:
   - crm_tender/models/crm_compliance.py
   - crm_tender/views/crm_compliance_views.xml
   - crm_tender/security/ir.model.access.csv
-sidebar: { order: 8 }
+  - crm_tender/models/crm_oem.py
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/prequalification_pipeline.py
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

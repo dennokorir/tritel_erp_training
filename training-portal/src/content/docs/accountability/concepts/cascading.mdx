@@ -7,6 +7,7 @@ roles: [everyone, line-manager, head-commercial, head-delivery, head-channel]
 tags: [cascading, targets]
 keywords: [cascade, split target, share, allocate, delegate target, push down, pull, adopt, decline, apportion, sub-target, team target]
 related: [accountability/workflows/cascade, accountability/how-to/line-managers/push-and-pull-targets, accountability/how-to/everyone/my-targets, accountability/how-to/hr-admin/compliance-and-coverage]
+sidebar: { order: 6 }
 sources:
   - tritel_accountability_framework/models/accountability_target.py
   - tritel_accountability_framework/models/accountability_scorecard_request.py
@@ -15,7 +16,15 @@ sources:
   - tritel_accountability_framework/wizard/cascade_decline_wizard.py
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_accountability_framework/views/wizard_cascade_push_views.xml
-sidebar: { order: 6 }
+  - tritel_accountability_framework/controllers/portal.py
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_score.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/cascade_line_mixin.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 **Cascading** is how a target travels down the reporting line. A manager with a KES 10,000,000 revenue target can hand KES 4,000,000 of it to Employee A. Employee A then holds a target of their own, linked to the manager's. Each target in the chain is scored on its holder.
@@ -29,6 +38,7 @@ There are two kinds of link, shown as **Link to Source**:
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows tritel_accountability_framework:selection:accountability.target.cascade_state, tritel_accountability_framework:wizard:accountability.cascade.pull.wizard
   state "Pull Requested" as Pull
   state "Pending Adoption" as Pending
   [*] --> Pending: Cascade ↓ (manager pushes)

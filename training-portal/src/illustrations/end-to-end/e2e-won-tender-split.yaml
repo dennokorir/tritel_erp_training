@@ -1,3 +1,10 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_accountability_framework:menu:menu_accountability_metrics, tritel_project_delivery:field:project.project.award_date
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:won-tender, tritel_tender_tracker:field:crm.lead.account_manager_id, tritel_tender_tracker:field:res.partner.account_manager_id
+# docs-sync: shows tritel_tender_tracker:group:group_account_manager, tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:menu:menu_technical_presales
+# docs-sync: shows tritel_tender_tracker:model:target.target, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.summary.heading
+# docs-sync: shows tritel_tender_tracker:selection:target.achievement.role, tritel_tender_tracker:selection:target.line.role, tritel_tender_tracker:selection:target.target.role
+# docs-sync: shows tritel_tender_tracker:selection:tender.portal.access.log.user_role
 type: calc
 title: One won tender split by attribution
 desc: Worked example of TND-2026-001, won for KES 10,000,000 with an award date of 14 Aug 2026, credited 80 points to the Account Manager (KES 8,000,000), 90 points to the Bid Liaison (KES 9,000,000) and 85 points to Technical Presales (KES 8,500,000), all counted in Q3 2026.

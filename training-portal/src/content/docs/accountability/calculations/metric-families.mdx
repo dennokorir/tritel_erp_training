@@ -7,6 +7,7 @@ roles: [everyone, account-manager, bid-liaison, presales, head-commercial, head-
 tags: [metrics, scores]
 keywords: [metric, KPI, automatic review, revenue, attribution, pipeline, coverage, activity update, OEM, bid desk, bid quality, delivery on time, on budget, settle days, window, sources]
 related: [accountability/concepts/metrics, accountability/how-to/hr-admin/metrics, accountability/calculations/target-scores, accountability/how-to/line-managers/conduct-a-review]
+sidebar: { order: 9 }
 sources:
   - tritel_accountability_framework/models/accountability_metric.py
   - tritel_accountability_framework/models/accountability_target.py
@@ -20,7 +21,24 @@ sources:
   - tritel_accountability_framework/models/metric_hook_review_ack.py
   - tritel_accountability_framework/models/metric_hook_review_coverage.py
   - tritel_tender_tracker/models/target.py
-sidebar: { order: 9 }
+  - tritel_accountability_framework/controllers/worksheet.py
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_progress_brief.py
+  - tritel_accountability_framework/models/accountability_review.py
+  - tritel_accountability_framework/models/accountability_review_concern.py
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/models/accountability_target_library.py
+  - tritel_accountability_framework/models/accountability_target_proposal.py
+  - tritel_accountability_framework/models/accountability_weight_change.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/views/buttons_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

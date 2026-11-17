@@ -7,6 +7,7 @@ roles: [delivery-finance, finance, head-delivery, delivery-pm]
 tags: [budgets, finance]
 keywords: [analytic account, cost centre, project code, Odoo budget, budgetary position, chart of accounts, tagging, analytic distribution, LPO, PO, vendor bill, cost of sales]
 related: [projects/concepts/budget-tracking, projects/how-to/approvers/tag-orders-to-a-project, projects/how-to/approvers/delivery-settings, projects/calculations/budget-lines-and-phasing, projects/reports/project-at-a-glance]
+sidebar: { order: 5 }
 sources:
   - tritel_project_delivery/models/project.py
   - tritel_project_delivery/models/phasing.py
@@ -18,7 +19,11 @@ sources:
   - tritel_project_delivery/views/delivery_settings_views.xml
   - tritel_project_delivery/views/budget_mapping_views.xml
   - tritel_project_delivery/views/buttons_views.xml
-sidebar: { order: 5 }
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 Every delivery project has a **cost account**: an analytic account in Odoo that finance uses to collect the project's costs. A cost counts for the project when the purchase order line, vendor bill line or expense **carries the project's cost account**. That is how Odoo knows a bill belongs to *PRJ Customer A network upgrade* and not to another job.
@@ -27,6 +32,7 @@ When an approved baseline creates the **Odoo budget**, that budget is set on the
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_project_delivery:field:project.project.track_committed, tritel_project_delivery:field:project.project.track_spent, tritel_project_delivery:field:project.project.tracking_html, tritel_project_delivery:model:project.delivery.commitment, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:view_ext:project.edit_project:button:committed, tritel_project_delivery:view_ext:project.edit_project:button:cost-account, tritel_project_delivery:view_ext:project.edit_project:button:vendor-bills, tritel_project_delivery:wizard:delivery.cost.account.card
   subgraph Plan
     B["Approved baseline"] --> OB["Odoo budget: one line per budgetary position per month"]
   end

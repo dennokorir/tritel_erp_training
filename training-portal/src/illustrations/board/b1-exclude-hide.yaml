@@ -1,3 +1,7 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows e_board:field:purchase.order.board_exclude_reason, e_board:field:purchase.order.board_portal_hide, e_board:field:purchase.order.board_position_exclude
+# docs-sync: shows e_board:field:sale.order.board_exclude_reason, e_board:field:sale.order.board_portal_hide, e_board:field:sale.order.board_position_exclude
+# docs-sync: shows e_board:selection:accountability.board.review.state
 type: screen
 title: Exclude or hide an order from the board
 desc: A sales order's Other Info tab with the Board Position Report section, showing Exclude from Board Position with its Exclusion Reason and Hide from Board Portal, numbered 1 to 4.

@@ -1,3 +1,16 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_administrator, crm_tender:group:group_manager, crm_tender:group:group_user
+# docs-sync: shows tritel_tender_tracker:client_action:action_market_coverage, tritel_tender_tracker:client_action:action_touchpoints_workspace, tritel_tender_tracker:field:res.partner.is_target_account
+# docs-sync: shows tritel_tender_tracker:field:res.partner.suggested_industry_id, tritel_tender_tracker:group:group_account_manager, tritel_tender_tracker:group:group_administrator
+# docs-sync: shows tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:group:group_channel_manager, tritel_tender_tracker:group:group_hod_commercial
+# docs-sync: shows tritel_tender_tracker:menu:menu_account_managers, tritel_tender_tracker:menu:menu_account_ownership, tritel_tender_tracker:menu:menu_bid_liaisons
+# docs-sync: shows tritel_tender_tracker:menu:menu_customers_activities, tritel_tender_tracker:menu:menu_market_coverage, tritel_tender_tracker:menu:menu_prequalification_pipeline
+# docs-sync: shows tritel_tender_tracker:menu:menu_technical_presales, tritel_tender_tracker:model:res.partner.activity, tritel_tender_tracker:model:target.target
+# docs-sync: shows tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:selection:res.partner.activity.touch_channel, tritel_tender_tracker:selection:res.partner.activity.type.channel
+# docs-sync: shows tritel_tender_tracker:selection:res.partner.coverage_rung, tritel_tender_tracker:selection:res.partner.suggested_segment, tritel_tender_tracker:selection:target.achievement.role
+# docs-sync: shows tritel_tender_tracker:selection:target.target.role, tritel_tender_tracker:selection:tender.business.case.line.commission_role, tritel_tender_tracker:selection:tender.portal.access.log.user_role
+# docs-sync: shows tritel_tender_tracker:view_ext:base.view_partner_form:button:touchpoints, tritel_tender_tracker:view_ext:base.view_partner_form:field:touchpoints, tritel_tender_tracker:view_ext:crm.crm_lead_view_form:button:customer-activities
+# docs-sync: shows tritel_tender_tracker:wizard:tender.summary.wizard, tritel_tender_tracker:wizard:tenders.assign.wizard
 type: matrix
 title: Who can do what with customers and coverage
 desc: Permission grid for customer activities, the Customer Activities and Market Coverage screens, account ownership, target accounts and prequalifications, for Account Managers, Bid Liaisons, Technical Presales, the Head of Commercial, the Head of Channel, Tender administrators and any other internal user.

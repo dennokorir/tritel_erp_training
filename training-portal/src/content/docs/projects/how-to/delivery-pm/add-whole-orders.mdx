@@ -11,6 +11,7 @@ before:
   - The baseline is in <strong>Draft</strong> and you are the project manager.
   - You have the supplier's quote or purchase order, or the sales order you are delivering.
 related: [projects/how-to/delivery-pm/build-a-baseline, projects/concepts/cost-items-and-categories, projects/calculations/cost-items, projects/how-to/delivery-pm/track-the-budget, projects/how-to/approvers/tag-orders-to-a-project]
+sidebar: { order: 4 }
 sources:
   - tritel_project_delivery/models/whole_orders.py
   - tritel_project_delivery/models/tender_import.py
@@ -18,7 +19,15 @@ sources:
   - tritel_project_delivery/views/budget_mapping_views.xml
   - tritel_project_delivery/models/tracking.py
   - tritel_project_delivery/__manifest__.py
-sidebar: { order: 4 }
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/cost_item.py
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/project_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

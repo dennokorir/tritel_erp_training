@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows e_board:model:accountability.board.review, e_board:model:accountability.board.review.line, e_board:selection:accountability.board.review.line.review_state
 type: screen
 title: Review and sign off the quarter
 desc: One MD review on the Board portal, with a target card showing the dates, unit and target, who entered the result, the MD's comment, the calculation, evidence, the Result and Comment boxes and the Sign Off button, numbered 3 to 7.

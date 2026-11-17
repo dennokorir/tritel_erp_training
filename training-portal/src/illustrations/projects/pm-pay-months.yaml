@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_root
+# docs-sync: shows tritel_project_delivery:model:project.delivery.baseline.line, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:view_ext:project.edit_project:button:draft-baseline
 type: screen
 title: Setting the months each cost is paid
 desc: The Costs tab of a draft baseline showing the Pay from and Pay until columns for three items, including contingency with no months, numbered 1 to 3.

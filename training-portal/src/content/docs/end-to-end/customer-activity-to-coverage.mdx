@@ -7,6 +7,7 @@ roles: [account-manager, presales, head-commercial, line-manager, accountability
 tags: [end to end, customers, coverage, metrics]
 keywords: [end to end, process, workflow, handover between teams, how does it connect, lifecycle, customer visit, meeting, call log, touchpoint, account coverage, named account, activity KPI, pipeline update]
 related: [end-to-end/index, tenders/concepts/customer-activities, tenders/calculations/coverage-ladder, tenders/how-to/customers/log-a-customer-activity, accountability/calculations/metric-families]
+sidebar: { order: 3 }
 sources:
   - tritel_tender_tracker/models/account_ownership.py
   - tritel_tender_tracker/models/touchpoints.py
@@ -15,7 +16,38 @@ sources:
   - tritel_tender_tracker/models/target_accounts.py
   - tritel_accountability_framework/models/metric_hook_activity.py
   - tritel_accountability_framework/models/metric_hook_coverage.py
-sidebar: { order: 3 }
+  - crm_tender/security/crm_tender_security.xml
+  - e_board/data/md_review_cron.xml
+  - tritel_accountability_framework/controllers/worksheet.py
+  - tritel_accountability_framework/data/ir_cron_data.xml
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/accountability_target_library.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/cascade_line_mixin.py
+  - tritel_project_delivery/views/tracking_views.xml
+  - tritel_tender_tracker/data/ir_cron_data.xml
+  - tritel_tender_tracker/models/crm_lead.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/models/res_partner.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/account_ownership_views.xml
+  - tritel_tender_tracker/views/crm_lead_views.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/partner_activity_touchpoints_views.xml
+  - tritel_tender_tracker/views/res_partner.xml
+  - tritel_tender_tracker/views/target_accounts_views.xml
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/wizards/partner_activity_wizards.py
+  - tritel_tender_tracker/wizards/tenders_assignment_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../components/Illustration.astro';
 
@@ -25,6 +57,7 @@ Every customer should have an account manager, and every contact with a customer
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows crm_tender:group:group_manager, e_board:cron:cron_board_reviews, tritel_accountability_framework:cron:cron_recalculate_scores, tritel_accountability_framework:menu:menu_accountability_metrics, tritel_accountability_framework:selection:accountability.cascade.line.mixin.cascade_link, tritel_project_delivery:cron:ir_cron_refresh_tracking, tritel_tender_tracker:model:res.partner.activity, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:selection:res.partner.coverage_rung
   subgraph COM["Commercial"]
     C1["Account owned: claimed or assigned"]
     C2["Plan touch"]

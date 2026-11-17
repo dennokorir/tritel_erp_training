@@ -1,3 +1,10 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, crm_tender:selection:crm.oem.booking.state, tritel_tender_tracker:client_action:action_tender_my_actions
+# docs-sync: shows tritel_tender_tracker:mail_template:mail_template_tender_won_alert, tritel_tender_tracker:menu:menu_customers, tritel_tender_tracker:menu:menu_target_root
+# docs-sync: shows tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tender_my_actions, tritel_tender_tracker:menu:menu_tenders_section
+# docs-sync: shows tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:selection:target.period.state
+# docs-sync: shows tritel_tender_tracker:selection:tender.business.case.state, tritel_tender_tracker:selection:tender.initial.kanban_state, tritel_tender_tracker:wizard:drop.reason
+# docs-sync: shows tritel_tender_tracker:wizard:tender.must.win.wizard, tritel_tender_tracker:wizard:tender.submission.wizard
 type: screen
 title: Flagging a must-win tender
 desc: A tender with the Flag Must-Win button, and the Flag as Must-Win window explaining that errors count three times, the required Reason box and the Save button, numbered 1 to 4.

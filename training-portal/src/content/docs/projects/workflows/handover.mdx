@@ -7,18 +7,28 @@ roles: [delivery-pm, head-delivery, delivery-finance]
 tags: [handover, workflows]
 keywords: [handover status, hand over, completion certificate, acceptance, confirm handover, return handover, practical completion, sign-off, stage]
 related: [projects/concepts/handover-and-close-out, projects/how-to/delivery-pm/record-a-handover, projects/how-to/approvers/confirm-a-handover, projects/workflows/close-out, projects/concepts/delivery-kpi]
+sidebar: { order: 2 }
 sources:
   - tritel_project_delivery/models/closeout.py
   - tritel_project_delivery/models/action_followups.py
   - tritel_project_delivery/models/my_actions.py
   - tritel_project_delivery/views/closeout_views.xml
-sidebar: { order: 2 }
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/my_actions_views.xml
+  - tritel_project_delivery/views/project_views.xml
+  - tritel_project_delivery/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 A **project handover** records the date the client took over the work. The project manager records and submits it, and the Head of Delivery confirms it or returns it. Only a confirmed handover counts for the on-time result and lets finance close the project.
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.delivery.handover.state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:record-handover
   state "Draft" as draft
   state "Waiting for confirmation" as waiting
   state "Confirmed" as confirmed
@@ -55,6 +65,7 @@ The **Handover** smart button on the project shows one value for all its handove
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_project_delivery:group:group_delivery_finance, tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:group:group_delivery_pm, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:close-project, tritel_project_delivery:view_ext:project.edit_project:button:record-handover
   subgraph PM["Delivery project manager"]
     P1["Record Handover: date, certificate, note"]
     P2["Submit for Confirmation"]

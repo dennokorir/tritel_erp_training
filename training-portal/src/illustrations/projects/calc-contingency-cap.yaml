@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state
 type: calc
 title: Contingency cap
 desc: Worked example where contingency of 6% of other costs is 5.7% of the budget total, above the 5% cap, so Confirm for Approval stops with a message.

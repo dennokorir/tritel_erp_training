@@ -7,11 +7,17 @@ roles: [line-manager, hr, accountability-admin, md]
 tags: [objectives, scores]
 keywords: [objective, goal, strategic objective, achievement threshold, achieved, partial, org average, department score, KPI, OKR]
 related: [accountability/concepts/periods-and-objectives, accountability/how-to/hr-admin/objectives, accountability/workflows/objective, accountability/calculations/weights-over-time]
+sidebar: { order: 6 }
 sources:
   - tritel_accountability_framework/models/accountability_objective.py
   - tritel_accountability_framework/models/accountability_period.py
   - tritel_accountability_framework/views/accountability_objective_views.xml
-sidebar: { order: 6 }
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/hr_employee.py
+  - tritel_accountability_framework/views/hr_employee_views.xml
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

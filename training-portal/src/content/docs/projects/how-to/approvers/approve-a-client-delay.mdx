@@ -11,11 +11,16 @@ before:
   - You have the <strong>Head of Delivery</strong> role.
   - The project manager has clicked <strong>Submit for Approval</strong>. Every Head of Delivery gets a to-do called <em>Approve client delay</em>.
 related: [projects/workflows/client-delay, projects/concepts/client-delays, projects/calculations/delay-days, projects/how-to/delivery-pm/log-a-client-delay, projects/calculations/close-and-kpi]
+sidebar: { order: 5 }
 sources:
   - tritel_project_delivery/views/closeout_views.xml
   - tritel_project_delivery/models/closeout.py
   - tritel_project_delivery/models/my_actions.py
-sidebar: { order: 5 }
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/menus.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

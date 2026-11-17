@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:client_action:action_touchpoints_workspace, tritel_tender_tracker:group:group_account_manager
+# docs-sync: shows tritel_tender_tracker:menu:menu_customers_activities, tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tenders_section
+# docs-sync: shows tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:res.partner.activity, tritel_tender_tracker:model:tender.initial
+# docs-sync: shows tritel_tender_tracker:selection:target.line.role, tritel_tender_tracker:view_ext:base.view_partner_form:button:touchpoints, tritel_tender_tracker:view_ext:base.view_partner_form:field:touchpoints
+# docs-sync: shows tritel_tender_tracker:view_ext:crm.crm_lead_view_form:button:customer-activities
 type: screen
 title: Customer touchpoint timeline
 desc: One customer's touchpoint timeline, with the touches in the window, people, last touch and account manager, one lane per role with dots per month and tender milestones, and the Touches feed, numbered 7 and 8.

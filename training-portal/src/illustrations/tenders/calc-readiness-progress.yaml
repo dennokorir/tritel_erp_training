@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_tender_tracker:model:tender.readiness.line, tritel_tender_tracker:selection:tender.initial.readiness_state, tritel_tender_tracker:selection:tender.readiness.line.status
 type: calc
 title: Readiness progress
 desc: Worked example of the Progress on the Bid Readiness tab, with 8 checklist items of which 1 is Not Needed, 5 are Ready, 1 is Missing and 1 is Expired, giving 5 of 7 ready.

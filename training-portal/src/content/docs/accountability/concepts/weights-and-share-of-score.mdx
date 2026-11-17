@@ -7,6 +7,7 @@ roles: [everyone, line-manager, hr]
 tags: [targets, scores]
 keywords: [weighting, weight, priority, importance, percentage, rebalance, KPI weight, scorecard weighting, acknowledge priorities, reweight]
 related: [accountability/calculations/weights-over-time, accountability/calculations/share-of-score, accountability/how-to/line-managers/rebalance-weights, accountability/how-to/everyone/acknowledge-new-priorities, accountability/workflows/priority-change]
+sidebar: { order: 4 }
 sources:
   - tritel_accountability_framework/models/accountability_target_weights.py
   - tritel_accountability_framework/models/accountability_priority_change.py
@@ -14,7 +15,14 @@ sources:
   - tritel_accountability_framework/wizard/target_weight_wizard.py
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_accountability_framework/views/accountability_weight_change_views.xml
-sidebar: { order: 4 }
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/hr_employee.py
+  - tritel_accountability_framework/views/hr_employee_views.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/review_pack_ack_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -51,6 +59,7 @@ When your weights change, or a target is added, withdrawn, closed or changed aft
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows tritel_accountability_framework:model:accountability.target.weight.change, tritel_accountability_framework:selection:accountability.priority.change.state, tritel_accountability_framework:wizard:accountability.review.pack.ack.wizard
   state "To acknowledge" as ToAck
   state "Accepted automatically" as Auto
   [*] --> ToAck: Weights or targets change

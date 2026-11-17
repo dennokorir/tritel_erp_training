@@ -1,3 +1,10 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:client_action:action_project_my_actions, tritel_project_delivery:menu:menu_delivery_baselines_mine, tritel_project_delivery:menu:menu_delivery_config
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:menu:menu_project_my_actions, tritel_project_delivery:model:project.delivery.baseline
+# docs-sync: shows tritel_project_delivery:model:project.delivery.baseline.line, tritel_project_delivery:model:project.delivery.baseline.milestone, tritel_project_delivery:selection:project.delivery.baseline.state
+# docs-sync: shows tritel_project_delivery:selection:project.delivery.client.delay.state, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:delivery-baseline, tritel_project_delivery:view_ext:project.edit_project:button:handover, tritel_project_delivery:view_ext:project.edit_project:page:delivery
+# docs-sync: shows tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:field:delivery
 type: screen
 title: A baseline waiting for the dates approval
 desc: The Delivery Baseline form opened from Waiting for My Approval, with the Approve Dates and Return to Draft buttons, the completion date, the Milestones tab with planned dates and the Approvals tab, numbered 1 to 6.

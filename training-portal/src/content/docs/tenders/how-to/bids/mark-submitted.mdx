@@ -12,6 +12,7 @@ before:
   - "You are the tender's Bid Liaison, the Bid Liaison's manager or a Tender administrator. Nobody else sees <strong>Mark Submitted</strong>."
   - Have the receipt or proof of delivery ready to attach (a scan or photo).
 related: [tenders/workflows/tender-status, tenders/calculations/late-submission, tenders/how-to/bids/work-the-readiness-checklist, tenders/how-to/bids/score-bid-quality, tenders/how-to/bids/record-the-result]
+sidebar: { order: 5 }
 sources:
   - tritel_tender_tracker/views/tender_views.xml
   - tritel_tender_tracker/views/tender_workflow_views.xml
@@ -20,7 +21,20 @@ sources:
   - tritel_tender_tracker/models/bid_desk.py
   - tritel_tender_tracker/views/bid_desk_views.xml
   - tritel_tender_tracker/models/bid_quality.py
-sidebar: { order: 5 }
+  - crm_tender/models/hr_employee.py
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/data/bid_quality_data.xml
+  - tritel_tender_tracker/models/crm_lead.py
+  - tritel_tender_tracker/models/hr_employee.py
+  - tritel_tender_tracker/models/hr_employee_roles.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/wizards/bid_desk_wizards.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

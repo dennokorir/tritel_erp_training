@@ -1,3 +1,11 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_targets_library, tritel_accountability_framework:model:accountability.library.entry
+# docs-sync: shows tritel_accountability_framework:model:accountability.role.set, tritel_accountability_framework:selection:accountability.config.progress_brief_frequency, tritel_accountability_framework:selection:accountability.library.entry.cadence
+# docs-sync: shows tritel_accountability_framework:selection:accountability.library.entry.state, tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state
+# docs-sync: shows tritel_accountability_framework:selection:accountability.progress.brief.frequency, tritel_accountability_framework:selection:accountability.review.session.line.target_cadence, tritel_accountability_framework:selection:accountability.role.set.state
+# docs-sync: shows tritel_accountability_framework:selection:accountability.target.cadence, tritel_accountability_framework:selection:accountability.target.proposal.source, tritel_accountability_framework:selection:accountability.target.state
+# docs-sync: shows tritel_accountability_framework:selection:accountability.target.target_type
 type: screen
 title: A role set in the targets library
 desc: A Role Set form in the Targets Library with the Publish button, the status bar, the role name, Job positions and People, and the Entries tab listing standard targets with an Accept button on a suggestion, numbered 1 to 6.

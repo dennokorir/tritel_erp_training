@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:client_action:action_touchpoints_workspace, tritel_tender_tracker:group:group_bid_liaison
+# docs-sync: shows tritel_tender_tracker:menu:menu_account_managers, tritel_tender_tracker:menu:menu_customers_activities, tritel_tender_tracker:menu:menu_tender_customers
+# docs-sync: shows tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:res.partner.activity
+# docs-sync: shows tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:view_ext:base.view_partner_form:button:touchpoints, tritel_tender_tracker:view_ext:base.view_partner_form:field:touchpoints
+# docs-sync: shows tritel_tender_tracker:view_ext:crm.crm_lead_view_form:button:customer-activities
 type: screen
 title: Customer Activities heatmap
 desc: The Customers tab of Customer Activities, with the Showing selector, Made by them only, the period arrows and window length, the filter bar, the summary figures and the heatmap of touches per customer per month, numbered 1 to 5.

@@ -1,3 +1,11 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:field:project.project.approved_budget_total, tritel_project_delivery:field:project.project.track_committed, tritel_project_delivery:field:project.project.track_forecast
+# docs-sync: shows tritel_project_delivery:field:project.project.track_refreshed_on, tritel_project_delivery:field:project.project.tracking_html, tritel_project_delivery:menu:menu_delivery_config
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:model:project.delivery.commitment
+# docs-sync: shows tritel_project_delivery:model:project.delivery.cost.line, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-budget
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:approved-delivery-budget, tritel_project_delivery:view_ext:project.edit_project:button:budget-left, tritel_project_delivery:view_ext:project.edit_project:button:committed
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:cost-account, tritel_project_delivery:view_ext:project.edit_project:button:purchase-orders, tritel_project_delivery:view_ext:project.edit_project:button:spent-so-far
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:page:handover-amp-close, tritel_project_delivery:wizard:delivery.cost.account.card
 type: screen
 title: Tracking a delivery budget
 desc: A delivery project with the Approved delivery budget, Spent so far, Committed and Budget left smart buttons, and the Budget tracking table on the Delivery tab with planned, expected by now, committed, spent, left, forecast and status per budget line, the Refresh link and the Figures as of time, numbered 1 to 5.

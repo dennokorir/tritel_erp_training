@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_compliance_action, tritel_accountability_framework:menu:menu_accountability_compliance, tritel_accountability_framework:model:accountability.target
 type: calc
 title: SLA ceiling review score
 desc: Worked example of one review on an SLA target set to At or below ceiling, where the limit of 48 hours is typed in the Compliance Floor field, the ideal is 24 hours and the actual is 36 hours, giving 50%.

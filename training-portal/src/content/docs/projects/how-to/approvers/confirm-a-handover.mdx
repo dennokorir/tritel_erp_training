@@ -11,12 +11,18 @@ before:
   - You have the <strong>Head of Delivery</strong> role.
   - The project manager has clicked <strong>Submit for Confirmation</strong>. Every Head of Delivery gets a to-do called <em>Confirm project handover</em>.
 related: [projects/workflows/handover, projects/concepts/handover-and-close-out, projects/how-to/delivery-pm/record-a-handover, projects/how-to/approvers/close-a-project, projects/calculations/close-and-kpi]
+sidebar: { order: 4 }
 sources:
   - tritel_project_delivery/views/closeout_views.xml
   - tritel_project_delivery/models/closeout.py
   - tritel_project_delivery/models/action_followups.py
   - tritel_project_delivery/models/my_actions.py
-sidebar: { order: 4 }
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/my_actions_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

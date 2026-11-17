@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows e_board:cron:cron_board_reviews, e_board:field:accountability.config.board_reviewer_user_id, e_board:field:purchase.order.board_portal_hide
+# docs-sync: shows e_board:field:purchase.order.board_position_exclude, e_board:field:sale.order.board_portal_hide, e_board:field:sale.order.board_position_exclude
+# docs-sync: shows e_board:group:group_board_viewer, e_board:mail_template:mail_template_board_access_granted, e_board:mail_template:mail_template_board_invite
+# docs-sync: shows e_board:wizard:board.invite.wizard
 type: matrix
 title: Who sets the board flags and settings
 desc: Permission grid for the back-office settings behind the board portal, showing that finance or sales staff set the order flags and cheque signatures, accountability administrators and system administrators invite board members, and accountability administrators name the reviewers.

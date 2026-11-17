@@ -1,3 +1,11 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_period_browser_action, tritel_accountability_framework:group:group_accountability_admin, tritel_accountability_framework:menu:menu_accountability_my_team
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_objectives, tritel_accountability_framework:menu:menu_accountability_periods, tritel_accountability_framework:menu:menu_accountability_root
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_scorecard_log, tritel_accountability_framework:model:accountability.milestone, tritel_accountability_framework:model:accountability.target.proposal
+# docs-sync: shows tritel_accountability_framework:model:accountability.target.weight.change, tritel_accountability_framework:selection:accountability.review.session.employee.avg_rating, tritel_accountability_framework:selection:accountability.review.session.line.line_rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.state, tritel_accountability_framework:selection:accountability.snapshot.line.rating, tritel_accountability_framework:selection:accountability.snapshot.rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.target.rating, tritel_accountability_framework:wizard:accountability.cascade.pull.wizard, tritel_accountability_framework:wizard:accountability.review.pack.ack.wizard
+# docs-sync: shows tritel_accountability_framework:wizard:accountability.target.rebalance.wizard
 type: matrix
 title: Who can do what with targets
 desc: Permission grid for targets and objectives, showing what everyone, line managers, HR and accountability administrators can do, from seeing targets to approving scorecard changes and running periods.

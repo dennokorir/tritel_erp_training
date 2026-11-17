@@ -7,12 +7,25 @@ roles: [account-manager, head-commercial, head-channel, tender-admin]
 tags: [coverage, customers]
 keywords: [coverage, key account, named account, anchor, named share, market share, reached, untouched, contested, win rate, target accounts, customers won]
 related: [tenders/concepts/market-coverage, tenders/how-to/customers/market-coverage, tenders/how-to/customers/account-ownership, tenders/concepts/customer-activities, accountability/calculations/metric-families]
+sidebar: { order: 4 }
 sources:
   - tritel_tender_tracker/models/market_coverage.py
   - tritel_tender_tracker/static/src/coverage/market_coverage.xml
   - tritel_tender_tracker/views/res_partner.xml
   - tritel_tender_tracker/models/target_accounts.py
-sidebar: { order: 4 }
+  - crm_tender/models/crm_oem.py
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/prequalification_models.py
+  - tritel_tender_tracker/models/res_partner.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/target_period.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/crm_lead_views.xml
+  - tritel_tender_tracker/views/partner_activity_touchpoints_views.xml
+  - tritel_tender_tracker/views/tender_views.xml
+  - tritel_tender_tracker/wizards/tender_lost.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_team_targets_client_action, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_team_targets
+# docs-sync: shows tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.review.session.employee.avg_rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.line.line_rating, tritel_accountability_framework:selection:accountability.score.rating, tritel_accountability_framework:selection:accountability.snapshot.line.rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.snapshot.rating, tritel_accountability_framework:selection:accountability.target.rating, tritel_accountability_framework:selection:accountability.target.state
 type: screen
 title: Activating a draft target on Team Targets
 desc: The Team Targets screen with the period selector, the My Team list, a draft target with its Activate button, and the Add to the scorecard window with its reason box, effect line and Submit button, numbered 1 to 7.

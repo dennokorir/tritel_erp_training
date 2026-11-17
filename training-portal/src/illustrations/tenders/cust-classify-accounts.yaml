@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:field:res.partner.is_target_account, tritel_tender_tracker:field:res.partner.suggested_industry_id
+# docs-sync: shows tritel_tender_tracker:menu:menu_classify_accounts, tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tenders_section
+# docs-sync: shows tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:target.target, tritel_tender_tracker:model:tender.initial
+# docs-sync: shows tritel_tender_tracker:selection:res.partner.coverage_rung, tritel_tender_tracker:selection:res.partner.market_segment, tritel_tender_tracker:selection:res.partner.suggested_segment
+# docs-sync: shows tritel_tender_tracker:selection:res.partner.target_tier, tritel_tender_tracker:wizard:tender.summary.wizard
 type: screen
 title: Classify Accounts
 desc: The Classify Accounts list with the Apply Suggested Sector, Target tier, Approve Proposed, Decline Proposed and Propose as Target buttons, and editable Sector, Segment, Target Account and Target Tier columns, numbered 6 to 9.

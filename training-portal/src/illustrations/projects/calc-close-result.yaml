@@ -1,3 +1,7 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:field:project.project.close_adjustment, tritel_project_delivery:field:project.project.close_days_late, tritel_project_delivery:field:project.project.handover_date
+# docs-sync: shows tritel_project_delivery:field:project.project.track_spent, tritel_project_delivery:model:project.delivery.client.delay, tritel_project_delivery:selection:project.project.close_result
+# docs-sync: shows tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:handover
 type: calc
 title: Close result
 desc: Worked example of closing a project, with the final cost of 1,020,000 against an approved budget of 1,050,000, and a handover 5 days after the deadline that is still on time because of the 7-day grace.

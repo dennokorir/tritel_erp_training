@@ -7,6 +7,7 @@ roles: [delivery-pm, head-delivery, delivery-finance, md, finance, account-manag
 tags: [start here, baselines, budgets, close-out]
 keywords: [project delivery, delivery project, project budget, BOQ, cost sheet, LPO, PO, variance, overrun, sign-off, handover, project close, delivery KPI]
 related: [projects/concepts/delivery-projects, projects/concepts/baselines, projects/concepts/budget-tracking, projects/concepts/delivery-kpi, projects/workflows/baseline]
+sidebar: { order: 1 }
 sources:
   - tritel_project_delivery/__manifest__.py
   - tritel_project_delivery/views/menus.xml
@@ -17,7 +18,17 @@ sources:
   - tritel_project_delivery/models/tracking.py
   - tritel_project_delivery/models/closeout.py
   - tritel_accountability_framework/models/metric_hook_delivery.py
-sidebar: { order: 1 }
+  - tritel_project_delivery/models/buttons.py
+  - tritel_project_delivery/models/cost_item.py
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/models/starter_item.py
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/closeout_views.xml
+  - tritel_project_delivery/views/project_views.xml
+  - tritel_project_delivery/views/tender_views.xml
+  - tritel_project_delivery/views/tracking_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 **Project Delivery** is how Tritel plans, approves, tracks and closes the work it has won. When a tender is won, the delivery team opens a **delivery project** from it. The project manager lists everything the project will pay for and when, and sets a completion date and milestone dates. Together these make the **delivery baseline**. Once it is approved, the project is tracked against it, and at the end it is handed over and closed. Closing freezes the result: was it on time, and was it on budget?
@@ -28,6 +39,7 @@ You find it in the **Project** app. The **Delivery** menu holds **Delivery Proje
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_project_delivery:field:project.project.client_delay_ids, tritel_project_delivery:field:project.project.tracking_html, tritel_project_delivery:menu:menu_delivery_client_delays, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:model:project.delivery.baseline, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project, tritel_project_delivery:view_ext:project.edit_project:button:cost-account, tritel_project_delivery:view_ext:project.edit_project:button:delivery-baseline, tritel_project_delivery:view_ext:project.edit_project:button:handover, tritel_project_delivery:view_ext:project.edit_project:button:purchase-orders, tritel_project_delivery:view_ext:project.edit_project:button:vendor-bills, tritel_project_delivery:view_ext:project.edit_project:button:won-tender, tritel_project_delivery:view_ext:project.edit_project:page:delivery, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:field:delivery, tritel_project_delivery:wizard:delivery.cost.account.card
   T["Won tender"] --> P["Delivery project"]
   P --> B["Delivery baseline (costs, dates)"]
   B --> A["Approvals (Head, Finance, MD)"]
@@ -66,6 +78,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project, tritel_project_delivery:view_ext:project.edit_project:button:handover, tritel_project_delivery:view_ext:project.edit_project:page:delivery, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:open-delivery-project, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:field:delivery
   A["Tender won"] --> B["Open Delivery Project"]
   B --> C["Baseline drafted"]
   C --> D["Confirm for Approval"]

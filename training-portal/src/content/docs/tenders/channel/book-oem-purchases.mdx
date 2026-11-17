@@ -12,13 +12,19 @@ before:
   - The purchase orders are confirmed and their lines are tagged with the OEM. If they aren't, <a href="/tenders/channel/tag-untagged-purchases/">set the OEM first</a>.
   - You have the OEM portal's reference and recognised amount in front of you.
 related: [tenders/channel/oem-bookings, tenders/channel/booking-workflow, tenders/channel/cancelled-orders, tenders/channel/tag-untagged-purchases, tenders/calculations/oem-bookings]
+sidebar: { order: 5 }
 sources:
   - crm_tender/models/crm_oem_booking.py
   - crm_tender/models/purchase.py
   - crm_tender/wizards/oem_booking_add_lines.py
   - crm_tender/views/crm_oem_booking_views.xml
   - crm_tender/security/ir.model.access.csv
-sidebar: { order: 5 }
+  - crm_tender/models/crm_oem.py
+  - crm_tender/views/crm_oem_views.xml
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/partner_activity_touchpoints.py
+  - tritel_tender_tracker/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

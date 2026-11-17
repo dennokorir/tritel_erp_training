@@ -11,13 +11,30 @@ before:
   - The tender is in <strong>Draft</strong>.
   - "Its <strong>Bid Liaison</strong> and <strong>Technical Pre-sales Engineer</strong> are filled in. Only a Tender administrator can confirm without them."
 related: [tenders/workflows/tender-status, tenders/concepts/tenders-and-statuses, tenders/how-to/bids/nominate-the-team, tenders/how-to/bids/work-the-readiness-checklist, tenders/how-to/bids/record-the-result]
+sidebar: { order: 3 }
 sources:
   - tritel_tender_tracker/views/tender_views.xml
   - tritel_tender_tracker/models/tender_workflow.py
   - tritel_tender_tracker/models/models.py
   - tritel_tender_tracker/models/bid_desk.py
   - tritel_tender_tracker/static/src/js/tender_board_moves.js
-sidebar: { order: 3 }
+  - crm_tender/models/crm_oem_booking.py
+  - crm_tender/models/hr_employee.py
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/data/bid_desk_data.xml
+  - tritel_tender_tracker/models/bid_quality.py
+  - tritel_tender_tracker/models/crm_lead.py
+  - tritel_tender_tracker/models/hr_employee.py
+  - tritel_tender_tracker/models/hr_employee_roles.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/bid_desk_views.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/wizards/tender_dropped.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

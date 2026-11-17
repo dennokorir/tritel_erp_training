@@ -7,6 +7,7 @@ roles: [delivery-pm, head-delivery, delivery-finance, md, everyone]
 tags: [faq, budget, close-out]
 keywords: [FAQ, help, why can't I, over budget, not scored, completion date locked, MD approval, contingency, exchange rate, margin, costs after close, KPI]
 related: [projects/index, projects/who-can-do-what, projects/calculations/tracking-figures, projects/calculations/close-and-kpi, projects/calculations/revisions-and-approvals]
+sidebar: { order: 3 }
 sources:
   - tritel_project_delivery/models/project.py
   - tritel_project_delivery/models/baseline.py
@@ -15,7 +16,20 @@ sources:
   - tritel_project_delivery/models/my_actions.py
   - tritel_project_delivery/models/tender_import.py
   - tritel_accountability_framework/models/metric_hook_delivery.py
-sidebar: { order: 3 }
+  - tritel_project_delivery/data/closeout_data.xml
+  - tritel_project_delivery/data/delivery_data.xml
+  - tritel_project_delivery/models/buttons.py
+  - tritel_project_delivery/models/cost_item.py
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/models/starter_item.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/closeout_views.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/project_views.xml
+  - tritel_project_delivery/views/tracking_views.xml
+  - tritel_project_delivery/wizards/tag_orders_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 ## Why can't I edit the completion date?

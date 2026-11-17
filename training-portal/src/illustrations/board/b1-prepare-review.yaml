@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows e_board:menu:menu_accountability_board_reviews, e_board:model:accountability.board.review, e_board:model:accountability.board.review.line
+# docs-sync: shows e_board:selection:accountability.board.review.state
 type: screen
 title: The MD's board review, being prepared
 desc: The Board Reviews form in Accountability for Q3 2026, with the Submit to the Board button, the status bar, the quarter dates and the Targets list showing which results came from a metric, numbered 1 to 4.

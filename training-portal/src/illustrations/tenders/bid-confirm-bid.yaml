@@ -1,3 +1,12 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:client_action:action_tender_my_actions, tritel_tender_tracker:field:crm.lead.account_manager_id
+# docs-sync: shows tritel_tender_tracker:field:res.partner.account_manager_id, tritel_tender_tracker:group:group_account_manager, tritel_tender_tracker:group:group_bid_liaison
+# docs-sync: shows tritel_tender_tracker:group:group_technical_presales, tritel_tender_tracker:menu:menu_customers, tritel_tender_tracker:menu:menu_target_root
+# docs-sync: shows tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tender_my_actions, tritel_tender_tracker:menu:menu_tenders_section
+# docs-sync: shows tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.initial.line
+# docs-sync: shows tritel_tender_tracker:model:tender.tags, tritel_tender_tracker:selection:target.achievement.role, tritel_tender_tracker:selection:target.period.state
+# docs-sync: shows tritel_tender_tracker:selection:target.target.role, tritel_tender_tracker:selection:tender.initial.kanban_state, tritel_tender_tracker:selection:tender.portal.access.log.user_role
+# docs-sync: shows tritel_tender_tracker:wizard:drop.reason
 type: screen
 title: Confirming the bid
 desc: A tender in Draft with its Account Manager, Bid Liaison and Technical Pre-sales Engineer filled in, the Submission Deadline on the Tender Info tab, and the Confirm Bid button, numbered 1 to 4.

@@ -7,6 +7,7 @@ roles: [board, md, accountability-admin, system-admin, finance]
 tags: [portal, reports]
 keywords: [board pack, board dashboard, e-board, directors, governance, revenue, receivables, payables, payroll, gross profit, post-dated cheques, organisation score]
 related: [board/index, board/concepts/as-at-figures, board/concepts/md-quarterly-review, board/how-to/read-performance, board/how-to/financial-position, board/how-to/payroll, board/how-to/profitability, board/how-to/sign-cheques]
+sidebar: { order: 1 }
 sources:
   - e_board/controllers/e_board_controller.py
   - e_board/models/accountability_board_summary.py
@@ -16,7 +17,14 @@ sources:
   - e_board/views/portal_profitability_templates.xml
   - e_board/views/portal_cheques_templates.xml
   - e_board/views/portal_md_review_templates.xml
-sidebar: { order: 1 }
+  - e_board/controllers/md_review.py
+  - e_board/data/mail_template_board_invite.xml
+  - e_board/data/md_review_cron.xml
+  - e_board/models/access_log.py
+  - e_board/models/accountability_board_review.py
+  - e_board/models/accountability_extensions.py
+  - e_board/security/security.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

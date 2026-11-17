@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:field:purchase.order.line.oem_booking_id, crm_tender:field:purchase.order.line.po_confirmed_date, crm_tender:field:purchase.order.line.usd_subtotal
+# docs-sync: shows crm_tender:menu:crm_menu_oems, crm_tender:menu:menu_crm_channel_root, crm_tender:menu:menu_crm_oem_bookings
+# docs-sync: shows crm_tender:menu:menu_crm_untagged_purchases, crm_tender:menu:menu_distributors, crm_tender:menu:menu_hr_oem_certifications
+# docs-sync: shows crm_tender:menu:menu_oem_certifications, crm_tender:model:crm.distributor, crm_tender:model:crm.oem.booking
+# docs-sync: shows crm_tender:wizard:crm.oem.set.lines, tritel_tender_tracker:selection:res.partner.activity.touch_channel, tritel_tender_tracker:selection:res.partner.activity.type.channel
 type: screen
 title: The Untagged Purchases list
 desc: The Untagged Purchases list in the Channel app, filtered on No OEM and grouped by Distributor, with an OEM chosen on one line, two lines selected and the Set OEM window from the Action menu with Also set on the products, numbered 1 to 6.

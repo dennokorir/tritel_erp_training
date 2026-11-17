@@ -11,13 +11,22 @@ before:
   - A manager has asked you to write the summary. You get an email <em>Project summary to write</em> and a to-do <em>Write Project Summary</em>.
   - Only the person named as the writer can edit and submit it, and only while it is <strong>Writing</strong> or <strong>Changes requested</strong>.
 related: [tenders/concepts/project-summaries, tenders/workflows/project-summary, tenders/how-to/customers/request-a-project-summary, tenders/how-to/customers/review-a-project-summary, tenders/how-to/bids/tender-my-actions]
+sidebar: { order: 2 }
 sources:
   - tritel_tender_tracker/views/project_summary_views.xml
   - tritel_tender_tracker/models/project_summary.py
   - tritel_tender_tracker/data/tender_summary_heading_data.xml
   - tritel_tender_tracker/views/portal_my_actions_templates.xml
   - tritel_tender_tracker/controllers/portal_tender.py
-sidebar: { order: 2 }
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/data/ir_cron_data.xml
+  - tritel_tender_tracker/data/mail_templates.xml
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

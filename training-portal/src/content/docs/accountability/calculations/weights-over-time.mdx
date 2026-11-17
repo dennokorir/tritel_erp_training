@@ -7,10 +7,18 @@ roles: [everyone, line-manager, hr, accountability-admin]
 tags: [weights, scores]
 keywords: [weighting, weight, counts as, period weight, rebalance, mid-year change, late target, withdrawn, pro-rata, KPI weight]
 related: [accountability/concepts/weights-and-share-of-score, accountability/calculations/share-of-score, accountability/how-to/line-managers/rebalance-weights, accountability/how-to/line-managers/withdraw-a-target]
+sidebar: { order: 3 }
 sources:
   - tritel_accountability_framework/models/accountability_target_weights.py
   - tritel_accountability_framework/views/accountability_target_views.xml
-sidebar: { order: 3 }
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/accountability_weight_change.py
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/target_weight_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

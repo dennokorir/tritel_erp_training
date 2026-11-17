@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:field:hr.employee.accountability_target_ids, tritel_accountability_framework:model:accountability.score, tritel_accountability_framework:model:accountability.target
+# docs-sync: shows tritel_accountability_framework:view_ext:hr.view_employee_form:button:targets, tritel_accountability_framework:view_ext:hr.view_employee_form:field:targets
 type: calc
 title: Own score
 desc: Worked example of an own score built from two scored targets weighted by their period weight, while a third target with no result yet is left out, giving 81.4%.

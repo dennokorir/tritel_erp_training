@@ -12,11 +12,24 @@ before:
   - The new period has its objectives. If they are missing, HR copies them from last year.
   - You can propose targets for the people below you, not for yourself. HR can propose for anyone.
 related: [accountability/concepts/targets, accountability/concepts/periods-and-objectives, accountability/how-to/hr-admin/targets-library, accountability/how-to/line-managers/set-team-targets]
+sidebar: { order: 2 }
 sources:
   - tritel_accountability_framework/static/src/propose_targets/accountability_propose_targets.xml
   - tritel_accountability_framework/static/src/propose_targets/accountability_propose_targets.js
   - tritel_accountability_framework/models/accountability_target_proposal.py
-sidebar: { order: 2 }
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/accountability_target_library.py
+  - tritel_accountability_framework/models/hr_employee.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/accountability_target_library_views.xml
+  - tritel_accountability_framework/views/accountability_target_views.xml
+  - tritel_accountability_framework/views/hr_employee_views.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/cascade_line_mixin.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

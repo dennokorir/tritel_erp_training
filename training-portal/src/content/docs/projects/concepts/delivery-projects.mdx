@@ -7,6 +7,7 @@ roles: [delivery-pm, head-delivery, delivery-finance, account-manager]
 tags: [delivery projects, tenders]
 keywords: [delivery project, won tender, awarded tender, open project, link tender, contract, project setup, cost account, analytic account, project code, LPO]
 related: [projects/how-to/delivery-pm/open-a-delivery-project, projects/how-to/delivery-pm/link-an-existing-project, projects/concepts/baselines, projects/concepts/odoo-budget-and-cost-account, projects/reports/project-at-a-glance]
+sidebar: { order: 1 }
 sources:
   - tritel_project_delivery/models/project.py
   - tritel_project_delivery/models/tender.py
@@ -16,7 +17,14 @@ sources:
   - tritel_project_delivery/views/tender_views.xml
   - tritel_project_delivery/views/buttons_views.xml
   - tritel_project_delivery/views/menus.xml
-sidebar: { order: 1 }
+  - tritel_project_delivery/data/delivery_data.xml
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/buttons.py
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/closeout_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

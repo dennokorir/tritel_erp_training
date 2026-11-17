@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:field:project.project.award_date, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_starter_items, tritel_project_delivery:model:delivery.starter.item, tritel_project_delivery:selection:project.project.delivery_baseline_state
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:cost-account, tritel_project_delivery:view_ext:project.edit_project:button:draft-baseline, tritel_project_delivery:view_ext:project.edit_project:button:won-tender
+# docs-sync: shows tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:open-delivery-project, tritel_project_delivery:wizard:delivery.cost.account.card
 type: screen
 title: Opening a delivery project from a won tender
 desc: A won tender in Tender Manager with the Open Delivery Project button, and the Open Delivery Project window with the won tender, client, award date, existing project, project name, project manager, start date and cost account, numbered 1 to 7.

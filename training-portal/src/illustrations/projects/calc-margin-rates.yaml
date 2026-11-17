@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.project.delivery_baseline_state
+# docs-sync: shows tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project
 type: calc
 title: Margin at two exchange rates
 desc: Worked example of a US dollar tender where the baseline's margin uses the rate fixed when the budget was approved and the tender's margin uses today's rate, so the two show 250,000 and 200,000.

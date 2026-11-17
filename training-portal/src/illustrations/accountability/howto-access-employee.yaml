@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:group:group_accountability_supervisor, tritel_accountability_framework:group:group_accountability_user, tritel_accountability_framework:menu:menu_accountability_root
+# docs-sync: shows tritel_accountability_framework:view_ext:hr.view_employee_form:page:performance
 type: screen
 title: The two fields that decide Accountability access
 desc: An employee form in the Employees app highlighting the Manager field and, on the HR Settings tab, the Related User field, numbered 1 and 2.

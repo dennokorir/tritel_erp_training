@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:selection:tender.initial.kanban_state
 type: calc
 title: Effort points for one tender
 desc: Worked example of the effort points for one tender, captured 5 days before its deadline, with a bid bond and flagged must-win while Bidding, giving 1 + 1 + 1 + 2 = 5 points.

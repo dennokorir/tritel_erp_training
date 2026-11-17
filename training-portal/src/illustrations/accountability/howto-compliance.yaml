@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_compliance_action, tritel_accountability_framework:client_action:accountability_my_actions_action, tritel_accountability_framework:menu:menu_accountability_compliance
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_actions, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:model:accountability.objective
+# docs-sync: shows tritel_accountability_framework:selection:accountability.target.cascade_state
 type: screen
 title: Cascade Compliance
 desc: The Compliance screen in Accountability with the period selector, the Total Cascades, Adopted, Pending, Declined and Adoption Rate tiles, and an objective opened to show its cascade recipients with a Remind button, numbered 6 to 9.

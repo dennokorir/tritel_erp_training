@@ -11,13 +11,24 @@ before:
   - You are the Head of Channel, the Head of Commercial or a Tender administrator, and you did not write this summary yourself.
   - The summary is <strong>In review</strong>. You get an email <em>Project summary to review</em> and a to-do <em>Review Project Summary</em> when the writer submits it.
 related: [tenders/concepts/project-summaries, tenders/workflows/project-summary, tenders/how-to/customers/write-a-project-summary, tenders/how-to/customers/use-the-summary-library, tenders/how-to/customers/export-for-marketing, tenders/how-to/bids/tender-my-actions]
+sidebar: { order: 3 }
 sources:
   - tritel_tender_tracker/views/project_summary_views.xml
   - tritel_tender_tracker/models/project_summary.py
   - tritel_tender_tracker/wizards/tender_summary_wizard.py
   - tritel_tender_tracker/views/portal_my_actions_templates.xml
   - tritel_tender_tracker/models/my_actions.py
-sidebar: { order: 3 }
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/controllers/portal_tender.py
+  - tritel_tender_tracker/data/ir_cron_data.xml
+  - tritel_tender_tracker/data/mail_templates.xml
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

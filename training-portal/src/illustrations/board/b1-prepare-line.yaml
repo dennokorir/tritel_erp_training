@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows e_board:model:accountability.board.review.line
 type: screen
 title: Add a result to one target
 desc: The window that opens when the MD clicks a target in the board review, with the Result, Comment and Evidence fields and the Save button, numbered 5 to 8.

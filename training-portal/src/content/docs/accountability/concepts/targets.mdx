@@ -7,13 +7,30 @@ roles: [everyone, line-manager, hr, accountability-admin]
 tags: [targets]
 keywords: [KPI, goal, scorecard, SLA, milestone, deliverable, quota, sales target, late set, draft target, measure]
 related: [accountability/workflows/target, accountability/workflows/milestone-stage, accountability/how-to/everyone/my-targets, accountability/how-to/line-managers/set-team-targets, accountability/calculations/target-scores, accountability/calculations/milestone-scores]
+sidebar: { order: 2 }
 sources:
   - tritel_accountability_framework/models/accountability_target.py
   - tritel_accountability_framework/models/accountability_target_milestones.py
   - tritel_accountability_framework/models/accountability_milestone.py
   - tritel_accountability_framework/models/accountability_scorecard_request.py
   - tritel_accountability_framework/views/accountability_target_views.xml
-sidebar: { order: 2 }
+  - tritel_accountability_framework/controllers/portal.py
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_progress_brief.py
+  - tritel_accountability_framework/models/accountability_review.py
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/models/accountability_score.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/models/accountability_target_library.py
+  - tritel_accountability_framework/models/accountability_target_proposal.py
+  - tritel_accountability_framework/models/hr_employee.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/hr_employee_views.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/cascade_line_mixin.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -59,6 +76,7 @@ Either way, a result only counts once a review records it. Milestone targets nev
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.review.state, tritel_accountability_framework:selection:accountability.target.state
   state "Pending Review" as PendingReview
   [*] --> Draft
   Draft --> Active: Activate

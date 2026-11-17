@@ -12,12 +12,22 @@ before:
   - An accountability period contains the cutoff date.
   - Sessions follow the org chart. You can only review your own direct reports.
 related: [accountability/concepts/reviews, accountability/workflows/review-session, accountability/how-to/line-managers/conduct-a-review, accountability/reports/session-coverage]
+sidebar: { order: 6 }
 sources:
   - tritel_accountability_framework/views/accountability_review_session_views.xml
   - tritel_accountability_framework/models/accountability_review_session.py
   - tritel_accountability_framework/models/cadence.py
   - tritel_accountability_framework/static/src/session_coverage/accountability_session_coverage.xml
-sidebar: { order: 6 }
+  - tritel_accountability_framework/models/accountability_exempt.py
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_progress_brief.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/accountability_target_library.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/accountability_exempt_views.xml
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

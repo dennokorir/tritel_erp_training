@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_review_sessions, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:model:accountability.review.session
+# docs-sync: shows tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.review.session.cadence
+# docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.line.line_state, tritel_accountability_framework:selection:accountability.review.session.line.target_cadence, tritel_accountability_framework:selection:accountability.review.session.scope
+# docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.state, tritel_accountability_framework:selection:accountability.target.cadence, tritel_accountability_framework:selection:accountability.target.state
 type: screen
 title: Setting up a review session
 desc: The Review Session form in Draft, with the Launch Session and Populate & Start buttons, the Review Cadence and Review Cutoff fields, the Covers dates, the Scope choice and the Employees tab, numbered 1 to 6.

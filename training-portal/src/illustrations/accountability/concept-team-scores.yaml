@@ -1,3 +1,10 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_my_actions_action, tritel_accountability_framework:client_action:accountability_team_scores_client_action, tritel_accountability_framework:menu:menu_accountability_my_actions
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_root
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_team_scores, tritel_accountability_framework:model:accountability.score, tritel_accountability_framework:model:accountability.snapshot.line
+# docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.employee.avg_rating, tritel_accountability_framework:selection:accountability.review.session.line.line_rating, tritel_accountability_framework:selection:accountability.snapshot.line.rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.snapshot.rating, tritel_accountability_framework:selection:accountability.target.rating, tritel_accountability_framework:view_ext:hr.view_employee_form:field:rating
+# docs-sync: shows tritel_accountability_framework:view_ext:hr.view_employee_form:page:performance
 type: screen
 title: Own, Team and Overall on Team Scores
 desc: The Team Scores screen for a manager, with the scope buttons, the team average tile, and one row per person showing Overall, Own and Team, with the Team breakdown opened for a manager, numbered 1 to 4.

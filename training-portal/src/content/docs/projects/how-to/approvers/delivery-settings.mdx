@@ -11,13 +11,22 @@ before:
   - You have the <strong>Head of Delivery</strong> or <strong>Delivery Finance</strong> role, and you can see <strong>Project › Configuration</strong> (see Good to know).
   - There is one settings page per company. Agree changes to the KPI rules and MD limits with management first; they change how projects are measured.
 related: [projects/concepts/approvals, projects/concepts/odoo-budget-and-cost-account, projects/concepts/contingency, projects/concepts/delivery-kpi, projects/how-to/approvers/cost-types-and-categories]
+sidebar: { order: 10 }
 sources:
   - tritel_project_delivery/views/delivery_settings_views.xml
   - tritel_project_delivery/models/delivery_settings.py
   - tritel_project_delivery/models/budget_mapping.py
   - tritel_project_delivery/views/menus.xml
   - tritel_project_delivery/security/ir.model.access.csv
-sidebar: { order: 10 }
+  - tritel_project_delivery/data/delivery_data.xml
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/cost_item.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/buttons_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

@@ -11,13 +11,20 @@ before:
   - You are an accountability administrator. Only administrators see <strong>Organisation › Periods</strong>.
   - At year end, reviews for the old period's last window are finished and signed off.
 related: [accountability/workflows/period, accountability/concepts/periods-and-objectives, accountability/how-to/hr-admin/objectives, accountability/how-to/line-managers/propose-next-years-targets]
+sidebar: { order: 1 }
 sources:
   - tritel_accountability_framework/views/accountability_period_views.xml
   - tritel_accountability_framework/models/accountability_period.py
   - tritel_accountability_framework/models/accountability_target_proposal.py
   - tritel_accountability_framework/models/accountability_withdrawn.py
   - tritel_accountability_framework/models/accountability_snapshot.py
-sidebar: { order: 1 }
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_review.py
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

@@ -1,3 +1,10 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_my_actions_action, tritel_accountability_framework:cron:cron_progress_briefs, tritel_accountability_framework:group:group_accountability_user
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_actions, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_progress_briefs, tritel_accountability_framework:menu:menu_accountability_root
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_settings, tritel_accountability_framework:model:accountability.config, tritel_accountability_framework:selection:accountability.review.session.employee.avg_rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.line.line_rating, tritel_accountability_framework:selection:accountability.snapshot.line.rating, tritel_accountability_framework:selection:accountability.snapshot.rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.target.rating, tritel_accountability_framework:view_ext:hr.view_employee_form:field:rating
 type: screen
 title: Resyncing access rights
 desc: The Accountability Settings form with the Resync Access Rights button at the top and the Access rights synced message that appears afterwards, numbered 3 and 4.

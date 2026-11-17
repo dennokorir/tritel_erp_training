@@ -1,3 +1,7 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:model:accountability.target, tritel_accountability_framework:selection:accountability.review.session.employee.avg_rating, tritel_accountability_framework:selection:accountability.review.session.line.line_rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.snapshot.line.rating, tritel_accountability_framework:selection:accountability.snapshot.rating, tritel_accountability_framework:selection:accountability.target.rating
+# docs-sync: shows tritel_accountability_framework:view_ext:hr.view_employee_form:field:rating
 type: calc
 title: Rating on pace
 desc: Worked example of a running-total target of 12,000,000 rated on pace at a 30 September checkpoint, where 7,500,000 against an expected 8,975,342 gives 83.6% and Outstanding, while the score against the full target is 62.5%.

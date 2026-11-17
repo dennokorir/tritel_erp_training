@@ -1,3 +1,11 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:menu:crm_menu_oems, crm_tender:menu:menu_crm_channel_root, crm_tender:menu:menu_crm_oem_bookings
+# docs-sync: shows crm_tender:menu:menu_distributors, crm_tender:menu:menu_hr_oem_certifications, crm_tender:menu:menu_oem_certifications
+# docs-sync: shows crm_tender:menu:menu_oem_learnings, crm_tender:model:crm.oem.certification, crm_tender:model:crm.oem.course
+# docs-sync: shows crm_tender:model:oem.learning.dev, crm_tender:model:oem.learning.employee.certification, crm_tender:selection:learning.stage.kanban_state
+# docs-sync: shows crm_tender:selection:oem.learning.dev.kanban_state, crm_tender:selection:oem.learning.dev.state, crm_tender:selection:oem.learning.employee.certification.state
+# docs-sync: shows crm_tender:wizard:pass.fail.wizard, tritel_tender_tracker:menu:configuration_menu, tritel_tender_tracker:selection:res.partner.activity.touch_channel
+# docs-sync: shows tritel_tender_tracker:selection:res.partner.activity.type.channel
 type: screen
 title: A learning record and the pass or fail window
 desc: A Learning Development record in the Channel app with the Pass/Fail Certification button, the clickable status bar, the employee, Oem and course, the dates, and the Pass or Fail window with Certification Status, Date and Submit, numbered 1 to 6.

@@ -11,6 +11,7 @@ before:
   - For a scorecard change, you are named under <strong>Approvers</strong> (the requester's own manager, plus HR), or you are HR. You can't decide a change you requested yourself.
   - For an escalation, you are the reviewer's manager, a review escalation contact, HR or an administrator, and you are not the employee or the reviewer.
 related: [accountability/workflows/scorecard-change-request, accountability/workflows/review-concern, accountability/workflows/review-pack, accountability/how-to/line-managers/request-a-scorecard-change, accountability/how-to/line-managers/team-reviews-board]
+sidebar: { order: 7 }
 sources:
   - tritel_accountability_framework/views/accountability_scorecard_request_views.xml
   - tritel_accountability_framework/models/accountability_scorecard_request.py
@@ -18,7 +19,12 @@ sources:
   - tritel_accountability_framework/views/wizard_review_concern_views.xml
   - tritel_accountability_framework/wizard/review_concern_wizards.py
   - tritel_accountability_framework/models/accountability_review_session.py
-sidebar: { order: 7 }
+  - tritel_accountability_framework/models/accountability_rating.py
+  - tritel_accountability_framework/models/accountability_review_concern.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/models/accountability_weight_change.py
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

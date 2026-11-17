@@ -10,13 +10,30 @@ where: [Accountability, My Performance, My Targets]
 before:
   - Your manager has set and activated your targets for the period. New targets you add yourself start as <strong>Draft</strong> until your manager activates them.
 related: [accountability/concepts/targets, accountability/concepts/weights-and-share-of-score, accountability/calculations/target-scores, accountability/how-to/everyone/update-a-milestone, accountability/workflows/target]
+sidebar: { order: 2 }
 sources:
   - tritel_accountability_framework/static/src/my_targets/accountability_my_targets.xml
   - tritel_accountability_framework/static/src/my_targets/accountability_my_targets.js
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_accountability_framework/views/accountability_scorecard_request_views.xml
   - tritel_accountability_framework/models/accountability_target.py
-sidebar: { order: 2 }
+  - tritel_accountability_framework/controllers/portal.py
+  - tritel_accountability_framework/controllers/worksheet.py
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_progress_brief.py
+  - tritel_accountability_framework/models/accountability_rating.py
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/models/accountability_target_library.py
+  - tritel_accountability_framework/models/accountability_weight_change.py
+  - tritel_accountability_framework/models/hr_employee.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/accountability_progress_brief_views.xml
+  - tritel_accountability_framework/views/hr_employee_views.xml
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

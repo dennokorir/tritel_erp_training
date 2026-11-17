@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_handovers
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_projects_to_link, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:model:project.delivery.client.delay
+# docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:log-client-delay
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:record-handover, tritel_project_delivery:view_ext:project.edit_project:button:won-tender
 type: screen
 title: Projects My Actions
 desc: The My Actions screen in the Project app with the To do, Overdue and Waiting on others tiles, a link card, the Baselines sent back to you and Handovers to record groups with their buttons, a Return note box, and the Waiting on others group with a Remind button, numbered 1 to 5.

@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:model:accountability.review.session.employee, tritel_accountability_framework:model:accountability.review.session.line, tritel_accountability_framework:model:accountability.target
+# docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.line.line_state
 type: calc
 title: Review pack average
 desc: Worked example of a review pack average where three counted lines are weighted by target weight, a pending line with no value counts as 0% and a skipped line is left out, giving 64.3%.

@@ -11,13 +11,18 @@ before:
   - You are a <strong>System administrator</strong> or an <strong>Accountability administrator</strong>. Only these roles see <strong>Invite as Board Viewer</strong>.
   - The board member has a contact with an email address.
 related: [board/index, board/how-to/name-the-board-reviewer, board/who-can-do-what, getting-started/logging-in]
+sidebar: { order: 4 }
 sources:
   - e_board/models/board_invite_wizard.py
   - e_board/views/board_invite_wizard_views.xml
   - e_board/data/mail_template_board_invite.xml
   - e_board/models/res_users.py
   - e_board/models/res_partner.py
-sidebar: { order: 4 }
+  - e_board/controllers/e_board_controller.py
+  - e_board/data/md_review_cron.xml
+  - e_board/models/accountability_extensions.py
+  - e_board/security/security.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

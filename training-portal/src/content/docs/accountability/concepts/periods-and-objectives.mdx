@@ -7,6 +7,7 @@ roles: [everyone, line-manager, hr, accountability-admin]
 tags: [periods, objectives]
 keywords: [financial year, FY, performance year, appraisal cycle, strategic objectives, goals, OKR, target-setting deadline, KRA, key result area]
 related: [accountability/workflows/period, accountability/workflows/objective, accountability/how-to/hr-admin/open-and-close-periods, accountability/how-to/hr-admin/objectives, accountability/calculations/objective-achievement]
+sidebar: { order: 1 }
 sources:
   - tritel_accountability_framework/models/accountability_period.py
   - tritel_accountability_framework/models/accountability_objective.py
@@ -14,7 +15,12 @@ sources:
   - tritel_accountability_framework/models/accountability_withdrawn.py
   - tritel_accountability_framework/views/accountability_period_views.xml
   - tritel_accountability_framework/static/src/period_browser/accountability_period_browser.xml
-sidebar: { order: 1 }
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/models/accountability_scorecard_request.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/cascade_pull_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 A **period** is the performance year, for example **FY 2026**. Every target, review and score belongs to one period. A period has a **Period Name**, a **Start Date**, an **End Date** and a **Target-Setting Deadline**, and its **Status** is **Draft**, **Active** or **Closed**. Only one period can be active at a time. Accountability administrators open and close periods under **Accountability › Organisation › Periods**.
@@ -25,6 +31,7 @@ The **Target-Setting Deadline** matters all year. Up to that date, managers can 
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_accountability_framework:model:accountability.objective
   P["Period: FY 2026"] --> O1["Objective: Grow revenue"]
   P --> O2["Objective: Deliver projects on time"]
   O1 --> S1["Sub-objective: Win more tenders"]

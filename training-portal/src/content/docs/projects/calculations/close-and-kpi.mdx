@@ -7,12 +7,18 @@ roles: [delivery-pm, head-delivery, delivery-finance, md, line-manager]
 tags: [close-out, kpi]
 keywords: [final cost, close out, on time, on budget, late, overrun, grace period, days late, not scored, delivery KPI, appraisal, costs after close]
 related: [projects/concepts/handover-and-close-out, projects/concepts/delivery-kpi, projects/workflows/close-out, projects/how-to/approvers/close-a-project, projects/how-to/approvers/review-costs-after-close, accountability/concepts/metrics, accountability/calculations/metric-families]
+sidebar: { order: 7 }
 sources:
   - tritel_project_delivery/models/closeout.py
   - tritel_project_delivery/models/action_followups.py
   - tritel_project_delivery/views/closeout_views.xml
   - tritel_accountability_framework/models/metric_hook_delivery.py
-sidebar: { order: 7 }
+  - tritel_project_delivery/data/closeout_data.xml
+  - tritel_project_delivery/models/buttons.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/views/menus.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

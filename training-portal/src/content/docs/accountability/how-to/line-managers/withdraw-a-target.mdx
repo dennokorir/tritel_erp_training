@@ -12,13 +12,23 @@ before:
   - The target is live and the period is not closed.
   - The target has no other change request open.
 related: [accountability/concepts/exempt-withdrawn-development, accountability/workflows/scorecard-change-request, accountability/calculations/weights-over-time, accountability/how-to/line-managers/request-a-scorecard-change]
+sidebar: { order: 11 }
 sources:
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_accountability_framework/views/accountability_scorecard_request_views.xml
   - tritel_accountability_framework/models/accountability_scorecard_request.py
   - tritel_accountability_framework/models/accountability_withdrawn.py
   - tritel_accountability_framework/models/accountability_target_weights.py
-sidebar: { order: 11 }
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_priority_change.py
+  - tritel_accountability_framework/models/accountability_rating.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/cascade_line_mixin.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

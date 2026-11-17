@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state
 type: calc
 title: Contingency and its cap
 desc: Worked example of a contingency item at 5% of the other costs, and the check against the 5% contingency cap when the baseline is confirmed for approval.

@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows e_board:model:accountability.board.review.line
 type: calc
 title: Financial position totals
 desc: Worked example of the Financial Position, where receivables of KES 3,000,000 (2,000,000 unpaid on invoices plus 1,000,000 not yet invoiced on two orders) against payables of KES 2,200,000 give a Net Position of +800,000, Favourable; an excluded order of 300,000 is left out.

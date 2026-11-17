@@ -1,3 +1,7 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_baselines, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:model:project.delivery.baseline, tritel_project_delivery:model:project.delivery.commitment
+# docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:view_ext:project.edit_project:button:won-tender, tritel_project_delivery:view_ext:project.edit_project:field:untagged-lines
 type: screen
 title: Baseline and tender smart buttons
 desc: The smart buttons on a delivery baseline (Odoo Budget, Project, Tender, Baseline versions and Margin left) and on a won tender (Delivery projects, Delivery budgets, Margin left and Untagged order lines), numbered 1 to 9.

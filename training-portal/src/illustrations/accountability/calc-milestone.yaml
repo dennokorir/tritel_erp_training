@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:group:group_accountability_supervisor, tritel_accountability_framework:model:accountability.milestone, tritel_accountability_framework:model:accountability.target
 type: calc
 title: Milestone target score
 desc: Worked example of a milestone target scored on weighted milestones, with stages weighted 30, 30 and 40 where the first two are confirmed, giving 60%.

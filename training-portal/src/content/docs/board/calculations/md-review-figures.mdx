@@ -7,12 +7,15 @@ roles: [board, md, accountability-admin]
 tags: [reviews, scores]
 keywords: [MD appraisal, managing director, quarterly review, board review, score, result, metric, year to date, sign off, KPI, percentage]
 related: [board/concepts/md-quarterly-review, board/workflows/md-review, board/how-to/review-the-md, board/how-to/prepare-the-md-review, accountability/calculations/target-scores, accountability/calculations/milestone-scores]
+sidebar: { order: 1 }
 sources:
   - e_board/models/accountability_board_review.py
   - e_board/controllers/md_review.py
   - e_board/views/portal_md_review_templates.xml
   - tritel_accountability_framework/models/accountability_target.py
-sidebar: { order: 1 }
+  - e_board/controllers/e_board_controller.py
+  - e_board/security/security.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

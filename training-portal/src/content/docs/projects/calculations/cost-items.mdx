@@ -7,13 +7,17 @@ roles: [delivery-pm, head-delivery, delivery-finance]
 tags: [budget, baselines, cost items]
 keywords: [cost item, BOQ, budget line, VAT inclusive, exchange rate, USD, forex, contingency, buffer, cap, estimate, quote]
 related: [projects/concepts/cost-items-and-categories, projects/concepts/contingency, projects/how-to/delivery-pm/build-a-baseline, projects/calculations/budget-lines-and-phasing, projects/how-to/approvers/approve-budget]
+sidebar: { order: 1 }
 sources:
   - tritel_project_delivery/models/baseline.py
   - tritel_project_delivery/models/cost_item.py
   - tritel_project_delivery/models/starter_item.py
   - tritel_project_delivery/models/delivery_settings.py
   - tritel_project_delivery/views/baseline_views.xml
-sidebar: { order: 1 }
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/views/menus.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

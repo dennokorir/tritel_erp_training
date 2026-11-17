@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:group:group_account_manager, tritel_tender_tracker:group:group_bid_liaison
+# docs-sync: shows tritel_tender_tracker:menu:menu_account_managers, tritel_tender_tracker:menu:menu_technical_presales, tritel_tender_tracker:model:target.target
+# docs-sync: shows tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:selection:target.achievement.role, tritel_tender_tracker:selection:target.line.role
+# docs-sync: shows tritel_tender_tracker:selection:target.target.role, tritel_tender_tracker:selection:tender.portal.access.log.user_role
 type: calc
 title: How a won tender's value is split
 desc: Worked example of a won tender worth KES 10,000,000 with two Account Managers, one Bid Liaison and one Technical Presales person, showing each line's gross value, attribution points and achieved value.

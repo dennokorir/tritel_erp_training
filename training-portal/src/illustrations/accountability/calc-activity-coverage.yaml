@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:model:accountability.metric
 type: calc
 title: Update coverage metric
 desc: Worked example of pipeline status update coverage over two months, where 8 of 10 and 9 of 12 opportunities were updated by their owner, giving 77.3%.

@@ -11,13 +11,20 @@ before:
   - You have the <strong>Head of Delivery</strong> role.
   - A baseline is due a set number of days after the tender award (<strong>Baseline due after award (days)</strong> in Delivery Settings, 14 by default).
 related: [projects/calculations/baseline-due, projects/workflows/baseline, projects/how-to/delivery-pm/my-actions, projects/how-to/delivery-pm/build-a-baseline, projects/how-to/approvers/delivery-settings]
+sidebar: { order: 9 }
 sources:
   - tritel_project_delivery/models/my_actions.py
   - tritel_project_delivery/static/src/my_actions/project_my_actions.xml
   - tritel_project_delivery/models/project.py
   - tritel_project_delivery/data/delivery_data.xml
   - tritel_project_delivery/views/project_views.xml
-sidebar: { order: 9 }
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/my_actions_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

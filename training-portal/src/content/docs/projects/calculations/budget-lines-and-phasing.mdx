@@ -7,12 +7,17 @@ roles: [delivery-pm, head-delivery, delivery-finance, finance]
 tags: [budget, baselines, phasing]
 keywords: [spend plan, phasing, cash flow, burn rate, monthly budget, budget by category, budgetary position, Odoo budget, analytic budget, pay months, tail]
 related: [projects/concepts/cost-items-and-categories, projects/concepts/odoo-budget-and-cost-account, projects/how-to/delivery-pm/phase-the-spend, projects/calculations/cost-items, projects/calculations/tracking-figures]
+sidebar: { order: 2 }
 sources:
   - tritel_project_delivery/models/baseline.py
   - tritel_project_delivery/models/phasing.py
   - tritel_project_delivery/models/budget_mapping.py
   - tritel_project_delivery/views/baseline_views.xml
-sidebar: { order: 2 }
+  - tritel_project_delivery/models/cost_item.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/menus.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

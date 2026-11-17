@@ -10,11 +10,25 @@ where: [Portal, My Performance]
 before:
   - You have a user account linked to your employee record. The <strong>My Performance</strong> panel and menu item appear only for staff with an employee record.
 related: [accountability/how-to/everyone/respond-to-my-review, accountability/how-to/everyone/update-a-milestone, accountability/how-to/everyone/see-my-performance, getting-started/finding-your-way]
+sidebar: { order: 6 }
 sources:
   - tritel_accountability_framework/views/portal_performance_templates.xml
   - tritel_accountability_framework/controllers/portal.py
   - tritel_accountability_framework/models/res_users.py
-sidebar: { order: 6 }
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_rating.py
+  - tritel_accountability_framework/models/accountability_review_session.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/accountability_progress_brief_views.xml
+  - tritel_accountability_framework/views/accountability_target_views.xml
+  - tritel_accountability_framework/views/hr_employee_views.xml
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

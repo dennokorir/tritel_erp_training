@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_team_targets_client_action, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_team_targets, tritel_accountability_framework:model:accountability.milestone
+# docs-sync: shows tritel_accountability_framework:selection:accountability.milestone.timing, tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state
+# docs-sync: shows tritel_accountability_framework:selection:accountability.score.scoring_mode, tritel_accountability_framework:selection:accountability.target.scoring_mode, tritel_accountability_framework:selection:accountability.target.state
+# docs-sync: shows tritel_accountability_framework:wizard:accountability.metric.test.wizard, tritel_accountability_framework:wizard:accountability.milestone.action.wizard
 type: screen
 title: Setting milestone dates and confirming a stage
 desc: A milestone target's form with the Start and End dates, the stage list with Stage, Start, Due, Weight, Status and Timing, and the Confirm and Send Back buttons on a stage awaiting confirmation, numbered 1 to 5.

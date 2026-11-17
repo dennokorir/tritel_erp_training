@@ -1,3 +1,10 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:client_action:action_project_my_actions, tritel_project_delivery:cron:ir_cron_costs_after_close, tritel_project_delivery:field:project.project.after_close_amount
+# docs-sync: shows tritel_project_delivery:field:project.project.close_budget, tritel_project_delivery:field:project.project.close_committed, tritel_project_delivery:field:project.project.close_spent
+# docs-sync: shows tritel_project_delivery:field:project.project.final_cost, tritel_project_delivery:field:project.project.track_spent, tritel_project_delivery:menu:menu_delivery_config
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:menu:menu_project_my_actions, tritel_project_delivery:selection:project.project.handover_state
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:handover, tritel_project_delivery:view_ext:project.edit_project:button:mark-reviewed, tritel_project_delivery:view_ext:project.edit_project:button:reopen
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:page:handover-amp-close
 type: screen
 title: Costs posted after a project closed
 desc: The Handover and close tab of a closed project, with the Costs after close alert and its Mark reviewed button, the Reopen button and the frozen Result figures, numbered 1 to 5.

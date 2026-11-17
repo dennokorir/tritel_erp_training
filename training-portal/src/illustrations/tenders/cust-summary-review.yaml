@@ -1,3 +1,7 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:cron:ir_cron_summary_overdue, tritel_tender_tracker:menu:menu_tender_customers
+# docs-sync: shows tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:tender.initial
+# docs-sync: shows tritel_tender_tracker:selection:tender.initial.summary_customer_naming, tritel_tender_tracker:selection:tender.initial.summary_state, tritel_tender_tracker:wizard:tender.summary.wizard
 type: screen
 title: Review a project summary
 desc: A project summary in review, with the Approve and Send back buttons, the review due date and days waiting, the summary text, and the Approve project summary window with the Customer naming choice, numbered 1 to 4.

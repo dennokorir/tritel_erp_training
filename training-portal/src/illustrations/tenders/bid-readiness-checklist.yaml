@@ -1,3 +1,14 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, crm_tender:menu:menu_crm_compliance, crm_tender:menu:menu_crm_compliance_root
+# docs-sync: shows crm_tender:model:crm.compliance, crm_tender:selection:crm.compliance.compliance_state, crm_tender:selection:crm.compliance.lines.state
+# docs-sync: shows crm_tender:selection:crm.oem.certification.state, tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:menu:menu_target_root
+# docs-sync: shows tritel_tender_tracker:menu:menu_technical_presales, tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tenders_section
+# docs-sync: shows tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.initial.line
+# docs-sync: shows tritel_tender_tracker:model:tender.readiness.line, tritel_tender_tracker:selection:prequalification.registration.pq_state, tritel_tender_tracker:selection:target.achievement.role
+# docs-sync: shows tritel_tender_tracker:selection:target.period.state, tritel_tender_tracker:selection:target.target.role, tritel_tender_tracker:selection:tender.business.case.state
+# docs-sync: shows tritel_tender_tracker:selection:tender.initial.kanban_state, tritel_tender_tracker:selection:tender.initial.readiness_state, tritel_tender_tracker:selection:tender.portal.access.log.user_role
+# docs-sync: shows tritel_tender_tracker:selection:tender.readiness.line.owner_role, tritel_tender_tracker:selection:tender.readiness.line.status, tritel_tender_tracker:selection:tender.requirement.owner_role
+# docs-sync: shows tritel_tender_tracker:wizard:drop.reason, tritel_tender_tracker:wizard:tender.submission.wizard
 type: screen
 title: Working the bid readiness checklist
 desc: The Bid Readiness tab of a tender in Bidding with Readiness and Progress, the Confirm Ready button, and checklist rows showing Document, Prepared By, Document Files, Valid Until, Not Needed and Status, numbered 1 to 7.

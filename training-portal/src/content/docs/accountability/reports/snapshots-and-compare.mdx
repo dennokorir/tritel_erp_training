@@ -8,13 +8,23 @@ tags: [snapshots, reports, scores]
 keywords: [snapshot, freeze, as at, month end, historic score, compare, what changed, PDF, performance record, quarter end, audit trail]
 where: [Accountability, My Performance, Performance Snapshots]
 related: [accountability/concepts/snapshots-and-as-at, accountability/how-to/everyone/read-briefs-and-snapshots, accountability/reports/performance-overview, accountability/how-to/line-managers/team-scores]
+sidebar: { order: 2 }
 sources:
   - tritel_accountability_framework/static/src/components/snapshot/snapshot_panel.xml
   - tritel_accountability_framework/static/src/components/snapshot/snapshot_panel.js
   - tritel_accountability_framework/views/accountability_snapshot_views.xml
   - tritel_accountability_framework/models/accountability_snapshot.py
   - tritel_accountability_framework/static/src/team_targets/accountability_team_targets.xml
-sidebar: { order: 2 }
+  - tritel_accountability_framework/controllers/portal.py
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/models/accountability_rating.py
+  - tritel_accountability_framework/models/hr_employee.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/accountability_exempt_views.xml
+  - tritel_accountability_framework/views/accountability_target_views.xml
+  - tritel_accountability_framework/views/hr_employee_views.xml
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

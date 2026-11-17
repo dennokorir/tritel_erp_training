@@ -11,11 +11,16 @@ before:
   - The baseline is in <strong>Draft</strong> and its cost items are listed.
   - You know roughly when each supplier, subcontractor or expense will be paid.
 related: [projects/calculations/budget-lines-and-phasing, projects/concepts/budget-tracking, projects/concepts/odoo-budget-and-cost-account, projects/how-to/delivery-pm/build-a-baseline, projects/how-to/delivery-pm/send-for-approval]
+sidebar: { order: 5 }
 sources:
   - tritel_project_delivery/models/phasing.py
   - tritel_project_delivery/models/cost_item.py
   - tritel_project_delivery/views/baseline_views.xml
-sidebar: { order: 5 }
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/views/menus.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

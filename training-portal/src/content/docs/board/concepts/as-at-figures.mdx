@@ -7,6 +7,7 @@ roles: [board, finance, accountability-admin]
 tags: [snapshots, finance]
 keywords: [as at, month end, quarter end, board pack, historic figures, exclude order, hide order, board position, backlog, financial position, uninvoiced orders]
 related: [board/concepts/the-board-portal, board/how-to/exclude-or-hide-orders, board/how-to/read-performance, board/how-to/financial-position, board/calculations/financial-position, accountability/concepts/snapshots-and-as-at]
+sidebar: { order: 3 }
 sources:
   - e_board/models/accountability_board_summary.py
   - e_board/controllers/e_board_controller.py
@@ -16,7 +17,7 @@ sources:
   - e_board/models/sale_order.py
   - e_board/models/purchase_order.py
   - tritel_accountability_framework/models/accountability_snapshot.py
-sidebar: { order: 3 }
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 Two things change what the board sees: the **As at** selector on the Performance tab, which rebuilds the accountability figures as they stood at a past month end, and two ticks on sales and purchase orders, which keep an order out of the Financial Position.
@@ -34,6 +35,7 @@ The tiles and the formulas are the same either way. See [Organisation score and 
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows (no tracked code element)
   Y["Year or quarter buttons"] --> P["Accountability period that overlaps"]
   P --> T{"As at"}
   T -->|"Today"| L["Live figures, Year to Date"]

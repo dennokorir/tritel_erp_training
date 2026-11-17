@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:client_action:action_tender_my_actions, tritel_tender_tracker:cron:ir_cron_bid_quality_reminders
+# docs-sync: shows tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:menu:menu_bid_liaisons, tritel_tender_tracker:menu:menu_customers
+# docs-sync: shows tritel_tender_tracker:menu:menu_target_root, tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tender_my_actions
+# docs-sync: shows tritel_tender_tracker:menu:menu_tender_summary_tracker, tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:menu:tender_root_menu
+# docs-sync: shows tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.summary.heading, tritel_tender_tracker:selection:tender.summary.event.kind
 type: screen
 title: Tender My Actions
 desc: The Tender Manager My Actions screen with the To do, Overdue and Waiting on others tiles, a link row for won tenders with no summary requested, and groups such as Bid liaisons to nominate with a Nominate button, Bid quality checks to score and Business cases waiting for approval, numbered 1 to 5.

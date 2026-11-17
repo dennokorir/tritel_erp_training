@@ -10,6 +10,7 @@ where: [Project, Delivery, Delivery Projects]
 before:
   - The project has an <strong>Approved</strong> baseline. Tracking starts once the baseline is approved.
 related: [projects/concepts/budget-tracking, projects/calculations/tracking-figures, projects/workflows/budget-status, projects/reports/project-at-a-glance, projects/reports/projects-over-budget, projects/how-to/approvers/tag-orders-to-a-project, projects/how-to/delivery-pm/request-a-revision]
+sidebar: { order: 10 }
 sources:
   - tritel_project_delivery/views/tracking_views.xml
   - tritel_project_delivery/views/buttons_views.xml
@@ -17,7 +18,15 @@ sources:
   - tritel_project_delivery/models/tracking.py
   - tritel_project_delivery/models/buttons.py
   - tritel_project_delivery/models/whole_orders.py
-sidebar: { order: 10 }
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/cost_item.py
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/tender_views.xml
+  - tritel_project_delivery/wizards/tag_orders_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

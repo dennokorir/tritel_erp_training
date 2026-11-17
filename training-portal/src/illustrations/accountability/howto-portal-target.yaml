@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:model:accountability.milestone
 type: screen
 title: A target's page on the portal
 desc: The Target Detail page on the portal for a milestone target, with the Stages table, the completed-on date and Mark Done button, and the Review History, numbered 1 to 3.

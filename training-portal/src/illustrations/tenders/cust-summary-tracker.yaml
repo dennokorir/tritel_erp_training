@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tender_summary_marketing
+# docs-sync: shows tritel_tender_tracker:menu:menu_tender_summary_tracker, tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:menu:tender_root_menu
+# docs-sync: shows tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:selection:tender.initial.summary_state, tritel_tender_tracker:wizard:tender.summary.bulk.wizard
+# docs-sync: shows tritel_tender_tracker:wizard:tender.summary.marketing.wizard
 type: screen
 title: Summary Tracker
 desc: The Summary Tracker list in Tender Manager, showing won tenders with their summary status, progress, writer and next deadline, and the Request summaries button for several tenders at once, numbered 1, 2 and 5.

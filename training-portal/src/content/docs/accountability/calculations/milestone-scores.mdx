@@ -7,12 +7,17 @@ roles: [everyone, line-manager, accountability-admin]
 tags: [scores, milestones]
 keywords: [milestone, stage, task, project, deliverable, partial credit, binary, done, confirm, supervisor assessment, KPI, percentage]
 related: [accountability/how-to/everyone/update-a-milestone, accountability/workflows/milestone-stage, accountability/how-to/line-managers/milestone-dates-and-confirmations, accountability/calculations/target-scores]
+sidebar: { order: 2 }
 sources:
   - tritel_accountability_framework/models/accountability_target.py
   - tritel_accountability_framework/models/accountability_target_milestones.py
   - tritel_accountability_framework/models/accountability_milestone.py
   - tritel_accountability_framework/views/accountability_target_views.xml
-sidebar: { order: 2 }
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_score.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

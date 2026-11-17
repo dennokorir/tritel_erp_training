@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows e_board:model:accountability.board.review.line
 type: calc
 title: Organisation score and rating
 desc: Worked example of the Performance tab's organisation figures with three objectives, giving an Organisation Score of 57% while the rating label reads Meets Expectations, because the label uses the pace-adjusted rating scores.

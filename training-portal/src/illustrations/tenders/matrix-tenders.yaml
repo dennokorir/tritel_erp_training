@@ -1,3 +1,14 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_administrator, crm_tender:group:group_manager, crm_tender:group:group_user
+# docs-sync: shows tritel_tender_tracker:group:group_account_manager, tritel_tender_tracker:group:group_administrator, tritel_tender_tracker:group:group_bid_liaison
+# docs-sync: shows tritel_tender_tracker:group:group_channel_manager, tritel_tender_tracker:group:group_hod_commercial, tritel_tender_tracker:menu:menu_account_managers
+# docs-sync: shows tritel_tender_tracker:menu:menu_bid_liaisons, tritel_tender_tracker:menu:menu_technical_presales, tritel_tender_tracker:menu:menu_tenders_section
+# docs-sync: shows tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:tender.business.case.line, tritel_tender_tracker:model:tender.initial
+# docs-sync: shows tritel_tender_tracker:selection:res.partner.activity.touch_channel, tritel_tender_tracker:selection:res.partner.activity.type.channel, tritel_tender_tracker:selection:target.achievement.role
+# docs-sync: shows tritel_tender_tracker:selection:target.target.role, tritel_tender_tracker:selection:tender.business.case.line.category, tritel_tender_tracker:selection:tender.business.case.line.commission_role
+# docs-sync: shows tritel_tender_tracker:selection:tender.business.case.state, tritel_tender_tracker:selection:tender.initial.kanban_state, tritel_tender_tracker:selection:tender.portal.access.log.user_role
+# docs-sync: shows tritel_tender_tracker:wizard:drop.reason, tritel_tender_tracker:wizard:lost.reason, tritel_tender_tracker:wizard:tender.submission.wizard
+# docs-sync: shows tritel_tender_tracker:wizard:tender.summary.wizard, tritel_tender_tracker:wizard:tenders.assign.wizard
 type: matrix
 title: Who can do what with tenders
 desc: Permission grid for seeing, creating, assigning, moving, reopening and deleting tenders and for business cases, for Account Managers, Bid Liaisons, Technical Presales, the Head of Commercial, the Head of Channel, Tender administrators and any other internal user.

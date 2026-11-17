@@ -7,6 +7,7 @@ roles: [delivery-pm, head-delivery, delivery-finance]
 tags: [baselines, budgets]
 keywords: [contingency, risk reserve, buffer, provision, allowance, cap, 5 percent, unforeseen costs, reserve account]
 related: [projects/concepts/cost-items-and-categories, projects/concepts/budget-tracking, projects/calculations/cost-items, projects/how-to/delivery-pm/build-a-baseline, projects/how-to/approvers/delivery-settings]
+sidebar: { order: 4 }
 sources:
   - tritel_project_delivery/models/baseline.py
   - tritel_project_delivery/models/phasing.py
@@ -15,7 +16,12 @@ sources:
   - tritel_project_delivery/models/delivery_settings.py
   - tritel_project_delivery/data/starter_item_data.xml
   - tritel_project_delivery/views/delivery_settings_views.xml
-sidebar: { order: 4 }
+  - tritel_project_delivery/models/buttons.py
+  - tritel_project_delivery/models/cost_item.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/menus.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

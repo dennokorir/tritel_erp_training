@@ -11,13 +11,16 @@ before:
   - You have a board portal login.
   - Finance has entered the cheque in Odoo. Only cheques in <strong>Draft</strong> or <strong>Issued</strong> status appear here.
 related: [board/concepts/the-board-portal, board/how-to/access-log, board/who-can-do-what, board/faq]
+sidebar: { order: 11 }
 sources:
   - e_board/controllers/e_board_controller.py
   - e_board/views/portal_cheques_templates.xml
   - tritel_pdc/models/pdc_cheque.py
   - tritel_pdc/models/pdc_cheque_signature.py
   - tritel_pdc/models/account_journal.py
-sidebar: { order: 11 }
+  - e_board/data/md_review_cron.xml
+  - e_board/models/access_log.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_tender_tracker:menu:menu_target_dashboard, tritel_tender_tracker:menu:menu_tender_pillar, tritel_tender_tracker:menu:menu_tender_summary_tracker
+# docs-sync: shows tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:model:tender.pillar, tritel_tender_tracker:selection:target.line.role
+# docs-sync: shows tritel_tender_tracker:selection:target.period.state, tritel_tender_tracker:selection:tender.initial.kanban_state, tritel_tender_tracker:selection:tender.initial.summary_motion
+# docs-sync: shows tritel_tender_tracker:selection:tender.initial.summary_tritel_role, tritel_tender_tracker:selection:tender.summary.heading.linked_field, tritel_tender_tracker:wizard:lost.reason
 type: screen
 title: Write a summary on the portal
 desc: The project summary page on the website portal for the writer, with the pillar, role and motion lists, the text box, the guidance and headings panels, and the Save draft and Submit for review buttons.

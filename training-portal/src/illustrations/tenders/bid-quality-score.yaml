@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:cron:ir_cron_bid_quality_reminders, tritel_tender_tracker:group:group_bid_liaison
+# docs-sync: shows tritel_tender_tracker:menu:menu_target_root, tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tenders_section
+# docs-sync: shows tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.initial.line
+# docs-sync: shows tritel_tender_tracker:model:tender.quality.guideline, tritel_tender_tracker:model:tender.quality.line, tritel_tender_tracker:selection:tender.initial.quality_state
+# docs-sync: shows tritel_tender_tracker:selection:tender.initial.readiness_state, tritel_tender_tracker:selection:tender.quality.line.result, tritel_tender_tracker:wizard:tender.quality.wizard
 type: screen
 title: Scoring a bid's quality
 desc: The Bid Quality Check window opened from a tender's Bid Quality tab, with the Actual Submission time, one row per guideline with a Met, Not met or Not applicable result and a note, the note for the Bid Liaison, and the Save Score button, numbered 1 to 6.

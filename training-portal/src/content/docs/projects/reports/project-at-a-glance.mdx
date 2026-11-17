@@ -8,13 +8,23 @@ tags: [tracking, reports]
 keywords: [smart buttons, project dashboard, project summary, budget left, spent so far, committed, cost account, analytic account, vendor bills, LPO, margin, handover status]
 where: [Project, Delivery, Delivery Projects]
 related: [projects/concepts/delivery-projects, projects/concepts/budget-tracking, projects/calculations/tracking-figures, projects/calculations/margin, projects/how-to/delivery-pm/track-the-budget]
+sidebar: { order: 1 }
 sources:
   - tritel_project_delivery/views/buttons_views.xml
   - tritel_project_delivery/views/closeout_views.xml
   - tritel_project_delivery/views/tender_views.xml
   - tritel_project_delivery/views/baseline_views.xml
   - tritel_project_delivery/models/buttons.py
-sidebar: { order: 1 }
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/models/whole_orders.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/project_views.xml
+  - tritel_project_delivery/views/tracking_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

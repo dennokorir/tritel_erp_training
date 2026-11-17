@@ -11,12 +11,28 @@ before:
   - You are an accountability administrator. Only administrators see <strong>Organisation › Settings</strong>.
   - You have agreed the change with HR. Most settings affect everyone's scores or deadlines straight away.
 related: [accountability/concepts/ratings-and-briefs, accountability/calculations/own-team-overall, accountability/calculations/ratings, accountability/how-to/hr-admin/access-rights]
+sidebar: { order: 5 }
 sources:
   - tritel_accountability_framework/views/accountability_config_views.xml
   - tritel_accountability_framework/models/accountability_config.py
   - tritel_accountability_framework/models/accountability_rating.py
   - tritel_accountability_framework/models/accountability_progress_brief.py
-sidebar: { order: 5 }
+  - tritel_accountability_framework/data/ir_cron_data.xml
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/models/accountability_review.py
+  - tritel_accountability_framework/models/accountability_score.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/accountability_target_library.py
+  - tritel_accountability_framework/models/accountability_weight_change.py
+  - tritel_accountability_framework/models/hr_employee.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/accountability_progress_brief_views.xml
+  - tritel_accountability_framework/views/hr_employee_views.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/cascade_line_mixin.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

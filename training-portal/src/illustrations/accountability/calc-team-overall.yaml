@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:model:accountability.score, tritel_accountability_framework:view_ext:hr.view_employee_form:page:performance
 type: calc
 title: Team and overall score
 desc: Worked example of a manager's team score from three team members weighted by the share of the period each reported to them, then the overall score as 40% own and 60% team, giving 77.0%.

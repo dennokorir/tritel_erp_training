@@ -11,6 +11,7 @@ before:
   - The baseline is in <strong>Draft</strong>, its costs are listed and priced, and every milestone has a date.
   - You are a Delivery Project Manager.
 related: [projects/workflows/baseline, projects/concepts/approvals, projects/calculations/revisions-and-approvals, projects/how-to/delivery-pm/fix-a-returned-baseline, projects/how-to/delivery-pm/my-actions, projects/how-to/approvers/approve-dates, projects/how-to/approvers/approve-budget]
+sidebar: { order: 7 }
 sources:
   - tritel_project_delivery/views/baseline_views.xml
   - tritel_project_delivery/models/baseline.py
@@ -19,7 +20,16 @@ sources:
   - tritel_project_delivery/models/action_followups.py
   - tritel_project_delivery/models/buttons.py
   - tritel_project_delivery/models/my_actions.py
-sidebar: { order: 7 }
+  - tritel_project_delivery/data/delivery_data.xml
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/models/starter_item.py
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/project_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

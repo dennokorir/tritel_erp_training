@@ -10,12 +10,14 @@ where: [Portal, E-Board, Access Log]
 before:
   - You are a system administrator. The <strong>Access Log</strong> tab appears only for you.
 related: [board/who-can-do-what, board/how-to/sign-cheques, board/how-to/profitability, board/how-to/invite-board-members]
+sidebar: { order: 12 }
 sources:
   - e_board/controllers/e_board_controller.py
   - e_board/controllers/md_review.py
   - e_board/models/access_log.py
   - e_board/views/portal_access_log_templates.xml
-sidebar: { order: 12 }
+  - e_board/models/accountability_board_review.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

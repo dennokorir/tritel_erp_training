@@ -11,6 +11,7 @@ before:
   - You can see <strong>Project › Configuration</strong> (Project Administrator access; see Good to know).
   - <strong>Cost Types</strong> and <strong>Standard Milestones</strong> are for the Head of Delivery. <strong>Budget Categories</strong> and <strong>Starter Items</strong> are for the Head of Delivery and Delivery Finance.
 related: [projects/concepts/cost-items-and-categories, projects/concepts/contingency, projects/concepts/odoo-budget-and-cost-account, projects/how-to/approvers/delivery-settings, projects/how-to/delivery-pm/build-a-baseline]
+sidebar: { order: 11 }
 sources:
   - tritel_project_delivery/views/delivery_settings_views.xml
   - tritel_project_delivery/views/menus.xml
@@ -20,7 +21,12 @@ sources:
   - tritel_project_delivery/models/whole_orders.py
   - tritel_project_delivery/models/project.py
   - tritel_project_delivery/security/ir.model.access.csv
-sidebar: { order: 11 }
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/project_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

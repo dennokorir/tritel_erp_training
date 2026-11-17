@@ -7,6 +7,7 @@ roles: [everyone, line-manager, hr, accountability-admin]
 tags: [reviews]
 keywords: [appraisal, performance review, quarterly review, monthly review, one-to-one, check-in, sign off, acknowledge, review meeting, feedback, dispute, escalation]
 related: [accountability/workflows/review-session, accountability/workflows/review-pack, accountability/workflows/review-concern, accountability/how-to/everyone/respond-to-my-review, accountability/how-to/line-managers/plan-a-review-session, accountability/how-to/line-managers/conduct-a-review, accountability/calculations/review-averages]
+sidebar: { order: 7 }
 sources:
   - tritel_accountability_framework/models/accountability_review.py
   - tritel_accountability_framework/models/accountability_review_session.py
@@ -15,7 +16,17 @@ sources:
   - tritel_accountability_framework/wizard/review_session_wizard.py
   - tritel_accountability_framework/views/accountability_review_session_views.xml
   - tritel_accountability_framework/views/accountability_review_pack_views.xml
-sidebar: { order: 7 }
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_progress_brief.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/accountability_target_library.py
+  - tritel_accountability_framework/models/accountability_weight_change.py
+  - tritel_accountability_framework/views/accountability_scorecard_request_views.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/review_concern_wizards.py
+  - tritel_accountability_framework/wizard/review_pack_ack_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 A **review** records one result for one target over one window, such as *Invoiced revenue, Q3 2026: KES 9,000,000*. When a review is signed off, its result is written to the target and the scores are worked out again. Reviews are the only way a result enters a score.
@@ -30,6 +41,7 @@ Reviews come about in three ways:
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_accountability_framework:model:accountability.review.session, tritel_accountability_framework:model:accountability.review.session.employee, tritel_accountability_framework:selection:accountability.review.session.line.target_cadence
   S["Review Session (manager, cadence, cutoff)"] --> P1["Review pack: Employee A"]
   S --> P2["Review pack: Employee B"]
   P1 --> L["One line per target: Actual, Score (%)"]

@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_session_coverage_action, tritel_accountability_framework:client_action:accountability_team_targets_client_action, tritel_accountability_framework:menu:menu_accountability_my_performance
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_review_sessions
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_session_coverage, tritel_accountability_framework:menu:menu_accountability_team_targets
+# docs-sync: shows tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.review.session.line.target_cadence
+# docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.state, tritel_accountability_framework:selection:accountability.target.state
 type: screen
 title: Session Coverage
 desc: The Session Coverage screen in Accountability with the period and cadence selectors and a grid of managers by review window, showing done, in progress, draft and not run cells and the Run on time column, numbered 1 to 5.

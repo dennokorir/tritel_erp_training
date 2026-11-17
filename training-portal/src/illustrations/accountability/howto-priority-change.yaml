@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:model:accountability.priority.change
+# docs-sync: shows tritel_accountability_framework:model:accountability.target.weight.change, tritel_accountability_framework:selection:accountability.priority.change.state, tritel_accountability_framework:wizard:accountability.review.pack.ack.wizard
 type: screen
 title: A priority change waiting for you
 desc: The Priority Change form in Accountability with the Acknowledge New Priorities button, the yellow deadline banner, the What Changed table and the Your Score Now section, numbered 1 to 5.

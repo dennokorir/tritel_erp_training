@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows e_board:cron:cron_board_reviews, e_board:field:accountability.config.board_reviewer_user_id, e_board:group:group_board_viewer
+# docs-sync: shows e_board:model:e.board.access.log, e_board:selection:e.board.access.log.action
 type: matrix
 title: Who can use the board pages
 desc: Permission grid for the board portal pages, showing that board members and the Board Reviewer can open the five board tabs, sign cheques and add commission lines, that only the person who added a commission line can change it, and that only system administrators see the Access Log.

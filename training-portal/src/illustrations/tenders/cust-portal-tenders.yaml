@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_tender_tracker:menu:menu_account_managers, tritel_tender_tracker:menu:menu_bid_liaisons, tritel_tender_tracker:menu:menu_target_dashboard
+# docs-sync: shows tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:selection:tender.initial.kanban_state
 type: screen
 title: Tenders on the portal
 desc: The Tenders page of the commercial portal, with the period and people filters, the status overview and the tender list with reference, name, customer, status, deadline, revenue and must-win, numbered 7 and 8.

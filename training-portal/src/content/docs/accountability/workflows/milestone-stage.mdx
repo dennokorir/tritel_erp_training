@@ -7,13 +7,20 @@ roles: [everyone, line-manager, accountability-admin]
 tags: [milestones, targets, workflows]
 keywords: [milestone, stage, phase, deliverable, mark done, complete, confirm, send back, reopen, status, approval, project stage]
 related: [accountability/how-to/everyone/update-a-milestone, accountability/how-to/line-managers/milestone-dates-and-confirmations, accountability/calculations/milestone-scores, accountability/workflows/target]
+sidebar: { order: 5 }
 sources:
   - tritel_accountability_framework/models/accountability_milestone.py
   - tritel_accountability_framework/models/accountability_target_milestones.py
   - tritel_accountability_framework/wizard/milestone_action_wizard.py
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_accountability_framework/static/src/components/stages/accountability_stages.xml
-sidebar: { order: 5 }
+  - tritel_accountability_framework/data/ir_cron_data.xml
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 A **milestone target** is split into **stages**, such as "Survey", "Install" and "Handover". The owner marks a stage done, and their manager confirms it. Only **confirmed** stages count towards the score, so a tick on its own never moves the score.
@@ -22,6 +29,7 @@ This workflow applies to milestone targets scored as **Weighted milestones (part
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows tritel_accountability_framework:group:group_accountability_admin, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:model:accountability.milestone
   state "Open" as open
   state "Awaiting Confirmation" as awaiting
   state "Confirmed" as confirmed

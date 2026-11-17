@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:menu:menu_crm_oem_bookings, crm_tender:selection:crm.oem.booking.state, tritel_accountability_framework:menu:menu_accountability_organisation
+# docs-sync: shows tritel_accountability_framework:model:accountability.review, tritel_accountability_framework:selection:accountability.target.metric_window_basis, tritel_project_delivery:selection:project.delivery.handover.state
+# docs-sync: shows tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:handover, tritel_project_delivery:view_ext:project.edit_project:button:purchase-orders
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:page:delivery, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:field:delivery, tritel_tender_tracker:model:target.target
+# docs-sync: shows tritel_tender_tracker:model:tender.summary.heading
 type: calc
 title: OEM bookings reach the target
 desc: Worked example of OEM A in FY 2026, where confirmed bookings of USD 85,000 in the first half and USD 35,000 in Q3 give USD 120,000 period to date against a USD 200,000 target, a score of 60%; a draft booking of USD 10,000 is not counted.

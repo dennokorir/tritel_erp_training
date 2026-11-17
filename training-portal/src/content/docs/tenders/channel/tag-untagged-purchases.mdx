@@ -11,6 +11,7 @@ before:
   - You are a <strong>Channel Manager</strong> or <strong>Channel Administrator</strong>. The menu is hidden from Channel Users.
   - The OEM exists under <strong>Channel › OEMs(Vendors)</strong>.
 related: [tenders/channel/oems-and-distributors, tenders/channel/book-oem-purchases, tenders/channel/oem-bookings, tenders/channel/index]
+sidebar: { order: 7 }
 sources:
   - crm_tender/views/crm_oem_booking_views.xml
   - crm_tender/wizards/oem_set_lines.py
@@ -18,7 +19,15 @@ sources:
   - crm_tender/models/product.py
   - crm_tender/models/product_template.py
   - crm_tender/security/ir.model.access.csv
-sidebar: { order: 7 }
+  - crm_tender/models/crm_oem.py
+  - crm_tender/models/crm_oem_booking.py
+  - crm_tender/security/crm_tender_security.xml
+  - crm_tender/views/crm_oem_views.xml
+  - crm_tender/wizards/oem_booking_add_lines.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/partner_activity_touchpoints.py
+  - tritel_tender_tracker/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

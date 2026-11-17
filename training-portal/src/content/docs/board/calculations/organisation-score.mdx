@@ -7,6 +7,7 @@ roles: [board, md, accountability-admin]
 tags: [scores, ratings]
 keywords: [organisation score, company score, strategic objectives, rating, meets expectations, KPI, balanced scorecard, performance, board pack, pace, year to date]
 related: [board/how-to/read-performance, board/concepts/as-at-figures, accountability/calculations/objective-achievement, accountability/calculations/ratings, accountability/calculations/weights-over-time, accountability/concepts/snapshots-and-as-at]
+sidebar: { order: 2 }
 sources:
   - e_board/models/accountability_board_summary.py
   - e_board/views/portal_e_board_templates.xml
@@ -14,7 +15,8 @@ sources:
   - tritel_accountability_framework/models/accountability_target_weights.py
   - tritel_accountability_framework/models/accountability_rating.py
   - tritel_accountability_framework/models/accountability_snapshot.py
-sidebar: { order: 2 }
+  - e_board/models/accountability_board_review.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

@@ -80,6 +80,45 @@ git diff --name-only <old>..<new> -- tritel_accountability_framework tritel_proj
 
 Re-run discovery for the module (see `../training/_discovery/`) when a release changes screens or workflows.
 
+## Keeping the portal in step with the code
+
+The portal documents five Odoo modules (Accountability, Project Delivery, the tender tracker, Channel and the Board portal) from the `tritel-erp` repository (pulled into the Waft project by
+git-aggregator). Change tracking lives in three places:
+
+- **`docs-manifest.json`**: per module (`accountability`, `projects`, `tenders`, `board`):
+  - `addons`, `addons_path`, `repo_root`: where the code is (all four modules share one git repo);
+  - `track_ref`: the branch the docs follow (`origin/16.0`), read directly so the checked-out branch doesn't matter;
+  - `watch`: supporting addons (`{ "addon": …, "reason": … }`) whose changes should trigger a review of the module's
+    pages without being inventoried as its own, e.g. `tritel_pdc` for the Board's cheque signing;
+  - `last_synced_commit` / `last_synced_at`: the code the portal was last synced to;
+  - `items`: every documented code element (`<addon>:<kind>:<key>`, e.g. `tritel_tender_tracker:selection:tender.initial.kanban_state`)
+    with its label, source file, and the `pages` and `illustrations` (YAML files, or `page#mermaid-N`) that show it;
+  - `excluded`: elements deliberately not documented, each with a reason.
+- **Page frontmatter**: `sources:` (module-relative code files) and `verified_commit:` (the commit the page was checked against).
+- **Illustrations**: a `# docs-sync:` header in each YAML picture and a `%% docs-sync:` line in each Mermaid diagram,
+  naming the elements they depict.
+
+`node scripts/coverage-report.mjs [--module <key>] [--json] [--suggest]` reads the code at `track_ref` and lists every
+user-facing element as COVERED, EXCLUDED, UNCOVERED or TECHNICAL, plus manifest entries that no longer exist (REMOVED).
+The `/docs-sync` command (`.claude/commands/docs-sync.md`) uses it to find what changed since `last_synced_commit`,
+proposes a plan, and after approval updates pages, pictures and the manifest.
+
+Elements include portal pages (`route` items, e.g. `e_board:route:/my/board/cheques`) as well as models, fields, menus, roles,
+windows, reports, scheduled jobs and email templates. Extensions of other modules are elements of the addon that adds them:
+`view_ext` (a button, tab or labelled field added to another module's view) and `field` (a field added to another module's
+model, counted when it is shown).
+
+Related modules:
+
+```sh
+node scripts/coverage-report.mjs --module tenders,board          # several modules, one report; shared pages listed once
+node scripts/coverage-report.mjs --suggest-watch                 # propose watch lists from depends + page sources
+node scripts/coverage-report.mjs --module board --changes        # what changed since last sync, owned + watched, → pages
+```
+
+The report warns when a page cites an addon that no module tracks or watches. `/docs-sync tenders,board` syncs several
+modules in one pass. Odoo core and Enterprise addons are not watched: check them by hand when Odoo itself is updated.
+
 ## Deploy
 
 Netlify builds from `netlify.toml` at the repository root: base `training-portal`, command `npm run build`,

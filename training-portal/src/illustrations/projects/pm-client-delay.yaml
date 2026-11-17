@@ -1,3 +1,7 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_root
+# docs-sync: shows tritel_project_delivery:model:project.delivery.client.delay, tritel_project_delivery:selection:project.delivery.baseline.state, tritel_project_delivery:selection:project.delivery.client.delay.state
+# docs-sync: shows tritel_project_delivery:selection:project.project.handover_state
 type: screen
 title: Logging a client delay
 desc: A new client delay form with the Submit for Approval button, the status bar, the project, the Delay from and to dates, the Days count, the Evidence file and the reason box, numbered 2 to 5.

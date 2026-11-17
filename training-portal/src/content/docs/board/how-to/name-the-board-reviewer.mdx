@@ -11,11 +11,17 @@ before:
   - You are an <strong>Accountability administrator</strong>.
   - The board member has been invited and has set up their portal account. See <a href="/board/how-to/invite-board-members/">Invite a board member</a>.
 related: [board/concepts/md-quarterly-review, board/workflows/md-review, board/how-to/invite-board-members, accountability/how-to/hr-admin/settings]
+sidebar: { order: 5 }
 sources:
   - e_board/models/accountability_extensions.py
   - e_board/views/md_review_accountability_views.xml
   - e_board/models/accountability_board_review.py
-sidebar: { order: 5 }
+  - e_board/controllers/e_board_controller.py
+  - e_board/controllers/md_review.py
+  - e_board/data/mail_template_board_invite.xml
+  - e_board/data/md_review_cron.xml
+  - e_board/security/security.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

@@ -7,12 +7,18 @@ roles: [everyone, line-manager, hr, accountability-admin]
 tags: [reviews, scores]
 keywords: [review average, appraisal score, session average, average basis, skipped, not applicable, N/A, pending, weight as submitted, quarterly review, monthly review]
 related: [accountability/concepts/reviews, accountability/how-to/everyone/respond-to-my-review, accountability/how-to/line-managers/conduct-a-review, accountability/reports/review-analysis]
+sidebar: { order: 8 }
 sources:
   - tritel_accountability_framework/models/accountability_review_session.py
   - tritel_accountability_framework/models/accountability_rating.py
   - tritel_accountability_framework/views/accountability_review_pack_views.xml
   - tritel_accountability_framework/views/accountability_review_session_views.xml
-sidebar: { order: 8 }
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/views/hr_employee_views.xml
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

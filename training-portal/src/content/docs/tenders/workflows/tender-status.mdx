@@ -7,6 +7,7 @@ roles: [account-manager, bid-liaison, presales, head-commercial, head-channel, t
 tags: [tenders, statuses, workflows]
 keywords: [tender status, stage, bid, RFQ, confirm bid, submitted, evaluation, won, lost, prequalified, dropped, cancelled, reopen, award, result, outcome, no bid]
 related: [tenders/concepts/tenders-and-statuses, tenders/concepts/roles-on-a-tender, tenders/how-to/bids/confirm-the-bid, tenders/how-to/bids/mark-submitted, tenders/how-to/bids/record-the-result, tenders/how-to/bids/reopen-a-tender]
+sidebar: { order: 1 }
 sources:
   - tritel_tender_tracker/models/tender_workflow.py
   - tritel_tender_tracker/models/models.py
@@ -20,13 +21,35 @@ sources:
   - tritel_tender_tracker/views/tender_views.xml
   - tritel_tender_tracker/views/tender_workflow_views.xml
   - tritel_tender_tracker/data/mail_templates.xml
-sidebar: { order: 1 }
+  - crm_tender/models/crm_oem.py
+  - crm_tender/models/crm_oem_booking.py
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/data/bid_desk_data.xml
+  - tritel_tender_tracker/data/bid_quality_data.xml
+  - tritel_tender_tracker/data/tender_workflow_data.xml
+  - tritel_tender_tracker/models/crm_lead.py
+  - tritel_tender_tracker/models/prequalification_models.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/target_period.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/models/tender_drop_reason.py
+  - tritel_tender_tracker/models/tender_lost_reason.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/bid_desk_views.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/target_views.xml
+  - tritel_tender_tracker/wizards/bid_desk_wizards.py
+  - tritel_tender_tracker/wizards/bid_quality_wizards.py
+  - tritel_tender_tracker/wizards/tenders_assignment_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 A tender's **Status** is the only thing that decides where it sits on the board. It moves forward through **Draft**, **Bidding** and **Evaluation** to one of five end statuses. Each move is made with a button on the tender (or by dragging the card, which opens the same window). Only a Tender administrator can move a tender back, one step at a time, with **Reopen**.
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows crm_tender:group:group_administrator, tritel_tender_tracker:group:group_administrator, tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:selection:tender.business.case.state, tritel_tender_tracker:selection:tender.initial.kanban_state, tritel_tender_tracker:selection:tender.portal.access.log.user_role, tritel_tender_tracker:selection:tender.summary.event.kind, tritel_tender_tracker:wizard:drop.reason, tritel_tender_tracker:wizard:lost.reason, tritel_tender_tracker:wizard:tender.submission.wizard
   state "Draft" as draft
   state "Bidding" as bidding
   state "Evaluation" as evaluation
@@ -82,6 +105,7 @@ stateDiagram-v2
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:cron:ir_cron_bid_quality_reminders, tritel_tender_tracker:group:group_account_manager, tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:group:group_channel_manager, tritel_tender_tracker:group:group_hod_commercial, tritel_tender_tracker:menu:menu_technical_presales, tritel_tender_tracker:model:tender.business.case.line, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.readiness.line, tritel_tender_tracker:selection:target.achievement.role, tritel_tender_tracker:selection:target.target.role, tritel_tender_tracker:selection:tender.business.case.line.category, tritel_tender_tracker:selection:tender.business.case.line.commission_role, tritel_tender_tracker:selection:tender.initial.kanban_state, tritel_tender_tracker:selection:tender.initial.quality_state, tritel_tender_tracker:selection:tender.portal.access.log.user_role, tritel_tender_tracker:wizard:tender.must.win.wizard, tritel_tender_tracker:wizard:tender.submission.wizard, tritel_tender_tracker:wizard:tenders.assign.wizard
   subgraph AM["Account Manager"]
     A1["Create tender, pick customer and Source/Pipeline"]
     A2["Business case, customer touches"]

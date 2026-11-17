@@ -1,3 +1,7 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_team_scores_client_action, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_team_scores
+# docs-sync: shows tritel_accountability_framework:model:accountability.score, tritel_accountability_framework:model:accountability.snapshot.line, tritel_accountability_framework:selection:accountability.milestone.status
 type: screen
 title: Your team's scores
 desc: The Team Scores screen with the period and As at selectors, the scope buttons, the summary cards, the status chips and one row per person with Overall, Own, Team, Status, change on last period, targets scored and the Team and Scorecard buttons, numbered 1 to 7.

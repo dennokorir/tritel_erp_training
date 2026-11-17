@@ -7,12 +7,18 @@ roles: [delivery-pm, head-delivery, delivery-finance, md, account-manager]
 tags: [budget, margin]
 keywords: [margin, GP, gross profit, contract value, expected revenue, profitability, over revenue, exchange rate, tender value, budget vs revenue]
 related: [projects/concepts/baselines, projects/calculations/cost-items, projects/reports/project-at-a-glance, projects/how-to/approvers/approve-budget]
+sidebar: { order: 4 }
 sources:
   - tritel_project_delivery/models/tender_import.py
   - tritel_project_delivery/models/buttons.py
   - tritel_project_delivery/views/baseline_views.xml
   - tritel_project_delivery/views/buttons_views.xml
-sidebar: { order: 4 }
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/views/menus.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

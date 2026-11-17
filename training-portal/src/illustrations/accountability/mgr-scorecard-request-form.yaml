@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_scorecard_requests
 type: screen
 title: A scorecard change waiting for a decision
 desc: The Scorecard change form with the Submit, Approve, Decline and Cancel request buttons, the status bar, the score before and after, the approvers and the Note on the decision box, numbered 1 to 4.

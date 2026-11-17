@@ -11,12 +11,15 @@ before:
   - You have a board portal login.
   - To add a commission line, the tender must have a business case.
 related: [tenders/concepts/business-cases, tenders/calculations/business-case-margin, board/how-to/read-performance, board/faq, board/who-can-do-what]
+sidebar: { order: 10 }
 sources:
   - e_board/controllers/e_board_controller.py
   - e_board/views/portal_profitability_templates.xml
   - e_board/views/portal_profitability_detail_templates.xml
   - tritel_tender_tracker/models/tender_business_case.py
-sidebar: { order: 10 }
+  - e_board/models/access_log.py
+  - e_board/security/security.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

@@ -11,6 +11,7 @@ before:
   - The tender was closed as Lost or Dropped with a disqualification reason, so its <strong>Disqualification</strong> is <strong>To Confirm</strong>.
   - "You confirm it if you manage the person it names: the Technical Presales' manager when presales is named, otherwise the Bid Liaison's manager. If there is no such manager, any Head of Commercial, then a Tender administrator. The person at fault never confirms their own."
 related: [tenders/concepts/must-win-and-bid-quality, tenders/workflows/quality-and-disqualification, tenders/calculations/bid-quality-score, tenders/how-to/bids/record-the-result, tenders/how-to/bids/score-bid-quality]
+sidebar: { order: 11 }
 sources:
   - tritel_tender_tracker/views/bid_quality_views.xml
   - tritel_tender_tracker/wizards/bid_quality_wizards.xml
@@ -18,7 +19,23 @@ sources:
   - tritel_tender_tracker/models/bid_quality.py
   - tritel_tender_tracker/wizards/tender_lost.py
   - tritel_tender_tracker/wizards/tender_dropped.py
-sidebar: { order: 11 }
+  - crm_tender/models/crm_compliance.py
+  - crm_tender/models/purchase.py
+  - crm_tender/security/crm_tender_security.xml
+  - crm_tender/views/crm_compliance_views.xml
+  - tritel_tender_tracker/data/bid_quality_data.xml
+  - tritel_tender_tracker/data/mail_templates.xml
+  - tritel_tender_tracker/models/bid_desk.py
+  - tritel_tender_tracker/models/models.py
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/tender_lost_reason.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

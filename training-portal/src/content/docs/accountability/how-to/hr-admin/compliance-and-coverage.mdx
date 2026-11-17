@@ -11,13 +11,26 @@ before:
   - <strong>Session Coverage</strong> is for line managers (their own reporting line), HR and administrators (everyone).
   - <strong>Compliance</strong> is for accountability administrators only.
 related: [accountability/reports/session-coverage, accountability/reports/compliance, accountability/how-to/line-managers/plan-a-review-session, accountability/workflows/review-session, accountability/workflows/cascade]
+sidebar: { order: 6 }
 sources:
   - tritel_accountability_framework/static/src/session_coverage/accountability_session_coverage.xml
   - tritel_accountability_framework/static/src/session_coverage/accountability_session_coverage.js
   - tritel_accountability_framework/models/accountability_review_session.py
   - tritel_accountability_framework/static/src/compliance/accountability_compliance.xml
   - tritel_accountability_framework/static/src/compliance/accountability_compliance.js
-sidebar: { order: 6 }
+  - tritel_accountability_framework/data/ir_cron_data.xml
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/models/accountability_objective.py
+  - tritel_accountability_framework/models/accountability_period.py
+  - tritel_accountability_framework/models/accountability_progress_brief.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/accountability_target_library.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/accountability_exempt_views.xml
+  - tritel_accountability_framework/views/accountability_target_views.xml
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

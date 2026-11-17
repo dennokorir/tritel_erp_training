@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, e_board:cron:cron_board_reviews, e_board:model:accountability.board.review.line
+# docs-sync: shows tritel_accountability_framework:model:accountability.metric, tritel_accountability_framework:selection:accountability.metric.flag.check, tritel_tender_tracker:cron:ir_cron_bid_quality_reminders
+# docs-sync: shows tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:model:tender.summary.heading, tritel_tender_tracker:selection:tender.initial.dq_cause
+# docs-sync: shows tritel_tender_tracker:selection:tender.initial.dq_state, tritel_tender_tracker:selection:tender.initial.quality_state
 type: calc
 title: A quarter of bids for one Bid Liaison
 desc: Worked example of Employee B's Bid Quality Score for Q3 2026, where a must-win bid scored 90% counts three times, another bid scored 80%, a confirmed disqualification caused by the Bid Liaison counts as 0% and an unscored bid is left out, giving 70%.

@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:menu:menu_bid_liaisons, tritel_tender_tracker:model:tender.initial
+# docs-sync: shows tritel_tender_tracker:wizard:tenders.assign.wizard
 type: calc
 title: Fair share when assigning a Bid Liaison
 desc: Worked example of the Assign Bid Liaison screen for a new 2-point tender with three full-time Bid Liaisons on 6, 4 and 2 points this quarter. The team average is 4.67 and the fair-share limit 5.37, so Employee A and Employee B would be over their fair share and Employee C is suggested.

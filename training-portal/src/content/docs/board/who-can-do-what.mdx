@@ -7,6 +7,7 @@ roles: [board, md, accountability-admin, finance, system-admin, everyone]
 tags: [permissions, access]
 keywords: [access rights, permissions, roles, board viewer, directors, who can sign, signatory, board reviewer, backup reviewer, invite board member, can't see board portal]
 related: [board/index, board/faq, board/how-to/invite-board-members, board/how-to/name-the-board-reviewer, board/how-to/exclude-or-hide-orders, roles/md-and-board]
+sidebar: { order: 2 }
 sources:
   - e_board/security/security.xml
   - e_board/security/ir.model.access.csv
@@ -20,7 +21,13 @@ sources:
   - e_board/views/purchase_order_views.xml
   - e_board/views/board_invite_wizard_views.xml
   - tritel_pdc/views/pdc_cheque_views.xml
-sidebar: { order: 2 }
+  - e_board/data/mail_template_board_invite.xml
+  - e_board/data/md_review_cron.xml
+  - e_board/models/access_log.py
+  - e_board/models/board_invite_wizard.py
+  - e_board/models/purchase_order.py
+  - e_board/models/sale_order.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../components/Illustration.astro';
 

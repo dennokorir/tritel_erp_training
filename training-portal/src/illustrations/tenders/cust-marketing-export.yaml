@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:client_action:action_tender_summary_library_views, tritel_tender_tracker:menu:menu_tender_customers
+# docs-sync: shows tritel_tender_tracker:menu:menu_tender_pillar, tritel_tender_tracker:menu:menu_tender_summary_library, tritel_tender_tracker:menu:menu_tender_summary_marketing
+# docs-sync: shows tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:tender.initial
+# docs-sync: shows tritel_tender_tracker:model:tender.summary.export, tritel_tender_tracker:selection:tender.summary.heading.linked_field, tritel_tender_tracker:wizard:tender.summary.marketing.wizard
 type: screen
 title: Export for Marketing
 desc: The Export for Marketing window with the Which summaries filters, the What goes in options and counts, the Preview and Brief for the writer tabs, and the Download pack (.md) button, numbered 1 to 5.

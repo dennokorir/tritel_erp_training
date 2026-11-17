@@ -1,3 +1,11 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, crm_tender:menu:crm_menu_oems, crm_tender:menu:menu_crm_channel_root
+# docs-sync: shows crm_tender:menu:menu_crm_oem_bookings, crm_tender:menu:menu_crm_untagged_purchases, crm_tender:menu:menu_distributors
+# docs-sync: shows crm_tender:menu:menu_hr_oem_certifications, crm_tender:menu:menu_oem_certifications, crm_tender:menu:menu_oem_learnings
+# docs-sync: shows crm_tender:model:crm.distributor, crm_tender:model:oem.learning.dev, crm_tender:selection:crm.distributor.state
+# docs-sync: shows crm_tender:selection:crm.oem.state, crm_tender:selection:oem.learning.dev.kanban_state, crm_tender:selection:oem.learning.dev.state
+# docs-sync: shows tritel_tender_tracker:group:group_account_manager, tritel_tender_tracker:mail_template:mail_template_tender_won_alert, tritel_tender_tracker:menu:configuration_menu
+# docs-sync: shows tritel_tender_tracker:model:tender.tags, tritel_tender_tracker:selection:res.partner.activity.touch_channel, tritel_tender_tracker:selection:res.partner.activity.type.channel
 type: screen
 title: An OEM in the Channel app
 desc: The OEM form in the Channel app with the Confirm button and status bar, the Opportunities, Purchase Orders, Bookings and Awaiting OEM smart buttons, the account manager and partner portal, the Channel performance this year figures and the Distributors tab, numbered 1 to 6.

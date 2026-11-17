@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:client_action:action_project_my_actions, tritel_project_delivery:field:project.project.handover_date, tritel_project_delivery:group:group_delivery_head
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_handovers, tritel_project_delivery:menu:menu_delivery_root
+# docs-sync: shows tritel_project_delivery:menu:menu_project_my_actions, tritel_project_delivery:selection:project.delivery.handover.state, tritel_project_delivery:selection:project.project.handover_state
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:handover
 type: screen
 title: A handover waiting for confirmation
 desc: The Handover form opened from the Handovers list, with the Confirm Handover and Return buttons, the handover date, the certificate, the project manager's note and the Note when returning box, numbered 1 to 6.

@@ -1,3 +1,14 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:open-delivery-project, tritel_tender_tracker:client_action:action_tender_my_actions
+# docs-sync: shows tritel_tender_tracker:client_action:action_touchpoints_workspace, tritel_tender_tracker:field:crm.lead.account_manager_id, tritel_tender_tracker:field:res.partner.account_manager_id
+# docs-sync: shows tritel_tender_tracker:group:group_account_manager, tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:menu:menu_customers
+# docs-sync: shows tritel_tender_tracker:menu:menu_customers_activities, tritel_tender_tracker:menu:menu_target_achievements, tritel_tender_tracker:menu:menu_target_root
+# docs-sync: shows tritel_tender_tracker:menu:menu_technical_presales, tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tender_my_actions
+# docs-sync: shows tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:target.achievement
+# docs-sync: shows tritel_tender_tracker:model:target.target, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.stage
+# docs-sync: shows tritel_tender_tracker:selection:target.achievement.role, tritel_tender_tracker:selection:target.line.role, tritel_tender_tracker:selection:target.period.state
+# docs-sync: shows tritel_tender_tracker:selection:target.target.role, tritel_tender_tracker:selection:tender.initial.kanban_state, tritel_tender_tracker:selection:tender.portal.access.log.user_role
+# docs-sync: shows tritel_tender_tracker:view_ext:crm.crm_lead_view_form:button:customer-activities
 type: screen
 title: Attribution lines on a won tender
 desc: The Target Achievements tab of a Won tender with one line each for the Account Manager, Bid Liaison and Technical Presales, showing Target, Role, Gross Value, % Achievement, Achieved Value and the quarter, and the open icon at the start of each line, numbered 1 to 5.

@@ -12,12 +12,19 @@ before:
   - The Head of Delivery has confirmed the handover. You get a <em>Close delivery project</em> to-do, and the project shows under <strong>Projects to close</strong> on your My Actions.
   - No baseline is in draft or waiting, and no handover or client delay is waiting for a decision.
 related: [projects/workflows/close-out, projects/concepts/handover-and-close-out, projects/calculations/close-and-kpi, projects/concepts/delivery-kpi, projects/how-to/approvers/review-costs-after-close]
+sidebar: { order: 7 }
 sources:
   - tritel_project_delivery/views/closeout_views.xml
   - tritel_project_delivery/models/closeout.py
   - tritel_project_delivery/models/action_followups.py
   - tritel_project_delivery/models/my_actions.py
-sidebar: { order: 7 }
+  - tritel_project_delivery/data/closeout_data.xml
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/my_actions_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

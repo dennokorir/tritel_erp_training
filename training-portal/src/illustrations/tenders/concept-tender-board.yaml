@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:menu:configuration_menu, tritel_tender_tracker:menu:menu_action_tender
+# docs-sync: shows tritel_tender_tracker:menu:menu_target_root, tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tenders_section
+# docs-sync: shows tritel_tender_tracker:menu:reporting_menu, tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:tender.initial
+# docs-sync: shows tritel_tender_tracker:selection:target.period.state, tritel_tender_tracker:selection:tender.initial.kanban_state
 type: screen
 title: The tender board
 desc: The All Tenders board with the period bar and search filters, one column per tender status, and tender cards showing the reference, customer, value, team and a Must-Win badge, numbered 1 to 4.

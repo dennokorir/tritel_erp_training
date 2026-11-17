@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_period_browser_action, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_objectives, tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_periods
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state
+# docs-sync: shows tritel_accountability_framework:selection:accountability.target.state
 type: screen
 title: A period, ready to activate
 desc: The Period form in Accountability with the Activate, Copy Last Year's Objectives, Close and Reset to Draft buttons, the status bar, the period name and the Start Date, End Date and Target-Setting Deadline fields, numbered 1 to 5.

@@ -7,19 +7,29 @@ roles: [delivery-finance, head-delivery, delivery-pm]
 tags: [close-out, workflows]
 keywords: [close project, project closure, final cost, final account, reopen, costs after close, late bills, sign-off, freeze, result, stage]
 related: [projects/concepts/handover-and-close-out, projects/how-to/approvers/close-a-project, projects/how-to/approvers/review-costs-after-close, projects/calculations/close-and-kpi, projects/concepts/delivery-kpi]
+sidebar: { order: 4 }
 sources:
   - tritel_project_delivery/models/closeout.py
   - tritel_project_delivery/models/action_followups.py
   - tritel_project_delivery/models/my_actions.py
   - tritel_project_delivery/views/closeout_views.xml
   - tritel_project_delivery/data/closeout_data.xml
-sidebar: { order: 4 }
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/project_views.xml
+  - tritel_project_delivery/views/tender_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 Closing is the last step of a delivery project. Finance confirms the final cost, and the system freezes the result. The project then shows its result on the **Handover & close** tab, and its **Handover** smart button reads **Closed**. On screen, a closed project has the **Close Project** button replaced by **Reopen**.
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows tritel_project_delivery:cron:ir_cron_costs_after_close, tritel_project_delivery:field:project.project.after_close_amount, tritel_project_delivery:group:group_delivery_finance, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:view_ext:project.edit_project:button:close-project, tritel_project_delivery:view_ext:project.edit_project:button:mark-reviewed, tritel_project_delivery:view_ext:project.edit_project:button:reopen, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:open-delivery-project
   state "Open" as open
   state "Closed" as closed
   state "Closed, costs after close to review" as after
@@ -41,6 +51,7 @@ stateDiagram-v2
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_project_delivery:cron:ir_cron_costs_after_close, tritel_project_delivery:field:project.project.after_close_amount, tritel_project_delivery:group:group_delivery_finance, tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:close-project, tritel_project_delivery:view_ext:project.edit_project:button:handover, tritel_project_delivery:view_ext:project.edit_project:button:mark-reviewed, tritel_project_delivery:view_ext:project.edit_project:button:reopen
   subgraph Head["Head of Delivery"]
     H1["Confirm Handover"]
   end

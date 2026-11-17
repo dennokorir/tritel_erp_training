@@ -1,3 +1,10 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_team_targets_client_action, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_team_targets
+# docs-sync: shows tritel_accountability_framework:model:accountability.objective, tritel_accountability_framework:selection:accountability.cascade.line.mixin.cascade_link, tritel_accountability_framework:selection:accountability.objective.state
+# docs-sync: shows tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.review.session.employee.avg_rating, tritel_accountability_framework:selection:accountability.review.session.line.line_rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.score.rating, tritel_accountability_framework:selection:accountability.snapshot.line.rating, tritel_accountability_framework:selection:accountability.snapshot.rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.target.rating, tritel_accountability_framework:selection:accountability.target.state, tritel_accountability_framework:wizard:accountability.target.rebalance.wizard
 type: screen
 title: Withdrawing a target
 desc: A live target's form with the Withdraw link next to Weight, and the Withdraw window with the From date, the reason box, the effect on the overall rating score and the Submit button, numbered 1 to 5.

@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:field:project.project.award_date, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects_to_link
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:cost-account
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:link-to-won-tender, tritel_project_delivery:view_ext:project.edit_project:button:won-tender, tritel_project_delivery:view_ext:project.edit_project:page:handover-amp-close
+# docs-sync: shows tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:open-delivery-project, tritel_project_delivery:wizard:delivery.cost.account.card
 type: screen
 title: Linking an existing project to its won tender
 desc: A project's Delivery tab with the notice that it is not linked to a won tender and the Link to Won Tender button, and the Link to Won Tender window with the existing project already filled in, the won tender, project manager, start date and cost account, numbered 1 to 6.

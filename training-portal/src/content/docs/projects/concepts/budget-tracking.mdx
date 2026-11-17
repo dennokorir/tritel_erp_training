@@ -7,6 +7,7 @@ roles: [delivery-pm, head-delivery, delivery-finance, finance]
 tags: [budgets, tracking]
 keywords: [budget tracking, budget vs actual, variance, overrun, overspend, committed, spent, balance, burn, forecast, LPO, PO, purchase order, vendor bill]
 related: [projects/workflows/budget-status, projects/how-to/delivery-pm/track-the-budget, projects/calculations/tracking-figures, projects/reports/projects-over-budget, projects/concepts/odoo-budget-and-cost-account]
+sidebar: { order: 6 }
 sources:
   - tritel_project_delivery/models/tracking.py
   - tritel_project_delivery/models/buttons.py
@@ -14,7 +15,14 @@ sources:
   - tritel_project_delivery/views/tracking_views.xml
   - tritel_project_delivery/views/buttons_views.xml
   - tritel_project_delivery/views/whole_orders_views.xml
-sidebar: { order: 6 }
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/cost_item.py
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/wizards/tag_orders_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:client_action:action_tender_my_actions, tritel_tender_tracker:menu:menu_customers
+# docs-sync: shows tritel_tender_tracker:menu:menu_target_root, tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tender_my_actions
+# docs-sync: shows tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:tender.business.case
+# docs-sync: shows tritel_tender_tracker:model:tender.business.case.line, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:selection:target.period.state
+# docs-sync: shows tritel_tender_tracker:selection:tender.business.case.line.category, tritel_tender_tracker:selection:tender.business.case.state, tritel_tender_tracker:selection:tender.summary.event.kind
 type: screen
 title: Preparing a tender business case
 desc: A draft business case with the Submit for Review button and status bar, the Revenue, Total Cost, Gross Profit and Margin strip, the Tender and Approval groups, and the Cost Breakdown tab with Category, Description, Currency, Qty, Unit Price and subtotals, numbered 1 to 5.

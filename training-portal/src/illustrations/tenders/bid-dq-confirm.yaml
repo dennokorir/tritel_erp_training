@@ -1,3 +1,10 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:client_action:action_tender_my_actions, tritel_tender_tracker:group:group_bid_liaison
+# docs-sync: shows tritel_tender_tracker:menu:menu_customers, tritel_tender_tracker:menu:menu_target_root, tritel_tender_tracker:menu:menu_tender_customers
+# docs-sync: shows tritel_tender_tracker:menu:menu_tender_my_actions, tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:menu:tender_root_menu
+# docs-sync: shows tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.initial.line, tritel_tender_tracker:model:tender.lost.reason
+# docs-sync: shows tritel_tender_tracker:model:tender.summary.heading, tritel_tender_tracker:selection:tender.initial.dq_cause, tritel_tender_tracker:selection:tender.initial.dq_state
+# docs-sync: shows tritel_tender_tracker:selection:tender.initial.kanban_state, tritel_tender_tracker:wizard:lost.reason, tritel_tender_tracker:wizard:tender.dq.confirm.wizard
 type: screen
 title: Confirming the cause of a disqualification
 desc: The Disqualification section of a Lost tender's Bid Quality tab with the Confirm Cause button, and the Confirm Disqualification window with the Evidence, the Caused By choice, an optional Note and the Confirm button, numbered 1 to 6.

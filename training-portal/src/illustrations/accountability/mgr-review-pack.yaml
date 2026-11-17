@@ -1,3 +1,12 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_compliance_action, tritel_accountability_framework:menu:menu_accountability_compliance, tritel_accountability_framework:menu:menu_accountability_my_performance
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_review_sessions
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:selection:accountability.config.progress_brief_frequency, tritel_accountability_framework:selection:accountability.library.entry.cadence
+# docs-sync: shows tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.progress.brief.frequency
+# docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.employee.avg_rating, tritel_accountability_framework:selection:accountability.review.session.employee.state, tritel_accountability_framework:selection:accountability.review.session.line.line_rating
+# docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.line.line_state, tritel_accountability_framework:selection:accountability.review.session.line.target_cadence, tritel_accountability_framework:selection:accountability.review.session.state
+# docs-sync: shows tritel_accountability_framework:selection:accountability.snapshot.line.rating, tritel_accountability_framework:selection:accountability.snapshot.rating, tritel_accountability_framework:selection:accountability.target.cadence
+# docs-sync: shows tritel_accountability_framework:selection:accountability.target.rating, tritel_accountability_framework:selection:accountability.target.state, tritel_accountability_framework:selection:accountability.target.weight.change.priority_state
 type: screen
 title: Scoring an employee's review
 desc: The Employee Review form in Draft, with the Submit Review button, the progress figures, the Comment for the employee box and the Targets tab where each line has an Actual, Fetch, Done and Skip buttons and a status, numbered 1 to 7.

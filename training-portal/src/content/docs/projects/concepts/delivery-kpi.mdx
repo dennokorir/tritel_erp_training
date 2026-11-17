@@ -7,12 +7,15 @@ roles: [delivery-pm, head-delivery, delivery-finance, md]
 tags: [delivery kpi, close-out]
 keywords: [KPI, delivery KPI, on time, on budget, success rate, project performance, appraisal, scorecard, late, overrun, grace period, target]
 related: [projects/concepts/handover-and-close-out, projects/concepts/client-delays, projects/calculations/close-and-kpi, accountability/concepts/metrics, accountability/calculations/metric-families]
+sidebar: { order: 10 }
 sources:
   - tritel_project_delivery/models/closeout.py
   - tritel_project_delivery/models/delivery_settings.py
   - tritel_project_delivery/views/closeout_views.xml
   - tritel_accountability_framework/models/metric_hook_delivery.py
-sidebar: { order: 10 }
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/views/menus.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -48,6 +51,7 @@ Three metrics read these results for the delivery projects a person manages (as 
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root
   C["Project closed: result frozen"] --> M1["Delivery on-time completion rate"]
   C --> M2["Delivery on-budget rate"]
   C --> M3["Delivery success rate (on time and on budget)"]

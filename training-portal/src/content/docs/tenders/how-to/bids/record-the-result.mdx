@@ -12,6 +12,7 @@ before:
   - "Drop: the tender is in <strong>Draft</strong> or <strong>Bidding</strong>. Cancel: Draft, Bidding or Evaluation."
   - You have the customer's award letter, regret letter or notice.
 related: [tenders/workflows/tender-status, tenders/workflows/quality-and-disqualification, tenders/workflows/prequalification, tenders/how-to/bids/confirm-a-disqualification, tenders/how-to/bids/attribute-a-won-tender, tenders/how-to/bids/prequalifications-and-rfqs, tenders/how-to/bids/reopen-a-tender]
+sidebar: { order: 6 }
 sources:
   - tritel_tender_tracker/views/tender_views.xml
   - tritel_tender_tracker/views/tender_workflow_views.xml
@@ -24,7 +25,27 @@ sources:
   - tritel_tender_tracker/models/models.py
   - tritel_tender_tracker/models/prequalification_pipeline.py
   - tritel_tender_tracker/models/bid_quality.py
-sidebar: { order: 6 }
+  - crm_tender/models/hr_employee.py
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/data/mail_templates.xml
+  - tritel_tender_tracker/data/tender_workflow_data.xml
+  - tritel_tender_tracker/models/crm_lead.py
+  - tritel_tender_tracker/models/hr_employee.py
+  - tritel_tender_tracker/models/hr_employee_roles.py
+  - tritel_tender_tracker/models/prequalification_models.py
+  - tritel_tender_tracker/models/project_summary.py
+  - tritel_tender_tracker/models/target.py
+  - tritel_tender_tracker/models/target_period.py
+  - tritel_tender_tracker/models/tender_business_case.py
+  - tritel_tender_tracker/models/tender_drop_reason.py
+  - tritel_tender_tracker/models/tender_lost_reason.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/menu.xml
+  - tritel_tender_tracker/views/target_views.xml
+  - tritel_tender_tracker/wizards/tenders_assignment_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

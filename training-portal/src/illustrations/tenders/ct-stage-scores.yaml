@@ -1,3 +1,6 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:group:group_account_manager, tritel_tender_tracker:model:target.target
+# docs-sync: shows tritel_tender_tracker:model:tender.stage
 type: calc
 title: Stage points from activities
 desc: Worked example of Compute Related Activities for an Account Manager with two valid Pipelining activities, three Bid Submission Support activities and one Post-Submission Influence activity, giving 60 points.

@@ -1,3 +1,11 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:client_action:accountability_compliance_action, tritel_accountability_framework:client_action:accountability_period_browser_action, tritel_accountability_framework:client_action:accountability_session_coverage_action
+# docs-sync: shows tritel_accountability_framework:group:group_accountability_admin, tritel_accountability_framework:menu:menu_accountability_compliance, tritel_accountability_framework:menu:menu_accountability_metrics
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_objectives
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_periods, tritel_accountability_framework:menu:menu_accountability_root
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_scorecard_log, tritel_accountability_framework:menu:menu_accountability_session_coverage, tritel_accountability_framework:menu:menu_accountability_targets_library
+# docs-sync: shows tritel_accountability_framework:model:accountability.library.entry, tritel_accountability_framework:model:accountability.role.set, tritel_accountability_framework:selection:accountability.target.metric_automation
+# docs-sync: shows tritel_accountability_framework:view_ext:hr.view_employee_tree:field:exempt, tritel_accountability_framework:wizard:accountability.metric.test.wizard
 type: matrix
 title: Who can do what in Organisation
 desc: Permission grid for the Organisation menu and settings, showing which screens and set-up tasks everyone, line managers, HR and accountability administrators can reach.

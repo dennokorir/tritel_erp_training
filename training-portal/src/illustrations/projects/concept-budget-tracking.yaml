@@ -1,3 +1,10 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:field:project.project.track_committed, tritel_project_delivery:field:project.project.track_forecast, tritel_project_delivery:field:project.project.track_refreshed_on
+# docs-sync: shows tritel_project_delivery:field:project.project.track_spent, tritel_project_delivery:field:project.project.tracking_html, tritel_project_delivery:menu:menu_delivery_config
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:model:project.delivery.baseline.line
+# docs-sync: shows tritel_project_delivery:model:project.delivery.commitment, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:selection:project.project.track_status
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:committed, tritel_project_delivery:view_ext:project.edit_project:button:cost-account, tritel_project_delivery:view_ext:project.edit_project:button:purchase-orders
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:page:handover-amp-close, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:delivery-projects, tritel_project_delivery:wizard:delivery.cost.account.card
 type: screen
 title: Budget tracking on a project
 desc: The Budget tracking table on a project's Delivery tab, with the Over plan status badge, Figures as of and Refresh, and one row per budget line showing Planned, Expected by now, Committed, Spent, Left, Forecast at completion and Status, numbered 1 to 5.

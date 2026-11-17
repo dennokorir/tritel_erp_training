@@ -7,19 +7,27 @@ roles: [everyone, line-manager, hr, accountability-admin]
 tags: [reviews, workflows]
 keywords: [concern, dispute, disagree, query score, appeal, escalate, escalation, grievance, revise, keep scores, uphold, status]
 related: [accountability/workflows/review-pack, accountability/how-to/everyone/respond-to-my-review, accountability/how-to/line-managers/conduct-a-review, accountability/how-to/hr-admin/decide-changes-and-escalations]
+sidebar: { order: 9 }
 sources:
   - tritel_accountability_framework/models/accountability_review_concern.py
   - tritel_accountability_framework/models/accountability_review_session.py
   - tritel_accountability_framework/wizard/review_concern_wizards.py
   - tritel_accountability_framework/views/wizard_review_concern_views.xml
   - tritel_accountability_framework/views/accountability_review_pack_views.xml
-sidebar: { order: 9 }
+  - tritel_accountability_framework/models/accountability_config.py
+  - tritel_accountability_framework/models/accountability_weight_change.py
+  - tritel_accountability_framework/security/ir_groups.xml
+  - tritel_accountability_framework/views/accountability_scorecard_request_views.xml
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/review_pack_ack_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 
 When an employee disagrees with scores in their review, they **raise a concern** about specific targets. The concern is a record of that dispute: what was questioned, the values at the time, the manager's answer and, if it went further, the escalation decision. You find it in the **Concerns** tab of the review. Each concern has its own status, alongside the review's status in the [review pack workflow](/accountability/workflows/review-pack/).
 
 ```mermaid
 stateDiagram-v2
+%% docs-sync: shows tritel_accountability_framework:selection:accountability.review.concern.outcome, tritel_accountability_framework:selection:accountability.review.concern.state, tritel_accountability_framework:selection:accountability.review.session.employee.state, tritel_accountability_framework:wizard:accountability.review.concern.escalate.wizard, tritel_accountability_framework:wizard:accountability.review.concern.raise.wizard, tritel_accountability_framework:wizard:accountability.review.pack.ack.wizard
   state "Awaiting Manager" as open
   state "Scores Revised" as revised
   state "Scores Kept" as kept
@@ -52,6 +60,7 @@ stateDiagram-v2
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_accountability_framework:wizard:accountability.review.concern.answer.wizard, tritel_accountability_framework:wizard:accountability.review.concern.escalate.wizard, tritel_accountability_framework:wizard:accountability.review.concern.raise.wizard, tritel_accountability_framework:wizard:accountability.review.pack.ack.wizard
   subgraph Employee
     C1["Raise a Concern, Send to My Manager"]
     C4["Escalate"]

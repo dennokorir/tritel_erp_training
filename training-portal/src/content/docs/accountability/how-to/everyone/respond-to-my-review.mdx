@@ -11,13 +11,22 @@ before:
   - Your manager has submitted your review. You get an email and a to-do when they do.
   - You have until the <strong>Acknowledge By</strong> date shown on the review (5 days by default).
 related: [accountability/concepts/reviews, accountability/workflows/review-pack, accountability/calculations/review-averages]
+sidebar: { order: 5 }
 sources:
   - tritel_accountability_framework/views/accountability_review_pack_views.xml
   - tritel_accountability_framework/models/accountability_review_session.py
   - tritel_accountability_framework/wizard/review_pack_ack_wizard.py
   - tritel_accountability_framework/wizard/review_concern_wizards.py
   - tritel_accountability_framework/controllers/portal.py
-sidebar: { order: 5 }
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_milestone.py
+  - tritel_accountability_framework/models/accountability_priority_change.py
+  - tritel_accountability_framework/models/accountability_rating.py
+  - tritel_accountability_framework/models/accountability_review_concern.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/models/accountability_weight_change.py
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

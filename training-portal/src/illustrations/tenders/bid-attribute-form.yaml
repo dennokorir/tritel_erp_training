@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:client_action:action_tender_my_actions, tritel_tender_tracker:menu:menu_customers
+# docs-sync: shows tritel_tender_tracker:menu:menu_target_root, tritel_tender_tracker:menu:menu_technical_presales, tritel_tender_tracker:menu:menu_tender_customers
+# docs-sync: shows tritel_tender_tracker:menu:menu_tender_my_actions, tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:menu:tender_root_menu
+# docs-sync: shows tritel_tender_tracker:model:target.achievement, tritel_tender_tracker:model:target.target, tritel_tender_tracker:model:tender.initial
+# docs-sync: shows tritel_tender_tracker:model:tender.stage, tritel_tender_tracker:model:tender.summary.heading, tritel_tender_tracker:selection:target.line.role
 type: screen
 title: An achievement line's stage points
 desc: The Target Achievement form with the Compute Related Activities button, the Attribution Model banner for a Technical Presales line, the Employee and Role fields, the award quarter, and the Pipelining and Bid Submission Support points with the Overall Achievement, numbered 4 to 6.

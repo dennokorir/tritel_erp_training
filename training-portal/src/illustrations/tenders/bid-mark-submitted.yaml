@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:client_action:action_tender_my_actions, tritel_tender_tracker:menu:menu_customers
+# docs-sync: shows tritel_tender_tracker:menu:menu_target_root, tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tender_my_actions
+# docs-sync: shows tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:tender.initial
+# docs-sync: shows tritel_tender_tracker:selection:target.period.state, tritel_tender_tracker:selection:tender.business.case.state, tritel_tender_tracker:selection:tender.initial.kanban_state
+# docs-sync: shows tritel_tender_tracker:wizard:drop.reason, tritel_tender_tracker:wizard:tender.submission.wizard
 type: screen
 title: Marking a tender submitted
 desc: A tender in Bidding with the Mark Submitted button, and the Mark Submitted window with Actually Submitted, Submission Receipt and Note, and the Save button, numbered 1 to 5.

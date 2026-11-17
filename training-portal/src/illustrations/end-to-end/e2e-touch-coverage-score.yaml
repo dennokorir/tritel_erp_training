@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:menu:menu_crm_compliance, crm_tender:menu:menu_crm_compliance_root, crm_tender:model:crm.compliance
+# docs-sync: shows e_board:cron:cron_board_reviews, tritel_accountability_framework:client_action:accountability_compliance_action, tritel_accountability_framework:menu:menu_accountability_compliance
+# docs-sync: shows tritel_tender_tracker:model:res.partner.activity, tritel_tender_tracker:model:target.target, tritel_tender_tracker:model:tender.summary.heading
+# docs-sync: shows tritel_tender_tracker:selection:res.partner.coverage_rung
 type: calc
 title: Customer touches reach the target
 desc: Worked example of Employee A's Pipeline status coverage for Q4 2026, where 8 of 10 opportunities updated in October, 9 of 12 in November and 10 of 12 in December give 27 of 34, or 79.4%, scored 73.5% on a target with a floor of 50 and an ideal of 90.

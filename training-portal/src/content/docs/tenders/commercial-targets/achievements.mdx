@@ -7,6 +7,7 @@ roles: [head-commercial, head-channel, account-manager, bid-liaison, presales]
 tags: [commercial targets, achievements]
 keywords: [achievement, attribution, attribution points, won tender, credit, commission, revenue share, pipelining, bid support, post-submission, achieved revenue, quota]
 related: [tenders/how-to/bids/attribute-a-won-tender, tenders/commercial-targets/index, tenders/concepts/customer-activities, tenders/how-to/customers/log-a-customer-activity, accountability/calculations/metric-families]
+sidebar: { order: 3 }
 sources:
   - tritel_tender_tracker/models/target.py
   - tritel_tender_tracker/models/models.py
@@ -15,7 +16,13 @@ sources:
   - tritel_tender_tracker/views/target_views.xml
   - tritel_tender_tracker/views/tender_views.xml
   - tritel_accountability_framework/models/accountability_metric.py
-sidebar: { order: 3 }
+  - crm_tender/security/crm_tender_security.xml
+  - tritel_tender_tracker/models/digest.py
+  - tritel_tender_tracker/models/tender_portal_access_log.py
+  - tritel_tender_tracker/security/security.xml
+  - tritel_tender_tracker/views/hr_employee.xml
+  - tritel_tender_tracker/views/partner_activity_touchpoints_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

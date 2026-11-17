@@ -1,3 +1,10 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:field:purchase.order.line.oem_booking_id, crm_tender:field:purchase.order.line.po_confirmed_date, crm_tender:field:purchase.order.line.usd_subtotal
+# docs-sync: shows crm_tender:menu:crm_menu_oems, crm_tender:menu:menu_crm_oem_bookings, crm_tender:menu:menu_crm_untagged_purchases
+# docs-sync: shows crm_tender:menu:menu_distributors, crm_tender:menu:menu_hr_oem_certifications, crm_tender:menu:menu_oem_certifications
+# docs-sync: shows crm_tender:model:crm.distributor, crm_tender:model:crm.oem.booking, crm_tender:selection:crm.oem.booking.state
+# docs-sync: shows crm_tender:wizard:crm.oem.booking.add.lines, tritel_tender_tracker:selection:res.partner.activity.touch_channel, tritel_tender_tracker:selection:res.partner.activity.type.channel
+# docs-sync: shows tritel_tender_tracker:selection:target.period.state
 type: screen
 title: An OEM booking in draft
 desc: A draft OEM booking with the Add purchase lines, Confirm buttons, the Portal Reference, the From the OEM portal and Reconciliation (USD) groups, the Purchase lines tab with a Remove button on each line, and the Add purchase lines window with Selected (USD) and Add to booking, numbered 1 to 7.

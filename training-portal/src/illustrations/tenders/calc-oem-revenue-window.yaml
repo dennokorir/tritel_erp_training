@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:selection:crm.oem.booking.state
 type: calc
 title: OEM-recognised revenue for a quarter
 desc: Worked example of the OEM-recognised revenue metric for OEM A in Q1 2026, with a confirmed booking dated 18 Mar 2026 at USD 9,000 counted, a draft booking dated 20 Feb 2026 at USD 5,000 not counted, and a confirmed booking dated 2 Apr 2026 at USD 12,000 left for Q2, giving USD 9,000. USD 3,000 of tagged purchases awaiting OEM confirmation are listed but not counted.

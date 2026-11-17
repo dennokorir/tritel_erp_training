@@ -1,3 +1,9 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, crm_tender:selection:crm.distributor.state, crm_tender:selection:crm.oem.state
+# docs-sync: shows tritel_tender_tracker:field:res.partner.suggested_am_id, tritel_tender_tracker:group:group_account_manager, tritel_tender_tracker:menu:menu_account_ownership
+# docs-sync: shows tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:menu:reporting_menu
+# docs-sync: shows tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:selection:res.partner.coverage_rung
+# docs-sync: shows tritel_tender_tracker:wizard:tenders.assign.wizard
 type: screen
 title: The Account Ownership list
 desc: The Account Ownership list of customers that need an owner, with the Accept Suggestion, Assign To, Mark as Company and Claim for Me buttons, and columns for the current account manager, the Suggested Owner and Why, Coverage and counts of tenders, opportunities and touches, numbered 1 to 3.

@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:client_action:action_touchpoints_workspace, tritel_tender_tracker:menu:menu_customers_activities
+# docs-sync: shows tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:menu:reporting_menu
+# docs-sync: shows tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:res.partner.activity, tritel_tender_tracker:model:tender.initial
+# docs-sync: shows tritel_tender_tracker:view_ext:base.view_partner_form:button:touchpoints, tritel_tender_tracker:view_ext:base.view_partner_form:field:touchpoints, tritel_tender_tracker:view_ext:crm.crm_lead_view_form:button:customer-activities
 type: screen
 title: The Customer Activities screen
 desc: The Customer Activities workspace with the Log touch, Plan touch and List buttons, the Customers, People and Planned tabs, the Showing person picker and Made by them only toggle, and the customer heatmap with last-touch shading, numbered 1 to 5.

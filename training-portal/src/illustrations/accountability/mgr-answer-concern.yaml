@@ -1,3 +1,8 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_team_reviews, tritel_accountability_framework:selection:accountability.objective.state
+# docs-sync: shows tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.review.session.employee.state, tritel_accountability_framework:selection:accountability.target.state
+# docs-sync: shows tritel_accountability_framework:selection:accountability.target.weight.change.priority_state, tritel_accountability_framework:wizard:accountability.review.concern.answer.wizard
 type: screen
 title: Answering a concern and resubmitting
 desc: The Employee Review form in Concern Raised with the Answer the Concern button, and the Answer the Concern window with the questioned targets, the employee's question, the Revise the scores and Keep the scores choice, the reply box and Send Answer, numbered 1 to 5.

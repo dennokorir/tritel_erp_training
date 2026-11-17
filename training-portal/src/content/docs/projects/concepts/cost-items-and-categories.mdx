@@ -7,6 +7,7 @@ roles: [delivery-pm, head-delivery, delivery-finance]
 tags: [baselines, budgets]
 keywords: [cost item, BOQ, bill of quantities, cost sheet, quotation, quote, estimate, VAT, exchange rate, USD, budget line, category, starter items, supplier quote]
 related: [projects/how-to/delivery-pm/build-a-baseline, projects/how-to/delivery-pm/phase-the-spend, projects/concepts/contingency, projects/calculations/cost-items, projects/how-to/approvers/cost-types-and-categories]
+sidebar: { order: 3 }
 sources:
   - tritel_project_delivery/models/cost_item.py
   - tritel_project_delivery/models/baseline.py
@@ -18,7 +19,14 @@ sources:
   - tritel_project_delivery/data/starter_item_data.xml
   - tritel_project_delivery/views/baseline_views.xml
   - tritel_project_delivery/views/budget_mapping_views.xml
-sidebar: { order: 3 }
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/models/tender_import.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/project_views.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -56,6 +64,7 @@ You never pick a budget category or a ledger account yourself. You pick a **cost
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_project_delivery:model:delivery.budget.category, tritel_project_delivery:model:delivery.cost.type, tritel_project_delivery:model:project.delivery.baseline.line, tritel_project_delivery:model:project.delivery.cost.item
   I["Cost item: 48-port PoE switches"] --> T["Cost type: Equipment we supply"]
   T --> C["Budget category: Equipment and hardware"]
   C --> P["Budget line in tracking: Direct project costs"]

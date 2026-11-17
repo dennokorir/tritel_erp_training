@@ -10,6 +10,7 @@ where: [Accountability, Organisation, Settings]
 before:
   - To fix the employee record you need HR rights in the <strong>Employees</strong> app. To resync or give the Administrator role you must be an accountability administrator (and, for the role, an Odoo administrator).
 related: [accountability/who-can-do-what, accountability/how-to/hr-admin/settings, accountability/how-to/hr-admin/exempt-staff, getting-started/finding-your-way]
+sidebar: { order: 9 }
 sources:
   - tritel_accountability_framework/security/ir_groups.xml
   - tritel_accountability_framework/models/res_users.py
@@ -17,7 +18,15 @@ sources:
   - tritel_accountability_framework/models/accountability_config.py
   - tritel_accountability_framework/views/accountability_config_views.xml
   - tritel_accountability_framework/views/menu.xml
-sidebar: { order: 9 }
+  - tritel_accountability_framework/controllers/portal.py
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_snapshot.py
+  - tritel_accountability_framework/models/accountability_target_library.py
+  - tritel_accountability_framework/views/accountability_scorecard_request_views.xml
+  - tritel_accountability_framework/views/accountability_target_library_views.xml
+  - tritel_accountability_framework/views/accountability_target_views.xml
+  - tritel_accountability_framework/wizard/cascade_line_mixin.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

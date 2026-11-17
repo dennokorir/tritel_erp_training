@@ -11,12 +11,18 @@ before:
   - Your manager, HR or an administrator has changed your scorecard. You get a notice and a to-do called <strong>Acknowledge your new priorities</strong>.
   - You have until the <strong>Acknowledge By</strong> date (5 days by default, restarted by each further change).
 related: [accountability/workflows/priority-change, accountability/concepts/weights-and-share-of-score, accountability/calculations/share-of-score, accountability/how-to/everyone/my-targets]
+sidebar: { order: 4 }
 sources:
   - tritel_accountability_framework/views/accountability_weight_change_views.xml
   - tritel_accountability_framework/models/accountability_priority_change.py
   - tritel_accountability_framework/models/accountability_target.py
   - tritel_accountability_framework/static/src/my_actions/accountability_my_actions.js
-sidebar: { order: 4 }
+  - tritel_accountability_framework/controllers/portal.py
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/accountability_weight_change.py
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/wizard/review_pack_ack_wizard.py
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 

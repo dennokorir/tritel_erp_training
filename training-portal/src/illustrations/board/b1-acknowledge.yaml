@@ -1,3 +1,5 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows e_board:group:group_board_viewer, e_board:model:accountability.board.review.line, e_board:selection:accountability.board.review.state
 type: screen
 title: Acknowledge the board's sign-off
 desc: The signed-off board review in Accountability, with the Acknowledge button, Signed By, the board's results and comments in the Targets list, and the Your Comment box, numbered 1 to 4.

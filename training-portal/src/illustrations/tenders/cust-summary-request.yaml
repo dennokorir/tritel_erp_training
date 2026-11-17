@@ -1,3 +1,7 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tender_summary_tracker
+# docs-sync: shows tritel_tender_tracker:menu:menu_tenders_section, tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:tender.initial
+# docs-sync: shows tritel_tender_tracker:selection:tender.initial.summary_state, tritel_tender_tracker:wizard:tender.summary.wizard
 type: screen
 title: Request a project summary
 desc: The project summary workspace for a won tender with no summary yet, its Request summary button, and the Request project summary window with the Writer and Due fields, numbered 3 and 4.

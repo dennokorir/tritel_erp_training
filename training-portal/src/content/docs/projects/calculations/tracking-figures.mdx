@@ -7,13 +7,18 @@ roles: [delivery-pm, head-delivery, delivery-finance, finance]
 tags: [tracking, budget]
 keywords: [budget variance, overrun, over budget, burn rate, actuals, commitments, open PO, LPO, unbilled, forecast, EAC, budget left]
 related: [projects/concepts/budget-tracking, projects/workflows/budget-status, projects/how-to/delivery-pm/track-the-budget, projects/how-to/approvers/tag-orders-to-a-project, projects/reports/projects-over-budget]
+sidebar: { order: 3 }
 sources:
   - tritel_project_delivery/models/tracking.py
   - tritel_project_delivery/models/buttons.py
   - tritel_project_delivery/models/whole_orders.py
   - tritel_project_delivery/views/tracking_views.xml
   - tritel_project_delivery/views/buttons_views.xml
-sidebar: { order: 3 }
+  - tritel_project_delivery/models/baseline.py
+  - tritel_project_delivery/models/cost_item.py
+  - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/views/menus.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 

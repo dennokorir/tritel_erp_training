@@ -1,3 +1,14 @@
+# docs-sync: verified_commit eec18b485b6c
+# docs-sync: shows tritel_project_delivery:field:project.project.approved_budget_total, tritel_project_delivery:field:project.project.track_committed, tritel_project_delivery:menu:menu_delivery_config
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:model:project.delivery.baseline
+# docs-sync: shows tritel_project_delivery:model:project.delivery.client.delay, tritel_project_delivery:model:project.delivery.commitment, tritel_project_delivery:model:project.delivery.cost.line
+# docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-budget
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:approved-delivery-budget, tritel_project_delivery:view_ext:project.edit_project:button:automatic-tagging-rules, tritel_project_delivery:view_ext:project.edit_project:button:budget-left
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:close-project, tritel_project_delivery:view_ext:project.edit_project:button:committed, tritel_project_delivery:view_ext:project.edit_project:button:cost-account
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:log-client-delay, tritel_project_delivery:view_ext:project.edit_project:button:odoo-budget-lines, tritel_project_delivery:view_ext:project.edit_project:button:purchase-orders
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:spent-so-far, tritel_project_delivery:view_ext:project.edit_project:button:untagged-tender-order-lines, tritel_project_delivery:view_ext:project.edit_project:button:vendor-bills
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:won-tender, tritel_project_delivery:view_ext:project.edit_project:field:odoo-budget-lines, tritel_project_delivery:view_ext:project.edit_project:field:tagging-rules
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:field:untagged-lines, tritel_project_delivery:view_ext:project.edit_project:page:handover-amp-close, tritel_project_delivery:wizard:delivery.cost.account.card
 type: screen
 title: Project smart buttons
 desc: The top of a delivery project with its smart buttons, Delivery baseline, Approved delivery budget, Spent so far, Committed, Budget left, Cost account, Won tender, Handover, Purchase orders, Vendor bills, Odoo budget lines, Untagged tender order lines and Automatic tagging rules, numbered 1 to 13.

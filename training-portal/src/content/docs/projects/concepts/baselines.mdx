@@ -7,6 +7,7 @@ roles: [delivery-pm, head-delivery, delivery-finance, md]
 tags: [baselines, approvals]
 keywords: [baseline, project budget, BOQ, cost sheet, completion date, milestones, revision, change request, re-baseline, variation, budget increase, extension of time, sign-off]
 related: [projects/workflows/baseline, projects/concepts/cost-items-and-categories, projects/concepts/approvals, projects/how-to/delivery-pm/build-a-baseline, projects/how-to/delivery-pm/request-a-revision, projects/calculations/revisions-and-approvals]
+sidebar: { order: 2 }
 sources:
   - tritel_project_delivery/models/baseline.py
   - tritel_project_delivery/models/project.py
@@ -15,7 +16,13 @@ sources:
   - tritel_project_delivery/views/baseline_views.xml
   - tritel_project_delivery/views/tracking_views.xml
   - tritel_project_delivery/views/project_views.xml
-sidebar: { order: 2 }
+  - tritel_project_delivery/data/delivery_data.xml
+  - tritel_project_delivery/models/closeout.py
+  - tritel_project_delivery/models/cost_item.py
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/views/menus.xml
+verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -28,6 +35,7 @@ Each baseline is a numbered version. **Baseline v1** is the **Original**. Once a
 
 ```mermaid
 flowchart TD
+%% docs-sync: shows tritel_project_delivery:selection:project.delivery.baseline.kind, tritel_project_delivery:selection:project.delivery.baseline.state, tritel_project_delivery:selection:project.delivery.client.delay.state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:request-revision
   V1["v1 Original: Approved"] -->|"Request Revision"| V2["v2 Revision: Draft"]
   V2 -->|"Confirm for Approval"| W["v2: Waiting for approval"]
   W -->|"all approvals in"| A2["v2: Approved"]
