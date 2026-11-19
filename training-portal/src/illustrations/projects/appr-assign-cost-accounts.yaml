@@ -1,0 +1,29 @@
+# docs-sync: verified_commit 5d691a8dca64
+# docs-sync: shows tritel_project_delivery:wizard:purchase.assign.cost.accounts, tritel_project_delivery:wizard:purchase.assign.cost.accounts.split, tritel_project_delivery:view_ext:purchase.purchase_order_form:button:assign-cost-accounts
+type: screen
+title: Assign Cost Accounts
+desc: A purchase order with the Assign Cost Accounts button, and the Assign Cost Accounts window with Orders, Apply to, Mode, Cost account with the tender suggestion, the Budget impact if applied preview and the Apply button, numbered 1 to 6.
+source: tritel_project_delivery/wizards/assign_cost_accounts_views.xml (assign_cost_accounts_form, purchase_order_form_assign_cost_accounts), wizards/assign_cost_accounts.py
+frame:
+  grid: true
+  app: Purchase
+  menu: [{label: Orders, active: true}, Products, Reporting, Configuration]
+  breadcrumb: [Purchase Orders, P00052]
+blocks:
+  - buttons: [{label: Confirm Order, primary: true}, {label: Assign Cost Accounts, n: 1}, {label: Cancel}]
+  - dialog:
+      title: Assign Cost Accounts
+      blocks:
+        - fields:
+            - [{label: Orders, value: P00052}, {label: Mode, value: "◉ 100% to one account   ○ Split by %", n: 3}]
+            - [{label: Apply to, value: "○ All lines   ◉ Lines without a cost account   ○ Selected lines", n: 2}, {label: Cost account, value: "[P26-049] Data Centre Upgrade", n: 4}]
+        - text: "Suggested from the tender: Data Centre Upgrade is its only delivery project."
+        - heading: Budget impact if applied
+          n: 5
+        - text: "P00052 · 1 line(s) change"
+        - table:
+            columns: [Budget line, Planned, Actual, "Committed (other orders)", This order, Left after, ""]
+            widths: [2.4, 1, 1, 2.5, 1, 1.1, 1.5]
+            rows:
+              - ["[P26-049] Data Centre Upgrade · Direct project costs", "400,000", "150,000", "120,000", "100,000", {text: "30,000", bold: true}, {text: Within budget, badge: true, tone: good}]
+        - buttons: [{label: Apply, primary: true, n: 6}, {label: Cancel}]

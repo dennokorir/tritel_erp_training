@@ -1,11 +1,11 @@
 ---
 title: From a won tender to the Delivery KPI
-description: Follow a won tender into a delivery project, through the approved baseline, client delays, handover and close-out, to the on-time and on-budget metrics on the project manager's targets and the review.
+description: Follow a won tender into a delivery project, through the approved Delivery Budget, client delays, handover and close-out, to the on-time and on-budget metrics on the project manager's targets and the review.
 module: end-to-end
 pageType: journey
 roles: [delivery-pm, head-delivery, delivery-finance, finance, md, account-manager, line-manager, accountability-admin]
 tags: [end to end, delivery kpi, close-out, metrics]
-keywords: [end to end, process, workflow, handover between teams, how does it connect, lifecycle, sales to delivery, project lifecycle, on time, on budget, handover, close out, delivery KPI, project manager scorecard]
+keywords: [end to end, baseline, process, workflow, handover between teams, how does it connect, lifecycle, sales to delivery, project lifecycle, on time, on budget, handover, close out, delivery KPI, project manager scorecard]
 related: [end-to-end/index, projects/concepts/delivery-kpi, projects/calculations/close-and-kpi, projects/concepts/handover-and-close-out, accountability/calculations/metric-families]
 sidebar: { order: 5 }
 sources:
@@ -41,6 +41,11 @@ sources:
   - tritel_project_delivery/views/buttons_views.xml
   - tritel_project_delivery/views/closeout_views.xml
   - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/accounting_menus.xml
+  - tritel_project_delivery/views/baseline_views.xml
+  - tritel_project_delivery/models/delivery_access.py
+  - tritel_project_delivery/models/project_code.py
+  - tritel_project_delivery/models/purchase_budget.py
   - tritel_project_delivery/views/project_views.xml
   - tritel_project_delivery/views/tender_views.xml
   - tritel_project_delivery/views/tracking_views.xml
@@ -55,7 +60,7 @@ sources:
   - tritel_tender_tracker/views/tender_views.xml
   - tritel_tender_tracker/wizards/partner_activity_wizards.py
   - tritel_tender_tracker/wizards/tender_summary_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../components/Illustration.astro';
 
@@ -71,7 +76,7 @@ flowchart TD
   end
   subgraph DEL["Delivery"]
     D1["Open Delivery Project"]
-    D2["Build baseline, Confirm for Approval"]
+    D2["Build Delivery Budget, Submit for Approval"]
     D3["Approve Dates"]
     D4["Log and approve client delays"]
     D5["Record and confirm handover"]
@@ -98,14 +103,14 @@ flowchart TD
 | # | Who | Where | What happens | Guide |
 |---|---|---|---|---|
 | 1 | Account Manager (or whoever records results) | Tender, **Won** | The tender is **Won** with its **Award Date**. | [Record the result](/tenders/how-to/bids/record-the-result/) |
-| 2 | Delivery PM | **Tender Manager › Tenders › All Tenders**, **Open Delivery Project** | The project is created and linked to the tender, with its **Cost account**, delivery stages, standard milestones and **Baseline v1** in **Draft**. An older project is linked instead with **Link to Won Tender**. | [Open a delivery project](/projects/how-to/delivery-pm/open-a-delivery-project/), [Link an existing project](/projects/how-to/delivery-pm/link-an-existing-project/) |
-| 3 | Delivery PM | **Project › Delivery › Delivery Projects** | The cost items, payment months, **Completion date** and milestone dates are entered. The baseline is due 14 days after the award date. | [Build a baseline](/projects/how-to/delivery-pm/build-a-baseline/), [Set dates and milestones](/projects/how-to/delivery-pm/set-dates-and-milestones/) |
-| 4 | Delivery PM | Baseline, **Confirm for Approval** | The baseline is locked and the approvers get to-dos. | [Send a baseline for approval](/projects/how-to/delivery-pm/send-for-approval/) |
-| 5 | Head of Delivery; Delivery Finance | **Project › Delivery › Waiting for My Approval** | **Approve Dates** and **Approve Budget**. The baseline becomes **Approved**, the Odoo budget is created on the cost account and tracking starts. | [Approve dates](/projects/how-to/approvers/approve-dates/), [Approve budget](/projects/how-to/approvers/approve-budget/) |
-| 6 | Buyers, Finance & Accounts, Delivery Finance | Purchase orders, vendor bills | Orders and bills carry the cost account, and count as committed and spent every night. | [Tag orders to their project](/projects/how-to/approvers/tag-orders-to-a-project/), [Track the budget](/projects/how-to/delivery-pm/track-the-budget/) |
-| 7 | Delivery PM; Head of Delivery, Delivery Finance, MD | Project, **Delivery** tab, **Request Revision** | If the plan has to change, a revision goes through approval again. The latest approved baseline is the one measured. | [Request a revision](/projects/how-to/delivery-pm/request-a-revision/), [Approve a large revision](/projects/how-to/approvers/approve-a-large-revision/) |
-| 8 | Delivery PM; Head of Delivery | Project, **Log Client Delay**; **Project › Delivery › Client Delays** | Each period the client held the work up is logged with evidence and approved. Approved days move the deadline. | [Log a client delay](/projects/how-to/delivery-pm/log-a-client-delay/), [Approve a client delay](/projects/how-to/approvers/approve-a-client-delay/) |
-| 9 | Delivery PM; Head of Delivery | Project, **Record Handover**; **Project › Delivery › Handovers** | The handover date is recorded, then confirmed. Delivery Finance gets a *Close delivery project* to-do. | [Record a handover](/projects/how-to/delivery-pm/record-a-handover/), [Confirm a handover](/projects/how-to/approvers/confirm-a-handover/) |
+| 2 | Delivery PM (or the Head of Delivery for someone's first project) | **Tender Manager › Tenders › All Tenders**, **Open Delivery Project** | The project is created and linked to the tender, with its project code (for example **P26-049**), its **Cost account** carrying that code, delivery stages, standard milestones and **Budget v1** in **Draft**. Whoever is named **Project manager** gets the Delivery Project Manager role. An older project is linked instead with **Link to Won Tender**. | [Open a delivery project](/projects/how-to/delivery-pm/open-a-delivery-project/), [Link an existing project](/projects/how-to/delivery-pm/link-an-existing-project/) |
+| 3 | Delivery PM | **Project › Delivery › Projects › My Delivery Projects** | The cost items, payment months, **Completion date** and milestone dates are entered. The Delivery Budget is due 14 days after the award date. | [Build a Delivery Budget](/projects/how-to/delivery-pm/build-a-baseline/), [Set dates and milestones](/projects/how-to/delivery-pm/set-dates-and-milestones/) |
+| 4 | Delivery PM | Delivery Budget, **Submit for Approval** | The budget is locked and the approvers get to-dos. The PM follows it in **Project › Delivery › Projects › My Submissions**. | [Submit a Delivery Budget for approval](/projects/how-to/delivery-pm/send-for-approval/) |
+| 5 | Head of Delivery; Delivery Finance | **Project › Delivery › To approve › Waiting for Me** (Finance can also use **Accounting › Project Budgets › To approve › Budgets to Approve**) | **Approve Dates** and **Approve Budget**. The Delivery Budget becomes **Approved**, the accounting budget is created on the cost account and tracking starts. | [Approve dates](/projects/how-to/approvers/approve-dates/), [Approve budget](/projects/how-to/approvers/approve-budget/) |
+| 6 | Buyers, Finance & Accounts, Delivery Finance | Purchase orders, vendor bills | Orders and bills carry the cost account, and count as committed and spent every night. Each order shows its **Budget status** against the accounting budget. | [Tag orders to their project](/projects/how-to/approvers/tag-orders-to-a-project/), [Set the cost account on order lines](/projects/how-to/approvers/assign-cost-accounts/), [Check an order against the budget](/projects/how-to/approvers/check-an-order-against-the-budget/), [Track the budget](/projects/how-to/delivery-pm/track-the-budget/) |
+| 7 | Delivery PM; Head of Delivery, Delivery Finance, MD | Project, **Delivery** tab, **Request Revision** | If the plan has to change, a revision goes through approval again. The latest approved Delivery Budget is the one measured. | [Request a revision](/projects/how-to/delivery-pm/request-a-revision/), [Approve a large revision](/projects/how-to/approvers/approve-a-large-revision/) |
+| 8 | Delivery PM; Head of Delivery | Project, **Log Client Delay**; **Project › Delivery › Projects › Client Delays** | Each period the client held the work up is logged with evidence and approved. Approved days move the deadline. | [Log a client delay](/projects/how-to/delivery-pm/log-a-client-delay/), [Approve a client delay](/projects/how-to/approvers/approve-a-client-delay/) |
+| 9 | Delivery PM; Head of Delivery | Project, **Record Handover**; **Project › Delivery › Projects › Handovers** | The handover date is recorded, then confirmed. Delivery Finance gets a *Close delivery project* to-do. | [Record a handover](/projects/how-to/delivery-pm/record-a-handover/), [Confirm a handover](/projects/how-to/approvers/confirm-a-handover/) |
 | 10 | Delivery Finance | Project, **Close Project** | The final cost is confirmed, with any adjustment, and the **Result** is frozen. | [Close or reopen a project](/projects/how-to/approvers/close-a-project/) |
 | 11 | The system | Nightly | The delivery metrics count the project in the window of its confirmed handover date. | [The Delivery KPI](/projects/concepts/delivery-kpi/) |
 | 12 | The system, then the line manager | *Confirm Metric Review* to-do | 30 days after the window, a draft review is created with the rate. The manager checks the worksheet and confirms; the project manager acknowledges. | [Conduct a review](/accountability/how-to/line-managers/conduct-a-review/) |
@@ -120,8 +125,8 @@ The delivery targets are usually quarterly **Threshold / SLA** targets with a **
 
 | From | To | What travels | When |
 |---|---|---|---|
-| Won tender | Delivery project | **Won tender**, **Client**, **Award Date**; the **Delivery** tab shows **Tender**, **Award date**, **Contract value** and **Baseline due** | When the project is opened or linked |
-| Approved baseline | Project | The completion date and milestone dates; the Odoo budget on the cost account | When the last approval is in |
+| Won tender | Delivery project | **Won tender**, **Client**, **Award Date**; the **Delivery** tab shows **Tender**, **Award date**, **Contract value** and **Budget due**; the tender's **Delivery projects** button shows the project code | When the project is opened or linked |
+| Approved Delivery Budget | Project | The completion date and milestone dates; the accounting budget on the cost account | When the last approval is in |
 | Orders and bills | Budget tracking | Committed and spent amounts, on the cost account | Every night |
 | Approved client delays | Close-out | **Approved client delay (days)**, overlaps counted once | When approved |
 | Confirmed handover | Close-out and metrics | The handover date: on time against the deadline, and the window it counts in | When confirmed |
@@ -131,9 +136,9 @@ The delivery targets are usually quarterly **Threshold / SLA** targets with a **
 
 | What happens | Effect | Fix |
 |---|---|---|
-| The project isn't linked to its won tender | It has no baseline and the Delivery KPI doesn't measure it. | **Link to Won Tender**. See [Link an existing project](/projects/how-to/delivery-pm/link-an-existing-project/). |
-| No approved baseline by close | The project closes as **Not scored** and isn't counted. | Get the baseline approved before the handover. See [Send a baseline for approval](/projects/how-to/delivery-pm/send-for-approval/). |
-| Orders or bills don't carry the cost account | Spending doesn't count against the project, so tracking and the final cost are understated. | Tag them. See [Tag orders to their project](/projects/how-to/approvers/tag-orders-to-a-project/). |
+| The project isn't linked to its won tender | It has no Delivery Budget and the Delivery KPI doesn't measure it. | **Link to Won Tender**. See [Link an existing project](/projects/how-to/delivery-pm/link-an-existing-project/). |
+| No approved Delivery Budget by close | The project closes as **Not scored** and isn't counted. | Get the budget approved before the handover. See [Submit a Delivery Budget for approval](/projects/how-to/delivery-pm/send-for-approval/). |
+| Orders or bills don't carry the cost account | Spending doesn't count against the project, so tracking and the final cost are understated. The order shows **No cost account** as its **Budget status**. | Tag them. See [Tag orders to their project](/projects/how-to/approvers/tag-orders-to-a-project/) or [Set the cost account on order lines](/projects/how-to/approvers/assign-cost-accounts/). |
 | A client delay is logged late, rejected or left waiting | Its days don't move the deadline; finance can't close while one is waiting for approval. | Log each delay as it happens, with evidence. See [Log a client delay](/projects/how-to/delivery-pm/log-a-client-delay/). |
 | The handover is recorded but not confirmed | Finance can't close and the project isn't counted. | The Head of Delivery confirms or returns it. See [Confirm a handover](/projects/how-to/approvers/confirm-a-handover/). |
 | The project is handed over but not closed | It is listed in the worksheet as *handed over but not yet closed by finance* and isn't counted. | Delivery Finance closes it, within the 30-day wait where possible. See [Close or reopen a project](/projects/how-to/approvers/close-a-project/). |

@@ -1,0 +1,60 @@
+---
+title: Set the cost account on order lines
+description: Use Assign Cost Accounts to give many purchase order lines their cost account at once, on one order or several, whole or split by percentage, and see the budget impact before you apply it.
+module: projects
+pageType: how-to
+roles: [finance, delivery-finance]
+tags: [purchase orders, cost accounts, budget tracking]
+keywords: [LPO, PO, RFQ, analytic account, analytic distribution, cost account, cost centre, tag order lines, split cost, allocate cost, assign cost accounts, bulk update, no cost account]
+where: [Purchase, Orders, Purchase Orders]
+before:
+  - You can work with purchase orders in the <strong>Purchase</strong> app (purchase user or above).
+  - The orders aren't locked or cancelled.
+related: [projects/how-to/approvers/check-an-order-against-the-budget, projects/calculations/purchase-commitments, projects/how-to/approvers/tag-orders-to-a-project, projects/concepts/project-codes, projects/concepts/odoo-budget-and-cost-account]
+sidebar: { order: 13 }
+sources:
+  - tritel_project_delivery/wizards/assign_cost_accounts.py
+  - tritel_project_delivery/wizards/assign_cost_accounts_views.xml
+  - tritel_project_delivery/models/purchase_budget.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+An order line counts against a project's budget only when it carries the project's **cost account**. **Assign Cost Accounts** sets the cost account on many lines at once instead of one by one, and shows what the change does to the budget before you apply it. Use it when an order has a **No cost account** status, or to move lines to the right project.
+
+<Illustration name="projects/appr-assign-cost-accounts" caption="Giving the line without a cost account on P00052 the cost account of P26-049. The numbers match the steps below." />
+
+## Steps
+
+1. Open the order and click **Assign Cost Accounts** at the top. To change several orders at once, tick them in the **Requests for Quotation** or **Purchase Orders** list and choose **Action › Assign Cost Accounts**.
+2. The **Assign Cost Accounts** window lists the **Orders**. Choose what **Apply to**:
+   - **All lines**: every line of the orders, replacing any cost account they already have;
+   - **Lines without a cost account** (the default): only the lines that have none;
+   - **Selected lines**: only the lines you pick in **Lines**.
+3. Choose the **Mode**:
+   - **100% to one account**: each line goes wholly to one cost account;
+   - **Split by %**: each line is shared between several cost accounts. Add a row for each **Cost account** and its **%**; the **Total** must be 100.
+4. For **100% to one account**, choose the **Cost account**. Type the project code to find it, for example *P26-049*. If the orders come from a tender with exactly one delivery project, its cost account is already filled in, with *Suggested from the tender: Data Centre Upgrade is its only delivery project.*
+5. Check **Budget impact if applied**. For each order it shows how many lines change, for example *P00052 · 1 line(s) change*, and the order's [Budget impact](/projects/how-to/approvers/check-an-order-against-the-budget/) as it would be after the change.
+6. Click **Apply**. **Cancel** closes the window without changing anything.
+
+## What happens next
+
+- The chosen lines get the cost account, or the split, in their **Analytic** column.
+- Each order's chatter records what changed and the new status, for example *Cost account set on 1 line(s): [P26-049] Data Centre Upgrade (100%).* and *Budget status now: Within budget.*
+- A message confirms *Cost account set on 1 line(s) in 1 order(s).*
+- The lines now count towards the project: as **Committed** on its accounting budget once the order is confirmed, or as **Draft** while it is a request for quotation. See [How orders count against an accounting budget](/projects/calculations/purchase-commitments/).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *No lines to change: choose another "Apply to", or tick some lines.* | Every line already has a cost account and you chose **Lines without a cost account**, or you chose **Selected lines** and picked none. | Choose **All lines**, or pick lines under **Selected lines**. |
+| *Choose the cost account.* | No **Cost account** is chosen, or the split has no rows. | Choose the cost account, or add split rows. |
+| *The split adds up to 90%; it must be 100%.* | The split percentages don't total 100. | Change the **%** so the **Total** is 100. |
+| *P00041 is locked or cancelled; its lines can't change.* | One of the orders is locked or cancelled. The button is hidden on such orders, but the list action can include them. | Leave that order out, or ask a purchase manager to unlock it first. |
+
+:::note[Good to know]
+- **All lines** replaces cost accounts that were already set, including splits. Use **Lines without a cost account** unless you mean to move lines.
+- The same cost account or split is applied to every chosen line on every chosen order. For lines that belong to different projects, run it once per project with **Selected lines**.
+:::

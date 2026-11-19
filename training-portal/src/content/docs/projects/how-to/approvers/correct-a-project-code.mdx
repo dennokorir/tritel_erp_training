@@ -1,0 +1,58 @@
+---
+title: Correct a project code
+description: As a settings administrator, change a wrong project code with Correct Code on the project, giving a reason; the cost account changes with it and the chatter keeps a record.
+module: projects
+pageType: how-to
+roles: [system-admin]
+tags: [delivery projects, cost accounts]
+keywords: [project code, change project code, wrong project code, renumber project, project number, fix code, P26, analytic account reference, cost account code]
+where: [Project, Projects]
+before:
+  - You are a <strong>settings administrator</strong> (Administration › Settings in your access rights). The <strong>Correct Code</strong> button is hidden from everyone else.
+  - You know the right code, and that no other project in the company has it.
+related: [projects/concepts/project-codes, projects/how-to/approvers/sort-out-cost-accounts, projects/concepts/odoo-budget-and-cost-account]
+sidebar: { order: 15 }
+sources:
+  - tritel_project_delivery/wizards/correct_project_code.py
+  - tritel_project_delivery/wizards/correct_project_code_views.xml
+  - tritel_project_delivery/views/project_code_views.xml
+  - tritel_project_delivery/models/project_code.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Odoo gives every project its code, and nobody can type over it. When a code is wrong, for example because the client's contract already quotes another number, a settings administrator corrects it. The project and its cost account change together, and the reason is kept on the project.
+
+<Illustration name="projects/appr-correct-code" caption="Correcting P26-049. The numbers match the steps below." />
+
+## Steps
+
+1. Open the project (from **Project › Projects**, or any project list) and click **Correct Code** at the top of the form.
+2. The **Correct Code** window opens. Check the **Project**, its **Current code** and, if it has one, its **Cost account**.
+3. Type the **New code**, for example *P26-094*: **P**, two digits, a dash, then three or more digits. Lower case is fine; it is saved in capitals.
+4. Give the **Reason**, for example *Code agreed with the client in the contract*.
+5. Read the warning: *The code changes everywhere it shows, including the cost account. Documents and spreadsheets that quote the old code keep it.* Then click **Correct Code**. **Cancel** closes the window without changing anything.
+
+## What happens next
+
+- The project shows the new code everywhere at once: **P26-094 · Data Centre Upgrade**.
+- Its cost account's **Reference** changes to the new code, so purchase lines, bills, journal items and budgets show **[P26-094] Data Centre Upgrade**.
+- The project's chatter records *Project code corrected from **P26-049** to **P26-094**: Code agreed with the client in the contract*, and the change of **Project code**.
+- The number of the new code is never given to a new project: numbering skips it.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Only a settings administrator can correct a project code.* | You aren't a settings administrator. | Ask one to correct it. |
+| *P26-94 isn't a project code. Use the pattern P26-049: P, two digits, a dash, three or more digits.* | The new code doesn't follow the pattern. | Type it as P, two digits, a dash and at least three digits. |
+| *P26-049 is already this project's code.* | The new code is the same as the current one. | Type the code you want instead. |
+| *Give the reason for the correction.* | The **Reason** is empty. | Say why the code is changing. |
+| *P26-094 belongs to P26-094 · Office Wi-Fi Refresh.* | Another project in the company, possibly archived, already has that code. | Choose another code, or correct the other project first. |
+| *Project codes change only through Correct Code on the project, by a settings administrator.* | Someone tried to change the code another way, for example by importing a file. | Use **Correct Code**. |
+| *A project code can't be cleared.* | Someone tried to empty the code, for example by importing a file. | Every project keeps a code. Correct it instead. |
+| *Data Centre Upgrade is the cost account of P26-049 · Data Centre Upgrade, so its code comes from the project. A settings administrator can correct the project code instead.* | Someone tried to change the **Reference** on the project's cost account. | Correct the project's code with **Correct Code**; the account follows. |
+
+:::note[Good to know]
+The new code isn't checked against the year the project was opened: any two digits are accepted. Keep the year the project was opened unless there is a reason not to.
+:::

@@ -16,7 +16,8 @@ sources:
   - tritel_project_delivery/models/project.py
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/menus.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_project_delivery/views/baseline_views.xml
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -44,7 +45,7 @@ At close, the deadline for the on-time result is:
 
 and the handover can be up to the grace days (7 by default) after that and still count as on time. So 10 approved delay days on a project due on 31 March move its deadline to 10 April. See [The Delivery KPI](/projects/concepts/delivery-kpi/).
 
-Approved delays don't change the baseline or the project's end date. If the work needs a new completion date for planning, request a revision instead (or as well).
+Approved delays don't change the Delivery Budget or the project's end date. If the work needs a new completion date for planning, request a revision instead (or as well).
 
 :::note[Good to know]
 - Only a draft delay can be edited or deleted. Once submitted, its dates and reason are fixed.

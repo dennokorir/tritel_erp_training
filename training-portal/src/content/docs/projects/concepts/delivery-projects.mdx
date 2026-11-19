@@ -5,7 +5,7 @@ module: projects
 pageType: concept
 roles: [delivery-pm, head-delivery, delivery-finance, account-manager]
 tags: [delivery projects, tenders]
-keywords: [delivery project, won tender, awarded tender, open project, link tender, contract, project setup, cost account, analytic account, project code, LPO]
+keywords: [delivery project, won tender, awarded tender, open project, link tender, contract, project setup, cost account, analytic account, project code, P26-049, baseline]
 related: [projects/how-to/delivery-pm/open-a-delivery-project, projects/how-to/delivery-pm/link-an-existing-project, projects/concepts/baselines, projects/concepts/odoo-budget-and-cost-account, projects/reports/project-at-a-glance]
 sidebar: { order: 1 }
 sources:
@@ -24,60 +24,67 @@ sources:
   - tritel_project_delivery/models/delivery_settings.py
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/closeout_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_project_delivery/models/project_code.py
+  - tritel_project_delivery/views/project_code_views.xml
+  - tritel_project_delivery/models/delivery_access.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
-A **delivery project** is a project in the **Project** app that is linked to a **won** tender. The link is what makes it count: only delivery projects get a delivery baseline, budget tracking and a Delivery KPI result. Any other project is an ordinary project, and its Delivery tab says *This project is not linked to a won tender, so it is not measured by the delivery KPIs.*
+A **delivery project** is a project in the **Project** app that is linked to a **won** tender. The link is what makes it count: only delivery projects get a Delivery Budget, budget tracking and a Delivery KPI result. Any other project is an ordinary project, and its Delivery tab says *This project is not linked to a won tender, so it is not measured by the delivery KPIs.*
 
 There are two ways in:
 
 1. **From the tender.** When a tender's status is **Won**, a delivery project manager sees **Open Delivery Project** at the top of the tender. If the tender already has a delivery project, the button reads **Add Delivery Project**: one tender can be delivered as several projects.
-2. **From an existing project.** On a project that isn't linked yet, the **Delivery** tab has a **Link to Won Tender** button. The Head of Delivery finds these projects under **Project › Delivery › Projects to Link**.
+2. **From an existing project.** On a project that isn't linked yet, the **Delivery** tab has a **Link to Won Tender** button. The Head of Delivery finds these projects under **Project › Delivery › Projects › Projects Not in Delivery**.
 
 Both open the same window, **Open Delivery Project** (titled **Link to Won Tender** when you start from a project). You pick the **Won tender**, the **Project manager**, the **Start date** and, if finance already keeps one, the **Cost account**. The **Client** and **Award Date** come from the tender. The system suggests an existing cost account whose name matches the project or tender; leave it empty to create a new one.
 
 <Illustration name="projects/concept-delivery-project" caption="A delivery project. The numbers match the list below." />
 
 1. **Header buttons:** **Record Handover** and **Log Client Delay** for the project manager, **Close Project** for finance.
-2. **Smart buttons:** the baseline (**Approved v1**, **Waiting v2** and so on), the approved delivery budget, budget left, the cost account, the won tender and the handover status.
-3. **Delivery** tab: the tender link and the baseline. The **Handover & close** tab holds the handover, client delays and, once closed, the result.
-4. **Baseline:** where the baseline stands (**No baseline**, **Baseline in draft**, **Waiting for approval**, **Approved** or **Revision pending**).
-5. **Draft Baseline**, **Request Revision** or **Open Baseline in Progress**, whichever applies.
+2. **Smart buttons:** the **Budget** button (**Approved v1**, **Waiting v2** and so on), the approved delivery budget, budget left, the cost account, the won tender and the handover status.
+3. **Delivery** tab: the tender link and the **Approved budget** group. The **Handover & close** tab holds the handover, client delays and, once closed, the result.
+4. **Budget status:** where the Delivery Budget stands (**No budget**, **Budget in draft**, **Waiting for approval**, **Approved** or **Revision pending**).
+5. **Draft Budget**, **Request Revision** or **Open Budget in Progress**, whichever applies.
 
 ## What the system sets up
 
 When the window is confirmed, the system:
 
 - creates the project (or updates the one you linked), sets the client from the tender, and turns on milestones;
-- gives it a **cost account**, either finance's existing one or a new one (see [The Odoo budget and the cost account](/projects/concepts/odoo-budget-and-cost-account/));
+- gives a new project its **project code**, such as *P26-049*, so it shows everywhere as *P26-049 · Data Centre Upgrade* (see [Project codes](/projects/concepts/project-codes/));
+- gives the **Project manager** the **Delivery Project Manager** role, if they don't have it yet;
+- gives it a **cost account**, either finance's existing one or a new one (see [The accounting budget and the cost account](/projects/concepts/odoo-budget-and-cost-account/));
 - adds the seven delivery stages: **Initiation**, **Survey & Design**, **Procurement**, **Delivery & Installation**, **Configuration & Testing**, **Handover** and **Closed**;
 - adds the standard milestones from the settings (for example *Site survey and design approved*, *Equipment delivered to site*, *Installation complete*, *Testing and commissioning complete*, *Handover*);
 - makes the project manager a follower and writes *Delivery project opened from tender TND-2026-001.* in the chatter;
-- starts **baseline v1** as a draft with the standard starter items in it.
+- starts **budget v1** of the Delivery Budget as a draft, with the standard starter items in it.
 
 ## Key terms
 
 | Label | Meaning |
 |---|---|
 | **Tender** | The won tender the project delivers. |
-| **Award date** | From the tender. The baseline is due a set number of days after it. |
+| **Award date** | From the tender. The budget is due a set number of days after it. |
 | **Contract value** | The tender's expected revenue, in the tender's currency. |
-| **Baseline due** | Award date plus **Baseline due after award (days)**, 14 by default. If the project has no award date, its creation date is used. |
-| **Approved completion date** | The completion date of the latest approved baseline. It becomes the project's end date, and you can't change it on the project. |
-| **Approved delivery budget** | The budget total of the latest approved baseline. |
+| **Budget due** | Award date plus **Budget due after award (days)**, 14 by default. If the project has no award date, its creation date is used. |
+| **Project code** | The project's code, such as *P26-049*, shown above the project name. Read-only. |
+| **Approved completion date** | The completion date of the latest approved budget. It becomes the project's end date, and you can't change it on the project. |
+| **Approved delivery budget** | The budget total of the latest approved budget. |
 
-On the tender itself, the **Delivery projects**, **Delivery budgets** and **Margin left** buttons show the projects opened from it and how much of the expected revenue their budgets use.
+On the tender itself, the **Delivery projects** button shows the codes of the projects opened from it (for example *P26-049, P26-050*) instead of a count. The **Delivery budgets** and **Margin left** buttons show how much of the expected revenue their budgets use.
 
 :::note[Good to know]
-- Only a delivery project manager (or the Head of Delivery) can open or link a delivery project. Account managers see the tender buttons but not **Open Delivery Project**.
+- Only a delivery project manager (or the Head of Delivery) can open or link a delivery project. Account managers see the tender buttons but not **Open Delivery Project**. Because the project manager role comes from managing a delivery project, someone who doesn't manage one yet can't open their first one: *Only delivery project managers can open delivery projects.* The Head of Delivery opens it and names them.
 - **Record Handover**, **Log Client Delay** and **Close Project** also appear on projects that are not linked to a tender. Such a project closes as **Not scored**, so link it first if it should be measured.
-- Trying to change the end date of a project with an approved baseline stops with *The completion date of PRJ Customer A network upgrade comes from its approved baseline. Request a revision to change it.*
+- Trying to change the end date of a project with an approved budget stops with *The completion date of Data Centre Upgrade comes from its approved budget. Request a revision to change it.*
 :::
 
 ## Tasks that use this
 
 - [Open a delivery project from a won tender](/projects/how-to/delivery-pm/open-a-delivery-project/)
 - [Link an existing project to its tender](/projects/how-to/delivery-pm/link-an-existing-project/)
+- [Project codes](/projects/concepts/project-codes/)
 - [The project form at a glance](/projects/reports/project-at-a-glance/)
 - [Work through Projects My Actions](/projects/how-to/delivery-pm/my-actions/)

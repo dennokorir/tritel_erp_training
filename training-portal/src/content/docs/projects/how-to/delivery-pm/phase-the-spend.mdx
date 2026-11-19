@@ -1,14 +1,14 @@
 ---
 title: Plan when the money goes out
-description: Give each cost item the month or months it will be paid, then check the spend plan by month that the Odoo budget and the expected-to-date figure are built from.
+description: Give each cost item the month or months it will be paid, then check the spend plan by month that the accounting budget and the expected-to-date figure are built from.
 module: projects
 pageType: how-to
 roles: [delivery-pm]
-tags: [baselines, budgets]
-keywords: [phasing, cash flow, cashflow, spend plan, payment schedule, monthly budget, payment months, budget by month, S-curve, forecast]
-where: [Project, Delivery, Delivery Projects]
+tags: [delivery budgets, budgets]
+keywords: [baseline, phasing, cash flow, cashflow, spend plan, payment schedule, monthly budget, payment months, budget by month, S-curve, forecast]
+where: [Project, Delivery, Projects, My Delivery Projects]
 before:
-  - The baseline is in <strong>Draft</strong> and its cost items are listed.
+  - The Delivery Budget is in <strong>Draft</strong> and its cost items are listed.
   - You know roughly when each supplier, subcontractor or expense will be paid.
 related: [projects/calculations/budget-lines-and-phasing, projects/concepts/budget-tracking, projects/concepts/odoo-budget-and-cost-account, projects/how-to/delivery-pm/build-a-baseline, projects/how-to/delivery-pm/send-for-approval]
 sidebar: { order: 5 }
@@ -20,11 +20,11 @@ sources:
   - tritel_project_delivery/models/project.py
   - tritel_project_delivery/models/tracking.py
   - tritel_project_delivery/views/menus.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
-Each cost item needs the month the money goes out. From those months the system builds a **spend plan by month**. After approval it becomes the monthly lines of the Odoo budget, and tracking compares what has been spent with what was **expected by now**.
+Each cost item needs the month the money goes out. From those months the system builds a **spend plan by month**. After approval it becomes the monthly lines of the accounting budget, and tracking compares what has been spent with what was **expected by now**.
 
 <Illustration name="projects/pm-pay-months" caption="Pay from and Pay until on the Costs tab. The numbers match steps 1 to 3." />
 
@@ -42,9 +42,9 @@ In this example the switches (500,000) are paid in March, the cabling (300,000) 
 
 ## What happens next
 
-- Nothing is sent to anyone until you confirm the baseline. The approvers see the same spend plan.
-- When you confirm, any items paid before the project start are noted in the baseline's chatter.
-- After approval, the Odoo budget gets one line per month with planned spend, and the project's budget tracking shows **Expected by now**: the plan for every month up to the current one.
+- Nothing is sent to anyone until you submit the Delivery Budget. The approvers see the same spend plan.
+- When you submit, any items paid before the project start are noted in the budget's chatter.
+- After approval, the accounting budget gets one line per month with planned spend, and the project's budget tracking shows **Expected by now**: the plan for every month up to the current one.
 
 ## Common mistakes
 

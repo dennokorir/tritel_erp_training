@@ -1,20 +1,20 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_baselines, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:model:project.delivery.baseline, tritel_project_delivery:model:project.delivery.commitment
 # docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:view_ext:project.edit_project:button:won-tender, tritel_project_delivery:view_ext:project.edit_project:field:untagged-lines
 type: screen
-title: Baseline and tender smart buttons
-desc: The smart buttons on a delivery baseline (Odoo Budget, Project, Tender, Baseline versions and Margin left) and on a won tender (Delivery projects, Delivery budgets, Margin left and Untagged order lines), numbered 1 to 9.
+title: Delivery budget and tender smart buttons
+desc: The smart buttons on a Delivery Budget (Accounting Budget, Project, Tender, Budget Versions and Margin left) and on a won tender (Delivery projects with their codes, Delivery budgets, Margin left and Untagged order lines), numbered 1 to 9.
 source: tritel_project_delivery/views/buttons_views.xml (baseline_form_buttons, tender_form_buttons), views/baseline_views.xml, views/tender_views.xml
 frame:
   grid: true
   app: Project
   menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
-  breadcrumb: [All Baselines, Customer A network upgrade · baseline v2]
+  breadcrumb: [Delivery Budgets, P26-049 · Data Centre Upgrade · budget v2]
 blocks:
-  - heading: On the baseline
+  - heading: On the delivery budget
   - smart:
-      - {label: Odoo Budget, value: "Odoo Budget", n: 1}
+      - {label: Accounting Budget, value: "Accounting Budget", n: 1}
       - {label: Project, value: "Project", n: 2}
       - {label: Tender, value: "Tender", n: 3}
   - smart:
@@ -23,7 +23,7 @@ blocks:
   - divider: true
   - heading: On the won tender TND-2026-001
   - smart:
-      - {label: Delivery, value: "2", n: 6}
+      - {label: Delivery, value: "P26-049, P26-050", n: 6}
       - {label: Delivery budgets, value: "1,350,000", n: 7}
       - {label: Margin left, value: "150,000", n: 8}
       - {label: Untagged lines, value: "2", tone: warn, n: 9}

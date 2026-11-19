@@ -1,19 +1,19 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_root
 # docs-sync: shows tritel_project_delivery:model:project.delivery.baseline, tritel_project_delivery:model:project.delivery.baseline.line, tritel_project_delivery:selection:project.delivery.baseline.state
 # docs-sync: shows tritel_project_delivery:selection:project.delivery.client.delay.state, tritel_project_delivery:selection:project.delivery.cost.item.basis, tritel_project_delivery:selection:project.project.delivery_baseline_state
-# docs-sync: shows tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:delivery-baseline, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:delivery-projects
+# docs-sync: shows tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:delivery-budget, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:delivery-projects
 type: screen
-title: Cost items on a baseline
-desc: The Costs tab of a draft delivery baseline listing five cost items with their type, quantity, currency, unit cost, payment month, basis and total before VAT, and the Quoted and Foreign currency shares underneath, numbered 1 to 5.
+title: Cost items on a delivery budget
+desc: The Costs tab of a draft delivery budget listing five cost items with their type, quantity, currency, unit cost, payment month, basis and total before VAT, and the Quoted and Foreign currency shares underneath, numbered 1 to 5.
 source: tritel_project_delivery/views/baseline_views.xml (baseline_form, page costs); models/cost_item.py
 frame:
   grid: true
   app: Project
   menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
-  breadcrumb: [Delivery Projects, PRJ Customer A network upgrade, baseline v1]
+  breadcrumb: [My Delivery Projects, P26-049 · Data Centre Upgrade, P26-049 · Data Centre Upgrade · budget v1]
 blocks:
-  - buttons: [{label: Confirm for Approval, primary: true}, {label: Withdraw}]
+  - buttons: [{label: Submit for Approval, primary: true}, {label: Withdraw}]
     status: {steps: [Draft, Waiting for approval, Approved], current: Draft}
   - tabs: {items: [Costs, Summary by category, Milestones, Approvals], active: Costs}
   - text: List what the project will pay for. Pick the type that fits; the accounts behind it are set by finance. Amounts are worked out before VAT and in KES.

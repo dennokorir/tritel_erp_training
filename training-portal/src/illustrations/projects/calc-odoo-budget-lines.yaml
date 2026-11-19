@@ -1,10 +1,10 @@
-# docs-sync: verified_commit eec18b485b6c
-# docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:view_ext:project.edit_project:button:odoo-budget-lines, tritel_project_delivery:view_ext:project.edit_project:field:odoo-budget-lines
+# docs-sync: verified_commit 5d691a8dca64
+# docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:view_ext:project.edit_project:button:accounting-budget-lines, tritel_project_delivery:view_ext:project.edit_project:field:accounting-budget-lines
 type: calc
-title: Odoo budget lines
-desc: Worked example of the Odoo budget created on approval for a project starting 15 Jan 2027 with completion on 31 Mar 2027, showing the budget period, one line per month with planned spend and one zero line for the months after.
+title: Accounting budget lines
+desc: Worked example of the accounting budget created on approval for a project starting 15 Jan 2027 with completion on 31 Mar 2027, showing the budget period, one line per month with planned spend and one zero line for the months after.
 source: tritel_project_delivery/models/phasing.py (_sync_budget)
-heading: Odoo budget for baseline v1, approved in January 2027
+heading: Accounting budget for budget v1 of Data Centre Upgrade, approved in January 2027
 inputs:
   - {label: Project start, value: "15 Jan 2027"}
   - {label: Completion date, value: "31 Mar 2027"}
@@ -15,5 +15,5 @@ steps:
   - {label: "Direct project costs: 1–28 Feb, then 1–31 Mar", value: "−240,000 each"}
   - {label: "Direct project costs: 1 Apr–27 Sep, no planned spend, one line", value: "0"}
   - {label: "Project contingency: Jan, Feb, Mar, then 1 Apr–27 Sep", value: "−6,000 · −12,000 · −12,000 · 0"}
-result: {label: Odoo budget lines, value: "8", tone: accent}
+result: {label: Accounting budget lines, value: "8", tone: accent}
 note: Planned amounts are negative because they are costs. Late bills dated up to 27 Sep 2027 still fall inside a line.

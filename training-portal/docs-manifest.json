@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "1.4.0",
+  "version": "1.5.0",
   "modules": {
     "accountability": {
       "title": "Accountability Framework",
@@ -4225,8 +4225,8 @@
       "addons_path": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "repo_root": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "track_ref": "origin/16.0",
-      "last_synced_commit": "83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02",
-      "last_synced_at": "2026-11-17T19:15:37+00:00",
+      "last_synced_commit": "5d691a8dca6440f5aae8679f6ab7c74dbc0de07a",
+      "last_synced_at": "2026-11-19T14:09:14+00:00",
       "pages_dir": "src/content/docs/projects",
       "items": {
         "tritel_project_delivery:client_action:action_project_my_actions": {
@@ -4427,8 +4427,8 @@
             "end-to-end/e2e-delivery-kpi-result",
             "projects/concept-delivery-project",
             "projects/concept-kpi-result",
-            "projects/pm-request-revision",
-            "projects/concepts/handover-and-close-out#mermaid-1"
+            "projects/concepts/handover-and-close-out#mermaid-1",
+            "projects/pm-request-revision"
           ]
         },
         "tritel_project_delivery:field:project.project.approved_delay_days": {
@@ -4467,13 +4467,13 @@
           "illustrations": [
             "end-to-end/e2e-revenue-target-score",
             "end-to-end/e2e-won-tender-split",
+            "end-to-end/opportunity-to-accountability#mermaid-1",
+            "end-to-end/project-to-delivery-kpi#mermaid-1",
             "projects/calc-baseline-due",
             "projects/concept-delivery-project",
             "projects/pm-link-project",
             "projects/pm-open-project",
-            "projects/pm-request-revision",
-            "end-to-end/opportunity-to-accountability#mermaid-1",
-            "end-to-end/project-to-delivery-kpi#mermaid-1"
+            "projects/pm-request-revision"
           ]
         },
         "tritel_project_delivery:field:project.project.baseline_due_date": {
@@ -4520,13 +4520,13 @@
             "projects/workflows/close-out"
           ],
           "illustrations": [
+            "end-to-end/project-to-delivery-kpi#mermaid-1",
             "projects/appr-client-delay",
             "projects/calc-delay-days",
             "projects/concept-approvals-matrix",
             "projects/concept-client-delay-days",
-            "projects/matrix-closeout-setup",
-            "end-to-end/project-to-delivery-kpi#mermaid-1",
-            "projects/index#mermaid-1"
+            "projects/index#mermaid-1",
+            "projects/matrix-closeout-setup"
           ]
         },
         "tritel_project_delivery:field:project.project.close_adjustment": {
@@ -4869,11 +4869,11 @@
             "projects/appr-tag-orders",
             "projects/calc-tracking",
             "projects/concept-budget-tracking",
+            "projects/concepts/odoo-budget-and-cost-account#mermaid-1",
             "projects/pm-track-budget",
             "projects/report-over-budget",
             "projects/report-project-buttons",
             "projects/report-tracking-popup",
-            "projects/concepts/odoo-budget-and-cost-account#mermaid-1",
             "projects/workflows/budget-status#mermaid-1"
           ]
         },
@@ -4983,11 +4983,11 @@
           "illustrations": [
             "projects/calc-tracking",
             "projects/concept-budget-tracking",
+            "projects/concepts/odoo-budget-and-cost-account#mermaid-1",
+            "projects/index#mermaid-1",
             "projects/matrix-closeout-setup",
             "projects/pm-track-budget",
-            "projects/report-tracking-popup",
-            "projects/concepts/odoo-budget-and-cost-account#mermaid-1",
-            "projects/index#mermaid-1"
+            "projects/report-tracking-popup"
           ]
         },
         "tritel_project_delivery:field:purchase.order.delivery_over_plan_note": {
@@ -5125,12 +5125,12 @@
             "projects/calc-baseline-due",
             "projects/calc-revision-approvals",
             "projects/concept-approvals-matrix",
+            "projects/concepts/handover-and-close-out#mermaid-1",
             "projects/matrix-baselines",
             "projects/matrix-closeout-setup",
             "projects/pm-my-actions",
             "projects/pm-send-for-approval",
             "projects/report-over-budget",
-            "projects/concepts/handover-and-close-out#mermaid-1",
             "projects/workflows/baseline#mermaid-1",
             "projects/workflows/baseline#mermaid-2",
             "projects/workflows/client-delay#mermaid-1",
@@ -5160,6 +5160,8 @@
             "projects/workflows/handover"
           ],
           "illustrations": [
+            "projects/concept-approvals-matrix",
+            "projects/matrix-baselines",
             "projects/workflows/baseline#mermaid-2",
             "projects/workflows/budget-status#mermaid-2",
             "projects/workflows/client-delay#mermaid-2",
@@ -5175,6 +5177,7 @@
           ],
           "illustrations": [
             "projects/concept-baseline-form",
+            "projects/matrix-baselines",
             "projects/report-other-buttons"
           ]
         },
@@ -5192,7 +5195,8 @@
           ],
           "illustrations": [
             "projects/appr-approve-budget",
-            "projects/appr-approve-dates"
+            "projects/appr-approve-dates",
+            "projects/matrix-baselines"
           ]
         },
         "tritel_project_delivery:menu:menu_delivery_categories": {
@@ -5232,13 +5236,13 @@
             "projects/workflows/close-out"
           ],
           "illustrations": [
+            "end-to-end/project-to-delivery-kpi#mermaid-1",
             "projects/appr-client-delay",
             "projects/calc-delay-days",
             "projects/concept-approvals-matrix",
             "projects/concept-client-delay-days",
-            "projects/matrix-closeout-setup",
-            "end-to-end/project-to-delivery-kpi#mermaid-1",
-            "projects/index#mermaid-1"
+            "projects/index#mermaid-1",
+            "projects/matrix-closeout-setup"
           ]
         },
         "tritel_project_delivery:menu:menu_delivery_config": {
@@ -5304,6 +5308,9 @@
           ],
           "illustrations": [
             "end-to-end/e2e-delivery-kpi-result",
+            "end-to-end/index#mermaid-1",
+            "end-to-end/opportunity-to-accountability#mermaid-2",
+            "end-to-end/project-to-delivery-kpi#mermaid-1",
             "projects/appr-approve-budget",
             "projects/appr-approve-dates",
             "projects/appr-client-delay",
@@ -5328,6 +5335,10 @@
             "projects/concept-close-window",
             "projects/concept-cost-items",
             "projects/concept-delivery-project",
+            "projects/concepts/delivery-kpi#mermaid-1",
+            "projects/concepts/handover-and-close-out#mermaid-1",
+            "projects/index#mermaid-1",
+            "projects/index#mermaid-2",
             "projects/matrix-baselines",
             "projects/matrix-closeout-setup",
             "projects/pm-baseline-costs",
@@ -5349,13 +5360,6 @@
             "projects/report-over-budget",
             "projects/report-project-buttons",
             "projects/report-tracking-popup",
-            "end-to-end/index#mermaid-1",
-            "end-to-end/opportunity-to-accountability#mermaid-2",
-            "end-to-end/project-to-delivery-kpi#mermaid-1",
-            "projects/concepts/delivery-kpi#mermaid-1",
-            "projects/concepts/handover-and-close-out#mermaid-1",
-            "projects/index#mermaid-1",
-            "projects/index#mermaid-2",
             "projects/workflows/baseline#mermaid-1",
             "projects/workflows/baseline#mermaid-2",
             "projects/workflows/budget-status#mermaid-2",
@@ -5570,6 +5574,9 @@
           ],
           "illustrations": [
             "end-to-end/e2e-delivery-kpi-result",
+            "end-to-end/index#mermaid-1",
+            "end-to-end/opportunity-to-accountability#mermaid-2",
+            "end-to-end/project-to-delivery-kpi#mermaid-1",
             "projects/appr-approve-budget",
             "projects/appr-approve-dates",
             "projects/appr-client-delay",
@@ -5594,6 +5601,10 @@
             "projects/concept-close-window",
             "projects/concept-cost-items",
             "projects/concept-delivery-project",
+            "projects/concepts/delivery-kpi#mermaid-1",
+            "projects/concepts/handover-and-close-out#mermaid-1",
+            "projects/index#mermaid-1",
+            "projects/index#mermaid-2",
             "projects/matrix-baselines",
             "projects/matrix-closeout-setup",
             "projects/pm-baseline-costs",
@@ -5615,13 +5626,6 @@
             "projects/report-over-budget",
             "projects/report-project-buttons",
             "projects/report-tracking-popup",
-            "end-to-end/index#mermaid-1",
-            "end-to-end/opportunity-to-accountability#mermaid-2",
-            "end-to-end/project-to-delivery-kpi#mermaid-1",
-            "projects/concepts/delivery-kpi#mermaid-1",
-            "projects/concepts/handover-and-close-out#mermaid-1",
-            "projects/index#mermaid-1",
-            "projects/index#mermaid-2",
             "projects/workflows/baseline#mermaid-1",
             "projects/workflows/baseline#mermaid-2",
             "projects/workflows/budget-status#mermaid-2",
@@ -5870,14 +5874,14 @@
             "projects/calc-baseline-due",
             "projects/concept-baseline-form",
             "projects/concept-cost-items",
+            "projects/index#mermaid-1",
             "projects/pm-baseline-costs",
             "projects/pm-baseline-milestones",
             "projects/pm-request-revision",
             "projects/pm-returned-baseline",
             "projects/pm-send-for-approval",
             "projects/report-other-buttons",
-            "projects/report-project-buttons",
-            "projects/index#mermaid-1"
+            "projects/report-project-buttons"
           ]
         },
         "tritel_project_delivery:model:project.delivery.baseline.line": {
@@ -6102,10 +6106,10 @@
             "projects/appr-md-approve",
             "projects/calc-revision-approvals",
             "projects/concept-baseline-form",
+            "projects/concepts/baselines#mermaid-1",
             "projects/pm-request-revision",
             "projects/pm-revision-form",
-            "projects/pm-send-for-approval",
-            "projects/concepts/baselines#mermaid-1"
+            "projects/pm-send-for-approval"
           ]
         },
         "tritel_project_delivery:selection:project.delivery.baseline.state": {
@@ -6165,6 +6169,7 @@
             "projects/concept-baseline-form",
             "projects/concept-client-delay-days",
             "projects/concept-cost-items",
+            "projects/concepts/baselines#mermaid-1",
             "projects/pm-baseline-costs",
             "projects/pm-baseline-milestones",
             "projects/pm-client-delay",
@@ -6172,7 +6177,6 @@
             "projects/pm-revision-form",
             "projects/pm-send-for-approval",
             "projects/pm-whole-order",
-            "projects/concepts/baselines#mermaid-1",
             "projects/workflows/baseline#mermaid-1",
             "projects/workflows/baseline#mermaid-2",
             "projects/workflows/client-delay#mermaid-1"
@@ -6236,6 +6240,7 @@
             "projects/concept-baseline-form",
             "projects/concept-client-delay-days",
             "projects/concept-cost-items",
+            "projects/concepts/baselines#mermaid-1",
             "projects/pm-baseline-costs",
             "projects/pm-baseline-milestones",
             "projects/pm-client-delay",
@@ -6243,7 +6248,6 @@
             "projects/pm-revision-form",
             "projects/pm-send-for-approval",
             "projects/pm-whole-order",
-            "projects/concepts/baselines#mermaid-1",
             "projects/workflows/baseline#mermaid-1",
             "projects/workflows/baseline#mermaid-2",
             "projects/workflows/client-delay#mermaid-1"
@@ -6317,11 +6321,11 @@
           ],
           "illustrations": [
             "end-to-end/e2e-oem-booking-score",
+            "end-to-end/oem-booking-to-revenue-target#mermaid-1",
             "projects/appr-confirm-handover",
             "projects/pm-handover",
             "projects/pm-returned-baseline",
             "projects/pm-send-for-approval",
-            "end-to-end/oem-booking-to-revenue-target#mermaid-1",
             "projects/workflows/handover#mermaid-1"
           ]
         },
@@ -6402,6 +6406,8 @@
             "projects/workflows/close-out"
           ],
           "illustrations": [
+            "end-to-end/opportunity-to-accountability#mermaid-2",
+            "end-to-end/project-to-delivery-kpi#mermaid-1",
             "projects/appr-approve-budget",
             "projects/appr-approve-dates",
             "projects/appr-delivery-settings",
@@ -6420,6 +6426,9 @@
             "projects/concept-contingency-cap",
             "projects/concept-cost-items",
             "projects/concept-delivery-project",
+            "projects/concepts/odoo-budget-and-cost-account#mermaid-1",
+            "projects/index#mermaid-1",
+            "projects/index#mermaid-2",
             "projects/matrix-baselines",
             "projects/pm-baseline-costs",
             "projects/pm-baseline-milestones",
@@ -6434,11 +6443,6 @@
             "projects/pm-whole-order",
             "projects/report-other-buttons",
             "projects/report-project-buttons",
-            "end-to-end/opportunity-to-accountability#mermaid-2",
-            "end-to-end/project-to-delivery-kpi#mermaid-1",
-            "projects/concepts/odoo-budget-and-cost-account#mermaid-1",
-            "projects/index#mermaid-1",
-            "projects/index#mermaid-2",
             "projects/workflows/budget-status#mermaid-1"
           ]
         },
@@ -6497,6 +6501,10 @@
           "illustrations": [
             "end-to-end/e2e-delivery-kpi-result",
             "end-to-end/e2e-oem-booking-score",
+            "end-to-end/index#mermaid-1",
+            "end-to-end/oem-booking-to-revenue-target#mermaid-1",
+            "end-to-end/opportunity-to-accountability#mermaid-2",
+            "end-to-end/project-to-delivery-kpi#mermaid-1",
             "projects/appr-approve-budget",
             "projects/appr-approve-dates",
             "projects/appr-client-delay",
@@ -6516,6 +6524,10 @@
             "projects/concept-cost-items",
             "projects/concept-delivery-project",
             "projects/concept-kpi-result",
+            "projects/concepts/baselines#mermaid-1",
+            "projects/concepts/handover-and-close-out#mermaid-1",
+            "projects/index#mermaid-1",
+            "projects/index#mermaid-2",
             "projects/matrix-baselines",
             "projects/matrix-closeout-setup",
             "projects/pm-baseline-costs",
@@ -6531,14 +6543,6 @@
             "projects/pm-track-budget",
             "projects/pm-whole-order",
             "projects/report-project-buttons",
-            "end-to-end/index#mermaid-1",
-            "end-to-end/oem-booking-to-revenue-target#mermaid-1",
-            "end-to-end/opportunity-to-accountability#mermaid-2",
-            "end-to-end/project-to-delivery-kpi#mermaid-1",
-            "projects/concepts/baselines#mermaid-1",
-            "projects/concepts/handover-and-close-out#mermaid-1",
-            "projects/index#mermaid-1",
-            "projects/index#mermaid-2",
             "projects/workflows/baseline#mermaid-1",
             "projects/workflows/client-delay#mermaid-1",
             "projects/workflows/close-out#mermaid-2",
@@ -6603,6 +6607,9 @@
             "projects/workflows/handover"
           ],
           "illustrations": [
+            "end-to-end/index#mermaid-1",
+            "end-to-end/opportunity-to-accountability#mermaid-2",
+            "end-to-end/project-to-delivery-kpi#mermaid-1",
             "general/form-parts",
             "projects/appr-close-project",
             "projects/calc-margin",
@@ -6610,12 +6617,9 @@
             "projects/concept-approvals-matrix",
             "projects/concept-close-window",
             "projects/concept-delivery-project",
-            "projects/matrix-baselines",
-            "end-to-end/index#mermaid-1",
-            "end-to-end/opportunity-to-accountability#mermaid-2",
-            "end-to-end/project-to-delivery-kpi#mermaid-1",
             "projects/index#mermaid-1",
             "projects/index#mermaid-2",
+            "projects/matrix-baselines",
             "projects/workflows/baseline#mermaid-2"
           ]
         },
@@ -6690,13 +6694,13 @@
             "projects/workflows/handover"
           ],
           "illustrations": [
+            "end-to-end/opportunity-to-accountability#mermaid-2",
+            "end-to-end/project-to-delivery-kpi#mermaid-1",
             "projects/appr-close-project",
             "projects/concept-close-window",
             "projects/concept-delivery-project",
-            "projects/report-project-buttons",
-            "end-to-end/opportunity-to-accountability#mermaid-2",
-            "end-to-end/project-to-delivery-kpi#mermaid-1",
             "projects/concepts/handover-and-close-out#mermaid-1",
+            "projects/report-project-buttons",
             "projects/workflows/close-out#mermaid-1",
             "projects/workflows/close-out#mermaid-2",
             "projects/workflows/handover#mermaid-2"
@@ -6724,11 +6728,11 @@
             "projects/appr-tag-orders",
             "projects/calc-tracking",
             "projects/concept-budget-tracking",
+            "projects/concepts/odoo-budget-and-cost-account#mermaid-1",
             "projects/pm-track-budget",
             "projects/report-over-budget",
             "projects/report-project-buttons",
             "projects/report-tracking-popup",
-            "projects/concepts/odoo-budget-and-cost-account#mermaid-1",
             "projects/workflows/budget-status#mermaid-1"
           ]
         },
@@ -6751,69 +6755,17 @@
             "projects/reports/project-at-a-glance"
           ],
           "illustrations": [
+            "end-to-end/project-to-delivery-kpi#mermaid-1",
             "projects/appr-tag-orders",
             "projects/concept-budget-tracking",
             "projects/concept-delivery-project",
+            "projects/concepts/odoo-budget-and-cost-account#mermaid-1",
+            "projects/index#mermaid-1",
             "projects/pm-link-project",
             "projects/pm-open-project",
             "projects/pm-track-budget",
             "projects/report-project-buttons",
-            "projects/report-tracking-popup",
-            "end-to-end/project-to-delivery-kpi#mermaid-1",
-            "projects/concepts/odoo-budget-and-cost-account#mermaid-1",
-            "projects/index#mermaid-1"
-          ]
-        },
-        "tritel_project_delivery:view_ext:project.edit_project:button:delivery-baseline": {
-          "kind": "view_ext",
-          "label": "Delivery baseline",
-          "file": "tritel_project_delivery/views/buttons_views.xml",
-          "pages": [
-            "projects/calculations/baseline-due",
-            "projects/concepts/approvals",
-            "projects/concepts/baselines",
-            "projects/how-to/approvers/approve-a-large-revision",
-            "projects/how-to/approvers/approve-dates",
-            "projects/how-to/approvers/remind-overdue-baselines",
-            "projects/how-to/delivery-pm/fix-a-returned-baseline",
-            "projects/how-to/delivery-pm/send-for-approval",
-            "projects/index",
-            "projects/reports/project-at-a-glance",
-            "projects/who-can-do-what",
-            "projects/workflows/baseline"
-          ],
-          "illustrations": [
-            "general/form-parts",
-            "projects/appr-approve-budget",
-            "projects/appr-approve-dates",
-            "projects/appr-md-approve",
-            "projects/appr-tag-orders",
-            "projects/calc-baseline-due",
-            "projects/concept-baseline-form",
-            "projects/concept-cost-items",
-            "projects/index#mermaid-1"
-          ]
-        },
-        "tritel_project_delivery:view_ext:project.edit_project:button:draft-baseline": {
-          "kind": "view_ext",
-          "label": "Draft Baseline",
-          "file": "tritel_project_delivery/views/project_views.xml",
-          "pages": [
-            "projects/concepts/cost-items-and-categories",
-            "projects/concepts/delivery-projects",
-            "projects/how-to/approvers/cost-types-and-categories",
-            "projects/how-to/delivery-pm/add-whole-orders",
-            "projects/how-to/delivery-pm/build-a-baseline",
-            "projects/how-to/delivery-pm/open-a-delivery-project",
-            "projects/how-to/delivery-pm/send-for-approval",
-            "projects/how-to/delivery-pm/set-dates-and-milestones",
-            "projects/index"
-          ],
-          "illustrations": [
-            "projects/pm-open-project",
-            "projects/pm-pay-months",
-            "projects/pm-spend-plan",
-            "projects/pm-whole-order"
+            "projects/report-tracking-popup"
           ]
         },
         "tritel_project_delivery:view_ext:project.edit_project:button:handover": {
@@ -6837,14 +6789,14 @@
           "illustrations": [
             "end-to-end/e2e-delivery-kpi-result",
             "end-to-end/e2e-oem-booking-score",
+            "end-to-end/opportunity-to-accountability#mermaid-2",
+            "end-to-end/project-to-delivery-kpi#mermaid-1",
             "general/form-parts",
             "projects/appr-approve-dates",
             "projects/appr-close-project",
             "projects/appr-confirm-handover",
             "projects/appr-costs-after-close",
             "projects/calc-close-result",
-            "end-to-end/opportunity-to-accountability#mermaid-2",
-            "end-to-end/project-to-delivery-kpi#mermaid-1",
             "projects/concepts/handover-and-close-out#mermaid-1",
             "projects/index#mermaid-1",
             "projects/index#mermaid-2",
@@ -6907,34 +6859,6 @@
             "projects/workflows/close-out#mermaid-2"
           ]
         },
-        "tritel_project_delivery:view_ext:project.edit_project:button:odoo-budget-lines": {
-          "kind": "view_ext",
-          "label": "Odoo budget lines",
-          "file": "tritel_project_delivery/views/buttons_views.xml",
-          "pages": [
-            "projects/calculations/budget-lines-and-phasing",
-            "projects/concepts/odoo-budget-and-cost-account",
-            "projects/how-to/approvers/delivery-settings",
-            "projects/reports/project-at-a-glance",
-            "projects/who-can-do-what"
-          ],
-          "illustrations": [
-            "projects/calc-odoo-budget-lines",
-            "projects/report-project-buttons"
-          ]
-        },
-        "tritel_project_delivery:view_ext:project.edit_project:button:open-baseline-in-progress": {
-          "kind": "view_ext",
-          "label": "Open Baseline in Progress",
-          "file": "tritel_project_delivery/views/project_views.xml",
-          "pages": [
-            "projects/concepts/delivery-projects",
-            "projects/how-to/delivery-pm/build-a-baseline",
-            "projects/how-to/delivery-pm/request-a-revision",
-            "projects/workflows/baseline"
-          ],
-          "illustrations": []
-        },
         "tritel_project_delivery:view_ext:project.edit_project:button:purchase-orders": {
           "kind": "view_ext",
           "label": "Purchase orders",
@@ -6950,10 +6874,10 @@
           "illustrations": [
             "end-to-end/e2e-oem-booking-score",
             "projects/concept-budget-tracking",
+            "projects/index#mermaid-1",
             "projects/pm-track-budget",
             "projects/report-project-buttons",
-            "projects/report-tracking-popup",
-            "projects/index#mermaid-1"
+            "projects/report-tracking-popup"
           ]
         },
         "tritel_project_delivery:view_ext:project.edit_project:button:record-handover": {
@@ -6972,8 +6896,8 @@
           "illustrations": [
             "general/form-parts",
             "projects/concept-delivery-project",
-            "projects/pm-my-actions",
             "projects/concepts/handover-and-close-out#mermaid-1",
+            "projects/pm-my-actions",
             "projects/workflows/handover#mermaid-1",
             "projects/workflows/handover#mermaid-2"
           ]
@@ -7016,9 +6940,9 @@
           ],
           "illustrations": [
             "projects/concept-delivery-project",
+            "projects/concepts/baselines#mermaid-1",
             "projects/pm-request-revision",
             "projects/report-over-budget",
-            "projects/concepts/baselines#mermaid-1",
             "projects/workflows/budget-status#mermaid-2"
           ]
         },
@@ -7070,9 +6994,9 @@
             "projects/who-can-do-what"
           ],
           "illustrations": [
-            "projects/report-project-buttons",
             "projects/concepts/odoo-budget-and-cost-account#mermaid-1",
-            "projects/index#mermaid-1"
+            "projects/index#mermaid-1",
+            "projects/report-project-buttons"
           ]
         },
         "tritel_project_delivery:view_ext:project.edit_project:button:won-tender": {
@@ -7092,13 +7016,13 @@
           ],
           "illustrations": [
             "end-to-end/e2e-won-tender-split",
+            "projects/index#mermaid-1",
             "projects/matrix-baselines",
             "projects/pm-link-project",
             "projects/pm-my-actions",
             "projects/pm-open-project",
             "projects/report-other-buttons",
-            "projects/report-project-buttons",
-            "projects/index#mermaid-1"
+            "projects/report-project-buttons"
           ]
         },
         "tritel_project_delivery:view_ext:project.edit_project:field:bills": {
@@ -7114,22 +7038,6 @@
             "projects/who-can-do-what"
           ],
           "illustrations": []
-        },
-        "tritel_project_delivery:view_ext:project.edit_project:field:odoo-budget-lines": {
-          "kind": "view_ext",
-          "label": "Odoo budget lines",
-          "file": "tritel_project_delivery/views/buttons_views.xml",
-          "pages": [
-            "projects/calculations/budget-lines-and-phasing",
-            "projects/concepts/odoo-budget-and-cost-account",
-            "projects/how-to/approvers/delivery-settings",
-            "projects/reports/project-at-a-glance",
-            "projects/who-can-do-what"
-          ],
-          "illustrations": [
-            "projects/calc-odoo-budget-lines",
-            "projects/report-project-buttons"
-          ]
         },
         "tritel_project_delivery:view_ext:project.edit_project:field:orders": {
           "kind": "view_ext",
@@ -7195,13 +7103,13 @@
             "board/b2-position-orders",
             "end-to-end/e2e-delivery-kpi-result",
             "end-to-end/e2e-oem-booking-score",
+            "end-to-end/index#mermaid-1",
+            "end-to-end/opportunity-to-accountability#mermaid-2",
+            "end-to-end/project-to-delivery-kpi#mermaid-1",
             "general/form-parts",
             "projects/appr-approve-budget",
             "projects/appr-approve-dates",
             "projects/appr-client-delay",
-            "end-to-end/index#mermaid-1",
-            "end-to-end/opportunity-to-accountability#mermaid-2",
-            "end-to-end/project-to-delivery-kpi#mermaid-1",
             "projects/index#mermaid-1",
             "projects/index#mermaid-2",
             "projects/workflows/baseline#mermaid-1"
@@ -7234,19 +7142,6 @@
             "projects/pm-request-revision",
             "projects/pm-track-budget",
             "projects/report-project-buttons"
-          ]
-        },
-        "tritel_project_delivery:view_ext:purchase.purchase_order_form:button:left-in-delivery-plan": {
-          "kind": "view_ext",
-          "label": "Left in delivery plan",
-          "file": "tritel_project_delivery/views/buttons_views.xml",
-          "pages": [
-            "projects/concepts/budget-tracking",
-            "projects/reports/project-at-a-glance",
-            "projects/workflows/budget-status"
-          ],
-          "illustrations": [
-            "projects/workflows/budget-status#mermaid-2"
           ]
         },
         "tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:add-delivery-project": {
@@ -7304,48 +7199,13 @@
             "projects/workflows/close-out"
           ],
           "illustrations": [
+            "end-to-end/opportunity-to-accountability#mermaid-2",
+            "end-to-end/project-to-delivery-kpi#mermaid-1",
+            "projects/index#mermaid-2",
             "projects/pm-link-project",
             "projects/pm-open-project",
-            "tenders/bid-attribute-tab",
-            "end-to-end/opportunity-to-accountability#mermaid-2",
-            "end-to-end/project-to-delivery-kpi#mermaid-1",
-            "projects/index#mermaid-2",
-            "projects/workflows/close-out#mermaid-1"
-          ]
-        },
-        "tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:field:delivery": {
-          "kind": "view_ext",
-          "label": "Delivery",
-          "file": "tritel_project_delivery/views/tender_views.xml",
-          "pages": [
-            "end-to-end/index",
-            "end-to-end/opportunity-to-accountability",
-            "end-to-end/project-to-delivery-kpi",
-            "projects/concepts/approvals",
-            "projects/concepts/delivery-projects",
-            "projects/how-to/delivery-pm/open-a-delivery-project",
-            "projects/index",
-            "projects/reports/project-at-a-glance",
-            "projects/who-can-do-what",
-            "projects/workflows/baseline",
-            "projects/workflows/close-out",
-            "projects/workflows/handover"
-          ],
-          "illustrations": [
-            "accountability/concept-share-of-score",
-            "board/b2-position-orders",
-            "end-to-end/e2e-delivery-kpi-result",
-            "end-to-end/e2e-oem-booking-score",
-            "general/form-parts",
-            "projects/appr-approve-budget",
-            "projects/appr-approve-dates",
-            "projects/appr-client-delay",
-            "end-to-end/index#mermaid-1",
-            "end-to-end/opportunity-to-accountability#mermaid-2",
-            "end-to-end/project-to-delivery-kpi#mermaid-1",
-            "projects/index#mermaid-1",
-            "projects/index#mermaid-2",
-            "projects/workflows/baseline#mermaid-1"
+            "projects/workflows/close-out#mermaid-1",
+            "tenders/bid-attribute-tab"
           ]
         },
         "tritel_project_delivery:wizard:delivery.close.wizard": {
@@ -7446,6 +7306,680 @@
             "projects/reports/project-at-a-glance"
           ],
           "illustrations": []
+        },
+        "tritel_project_delivery:cron:ir_cron_delivery_pm_roles": {
+          "kind": "cron",
+          "label": "Project Delivery: Project Manager role follows the projects",
+          "file": "tritel_project_delivery/data/delivery_access_data.xml",
+          "pages": [
+            "end-to-end/index",
+            "projects/how-to/delivery-pm/open-a-delivery-project",
+            "projects/menus",
+            "projects/who-can-do-what"
+          ],
+          "illustrations": [
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:cron:ir_cron_purchase_budget_status": {
+          "kind": "cron",
+          "label": "Purchase: refresh budget status of open orders",
+          "file": "tritel_project_delivery/data/purchase_budget_data.xml",
+          "pages": [
+            "end-to-end/index",
+            "projects/how-to/approvers/check-an-order-against-the-budget"
+          ],
+          "illustrations": []
+        },
+        "tritel_project_delivery:menu:menu_acc_project_budgets": {
+          "kind": "menu",
+          "label": "Project Budgets",
+          "file": "tritel_project_delivery/views/accounting_menus.xml",
+          "pages": [
+            "projects/menus",
+            "projects/who-can-do-what"
+          ],
+          "illustrations": [
+            "projects/matrix-baselines",
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_acc_pb_to_approve": {
+          "kind": "menu",
+          "label": "To approve",
+          "file": "tritel_project_delivery/views/accounting_menus.xml",
+          "pages": [
+            "projects/how-to/approvers/approve-budget",
+            "projects/menus"
+          ],
+          "illustrations": [
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_acc_pb_tracking": {
+          "kind": "menu",
+          "label": "Tracking",
+          "file": "tritel_project_delivery/views/accounting_menus.xml",
+          "pages": [
+            "projects/how-to/delivery-pm/track-the-budget",
+            "projects/menus"
+          ],
+          "illustrations": [
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_acc_pb_budgets_to_approve": {
+          "kind": "menu",
+          "label": "Budgets to Approve",
+          "file": "tritel_project_delivery/views/accounting_menus.xml",
+          "pages": [
+            "projects/how-to/approvers/approve-budget",
+            "projects/menus"
+          ],
+          "illustrations": [
+            "projects/matrix-baselines",
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_acc_pb_costs_after_close": {
+          "kind": "menu",
+          "label": "Costs After Close",
+          "file": "tritel_project_delivery/views/accounting_menus.xml",
+          "pages": [
+            "projects/how-to/approvers/review-costs-after-close",
+            "projects/menus"
+          ],
+          "illustrations": [
+            "projects/matrix-closeout-setup",
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_acc_pb_budget_vs_actual": {
+          "kind": "menu",
+          "label": "Budget vs Actual",
+          "file": "tritel_project_delivery/views/accounting_menus.xml",
+          "pages": [
+            "projects/how-to/delivery-pm/track-the-budget",
+            "projects/menus"
+          ],
+          "illustrations": [
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_acc_pb_budgets_plans": {
+          "kind": "menu",
+          "label": "Delivery Budgets",
+          "file": "tritel_project_delivery/views/accounting_menus.xml",
+          "pages": [
+            "projects/menus"
+          ],
+          "illustrations": [
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_acc_pb_config": {
+          "kind": "menu",
+          "label": "Project Budgets",
+          "file": "tritel_project_delivery/views/accounting_menus.xml",
+          "pages": [
+            "projects/how-to/approvers/delivery-settings",
+            "projects/menus"
+          ],
+          "illustrations": [
+            "projects/matrix-closeout-setup",
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_acc_pb_settings": {
+          "kind": "menu",
+          "label": "Delivery Settings",
+          "file": "tritel_project_delivery/views/accounting_menus.xml",
+          "pages": [
+            "projects/how-to/approvers/delivery-settings",
+            "projects/menus"
+          ],
+          "illustrations": [
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_acc_pb_categories": {
+          "kind": "menu",
+          "label": "Budget Categories",
+          "file": "tritel_project_delivery/views/accounting_menus.xml",
+          "pages": [
+            "projects/how-to/approvers/cost-types-and-categories",
+            "projects/menus"
+          ],
+          "illustrations": [
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_acc_pb_starter_items": {
+          "kind": "menu",
+          "label": "Starter Items",
+          "file": "tritel_project_delivery/views/accounting_menus.xml",
+          "pages": [
+            "projects/how-to/approvers/cost-types-and-categories",
+            "projects/menus"
+          ],
+          "illustrations": [
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:view_ext:project.edit_project:button:delivery-budget": {
+          "kind": "view_ext",
+          "label": "Delivery Budget",
+          "file": "tritel_project_delivery/views/buttons_views.xml",
+          "pages": [
+            "projects/calculations/baseline-due",
+            "projects/concepts/approvals",
+            "projects/concepts/baselines",
+            "projects/how-to/approvers/approve-a-large-revision",
+            "projects/how-to/approvers/approve-dates",
+            "projects/how-to/approvers/remind-overdue-baselines",
+            "projects/how-to/delivery-pm/fix-a-returned-baseline",
+            "projects/how-to/delivery-pm/send-for-approval",
+            "projects/index",
+            "projects/reports/project-at-a-glance",
+            "projects/who-can-do-what",
+            "projects/workflows/baseline"
+          ],
+          "illustrations": [
+            "general/form-parts",
+            "projects/appr-approve-budget",
+            "projects/appr-approve-dates",
+            "projects/appr-md-approve",
+            "projects/appr-tag-orders",
+            "projects/calc-baseline-due",
+            "projects/concept-baseline-form",
+            "projects/concept-cost-items"
+          ]
+        },
+        "tritel_project_delivery:view_ext:project.edit_project:button:accounting-budget-lines": {
+          "kind": "view_ext",
+          "label": "Accounting budget lines",
+          "file": "tritel_project_delivery/views/buttons_views.xml",
+          "pages": [
+            "projects/calculations/budget-lines-and-phasing",
+            "projects/concepts/odoo-budget-and-cost-account",
+            "projects/how-to/approvers/delivery-settings",
+            "projects/reports/project-at-a-glance",
+            "projects/who-can-do-what"
+          ],
+          "illustrations": [
+            "projects/calc-odoo-budget-lines",
+            "projects/report-project-buttons"
+          ]
+        },
+        "tritel_project_delivery:view_ext:project.edit_project:field:accounting-budget-lines": {
+          "kind": "view_ext",
+          "label": "Accounting budget lines",
+          "file": "tritel_project_delivery/views/buttons_views.xml",
+          "pages": [
+            "projects/calculations/budget-lines-and-phasing",
+            "projects/concepts/odoo-budget-and-cost-account",
+            "projects/how-to/approvers/delivery-settings",
+            "projects/reports/project-at-a-glance",
+            "projects/who-can-do-what"
+          ],
+          "illustrations": [
+            "projects/calc-odoo-budget-lines",
+            "projects/report-project-buttons"
+          ]
+        },
+        "tritel_project_delivery:view_ext:purchase.purchase_order_form:button:budget-available": {
+          "kind": "view_ext",
+          "label": "Budget Available",
+          "file": "tritel_project_delivery/views/buttons_views.xml",
+          "pages": [
+            "projects/concepts/budget-tracking",
+            "projects/how-to/approvers/check-an-order-against-the-budget",
+            "projects/reports/project-at-a-glance",
+            "projects/workflows/budget-status"
+          ],
+          "illustrations": [
+            "projects/appr-order-budget"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_acc_pb_cost_accounts_to_sort": {
+          "kind": "menu",
+          "label": "Cost Accounts to Sort Out",
+          "file": "tritel_project_delivery/views/cost_account_sort_views.xml",
+          "pages": [
+            "projects/how-to/approvers/sort-out-cost-accounts",
+            "projects/menus"
+          ],
+          "illustrations": [
+            "projects/appr-sort-cost-accounts",
+            "projects/matrix-closeout-setup",
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_delivery_cost_accounts_to_sort": {
+          "kind": "menu",
+          "label": "Cost Accounts to Sort Out",
+          "file": "tritel_project_delivery/views/cost_account_sort_views.xml",
+          "pages": [
+            "projects/how-to/approvers/sort-out-cost-accounts",
+            "projects/menus"
+          ],
+          "illustrations": [
+            "projects/appr-sort-cost-accounts",
+            "projects/matrix-closeout-setup",
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_delivery_sec_approve": {
+          "kind": "menu",
+          "label": "To approve",
+          "file": "tritel_project_delivery/views/menus.xml",
+          "pages": [
+            "projects/how-to/approvers/approve-budget",
+            "projects/menus"
+          ],
+          "illustrations": [
+            "projects/matrix-baselines",
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_delivery_sec_projects": {
+          "kind": "menu",
+          "label": "Projects",
+          "file": "tritel_project_delivery/views/menus.xml",
+          "pages": [
+            "projects/index",
+            "projects/menus"
+          ],
+          "illustrations": [
+            "projects/matrix-baselines",
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_delivery_my_projects": {
+          "kind": "menu",
+          "label": "My Delivery Projects",
+          "file": "tritel_project_delivery/views/menus.xml",
+          "pages": [
+            "projects/how-to/delivery-pm/build-a-baseline",
+            "projects/menus"
+          ],
+          "illustrations": [
+            "projects/matrix-baselines",
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_delivery_my_submissions": {
+          "kind": "menu",
+          "label": "My Submissions",
+          "file": "tritel_project_delivery/views/menus.xml",
+          "pages": [
+            "projects/how-to/delivery-pm/send-for-approval",
+            "projects/menus"
+          ],
+          "illustrations": [
+            "projects/matrix-baselines",
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:view_ext:project.edit_project:button:correct-code": {
+          "kind": "view_ext",
+          "label": "Correct Code",
+          "file": "tritel_project_delivery/views/project_code_views.xml",
+          "pages": [
+            "projects/concepts/project-codes",
+            "projects/how-to/approvers/correct-a-project-code"
+          ],
+          "illustrations": [
+            "projects/appr-correct-code"
+          ]
+        },
+        "tritel_project_delivery:view_ext:project.view_project_project_filter:field:project-code": {
+          "kind": "view_ext",
+          "label": "Project code",
+          "file": "tritel_project_delivery/views/project_code_views.xml",
+          "pages": [
+            "projects/concepts/project-codes"
+          ],
+          "illustrations": [
+            "projects/concept-project-codes"
+          ]
+        },
+        "tritel_project_delivery:view_ext:project.edit_project:button:draft-budget": {
+          "kind": "view_ext",
+          "label": "Draft Budget",
+          "file": "tritel_project_delivery/views/project_views.xml",
+          "pages": [
+            "projects/concepts/cost-items-and-categories",
+            "projects/concepts/delivery-projects",
+            "projects/how-to/approvers/cost-types-and-categories",
+            "projects/how-to/delivery-pm/add-whole-orders",
+            "projects/how-to/delivery-pm/build-a-baseline",
+            "projects/how-to/delivery-pm/open-a-delivery-project",
+            "projects/how-to/delivery-pm/send-for-approval",
+            "projects/how-to/delivery-pm/set-dates-and-milestones",
+            "projects/index"
+          ],
+          "illustrations": [
+            "projects/pm-open-project",
+            "projects/pm-pay-months",
+            "projects/pm-spend-plan",
+            "projects/pm-whole-order"
+          ]
+        },
+        "tritel_project_delivery:view_ext:project.edit_project:button:open-budget-in-progress": {
+          "kind": "view_ext",
+          "label": "Open Budget in Progress",
+          "file": "tritel_project_delivery/views/project_views.xml",
+          "pages": [
+            "projects/concepts/delivery-projects",
+            "projects/how-to/delivery-pm/build-a-baseline",
+            "projects/how-to/delivery-pm/request-a-revision",
+            "projects/workflows/baseline"
+          ],
+          "illustrations": []
+        },
+        "tritel_project_delivery:menu:menu_purchase_budget_commitments": {
+          "kind": "menu",
+          "label": "Budget Commitments",
+          "file": "tritel_project_delivery/views/purchase_budget_views.xml",
+          "pages": [
+            "projects/menus",
+            "projects/reports/budget-commitments"
+          ],
+          "illustrations": [
+            "projects/matrix-menus",
+            "projects/report-budget-commitments"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_acc_pb_commitments": {
+          "kind": "menu",
+          "label": "Budget Commitments",
+          "file": "tritel_project_delivery/views/purchase_budget_views.xml",
+          "pages": [
+            "projects/menus",
+            "projects/reports/budget-commitments"
+          ],
+          "illustrations": [
+            "projects/matrix-closeout-setup",
+            "projects/matrix-menus",
+            "projects/report-budget-commitments"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_delivery_budget_commitments": {
+          "kind": "menu",
+          "label": "Budget Commitments",
+          "file": "tritel_project_delivery/views/purchase_budget_views.xml",
+          "pages": [
+            "projects/menus",
+            "projects/reports/budget-commitments"
+          ],
+          "illustrations": [
+            "projects/matrix-closeout-setup",
+            "projects/matrix-menus",
+            "projects/report-budget-commitments"
+          ]
+        },
+        "tritel_project_delivery:view_ext:account_budget.crossovered_budget_view_form:button:action-open-committed": {
+          "kind": "view_ext",
+          "label": "action_open_committed",
+          "file": "tritel_project_delivery/views/purchase_budget_views.xml",
+          "pages": [
+            "projects/calculations/purchase-commitments"
+          ],
+          "illustrations": [
+            "projects/calc-budget-line-columns"
+          ]
+        },
+        "tritel_project_delivery:view_ext:account_budget.crossovered_budget_view_form:button:action-open-draft": {
+          "kind": "view_ext",
+          "label": "action_open_draft",
+          "file": "tritel_project_delivery/views/purchase_budget_views.xml",
+          "pages": [
+            "projects/calculations/purchase-commitments"
+          ],
+          "illustrations": [
+            "projects/calc-budget-line-columns"
+          ]
+        },
+        "tritel_project_delivery:view_ext:account_budget.view_crossovered_budget_line_tree:button:action-open-committed": {
+          "kind": "view_ext",
+          "label": "action_open_committed",
+          "file": "tritel_project_delivery/views/purchase_budget_views.xml",
+          "pages": [
+            "projects/calculations/purchase-commitments"
+          ],
+          "illustrations": [
+            "projects/calc-budget-line-columns"
+          ]
+        },
+        "tritel_project_delivery:view_ext:purchase.purchase_order_form:field:budget": {
+          "kind": "view_ext",
+          "label": "Budget",
+          "file": "tritel_project_delivery/views/purchase_budget_views.xml",
+          "pages": [
+            "projects/how-to/approvers/check-an-order-against-the-budget"
+          ],
+          "illustrations": [
+            "projects/appr-order-budget"
+          ]
+        },
+        "tritel_project_delivery:view_ext:purchase.purchase_order_form:page:budget-impact": {
+          "kind": "view_ext",
+          "label": "Budget impact",
+          "file": "tritel_project_delivery/views/purchase_budget_views.xml",
+          "pages": [
+            "projects/how-to/approvers/check-an-order-against-the-budget"
+          ],
+          "illustrations": [
+            "projects/appr-order-budget"
+          ]
+        },
+        "tritel_project_delivery:view_ext:purchase.purchase_order_form:button:assign-cost-accounts": {
+          "kind": "view_ext",
+          "label": "Assign Cost Accounts",
+          "file": "tritel_project_delivery/wizards/assign_cost_accounts_views.xml",
+          "pages": [
+            "projects/how-to/approvers/assign-cost-accounts",
+            "projects/how-to/approvers/tag-orders-to-a-project"
+          ],
+          "illustrations": [
+            "projects/appr-assign-cost-accounts"
+          ]
+        },
+        "tritel_project_delivery:field:project.project.code": {
+          "kind": "field",
+          "label": "Project code",
+          "file": "tritel_project_delivery/models/project_code.py",
+          "pages": [
+            "projects/concepts/delivery-projects",
+            "projects/concepts/project-codes"
+          ],
+          "illustrations": [
+            "projects/appr-correct-code",
+            "projects/concept-project-codes"
+          ]
+        },
+        "tritel_project_delivery:field:account.analytic.account.delivery_line_count": {
+          "kind": "field",
+          "label": "Cost lines",
+          "file": "tritel_project_delivery/models/project_code.py",
+          "pages": [
+            "projects/how-to/approvers/sort-out-cost-accounts"
+          ],
+          "illustrations": [
+            "projects/appr-sort-cost-accounts"
+          ]
+        },
+        "tritel_project_delivery:field:account.analytic.account.delivery_line_total": {
+          "kind": "field",
+          "label": "Total",
+          "file": "tritel_project_delivery/models/project_code.py",
+          "pages": [
+            "projects/how-to/approvers/sort-out-cost-accounts"
+          ],
+          "illustrations": [
+            "projects/appr-sort-cost-accounts"
+          ]
+        },
+        "tritel_project_delivery:field:account.analytic.account.delivery_last_used": {
+          "kind": "field",
+          "label": "Last used",
+          "file": "tritel_project_delivery/models/project_code.py",
+          "pages": [
+            "projects/how-to/approvers/sort-out-cost-accounts"
+          ],
+          "illustrations": [
+            "projects/appr-sort-cost-accounts"
+          ]
+        },
+        "tritel_project_delivery:selection:purchase.order.line.budget_flag": {
+          "kind": "selection",
+          "label": "Budget",
+          "file": "tritel_project_delivery/models/purchase_budget.py",
+          "pages": [
+            "projects/how-to/approvers/check-an-order-against-the-budget"
+          ],
+          "illustrations": [
+            "projects/appr-order-budget"
+          ]
+        },
+        "tritel_project_delivery:field:purchase.order.budget_impact_html": {
+          "kind": "field",
+          "label": "Budget impact",
+          "file": "tritel_project_delivery/models/purchase_budget.py",
+          "pages": [
+            "projects/how-to/approvers/check-an-order-against-the-budget"
+          ],
+          "illustrations": [
+            "projects/appr-order-budget"
+          ]
+        },
+        "tritel_project_delivery:selection:purchase.order.budget_status": {
+          "kind": "selection",
+          "label": "Budget status",
+          "file": "tritel_project_delivery/models/purchase_budget.py",
+          "pages": [
+            "projects/concepts/budget-tracking",
+            "projects/how-to/approvers/check-an-order-against-the-budget"
+          ],
+          "illustrations": [
+            "projects/appr-order-budget"
+          ]
+        },
+        "tritel_project_delivery:field:crossovered.budget.lines.committed_amount": {
+          "kind": "field",
+          "label": "Committed",
+          "file": "tritel_project_delivery/models/purchase_budget.py",
+          "pages": [
+            "projects/calculations/purchase-commitments",
+            "projects/concepts/odoo-budget-and-cost-account"
+          ],
+          "illustrations": [
+            "projects/calc-budget-line-columns",
+            "projects/calc-purchase-commitments"
+          ]
+        },
+        "tritel_project_delivery:field:crossovered.budget.lines.draft_amount": {
+          "kind": "field",
+          "label": "Draft",
+          "file": "tritel_project_delivery/models/purchase_budget.py",
+          "pages": [
+            "projects/calculations/purchase-commitments"
+          ],
+          "illustrations": [
+            "projects/calc-budget-line-columns",
+            "projects/calc-purchase-commitments"
+          ]
+        },
+        "tritel_project_delivery:field:crossovered.budget.lines.available_amount": {
+          "kind": "field",
+          "label": "Available",
+          "file": "tritel_project_delivery/models/purchase_budget.py",
+          "pages": [
+            "projects/calculations/purchase-commitments"
+          ],
+          "illustrations": [
+            "projects/calc-budget-line-columns",
+            "projects/calc-purchase-commitments"
+          ]
+        },
+        "tritel_project_delivery:field:crossovered.budget.lines.used_pct": {
+          "kind": "field",
+          "label": "Used (%)",
+          "file": "tritel_project_delivery/models/purchase_budget.py",
+          "pages": [
+            "projects/calculations/purchase-commitments"
+          ],
+          "illustrations": [
+            "projects/calc-budget-line-columns",
+            "projects/calc-purchase-commitments"
+          ]
+        },
+        "tritel_project_delivery:model:purchase.budget.commitment": {
+          "kind": "model",
+          "label": "Budget Commitments",
+          "file": "tritel_project_delivery/models/purchase_budget.py",
+          "pages": [
+            "projects/reports/budget-commitments"
+          ],
+          "illustrations": [
+            "projects/report-budget-commitments"
+          ]
+        },
+        "tritel_project_delivery:selection:purchase.budget.commitment.state": {
+          "kind": "selection",
+          "label": "state",
+          "file": "tritel_project_delivery/models/purchase_budget.py",
+          "pages": [
+            "projects/reports/budget-commitments"
+          ],
+          "illustrations": [
+            "projects/report-budget-commitments"
+          ]
+        },
+        "tritel_project_delivery:wizard:purchase.assign.cost.accounts.split": {
+          "kind": "wizard",
+          "label": "Assign Cost Accounts: split",
+          "file": "tritel_project_delivery/wizards/assign_cost_accounts.py",
+          "pages": [
+            "projects/how-to/approvers/assign-cost-accounts"
+          ],
+          "illustrations": [
+            "projects/appr-assign-cost-accounts"
+          ]
+        },
+        "tritel_project_delivery:wizard:purchase.assign.cost.accounts": {
+          "kind": "wizard",
+          "label": "Assign Cost Accounts",
+          "file": "tritel_project_delivery/wizards/assign_cost_accounts.py",
+          "pages": [
+            "projects/how-to/approvers/assign-cost-accounts"
+          ],
+          "illustrations": [
+            "projects/appr-assign-cost-accounts"
+          ]
+        },
+        "tritel_project_delivery:wizard:project.code.correct": {
+          "kind": "wizard",
+          "label": "Correct a project code",
+          "file": "tritel_project_delivery/wizards/correct_project_code.py",
+          "pages": [
+            "projects/how-to/approvers/correct-a-project-code"
+          ],
+          "illustrations": [
+            "projects/appr-correct-code"
+          ]
+        },
+        "tritel_project_delivery:wizard:delivery.cost.account.sort": {
+          "kind": "wizard",
+          "label": "Sort out a cost account",
+          "file": "tritel_project_delivery/wizards/cost_account_sort.py",
+          "pages": [
+            "projects/how-to/approvers/sort-out-cost-accounts"
+          ],
+          "illustrations": [
+            "projects/appr-sort-cost-accounts"
+          ]
         }
       },
       "excluded": {
@@ -7475,8 +8009,8 @@
       "addons_path": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "repo_root": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "track_ref": "origin/16.0",
-      "last_synced_commit": "83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02",
-      "last_synced_at": "2026-11-17T19:15:37+00:00",
+      "last_synced_commit": "5d691a8dca6440f5aae8679f6ab7c74dbc0de07a",
+      "last_synced_at": "2026-11-19T14:09:14+00:00",
       "pages_dir": "src/content/docs/tenders",
       "items": {
         "crm_tender:field:hr.employee.certification_count": {
@@ -7596,13 +8130,13 @@
             "tenders/workflows/tender-status"
           ],
           "illustrations": [
+            "tenders/concepts/business-cases#mermaid-1",
+            "tenders/concepts/customer-activities#mermaid-1",
             "tenders/matrix-bid-desk",
             "tenders/matrix-channel",
             "tenders/matrix-customers",
             "tenders/matrix-summaries",
             "tenders/matrix-tenders",
-            "tenders/concepts/business-cases#mermaid-1",
-            "tenders/concepts/customer-activities#mermaid-1",
             "tenders/workflows/business-case#mermaid-1",
             "tenders/workflows/business-case#mermaid-2",
             "tenders/workflows/quality-and-disqualification#mermaid-1",
@@ -7683,10 +8217,14 @@
             "tenders/workflows/tender-status"
           ],
           "illustrations": [
+            "end-to-end/customer-activity-to-coverage#mermaid-1",
             "end-to-end/e2e-bid-quality-quarter",
             "end-to-end/e2e-delivery-kpi-result",
             "end-to-end/e2e-revenue-target-score",
             "end-to-end/e2e-won-tender-split",
+            "end-to-end/oem-booking-to-revenue-target#mermaid-1",
+            "end-to-end/opportunity-to-accountability#mermaid-2",
+            "end-to-end/project-to-delivery-kpi#mermaid-1",
             "tenders/bid-attribute-form",
             "tenders/bid-attribute-tab",
             "tenders/bid-business-case",
@@ -7708,6 +8246,7 @@
             "tenders/calc-bid-compliance",
             "tenders/ch-compliance",
             "tenders/ch-oem-form",
+            "tenders/channel/booking-workflow#mermaid-1",
             "tenders/concept-account-ownership",
             "tenders/concept-bid-quality-tab",
             "tenders/concept-business-case",
@@ -7718,6 +8257,10 @@
             "tenders/concept-summary-workspace",
             "tenders/concept-tender-board",
             "tenders/concept-tender-team",
+            "tenders/concepts/customer-activities#mermaid-1",
+            "tenders/concepts/market-coverage#mermaid-1",
+            "tenders/concepts/must-win-and-bid-quality#mermaid-1",
+            "tenders/concepts/roles-on-a-tender#mermaid-1",
             "tenders/ct-achievement-split",
             "tenders/ct-stage-scores",
             "tenders/ct-target-period",
@@ -7743,15 +8286,6 @@
             "tenders/matrix-customers",
             "tenders/matrix-summaries",
             "tenders/matrix-tenders",
-            "end-to-end/customer-activity-to-coverage#mermaid-1",
-            "end-to-end/oem-booking-to-revenue-target#mermaid-1",
-            "end-to-end/opportunity-to-accountability#mermaid-2",
-            "end-to-end/project-to-delivery-kpi#mermaid-1",
-            "tenders/channel/booking-workflow#mermaid-1",
-            "tenders/concepts/customer-activities#mermaid-1",
-            "tenders/concepts/market-coverage#mermaid-1",
-            "tenders/concepts/must-win-and-bid-quality#mermaid-1",
-            "tenders/concepts/roles-on-a-tender#mermaid-1",
             "tenders/workflows/bid-readiness#mermaid-2",
             "tenders/workflows/business-case#mermaid-2",
             "tenders/workflows/customer-activity#mermaid-3",
@@ -7942,13 +8476,13 @@
           ],
           "illustrations": [
             "end-to-end/e2e-oem-booking-score",
+            "end-to-end/index#mermaid-1",
             "tenders/ch-book-oem-purchases",
             "tenders/ch-cancelled-order",
             "tenders/ch-learning",
             "tenders/ch-oem-form",
             "tenders/ch-untagged-purchases",
-            "tenders/matrix-channel",
-            "end-to-end/index#mermaid-1"
+            "tenders/matrix-channel"
           ]
         },
         "crm_tender:menu:menu_crm_untagged_purchases": {
@@ -7965,13 +8499,13 @@
             "tenders/who-can-do-what"
           ],
           "illustrations": [
+            "end-to-end/oem-booking-to-revenue-target#mermaid-1",
             "tenders/ch-book-oem-purchases",
             "tenders/ch-cancelled-order",
             "tenders/ch-oem-form",
             "tenders/ch-untagged-purchases",
-            "tenders/matrix-channel",
-            "end-to-end/oem-booking-to-revenue-target#mermaid-1",
-            "tenders/channel/index#mermaid-1"
+            "tenders/channel/index#mermaid-1",
+            "tenders/matrix-channel"
           ]
         },
         "crm_tender:menu:menu_distributors": {
@@ -7993,8 +8527,8 @@
             "tenders/ch-learning",
             "tenders/ch-oem-form",
             "tenders/ch-untagged-purchases",
-            "tenders/matrix-channel",
-            "tenders/channel/index#mermaid-1"
+            "tenders/channel/index#mermaid-1",
+            "tenders/matrix-channel"
           ]
         },
         "crm_tender:menu:menu_hr_oem_certifications": {
@@ -8013,8 +8547,8 @@
             "tenders/ch-learning",
             "tenders/ch-oem-form",
             "tenders/ch-untagged-purchases",
-            "tenders/matrix-channel",
-            "tenders/channel/index#mermaid-1"
+            "tenders/channel/index#mermaid-1",
+            "tenders/matrix-channel"
           ]
         },
         "crm_tender:menu:menu_learning_stages": {
@@ -8042,8 +8576,8 @@
             "tenders/ch-learning",
             "tenders/ch-oem-form",
             "tenders/ch-untagged-purchases",
-            "tenders/matrix-channel",
-            "tenders/channel/index#mermaid-1"
+            "tenders/channel/index#mermaid-1",
+            "tenders/matrix-channel"
           ]
         },
         "crm_tender:menu:menu_oem_courses": {
@@ -8056,8 +8590,8 @@
             "tenders/channel/oems-and-distributors"
           ],
           "illustrations": [
-            "tenders/matrix-channel",
-            "tenders/channel/index#mermaid-1"
+            "tenders/channel/index#mermaid-1",
+            "tenders/matrix-channel"
           ]
         },
         "crm_tender:menu:menu_oem_learnings": {
@@ -8333,9 +8867,9 @@
           ],
           "illustrations": [
             "tenders/ch-oem-form",
+            "tenders/channel/index#mermaid-1",
             "tenders/concept-account-ownership",
-            "tenders/cust-account-ownership",
-            "tenders/channel/index#mermaid-1"
+            "tenders/cust-account-ownership"
           ]
         },
         "crm_tender:selection:crm.oem.booking.state": {
@@ -8370,11 +8904,11 @@
           ],
           "illustrations": [
             "end-to-end/e2e-oem-booking-score",
+            "end-to-end/oem-booking-to-revenue-target#mermaid-1",
             "tenders/bid-must-win",
             "tenders/calc-oem-revenue-window",
             "tenders/ch-book-oem-purchases",
             "tenders/ch-cancelled-order",
-            "end-to-end/oem-booking-to-revenue-target#mermaid-1",
             "tenders/channel/booking-workflow#mermaid-1",
             "tenders/channel/index#mermaid-1",
             "tenders/index#mermaid-2"
@@ -8431,9 +8965,9 @@
           ],
           "illustrations": [
             "tenders/ch-oem-form",
+            "tenders/channel/index#mermaid-1",
             "tenders/concept-account-ownership",
-            "tenders/cust-account-ownership",
-            "tenders/channel/index#mermaid-1"
+            "tenders/cust-account-ownership"
           ]
         },
         "crm_tender:selection:crm.tag.tag_type": {
@@ -8511,8 +9045,8 @@
           ],
           "illustrations": [
             "tenders/ch-vendor-opportunities",
-            "tenders/matrix-channel",
-            "tenders/channel/index#mermaid-1"
+            "tenders/channel/index#mermaid-1",
+            "tenders/matrix-channel"
           ]
         },
         "crm_tender:wizard:crm.oem.booking.add.lines": {
@@ -8662,14 +9196,14 @@
             "tenders/workflows/customer-activity"
           ],
           "illustrations": [
+            "end-to-end/index#mermaid-1",
             "tenders/bid-attribute-tab",
             "tenders/concept-customer-activities",
             "tenders/cust-activities-heatmap",
             "tenders/cust-activities-timeline",
             "tenders/cust-touch-log",
             "tenders/cust-touch-planned",
-            "tenders/matrix-customers",
-            "end-to-end/index#mermaid-1"
+            "tenders/matrix-customers"
           ]
         },
         "tritel_tender_tracker:cron:ir_cron_bid_quality_reminders": {
@@ -9374,6 +9908,8 @@
             "tenders/concept-account-ownership",
             "tenders/concept-prequalification-form",
             "tenders/concept-tender-team",
+            "tenders/concepts/market-coverage#mermaid-1",
+            "tenders/concepts/roles-on-a-tender#mermaid-1",
             "tenders/ct-achievement-split",
             "tenders/ct-stage-scores",
             "tenders/cust-account-ownership",
@@ -9386,8 +9922,6 @@
             "tenders/matrix-customers",
             "tenders/matrix-summaries",
             "tenders/matrix-tenders",
-            "tenders/concepts/market-coverage#mermaid-1",
-            "tenders/concepts/roles-on-a-tender#mermaid-1",
             "tenders/workflows/business-case#mermaid-2",
             "tenders/workflows/customer-activity#mermaid-3",
             "tenders/workflows/prequalification#mermaid-2",
@@ -9443,13 +9977,13 @@
             "tenders/workflows/tender-status"
           ],
           "illustrations": [
+            "tenders/concepts/business-cases#mermaid-1",
+            "tenders/concepts/customer-activities#mermaid-1",
             "tenders/matrix-bid-desk",
             "tenders/matrix-channel",
             "tenders/matrix-customers",
             "tenders/matrix-summaries",
             "tenders/matrix-tenders",
-            "tenders/concepts/business-cases#mermaid-1",
-            "tenders/concepts/customer-activities#mermaid-1",
             "tenders/workflows/business-case#mermaid-1",
             "tenders/workflows/business-case#mermaid-2",
             "tenders/workflows/quality-and-disqualification#mermaid-1",
@@ -9501,8 +10035,10 @@
             "tenders/workflows/tender-status"
           ],
           "illustrations": [
+            "end-to-end/bid-desk-to-bid-kpis#mermaid-1",
             "end-to-end/e2e-bid-quality-quarter",
             "end-to-end/e2e-won-tender-split",
+            "end-to-end/opportunity-to-accountability#mermaid-1",
             "tenders/bid-attribute-tab",
             "tenders/bid-confirm-bid",
             "tenders/bid-create-tender",
@@ -9519,17 +10055,15 @@
             "tenders/concept-fair-workload",
             "tenders/concept-readiness-tab",
             "tenders/concept-tender-team",
+            "tenders/concepts/must-win-and-bid-quality#mermaid-1",
+            "tenders/concepts/roles-on-a-tender#mermaid-1",
             "tenders/ct-achievement-split",
             "tenders/cust-activities-heatmap",
+            "tenders/index#mermaid-1",
             "tenders/matrix-bid-desk",
             "tenders/matrix-customers",
             "tenders/matrix-summaries",
             "tenders/matrix-tenders",
-            "end-to-end/bid-desk-to-bid-kpis#mermaid-1",
-            "end-to-end/opportunity-to-accountability#mermaid-1",
-            "tenders/concepts/must-win-and-bid-quality#mermaid-1",
-            "tenders/concepts/roles-on-a-tender#mermaid-1",
-            "tenders/index#mermaid-1",
             "tenders/workflows/bid-readiness#mermaid-1",
             "tenders/workflows/bid-readiness#mermaid-2",
             "tenders/workflows/prequalification#mermaid-2",
@@ -9573,11 +10107,11 @@
             "tenders/workflows/tender-status"
           ],
           "illustrations": [
+            "tenders/concepts/roles-on-a-tender#mermaid-1",
             "tenders/matrix-bid-desk",
             "tenders/matrix-customers",
             "tenders/matrix-summaries",
             "tenders/matrix-tenders",
-            "tenders/concepts/roles-on-a-tender#mermaid-1",
             "tenders/workflows/project-summary#mermaid-2",
             "tenders/workflows/tender-status#mermaid-2"
           ]
@@ -9631,13 +10165,13 @@
           ],
           "illustrations": [
             "tenders/bid-business-case-approve",
+            "tenders/concepts/business-cases#mermaid-1",
+            "tenders/concepts/customer-activities#mermaid-1",
+            "tenders/concepts/roles-on-a-tender#mermaid-1",
             "tenders/matrix-bid-desk",
             "tenders/matrix-customers",
             "tenders/matrix-summaries",
             "tenders/matrix-tenders",
-            "tenders/concepts/business-cases#mermaid-1",
-            "tenders/concepts/customer-activities#mermaid-1",
-            "tenders/concepts/roles-on-a-tender#mermaid-1",
             "tenders/workflows/business-case#mermaid-1",
             "tenders/workflows/business-case#mermaid-2",
             "tenders/workflows/customer-activity#mermaid-2",
@@ -10012,14 +10546,14 @@
             "tenders/workflows/customer-activity"
           ],
           "illustrations": [
+            "end-to-end/index#mermaid-1",
             "tenders/bid-attribute-tab",
             "tenders/concept-customer-activities",
             "tenders/cust-activities-heatmap",
             "tenders/cust-activities-timeline",
             "tenders/cust-touch-log",
             "tenders/cust-touch-planned",
-            "tenders/matrix-customers",
-            "end-to-end/index#mermaid-1"
+            "tenders/matrix-customers"
           ]
         },
         "tritel_tender_tracker:menu:menu_market_coverage": {
@@ -10129,8 +10663,8 @@
             "tenders/configuration"
           ],
           "illustrations": [
-            "tenders/ct-target-period",
-            "tenders/commercial-targets/index#mermaid-1"
+            "tenders/commercial-targets/index#mermaid-1",
+            "tenders/ct-target-period"
           ]
         },
         "tritel_tender_tracker:menu:menu_target_root": {
@@ -10204,6 +10738,7 @@
             "tenders/workflows/tender-status"
           ],
           "illustrations": [
+            "end-to-end/bid-desk-to-bid-kpis#mermaid-1",
             "end-to-end/e2e-won-tender-split",
             "tenders/bid-attribute-form",
             "tenders/bid-attribute-tab",
@@ -10215,7 +10750,6 @@
             "tenders/matrix-customers",
             "tenders/matrix-summaries",
             "tenders/matrix-tenders",
-            "end-to-end/bid-desk-to-bid-kpis#mermaid-1",
             "tenders/workflows/bid-readiness#mermaid-1",
             "tenders/workflows/project-summary#mermaid-2",
             "tenders/workflows/tender-status#mermaid-2"
@@ -10473,11 +11007,11 @@
             "tenders/who-can-do-what"
           ],
           "illustrations": [
+            "tenders/concepts/project-summaries#mermaid-1",
             "tenders/cust-library-reader",
             "tenders/cust-marketing-export",
             "tenders/cust-summary-tracker",
-            "tenders/matrix-summaries",
-            "tenders/concepts/project-summaries#mermaid-1"
+            "tenders/matrix-summaries"
           ]
         },
         "tritel_tender_tracker:menu:menu_tender_summary_tracker": {
@@ -10498,12 +11032,12 @@
           "illustrations": [
             "tenders/bid-my-actions",
             "tenders/concept-summary-workspace",
+            "tenders/concepts/the-portal#mermaid-1",
             "tenders/cust-summary-portal-write",
             "tenders/cust-summary-reopen",
             "tenders/cust-summary-request",
             "tenders/cust-summary-tracker",
-            "tenders/matrix-summaries",
-            "tenders/concepts/the-portal#mermaid-1"
+            "tenders/matrix-summaries"
           ]
         },
         "tritel_tender_tracker:menu:menu_tenders_section": {
@@ -10605,6 +11139,7 @@
             "tenders/bid-result-lost",
             "tenders/bid-result-won",
             "tenders/ch-compliance",
+            "tenders/commercial-targets/index#mermaid-1",
             "tenders/concept-account-ownership",
             "tenders/concept-bid-quality-tab",
             "tenders/concept-business-case",
@@ -10615,6 +11150,8 @@
             "tenders/concept-summary-workspace",
             "tenders/concept-tender-board",
             "tenders/concept-tender-team",
+            "tenders/concepts/market-coverage#mermaid-1",
+            "tenders/concepts/the-portal#mermaid-1",
             "tenders/ct-target-period",
             "tenders/cust-account-ownership",
             "tenders/cust-activities-heatmap",
@@ -10635,10 +11172,7 @@
             "tenders/cust-summary-write",
             "tenders/cust-touch-log",
             "tenders/cust-touch-planned",
-            "tenders/matrix-tenders",
-            "tenders/commercial-targets/index#mermaid-1",
-            "tenders/concepts/market-coverage#mermaid-1",
-            "tenders/concepts/the-portal#mermaid-1"
+            "tenders/matrix-tenders"
           ]
         },
         "tritel_tender_tracker:menu:reporting_menu": {
@@ -10914,13 +11448,13 @@
             "end-to-end/e2e-won-tender-split",
             "tenders/bid-attribute-form",
             "tenders/bid-attribute-tab",
+            "tenders/commercial-targets/index#mermaid-1",
             "tenders/ct-achievement-split",
             "tenders/ct-stage-scores",
             "tenders/ct-target-period",
             "tenders/cust-classify-accounts",
             "tenders/cust-coverage-overview",
             "tenders/matrix-customers",
-            "tenders/commercial-targets/index#mermaid-1",
             "tenders/workflows/customer-activity#mermaid-2",
             "tenders/workflows/customer-activity#mermaid-3"
           ]
@@ -11073,7 +11607,12 @@
             "tenders/workflows/tender-status"
           ],
           "illustrations": [
+            "end-to-end/bid-desk-to-bid-kpis#mermaid-1",
+            "end-to-end/customer-activity-to-coverage#mermaid-1",
             "end-to-end/e2e-won-tender-split",
+            "end-to-end/index#mermaid-1",
+            "end-to-end/opportunity-to-accountability#mermaid-1",
+            "end-to-end/project-to-delivery-kpi#mermaid-1",
             "tenders/bid-attribute-form",
             "tenders/bid-attribute-tab",
             "tenders/bid-business-case",
@@ -11098,6 +11637,7 @@
             "tenders/calc-fair-workload-reassign",
             "tenders/calc-quality-score",
             "tenders/ch-compliance",
+            "tenders/commercial-targets/index#mermaid-1",
             "tenders/concept-account-ownership",
             "tenders/concept-bid-quality-tab",
             "tenders/concept-business-case",
@@ -11108,6 +11648,13 @@
             "tenders/concept-summary-workspace",
             "tenders/concept-tender-board",
             "tenders/concept-tender-team",
+            "tenders/concepts/business-cases#mermaid-1",
+            "tenders/concepts/customer-activities#mermaid-1",
+            "tenders/concepts/market-coverage#mermaid-1",
+            "tenders/concepts/opportunities-and-tenders#mermaid-1",
+            "tenders/concepts/prequalifications#mermaid-1",
+            "tenders/concepts/roles-on-a-tender#mermaid-1",
+            "tenders/concepts/the-portal#mermaid-1",
             "tenders/ct-achievement-split",
             "tenders/ct-target-period",
             "tenders/cust-account-ownership",
@@ -11128,25 +11675,12 @@
             "tenders/cust-summary-write",
             "tenders/cust-touch-log",
             "tenders/cust-touch-planned",
+            "tenders/index#mermaid-1",
+            "tenders/index#mermaid-2",
             "tenders/matrix-bid-desk",
             "tenders/matrix-customers",
             "tenders/matrix-summaries",
             "tenders/matrix-tenders",
-            "end-to-end/bid-desk-to-bid-kpis#mermaid-1",
-            "end-to-end/customer-activity-to-coverage#mermaid-1",
-            "end-to-end/index#mermaid-1",
-            "end-to-end/opportunity-to-accountability#mermaid-1",
-            "end-to-end/project-to-delivery-kpi#mermaid-1",
-            "tenders/commercial-targets/index#mermaid-1",
-            "tenders/concepts/business-cases#mermaid-1",
-            "tenders/concepts/customer-activities#mermaid-1",
-            "tenders/concepts/market-coverage#mermaid-1",
-            "tenders/concepts/opportunities-and-tenders#mermaid-1",
-            "tenders/concepts/prequalifications#mermaid-1",
-            "tenders/concepts/roles-on-a-tender#mermaid-1",
-            "tenders/concepts/the-portal#mermaid-1",
-            "tenders/index#mermaid-1",
-            "tenders/index#mermaid-2",
             "tenders/workflows/bid-readiness#mermaid-1",
             "tenders/workflows/business-case#mermaid-1",
             "tenders/workflows/business-case#mermaid-2",
@@ -11613,8 +12147,8 @@
             "tenders/ch-compliance",
             "tenders/concept-prequalification-form",
             "tenders/concept-readiness-tab",
-            "tenders/ct-target-period",
             "tenders/concepts/prequalifications#mermaid-1",
+            "tenders/ct-target-period",
             "tenders/workflows/prequalification#mermaid-1",
             "tenders/workflows/prequalification#mermaid-2"
           ]
@@ -11756,7 +12290,9 @@
             "tenders/workflows/customer-activity"
           ],
           "illustrations": [
+            "end-to-end/customer-activity-to-coverage#mermaid-1",
             "end-to-end/e2e-touch-coverage-score",
+            "end-to-end/index#mermaid-1",
             "tenders/calc-coverage-ladder",
             "tenders/calc-named-share",
             "tenders/concept-account-ownership",
@@ -11765,8 +12301,6 @@
             "tenders/cust-coverage-accounts",
             "tenders/cust-coverage-overview",
             "tenders/matrix-customers",
-            "end-to-end/customer-activity-to-coverage#mermaid-1",
-            "end-to-end/index#mermaid-1",
             "tenders/workflows/customer-activity#mermaid-3"
           ]
         },
@@ -11848,6 +12382,7 @@
             "tenders/workflows/tender-status"
           ],
           "illustrations": [
+            "end-to-end/bid-desk-to-bid-kpis#mermaid-1",
             "end-to-end/e2e-won-tender-split",
             "tenders/bid-attribute-tab",
             "tenders/bid-confirm-bid",
@@ -11856,13 +12391,12 @@
             "tenders/bid-readiness-checklist",
             "tenders/concept-readiness-tab",
             "tenders/concept-tender-team",
+            "tenders/concepts/roles-on-a-tender#mermaid-1",
             "tenders/ct-achievement-split",
             "tenders/matrix-bid-desk",
             "tenders/matrix-customers",
             "tenders/matrix-summaries",
             "tenders/matrix-tenders",
-            "end-to-end/bid-desk-to-bid-kpis#mermaid-1",
-            "tenders/concepts/roles-on-a-tender#mermaid-1",
             "tenders/workflows/bid-readiness#mermaid-1",
             "tenders/workflows/prequalification#mermaid-2",
             "tenders/workflows/tender-status#mermaid-2"
@@ -11954,6 +12488,7 @@
             "tenders/bid-result-won",
             "tenders/ch-book-oem-purchases",
             "tenders/ch-cancelled-order",
+            "tenders/channel/index#mermaid-1",
             "tenders/concept-bid-quality-tab",
             "tenders/concept-business-case",
             "tenders/concept-prequalification-form",
@@ -11963,7 +12498,6 @@
             "tenders/ct-target-period",
             "tenders/cust-account-ownership",
             "tenders/cust-summary-portal-write",
-            "tenders/channel/index#mermaid-1",
             "tenders/workflows/prequalification#mermaid-1"
           ]
         },
@@ -12018,6 +12552,7 @@
             "tenders/workflows/tender-status"
           ],
           "illustrations": [
+            "end-to-end/bid-desk-to-bid-kpis#mermaid-1",
             "end-to-end/e2e-won-tender-split",
             "tenders/bid-attribute-tab",
             "tenders/bid-confirm-bid",
@@ -12026,13 +12561,12 @@
             "tenders/bid-readiness-checklist",
             "tenders/concept-readiness-tab",
             "tenders/concept-tender-team",
+            "tenders/concepts/roles-on-a-tender#mermaid-1",
             "tenders/ct-achievement-split",
             "tenders/matrix-bid-desk",
             "tenders/matrix-customers",
             "tenders/matrix-summaries",
             "tenders/matrix-tenders",
-            "end-to-end/bid-desk-to-bid-kpis#mermaid-1",
-            "tenders/concepts/roles-on-a-tender#mermaid-1",
             "tenders/workflows/bid-readiness#mermaid-1",
             "tenders/workflows/prequalification#mermaid-2",
             "tenders/workflows/tender-status#mermaid-2"
@@ -12105,11 +12639,11 @@
             "tenders/workflows/tender-status"
           ],
           "illustrations": [
+            "tenders/concepts/roles-on-a-tender#mermaid-1",
             "tenders/matrix-bid-desk",
             "tenders/matrix-customers",
             "tenders/matrix-summaries",
             "tenders/matrix-tenders",
-            "tenders/concepts/roles-on-a-tender#mermaid-1",
             "tenders/workflows/project-summary#mermaid-2",
             "tenders/workflows/tender-status#mermaid-2"
           ]
@@ -12157,11 +12691,11 @@
             "tenders/concept-bid-quality-tab",
             "tenders/concept-business-case",
             "tenders/concept-readiness-tab",
-            "tenders/matrix-tenders",
             "tenders/concepts/business-cases#mermaid-1",
             "tenders/concepts/tenders-and-statuses#mermaid-1",
             "tenders/index#mermaid-1",
             "tenders/index#mermaid-2",
+            "tenders/matrix-tenders",
             "tenders/workflows/business-case#mermaid-1",
             "tenders/workflows/tender-status#mermaid-1"
           ]
@@ -12227,6 +12761,7 @@
             "tenders/workflows/tender-status"
           ],
           "illustrations": [
+            "end-to-end/bid-desk-to-bid-kpis#mermaid-1",
             "end-to-end/e2e-bid-quality-quarter",
             "tenders/bid-dq-confirm",
             "tenders/bid-result-lost",
@@ -12234,7 +12769,6 @@
             "tenders/calc-bid-quality-score",
             "tenders/concept-bid-quality-tab",
             "tenders/matrix-bid-desk",
-            "end-to-end/bid-desk-to-bid-kpis#mermaid-1",
             "tenders/workflows/quality-and-disqualification#mermaid-2",
             "tenders/workflows/quality-and-disqualification#mermaid-3"
           ]
@@ -12311,16 +12845,16 @@
             "tenders/concept-readiness-tab",
             "tenders/concept-tender-board",
             "tenders/concept-tender-team",
-            "tenders/cust-account-ownership",
-            "tenders/cust-portal-tenders",
-            "tenders/cust-summary-portal-write",
-            "tenders/matrix-tenders",
             "tenders/concepts/market-coverage#mermaid-1",
             "tenders/concepts/opportunities-and-tenders#mermaid-1",
             "tenders/concepts/prequalifications#mermaid-1",
             "tenders/concepts/tenders-and-statuses#mermaid-1",
+            "tenders/cust-account-ownership",
+            "tenders/cust-portal-tenders",
+            "tenders/cust-summary-portal-write",
             "tenders/index#mermaid-1",
             "tenders/index#mermaid-2",
+            "tenders/matrix-tenders",
             "tenders/workflows/tender-status#mermaid-1",
             "tenders/workflows/tender-status#mermaid-2"
           ]
@@ -12394,14 +12928,14 @@
             "tenders/workflows/tender-status"
           ],
           "illustrations": [
+            "end-to-end/index#mermaid-1",
             "tenders/bid-quality-score",
             "tenders/bid-readiness-checklist",
             "tenders/calc-readiness-progress",
             "tenders/concept-bid-quality-tab",
             "tenders/concept-readiness-tab",
-            "tenders/matrix-bid-desk",
-            "end-to-end/index#mermaid-1",
             "tenders/index#mermaid-1",
+            "tenders/matrix-bid-desk",
             "tenders/workflows/bid-readiness#mermaid-1"
           ]
         },
@@ -12535,6 +13069,7 @@
             "tenders/workflows/tender-status"
           ],
           "illustrations": [
+            "end-to-end/bid-desk-to-bid-kpis#mermaid-1",
             "end-to-end/e2e-won-tender-split",
             "tenders/bid-attribute-tab",
             "tenders/bid-confirm-bid",
@@ -12543,15 +13078,14 @@
             "tenders/bid-readiness-checklist",
             "tenders/concept-readiness-tab",
             "tenders/concept-tender-team",
+            "tenders/concepts/business-cases#mermaid-1",
+            "tenders/concepts/customer-activities#mermaid-1",
+            "tenders/concepts/roles-on-a-tender#mermaid-1",
             "tenders/ct-achievement-split",
             "tenders/matrix-bid-desk",
             "tenders/matrix-customers",
             "tenders/matrix-summaries",
             "tenders/matrix-tenders",
-            "end-to-end/bid-desk-to-bid-kpis#mermaid-1",
-            "tenders/concepts/business-cases#mermaid-1",
-            "tenders/concepts/customer-activities#mermaid-1",
-            "tenders/concepts/roles-on-a-tender#mermaid-1",
             "tenders/workflows/bid-readiness#mermaid-1",
             "tenders/workflows/business-case#mermaid-1",
             "tenders/workflows/business-case#mermaid-2",
@@ -12690,8 +13224,8 @@
             "tenders/bid-my-actions",
             "tenders/bid-reopen",
             "tenders/concept-business-case",
-            "tenders/cust-summary-reopen",
             "tenders/concepts/business-cases#mermaid-1",
+            "tenders/cust-summary-reopen",
             "tenders/workflows/business-case#mermaid-1",
             "tenders/workflows/tender-status#mermaid-1"
           ]
@@ -12768,8 +13302,8 @@
             "tenders/how-to/customers/account-ownership"
           ],
           "illustrations": [
-            "tenders/cust-account-ownership",
-            "tenders/concepts/roles-on-a-tender#mermaid-1"
+            "tenders/concepts/roles-on-a-tender#mermaid-1",
+            "tenders/cust-account-ownership"
           ]
         },
         "tritel_tender_tracker:view_ext:crm.crm_lead_view_form:button:assign-tech-presales": {
@@ -13135,8 +13669,8 @@
             "tenders/how-to/customers/account-ownership"
           ],
           "illustrations": [
-            "tenders/cust-account-ownership",
-            "tenders/concepts/roles-on-a-tender#mermaid-1"
+            "tenders/concepts/roles-on-a-tender#mermaid-1",
+            "tenders/cust-account-ownership"
           ]
         },
         "tritel_tender_tracker:view_ext:account.view_move_form:button:tender": {
@@ -13743,7 +14277,7 @@
       "repo_root": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "track_ref": "origin/16.0",
       "last_synced_commit": "5d691a8dca6440f5aae8679f6ab7c74dbc0de07a",
-      "last_synced_at": "2026-11-19T14:04:50+00:00",
+      "last_synced_at": "2026-11-19T14:09:14+00:00",
       "pages_dir": "src/content/docs/board",
       "items": {
         "e_board:cron:cron_board_reviews": {
@@ -14382,8 +14916,8 @@
       "addons_path": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "repo_root": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "track_ref": "origin/16.0",
-      "last_synced_commit": "83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02",
-      "last_synced_at": "2026-11-17T19:15:37+00:00",
+      "last_synced_commit": "5d691a8dca6440f5aae8679f6ab7c74dbc0de07a",
+      "last_synced_at": "2026-11-19T14:09:14+00:00",
       "pages_dir": "src/content/docs/leave",
       "items": {
         "tritel_hr_leave:client_action:action_leave_home": {
@@ -15126,7 +15660,7 @@
       "excluded": {}
     }
   },
-  "generated_at": "2026-11-19T14:04:37+00:00",
+  "generated_at": "2026-11-19T14:09:14+00:00",
   "portal_root": "training-portal",
   "verified_commit": "83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02"
 }

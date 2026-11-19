@@ -5,7 +5,7 @@ module: projects
 pageType: calculation
 roles: [delivery-pm, head-delivery, delivery-finance, finance]
 tags: [tracking, budget]
-keywords: [budget variance, overrun, over budget, burn rate, actuals, commitments, open PO, LPO, unbilled, forecast, EAC, budget left]
+keywords: [budget variance, overrun, over budget, burn rate, actuals, commitments, open PO, LPO, unbilled, forecast, EAC, Left in delivery plan]
 related: [projects/concepts/budget-tracking, projects/workflows/budget-status, projects/how-to/delivery-pm/track-the-budget, projects/how-to/approvers/tag-orders-to-a-project, projects/reports/projects-over-budget]
 sidebar: { order: 3 }
 sources:
@@ -18,19 +18,19 @@ sources:
   - tritel_project_delivery/models/cost_item.py
   - tritel_project_delivery/models/project.py
   - tritel_project_delivery/views/menus.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
-Once a baseline is approved, the **Budget tracking** table on the project's **Delivery** tab (and the window behind the **Budget left** button) compares the approved budget with what has been ordered and spent. All figures are in KES, before VAT.
+Once a Delivery Budget is approved, the **Budget tracking** table on the project's **Delivery** tab (and the window behind the **Budget left** button) compares the approved budget with what has been ordered and spent. All figures are in KES, before VAT.
 
 ## The rows
 
-Each row is a **budget line**: one Odoo budgetary position, the same as in Odoo Budgets. Categories that share a position share a row, because the ledger can't tell them apart. With the standard set-up the rows are **Direct project costs** (equipment, software, subcontractors, installation materials, logistics), **Project travel and site**, **Project bonds and insurance** and **Project contingency**. A row called **Not split yet** collects categories with no position and any cost posted to an expense account that is in no position. Rows with nothing in them are hidden.
+Each row is a **budget line**: one budgetary position, the same as in the accounting budget. Categories that share a position share a row, because the ledger can't tell them apart. With the standard set-up the rows are **Direct project costs** (equipment, software, subcontractors, installation materials, logistics), **Project travel and site**, **Project bonds and insurance** and **Project contingency**. A row called **Not split yet** collects categories with no position and any cost posted to an expense account that is in no position. Rows with nothing in them are hidden.
 
 ## The figures on each row
 
-- **Planned**: the approved baseline's budget by category, added up for the row.
+- **Planned**: the approved Delivery Budget's **Budget by category**, added up for the row.
 - **Expected by now**: the spend plan for every month up to and including the current month. See [spend by month](/projects/calculations/budget-lines-and-phasing/).
 - **Committed**: confirmed purchase order lines carrying the project's cost account and not yet fully billed. For each line: (ordered quantity − billed quantity) × unit price, before VAT, × the project's share of the line, converted to KES at today's rate. Orders that are not yet confirmed, and cancelled orders, don't count. The row comes from the product: a product in a category linked to a cost type uses that type; otherwise services go to subcontractors and goods to equipment.
 - **Spent**: everything posted to the project's cost account on expense accounts: bills, credit notes, journal entries and expenses. Payments, bank and VAT lines are left out. The row follows the account's budgetary position.
@@ -47,7 +47,7 @@ Each row gets a status from Committed + Spent (the "used" amount):
 | **Fully committed** | Planned is above 0 and used is at least 99.5% of Planned |
 | **On track** | Anything else |
 
-The project's **Budget status** is **Over plan** if any row is over plan, **Fully committed** only if every row is, and **On track** otherwise. Without an approved baseline it is **No approved budget**.
+The project's **Budget status** is **Over plan** if any row is over plan, **Fully committed** only if every row is, and **On track** otherwise. Without an approved budget it is **No approved budget**.
 
 <Illustration name="projects/calc-tracking" caption="Three budget lines. Travel is over its plan, so the project is Over plan although 88,000 is left overall." />
 
@@ -62,11 +62,13 @@ On a purchase order that carries a delivery project's cost account, the system c
 
 <Illustration name="projects/calc-po-over-plan" caption="The order is 20,000 more than what is left on the Direct project costs line." />
 
-The warning never blocks. When the order is confirmed, the order's chatter records *Over the delivery plan when confirmed* and the project manager gets *Order over the delivery plan: P00045* on the baseline. If the room is already used up, the message says *nothing was left in the plan*.
+The warning never blocks. When the order is confirmed, the order's chatter records *Over the delivery plan when confirmed* and the project manager gets *Order over the delivery plan: P00045* on the Delivery Budget. If the room is already used up, the message says *nothing was left in the plan*.
+
+The order's **Budget Available** button (once **Left in delivery plan**) shows the project's **Left**, in red while this warning applies. It is separate from the order's **Budget status** badge, which compares the order with the monthly lines of the accounting budget instead; see [How orders count against an accounting budget](/projects/calculations/purchase-commitments/).
 
 ## When the figures update
 
-The **Budget status** and the smart-button figures are stored. They are refreshed every night, when someone clicks **Refresh**, after tender orders are tagged, when a baseline is approved and when the project closes. The **Figures as of** time shows the last refresh. The table on the **Delivery** tab is worked out each time you open the project.
+The **Budget status** and the smart-button figures are stored. They are refreshed every night, when someone clicks **Refresh**, after tender orders are tagged, when a budget is approved and when the project closes. The **Figures as of** time shows the last refresh. The table on the **Delivery** tab is worked out each time you open the project.
 
 ## Edge cases
 

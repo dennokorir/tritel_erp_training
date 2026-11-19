@@ -1,15 +1,15 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:client_action:action_project_my_actions, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_cost_types
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:menu:menu_project_my_actions, tritel_project_delivery:model:delivery.budget.category
 # docs-sync: shows tritel_project_delivery:model:delivery.cost.type
 type: screen
 title: Cost Types list
-desc: The Cost Types list under Project Configuration, an editable list with the Type, Hint, Budget category, Product categories and active switch columns, one type switched off, and a New button, numbered 1 to 4.
-source: tritel_project_delivery/views/delivery_settings_views.xml (delivery_cost_type_tree), views/menus.xml
+desc: The Cost Types list under Project › Delivery › Setup, an editable list with the Type, Hint, Budget category, Product categories and active switch columns, one type switched off, and a New button, numbered 1 to 4.
+source: tritel_project_delivery/views/delivery_settings_views.xml (delivery_cost_type_tree), views/menus.xml (menu_delivery_cost_types under Setup)
 frame:
   grid: true
   app: Project
-  menu: [Projects, My Tasks, My Actions, Delivery, Reporting, {label: Configuration, active: true, n: 1}]
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true, n: 1}, Reporting, Configuration]
   breadcrumb: [Cost Types]
 blocks:
   - buttons: [{label: New, primary: true, n: 2}]

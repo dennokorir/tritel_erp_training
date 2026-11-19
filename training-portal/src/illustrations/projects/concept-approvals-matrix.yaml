@@ -1,25 +1,25 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:cron:ir_cron_costs_after_close, tritel_project_delivery:field:project.project.after_close_amount, tritel_project_delivery:field:project.project.client_delay_ids
 # docs-sync: shows tritel_project_delivery:group:group_delivery_finance, tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:menu:menu_delivery_client_delays
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_handovers, tritel_project_delivery:menu:menu_delivery_root
 # docs-sync: shows tritel_project_delivery:model:project.delivery.client.delay, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state
 # docs-sync: shows tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project, tritel_project_delivery:view_ext:project.edit_project:button:reopen, tritel_project_delivery:wizard:delivery.close.wizard
-# docs-sync: shows tritel_project_delivery:wizard:delivery.tag.orders.wizard
+# docs-sync: shows tritel_project_delivery:wizard:delivery.tag.orders.wizard, tritel_project_delivery:group:group_delivery_pm
 type: matrix
 title: Who approves what in Project Delivery
-desc: Permission grid showing what delivery project managers, the Head of Delivery, Delivery Finance and the MD can do with baselines, handovers, client delays and close-out.
-source: tritel_project_delivery/security/delivery_security.xml, security/ir.model.access.csv, models/baseline.py, models/closeout.py, models/tracking.py, views/baseline_views.xml, views/closeout_views.xml
-columns: [Delivery PM, Head of Delivery, Delivery Finance, MD]
+desc: Permission grid showing what delivery project managers (anyone managing an active delivery project), the Head of Delivery, Delivery Finance and the MD can do with delivery budgets, handovers, client delays, close-out and cost accounts to sort out.
+source: tritel_project_delivery/security/delivery_security.xml, security/ir.model.access.csv, models/baseline.py, models/closeout.py, models/tracking.py, models/delivery_access.py, wizards/cost_account_sort.py, views/baseline_views.xml, views/closeout_views.xml
+columns: [Delivery PM (automatic), Head of Delivery, Delivery Finance, MD]
 labelWidth: 300
 rows:
-  - {group: Baselines}
-  - {action: "Open a delivery project, draft a baseline", cells: [y, y, n, n]}
-  - {action: Confirm for Approval, cells: [y, y, n, n]}
+  - {group: Delivery budgets}
+  - {action: "Open a delivery project, draft a budget", cells: [y, y, n, n]}
+  - {action: Submit for Approval, cells: [y, y, n, n]}
   - {action: Approve Dates (every version), cells: [n, y, n, n]}
   - {action: Approve Budget (original and budget changes), cells: [n, n, y, n]}
-  - {action: MD Approve (large revisions), cells: [n, n, n, y]}
-  - {action: Return to Draft, cells: [n, p, p, p]}
-  - {action: Withdraw a draft or waiting baseline, cells: [y, y, n, n]}
+  - {action: Approve as MD (large revisions), cells: [n, n, n, y]}
+  - {action: Return for Changes, cells: [n, p, p, p]}
+  - {action: Withdraw a draft or waiting budget, cells: [y, y, n, n]}
   - {group: Handover and client delays}
   - {action: Record and submit a handover, cells: [y, y, n, n]}
   - {action: Confirm or return a handover, cells: [n, y, n, n]}
@@ -29,4 +29,5 @@ rows:
   - {action: Tag tender orders to the project, cells: [n, y, y, n]}
   - {action: Close or reopen a project, cells: [n, n, y, n]}
   - {action: Mark costs after close reviewed, cells: [n, n, y, n]}
+  - {action: Sort out cost accounts with no project, cells: [n, y, y, n]}
 legend: {p: "Only while your own approval is still pending"}

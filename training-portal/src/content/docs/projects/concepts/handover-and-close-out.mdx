@@ -5,7 +5,7 @@ module: projects
 pageType: concept
 roles: [delivery-pm, head-delivery, delivery-finance]
 tags: [handover, close-out]
-keywords: [handover, hand over, completion certificate, acceptance certificate, practical completion, close project, project closure, final cost, final account, sign-off, reopen, late bills]
+keywords: [handover, hand over, completion certificate, acceptance certificate, practical completion, close project, project closure, final cost, final account, sign-off, reopen, Submit for Confirmation]
 related: [projects/workflows/handover, projects/workflows/close-out, projects/how-to/delivery-pm/record-a-handover, projects/how-to/approvers/confirm-a-handover, projects/how-to/approvers/close-a-project, projects/calculations/close-and-kpi]
 sidebar: { order: 8 }
 sources:
@@ -19,7 +19,8 @@ sources:
   - tritel_project_delivery/models/tracking.py
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/menus.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_project_delivery/views/baseline_views.xml
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -29,7 +30,7 @@ Every delivery project ends in two steps: the **project handover**, when the cli
 flowchart TD
 %% docs-sync: shows tritel_project_delivery:field:project.project.approved_completion_date, tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:close-project, tritel_project_delivery:view_ext:project.edit_project:button:handover, tritel_project_delivery:view_ext:project.edit_project:button:record-handover
   A["Approved completion date passes"] --> B["Record Handover (project manager)"]
-  B --> C["Submit for Confirmation"]
+  B --> C["Submit for Approval"]
   C --> D["Confirm Handover (Head of Delivery)"]
   D --> E["Close delivery project to-do (finance)"]
   E --> F["Close Project: final cost"]
@@ -45,7 +46,7 @@ The project manager clicks **Record Handover** on the project and fills in:
 - **Handover certificate**: the signed acceptance or completion certificate (optional);
 - **Note**: what was handed over, who signed for the client, anything outstanding.
 
-**Submit for Confirmation** sends it to the Head of Delivery, who clicks **Confirm Handover**, or **Return** with a **Note when returning**. Only a **Confirmed** handover counts. A project can have one handover waiting or confirmed at a time. Returned handovers stay on record, greyed out.
+**Submit for Approval** sends it to the Head of Delivery, who clicks **Confirm Handover**, or **Return** with a **Note when returning**. Only a **Confirmed** handover counts. A project can have one handover waiting or confirmed at a time. Returned handovers stay on record, greyed out.
 
 The project's **Handover** smart button shows where it stands: **Not recorded**, **Draft**, **Waiting**, **Confirmed**, **Returned**, or **Closed** once the project is closed.
 
@@ -60,15 +61,15 @@ When the handover is confirmed, every Delivery Finance user gets a **Close deliv
 3. The preview shows the result before you commit: the days late against the deadline, and the final cost against the **Approved budget**.
 4. **Close Project** freezes the figures. If something blocks the close, the window shows *This project cannot close yet.* with the reasons, and the button is hidden.
 
-A project can't close while a baseline is in draft or waiting, while a handover or client delay is waiting for a decision, or, if it has an approved baseline, until its handover is confirmed.
+A project can't close while a Delivery Budget is in draft or waiting, while a handover or client delay is waiting for a decision, or, if it has an approved budget, until its handover is confirmed.
 
 ## What closing freezes
 
-The **Handover & close** tab then shows the **Result** group: **Result**, **On time**, **On budget**, **Final cost (before VAT)**, **Approved budget at close**, **Spent at close**, **Open orders at close**, **Approved completion date at close**, **Approved client delay at close (days)**, **Handover date at close**, **Days late**, **Grace at close (days)** and **Baseline version at close**. These stay as they are even if settings, bills or baselines change later.
+The **Handover & close** tab then shows the **Result** group: **Result**, **On time**, **On budget**, **Final cost (before VAT)**, **Approved budget at close**, **Spent at close**, **Open orders at close**, **Approved completion date at close**, **Approved client delay at close (days)**, **Handover date at close**, **Days late**, **Grace at close (days)** and **Budget version at close**. These stay as they are even if settings, bills or Delivery Budgets change later.
 
-The **Result** is **On time and on budget**, **Late**, **Over budget** or **Late and over budget**. A project without an approved baseline, a confirmed handover or a completion date is **Not scored**: its handover and final cost are still recorded, but it doesn't count in the Delivery KPI. How the result is worked out is in [The Delivery KPI](/projects/concepts/delivery-kpi/).
+The **Result** is **On time and on budget**, **Late**, **Over budget** or **Late and over budget**. A project without an approved budget, a confirmed handover or a completion date is **Not scored**: its handover and final cost are still recorded, but it doesn't count in the Delivery KPI. How the result is worked out is in [The Delivery KPI](/projects/concepts/delivery-kpi/).
 
-While a project is closed, nobody can record a handover, log a client delay or start a revision on it: *PRJ Customer A network upgrade is closed. Finance can reopen it first.*
+While a project is closed, nobody can record a handover, log a client delay or start a revision on it: *Data Centre Upgrade is closed. Finance can reopen it first.*
 
 ## Costs after close and reopening
 

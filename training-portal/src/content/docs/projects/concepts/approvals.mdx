@@ -1,11 +1,11 @@
 ---
 title: Who approves what
-description: Which approvals a delivery baseline or revision needs (Head of Delivery for dates, Delivery Finance for the budget, the MD for large revisions), the thresholds, and who confirms handovers, client delays and close-out.
+description: Which approvals a Delivery Budget or revision needs (Head of Delivery for dates, Delivery Finance for the costs, the MD for large revisions), the thresholds, and who confirms handovers, client delays and close-out.
 module: projects
 pageType: concept
 roles: [delivery-pm, head-delivery, delivery-finance, md]
-tags: [approvals, baselines]
-keywords: [approval, sign-off, authorisation, approver, MD approval, finance approval, head of delivery, threshold, budget increase, extension of time, return, reject]
+tags: [approvals, delivery budgets]
+keywords: [approval, sign-off, authorisation, approver, MD approval, finance approval, head of delivery, threshold, budget increase, extension of time, return, MD Approve]
 related: [projects/workflows/baseline, projects/how-to/approvers/approve-dates, projects/how-to/approvers/approve-budget, projects/how-to/approvers/approve-a-large-revision, projects/calculations/revisions-and-approvals, projects/who-can-do-what]
 sidebar: { order: 7 }
 sources:
@@ -21,17 +21,18 @@ sources:
   - tritel_project_delivery/views/menus.xml
   - tritel_project_delivery/views/project_views.xml
   - tritel_project_delivery/views/tender_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_project_delivery/views/accounting_menus.xml
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
-A baseline is approved in parts. Each approver signs off the part they are responsible for, in any order. When every approval the baseline needs is in, it becomes **Approved** by itself.
+A Delivery Budget is approved in parts. Each approver signs off the part they are responsible for, in any order. When every approval the budget needs is in, it becomes **Approved** by itself.
 
 | Approval | Button | Who | When it is needed |
 |---|---|---|---|
 | **Dates** | **Approve Dates** | Head of Delivery | Always: the original and every revision. Covers the completion date and the milestone dates. |
 | **Budget** | **Approve Budget** | Delivery Finance | The original, and any revision that changes the costs: a category total, or any cost item's name, type, quantity, price, currency, VAT or contingency %. |
-| **MD** | **MD Approve** | The user named as **MD** in **Delivery Settings** | A revision whose **Budget vs original (%)** is above 10%, or whose **Days vs original** is above 30 days. |
+| **MD** | **Approve as MD** | The user named as **MD** in **Delivery Settings** | A revision whose **Budget vs original (%)** is above 10%, or whose **Days vs original** is above 30 days. |
 
 Everyone with the Head of Delivery role, and everyone with the Delivery Finance role, gets the to-do. The first one to act gives the approval for their role. A revision that only moves dates needs the Head of Delivery alone; one that only moves money needs the Head of Delivery and Delivery Finance.
 
@@ -49,27 +50,27 @@ The MD limits are measured **against version 1**, not against the previous versi
 
 <Illustration name="projects/concept-approvals-matrix" caption="Who approves what in Project Delivery." />
 
-- **Return to Draft** sends a waiting baseline back to the project manager with a **Note for the project manager**. It clears every approval already given, so all the needed approvals start again when it is reconfirmed.
+- **Return for Changes** sends a waiting budget back to the project manager with a **Note for the project manager**. It clears every approval already given, so all the needed approvals start again when it is submitted again.
 - **Handovers** and **client delays** are confirmed or approved by the Head of Delivery alone. See [Handover and close-out](/projects/concepts/handover-and-close-out/) and [Client delays](/projects/concepts/client-delays/).
 - **Closing** a project and fixing its final cost is for Delivery Finance alone.
 
 ## Where approvers find their work
 
-- A to-do: **Approve delivery baseline: dates**, **Approve delivery baseline: budget** or **Approve delivery baseline revision (MD)**. If the costs are over the tender's expected revenue, the to-do says so.
-- **Project › Delivery › Waiting for My Approval**, which opens on the **Waiting for me** filter.
-- **Project › My Actions**: **Baselines to approve: dates**, **Baselines to approve: budget** and **Revisions to approve (MD)**, each with an approve button and **Return**.
+- A to-do: **Approve delivery budget: dates**, **Approve delivery budget: budget** or **Approve delivery budget revision (MD)**. If the costs are over the tender's expected revenue, the to-do says so.
+- **Project › Delivery › To approve › Waiting for Me** (Head of Delivery and Delivery Finance), which opens on the **Waiting for me** filter. Delivery Finance also has **Accounting › Project Budgets › To approve › Budgets to Approve**, which opens on the same filter; when nothing is waiting it says *No budget is waiting for your approval.*
+- **Project › My Actions**: **Budgets to approve: dates**, **Budgets to approve: budget** and **Revisions to approve (MD)**, each with an approve button and **Return**.
 
 :::note[Good to know]
-- The **Return to Draft** button shows only to approvers whose approval is still pending. Once you have approved your part, you no longer see it.
+- The **Return for Changes** button shows only to approvers whose approval is still pending. Once you have approved your part, you no longer see it.
 - The MD is a single user named in the settings, not a role. The **Delivery** menu shows only to delivery project managers and Delivery Finance, so an MD who is neither works from the to-do and **Project › My Actions**. If a revision needs the MD and nobody is named, confirming stops with *This revision needs the MD, but no MD is set in Delivery Settings.*
 - Approving the budget fixes the exchange rates on foreign-currency items at once, even if the other approvals are still to come.
 :::
 
 ## Tasks that use this
 
-- [Approve a baseline's dates](/projects/how-to/approvers/approve-dates/)
-- [Approve a baseline's budget](/projects/how-to/approvers/approve-budget/)
+- [Approve a Delivery Budget's dates](/projects/how-to/approvers/approve-dates/)
+- [Approve a Delivery Budget's costs](/projects/how-to/approvers/approve-budget/)
 - [Approve a large revision](/projects/how-to/approvers/approve-a-large-revision/)
-- [Fix a baseline that was sent back](/projects/how-to/delivery-pm/fix-a-returned-baseline/)
+- [Fix a Delivery Budget that was sent back](/projects/how-to/delivery-pm/fix-a-returned-baseline/)
 - [What changed, and which approvals a revision needs](/projects/calculations/revisions-and-approvals/)
 - [Who can do what](/projects/who-can-do-what/)

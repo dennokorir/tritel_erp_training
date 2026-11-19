@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:cron:ir_cron_costs_after_close, tritel_project_delivery:field:project.project.after_close_amount, tritel_project_delivery:field:project.project.client_delay_ids
 # docs-sync: shows tritel_project_delivery:field:project.project.tracking_html, tritel_project_delivery:group:group_delivery_finance, tritel_project_delivery:group:group_delivery_head
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_categories, tritel_project_delivery:menu:menu_delivery_client_delays, tritel_project_delivery:menu:menu_delivery_config
@@ -8,11 +8,13 @@
 # docs-sync: shows tritel_project_delivery:model:delivery.settings, tritel_project_delivery:model:delivery.starter.item, tritel_project_delivery:model:project.delivery.client.delay
 # docs-sync: shows tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:reopen, tritel_project_delivery:wizard:delivery.close.wizard
 # docs-sync: shows tritel_project_delivery:wizard:delivery.tag.orders.wizard
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_budget_commitments, tritel_project_delivery:menu:menu_acc_pb_commitments, tritel_project_delivery:menu:menu_delivery_cost_accounts_to_sort
+# docs-sync: shows tritel_project_delivery:menu:menu_acc_pb_cost_accounts_to_sort, tritel_project_delivery:menu:menu_acc_pb_costs_after_close, tritel_project_delivery:menu:menu_acc_pb_config
 type: matrix
 title: Who can do what at handover, close and set-up
-desc: Permission grid for handovers, client delays, closing, budget tracking, tagging orders and the delivery set-up screens, for delivery project managers, the Head of Delivery, Delivery Finance, the MD and everyone with project access.
-source: tritel_project_delivery/security/ir.model.access.csv, views/menus.xml, views/closeout_views.xml, views/tracking_views.xml, views/buttons_views.xml, models/closeout.py, models/tracking.py, models/budget_mapping.py, models/my_actions.py
-columns: [Delivery PM, Head of Delivery, Delivery Finance, MD, Everyone with project access]
+desc: Permission grid for handovers, client delays, closing, budget tracking, Budget Commitments, tagging orders, Cost Accounts to Sort Out and the delivery set-up screens under Project › Delivery › Setup, for delivery project managers, the Head of Delivery, Delivery Finance, the MD and everyone with project access.
+source: tritel_project_delivery/security/ir.model.access.csv, views/menus.xml, views/accounting_menus.xml, views/purchase_budget_views.xml, views/cost_account_sort_views.xml, views/closeout_views.xml, views/tracking_views.xml, views/buttons_views.xml, models/closeout.py, models/tracking.py, models/budget_mapping.py, models/my_actions.py, models/project_code.py
+columns: [Delivery PM (automatic), Head of Delivery, Delivery Finance, MD, Everyone with project access]
 labelWidth: 290
 rows:
   - {group: Handover and client delays}
@@ -26,10 +28,13 @@ rows:
   - {group: Budget tracking and orders}
   - {action: See budget tracking and the smart buttons, cells: [y, y, y, p, y]}
   - {action: Refresh the tracking figures, cells: [y, y, y, p, y]}
+  - {action: Budget Commitments (Project › Delivery › Projects), cells: [y, y, y, n, n]}
   - {action: Tag tender orders to the project, cells: [n, y, y, n, n]}
   - {action: Projects over their approved budget in My Actions, cells: [p, y, p, n, p]}
-  - {group: Set-up (Project › Configuration › Delivery)}
-  - {action: Delivery Settings and Apply mapping, cells: [n, p, p, n, n]}
-  - {action: Budget Categories and Starter Items, cells: [n, p, p, n, n]}
-  - {action: Cost Types and Standard Milestones, cells: [n, p, n, n, n]}
+  - {action: Cost Accounts to Sort Out, cells: [n, y, y, n, n]}
+  - {group: Set-up (Project › Delivery › Setup)}
+  - {action: Delivery Settings and Apply mapping, cells: [n, y, y, n, n]}
+  - {action: Budget Categories (add and change), cells: [n, y, y, n, n]}
+  - {action: Starter Items, cells: [n, y, y, n, n]}
+  - {action: Cost Types and Standard Milestones, cells: [n, y, n, n, n]}
 legend: {p: "Partly: see the notes under the picture"}

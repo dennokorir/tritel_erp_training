@@ -1,11 +1,11 @@
 ---
 title: Projects FAQ
-description: Short answers to the questions staff ask most about delivery baselines, budgets, tracking, revisions, handovers, client delays, closing and the Delivery KPI.
+description: Short answers to the questions staff ask most about Delivery Budgets, tracking, purchase order budget status, project codes, revisions, handovers, client delays, closing and the Delivery KPI.
 module: projects
 pageType: faq
 roles: [delivery-pm, head-delivery, delivery-finance, md, everyone]
 tags: [faq, budget, close-out]
-keywords: [FAQ, help, why can't I, over budget, not scored, completion date locked, MD approval, contingency, exchange rate, margin, costs after close, KPI]
+keywords: [FAQ, help, why can't I, baseline, over budget, budget planned at 0, not scored, completion date locked, MD approval, contingency, project code, KPI]
 related: [projects/index, projects/who-can-do-what, projects/calculations/tracking-figures, projects/calculations/close-and-kpi, projects/calculations/revisions-and-approvals]
 sidebar: { order: 3 }
 sources:
@@ -29,18 +29,26 @@ sources:
   - tritel_project_delivery/views/project_views.xml
   - tritel_project_delivery/views/tracking_views.xml
   - tritel_project_delivery/wizards/tag_orders_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_project_delivery/models/purchase_budget.py
+  - tritel_project_delivery/models/phasing.py
+  - tritel_project_delivery/models/project_code.py
+  - tritel_project_delivery/models/delivery_access.py
+  - tritel_project_delivery/wizards/open_project_wizard.py
+  - tritel_project_delivery/views/purchase_budget_views.xml
+  - tritel_project_delivery/views/accounting_menus.xml
+  - tritel_project_delivery/views/baseline_views.xml
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 
 ## Why can't I edit the completion date?
 
-Once a baseline is approved, the project's end date comes from it: *The completion date of Customer A network upgrade comes from its approved baseline. Request a revision to change it.* Click **Request Revision** on the **Delivery** tab, change the **Completion date** and give a reason. See [Request a revision](/projects/how-to/delivery-pm/request-a-revision/).
+Once a budget is approved, the project's end date comes from it: *The completion date of Data Centre Upgrade comes from its approved budget. Request a revision to change it.* Click **Request Revision** on the **Delivery** tab, change the **Completion date** and give a reason. See [Request a revision](/projects/how-to/delivery-pm/request-a-revision/).
 
-## Why can't I change the cost items on my baseline?
+## Why can't I change the cost items on my Delivery Budget?
 
-Only a **Draft** can be edited. A baseline waiting for approval must be returned to draft by an approver, or withdrawn. An approved one needs a revision. The message is *Baseline v1 is Approved and can no longer be edited. Return it to draft or request a revision.*
+Only a **Draft** can be edited. A budget waiting for approval must be sent back by an approver with **Return for Changes**, or withdrawn. An approved one needs a revision. The message is *Budget v1 is Approved and can no longer be edited. Return it to draft or request a revision.*
 
-## Why won't my baseline confirm: "needs a quantity and a unit cost"?
+## Why won't my budget submit: "needs a quantity and a unit cost"?
 
 Every cost item except contingency needs a quantity and a unit cost above 0, and a **Pay from** month. Starter items arrive with a unit cost of 0: price them or delete the ones that don't apply. See [How a cost item's amount is worked out](/projects/calculations/cost-items/).
 
@@ -68,9 +76,17 @@ The order is bigger than what is left on its budget line after other open orders
 
 The status looks at each budget line. One line over its plan makes the whole project **Over plan**, even if other lines, such as contingency, still have money left. See [tracking figures](/projects/calculations/tracking-figures/).
 
+## Why does my order show "Budget planned at 0" or "Over budget" when the project has money left?
+
+The order's **Budget status** compares it with the accounting budget, which is planned month by month. An order dated in a month with no planned spend shows **Budget planned at 0**, and an order bigger than its month's line shows **Over budget**, even when the project as a whole has room. Neither stops the order being confirmed. See [How orders count against an accounting budget](/projects/calculations/purchase-commitments/).
+
+## Why do "Budget status" and "Budget Available" on my order disagree?
+
+They measure different things. **Budget status** compares the order with the accounting budget line for its cost account, budgetary position and month. **Budget Available** is what is left of the project's whole Delivery Budget, and turns red when the order would take a budget category over its plan. An order can be **Within budget** for its month and still turn **Budget Available** red, or the other way round. See [Check a purchase order against the budget](/projects/how-to/approvers/check-an-order-against-the-budget/).
+
 ## Why doesn't my purchase order count as committed?
 
-Only confirmed orders count, and only lines carrying the project's cost account. Draft orders and untagged lines count nowhere. The Head of Delivery or Delivery Finance can tag tender orders. See [Tag orders to their project](/projects/how-to/approvers/tag-orders-to-a-project/).
+Only confirmed orders count, and only lines carrying the project's cost account. Requests for quotation show on the accounting budget lines as **Draft**, which never reduces **Available**. Untagged lines count nowhere. The Head of Delivery or Delivery Finance can tag tender orders. See [Tag orders to their project](/projects/how-to/approvers/tag-orders-to-a-project/).
 
 ## Why do the smart buttons show different figures from the tracking table?
 
@@ -80,17 +96,17 @@ The buttons and the **Budget status** show the last refresh (every night, or whe
 
 Contingency sits on a reserve account nobody posts to, so its line is never used up. The project is **Fully committed** only when every line is. See [tracking figures](/projects/calculations/tracking-figures/).
 
-## Why does the tender show a different margin from the baseline?
+## Why does the tender show a different margin from the budget?
 
-After approval the baseline uses the exchange rate fixed on the day the budget was approved; the tender uses today's rate. They also count other projects' draft revisions differently. See [Expected revenue and margin left](/projects/calculations/margin/).
+After approval the budget uses the exchange rate fixed on the day the budget was approved; the tender uses today's rate. They also count other projects' draft revisions differently. See [Expected revenue and margin left](/projects/calculations/margin/).
 
 ## Why is my project in "Projects over their approved budget"?
 
 At least one budget line has more committed and spent than planned. Check that the costs belong to the project, then request a revision if the plan was too low. See [Projects over their approved budget](/projects/reports/projects-over-budget/).
 
-## When is my baseline due?
+## When is my budget due?
 
-14 days after the tender's award date, by default. After that the project manager and the Head of Delivery get a *Delivery baseline overdue* to-do, once. See [Baseline due date](/projects/calculations/baseline-due/).
+14 days after the tender's award date, by default. After that the project manager and the Head of Delivery get a *Delivery Budget overdue* to-do, once. See [Budget due date](/projects/calculations/baseline-due/).
 
 ## How are overlapping client delays counted?
 
@@ -106,7 +122,7 @@ No. A rejected delay stays rejected and can't go back to draft. To ask again, lo
 
 ## Why is my project "Not scored"?
 
-It was closed without an approved baseline or without a **Confirmed** handover. Its final cost is recorded, but it is left out of the Delivery KPIs. See [the result](/projects/calculations/close-and-kpi/).
+It was closed without an approved budget or without a **Confirmed** handover. Its final cost is recorded, but it is left out of the Delivery KPIs. See [the result](/projects/calculations/close-and-kpi/).
 
 ## Why can't finance close my project?
 
@@ -126,4 +142,20 @@ Everyone with access to the Project app. There is no restriction by project. See
 
 ## Why can't I see Delivery Settings or Cost Types?
 
-They sit under **Project › Configuration**, which needs **Project Administrator** access as well as the Head of Delivery or Delivery Finance role. See [Who can do what](/projects/who-can-do-what/).
+They sit under **Project › Delivery › Setup**. The Head of Delivery sees all the set-up lists; Delivery Finance sees **Delivery Settings**, **Budget Categories**, **Starter Items** and **Cost Accounts to Sort Out**, but not **Cost Types** or **Standard Milestones**. Finance also finds them under **Accounting › Configuration › Project Budgets**. See [Project Delivery menus](/projects/menus/).
+
+## Where did "Waiting for My Approval" and "All Baselines" go?
+
+The **Delivery** menu is now in sections. **Waiting for My Approval** is **Project › Delivery › To approve › Waiting for Me**, **All Baselines** is **Project › Delivery › Projects › Delivery Budgets**, and **Projects to Link** is **Projects › Projects Not in Delivery**. The set-up lists moved from **Project › Configuration › Delivery** to **Project › Delivery › Setup**. See [Project Delivery menus](/projects/menus/).
+
+## Why can't I open a delivery project from a won tender?
+
+Opening one needs the **Delivery Project Manager** role, which you have only while you are the **Project Manager** of an active delivery project. If you don't manage one yet, the Head of Delivery opens the project and names you as its project manager. See [Who can do what](/projects/who-can-do-what/).
+
+## What is "P26-049" in front of the project name?
+
+The project code. Every project gets one when it is created: P, the two-digit year, a dash and a running number. You can search for a project by its code or its name. See [Project codes](/projects/concepts/project-codes/).
+
+## Why can't I change the code on a project's cost account?
+
+The cost account carries the project's code, so it changes only through the project. A settings administrator corrects it with **Correct Code** on the project. See [Correct a project code](/projects/how-to/approvers/correct-a-project-code/).

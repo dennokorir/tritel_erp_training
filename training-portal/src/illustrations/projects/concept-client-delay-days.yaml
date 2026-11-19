@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:field:project.project.approved_delay_days, tritel_project_delivery:field:project.project.client_delay_ids, tritel_project_delivery:menu:menu_delivery_client_delays
 # docs-sync: shows tritel_project_delivery:model:project.delivery.client.delay, tritel_project_delivery:selection:project.delivery.baseline.state, tritel_project_delivery:selection:project.delivery.client.delay.state
 # docs-sync: shows tritel_project_delivery:selection:project.project.handover_state

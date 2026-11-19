@@ -27,3 +27,9 @@
     Cache-Control = "public, max-age=31536000, immutable"
 
 # Starlight builds dist/404.html; Netlify serves it for unknown paths automatically.
+
+# The "baselines" tag became "delivery budgets" when Project Delivery renamed baselines (19 Nov 2026)
+[[redirects]]
+  from   = "/reference/tags/baselines/"
+  to     = "/reference/tags/delivery-budgets/"
+  status = 301

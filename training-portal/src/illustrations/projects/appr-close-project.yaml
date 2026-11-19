@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:client_action:action_project_my_actions, tritel_project_delivery:cron:ir_cron_costs_after_close, tritel_project_delivery:field:project.project.after_close_amount
 # docs-sync: shows tritel_project_delivery:field:project.project.close_adjustment, tritel_project_delivery:field:project.project.close_days_late, tritel_project_delivery:field:project.project.track_spent
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_root
@@ -14,7 +14,7 @@ frame:
   grid: true
   app: Project
   menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting, Configuration]
-  breadcrumb: [Delivery Projects, PRJ Customer A network upgrade]
+  breadcrumb: [Delivery Projects, P26-049 · Data Centre Upgrade]
 blocks:
   - buttons: [{label: Close Project, primary: true, n: 1}, {label: Log Client Delay}]
   - dialog:

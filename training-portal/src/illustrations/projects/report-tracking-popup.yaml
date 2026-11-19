@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:field:project.project.track_committed, tritel_project_delivery:field:project.project.track_refreshed_on, tritel_project_delivery:field:project.project.tracking_html
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_root
 # docs-sync: shows tritel_project_delivery:model:project.delivery.commitment, tritel_project_delivery:view_ext:project.edit_project:button:budget-left, tritel_project_delivery:view_ext:project.edit_project:button:committed
@@ -11,10 +11,10 @@ frame:
   grid: true
   app: Project
   menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
-  breadcrumb: [Delivery Projects, Customer A network upgrade]
+  breadcrumb: [Delivery Projects, P26-049 · Data Centre Upgrade]
 blocks:
   - dialog:
-      title: "Budget tracking · Customer A network upgrade"
+      title: "Budget tracking · Data Centre Upgrade"
       blocks:
         - buttons: [{label: Over plan, n: 1}, {label: "Figures as of 30/06/2027 06:00", n: 2}]
         - table:

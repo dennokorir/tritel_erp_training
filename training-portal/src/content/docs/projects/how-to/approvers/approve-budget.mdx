@@ -1,15 +1,15 @@
 ---
-title: Approve a baseline's budget
-description: As Delivery Finance, check the cost items, category totals, spend plan and margin of a delivery baseline, then approve the budget or return it to the project manager.
+title: Approve a Delivery Budget's figures
+description: As Delivery Finance, check the cost items, category totals, spend plan and margin of a Delivery Budget, then approve the budget or return it to the project manager for changes.
 module: projects
 pageType: how-to
 roles: [delivery-finance]
-tags: [baselines, approvals, budgets, my actions]
-keywords: [budget approval, approve budget, sign off budget, cost estimate, BOQ, quotes, exchange rate, margin, Odoo budget, return baseline, finance approval]
-where: [Project, Delivery, Waiting for My Approval]
+tags: [delivery budgets, approvals, budgets, my actions]
+keywords: [baseline, budget approval, approve budget, sign off budget, budgets to approve, cost estimate, quotes, exchange rate, margin, accounting budget, Odoo budget, finance approval]
+where: [Project, Delivery, To approve, Waiting for Me]
 before:
   - You have the <strong>Delivery Finance</strong> role.
-  - "The project manager has clicked <strong>Confirm for Approval</strong> on an original baseline, or on a revision that changes the costs. You get a to-do called <em>Approve delivery baseline: budget</em>."
+  - "The project manager has clicked <strong>Submit for Approval</strong> on an original Delivery Budget, or on a revision that changes the costs. You get a to-do called <em>Approve delivery budget: budget</em>."
 related: [projects/concepts/approvals, projects/workflows/baseline, projects/concepts/cost-items-and-categories, projects/concepts/odoo-budget-and-cost-account, projects/calculations/cost-items, projects/calculations/margin]
 sidebar: { order: 2 }
 sources:
@@ -25,43 +25,46 @@ sources:
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/buttons_views.xml
   - tritel_project_delivery/views/menus.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_project_delivery/views/accounting_menus.xml
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
-Finance approves the **budget** of every original baseline, and of any revision that changes the cost items. Approving fixes the exchange rates and, once all approvals are in, creates the Odoo budget the project is tracked against.
+Finance approves the **budget** of every original Delivery Budget, and of any revision that changes the cost items. Approving fixes the exchange rates and, once all approvals are in, creates the accounting budget the project is tracked against.
 
-<Illustration name="projects/appr-approve-budget" caption="A baseline waiting for your budget approval. The numbers match the steps below." />
+<Illustration name="projects/appr-approve-budget" caption="A Delivery Budget waiting for your budget approval. The numbers match the steps below." />
 
 ## Steps
 
-1. Open **Project › Delivery › Waiting for My Approval** and click the baseline. You can also open it from **Project › My Actions**, under **Baselines to approve: budget**, where each item shows the total before VAT.
+1. Open **Project › Delivery › To approve › Waiting for Me** and click the budget. The list shows only what is waiting for you.
+   - Or work from Accounting: **Accounting › Project Budgets › To approve › Budgets to Approve** shows the same list (it opens on the filter **Waiting for me**; when it is empty it says *No budget is waiting for your approval.*).
+   - Or use **Project › My Actions**, under **Budgets to approve: budget**, where each item shows the total before VAT.
 2. Check the **Budget total** and the **Contingency**. Under **Expected revenue**, check **Margin left** and **Margin left (%)**. A red banner, *Costs are over the expected revenue*, means the costs are higher than the tender's value.
 3. Open the **Costs** tab and check each item: **Type**, **Qty**, **Unit cost**, **Pay from**, **Basis** (**Quoted** or **Estimate**) and **Total (before VAT)**. Open a **Quote file** where one is attached. On a revision, the **Changes** tab lists what was added, changed or removed.
 4. Below the list, check **Quoted** and **Foreign currency** shares. Then open **Summary by category**: the totals per category, the **Spend plan by month**, and the **Checks** (**Quoted (%)**, **Quote files attached**, **Over expected revenue**). The category totals are what you approve.
 5. If the budget is right, click **Approve Budget**.
-6. If something needs fixing, open the **Approvals** tab, type what needs to change in **Note for the project manager**, then click **Return to Draft**.
+6. If something needs fixing, open the **Approvals** tab, type what needs to change in **Note for the project manager**, then click **Return for Changes**.
 
 From **My Actions** you can click **Approve budget**, or **Return** and type the note in the box that opens.
 
 ## What happens next
 
 - **After Approve Budget:** your name goes in **Budget approved by**. The exchange rate of every foreign-currency item is fixed (**Fixed rate** and **Rate fixed on**), and so is the tender's revenue rate used for the margin. Your to-do is removed.
-- If the Head of Delivery (or the MD) has not approved yet, the baseline stays **Waiting for approval**.
-- **When the last approval is in,** the baseline becomes **Approved**. An Odoo budget named *PRJ Customer A network upgrade · delivery budget v1* is created, confirmed and validated on the project's cost account, with one line per budget position and month. It runs from the project start (or the earliest pay month) to the completion date plus the **Budget runs past completion (days)** setting, so late bills still count. Users with accounting access see it under the **Odoo Budget** button. Budget tracking on the project is refreshed.
-- **After Return to Draft:** every approval is cleared, all approvers' to-dos are removed, and the project manager gets a *Delivery baseline returned* to-do with your note.
+- If the Head of Delivery (or the MD) has not approved yet, the budget stays **Waiting for approval**.
+- **When the last approval is in,** the Delivery Budget becomes **Approved**. An accounting budget named *Data Centre Upgrade · delivery budget v1* is created, confirmed and validated on the project's cost account, with one line per budget position and month. It runs from the project start (or the earliest pay month) to the completion date plus the **Budget runs past completion (days)** setting, so late bills still count. Users with accounting access open it with the **Accounting Budget** button on the Delivery Budget. Its lines show what purchase orders have **Committed** against them: see [How orders count against an accounting budget](/projects/calculations/purchase-commitments/). Budget tracking on the project is refreshed.
+- **After Return for Changes:** the budget goes back to **Draft**, every approval is cleared, all approvers' to-dos are removed, and the project manager gets a *Delivery Budget returned* to-do with your note.
 
 ## Common mistakes
 
 | Message | Why it happens | What to do |
 |---|---|---|
-| *Write a note for the project manager before returning the baseline.* | **Note for the project manager** is empty. | Type the note on the **Approvals** tab first. |
+| *Write a note for the project manager before returning the budget.* | **Note for the project manager** is empty. | Type the note on the **Approvals** tab first. |
 | *You cannot give this approval, or it has already been given.* | Another finance user approved it first, or this revision does not need finance. | Refresh and check **Budget approved by**. |
-| *This baseline is not waiting for approval.* | It was returned, withdrawn or approved while you had it open. | Refresh and check the status bar. |
-| *Baseline v1 is Waiting for approval and can no longer be edited. Return it to draft or request a revision.* | You tried to change a cost item while it waits. | Return it with a note; the project manager makes the change. |
+| *This budget is not waiting for approval.* | It was returned, withdrawn or approved while you had it open. | Refresh and check the status bar. |
+| *Budget v1 is Waiting for approval and can no longer be edited. Return it to draft or request a revision.* | You tried to change a cost item while it waits. | Return it with a note; the project manager makes the change. |
 
 :::note[Good to know]
 - A revision that only moves dates or milestones, with no change to the cost items, does not come to finance. The Head of Delivery (and the MD, if needed) approves it alone.
-- A blue banner, *Odoo budget mapping is not finished*, means some budget categories have no budgetary position yet. You can still approve, but those categories share one Odoo budget line. Finish the mapping in [Delivery Settings](/projects/how-to/approvers/delivery-settings/).
+- A blue banner, *Accounting budget mapping is not finished*, means some budget categories have no budgetary position yet. You can still approve, but those categories share one accounting budget line. Finish the mapping in [Delivery Settings](/projects/how-to/approvers/delivery-settings/).
 - Until you approve, foreign-currency amounts use today's rate, so the totals can move a little from day to day.
 :::

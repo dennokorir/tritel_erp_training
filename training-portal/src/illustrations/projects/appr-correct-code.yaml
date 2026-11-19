@@ -1,0 +1,27 @@
+# docs-sync: verified_commit 5d691a8dca64
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:correct-code, tritel_project_delivery:wizard:project.code.correct, tritel_project_delivery:field:project.project.code
+type: screen
+title: Correct a project code
+desc: A project form with the Correct Code button and the code P26-049 above the name, and the Correct Code window with Project, Current code, New code, Reason, Cost account, the warning and the Correct Code button, numbered 1 to 5.
+source: tritel_project_delivery/views/project_code_views.xml (project_form_code), wizards/correct_project_code_views.xml (project_code_correct_form)
+frame:
+  grid: true
+  app: Project
+  menu: [{label: Projects, active: true}, My Tasks, My Actions, Delivery, Reporting, Configuration]
+  breadcrumb: [Projects, "P26-049 · Data Centre Upgrade"]
+blocks:
+  - buttons: [{label: Correct Code, n: 1}]
+  - text: P26-049
+  - title: {text: Data Centre Upgrade}
+  - dialog:
+      title: Correct Code
+      n: 2
+      blocks:
+        - fields:
+            - [{label: Project, value: "P26-049 · Data Centre Upgrade"}]
+            - [{label: Current code, value: P26-049}]
+            - [{label: New code, value: P26-094, n: 3}]
+            - [{label: Reason, value: "Code agreed with the client in the contract", n: 4}]
+            - [{label: Cost account, value: "[P26-049] Data Centre Upgrade"}]
+        - note: {text: "The code changes everywhere it shows, including the cost account. Documents and spreadsheets that quote the old code keep it.", tone: warn}
+        - buttons: [{label: Correct Code, primary: true, n: 5}, {label: Cancel}]

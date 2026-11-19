@@ -6,7 +6,7 @@ pageType: how-to
 roles: [head-delivery]
 tags: [client delays, approvals, my actions]
 keywords: [client delay, customer delay, extension of time, EOT, site access, held up, excusable delay, approve delay, reject delay, on time]
-where: [Project, Delivery, Client Delays]
+where: [Project, Delivery, Projects, Client Delays]
 before:
   - You have the <strong>Head of Delivery</strong> role.
   - The project manager has clicked <strong>Submit for Approval</strong>. Every Head of Delivery gets a to-do called <em>Approve client delay</em>.
@@ -20,7 +20,7 @@ sources:
   - tritel_project_delivery/models/project.py
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/menus.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -30,7 +30,7 @@ A **client delay** is a period when the client held up the work, for example by 
 
 ## Steps
 
-1. Open **Project › Delivery › Client Delays**. The list opens on **Waiting for approval**. Click the delay. You can also use **Project › My Actions**, under **Client delays to approve**.
+1. Open **Project › Delivery › Projects › Client Delays**. The list opens on **Waiting for approval**. Click the delay. You can also use **Project › My Actions**, under **Client delays to approve**.
 2. Check the **Delay** dates. **Days** counts both the first and the last day.
 3. Open the **Evidence**, if there is one: a client letter, a site-access email or meeting minutes. It is optional.
 4. Read what the client delayed, and why.
@@ -53,7 +53,7 @@ From **My Actions** you can click **Approve**, or **Reject** and type the note i
 | *Only a submitted client delay can be approved.* | It was already approved or rejected. | Refresh and check the status bar. |
 | *Only a submitted or approved client delay can be rejected.* | It is still a draft or already rejected. | Leave it for the project manager. |
 | *Only the Head of Delivery can approve a client delay.* | You don't have the Head of Delivery role. | Ask a Head of Delivery to decide it. |
-| *PRJ Customer A network upgrade is closed. Finance can reopen it first.* | The project is already closed. | Ask finance to reopen it if the delay must count. |
+| *Data Centre Upgrade is closed. Finance can reopen it first.* | The project is already closed. | Ask finance to reopen it if the delay must count. |
 
 :::note[Good to know]
 - Overlapping delays count once. Two approved delays of 1–10 May and 5–12 May add 12 days, not 18.

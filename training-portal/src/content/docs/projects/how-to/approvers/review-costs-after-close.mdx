@@ -5,8 +5,8 @@ module: projects
 pageType: how-to
 roles: [delivery-finance]
 tags: [close-out, budget tracking, my actions]
-keywords: [costs after close, late bills, late invoices, post-closure costs, accruals, reopen project, overrun, variance, final cost, mark reviewed]
-where: [Project, My Actions]
+keywords: [costs after close, costs after close to review, late bills, late invoices, post-closure costs, accruals, reopen project, overrun, variance, final cost, mark reviewed]
+where: [Accounting, Project Budgets, To approve, Costs After Close]
 before:
   - You have the <strong>Delivery Finance</strong> role.
   - A closed project has costs posted, or orders confirmed, on its cost account since it closed. A daily check gives every finance user a <em>Costs after close</em> to-do.
@@ -23,8 +23,9 @@ sources:
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/buttons_views.xml
   - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/accounting_menus.xml
   - tritel_project_delivery/views/my_actions_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -34,7 +35,8 @@ After a project closes, its final cost and result stay frozen. If a late bill is
 
 ## Steps
 
-1. Open **Project › My Actions** and find **Costs after close**. Each item shows the amount since close, for example *KES 15,000 since close*. Click **Open**, or open the to-do.
+1. Open **Accounting › Project Budgets › To approve › Costs After Close**. It lists closed delivery projects and opens on the filter **Costs after close to review**; when nothing is waiting it says *No closed project has costs after close waiting for review.* Click the project.
+   - Or open **Project › My Actions** and find **Costs after close**. Each item shows the amount since close, for example *KES 15,000 since close*. Click **Open**, or open the to-do.
 2. On the project, open the **Handover & close** tab.
 3. Read the **Costs after close** alert, and compare it with the frozen **Result** figures: **Final cost (before VAT)**, **Spent at close** and **Open orders at close**. Use the **Spent so far** and **Committed** buttons at the top to see the new lines.
 4. If the costs should not change the result (for example, they were already in the final cost as an adjustment), click **Mark reviewed**.
@@ -44,7 +46,7 @@ You can also click **Mark reviewed** or **Reopen** straight from the item on My 
 
 ## What happens next
 
-- **After Mark reviewed:** the project stays closed. The alert shows *Reviewed by* your name and the date. Your *Costs after close* to-do is marked done, the project's chatter records the amount reviewed, and the item leaves My Actions.
+- **After Mark reviewed:** the project stays closed. The alert shows *Reviewed by* your name and the date. Your *Costs after close* to-do is marked done, the project's chatter records the amount reviewed, and the project leaves My Actions and the **Costs after close to review** filter.
 - If the costs change again later, the item comes back and the daily check sends a new to-do.
 - **After Reopen:** the final cost and result are cleared, and the earlier figures go into the chatter. The project is open again until you close it.
 

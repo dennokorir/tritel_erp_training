@@ -1,74 +1,74 @@
 # Project Delivery: every status of every workflow, one entry per status.
 # Written from tritel_project_delivery (models and views); see the workflow pages for diagrams.
 
-# ── Delivery baseline (each version) ─────────────────────────────────────
+# ── Delivery Budget (each version) ─────────────────────────────────────
 - module: projects
-  workflow: "Delivery baseline"
+  workflow: "Delivery Budget"
   link: "/projects/workflows/baseline/"
   state: "Draft"
   meaning: "The version is being written: cost items, pay months, completion date, milestones and, for a revision, the reason. Only a draft can be edited or deleted."
-  next: "Waiting for approval (Confirm for Approval); Withdrawn (Withdraw)"
+  next: "Waiting for approval (Submit for Approval); Withdrawn (Withdraw)"
   who: "Delivery project manager"
 - module: projects
-  workflow: "Delivery baseline"
+  workflow: "Delivery Budget"
   link: "/projects/workflows/baseline/"
   state: "Waiting for approval"
   meaning: "Locked and with the approvers. The Head of Delivery approves the dates, Delivery Finance the budget (when needed) and the MD large revisions, in any order."
-  next: "Approved (when the last needed approval is given); Draft (Return to Draft); Withdrawn (Withdraw)"
+  next: "Approved (when the last needed approval is given); Draft (Return for Changes); Withdrawn (Withdraw)"
   who: "Head of Delivery, Delivery Finance, MD; the system; Delivery project manager"
 - module: projects
-  workflow: "Delivery baseline"
+  workflow: "Delivery Budget"
   link: "/projects/workflows/baseline/"
   state: "Approved"
-  meaning: "In force. The project's completion date, milestones, Odoo budget and budget tracking follow it. Exchange rates are fixed."
+  meaning: "In force. The project's completion date, milestones, accounting budget and budget tracking follow it. Exchange rates are fixed."
   next: "Superseded (when a later version is approved)"
   who: "The system"
 - module: projects
-  workflow: "Delivery baseline"
+  workflow: "Delivery Budget"
   link: "/projects/workflows/baseline/"
   state: "Superseded"
-  meaning: "Replaced by a later approved version. Kept for history; its Odoo budget is cancelled."
+  meaning: "Replaced by a later approved version. Kept for history; its accounting budget is cancelled."
   next: "—"
   who: "—"
 - module: projects
-  workflow: "Delivery baseline"
+  workflow: "Delivery Budget"
   link: "/projects/workflows/baseline/"
   state: "Withdrawn"
   meaning: "Abandoned before approval. It stays on record but no longer counts, and can be deleted."
   next: "—"
   who: "—"
 
-# ── Project baseline status (Baseline field on the project) ──────────────
+# ── Project budget status (Budget status field on the project's Delivery tab) ──────────────
 - module: projects
-  workflow: "Project baseline status"
+  workflow: "Project budget status"
   link: "/projects/workflows/baseline/"
-  state: "No baseline"
-  meaning: "The delivery project has no baseline in draft, waiting or approved."
-  next: "Baseline in draft (Draft Baseline or Open Delivery Project)"
+  state: "No budget"
+  meaning: "The delivery project has no Delivery Budget in draft, waiting or approved."
+  next: "Budget in draft (Draft Budget or Open Delivery Project)"
   who: "Delivery project manager"
 - module: projects
-  workflow: "Project baseline status"
+  workflow: "Project budget status"
   link: "/projects/workflows/baseline/"
-  state: "Baseline in draft"
-  meaning: "Version 1 is being written. Past Baseline due, the project is flagged as overdue."
-  next: "Waiting for approval (Confirm for Approval)"
+  state: "Budget in draft"
+  meaning: "Version 1 is being written. Past Budget due, the project is flagged as overdue."
+  next: "Waiting for approval (Submit for Approval)"
   who: "Delivery project manager"
 - module: projects
-  workflow: "Project baseline status"
+  workflow: "Project budget status"
   link: "/projects/workflows/baseline/"
   state: "Waiting for approval"
   meaning: "Version 1 is with the approvers."
-  next: "Approved (all approvals given); Baseline in draft (Return to Draft)"
+  next: "Approved (all approvals given); Budget in draft (Return for Changes)"
   who: "Head of Delivery, Delivery Finance; the system"
 - module: projects
-  workflow: "Project baseline status"
+  workflow: "Project budget status"
   link: "/projects/workflows/baseline/"
   state: "Approved"
   meaning: "An approved version is in force and no other version is open."
   next: "Revision pending (Request Revision)"
   who: "Delivery project manager"
 - module: projects
-  workflow: "Project baseline status"
+  workflow: "Project budget status"
   link: "/projects/workflows/baseline/"
   state: "Revision pending"
   meaning: "An approved version is in force and a revision is in draft or waiting for approval."
@@ -81,7 +81,7 @@
   link: "/projects/workflows/handover/"
   state: "Draft"
   meaning: "The handover date, certificate and note are recorded but not sent. It can be edited or deleted."
-  next: "Waiting for confirmation (Submit for Confirmation)"
+  next: "Waiting for confirmation (Submit for Approval)"
   who: "Delivery project manager"
 - module: projects
   workflow: "Project handover"
@@ -102,7 +102,7 @@
   link: "/projects/workflows/handover/"
   state: "Returned"
   meaning: "Sent back with a note. The project manager can correct it and submit it again, or delete it."
-  next: "Waiting for confirmation (Submit for Confirmation)"
+  next: "Waiting for confirmation (Submit for Approval)"
   who: "Delivery project manager"
 
 # ── Project handover status (Handover smart button on the project) ───────
@@ -118,7 +118,7 @@
   link: "/projects/workflows/handover/"
   state: "Draft"
   meaning: "A handover is being recorded."
-  next: "Waiting (Submit for Confirmation)"
+  next: "Waiting (Submit for Approval)"
   who: "Delivery project manager"
 - module: projects
   workflow: "Project handover status"
@@ -139,7 +139,7 @@
   link: "/projects/workflows/handover/"
   state: "Returned"
   meaning: "The latest handover was returned to the project manager."
-  next: "Waiting (Submit for Confirmation)"
+  next: "Waiting (Submit for Approval)"
   who: "Delivery project manager"
 - module: projects
   workflow: "Project handover status"
@@ -184,7 +184,7 @@
   workflow: "Close-out"
   link: "/projects/workflows/close-out/"
   state: "Open"
-  meaning: "The project is not closed. Baselines, handovers and client delays can be worked on."
+  meaning: "The project is not closed. Delivery Budgets, handovers and client delays can be worked on."
   next: "Closed (Close Project, once nothing blocks it)"
   who: "Delivery Finance"
 - module: projects
@@ -235,17 +235,17 @@
   workflow: "Close-out result"
   link: "/projects/workflows/close-out/"
   state: "Not scored"
-  meaning: "Closed without an approved baseline, a confirmed handover or a completion date. It doesn't count in the Delivery KPI."
+  meaning: "Closed without an approved Delivery Budget, a confirmed handover or a completion date. It doesn't count in the Delivery KPI."
   next: "Cleared on Reopen"
   who: "Delivery Finance"
 
-# ── Budget status ────────────────────────────────────────────────────────
+# ── Budget status (budget tracking, Budget vs Actual) ────────────────────────────────────────────────────────
 - module: projects
   workflow: "Budget status"
   link: "/projects/workflows/budget-status/"
   state: "No approved budget"
-  meaning: "No baseline has been approved yet, so there is nothing to track against."
-  next: "On track (baseline approved)"
+  meaning: "No Delivery Budget has been approved yet, so there is nothing to track against."
+  next: "On track (Delivery Budget approved)"
   who: "The system"
 - module: projects
   workflow: "Budget status"
@@ -268,3 +268,40 @@
   meaning: "At least one budget line has committed plus spent above its plan. Nothing is blocked."
   next: "On track or Fully committed (revision approved, or orders cancelled)"
   who: "The system, after a revision is approved"
+
+# ── Purchase order budget status (Budget status badge; Budget badge per line) ──
+- module: projects
+  workflow: "Purchase order budget status"
+  link: "/projects/workflows/budget-status/"
+  state: "Within budget"
+  meaning: "Every line falls on a running accounting budget line that still has room after this order."
+  next: "Any other status (when the order, the budget or other orders change; refreshed nightly)"
+  who: "The system"
+- module: projects
+  workflow: "Purchase order budget status"
+  link: "/projects/workflows/budget-status/"
+  state: "No cost account"
+  meaning: "At least one line carries no cost account, so it counts against no budget."
+  next: "Within budget or another status (Assign Cost Accounts, or set the cost account on the line)"
+  who: "Purchase user"
+- module: projects
+  workflow: "Purchase order budget status"
+  link: "/projects/workflows/budget-status/"
+  state: "No budget line"
+  meaning: "A line's cost account has no running budget line covering its expense account and order date."
+  next: "Within budget or another status (a budget is approved, or the cost account is changed)"
+  who: "Finance; purchase user"
+- module: projects
+  workflow: "Purchase order budget status"
+  link: "/projects/workflows/budget-status/"
+  state: "Budget planned at 0"
+  meaning: "A line falls on a budget line planned at 0, such as a month with no planned spend."
+  next: "Within budget or Over budget (a revision re-phases the budget, or the order date changes)"
+  who: "Delivery project manager and approvers; purchase user"
+- module: projects
+  workflow: "Purchase order budget status"
+  link: "/projects/workflows/budget-status/"
+  state: "Over budget"
+  meaning: "After this order, a budget line it touches would have less than nothing left (by more than 0.50). It doesn't block confirming."
+  next: "Within budget (orders reduced or cancelled, or a revision adds budget)"
+  who: "Purchase user; the system"

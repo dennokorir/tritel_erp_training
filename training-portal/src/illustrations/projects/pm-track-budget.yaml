@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:field:project.project.approved_budget_total, tritel_project_delivery:field:project.project.track_committed, tritel_project_delivery:field:project.project.track_forecast
 # docs-sync: shows tritel_project_delivery:field:project.project.track_refreshed_on, tritel_project_delivery:field:project.project.tracking_html, tritel_project_delivery:menu:menu_delivery_config
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:model:project.delivery.commitment
@@ -14,14 +14,14 @@ frame:
   grid: true
   app: Project
   menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true, n: 1}, Reporting]
-  breadcrumb: [Delivery Projects, PRJ Customer A network upgrade]
+  breadcrumb: [My Delivery Projects, P26-049 · Data Centre Upgrade]
 blocks:
   - smart:
       - {label: Delivery budget, value: "1,050,000"}
       - {label: Spent 43%, value: "450,000", n: 2}
       - {label: Committed, value: "200,000"}
       - {label: "Left · on track", value: "400,000", tone: good}
-  - title: {text: PRJ Customer A network upgrade, sub: Customer A}
+  - title: {text: Data Centre Upgrade, sub: "P26-049 · Customer A"}
   - tabs: {items: [Description, Settings, Delivery, "Handover & close"], active: Delivery}
   - heading: "Budget tracking   On track   ·   Figures as of 16/11/2026 06:00   ·   ↻ Refresh"
     n: 4

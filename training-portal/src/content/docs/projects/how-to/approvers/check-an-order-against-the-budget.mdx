@@ -1,0 +1,85 @@
+---
+title: Check a purchase order against the budget
+description: Read a purchase order's Budget status, the Budget badge on each line and the Budget impact tab to see whether the order fits the accounting budget of the project it is for, and what to do when it doesn't.
+module: projects
+pageType: how-to
+roles: [delivery-finance, finance, delivery-pm]
+tags: [purchase orders, budget tracking]
+keywords: [LPO, PO, RFQ, purchase order, over budget, budget check, budget control, budget status, budget impact, within budget, no budget line, budget planned at 0, commitment, analytic budget]
+where: [Purchase, Orders, Purchase Orders]
+before:
+  - You can open purchase orders and requests for quotation in the <strong>Purchase</strong> app.
+  - The order's lines carry a cost account, and the project has an approved Delivery Budget, which creates its accounting budget.
+related: [projects/calculations/purchase-commitments, projects/how-to/approvers/assign-cost-accounts, projects/reports/budget-commitments, projects/calculations/budget-lines-and-phasing, projects/concepts/odoo-budget-and-cost-account, projects/concepts/budget-tracking, projects/how-to/delivery-pm/request-a-revision]
+sidebar: { order: 12 }
+sources:
+  - tritel_project_delivery/models/purchase_budget.py
+  - tritel_project_delivery/views/purchase_budget_views.xml
+  - tritel_project_delivery/data/purchase_budget_data.xml
+  - tritel_project_delivery/views/buttons_views.xml
+  - tritel_project_delivery/models/buttons.py
+  - tritel_project_delivery/models/tracking.py
+  - tritel_project_delivery/models/phasing.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Every purchase order and request for quotation (RFQ) shows how it stands against the accounting budget of the cost account on its lines. Check it before you confirm an order, and when you review open orders. A request for quotation is checked as if it were confirmed now, so you see the effect before anyone commits the money.
+
+<Illustration name="projects/appr-order-budget" caption="A request for quotation for Vendor A that takes the project's budget line over. The numbers match the steps below." />
+
+## Steps
+
+1. Open the order from **Purchase › Orders › Purchase Orders** or **Requests for Quotation**. The **Budget status** badge under the order's title shows the most serious status of any of its lines.
+2. On the **Products** tab, the **Budget** column shows each line's status. If you can't see it, add it from the column options at the right of the lines.
+3. Open the **Budget impact** tab.
+4. Read one row for each accounting budget line the order touches:
+
+   | Column | What it shows |
+   |---|---|
+   | **Budget line** | The cost account and budgetary position, for example *[P26-049] Data Centre Upgrade · Direct project costs*, with the budget's name under it. |
+   | **Planned** | What the budget line plans to spend. |
+   | **Actual** | What has already been posted to it, such as bills. |
+   | **Committed (other orders)** | What other confirmed orders still have to bill against it. |
+   | **This order** | This order's share. For a confirmed order, only what isn't billed yet. |
+   | **Left after** | Planned − Actual − Committed (other orders) − This order. |
+
+   Rows are sorted with the tightest first. Lines with no cost account, or with no matching budget line, are added at the bottom as **No cost account** or **No budget line**, with their amount and *not budgeted*. All amounts are before tax, in the company currency.
+5. If the order is for a delivery project, the **Budget Available** button at the top right shows what is left in the project's delivery plan. See *Good to know* below.
+
+## What each status means
+
+From least to most serious. The order shows its most serious line.
+
+| Status | What it means | What to do |
+|---|---|---|
+| **Within budget** | Every line has a cost account, a matching budget line, and room left on it. | Nothing. |
+| **No cost account** | At least one line has no cost account, so it counts against no budget. | Set the cost account. See [Set the cost account on order lines](/projects/how-to/approvers/assign-cost-accounts/). |
+| **No budget line** | A line has a cost account, but no line of a confirmed or validated budget covers it: the project has no approved budget yet, the product's expense account isn't in any of the budget's budgetary positions, or the order date falls outside the budget's dates. | Check the cost account and the product. If they are right, ask Delivery Finance whether the budget is missing. |
+| **Budget planned at 0** | The matching budget line plans nothing, usually a month in which the spend plan has no spending. | Check the order date and the project's spend plan. See *Good to know* below. |
+| **Over budget** | **Left after** is below zero on at least one budget line. | Look at the red row. Reduce the order, move a line to the right cost account, or ask the project manager to [request a revision](/projects/how-to/delivery-pm/request-a-revision/). |
+
+How lines are matched to budget lines, and how **Committed** and **Available** are worked out, is on [How orders count against an accounting budget](/projects/calculations/purchase-commitments/).
+
+## Find orders by budget status
+
+The **Budget status** column is in the **Requests for Quotation** and **Purchase Orders** lists. In the search bar:
+
+- **Filters › Over budget**: orders over budget;
+- **Filters › Budget flags**: orders with no cost account, no budget line, a budget planned at 0, or over budget;
+- **Filters › No cost account**: orders with a line that has no cost account;
+- **Group By › Budget status**.
+
+## What happens next
+
+The **Budget status** updates as soon as the order's lines, quantities, prices or cost accounts change, or the order is confirmed. Budgets and other orders change too, so every night the scheduled job *Purchase: refresh budget status of open orders* checks every open order and request for quotation again.
+
+A cancelled order has no budget status. Nothing on this page stops anyone confirming an order: the status is there to inform.
+
+:::note[Good to know]
+- **Monthly budget lines.** An approved Delivery Budget creates accounting budget lines **by month**, one per budgetary position for each month of the spend plan; months with no planned spend are joined into one line planned at 0. An order dated in such a month shows **Budget planned at 0**, and an order bigger than its month's planned spend shows **Over budget**, even when the project as a whole has room. The order date is what decides the month. See [Budget by category, spend by month and the accounting budget lines](/projects/calculations/budget-lines-and-phasing/).
+- **Budget Available is a different check.** The **Budget Available** button compares the order with the project's **delivery plan by budget category**, and turns red when this order takes a budget category over its plan. **Budget status** compares it with the **accounting budget lines**, month by month. The two can disagree: an order can be **Over budget** in its month while **Budget Available** still shows money left, and the other way round. Neither stops the order being confirmed. Confirming an order over the delivery plan adds *Over the delivery plan when confirmed* to the order's chatter and tells the project manager.
+- **Requests for quotation don't count against each other.** **Committed (other orders)** counts only confirmed orders. Two requests for quotation can each be **Within budget** and together go over.
+- **The badge and the tab can briefly differ.** The **Budget** column and the **Budget impact** tab are worked out each time you open the order. The **Budget status** badge and list column are stored, and catch up when the order changes or overnight.
+- The date used is the order's **Order Deadline**. After confirmation that field is hidden on the form, but it is still the date that counts.
+:::

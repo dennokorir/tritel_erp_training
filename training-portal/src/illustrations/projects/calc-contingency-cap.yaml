@@ -1,8 +1,8 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state
 type: calc
 title: Contingency cap
-desc: Worked example where contingency of 6% of other costs is 5.7% of the budget total, above the 5% cap, so Confirm for Approval stops with a message.
+desc: Worked example where contingency of 6% of other costs is 5.7% of the budget total, above the 5% cap, so Submit for Approval stops with a message.
 source: tritel_project_delivery/models/baseline.py (action_confirm, contingency cap check)
 heading: Contingency set to 6% of other costs, cap 5%
 inputs:
@@ -14,5 +14,5 @@ steps:
   - {label: "Budget total, contingency included", value: "1,060,000"}
   - {label: "Limit: 5% × 1,060,000", value: "53,000"}
   - {label: "Contingency share of the budget: 60,000 ÷ 1,060,000", value: "5.7%", tone: bad}
-result: {label: Confirm for Approval, value: "Stopped", tone: bad}
+result: {label: Submit for Approval, value: "Stopped", tone: bad}
 note: "Message: Contingency is 5.7% of the budget; the limit is 5.0%. With a 5% cap, the most you can enter is about 5.26% of other costs."

@@ -1,15 +1,15 @@
 ---
 title: Approve a large revision
-description: As the MD named in Delivery Settings, find a baseline revision that moves the budget or the completion date past the set limits, then approve it or return it.
+description: As the MD named in Delivery Settings, find a Delivery Budget revision that moves the budget or the completion date past the set limits, then approve it or return it.
 module: projects
 pageType: how-to
 roles: [md]
-tags: [baselines, approvals, my actions]
-keywords: [MD approval, managing director, large revision, budget increase, overrun, extension, change request, variation, sign off, return revision]
+tags: [delivery budgets, approvals, my actions]
+keywords: [MD approval, approve as MD, baseline, managing director, large revision, budget increase, overrun, extension, change request, variation, sign off, return revision]
 where: [Project, My Actions]
 before:
   - You are the user named in <strong>MD</strong> in Delivery Settings. The MD is one person, not a group.
-  - A project manager has confirmed a revision whose budget is more than 10% above the original, or whose completion date is more than 30 days after the original (the default limits). You get a to-do called <em>Approve delivery baseline revision (MD)</em>.
+  - A project manager has submitted a revision whose budget is more than 10% above the original, or whose completion date is more than 30 days after the original (the default limits). You get a to-do called <em>Approve delivery budget revision (MD)</em>.
 related: [projects/concepts/approvals, projects/calculations/revisions-and-approvals, projects/workflows/baseline, projects/concepts/baselines, projects/how-to/approvers/delivery-settings]
 sidebar: { order: 3 }
 sources:
@@ -25,46 +25,46 @@ sources:
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/buttons_views.xml
   - tritel_project_delivery/views/menus.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
-When a project's plan changes, the project manager raises a **revision**. Small revisions are approved by the Head of Delivery (and finance, if the costs change). A **large** revision, one that moves the budget or the completion date too far from the **original** baseline, also needs the MD.
+When a project's plan changes, the project manager raises a **revision**. Small revisions are approved by the Head of Delivery (and finance, if the costs change). A **large** revision, one that moves the budget or the completion date too far from the **original** Delivery Budget, also needs the MD.
 
 ## Steps
 
 <Illustration name="projects/appr-md-my-actions" caption="A large revision waiting for you on My Actions. The numbers match steps 1 to 3." />
 
-1. Open **Project › My Actions**. Or click the to-do *Approve delivery baseline revision (MD)* in your activities (the clock icon at the top of the screen).
+1. Open **Project › My Actions**. Or click the to-do *Approve delivery budget revision (MD)* in your activities (the clock icon at the top of the screen).
 2. Find the group **Revisions to approve (MD)**.
-3. Each item shows the project, who confirmed it, the new completion date and how far it moves from the original, for example *+14% budget, +40 days vs v1*. Click **Open** to read the revision before deciding.
+3. Each item shows the project, who submitted it, the new completion date and how far it moves from the original, for example *+14% budget, +40 days vs v1*. Click **Open** to read the revision before deciding.
 
 <Illustration name="projects/appr-md-approve" caption="The revision itself. The numbers match steps 4 to 8." />
 
 4. In the **Change** box, compare **Budget vs previous** and **Days vs previous** (against the last approved version) with **Budget vs original (%)** and **Days vs original** (against version 1).
 5. Read the **Reason for revision**.
 6. Open the **Changes** tab to see the cost items that were added, changed or removed, with the amounts before and after. The **Milestones** tab has the new dates.
-7. To agree, click **MD Approve**. (On My Actions the button is **Approve**.)
-8. To send it back, open the **Approvals** tab, type what needs to change in **Note for the project manager**, then click **Return to Draft**. On My Actions, click **Return**, type the note in the box that opens, and click **Return** again.
+7. To agree, click **Approve as MD**. (On My Actions the button is **Approve**.)
+8. To send it back, open the **Approvals** tab, type what needs to change in **Note for the project manager**, then click **Return for Changes**. On My Actions, click **Return**, type the note in the box that opens, and click **Return** again.
 
 ## What happens next
 
-- **After MD Approve:** your name goes in **MD approval by** on the **Approvals** tab and your to-do is removed.
-- If the Head of Delivery (or finance) has not approved yet, the revision stays **Waiting for approval**. When the last approval is in, it becomes **Approved**: the project's completion date and milestones follow it, a new Odoo budget is created, and the previous version becomes **Superseded** with its Odoo budget cancelled. The project manager is notified.
-- **After Return to Draft:** every approval already given is cleared, all approvers' to-dos are removed, and the project manager gets a *Delivery baseline returned* to-do with your note.
+- **After Approve as MD:** your name goes in **MD approval by** on the **Approvals** tab and your to-do is removed.
+- If the Head of Delivery (or finance) has not approved yet, the revision stays **Waiting for approval**. When the last approval is in, it becomes **Approved**: the project's completion date and milestones follow it, a new accounting budget is created, and the previous version becomes **Superseded** with its accounting budget cancelled. The project manager is notified.
+- **After Return for Changes:** the revision goes back to **Draft**, every approval already given is cleared, all approvers' to-dos are removed, and the project manager gets a *Delivery Budget returned* to-do with your note.
 
 ## Common mistakes
 
 | Message | Why it happens | What to do |
 |---|---|---|
 | *You cannot give this approval, or it has already been given.* | You already approved it, or you are not the user named as **MD** in Delivery Settings. | Check the **Approvals** tab. If the MD has changed, ask the Head of Delivery to update the settings. |
-| *This baseline is not waiting for approval.* | It was returned or withdrawn while you had it open. | Refresh My Actions. |
-| *Write a note for the project manager before returning the baseline.* | You clicked **Return to Draft** with an empty note. | Type the note on the **Approvals** tab first. |
-| *This revision needs the MD, but no MD is set in Delivery Settings.* | The project manager sees this when they confirm a large revision and nobody is named as **MD**. | The Head of Delivery or finance names the MD in [Delivery Settings](/projects/how-to/approvers/delivery-settings/). |
+| *This budget is not waiting for approval.* | It was returned or withdrawn while you had it open. | Refresh My Actions. |
+| *Write a note for the project manager before returning the budget.* | You clicked **Return for Changes** with an empty note. | Type the note on the **Approvals** tab first. |
+| *This revision needs the MD, but no MD is set in Delivery Settings.* | The project manager sees this when they submit a large revision and nobody is named as **MD**. | The Head of Delivery or finance names the MD in [Delivery Settings](/projects/how-to/approvers/delivery-settings/). |
 
 :::note[Good to know]
 - The limits are measured from **version 1**, not from the last revision, so a big change can't be split into small ones. Only increases count: a lower budget or an earlier date never needs the MD.
-- The MD has no menu of their own under **Project › Delivery** unless they are also in a delivery group. They reach revisions through **My Actions** or the to-do. To open them at all, the MD needs at least user access to the Project app.
+- The MD has no menu of their own under **Project › Delivery** (not even **To approve › Waiting for Me**) unless they are also Delivery Finance or Head of Delivery. They reach revisions through **My Actions** or the to-do. To open them at all, the MD needs at least user access to the Project app.
 - There is only one MD and no deputy. If the MD is away, the Head of Delivery or finance can name someone else in Delivery Settings. The new person then sees the waiting revisions on their My Actions, but the to-do stays with the previous MD.
 - The limits are read live. If someone changes them in Delivery Settings, revisions already waiting may start or stop needing the MD.
 :::

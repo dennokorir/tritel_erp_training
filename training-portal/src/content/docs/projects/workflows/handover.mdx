@@ -5,7 +5,7 @@ module: projects
 pageType: workflow
 roles: [delivery-pm, head-delivery, delivery-finance]
 tags: [handover, workflows]
-keywords: [handover status, hand over, completion certificate, acceptance, confirm handover, return handover, practical completion, sign-off, stage]
+keywords: [handover status, hand over, completion certificate, acceptance, confirm handover, return handover, practical completion, sign-off, stage, Submit for Confirmation]
 related: [projects/concepts/handover-and-close-out, projects/how-to/delivery-pm/record-a-handover, projects/how-to/approvers/confirm-a-handover, projects/workflows/close-out, projects/concepts/delivery-kpi]
 sidebar: { order: 2 }
 sources:
@@ -21,7 +21,7 @@ sources:
   - tritel_project_delivery/views/my_actions_views.xml
   - tritel_project_delivery/views/project_views.xml
   - tritel_project_delivery/views/tender_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 
 A **project handover** records the date the client took over the work. The project manager records and submits it, and the Head of Delivery confirms it or returns it. Only a confirmed handover counts for the on-time result and lets finance close the project.
@@ -34,19 +34,19 @@ stateDiagram-v2
   state "Confirmed" as confirmed
   state "Returned" as returned
   [*] --> draft: Record Handover (Delivery PM)
-  draft --> waiting: Submit for Confirmation (Delivery PM)
+  draft --> waiting: Submit for Approval (Delivery PM)
   waiting --> confirmed: Confirm Handover (Head of Delivery)
   waiting --> returned: Return (Head of Delivery)
   confirmed --> returned: Return (Head of Delivery)
-  returned --> waiting: Submit for Confirmation (Delivery PM)
+  returned --> waiting: Submit for Approval (Delivery PM)
 ```
 
 | Status | What it means | Moves to | Who moves it |
 |---|---|---|---|
-| **Draft** | Recorded but not sent. The **Handover date**, **Handover certificate** and **Note** can be changed, and it can be deleted. | **Waiting for confirmation** with **Submit for Confirmation** | Delivery project manager |
+| **Draft** | Recorded but not sent. The **Handover date**, **Handover certificate** and **Note** can be changed, and it can be deleted. | **Waiting for confirmation** with **Submit for Approval** | Delivery project manager |
 | **Waiting for confirmation** | With the Head of Delivery. It can no longer be edited. | **Confirmed** with **Confirm Handover**; **Returned** with **Return** | Head of Delivery |
 | **Confirmed** | The handover date is accepted. It counts for the on-time result, and finance can close the project. | **Returned** with **Return** | Head of Delivery |
-| **Returned** | Sent back with a **Note when returning**. The project manager can edit it and submit it again, or delete it. | **Waiting for confirmation** with **Submit for Confirmation** | Delivery project manager |
+| **Returned** | Sent back with a **Note when returning**. The project manager can edit it and submit it again, or delete it. | **Waiting for confirmation** with **Submit for Approval** | Delivery project manager |
 
 ## The project's handover status
 
@@ -68,7 +68,7 @@ flowchart TD
 %% docs-sync: shows tritel_project_delivery:group:group_delivery_finance, tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:group:group_delivery_pm, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:close-project, tritel_project_delivery:view_ext:project.edit_project:button:record-handover
   subgraph PM["Delivery project manager"]
     P1["Record Handover: date, certificate, note"]
-    P2["Submit for Confirmation"]
+    P2["Submit for Approval"]
     P3["Correct and submit again"]
   end
   subgraph Head["Head of Delivery"]
@@ -89,7 +89,7 @@ flowchart TD
 - **On submit:** every Head of Delivery gets a **Confirm project handover** to-do, and the handover appears under **Handovers to confirm** in their **My Actions** (showing whether a certificate is attached). A project manager who isn't Head of Delivery sees it under **Waiting on others**, with **Remind**.
 - **On confirm:** the to-do is removed, the project's chatter says *Handover on 15 Apr 2026 confirmed.*, and every Delivery Finance user gets a **Close delivery project** to-do.
 - **On return:** a note is required (*Write a note explaining what needs to change, then return it.*). The to-do is removed and whoever submitted it gets a **Handover returned** to-do with the note. That to-do is marked done when the handover is submitted again.
-- **One at a time:** submitting stops with *PRJ Customer A network upgrade already has a handover waiting or confirmed.* if another handover on the project is waiting or confirmed.
+- **One at a time:** submitting stops with *Data Centre Upgrade already has a handover waiting or confirmed.* if another handover on the project is waiting or confirmed.
 - **Closed projects:** no handover can be recorded, changed or decided while the project is closed.
 
 :::note[Good to know]

@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:field:project.project.track_spent, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root
 type: calc
 title: Over the delivery plan warning
@@ -15,4 +15,4 @@ steps:
   - {label: "This order's amount not yet billed, before VAT", value: "100,000"}
   - {label: "Over by: 100,000 − 80,000", value: "20,000", tone: warn}
 result: {label: On the order, value: "Over the delivery plan.", tone: warn}
-note: "Customer A network upgrade · Direct project costs: this order is 100,000; 80,000 was left in the plan (over by 20,000). The buyer can still confirm; the project manager is told."
+note: "Data Centre Upgrade · Direct project costs: this order is 100,000; 80,000 was left in the plan (over by 20,000). The buyer can still confirm; the project manager is told."

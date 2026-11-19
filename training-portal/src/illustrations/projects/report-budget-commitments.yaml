@@ -1,0 +1,24 @@
+# docs-sync: verified_commit 5d691a8dca64
+# docs-sync: shows tritel_project_delivery:model:purchase.budget.commitment, tritel_project_delivery:selection:purchase.budget.commitment.state
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_budget_commitments, tritel_project_delivery:menu:menu_acc_pb_commitments, tritel_project_delivery:menu:menu_purchase_budget_commitments
+type: screen
+title: Budget Commitments report
+desc: The Budget Commitments report under Project › Delivery in its list view, with the search filters, one row per budget line and order line showing Project code, Order, Vendor, State, Ordered, Billed, Committed and Draft, and the totals, numbered 1 to 5.
+source: tritel_project_delivery/views/purchase_budget_views.xml (purchase_budget_commitment_tree, purchase_budget_commitment_search, menus), models/purchase_budget.py (PurchaseBudgetCommitment)
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true, n: 1}, Reporting]
+  breadcrumb: [Budget Commitments]
+blocks:
+  - search: {facets: [Confirmed orders], placeholder: "Search…", filters: [Filters, Group By], n: 2}
+  - buttons: [{label: Pivot}, {label: List, primary: true, n: 3}]
+  - table:
+      columns: [Project code, Order, Vendor, State, Ordered, Billed, Committed, Draft]
+      widths: [1.2, 1, 1.1, 2.1, 1.1, 1, 1.2, 1]
+      n: 4
+      rows:
+        - [P26-049, P00048, Vendor A, {text: Confirmed, badge: true, tone: good}, "150,000", "50,000", "100,000", "0"]
+        - [P26-049, P00052, Vendor B, {text: Confirmed, badge: true, tone: good}, "60,000", "0", "60,000", "0"]
+        - [P26-049, P00055, Vendor A, {text: Request for quotation, badge: true, tone: accent}, "0", "0", "0", "40,000"]
+        - {cells: [{text: Total, bold: true}, "", "", "", {text: "210,000", bold: true}, {text: "50,000", bold: true}, {text: "160,000", bold: true}, {text: "40,000", bold: true}], n: 5}

@@ -1,30 +1,36 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:group:group_delivery_finance, tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:menu:menu_delivery_config
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_projects_to_link, tritel_project_delivery:menu:menu_delivery_root
 # docs-sync: shows tritel_project_delivery:model:project.delivery.cost.item, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state
 # docs-sync: shows tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project, tritel_project_delivery:view_ext:project.edit_project:button:won-tender
+# docs-sync: shows tritel_project_delivery:group:group_delivery_pm, tritel_project_delivery:menu:menu_delivery_sec_approve, tritel_project_delivery:menu:menu_delivery_baselines_mine
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_sec_projects, tritel_project_delivery:menu:menu_delivery_my_projects, tritel_project_delivery:menu:menu_delivery_my_submissions
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_baselines, tritel_project_delivery:menu:menu_acc_project_budgets, tritel_project_delivery:menu:menu_acc_pb_budgets_to_approve
 type: matrix
-title: Who can do what with baselines
-desc: Permission grid for delivery projects and baselines, showing what delivery project managers, the Head of Delivery, Delivery Finance, the MD and everyone with project access can do, from opening a project to approving and returning a baseline.
-source: tritel_project_delivery/security/ir.model.access.csv, security/delivery_security.xml, views/menus.xml, views/baseline_views.xml, views/project_views.xml, views/tender_views.xml, models/baseline.py, wizards/open_project_wizard.py
-columns: [Delivery PM, Head of Delivery, Delivery Finance, MD, Everyone with project access]
+title: Who can do what with delivery budgets
+desc: Permission grid for delivery projects and delivery budgets, showing what delivery project managers (anyone managing an active delivery project), the Head of Delivery, Delivery Finance, the MD and everyone with project access can see in the menus and do, from opening a project to approving and returning a budget.
+source: tritel_project_delivery/security/ir.model.access.csv, security/delivery_security.xml, models/delivery_access.py, views/menus.xml, views/accounting_menus.xml, views/baseline_views.xml, views/project_views.xml, views/tender_views.xml, models/baseline.py, wizards/open_project_wizard.py
+columns: [Delivery PM (automatic), Head of Delivery, Delivery Finance, MD, Everyone with project access]
 labelWidth: 290
 rows:
   - {group: Seeing}
-  - {action: See every delivery project, baseline, budget and cost item, cells: [y, y, y, p, y]}
+  - {action: "See every delivery project, budget and cost item", cells: [y, y, y, p, y]}
   - {action: Project › Delivery menu, cells: [y, y, y, n, n]}
-  - {action: Projects to Link menu, cells: [n, y, n, n, n]}
+  - {action: "Projects › My Delivery Projects, My Submissions", cells: [y, y, n, n, n]}
+  - {action: "To approve › Waiting for Me; Projects › Delivery Projects", cells: [n, y, y, n, n]}
+  - {action: Projects › Projects Not in Delivery, cells: [n, y, n, n, n]}
+  - {action: Accounting › Project Budgets (Budgets to Approve and the rest), cells: [n, n, y, n, n]}
   - {group: Opening a project}
   - {action: Open or add a delivery project from a won tender, cells: [y, y, n, n, n]}
   - {action: Link an existing project to its won tender, cells: [y, y, n, n, n]}
-  - {group: Building the baseline}
-  - {action: Start a baseline or request a revision, cells: [y, y, n, n, n]}
+  - {group: Building the delivery budget}
+  - {action: Draft Budget or Request Revision, cells: [y, y, n, n, n]}
   - {action: Add, change and delete cost items and milestones on a draft, cells: [y, y, p, n, n]}
-  - {action: Confirm for Approval, cells: [y, y, n, n, n]}
-  - {action: Withdraw a draft or waiting baseline, cells: [y, y, n, n, n]}
+  - {action: Submit for Approval, cells: [y, y, n, n, n]}
+  - {action: Withdraw a draft or waiting budget, cells: [y, y, n, n, n]}
   - {group: Approving}
   - {action: Approve Dates, cells: [n, y, n, n, n]}
   - {action: Approve Budget, cells: [n, n, y, n, n]}
-  - {action: MD Approve, cells: [n, n, n, y, n]}
-  - {action: Return to Draft with a note, cells: [n, p, p, p, n]}
+  - {action: Approve as MD, cells: [n, n, n, y, n]}
+  - {action: Return for Changes with a note, cells: [n, p, p, p, n]}
 legend: {p: "Partly: see the notes under the picture"}

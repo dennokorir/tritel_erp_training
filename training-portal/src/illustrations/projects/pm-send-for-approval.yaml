@@ -1,21 +1,21 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:model:project.delivery.baseline, tritel_project_delivery:selection:project.delivery.baseline.kind
 # docs-sync: shows tritel_project_delivery:selection:project.delivery.baseline.state, tritel_project_delivery:selection:project.delivery.client.delay.state, tritel_project_delivery:selection:project.delivery.handover.state
 # docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state
 type: screen
-title: Confirming a baseline for approval
-desc: A draft delivery baseline with the Confirm for Approval and Withdraw buttons, the budget figures and the Approvals tab that lists who has confirmed and approved it, numbered 1 to 4.
+title: Submitting a delivery budget for approval
+desc: A draft delivery budget with the Submit for Approval and Withdraw buttons, the budget figures and the Approvals tab that lists who has confirmed and approved it, numbered 1 to 4.
 source: tritel_project_delivery/views/baseline_views.xml (baseline_form, header and Approvals tab)
 frame:
   grid: true
   app: Project
   menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
-  breadcrumb: [Delivery Projects, PRJ Customer A network upgrade · baseline v1]
+  breadcrumb: [My Delivery Projects, P26-049 · Data Centre Upgrade, P26-049 · Data Centre Upgrade · budget v1]
 blocks:
-  - buttons: [{label: Confirm for Approval, primary: true, n: 2}, {label: Withdraw}]
+  - buttons: [{label: Submit for Approval, primary: true, n: 2}, {label: Withdraw}]
     status: {steps: [Draft, Waiting for approval, Approved], current: Draft, n: 3}
-  - title: {text: PRJ Customer A network upgrade, sub: "Baseline v1 · Original"}
+  - title: {text: P26-049 · Data Centre Upgrade, sub: "Budget v1 · Original"}
   - fields:
       - [{label: Completion date, value: 30/06/2026, n: 1}, {label: Expected revenue, value: "KES 1,500,000"}]
       - [{label: Budget total, value: "KES 1,050,000"}, {label: Margin left, value: "KES 450,000", tone: good}]

@@ -36,6 +36,8 @@ sources:
   - tritel_project_delivery/views/project_views.xml
   - tritel_project_delivery/views/tender_views.xml
   - tritel_project_delivery/views/tracking_views.xml
+  - tritel_project_delivery/data/delivery_access_data.xml
+  - tritel_project_delivery/data/purchase_budget_data.xml
   - tritel_tender_tracker/models/bid_desk.py
   - tritel_tender_tracker/models/market_coverage.py
   - tritel_tender_tracker/models/models.py
@@ -47,7 +49,7 @@ sources:
   - tritel_tender_tracker/views/account_ownership_views.xml
   - tritel_tender_tracker/views/hr_employee.xml
   - tritel_tender_tracker/views/partner_activity_touchpoints_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 
 Each system section of this site explains one app. The work itself doesn't stay in one app: an opportunity in CRM becomes a tender, a won tender becomes a delivery project, and what happens in all of them ends up as figures on people's targets and, in the end, on the board's summary. The journeys on these pages follow one piece of work across those handovers, step by step, and link to the guide for each step.
@@ -89,7 +91,7 @@ flowchart TD
 | [From an OEM purchase to the OEM revenue target](/end-to-end/oem-booking-to-revenue-target/) | A purchase order with OEM lines, its booking and the OEM-recognised revenue target | Channel, Finance & Accounts |
 | [From a customer visit to coverage and activity targets](/end-to-end/customer-activity-to-coverage/) | Account ownership, planned and logged touches, the coverage ladder and the coverage metrics | Account Managers, Technical Presales, Head of Commercial |
 | [From bid desk work to bid KPIs](/end-to-end/bid-desk-to-bid-kpis/) | Nomination, readiness, submission, quality and disqualifications, and the bid desk metrics | Bid Liaisons, Technical Presales, Head of Commercial |
-| [From a won tender to the Delivery KPI](/end-to-end/project-to-delivery-kpi/) | The delivery project, its baseline, client delays, handover and close-out, and the delivery metrics | Delivery, Delivery Finance |
+| [From a won tender to the Delivery KPI](/end-to-end/project-to-delivery-kpi/) | The delivery project, its Delivery Budget, client delays, handover and close-out, and the delivery metrics | Delivery, Delivery Finance |
 
 ## Which journey for your role
 
@@ -121,6 +123,8 @@ Most handovers between systems are not instant. A figure reaches a target throug
 | Wait: OEM-recognised revenue and delivery | 30 days |
 | Manager confirms an automatic review | *Confirm Metric Review* to-do, due in 5 days by default |
 | Budget tracking on delivery projects | Every night |
+| Project Manager role check (*Project Delivery: Project Manager role follows the projects*) | Every day, and when a project's manager changes |
+| Purchase order budget status (*Purchase: refresh budget status of open orders*) | Every night, and when an order changes |
 | Board **As at** month-end figures | Rebuilt from the reviews covering up to that month end |
 
 The full rules are in [How metrics count](/accountability/calculations/metric-families/).

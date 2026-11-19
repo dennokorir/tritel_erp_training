@@ -1,0 +1,65 @@
+---
+title: Project codes
+description: What a project code such as P26-049 is, how it is given, where it shows, how to search by it, why the project's cost account carries it, and how a wrong code is corrected.
+module: projects
+pageType: concept
+roles: [everyone, delivery-pm, head-delivery, delivery-finance, finance]
+tags: [delivery projects, cost accounts]
+keywords: [project code, project number, job number, job code, P26, project reference, project ID, analytic account code, cost centre code, find a project, search project]
+related: [projects/how-to/approvers/correct-a-project-code, projects/how-to/approvers/sort-out-cost-accounts, projects/concepts/odoo-budget-and-cost-account, projects/concepts/delivery-projects, projects/how-to/delivery-pm/open-a-delivery-project, projects/reports/budget-commitments]
+sidebar: { order: 11 }
+sources:
+  - tritel_project_delivery/models/project_code.py
+  - tritel_project_delivery/views/project_code_views.xml
+  - tritel_project_delivery/data/project_code_data.xml
+  - tritel_project_delivery/migrations/16.0.1.17.0/post-migrate.py
+  - tritel_project_delivery/wizards/correct_project_code.py
+  - tritel_project_delivery/models/tender.py
+  - tritel_project_delivery/views/tender_views.xml
+  - tritel_project_delivery/models/baseline.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Every project in Odoo has a **project code**, such as **P26-049**. It is the short, fixed way to name a project in conversation, on purchase orders, bills and budgets, and in spreadsheets. Codes are for every project, not only delivery projects.
+
+A code is **P**, two digits for the year the project was opened, a dash, and a running number of at least three digits: **P26-049** is the 49th project, opened in 2026. The running number never restarts: the first project of 2027 continues from the last one of 2026, for example **P27-112**.
+
+Odoo gives the code when the project is created. Nobody types it. A copy of a project gets a new code of its own. Within the company a code belongs to one project only and is never given again, even after the project is archived.
+
+## Where the code shows
+
+Everywhere Odoo names a project, it shows the code first: **P26-049 · Data Centre Upgrade**. You see it in project fields, in the project list's **Project code** column and in front of each name, on the **Delivery Projects** list, above the project's name on its form, and in the names of what belongs to the project:
+
+- Delivery Budgets: **P26-049 · Data Centre Upgrade · budget v2**;
+- the tender's **Delivery projects** button shows the codes of the projects opened from it, instead of a count;
+- the **Budget Commitments** report has a **Project code** column.
+
+<Illustration name="projects/concept-project-codes" caption="Searching the Project list by code. The code also sits above the name on the project form." />
+
+## Finding a project by its code
+
+Type the code, or part of it, wherever you pick or search for a project. In the project search bar you can search by name or code, or choose **Project code** to search by code only. Part of a code works too: **26-04** finds P26-040 to P26-049.
+
+## The cost account carries the code
+
+A project's **cost account** (Odoo's analytic account) gets the same code as its **Reference**, and Odoo shows it as **[P26-049] Data Centre Upgrade**. So you can find the project by its code in the cost account field of purchase order lines, bills, journal items and accounting budgets.
+
+- When a project is renamed, its cost account is renamed with it.
+- The code on a project's cost account can't be changed on the account. The **Reference** field says *For a project's cost account this is the project code. It changes through the project.*
+- A cost account can belong to one project only. Linking a project to an account that already belongs to another project, or that carries another project's code, is refused, for example *Data Centre Upgrade is already the cost account of P26-047 · Office Wi-Fi Refresh. Choose another cost account for Data Centre Upgrade.*
+- Cost accounts that belong to no project are listed in **Cost Accounts to Sort Out**. See [Sort out cost accounts with no project](/projects/how-to/approvers/sort-out-cost-accounts/).
+
+## Projects that existed before codes
+
+When codes were introduced, every existing project, archived ones included, was numbered in the order it was created, and each got the year it was created. A project created in 2025 has a **P25-** code even if its work runs into 2026.
+
+## Correcting a code
+
+A project code never changes by itself, and nobody can type over it. If a code is wrong, a settings administrator corrects it with **Correct Code** on the project, giving a reason. The project and its cost account change together, and the project's chatter keeps the old code, the new code and the reason. See [Correct a project code](/projects/how-to/approvers/correct-a-project-code/).
+
+:::note[Good to know]
+- The year in the code is the year the project was opened in Odoo, not the year of the tender or contract.
+- A corrected code's number is never given to a new project: the numbering skips it.
+- Documents, emails and spreadsheets made before a correction keep the old code.
+:::

@@ -9,7 +9,8 @@ keywords: [chatter, message, note, log note, activity, to-do, reminder, follow, 
 sidebar: { order: 4 }
 sources:
   - Odoo 16 mail chatter
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_project_delivery/models/baseline.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../components/Illustration.astro';
 
@@ -20,7 +21,7 @@ Most records have a **chatter**: a panel at the side or bottom of the form.
 1. **Send message** emails the record's followers. Use it for messages that should leave the building or reach everyone following the record.
 2. **Log note** adds an internal note. Only staff see it, and nobody is emailed unless you @mention them.
 3. **Activities** schedules a to-do for someone, with a due date.
-4. **Planned activities** lists to-dos still open on this record. The systems create many of these for you, for example "review this baseline".
+4. **Planned activities** lists to-dos still open on this record. The systems create many of these for you, for example *Approve delivery budget: dates*.
 5. **History** shows every message, note and tracked change, newest first.
 
 ## Where your to-dos show up

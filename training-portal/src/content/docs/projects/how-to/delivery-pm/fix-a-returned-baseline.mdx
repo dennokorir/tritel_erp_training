@@ -1,14 +1,14 @@
 ---
-title: Fix a baseline that was sent back
-description: Read the approver's note on a returned baseline, make the changes and confirm it again; every approval is needed again afterwards.
+title: Fix a Delivery Budget that was sent back
+description: Read the approver's note on a returned Delivery Budget, make the changes and submit it again; every approval is needed again afterwards.
 module: projects
 pageType: how-to
 roles: [delivery-pm]
-tags: [baselines, approvals]
-keywords: [returned, sent back, rejected baseline, corrections, rework, resubmit, approver note, comments, budget queries, sign-off]
+tags: [delivery budgets, approvals]
+keywords: [baseline, returned, sent back, rejected budget, return for changes, corrections, rework, resubmit, approver note, comments, budget queries]
 where: [Project, My Actions]
 before:
-  - An approver returned your baseline. You get a <em>Delivery baseline returned</em> to-do with their note.
+  - An approver returned your Delivery Budget. You get a <em>Delivery Budget returned</em> to-do with their note.
 related: [projects/workflows/baseline, projects/how-to/delivery-pm/send-for-approval, projects/how-to/delivery-pm/build-a-baseline, projects/how-to/delivery-pm/my-actions]
 sidebar: { order: 8 }
 sources:
@@ -21,38 +21,38 @@ sources:
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/buttons_views.xml
   - tritel_project_delivery/views/menus.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
-An approver who is not happy with a baseline returns it with a note. It goes back to **Draft** so you can change it. Fix what they asked for and confirm it again.
+An approver who is not happy with a Delivery Budget returns it with a note. It goes back to **Draft** so you can change it. Fix what they asked for and submit it again.
 
-<Illustration name="projects/pm-returned-baseline" caption="A returned baseline with the approver's note. The numbers match the steps below." />
+<Illustration name="projects/pm-returned-baseline" caption="A returned Delivery Budget with the approver's note. The numbers match the steps below." />
 
 ## Steps
 
-1. Open **Project › My Actions**. The baseline is under **Baselines sent back to you**, with the note. Click it to open it. You can also open it from the *Delivery baseline returned* to-do.
+1. Open **Project › My Actions**. The budget is under **Budgets sent back to you**, with the note. Click it to open it. You can also open it from the *Delivery Budget returned* to-do.
 2. Read the yellow banner. It starts **Returned:** and shows the approver's note.
-3. Make the changes on the **Costs** and **Milestones** tabs, or change the **Completion date**. The baseline is in **Draft**, so everything can be edited again.
-4. Click **Confirm for Approval**.
+3. Make the changes on the **Costs** and **Milestones** tabs, or change the **Completion date**. The budget is in **Draft**, so everything can be edited again.
+4. Click **Submit for Approval**.
 
 ## What happens next
 
-- The baseline is **Waiting for approval** again and the banner disappears.
-- Your *Delivery baseline returned* to-do is marked done with *Confirmed again.*
+- The budget is **Waiting for approval** again and the banner disappears. It is back in **Project › Delivery › Projects › My Submissions**.
+- Your *Delivery Budget returned* to-do is marked done with *Confirmed again.*
 - All the approvers get new to-dos. Approvals given before the return were cleared, so the Head of Delivery and finance both approve again, even if one of them had already approved.
-- If the project no longer needs this baseline, click **Withdraw** instead. The to-do is marked done with *Baseline withdrawn.*
+- If the project no longer needs this budget, click **Withdraw** instead. The to-do is marked done with *Budget withdrawn.*
 
 ## Common mistakes
 
 | Message | Why it happens | What to do |
 |---|---|---|
-| *Baseline v1 is Waiting for approval and can no longer be edited. Return it to draft or request a revision.* | You tried to edit a baseline that hasn't been returned. | Ask an approver to click **Return to Draft** with a note. |
+| *Budget v1 is Waiting for approval and can no longer be edited. Return it to draft or request a revision.* | You tried to edit a budget that hasn't been returned. | Ask an approver to click **Return for Changes** with a note. |
 | *"Freight, clearing and delivery to site" needs a quantity and a unit cost.* | A line you changed now has no price. | Price it or delete it. |
 | *Milestones cannot fall after the completion date: Testing and commissioning complete.* | The date changes left a milestone after the completion date. | Move the milestone or the completion date. |
 
-All the other checks from [Send a baseline for approval](/projects/how-to/delivery-pm/send-for-approval/) run again when you confirm.
+All the other checks from [Submit a Delivery Budget for approval](/projects/how-to/delivery-pm/send-for-approval/) run again when you submit.
 
 :::note[Good to know]
-Only an approver who has not yet given their approval sees **Return to Draft**. If you spot a mistake in a baseline that is waiting, ask one of the approvers who still has to approve it to return it to you with a note.
+Only an approver who has not yet given their approval sees **Return for Changes**. If you spot a mistake in a budget that is waiting, ask one of the approvers who still has to approve it to return it to you with a note.
 :::

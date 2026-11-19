@@ -1,11 +1,11 @@
 ---
 title: How a cost item's amount is worked out
-description: How each cost item on a baseline becomes a KES amount before VAT, including quantity, VAT-inclusive prices, foreign currency, contingency as a share of the other costs and the contingency cap.
+description: How each cost item on a budget becomes a KES amount before VAT, including quantity, VAT-inclusive prices, foreign currency, contingency as a share of the other costs and the contingency cap.
 module: projects
 pageType: calculation
 roles: [delivery-pm, head-delivery, delivery-finance]
-tags: [budget, baselines, cost items]
-keywords: [cost item, BOQ, budget line, VAT inclusive, exchange rate, USD, forex, contingency, buffer, cap, estimate, quote]
+tags: [budget, delivery budgets, cost items]
+keywords: [cost item, BOQ, budget line, VAT inclusive, exchange rate, USD, forex, contingency, buffer, cap, estimate, baseline]
 related: [projects/concepts/cost-items-and-categories, projects/concepts/contingency, projects/how-to/delivery-pm/build-a-baseline, projects/calculations/budget-lines-and-phasing, projects/how-to/approvers/approve-budget]
 sidebar: { order: 1 }
 sources:
@@ -17,11 +17,11 @@ sources:
   - tritel_project_delivery/models/closeout.py
   - tritel_project_delivery/models/project.py
   - tritel_project_delivery/views/menus.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
-Every line on the **Costs** tab of a baseline is a cost item. The system works out each item's **Total (before VAT)** in KES, and those totals make up the budget.
+Every line on the **Costs** tab of a budget is a cost item. The system works out each item's **Total (before VAT)** in KES, and those totals make up the budget.
 
 ## The rule
 
@@ -37,20 +37,20 @@ For a contingency item (a cost type in the contingency category):
 - With a **% of other costs**, its amount is that percentage of the total of every item that is not contingency. The percentage wins if you also typed a **Unit cost**.
 - Without a percentage, it is priced like an ordinary item from its **Unit cost**, in KES.
 
-The **Budget total** is the sum of all items, contingency included. **Contingency** on the baseline is the sum of the contingency items.
+The **Budget total** is the sum of all items, contingency included. **Contingency** on the budget is the sum of the contingency items.
 
-<Illustration name="projects/calc-cost-items" caption="Four cost items on baseline v1. Contingency at 5% of the other costs passes the 5% cap." />
+<Illustration name="projects/calc-cost-items" caption="Four cost items on budget v1. Contingency at 5% of the other costs passes the 5% cap." />
 
 ## The contingency cap
 
-When you click **Confirm for Approval**, contingency may be at most the **Contingency cap (%)** of the **Budget total** (5% by default). Because the budget total already includes the contingency, the most you can enter with a 5% cap is about 5.26% of the other costs.
+When you click **Submit for Approval**, contingency may be at most the **Contingency cap (%)** of the **Budget total** (5% by default). Because the budget total already includes the contingency, the most you can enter with a 5% cap is about 5.26% of the other costs.
 
 <Illustration name="projects/calc-contingency-cap" caption="At 6% of other costs, contingency is 5.7% of the budget and confirmation stops." />
 
 ## When the exchange rate is fixed
 
-- While the baseline is a draft or waiting for approval, foreign-currency items use the rate on the day the item was last worked out. The **Costs** tab says *Foreign-currency amounts use today's rate until finance approves the budget.*
-- When finance clicks **Approve Budget**, each foreign-currency item gets a **Fixed rate** at that day's rate, and the totals are worked out again. If the baseline does not need finance (a revision with no budget change), the rate is fixed when the last approval is given.
+- While the budget is a draft or waiting for approval, foreign-currency items use the rate on the day the item was last worked out. The **Costs** tab says *Foreign-currency amounts use today's rate until finance approves the budget.*
+- When finance clicks **Approve Budget**, each foreign-currency item gets a **Fixed rate** at that day's rate, and the totals are worked out again. If the budget does not need finance (a revision with no budget change), the rate is fixed when the last approval is given.
 - A revision keeps the fixed rate of items you don't touch. Changing an item's **Qty**, **Unit cost**, **Currency**, **Incl. VAT** or **VAT %** clears its fixed rate, so it goes back to today's rate until the revision's budget is approved.
 
 ## The two checks under the cost list
