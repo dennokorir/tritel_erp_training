@@ -6,7 +6,7 @@ pageType: how-to
 roles: [line-manager]
 tags: [scorecard changes, targets]
 keywords: [withdraw target, remove target, cancel KPI, drop target, delete target, stop counting, scorecard change, role change, territory change]
-where: [Accountability, My Team, Team Targets]
+where: [Accountability, My Team, Set targets, Team Targets]
 before:
   - You are the employee's manager, or the manager who cascaded the target to them.
   - The target is live and the period is not closed.
@@ -28,7 +28,7 @@ sources:
   - tritel_accountability_framework/security/ir_groups.xml
   - tritel_accountability_framework/views/menu.xml
   - tritel_accountability_framework/wizard/cascade_line_mixin.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -38,7 +38,7 @@ When a target no longer applies, for example after a change of role or territory
 
 ## Steps
 
-1. Open **Accountability › My Team › Team Targets**, click the person, then click the target. In the **Assignment** section, click **Withdraw** next to **Weight**. The **Withdraw** window opens.
+1. Open **Accountability › My Team › Set targets › Team Targets**, click the person, then click the target. In the **Assignment** section, click **Withdraw** next to **Weight**. The **Withdraw** window opens.
 2. Set **From**: the day the target stops counting. It defaults to today and must fall inside the period.
 3. Write why in the reason box. The employee sees it.
 4. Read the effect on the person's **Overall rating score**.

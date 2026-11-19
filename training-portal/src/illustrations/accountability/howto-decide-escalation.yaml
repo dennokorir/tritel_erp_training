@@ -1,18 +1,19 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_my_actions_action, tritel_accountability_framework:menu:menu_accountability_my_actions, tritel_accountability_framework:menu:menu_accountability_my_performance
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_root
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_team_reviews, tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state
 # docs-sync: shows tritel_accountability_framework:selection:accountability.review.concern.state, tritel_accountability_framework:selection:accountability.review.session.employee.state, tritel_accountability_framework:selection:accountability.review.session.employee.waiting_on
 # docs-sync: shows tritel_accountability_framework:selection:accountability.target.state, tritel_accountability_framework:selection:accountability.target.weight.change.priority_state
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_people
 type: screen
 title: Deciding an escalated review
-desc: The Team Reviews board with an escalated review showing the Decide button, and the Decide the Escalation window with the questioned scores, the employee's question, the manager's reply, the reason for escalating, the Decision choice, the Decision note and the Record Decision button, numbered 7 to 11.
+desc: The All Reviews board (People › All Reviews) with an escalated review showing the Decide button, and the Decide the Escalation window with the questioned scores, the employee's question, the manager's reply, the reason for escalating, the Decision choice, the Decision note and the Record Decision button, numbered 7 to 11.
 source: tritel_accountability_framework/views/accountability_review_pack_views.xml (accountability_team_reviews_view_kanban) and views/wizard_review_concern_views.xml (accountability_review_concern_decide_wizard_view_form)
 frame:
   grid: true
   app: Accountability
-  menu: [My Performance, {label: My Team, active: true, n: 7}, My Actions, Organisation]
-  breadcrumb: [Team Reviews]
+  menu: [Company Overview, My Performance, {label: People, active: true, n: 7}, My Actions, Organisation]
+  breadcrumb: [All Reviews]
 blocks:
   - search: {facets: [Open + Closed in Last 30 Days, Segment (Waiting On)], filters: [Filters, Group By]}
   - kanban:

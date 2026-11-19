@@ -17,7 +17,7 @@ The worked example to copy is
    "record rule", "group" or "wizard". Say "the window that opens", "line managers", "HR".
 3. **Exact labels.** Buttons, menus, fields, tabs and statuses appear **in bold**, spelled exactly as on screen
    (the `string=` in the view; a view's `string=` wins over the field's). Messages the system shows go in
-   *italics*. Menu paths are written **App › Menu › Item**.
+   *italics*. Menu paths are written **App › Menu › Item**. When a menu groups its items under section headings (for example **My Team** in Accountability, **Project › Delivery**), include the heading: **My Team › Set targets › Team Targets**.
 4. **Dummy data only.** Never copy real names, customers, tenders, amounts or dates from data files or a
    database. Use Employee A / B / C, Customer A / B, TND-2026-001, PRJ-2026-001, FY 2026, round numbers.
 5. **Document today's behaviour.** Where the system is confusing or inconsistent (the discovery notes list gaps

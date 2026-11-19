@@ -5,10 +5,10 @@ module: accountability
 pageType: how-to
 roles: [accountability-admin]
 tags: [metrics, targets]
-keywords: [metric, KPI formula, automatic, data source, calculation, pipeline, revenue, worksheet, test, measure, automatic review]
-where: [Accountability, Organisation, Metrics]
+keywords: [metric, KPI formula, automatic, data source, calculation, pipeline, revenue, worksheet, test, measure, automatic review, Configuration menu]
+where: [Accountability, Configuration, Metrics]
 before:
-  - You are an accountability administrator. Only administrators see <strong>Organisation › Metrics</strong>.
+  - You are an accountability administrator. Only administrators see <strong>Configuration › Metrics</strong>.
   - You know which records the figure comes from (for example posted customer invoices) and which field links them to a person.
 related: [accountability/concepts/metrics, accountability/calculations/metric-families, accountability/concepts/targets, accountability/how-to/hr-admin/settings]
 sidebar: { order: 4 }
@@ -24,7 +24,8 @@ sources:
   - tritel_accountability_framework/models/accountability_target.py
   - tritel_accountability_framework/security/ir_groups.xml
   - tritel_accountability_framework/views/menu.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -34,7 +35,7 @@ A **metric** works out a target's actual from data already in Odoo, so nobody ha
 
 ## Steps
 
-1. Open **Accountability › Organisation › Metrics** and click **New** (or open a metric to change it).
+1. Open **Accountability › Configuration › Metrics** and click **New** (or open a metric to change it).
 2. Type the name, for example *Invoiced revenue*.
 3. Choose the **Kind**:
    - **Aggregate (count / sum / average of records)**: count or add up records.

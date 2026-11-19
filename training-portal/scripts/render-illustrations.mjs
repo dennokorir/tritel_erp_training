@@ -290,12 +290,16 @@ function renderScreen(spec) {
   }
   c.text(ax, 25, f.app || '', { weight: 700, fill: 'var(--tp-ill-header-text)' });
   let mx = ax + String(f.app || '').length * 8 + 26;
-  for (const m of f.menu || []) {
-    const item = typeof m === 'string' ? { label: m } : m;
-    c.text(mx, 25, item.label, { size: 12.5, fill: 'var(--tp-ill-header-text)', weight: item.active ? 700 : 400 });
-    if (item.active) c.line(mx, 33, mx + item.label.length * 7, 33, { stroke: 'var(--tp-ill-accent)', sw: 2 });
-    c.callout(item.n, mx + item.label.length * 7 + 6, 12);
-    mx += item.label.length * 7 + 22;
+  // Long menu bars (six top menus) shrink to fit the drawing width instead of running off the edge
+  const items = (f.menu || []).map((m) => (typeof m === 'string' ? { label: m } : m));
+  const natural = items.reduce((t, it) => t + it.label.length * 7 + 22, 0) - 22 + (items.some((it) => it.n) ? 18 : 0);
+  const k = Math.min(1, (W - PAD - mx) / Math.max(natural, 1));
+  for (const item of items) {
+    const lw = item.label.length * 7 * k;
+    c.text(mx, 25, item.label, { size: 12.5 * k, fill: 'var(--tp-ill-header-text)', weight: item.active ? 700 : 400 });
+    if (item.active) c.line(mx, 33, mx + lw, 33, { stroke: 'var(--tp-ill-accent)', sw: 2 });
+    c.callout(item.n, mx + lw + 6, 12);
+    mx += lw + 22 * k;
   }
   y = 40;
   if (f.breadcrumb) {

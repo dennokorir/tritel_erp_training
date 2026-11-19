@@ -6,7 +6,7 @@ pageType: how-to
 roles: [line-manager]
 tags: [weights, targets]
 keywords: [weights, weighting, KPI weight, priorities, share of score, reprioritise, change weight, rebalance, importance, scorecard balance]
-where: [Accountability, My Team, Team Targets]
+where: [Accountability, My Team, Set targets, Team Targets]
 before:
   - You are the person's manager, or the manager who cascaded the target to them.
   - The targets are live (active). A draft's weight is typed straight on the target and counts once it is activated.
@@ -30,7 +30,7 @@ sources:
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_accountability_framework/views/menu.xml
   - tritel_accountability_framework/wizard/review_pack_ack_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -40,7 +40,7 @@ Each target has a **weight**. Together the weights decide each target's **share 
 
 ## Steps
 
-Open **Accountability › My Team › Team Targets**, click the person in **My Team**, then click **Rebalance Weights** under their name. (On a live target you can also click **Rebalance Weights** next to **Weight**.)
+Open **Accountability › My Team › Set targets › Team Targets**, click the person in **My Team**, then click **Rebalance Weights** under their name. (On a live target you can also click **Rebalance Weights** next to **Weight**.)
 
 1. Choose how dragging behaves: **Trade with neighbour** (only the two targets either side of a boundary change) or **Resize, others rescale** (all other unlocked targets move in proportion).
 2. Drag a boundary on the **Share of score from today** bar. You can also click a boundary and use the ← → keys.
@@ -54,7 +54,7 @@ To change only the order of the targets, drag the rows by their handle and click
 ## What happens next
 
 - Each changed target gets a new weight from today. The change is recorded in the target's **Weight History**.
-- The employee gets one **Priority Change** to acknowledge (*Your priorities changed: please acknowledge.*). If they don't respond by the **Acknowledge By** date it is **Accepted automatically**. You can follow these under **My Team › Priority Changes**.
+- The employee gets one **Priority Change** to acknowledge (*Your priorities changed: please acknowledge.*). If they don't respond by the **Acknowledge By** date it is **Accepted automatically**. You can follow these under **My Team › Approve › Priority Changes**.
 - Scores are recalculated for the person and up the reporting line.
 - Targets that were withdrawn, closed or fully cascaded appear greyed out (*No longer counts from today*): their share for the past stays as it was.
 

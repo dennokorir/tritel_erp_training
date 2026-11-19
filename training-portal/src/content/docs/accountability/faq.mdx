@@ -5,7 +5,7 @@ module: accountability
 pageType: faq
 roles: [everyone, line-manager, hr, accountability-admin]
 tags: [faq, scores, reviews]
-keywords: [FAQ, help, why is my score 0, KPI, appraisal, rating, signed off automatically, late set, My Team missing, provisional, weighting, percentage, access]
+keywords: [FAQ, help, why is my score 0, KPI, appraisal, rating, signed off automatically, late set, My Team missing, People menu, where is the menu, provisional, weighting, percentage, access]
 related: [accountability/index, accountability/who-can-do-what, accountability/calculations/target-scores, accountability/calculations/own-team-overall, accountability/concepts/reviews]
 sidebar: { order: 3 }
 sources:
@@ -37,7 +37,9 @@ sources:
   - tritel_accountability_framework/wizard/review_concern_wizards.py
   - tritel_accountability_framework/wizard/review_pack_ack_wizard.py
   - tritel_accountability_framework/wizard/target_weight_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu_people.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 
 ## Why is my score 0?
@@ -94,7 +96,9 @@ There was nothing to measure in that window: for example no projects handed over
 
 ## Why can't I see the My Team menu?
 
-**My Team** appears only for line managers (anyone recorded as the **Manager** of at least one active employee) and for HR. If you manage people but don't see it, ask HR to check the **Manager** field on your team's employee records. See [Fix someone's access](/accountability/how-to/hr-admin/access-rights/).
+**My Team** appears only for line managers: anyone recorded as the **Manager** of at least one active employee. If you manage people but don't see it, ask HR to check the **Manager** field on your team's employee records. See [Fix someone's access](/accountability/how-to/hr-admin/access-rights/).
+
+HR staff who don't manage anyone don't get **My Team**. They use **People** instead, which lists the whole company's review sessions, reviews, scores, scorecard changes, priority changes and next year's targets. HR staff who also manage people see both menus. See [Accountability menus](/accountability/menus/).
 
 ## Why can't I see Accountability at all?
 

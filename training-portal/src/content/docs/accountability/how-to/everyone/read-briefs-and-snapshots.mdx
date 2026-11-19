@@ -5,7 +5,7 @@ module: accountability
 pageType: how-to
 roles: [everyone]
 tags: [snapshots, briefs, scores]
-keywords: [progress brief, on pace, behind, expected by now, snapshot, frozen, month end, as at, PDF, history, appraisal record]
+keywords: [progress brief, on pace, behind, expected by now, snapshot, frozen, month end, PDF, history, Performance Snapshots, My Score History]
 where: [Accountability, My Performance, Progress Briefs]
 before:
   - Progress briefs are sent only once HR turns them on in the Accountability settings, and only if you have running-total targets (number targets measured from the start of the period).
@@ -28,7 +28,7 @@ sources:
   - tritel_accountability_framework/views/hr_employee_views.xml
   - tritel_accountability_framework/views/menu.xml
   - tritel_accountability_framework/wizard/cascade_line_mixin.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -54,7 +54,7 @@ A **progress brief** tells you, at each month or quarter end, whether your runni
 
 ### Read a snapshot
 
-1. Open **Accountability › My Performance › Performance Snapshots** and click a snapshot. Use the **Mine** filter if you also see your team's.
+1. Open **Accountability › My Performance › My Score History** and click a snapshot. Use the **Mine** filter if you also see your team's.
 2. Under **Overall**, read the **Rating**, **Rating score (%)** and **Own (%)** as they stood on the **As at** date. Under **Frozen**, **Taken** says whether it was **Taken by hand**, at **Month end** or at **Period close**.
 3. The table lists each target as it stood: **Actual**, **Target value**, **Score (%)** and rating.
 4. Click **Compare with today's rebuild** to see what has changed since it was frozen, for example a review signed off late.
@@ -75,7 +75,7 @@ You can also pick a month end in the **As at** list on **My Targets** or on the 
 | *A frozen snapshot cannot be changed. Freeze a new one instead.* | You tried to edit a frozen snapshot. | Ask your manager or HR to freeze a new one. |
 
 :::note[Good to know]
-- No briefs at all? Briefs are off until HR switches on **Send progress briefs**. Targets measured month by month (not from the start of the period), SLA targets and milestone targets are never in a brief.
+- No briefs at all, or no **Progress Briefs** menu? Briefs are off until an accountability administrator switches on **Send progress briefs**, and the menu only appears while it is on (in any company). Targets measured month by month (not from the start of the period), SLA targets and milestone targets are never in a brief.
 - **Expected by then** is worked out from your last review date, not today. A target reviewed in September is judged against September's expectation.
 - A brief row reading *No actual reviewed yet* means the target has had no signed-off review.
 - You can't freeze a snapshot of yourself; your manager, HR or an administrator can.

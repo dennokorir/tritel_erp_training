@@ -1,9 +1,10 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_snapshot_client_action, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_root
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_snapshots, tritel_accountability_framework:model:accountability.objective, tritel_accountability_framework:model:accountability.snapshot
 # docs-sync: shows tritel_accountability_framework:model:accountability.snapshot.line, tritel_accountability_framework:report:action_report_snapshot, tritel_accountability_framework:selection:accountability.review.session.employee.avg_rating
 # docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.line.line_rating, tritel_accountability_framework:selection:accountability.snapshot.line.rating, tritel_accountability_framework:selection:accountability.snapshot.origin
 # docs-sync: shows tritel_accountability_framework:selection:accountability.snapshot.rating, tritel_accountability_framework:selection:accountability.target.rating
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_my_actions
 type: screen
 title: A frozen performance snapshot
 desc: A Performance Snapshot record in Accountability with the Compare with today's rebuild and Print PDF buttons, the Overall and Frozen groups, and the list of targets as at the date, numbered 1 to 5.
@@ -11,8 +12,8 @@ source: tritel_accountability_framework/views/accountability_snapshot_views.xml 
 frame:
   grid: true
   app: Accountability
-  menu: [{label: My Performance, active: true}, My Actions]
-  breadcrumb: [Performance Snapshots, "Employee A · as at 30/09/2026"]
+  menu: [Company Overview, {label: My Performance, active: true}, My Actions]
+  breadcrumb: [My Score History, "Employee A · as at 30/09/2026"]
 blocks:
   - buttons: [{label: "Compare with today's rebuild", primary: true, n: 4}, {label: Print PDF, n: 5}]
   - title: {text: Employee A, sub: "As at 30/09/2026 · FY 2026", n: 1}

@@ -5,8 +5,8 @@ module: accountability
 pageType: how-to
 roles: [hr, accountability-admin]
 tags: [scorecard changes, reviews, my actions]
-keywords: [approve, decline, scorecard change, change request, withdraw target, escalation, dispute, appeal, grievance, uphold, send back, HR decision]
-where: [Accountability, My Team, Scorecard Change Requests]
+keywords: [approve, decline, scorecard change, change request, withdraw target, escalation, dispute, appeal, send back, HR decision, Scorecard Change Requests, People menu]
+where: [Accountability, People, Scorecard Changes]
 before:
   - For a scorecard change, you are named under <strong>Approvers</strong> (the requester's own manager, plus HR), or you are HR. You can't decide a change you requested yourself.
   - For an escalation, you are the reviewer's manager, a review escalation contact, HR or an administrator, and you are not the employee or the reviewer.
@@ -24,7 +24,9 @@ sources:
   - tritel_accountability_framework/models/accountability_snapshot.py
   - tritel_accountability_framework/models/accountability_weight_change.py
   - tritel_accountability_framework/views/menu.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu_people.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -36,7 +38,7 @@ After a period's **target-setting deadline**, a change to a live scorecard (addi
 
 ### Decide a scorecard change
 
-1. Open **Accountability › My Actions** and click the item under **Scorecard changes to approve**. Or open **My Team › Scorecard Change Requests**, which opens on **Waiting for approval** and **Proposed by employees**.
+1. Open **Accountability › My Actions** and click the item under **Scorecard changes to approve**. Or open **People › Scorecard Changes** (HR) or **My Team › Approve › Scorecard Changes** (line managers and administrators). The list opens on **Waiting for approval** and **Proposed by employees**.
 2. Read the heading: what kind of change it is and which target, for example *Withdraw · Customer visits per month*. **Kind** and **From** say what changes and when.
 3. Compare **Score before (%)** and **Score after (%)**, and the ratings, to see the effect on the employee's overall rating.
 4. Read the **Reason**.
@@ -47,7 +49,7 @@ After a period's **target-setting deadline**, a change to a live scorecard (addi
 
 ### Decide an escalated review
 
-7. Open **Accountability › My Actions** and click **Decide** under **Escalated reviews to decide**. Or, if you see **My Team › Team Reviews**, look in the **With Escalation** column.
+7. Open **Accountability › My Actions** and click **Decide** under **Escalated reviews to decide**. Or open **People › All Reviews** (HR) or **My Team › Review › Team Reviews** (managers) and look in the **With Escalation** column.
 8. On the card, click **Decide** (or open the review and click **Decide the Escalation**).
 9. Read **Questioned scores**, **The employee asked**, **The manager's reply** and **Why the employee escalated**. Open the review itself if you need the full detail.
 10. Choose the **Decision**: **Uphold the manager's scores** or **Send back to the manager to revise**, and write the **Decision note**.
@@ -59,7 +61,7 @@ After a period's **target-setting deadline**, a change to a live scorecard (addi
 - **Decline**: nothing changes on the scorecard. The requester (and the employee, if they proposed it) is sent your note.
 - **Uphold**: the review closes as **Closed after Escalation** and its scores are signed off. The employee and reviewer are told your decision.
 - **Send back**: the questioned targets reopen and the review goes to **Being Revised**. The reviewer gets a *Revise escalated review* to-do, revises and resubmits, and the employee responds again.
-- HR receives a monthly email on the 1st listing last month's applied, declined and waiting changes. **Organisation › Scorecard Changes** holds the full log.
+- HR receives a monthly email on the 1st listing last month's applied, declined and waiting changes. For the full history, open **Scorecard Changes** and clear the **Waiting for approval** and **Proposed by employees** filters: every addition, withdrawal, closure and change is listed, with its outcome.
 
 ## Common mistakes
 
@@ -75,4 +77,7 @@ After a period's **target-setting deadline**, a change to a live scorecard (addi
 - An escalation goes to the reviewer's own manager. Only if there is none does it go to the **Review escalation contacts** in the settings, then to HR. HR and administrators can also decide any escalation they are not party to.
 - While an escalation is open, nothing is signed off automatically. Decide it promptly.
 - Closing a period cancels every scorecard change still waiting.
+- There is one **Scorecard Changes** list, reached from **People** (HR) or **My Team › Approve** (line managers and administrators). The separate log under **Organisation** is gone. The list has a list view and a form, with no pivot table; use **Group By** (**Change**, **Status**, **Department**, **Period** or **Month**) to summarise it.
+- An administrator who doesn't have HR rights has no **People** menu, so they open scorecard changes under **My Team › Approve › Scorecard Changes**.
+- **All Reviews** never lists your own review, just as **Team Reviews** doesn't.
 :::

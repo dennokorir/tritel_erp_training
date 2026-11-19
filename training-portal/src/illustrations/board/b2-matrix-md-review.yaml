@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows e_board:cron:cron_board_reviews, e_board:field:accountability.config.board_reviewer_user_id, e_board:group:group_board_viewer
 # docs-sync: shows e_board:menu:menu_accountability_board_reviews, e_board:model:accountability.board.review, e_board:model:accountability.board.review.line
 type: matrix
@@ -15,6 +15,6 @@ rows:
   - {group: In Odoo}
   - {action: Add results and Submit to the Board, cells: [n, n, y, n, n, n]}
   - {action: Acknowledge and write Your Comment, cells: [n, n, y, n, n, n]}
-  - {action: Read every board review (Board Reviews menu), cells: [n, n, p, y, n, n]}
+  - {action: "Read every board review (Organisation › Board Reviews)", cells: [n, n, n, y, n, n]}
   - {action: Name the Board Reviewer and backup, cells: [n, n, n, y, n, n]}
 legend: {p: "Partly: see the notes under the picture"}

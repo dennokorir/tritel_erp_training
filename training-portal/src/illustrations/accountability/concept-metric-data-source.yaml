@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_my_actions_action, tritel_accountability_framework:client_action:accountability_my_targets_client_action, tritel_accountability_framework:field:hr.employee.accountability_target_ids
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_actions, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_targets
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:model:accountability.metric
@@ -6,6 +6,7 @@
 # docs-sync: shows tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.review.session.line.target_cadence
 # docs-sync: shows tritel_accountability_framework:selection:accountability.target.metric_automation, tritel_accountability_framework:selection:accountability.target.metric_window_basis, tritel_accountability_framework:selection:accountability.target.state
 # docs-sync: shows tritel_accountability_framework:view_ext:hr.view_employee_form:button:targets, tritel_accountability_framework:view_ext:hr.view_employee_form:field:targets, tritel_accountability_framework:view_ext:hr.view_employee_form:page:performance
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard
 type: screen
 title: A target fed by a metric
 desc: The Data Source group of a target form, with the Metric, Measure Over, Automatic Reviews and Reference Target fields, the Provisional current value with its Refresh link, and the How it's calculated tab, numbered 1 to 5.
@@ -13,7 +14,7 @@ source: tritel_accountability_framework/views/accountability_target_views.xml (a
 frame:
   grid: true
   app: Accountability
-  menu: [{label: My Performance, active: true}, My Team, My Actions]
+  menu: [Company Overview, {label: My Performance, active: true}, My Actions]
   breadcrumb: [My Targets, Pipeline three times the revenue target]
 blocks:
   - title: {text: Pipeline three times the revenue target, sub: "Target · Employee A · FY 2026"}

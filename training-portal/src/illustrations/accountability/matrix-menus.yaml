@@ -1,0 +1,40 @@
+# docs-sync: verified_commit 5d691a8dca64
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:client_action:accountability_cascade_dashboard_action
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_targets, tritel_accountability_framework:menu:menu_accountability_my_review_packs, tritel_accountability_framework:menu:menu_accountability_snapshots, tritel_accountability_framework:menu:menu_accountability_progress_briefs
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_team_set_targets, tritel_accountability_framework:menu:menu_accountability_team_targets, tritel_accountability_framework:menu:menu_accountability_my_cascades, tritel_accountability_framework:menu:menu_accountability_milestone_timeline, tritel_accountability_framework:menu:menu_accountability_propose_targets
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_team_review, tritel_accountability_framework:menu:menu_accountability_review_sessions, tritel_accountability_framework:menu:menu_accountability_team_reviews, tritel_accountability_framework:menu:menu_accountability_team_scores
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_team_approve, tritel_accountability_framework:menu:menu_accountability_scorecard_requests, tritel_accountability_framework:menu:menu_accountability_priority_changes
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_people, tritel_accountability_framework:menu:menu_accountability_people_review_sessions, tritel_accountability_framework:menu:menu_accountability_people_all_reviews, tritel_accountability_framework:menu:menu_accountability_people_scores
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_people_scorecard, tritel_accountability_framework:menu:menu_accountability_people_priority, tritel_accountability_framework:menu:menu_accountability_people_next_year, tritel_accountability_framework:client_action:accountability_people_scores_action
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_actions, tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_objectives, tritel_accountability_framework:menu:menu_accountability_session_coverage
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_compliance, tritel_accountability_framework:menu:menu_accountability_targets_library
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_configuration, tritel_accountability_framework:menu:menu_accountability_periods, tritel_accountability_framework:menu:menu_accountability_metrics, tritel_accountability_framework:menu:menu_accountability_settings
+type: matrix
+title: Accountability menus by role
+desc: Which Accountability menu items everyone, line managers, HR and accountability administrators see, from Company Overview and My Performance to My Team, People, My Actions, Organisation and Configuration.
+source: tritel_accountability_framework/views/menu.xml, views/menu_people.xml, views/accountability_snapshot_views.xml, views/accountability_progress_brief_views.xml, views/accountability_scorecard_request_views.xml, views/accountability_target_library_views.xml, tests/test_menus_by_role.py; e_board/views/md_review_views.xml
+columns: [Everyone, Line manager, HR, Accountability administrator]
+labelWidth: 300
+rows:
+  - {group: Company Overview}
+  - {action: Company Overview (where the app opens), cells: [y, y, y, y]}
+  - {group: My Performance}
+  - {action: "My Targets, My Reviews, My Score History", cells: [y, y, y, y]}
+  - {action: Progress Briefs, cells: [p, p, p, p]}
+  - {group: My Team}
+  - {action: "Set targets › Team Targets, Cascades, Milestones, Next Year's Targets", cells: [n, y, p, y]}
+  - {action: "Review › Review Sessions, Team Reviews, Team Scores", cells: [n, y, p, y]}
+  - {action: "Approve › Scorecard Changes, Priority Changes", cells: [n, y, p, y]}
+  - {group: People}
+  - {action: "Review Sessions, All Reviews, Scores", cells: [n, n, y, n]}
+  - {action: "Scorecard Changes, Priority Changes, Next Year's Targets", cells: [n, n, y, n]}
+  - {group: My Actions}
+  - {action: My Actions, cells: [y, y, y, y]}
+  - {group: Organisation}
+  - {action: Objectives, cells: [n, y, p, y]}
+  - {action: Review Coverage, cells: [n, y, y, y]}
+  - {action: "Compliance, Targets Library", cells: [n, n, y, y]}
+  - {action: Board Reviews, cells: [n, n, n, y]}
+  - {group: Configuration}
+  - {action: "Periods, Metrics, Settings", cells: [n, n, n, y]}
+legend: {p: "Partly: Progress Briefs only while progress briefs are switched on; HR sees My Team and Objectives only if they also manage people"}

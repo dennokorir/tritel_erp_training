@@ -5,8 +5,8 @@ module: board
 pageType: how-to
 roles: [accountability-admin]
 tags: [settings, reviews]
-keywords: [board reviewer, backup reviewer, MD appraisal, managing director review, quarterly review, settings, governance, directors, configure board review]
-where: [Accountability, Organisation, Settings]
+keywords: [board reviewer, backup reviewer, MD appraisal, managing director review, quarterly review, settings, governance, directors, configure board review, Configuration menu]
+where: [Accountability, Configuration, Settings]
 before:
   - You are an <strong>Accountability administrator</strong>.
   - The board member has been invited and has set up their portal account. See <a href="/board/how-to/invite-board-members/">Invite a board member</a>.
@@ -21,7 +21,10 @@ sources:
   - e_board/data/mail_template_board_invite.xml
   - e_board/data/md_review_cron.xml
   - e_board/security/security.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu.xml
+  - e_board/views/md_review_views.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -31,7 +34,7 @@ The Board Reviewer is the board member who checks and signs off the Managing Dir
 
 ## Steps
 
-1. Open **Accountability › Organisation › Settings**.
+1. Open **Accountability › Configuration › Settings**.
 2. Scroll to **Board Review of the Top-Level Employee**, below **Notifications**.
 3. In **Board Reviewer**, choose the board member. Only board portal users are offered.
 4. Optionally, in **Backup Board Reviewer**, choose a different board member. The backup can sign off once a review has waited 14 days.

@@ -6,8 +6,9 @@ pageType: how-to
 roles: [line-manager, hr]
 tags: [scores, snapshots]
 keywords: [team scores, team performance, ratings, scorecard, KPI results, appraisal scores, overall score, team score, ranking, export scores, snapshot]
-where: [Accountability, My Team, Team Scores]
+where: [Accountability, My Team, Review, Team Scores]
 before:
+  - "HR uses <strong>People › Scores</strong>: the same screen, titled <strong>Scores</strong>."
   - Only people with targets in the period appear. Exempt staff are hidden unless you tick <strong>Show exempt staff</strong>.
 related: [accountability/concepts/scores, accountability/calculations/own-team-overall, accountability/calculations/ratings, accountability/concepts/snapshots-and-as-at, accountability/reports/performance-overview]
 sidebar: { order: 9 }
@@ -24,7 +25,9 @@ sources:
   - tritel_accountability_framework/views/accountability_snapshot_views.xml
   - tritel_accountability_framework/views/hr_employee_views.xml
   - tritel_accountability_framework/views/menu.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu_people.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -34,8 +37,8 @@ import Illustration from '../../../../../components/Illustration.astro';
 
 ## Steps
 
-1. Open **Accountability › My Team › Team Scores** and check the period. To see the team as it stood at a past month end, choose it in the **As at** list (for example *As at 30 Sep 2026 · quarter end*).
-2. Choose whose scores to show: **Direct reports** or **Whole reporting line**. HR also sees **Everyone**.
+1. Open **Accountability › My Team › Review › Team Scores** and check the period. To see the team as it stood at a past month end, choose it in the **As at** list (for example *As at 30 Sep 2026 · quarter end*).
+2. Choose whose scores to show: **Direct reports** or **Whole reporting line**. HR also sees **Everyone**. (HR opens the same screen as **Accountability › People › Scores**.)
 3. Read the summary: **Team average (overall)**, **Where the team stands** (how many people sit in each rating) and **Biggest moves** compared with the previous closed period.
 4. Click a rating chip (for example **Needs Improvement**) to list only those people. **All** shows everyone again. Use **Sort** to order by **Lowest rating first**, **Highest overall**, **Biggest change** or **Name**.
 5. Read each row: **Overall**, **Own**, **Team** (managers only), **Status** (the rating), **vs last period** and **Targets scored**. Click **Scorecard** to open that person's targets.
@@ -47,7 +50,7 @@ import Illustration from '../../../../../components/Illustration.astro';
 ## What happens next
 
 - Scores update by themselves when reviews are signed off, and again every night.
-- Frozen snapshots appear under **My Performance › Performance Snapshots** and can be compared with today later. See [Snapshots and Compare](/accountability/reports/snapshots-and-compare/).
+- Frozen snapshots appear under **My Performance › My Score History** and can be compared with today later. See [Snapshots and Compare](/accountability/reports/snapshots-and-compare/).
 - A ❄ next to the status means a frozen snapshot exists for that date.
 
 ## Common mistakes

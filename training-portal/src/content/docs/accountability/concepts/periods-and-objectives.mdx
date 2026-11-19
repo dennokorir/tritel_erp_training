@@ -20,10 +20,11 @@ sources:
   - tritel_accountability_framework/models/accountability_target.py
   - tritel_accountability_framework/views/menu.xml
   - tritel_accountability_framework/wizard/cascade_pull_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 
-A **period** is the performance year, for example **FY 2026**. Every target, review and score belongs to one period. A period has a **Period Name**, a **Start Date**, an **End Date** and a **Target-Setting Deadline**, and its **Status** is **Draft**, **Active** or **Closed**. Only one period can be active at a time. Accountability administrators open and close periods under **Accountability › Organisation › Periods**.
+A **period** is the performance year, for example **FY 2026**. Every target, review and score belongs to one period. A period has a **Period Name**, a **Start Date**, an **End Date** and a **Target-Setting Deadline**, and its **Status** is **Draft**, **Active** or **Closed**. Only one period can be active at a time. Accountability administrators open and close periods under **Accountability › Configuration › Periods**.
 
 The **Target-Setting Deadline** matters all year. Up to that date, managers can add, change and remove targets freely. After it, every change to a live scorecard becomes a scorecard change request that needs approval, and targets created after it are marked **Late Set**.
 

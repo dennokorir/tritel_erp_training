@@ -24,12 +24,13 @@ sources:
   - tritel_accountability_framework/security/ir_groups.xml
   - tritel_accountability_framework/views/accountability_exempt_views.xml
   - tritel_accountability_framework/views/menu.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 
 A **progress brief** is a short email that tells an employee how their running-total targets are pacing at a checkpoint (a month end or a quarter end): the actual, what was expected by then, the gap, the rating on pace and where that pace leads by the end of the period. Their manager is copied. Each brief has a simple status: **Not sent** or **Sent**.
 
-Briefs are switched off until an accountability administrator turns on **Send progress briefs** in **Accountability › Organisation › Settings**.
+Briefs are switched off until an accountability administrator turns on **Send progress briefs** in **Accountability › Configuration › Settings**.
 
 ```mermaid
 stateDiagram-v2
@@ -52,10 +53,10 @@ stateDiagram-v2
 - **Daily job:** when briefs are switched on, it looks at the latest checkpoint of each active period. If that checkpoint was in the last 7 days, it writes and sends a brief for every employee who has running-total targets and isn't exempt on that date. The 7 days are fixed, not a setting.
 - **One brief per checkpoint:** each employee gets at most one brief per checkpoint. Anyone who already has it is skipped.
 - **Sending:** an email *Your progress brief · as at 31 Oct 2026* goes to the employee's work email with the manager's work email in copy, and both get a notification in their Odoo inbox.
-- **Who can read briefs:** the employee and their manager, in **Accountability › My Performance › Progress Briefs**. HR and accountability administrators can read all of them.
+- **Who can read briefs:** the employee and their manager, in **Accountability › My Performance › Progress Briefs**. HR and accountability administrators can read all of them. The **Progress Briefs** menu only appears while **Send progress briefs** is on (in any company).
 
 :::note[Good to know]
-- **Send briefs now** sends the briefs for the latest checkpoint whatever its age, and works even while **Send progress briefs** is switched off.
+- **Send briefs now** sends the briefs for the latest checkpoint whatever its age, and works even while **Send progress briefs** is switched off. Briefs sent that way arrive by email and on the portal, but the **Progress Briefs** menu stays hidden until the setting is turned on.
 - **Send again** emails the same brief again. It doesn't recalculate the figures: the brief shows the position as at its checkpoint.
 :::
 

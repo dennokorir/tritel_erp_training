@@ -1,8 +1,9 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_root
 # docs-sync: shows tritel_accountability_framework:selection:accountability.cascade.line.mixin.cascade_link, tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state
 # docs-sync: shows tritel_accountability_framework:selection:accountability.target.cascade_link, tritel_accountability_framework:selection:accountability.target.cascade_state, tritel_accountability_framework:selection:accountability.target.state
 # docs-sync: shows tritel_accountability_framework:wizard:accountability.cascade.pull.wizard
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_my_actions, tritel_accountability_framework:menu:menu_accountability_organisation
 type: screen
 title: Approving a pull request
 desc: A team member's target waiting as a pull request, with the Approve Pull and Deny Pull buttons, the Cascade section showing the source and the justification, numbered 1 to 3.
@@ -10,7 +11,7 @@ source: tritel_accountability_framework/views/accountability_target_views.xml (a
 frame:
   grid: true
   app: Accountability
-  menu: [My Performance, My Team, {label: My Actions, active: true}]
+  menu: [Company Overview, My Performance, My Team, {label: My Actions, active: true}, Organisation]
   breadcrumb: [My Actions, Customer A renewals]
 blocks:
   - buttons: [{label: Approve Pull, primary: true, n: 2}, {label: Deny Pull, n: 3}]

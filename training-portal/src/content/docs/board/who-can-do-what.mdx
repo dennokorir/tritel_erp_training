@@ -27,7 +27,9 @@ sources:
   - e_board/models/board_invite_wizard.py
   - e_board/models/purchase_order.py
   - e_board/models/sale_order.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../components/Illustration.astro';
 
@@ -38,7 +40,7 @@ The board portal has one role of its own, **Board Viewer**. The Board Reviewer a
 | Who | How they get it |
 |---|---|
 | **Board member** | A portal user with the **Board Viewer** role, usually given by accepting an invitation. See [Invite a board member](/board/how-to/invite-board-members/). |
-| **Board Reviewer** and **Backup Board Reviewer** | Board members named in **Accountability › Organisation › Settings**. They must be portal users, not employees. See [Name the Board Reviewer and backup](/board/how-to/name-the-board-reviewer/). |
+| **Board Reviewer** and **Backup Board Reviewer** | Board members named in **Accountability › Configuration › Settings**. They must be portal users, not employees. See [Name the Board Reviewer and backup](/board/how-to/name-the-board-reviewer/). |
 | **MD** | The top-level employee: no manager, with people reporting to them. |
 | **Accountability administrator** | Given on the user's access rights under Accountability. |
 | **Finance or sales staff** | Staff who can edit sales or purchase orders and post-dated cheques. |
@@ -60,7 +62,7 @@ Each column shows what that role adds. A person with two roles has the rights of
 Notes on the "partly" marks:
 
 - **Board Reviewer or backup**: the Board Reviewer can open and sign a review while it is **With the board**. The backup can do the same once the review has waited 14 days and been opened to them. Whoever signs first closes it, and that person can still read it afterwards. The **MD Review** tab appears only for someone with such a review.
-- **MD**: the MD sees their own reviews only, through **My Actions** or the to-do on the review.
+- **MD**: the MD sees their own reviews only, through **My Actions** or the to-do on the review. The **Board Reviews** menu (**Accountability › Organisation › Board Reviews**) is for Accountability administrators only, so the MD doesn't have it unless they are also an administrator.
 
 ## Back-office flags and settings
 

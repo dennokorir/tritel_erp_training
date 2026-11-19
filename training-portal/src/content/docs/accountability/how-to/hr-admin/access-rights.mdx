@@ -5,8 +5,8 @@ module: accountability
 pageType: how-to
 roles: [hr, accountability-admin]
 tags: [access, employees, settings]
-keywords: [access rights, permissions, can't see menu, missing menu, no access, supervisor, line manager, administrator, org chart, manager field, related user, resync]
-where: [Accountability, Organisation, Settings]
+keywords: [access rights, permissions, can't see menu, missing menu, People menu, Configuration menu, no access, supervisor, line manager, administrator, org chart, manager field, related user, resync]
+where: [Accountability, Configuration, Settings]
 before:
   - To fix the employee record you need HR rights in the <strong>Employees</strong> app. To resync or give the Administrator role you must be an accountability administrator (and, for the role, an Odoo administrator).
 related: [accountability/who-can-do-what, accountability/how-to/hr-admin/settings, accountability/how-to/hr-admin/exempt-staff, getting-started/finding-your-way]
@@ -26,7 +26,13 @@ sources:
   - tritel_accountability_framework/views/accountability_target_library_views.xml
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_accountability_framework/wizard/cascade_line_mixin.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu_people.xml
+  - tritel_accountability_framework/models/accountability_progress_brief.py
+  - tritel_accountability_framework/views/accountability_progress_brief_views.xml
+  - e_board/views/md_review_views.xml
+  - tritel_accountability_framework/static/src/session_coverage/accountability_session_coverage.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -47,7 +53,7 @@ So when someone can't see something, the fix is almost always on their employee 
 
 <Illustration name="accountability/howto-access-resync" caption="Resyncing access rights. The numbers match steps 3 and 4." />
 
-3. If access still looks wrong (for example after employees were imported in bulk), open **Accountability › Organisation › Settings** and click **Resync Access Rights**.
+3. If access still looks wrong (for example after employees were imported in bulk), open **Accountability › Configuration › Settings** and click **Resync Access Rights**.
 4. A message confirms it: *Access rights synced* and how many users were updated *from the HR org chart*.
 5. To give someone the **Administrator** role, open **Settings › Users & Companies › Users**, open their user, and on the **Access Rights** tab set **Accountability Framework** to **Administrator**. To take it away, set it back to **User**, save, then click **Resync Access Rights** so the automatic role is worked out again.
 6. Ask the person to reload the page in their browser.
@@ -57,11 +63,15 @@ So when someone can't see something, the fix is almost always on their employee 
 | They can't see | Who sees it | What to check |
 |---|---|---|
 | The **Accountability** app | Everyone with a linked employee record | **Related User** on their employee record; the employee is not archived |
-| **My Team** (Team Targets, Cascade Management, Milestone Timeline) | Line managers | They are the **Manager** of at least one active employee |
-| **My Team** (Review Sessions, Team Reviews, Team Scores, Propose Targets, Priority Changes, Scorecard Change Requests) | Line managers and HR | As above, or they have HR rights in **Employees** |
-| **Organisation › Objectives** | Line managers | As above |
-| **Organisation › Session Coverage**, **Targets Library**, **Scorecard Changes** | HR (Session Coverage also line managers) | HR rights in **Employees**, or the Administrator role |
-| **Organisation › Periods**, **Compliance**, **Metrics**, **Settings** | Administrators only | The **Administrator** role (step 5) |
+| **My Team** (**Set targets**, **Review** and **Approve**) | Line managers and administrators | They are the **Manager** of at least one active employee, or have the **Administrator** role |
+| **People** (Review Sessions, All Reviews, Scores, Scorecard Changes, Priority Changes, Next Year's Targets) | HR | HR rights in **Employees** (**Employees: Administrator**) |
+| **Organisation › Objectives** | Line managers and administrators | As for **My Team**. HR without a team doesn't see it. |
+| **Organisation › Review Coverage** | Line managers, HR and administrators | As for **My Team**, or HR rights in **Employees** |
+| **Organisation › Compliance**, **Targets Library** | HR and administrators | HR rights in **Employees**, or the **Administrator** role (step 5) |
+| **Organisation › Board Reviews**, **Configuration** (Periods, Metrics, Settings) | Administrators only | The **Administrator** role (step 5) |
+| **My Performance › Progress Briefs** | Everyone, while briefs are on | An administrator has ticked **Send progress briefs** in **Configuration › Settings** for at least one company |
+
+[Accountability menus](/accountability/menus/) shows every menu and who sees it.
 
 ## What happens next
 
@@ -80,4 +90,6 @@ So when someone can't see something, the fix is almost always on their employee 
 - HR staff who have no employee record of their own don't see the **Accountability** app, even with HR rights. Link them to an employee record.
 - Portal-only users (such as board members) are never given Accountability access by the automatic updates.
 - Seeing someone's scores also follows the org chart: you see your own, your whole reporting line's, and HR and administrators see everyone's.
+- HR staff who also manage people see both **My Team** (their own team) and **People** (the whole company), with **My Team** first.
+- An administrator who doesn't have HR rights has no **People** menu. They reach scorecard changes and priority changes under **My Team › Approve**.
 :::

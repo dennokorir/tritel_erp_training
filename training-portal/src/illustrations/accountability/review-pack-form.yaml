@@ -1,9 +1,10 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_review_packs, tritel_accountability_framework:menu:menu_accountability_my_team
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:selection:accountability.milestone.status, tritel_accountability_framework:selection:accountability.priority.change.state
 # docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.employee.avg_rating, tritel_accountability_framework:selection:accountability.review.session.employee.state, tritel_accountability_framework:selection:accountability.review.session.line.line_rating
 # docs-sync: shows tritel_accountability_framework:selection:accountability.snapshot.line.rating, tritel_accountability_framework:selection:accountability.snapshot.rating, tritel_accountability_framework:selection:accountability.target.rating
 # docs-sync: shows tritel_accountability_framework:selection:accountability.target.weight.change.priority_state, tritel_accountability_framework:wizard:accountability.review.concern.raise.wizard, tritel_accountability_framework:wizard:accountability.review.pack.ack.wizard
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_my_actions
 type: screen
 title: Your review, waiting for you to acknowledge it
 desc: The My Review form in Accountability, with the Acknowledge and Raise a Concern buttons, the deadline banner, the average and rating, your manager's comment, and the Targets tab, numbered 1 to 6.
@@ -11,7 +12,7 @@ source: tritel_accountability_framework/views/accountability_review_pack_views.x
 frame:
   grid: true
   app: Accountability
-  menu: [{label: My Performance, active: true}, My Team, My Actions]
+  menu: [Company Overview, {label: My Performance, active: true}, My Actions]
   breadcrumb: [My Reviews, Q3 2026 reviews]
 blocks:
   - buttons: [{label: Acknowledge, primary: true, n: 5}, {label: Raise a Concern, n: 6}]

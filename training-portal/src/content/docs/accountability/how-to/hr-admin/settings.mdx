@@ -5,10 +5,10 @@ module: accountability
 pageType: how-to
 roles: [accountability-admin]
 tags: [settings, ratings]
-keywords: [settings, configuration, rating scale, bands, own team weighting, 40 60, acknowledgment window, deadline, progress briefs, escalation contacts, reminders]
-where: [Accountability, Organisation, Settings]
+keywords: [settings, configuration, rating scale, bands, own team weighting, 40 60, acknowledgment window, progress briefs, escalation contacts, reminders, Configuration menu, Organisation Settings]
+where: [Accountability, Configuration, Settings]
 before:
-  - You are an accountability administrator. Only administrators see <strong>Organisation › Settings</strong>.
+  - You are an accountability administrator. Only administrators see <strong>Configuration › Settings</strong>.
   - You have agreed the change with HR. Most settings affect everyone's scores or deadlines straight away.
 related: [accountability/concepts/ratings-and-briefs, accountability/calculations/own-team-overall, accountability/calculations/ratings, accountability/how-to/hr-admin/access-rights]
 sidebar: { order: 5 }
@@ -32,7 +32,9 @@ sources:
   - tritel_accountability_framework/views/hr_employee_views.xml
   - tritel_accountability_framework/views/menu.xml
   - tritel_accountability_framework/wizard/cascade_line_mixin.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/static/src/cascade/accountability_cascade_dashboard.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -42,10 +44,10 @@ There is one settings page per company. It controls how scores are combined and 
 
 ## Steps
 
-1. Open **Accountability › Organisation › Settings**. The company's settings open directly.
+1. Open **Accountability › Configuration › Settings**. The company's settings open directly.
 2. **Composite Score Weights**: a manager's overall score is **Own Performance Weight (%)** of their own score plus **Team Average Weight (%)** of their team's (40 and 60 by default). **Min. Headcount for Team Weighting** is how many direct reports a manager needs before the team part applies (2 by default).
 3. **Performance Rating Scale**: set where each rating starts: **Needs Improvement from**, **Meets Expectations from**, **Exceeds Expectations from**, **Outstanding from**. Below the first is Unsatisfactory. Under **What each level means**, edit the description shown for each level.
-4. **Progress Briefs**: tick **Send progress briefs** and choose **Brief checkpoints** (**Monthly** or **Quarterly**). **Send briefs now** sends the latest checkpoint's briefs at once, skipping anyone who already has one.
+4. **Progress Briefs**: tick **Send progress briefs** and choose **Brief checkpoints** (**Monthly** or **Quarterly**). Ticking it also shows **My Performance › Progress Briefs** to everyone; it disappears again once no company has briefs switched on. **Send briefs now** sends the latest checkpoint's briefs at once, skipping anyone who already has one.
 5. **Review Workflow**: **Acknowledgment Window (days)** is how long staff have to acknowledge a review before it is signed off automatically (5 by default). The same number of days applies to acknowledging new priorities.
 6. **Automatic Metric Reviews**: **Metric Settle Period (days)** is how long to wait after a window closes before the automatic review is created, so late entries count. **Metric Review Confirmation Deadline (days)** is when the manager's *Confirm Metric Review* to-do falls due.
 7. **Cascade Notifications** and **Notifications**:
@@ -67,11 +69,12 @@ There is one settings page per company. It controls how scores are combined and 
 |---|---|---|
 | *The rating boundaries must rise from left to right, between 0 and 100: Needs Improvement &lt; Meets &lt; Exceeds &lt; Outstanding.* | A boundary is lower than the one before it, or above 100. | Make each boundary higher than the last. |
 | *Only Accountability Administrators can open the settings.* | Someone without the Administrator role opened Settings from a link. | Ask an administrator. |
-| *This company already has accountability settings. Open them from the Settings menu.* | Someone tried to create a second settings page. | Use **Organisation › Settings**. |
+| *This company already has accountability settings. Open them from the Settings menu.* | Someone tried to create a second settings page. | Use **Configuration › Settings**. |
 | *Nobody is set up to handle escalations. Ask an administrator to set Review escalation contacts in the accountability settings.* | An employee escalated a review, but the reviewer has no manager and there are no contacts or HR users. | Add **Review escalation contacts**. |
 
 :::note[Good to know]
 - The two weights are not checked to add up to 100. Keep them at a total of 100 yourself.
 - Briefs are sent only for checkpoints reached in the last 7 days, and the 2-day reminder before a review deadline and the 7-day "late session" rule can't be changed here.
-- The Performance Overview always describes managers' scores as *40% Own + 60% Team Avg*, even after you change the weights.
+- The Company Overview always describes managers' scores as *40% Own + 60% Team Avg*, even after you change the weights.
+- **Settings**, **Periods** and **Metrics** used to be under **Organisation**. They are now under **Configuration**, the last menu, which only administrators see.
 :::

@@ -20,7 +20,9 @@ sources:
   - tritel_accountability_framework/views/menu.xml
   - tritel_accountability_framework/wizard/review_pack_ack_wizard.py
   - tritel_accountability_framework/wizard/target_weight_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu_people.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 
 Your **priorities** are how much each of your targets counts towards your score (its share of score). When they change during the period, for example because your manager rebalanced your weights or a target was added or withdrawn, the system opens a **Priority Change** for you to read and acknowledge. It shows **What Changed** and **Your Score Now**. Your past reviews are never affected: they keep the weights they were submitted with.
@@ -43,7 +45,7 @@ stateDiagram-v2
 | **Acknowledged** | You confirmed you have seen the new priorities. | — | — |
 | **Accepted automatically** | Nobody acknowledged it by the deadline, so the system accepted it. | — | — |
 
-Your manager and HR can see your priority changes in **Accountability › My Team › Priority Changes**, but only you can acknowledge them.
+Your manager can see your priority changes in **Accountability › My Team › Approve › Priority Changes**, and HR in **Accountability › People › Priority Changes**, but only you can acknowledge them.
 
 ## What the system does automatically
 

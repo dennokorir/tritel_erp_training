@@ -1,12 +1,12 @@
 ---
-title: Session Coverage
+title: Review Coverage
 description: A grid of managers against review windows showing who ran their review sessions, who is late and who hasn't started, with each manager's on-time record.
 module: accountability
 pageType: report
 roles: [line-manager, hr, accountability-admin]
 tags: [review sessions, reports]
-keywords: [session coverage, review compliance, missed reviews, late reviews, managers not reviewing, review discipline, monthly reviews done, appraisal completion]
-where: [Accountability, Organisation, Session Coverage]
+keywords: [session coverage, review compliance, missed reviews, late reviews, managers not reviewing, review discipline, appraisal completion, review coverage]
+where: [Accountability, Organisation, Review Coverage]
 related: [accountability/how-to/line-managers/plan-a-review-session, accountability/how-to/hr-admin/compliance-and-coverage, accountability/workflows/review-session, accountability/reports/review-analysis]
 sidebar: { order: 3 }
 sources:
@@ -19,13 +19,13 @@ sources:
   - tritel_accountability_framework/models/accountability_target_library.py
   - tritel_accountability_framework/security/ir_groups.xml
   - tritel_accountability_framework/views/menu.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
-**Accountability › Organisation › Session Coverage** answers one question: *is every manager running their review sessions?* There is one row per manager and one column per review window. HR and administrators see every manager. A line manager sees the managers in their own reporting line, including themselves.
+**Accountability › Organisation › Review Coverage** answers one question: *is every manager running their review sessions?* There is one row per manager and one column per review window. HR and administrators see every manager. A line manager sees the managers in their own reporting line, including themselves.
 
-<Illustration name="accountability/report-session-coverage" caption="Session Coverage for monthly sessions. The numbers match the list below." />
+<Illustration name="accountability/report-session-coverage" caption="Review Coverage for monthly sessions. The numbers match the list below." />
 
 ## Reading the grid
 

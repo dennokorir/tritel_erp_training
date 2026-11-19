@@ -3,7 +3,7 @@ title: Compliance
 description: The Cascade Compliance screen counts every cascaded target in a period and shows, objective by objective, which have been adopted, are still pending or were declined.
 module: accountability
 pageType: report
-roles: [accountability-admin]
+roles: [hr, accountability-admin]
 tags: [cascading, reports]
 keywords: [cascade compliance, adoption rate, cascaded targets, pending adoption, declined cascades, target alignment, traceability, remind]
 where: [Accountability, Organisation, Compliance]
@@ -19,11 +19,11 @@ sources:
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_accountability_framework/views/menu.xml
   - tritel_accountability_framework/wizard/cascade_pull_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
-**Accountability › Organisation › Compliance** opens the **Cascade Compliance** screen. It shows whether the targets managers pushed down have been taken up by their teams. Only accountability administrators have this menu. Line managers follow their own cascades on **My Team › Cascade Management**.
+**Accountability › Organisation › Compliance** opens the **Cascade Compliance** screen. It shows whether the targets managers pushed down have been taken up by their teams. HR and accountability administrators have this menu. Line managers follow their own cascades on **My Team › Set targets › Cascades**.
 
 <Illustration name="accountability/report-compliance" caption="Cascade Compliance for one period with one objective opened. The numbers match the list below." />
 

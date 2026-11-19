@@ -9,18 +9,20 @@ keywords: [menu, app, navigation, breadcrumb, back button, where is, home screen
 sidebar: { order: 2 }
 sources:
   - tritel_accountability_framework/views/menu.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu_people.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../components/Illustration.astro';
 
 <Illustration name="general/odoo-screen-parts" caption="The parts of a back-office screen." />
 
 1. **The app switcher.** The grid icon at the top left shows every app you can use, for example **Accountability**, **Tender Manager** and **Project**. Click one to open it.
-2. **The top menu.** Each app has its own menu across the top. In these guides a menu path is written like this: **Accountability › My Team › Team Reviews**.
+2. **The top menu.** Each app has its own menu across the top. In these guides a menu path is written like this: **Accountability › My Team › Review › Team Reviews**. When a menu groups its items under small headings, as **My Team** does (**Set targets**, **Review**, **Approve**), the heading is part of the path.
 3. **The breadcrumb.** Shows where you are. Click any earlier part to go back to it. Use it instead of the browser's back button, which can lose unsaved changes.
 4. **The search bar.** Type to search, and use **Filters**, **Group By** and **Favorites** to narrow the list. See [Lists, boards and forms](/getting-started/lists-boards-forms/).
 5. **The records.** Click a row to open it.
 
 ## You only see what your role allows
 
-Menus appear only if your role uses them. A line manager sees **My Team** in Accountability; someone without reportees doesn't. If a guide mentions a menu you can't see, check the **Who can do this** box at the top of the page, then ask HR if you think your access is wrong.
+Menus appear only if your role uses them. In Accountability, a line manager sees **My Team**, HR sees **People**, and someone without reportees sees neither. [Accountability menus](/accountability/menus/) lists what each role sees. If a guide mentions a menu you can't see, check the **Who can do this** box at the top of the page, then ask HR if you think your access is wrong.

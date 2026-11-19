@@ -8,7 +8,7 @@ tags: [objectives, periods]
 keywords: [objective, goal, strategic objective, OKR, pillar, sub-objective, KRA, key result area, owner, default weight, achievement threshold]
 where: [Accountability, Organisation, Objectives]
 before:
-  - The period exists. Administrators create it under <strong>Organisation › Periods</strong>.
+  - The period exists. Administrators create it under <strong>Configuration › Periods</strong>.
   - You are a line manager or an accountability administrator. Other staff don't see <strong>Organisation › Objectives</strong>.
 related: [accountability/concepts/periods-and-objectives, accountability/workflows/objective, accountability/calculations/objective-achievement, accountability/how-to/hr-admin/open-and-close-periods, accountability/how-to/line-managers/set-team-targets]
 sidebar: { order: 2 }
@@ -24,7 +24,8 @@ sources:
   - tritel_accountability_framework/security/ir_groups.xml
   - tritel_accountability_framework/views/hr_employee_views.xml
   - tritel_accountability_framework/views/menu.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/static/src/session_coverage/accountability_session_coverage.xml
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -64,6 +65,7 @@ To copy last year's objectives instead of typing them, an administrator or HR cl
 
 :::note[Good to know]
 - The default weight is a starting point only. A target's own weight decides its share of the score; the objective's weight is never used in a target score.
-- Any line manager can create, activate and close objectives, in any department. Agree who maintains the tree, usually HR or the administrator, before the year starts.
+- Any line manager can create, activate and close objectives, in any department. Agree who maintains the tree, usually an administrator, before the year starts.
+- HR staff who don't manage anyone don't have **Organisation › Objectives**: their **Organisation** menu holds **Review Coverage**, **Compliance** and **Targets Library**. To maintain objectives, they need the administrator role, or someone who has it.
 - Closing a period does not close its objectives. Close each objective at year end, before the period is closed, so its achievement is worked out and kept.
 :::

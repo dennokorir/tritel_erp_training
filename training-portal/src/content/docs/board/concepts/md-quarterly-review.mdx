@@ -18,7 +18,8 @@ sources:
   - e_board/controllers/e_board_controller.py
   - e_board/controllers/md_review.py
   - e_board/security/security.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 
 Every employee's targets are normally reviewed by their line manager. The **Managing Director** has no line manager, so their targets are reviewed by the board instead. Once an Accountability administrator names a **Board Reviewer** in Accountability Settings, the MD's targets are reviewed only this way, once a quarter.
@@ -54,13 +55,13 @@ flowchart TD
 | **The MD** | Prepares the review in Accountability (through **My Actions** or the to-do), submits it, and acknowledges the board's sign-off. |
 | **Board Reviewer** | A board member named in Accountability Settings. Gets the review on the portal under **MD Review**, checks it and signs off. |
 | **Backup Board Reviewer** | Optional, named in the same place. Can sign off too once a review has waited 14 days. Whoever signs first closes it. |
-| **Accountability administrators** | Name the reviewers and can read every board review under **Accountability › My Performance › Board Reviews**. |
+| **Accountability administrators** | Name the reviewers and can read every board review under **Accountability › Organisation › Board Reviews**. |
 
 ## Key terms
 
 | On screen | What it means |
 |---|---|
-| **Board Reviews** | The list of the MD's quarterly reviews in Accountability. |
+| **Board Reviews** | The list of the MD's quarterly reviews in Accountability, under **Organisation** (administrators only). |
 | **Being prepared**, **With the board**, **Signed off**, **Acknowledged** | The four statuses. See the [MD review workflow](/board/workflows/md-review/). |
 | **Result** / **Score (%)** | The MD's or the metric's figure, and the score it gives. |
 | **Board Result** / **Board Score (%)** / **Board Comment** | What the Board Reviewer signed off. |
@@ -72,6 +73,7 @@ Once a Board Reviewer is named, nobody else can review the MD's targets, adminis
 
 - **Request Review** is hidden on the MD's targets, and **Actual Value** can't be typed in.
 - Trying anyway gives *These targets are reviewed by the board each quarter. Prepare the review under Board Reviews when it opens.* or *Results for these targets come from the quarterly board review.*
+- The MD has no **Board Reviews** menu: it is under **Organisation**, for Accountability administrators only. The MD opens the review from **My Actions** (group **Board reviews**) or from the to-do.
 
 How each line is scored is set out in [How the MD review figures are worked out](/board/calculations/md-review-figures/).
 

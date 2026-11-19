@@ -1,8 +1,9 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_team_reviews, tritel_accountability_framework:selection:accountability.objective.state
 # docs-sync: shows tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.review.session.employee.state, tritel_accountability_framework:selection:accountability.target.state
 # docs-sync: shows tritel_accountability_framework:selection:accountability.target.weight.change.priority_state, tritel_accountability_framework:wizard:accountability.review.concern.answer.wizard
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_my_actions
 type: screen
 title: Answering a concern and resubmitting
 desc: The Employee Review form in Concern Raised with the Answer the Concern button, and the Answer the Concern window with the questioned targets, the employee's question, the Revise the scores and Keep the scores choice, the reply box and Send Answer, numbered 1 to 5.
@@ -10,7 +11,7 @@ source: tritel_accountability_framework/views/accountability_review_session_view
 frame:
   grid: true
   app: Accountability
-  menu: [My Performance, {label: My Team, active: true}, My Actions, Organisation]
+  menu: [Company Overview, My Performance, {label: My Team, active: true}, My Actions, Organisation]
   breadcrumb: [Team Reviews, Employee A]
 blocks:
   - buttons: [{label: Answer the Concern, primary: true, n: 1}]

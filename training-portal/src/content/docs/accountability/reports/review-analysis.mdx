@@ -6,7 +6,7 @@ pageType: report
 roles: [line-manager, hr]
 tags: [reviews, review sessions, reports]
 keywords: [review analysis, turnaround, acknowledgment time, concerns raised, review statistics, appraisal analytics, pivot, average session score, days to done, reviewer comparison]
-where: [Accountability, My Team, Team Reviews]
+where: [Accountability, My Team, Review, Team Reviews]
 related: [accountability/how-to/line-managers/team-reviews-board, accountability/reports/session-coverage, accountability/calculations/review-averages, accountability/calculations/metric-families]
 sidebar: { order: 5 }
 sources:
@@ -16,11 +16,13 @@ sources:
   - tritel_accountability_framework/models/accountability_review_concern.py
   - tritel_accountability_framework/models/accountability_weight_change.py
   - tritel_accountability_framework/views/menu.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu_people.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
-Two menus have analysis views for reviews. **My Team › Team Reviews** analyses individual reviews: how they closed, how long employees took and how often they raised concerns. **My Team › Review Sessions** analyses sessions: average scores, how much was scored and how soon after the cutoff they were done. Both show only what you are allowed to see: your team and the teams below you, or everything for HR.
+Two menus have analysis views for reviews. **My Team › Review › Team Reviews** analyses individual reviews: how they closed, how long employees took and how often they raised concerns. **My Team › Review › Review Sessions** analyses sessions: average scores, how much was scored and how soon after the cutoff they were done. Both show only what you are allowed to see: your team and the teams below you, or everything for HR. HR opens the same views from **People › All Reviews** and **People › Review Sessions**.
 
 <Illustration name="accountability/report-review-analysis" caption="Team Reviews in pivot view: turnaround by reviewer and by how the review closed. The numbers match the list below." />
 
@@ -39,7 +41,7 @@ What the measures mean:
 
 ## Review Sessions pivot and graph
 
-Open **My Team › Review Sessions** and switch view:
+Open **My Team › Review › Review Sessions** (HR: **People › Review Sessions**) and switch view:
 
 - **Pivot**: one row per reviewer, one column per cutoff month, with **Avg Score (%)**, **Scored (%)** and **Days from Cutoff to Done**.
 - **Graph**: **Average Session Score** by cutoff month.

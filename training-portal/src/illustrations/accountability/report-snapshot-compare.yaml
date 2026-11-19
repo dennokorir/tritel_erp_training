@@ -1,9 +1,10 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_team_targets_client_action, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_team_targets
 # docs-sync: shows tritel_accountability_framework:model:accountability.snapshot.line, tritel_accountability_framework:selection:accountability.review.session.employee.avg_rating, tritel_accountability_framework:selection:accountability.review.session.line.line_rating
 # docs-sync: shows tritel_accountability_framework:selection:accountability.score.rating, tritel_accountability_framework:selection:accountability.snapshot.line.rating, tritel_accountability_framework:selection:accountability.snapshot.rating
 # docs-sync: shows tritel_accountability_framework:selection:accountability.target.rating
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_my_actions
 type: screen
 title: A snapshot compared with today
 desc: The Snapshot panel for one person as at a month end, with the Rebuilt and Frozen switch, the frozen snapshot picker, the PDF, Open and Freeze snapshot buttons, the Since it was frozen list, the overall rating and the target table, numbered 1 to 7.
@@ -11,7 +12,7 @@ source: tritel_accountability_framework/static/src/components/snapshot/snapshot_
 frame:
   grid: true
   app: Accountability
-  menu: [My Performance, {label: My Team, active: true}, My Actions, Organisation]
+  menu: [Company Overview, My Performance, {label: My Team, active: true}, My Actions, Organisation]
   breadcrumb: [Team Targets]
 blocks:
   - buttons: [{label: "As at 30 Sep 2026 · quarter end", n: 1}]

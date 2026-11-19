@@ -5,8 +5,8 @@ module: accountability
 pageType: report
 roles: [everyone, line-manager, hr]
 tags: [snapshots, reports, scores]
-keywords: [snapshot, freeze, as at, month end, historic score, compare, what changed, PDF, performance record, quarter end, audit trail]
-where: [Accountability, My Performance, Performance Snapshots]
+keywords: [snapshot, freeze, as at, month end, historic score, compare, what changed, PDF, performance record, Performance Snapshots, My Score History]
+where: [Accountability, My Performance, My Score History]
 related: [accountability/concepts/snapshots-and-as-at, accountability/how-to/everyone/read-briefs-and-snapshots, accountability/reports/performance-overview, accountability/how-to/line-managers/team-scores]
 sidebar: { order: 2 }
 sources:
@@ -24,7 +24,10 @@ sources:
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_accountability_framework/views/hr_employee_views.xml
   - tritel_accountability_framework/views/menu.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu_people.xml
+  - tritel_accountability_framework/static/src/cascade/accountability_cascade_dashboard.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -33,8 +36,8 @@ A **snapshot** is a person's overall rating and target results as at one date. A
 You can open the snapshot panel from three places:
 
 - **Team Targets**: pick a person, then a month end in the **As at** list above their targets.
-- **Performance Overview**: open a person's panel, then **Open snapshot** or **❄ Compare with frozen**.
-- **My Performance › Performance Snapshots**: the list of frozen snapshots. Open one, then click **Compare with today's rebuild**, or **Print PDF**.
+- **Company Overview**: open a person's panel, then **Open snapshot** or **❄ Compare with frozen**.
+- **My Performance › My Score History**: the list of frozen snapshots. Open one, then click **Compare with today's rebuild**, or **Print PDF**.
 
 <Illustration name="accountability/report-snapshot-compare" caption="A frozen snapshot compared with today's rebuild on Team Targets. The numbers match the list below." />
 

@@ -1,7 +1,8 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_compliance_action, tritel_accountability_framework:cron:cron_cascade_reminders, tritel_accountability_framework:menu:menu_accountability_compliance
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:model:accountability.objective, tritel_accountability_framework:selection:accountability.target.cascade_state
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_my_actions, tritel_accountability_framework:menu:menu_accountability_configuration
 type: screen
 title: Cascade Compliance
 desc: The Cascade Compliance screen with the period selector, the Total Cascades, Adopted, Pending, Declined and Adoption Rate tiles, and an opened objective showing a source target with its recipients, their statuses and a Send Reminder button, numbered 1 to 5.
@@ -9,7 +10,7 @@ source: tritel_accountability_framework/static/src/compliance/accountability_com
 frame:
   grid: true
   app: Accountability
-  menu: [My Performance, My Team, My Actions, {label: Organisation, active: true}]
+  menu: [Company Overview, My Performance, My Team, My Actions, {label: Organisation, active: true}, Configuration]
   breadcrumb: [Compliance]
 blocks:
   - buttons: [{label: FY 2026, n: 1}]
