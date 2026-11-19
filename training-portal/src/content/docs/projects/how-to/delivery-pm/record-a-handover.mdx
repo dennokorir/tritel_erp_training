@@ -5,8 +5,8 @@ module: projects
 pageType: how-to
 roles: [delivery-pm]
 tags: [handover, close-out]
-keywords: [handover, hand over, completion certificate, acceptance certificate, practical completion, go-live, sign-off, commissioning, project completion, snag list]
-where: [Project, Delivery, Delivery Projects]
+keywords: [handover, hand over, submit for confirmation, completion certificate, acceptance certificate, practical completion, go-live, sign-off, commissioning, project completion, snag list]
+where: [Project, Delivery, Projects, My Delivery Projects]
 before:
   - The client has taken over the work, ideally with a signed acceptance or completion certificate.
   - You are a Delivery Project Manager, and the project is not closed.
@@ -23,7 +23,7 @@ sources:
   - tritel_project_delivery/views/menus.xml
   - tritel_project_delivery/views/my_actions_views.xml
   - tritel_project_delivery/views/tender_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -33,29 +33,29 @@ The **handover** is the date the client took over the work. You record it and th
 
 ## Steps
 
-1. Open the project and click **Record Handover** at the top. You can also click **Record handover** in **Project › My Actions**, where the project appears under **Handovers to record** once its approved completion date has passed.
+1. Open the project (**Project › Delivery › Projects › My Delivery Projects**) and click **Record Handover** at the top. You can also click **Record handover** in **Project › My Actions**, where the project appears under **Handovers to record** once its approved completion date has passed.
 2. Check **Project**, and set the **Handover date**: the date the client took over the work, which is the date on the certificate if there is one. It starts as today.
 3. Attach the signed certificate in **Handover certificate**. It is optional, but it helps the Head of Delivery confirm it.
 4. In **Note**, write what was handed over, who signed for the client and anything outstanding (the snag list).
-5. Save, then click **Submit for Confirmation**.
+5. Save, then click **Submit for Approval**.
 
 ## What happens next
 
 - The handover is **Waiting for confirmation** and can't be edited. Every Head of Delivery gets a *Confirm project handover* to-do. It shows in your My Actions under **Waiting on others**, where you can **Remind** them.
 - **If the Head of Delivery confirms it**, it becomes **Confirmed**. The project's **Handover** smart button shows **Confirmed** and the **Handover & close** tab shows the **Handover date**. Delivery Finance gets a *Close delivery project* to-do.
-- **If the Head of Delivery returns it**, it becomes **Returned** with a yellow banner showing their note. You get a *Handover returned* to-do, and it is listed in My Actions under **Handovers sent back to you**. Make the changes and click **Submit for Confirmation** again; the to-do is marked done.
+- **If the Head of Delivery returns it**, it becomes **Returned** with a yellow banner showing their note. You get a *Handover returned* to-do, and it is listed in My Actions under **Handovers sent back to you**. Make the changes and click **Submit for Approval** again; the to-do is marked done.
 - At close, the handover counts as on time if it is no more than 7 days (the grace set in Delivery Settings) after the approved completion date plus any approved client delay.
 
 ## Common mistakes
 
 | Message | Why it happens | What to do |
 |---|---|---|
-| *PRJ Customer A network upgrade already has a handover waiting or confirmed.* | Another handover for the project is already submitted or confirmed. | Open **Handover** on the project. Ask the Head of Delivery to return the existing one if it is wrong. |
+| *Data Centre Upgrade already has a handover waiting or confirmed.* | Another handover for the project is already submitted or confirmed. | Open **Handover** on the project. Ask the Head of Delivery to return the existing one if it is wrong. |
 | *This handover is waiting for confirmation; it can no longer be edited.* | You tried to change a submitted handover. | Ask the Head of Delivery to return it. |
 | *Only a draft or returned handover can be submitted.* | It has already been submitted or confirmed. | Refresh the page and check the status bar. |
 | *Only draft or returned handovers can be deleted.* | You tried to delete a submitted or confirmed handover. | Ask the Head of Delivery to return it first. |
 | *Only delivery project managers can record a handover.* | Your user is not a Delivery Project Manager. | Ask the project manager to record it. |
-| *PRJ Customer A network upgrade is closed. Finance can reopen it first.* | The project has been closed. | Ask finance to reopen it if the handover must change. |
+| *Data Centre Upgrade is closed. Finance can reopen it first.* | The project has been closed. | Ask finance to reopen it if the handover must change. |
 
 :::note[Good to know]
 - **Days late** is counted before the grace. A handover 5 days after the deadline is recorded as 5 days late but still **On time**. See [Close figures and the Delivery KPI](/projects/calculations/close-and-kpi/).

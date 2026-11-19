@@ -1,0 +1,119 @@
+---
+title: Project Delivery menus
+description: Every Project Delivery menu under Project › Delivery, Accounting › Project Budgets and Purchase › Reporting, who sees each one, how the Delivery Project Manager role is given automatically, and the old names each menu replaced.
+module: projects
+pageType: reference
+roles: [delivery-pm, head-delivery, delivery-finance, finance]
+tags: [access, delivery projects]
+keywords: [delivery menu, where is, menu missing, can't see delivery, Waiting for My Approval, All Baselines, Projects to Link, project budgets, accounting menu, budget commitments, cost accounts to sort out, renamed menu, project manager role]
+related: [projects/who-can-do-what, projects/how-to/approvers/cost-types-and-categories, projects/index, projects/reports/budget-commitments, projects/how-to/approvers/sort-out-cost-accounts, projects/how-to/approvers/approve-budget, projects/how-to/approvers/review-costs-after-close, projects/how-to/approvers/delivery-settings, projects/how-to/delivery-pm/open-a-delivery-project, projects/faq]
+sidebar: { order: 3 }
+sources:
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/accounting_menus.xml
+  - tritel_project_delivery/views/purchase_budget_views.xml
+  - tritel_project_delivery/views/cost_account_sort_views.xml
+  - tritel_project_delivery/models/delivery_access.py
+  - tritel_project_delivery/data/delivery_access_data.xml
+  - tritel_project_delivery/security/delivery_security.xml
+  - tritel_project_delivery/wizards/open_project_wizard.py
+  - tritel_project_delivery/tests/test_delivery_menus.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+---
+import Illustration from '../../../components/Illustration.astro';
+
+Project Delivery has menus in three apps. Delivery project managers and Heads of Delivery work in **Project › Delivery**. Delivery Finance works mostly in **Accounting › Project Budgets**, which holds the same screens where finance already works. Purchase managers find the **Budget Commitments** report under **Purchase › Reporting**. What you see depends on your Project Delivery role.
+
+| Role | How they get it |
+|---|---|
+| **Delivery Project Manager** | Automatic: anyone who is the **Project Manager** on an active delivery project has it (see below). |
+| **Delivery Finance** | Given by hand, in the user's access rights under **Project Delivery**. |
+| **Head of Delivery** | Given by hand, in the user's access rights under **Project Delivery**. A Head of Delivery also has everything a Delivery Project Manager has. |
+| **Accounting manager** | The Accounting app's own administrator right. Accounting managers see one Project Budgets screen: **Cost Accounts to Sort Out**. |
+| **Purchase manager** | The Purchase app's own administrator right. |
+
+<Illustration name="projects/matrix-menus" caption="Which Project Delivery menus each role sees." />
+
+## The Delivery Project Manager role is automatic
+
+You don't ask for the **Delivery Project Manager** role. Odoo gives it to you as soon as you are the **Project Manager** on an active delivery project, and takes it away when you no longer manage one: when the project is handed to someone else, stops being a delivery project or is archived. It is checked each time a project's manager changes, and again every day by the scheduled job *Project Delivery: Project Manager role follows the projects*, which also undoes any change made to the role by hand. A Head of Delivery is never touched: their role already includes it.
+
+:::note[Good to know]
+Opening a delivery project from a won tender needs the Delivery Project Manager role. Someone who doesn't manage a delivery project yet doesn't have it, so they see *Only delivery project managers can open delivery projects.* Ask a Head of Delivery to open the project and name you as its **Project Manager**; the role follows. See [Open a delivery project](/projects/how-to/delivery-pm/open-a-delivery-project/).
+:::
+
+## Project › Delivery
+
+**Project › Delivery** shows to Delivery Project Managers, Delivery Finance and Heads of Delivery. It has three sections.
+
+### To approve
+
+Delivery Finance and Heads of Delivery see this section.
+
+| Item | What it opens |
+|---|---|
+| **Waiting for Me** | Delivery budgets waiting for your approval, on the **Waiting for me** filter. See [Approve a budget](/projects/how-to/approvers/approve-budget/). |
+
+### Projects
+
+| Item | Who sees it | What it opens |
+|---|---|---|
+| **My Delivery Projects** | Delivery Project Managers, Heads of Delivery | Delivery projects, on the **My Projects** filter. Clear the filter to see all of them. |
+| **Delivery Projects** | Delivery Finance, Heads of Delivery | Every delivery project. |
+| **Projects Not in Delivery** | Heads of Delivery | Projects that aren't delivery projects, to link to a won tender. |
+| **Delivery Budgets** | Everyone with a delivery role | Delivery budgets, on the **Waiting for approval** filter. |
+| **Budget Commitments** | Everyone with a delivery role | Open purchase orders against accounting budgets, for the whole company. See [Budget Commitments](/projects/reports/budget-commitments/). |
+| **My Submissions** | Delivery Project Managers, Heads of Delivery | The budgets you submitted that are still waiting, on the **My submissions, waiting** filter. |
+| **Handovers** | Everyone with a delivery role | Handovers, on the **Waiting for confirmation** filter. |
+| **Client Delays** | Everyone with a delivery role | Client delays, on the **Waiting for approval** filter. |
+
+### Setup
+
+Delivery Finance and Heads of Delivery see this section.
+
+| Item | Who sees it | What it opens |
+|---|---|---|
+| **Delivery Settings** | Delivery Finance, Heads of Delivery | KPI rules, the MD and the MD approval limits, cost accounts, the VAT rate and the accounting budget mapping. See [Change the Delivery settings](/projects/how-to/approvers/delivery-settings/). |
+| **Cost Types** | Heads of Delivery | The plain-language types project managers pick for each cost. See [Maintain cost types, categories, starter items and standard milestones](/projects/how-to/approvers/cost-types-and-categories/). |
+| **Budget Categories** | Delivery Finance, Heads of Delivery | The categories every delivery budget is split into. |
+| **Starter Items** | Delivery Finance, Heads of Delivery | Costs added to every new draft budget. |
+| **Standard Milestones** | Heads of Delivery | The milestones every new delivery project starts with. |
+| **Cost Accounts to Sort Out** | Delivery Finance, Heads of Delivery | Cost accounts that belong to no project. See [Sort out cost accounts with no project](/projects/how-to/approvers/sort-out-cost-accounts/). |
+
+## Accounting › Project Budgets
+
+Delivery Finance sees all of this menu. Accounting managers see only **Tracking › Cost Accounts to Sort Out**.
+
+| Item | What it opens |
+|---|---|
+| **To approve › Budgets to Approve** | Delivery budgets, on the **Waiting for me** filter. When there are none: *No budget is waiting for your approval.* |
+| **To approve › Costs After Close** | Closed delivery projects, on the **Costs after close to review** filter. When there are none: *No closed project has costs after close waiting for review.* See [Review costs after close](/projects/how-to/approvers/review-costs-after-close/). |
+| **Tracking › Budget vs Actual** | Delivery projects with their tracking figures, on the **Over plan** and **Fully committed** filters. **On track** and **No approved budget** are in **Filters** too. |
+| **Tracking › Delivery Budgets** | The same list as **Project › Delivery › Projects › Delivery Budgets**. |
+| **Tracking › Budget Commitments** | The [Budget Commitments](/projects/reports/budget-commitments/) report. |
+| **Tracking › Cost Accounts to Sort Out** | See [Sort out cost accounts with no project](/projects/how-to/approvers/sort-out-cost-accounts/). |
+
+**Accounting › Configuration › Project Budgets** holds **Delivery Settings**, **Budget Categories** and **Starter Items** for Delivery Finance: the same screens as **Project › Delivery › Setup**.
+
+:::note[Good to know]
+The Accounting app shows only to people with an accounting right, and its **Configuration** menu only to accounting managers. A Delivery Finance user without those rights doesn't see **Accounting › Project Budgets** at all; they use **Project › Delivery**, which has the same lists.
+:::
+
+## Purchase › Reporting
+
+| Item | Who sees it | What it opens |
+|---|---|---|
+| **Budget Commitments** | Purchase managers | The [Budget Commitments](/projects/reports/budget-commitments/) report. |
+
+## Renamed menus
+
+If you knew the earlier Delivery menus, this is where each item went.
+
+| Old name | Now |
+|---|---|
+| **Project › Delivery › Waiting for My Approval** | **Project › Delivery › To approve › Waiting for Me** |
+| **Project › Delivery › Delivery Projects** (for project managers) | **Project › Delivery › Projects › My Delivery Projects**. **Delivery Projects** is now for Delivery Finance and Heads of Delivery only. |
+| **Project › Delivery › All Baselines** | **Project › Delivery › Projects › Delivery Budgets** |
+| **Project › Delivery › Projects to Link** | **Project › Delivery › Projects › Projects Not in Delivery** |
+| **Project › Delivery › Handovers**, **Client Delays** | **Project › Delivery › Projects › Handovers**, **Client Delays** |
+| **Project › Configuration › Delivery** | **Project › Delivery › Setup**, which Delivery Finance can open too |

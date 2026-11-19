@@ -1,11 +1,11 @@
 ---
 title: Projects over their approved budget
-description: The My Actions list of delivery projects over plan on at least one budget line, who sees which projects, and how to read the budget tracking window behind the Budget left button.
+description: The My Actions list and Delivery Finance's Budget vs Actual list of delivery projects over plan on at least one budget line, who sees which projects, and how to read the budget tracking window behind the Budget left button.
 module: projects
 pageType: report
 roles: [delivery-pm, head-delivery, delivery-finance]
 tags: [tracking, my actions]
-keywords: [over budget, overrun, cost overrun, budget variance, over plan, exceeded budget, burn rate, tracking popup, my actions, request revision]
+keywords: [over budget, overrun, cost overrun, budget variance, over plan, fully committed, budget vs actual, tracking popup, my actions, request revision, costs after close]
 where: [Project, My Actions]
 related: [projects/calculations/tracking-figures, projects/workflows/budget-status, projects/how-to/delivery-pm/my-actions, projects/how-to/delivery-pm/request-a-revision, projects/how-to/delivery-pm/track-the-budget]
 sidebar: { order: 2 }
@@ -25,7 +25,8 @@ sources:
   - tritel_project_delivery/views/project_views.xml
   - tritel_project_delivery/views/tender_views.xml
   - tritel_project_delivery/views/tracking_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_project_delivery/views/accounting_menus.xml
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -38,14 +39,29 @@ import Illustration from '../../../../components/Illustration.astro';
 1. **Overdue tile.** Every project in this group is counted as overdue as well as to do.
 2. **The group** and its hint: *Committed and spent are above the approved budget in at least one category.*
 3. **Each project** shows *planned 850,000 · committed and spent 762,000*: the whole approved budget and everything ordered or spent. A Head of Delivery also sees the project manager's name.
-4. **Buttons.** **Open tracking** and **Open** both open the project form; the budget tracking table is on its **Delivery** tab. **Request revision** starts a revision of the approved baseline. It shows only to the project's own manager, if they are a delivery project manager, and only while the baseline status is **Approved**.
+4. **Buttons.** **Open tracking** and **Open** both open the project form; the budget tracking table is on its **Delivery** tab. **Request revision** starts a revision of the approved budget. It shows only to the project's own manager, if they are a delivery project manager, and only while the budget status is **Approved**.
 5. **Who sees what.** The Head of Delivery sees every open delivery project that is over plan. Everyone else sees only the projects where they are the **Project Manager**.
 
 A project leaves the list when its status is no longer **Over plan** at the next refresh, when it closes, or as soon as a revision is started. A project with a revision in draft or waiting is listed under **Revisions in progress** instead, marked *over its approved budget*.
 
+## Budget vs Actual (Delivery Finance)
+
+Delivery Finance has the same picture as a list, under **Accounting › Project Budgets › Tracking › Budget vs Actual**. It lists delivery projects with their **Approved delivery budget**, **Committed**, **Spent**, **Left** and **Budget status**, and opens on two filters that show what needs attention:
+
+| Filter | Shows projects whose Budget status is |
+|---|---|
+| **Over plan** | **Over plan**: at least one budget line used beyond its plan. On when the list opens. |
+| **Fully committed** | **Fully committed**: every line used up to its plan. On when the list opens. |
+| **On track** | **On track**. |
+| **No approved budget** | **No approved budget**: nothing approved to track against yet. |
+
+With both opening filters on, the list shows projects that are over plan or fully committed. If none is, it says *No delivery project is over plan or fully committed. Clear the filters to see them all.* The same filters are in the search of **Project › Delivery › Projects › Delivery Projects**.
+
+Next to it, **Accounting › Project Budgets › To approve › Costs After Close** lists closed delivery projects, opening on the filter **Costs after close to review**. When nothing is waiting it says *No closed project has costs after close waiting for review.* See [Review costs posted after close](/projects/how-to/approvers/review-costs-after-close/).
+
 ## The budget tracking window
 
-Click **Budget left** on the project (or **Margin left** on its approved baseline) to open **Budget tracking · Customer A network upgrade**.
+Click **Budget left** on the project (or **Margin left** on its approved budget) to open **Budget tracking · Data Centre Upgrade**.
 
 <Illustration name="projects/report-tracking-popup" caption="The tracking window for the same project. Travel is the line over plan." />
 

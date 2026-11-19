@@ -1,23 +1,23 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:field:project.project.approved_budget_total, tritel_project_delivery:field:project.project.track_committed, tritel_project_delivery:menu:menu_delivery_config
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:model:project.delivery.baseline
 # docs-sync: shows tritel_project_delivery:model:project.delivery.client.delay, tritel_project_delivery:model:project.delivery.commitment, tritel_project_delivery:model:project.delivery.cost.line
 # docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-budget
 # docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:approved-delivery-budget, tritel_project_delivery:view_ext:project.edit_project:button:automatic-tagging-rules, tritel_project_delivery:view_ext:project.edit_project:button:budget-left
 # docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:close-project, tritel_project_delivery:view_ext:project.edit_project:button:committed, tritel_project_delivery:view_ext:project.edit_project:button:cost-account
-# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:log-client-delay, tritel_project_delivery:view_ext:project.edit_project:button:odoo-budget-lines, tritel_project_delivery:view_ext:project.edit_project:button:purchase-orders
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:log-client-delay, tritel_project_delivery:view_ext:project.edit_project:button:accounting-budget-lines, tritel_project_delivery:view_ext:project.edit_project:button:purchase-orders
 # docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:spent-so-far, tritel_project_delivery:view_ext:project.edit_project:button:untagged-tender-order-lines, tritel_project_delivery:view_ext:project.edit_project:button:vendor-bills
-# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:won-tender, tritel_project_delivery:view_ext:project.edit_project:field:odoo-budget-lines, tritel_project_delivery:view_ext:project.edit_project:field:tagging-rules
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:won-tender, tritel_project_delivery:view_ext:project.edit_project:field:accounting-budget-lines, tritel_project_delivery:view_ext:project.edit_project:field:tagging-rules
 # docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:field:untagged-lines, tritel_project_delivery:view_ext:project.edit_project:page:handover-amp-close, tritel_project_delivery:wizard:delivery.cost.account.card
 type: screen
 title: Project smart buttons
-desc: The top of a delivery project with its smart buttons, Delivery baseline, Approved delivery budget, Spent so far, Committed, Budget left, Cost account, Won tender, Handover, Purchase orders, Vendor bills, Odoo budget lines, Untagged tender order lines and Automatic tagging rules, numbered 1 to 13.
+desc: The top of a delivery project with its smart buttons, Delivery Budget, Approved delivery budget, Spent so far, Committed, Budget left, Cost account, Won tender, Handover, Purchase orders, Vendor bills, Accounting budget lines, Untagged tender order lines and Automatic tagging rules, numbered 1 to 13.
 source: tritel_project_delivery/views/buttons_views.xml (project_form_buttons), views/closeout_views.xml (project_form_closeout), models/buttons.py (_compute_buttons)
 frame:
   grid: true
   app: Project
   menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
-  breadcrumb: [Delivery Projects, Customer A network upgrade]
+  breadcrumb: [Delivery Projects, P26-049 · Data Centre Upgrade]
 blocks:
   - buttons: [{label: Log Client Delay}, {label: Close Project, primary: true}]
   - smart:
@@ -27,16 +27,16 @@ blocks:
       - {label: Committed, value: "200,000", n: 4}
   - smart:
       - {label: "Left · over plan", value: "288,000", tone: bad, n: 5}
-      - {label: "Plan: Customer A…", value: "Customer A netw…", n: 6}
+      - {label: "Plan: Data Centre Upgrade", value: "Data Centre Upg…", n: 6}
       - {label: TND-2026-001, value: "Tender", n: 7}
       - {label: Handover, value: "Waiting", tone: warn, n: 8}
   - smart:
       - {label: Orders, value: "3", n: 9}
       - {label: Bills, value: "4", n: 10}
-      - {label: Odoo budget lines, value: "8", n: 11}
+      - {label: Accounting budget lines, value: "8", n: 11}
       - {label: Untagged lines, value: "2", tone: warn, n: 12}
   - smart:
       - {label: Tagging rules, value: "1", n: 13}
-  - title: {text: Customer A network upgrade, sub: Customer A}
+  - title: {text: Data Centre Upgrade, sub: "P26-049 · Customer A"}
   - tabs: {items: [Description, Settings, Delivery, "Handover & close"], active: Delivery}
   - note: {text: "Buttons 9 to 13 appear only for people with purchase, accounting or delivery set-up access (see the list).", tone: muted}

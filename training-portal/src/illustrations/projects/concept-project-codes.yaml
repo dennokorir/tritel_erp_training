@@ -1,0 +1,23 @@
+# docs-sync: verified_commit 5d691a8dca64
+# docs-sync: shows tritel_project_delivery:field:project.project.code, tritel_project_delivery:view_ext:project.view_project_project_filter:field:project-code
+type: screen
+title: Project codes in the projects list
+desc: The Project list searched by project code, with the Project code column and the Name column showing each project as code · name, and the code shown above the name on the project form, numbered 1 to 3.
+source: tritel_project_delivery/views/project_code_views.xml (project_tree_code, project_search_code, project_form_code), models/project_code.py (name_get)
+frame:
+  grid: true
+  app: Project
+  menu: [{label: Projects, active: true}, My Tasks, My Actions, Delivery, Reporting]
+  breadcrumb: [Projects]
+blocks:
+  - search: {facets: ["Project code: P26-04"], placeholder: "Search…", filters: [Filters, Group By], n: 1}
+  - table:
+      columns: [Project code, Name, Customer]
+      widths: [1.2, 3.2, 2]
+      n: 2
+      rows:
+        - [P26-047, {text: "P26-047 · Office Wi-Fi Refresh", bold: true}, Customer B]
+        - {cells: [P26-049, {text: "P26-049 · Data Centre Upgrade", bold: true}, Customer A], highlight: true}
+  - divider: true
+  - text: P26-049
+  - title: {text: Data Centre Upgrade, sub: "The code sits above the project name on the form", n: 3}

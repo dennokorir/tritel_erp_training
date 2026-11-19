@@ -1,9 +1,9 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.project.delivery_baseline_state
 # docs-sync: shows tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project
 type: calc
 title: Margin at two exchange rates
-desc: Worked example of a US dollar tender where the baseline's margin uses the rate fixed when the budget was approved and the tender's margin uses today's rate, so the two show 250,000 and 200,000.
+desc: Worked example of a US dollar tender where the delivery budget's margin uses the rate fixed when the budget was approved and the tender's margin uses today's rate, so the two show 250,000 and 200,000.
 source: tritel_project_delivery/models/tender_import.py (_revenue_rate), models/buttons.py (_compute_delivery_buttons)
 heading: Tender TND-2026-001 in US dollars, one delivery project
 inputs:
@@ -12,8 +12,8 @@ inputs:
   - {label: Rate at approval, value: "130.00"}
   - {label: Rate today, value: "125.00"}
 steps:
-  - {label: "Baseline: 10,000 × 130.00 (Revenue rate, fixed) − 1,050,000", value: "250,000"}
-  - {label: "Baseline Margin left (%): 250,000 ÷ 1,300,000", value: "19.2%"}
+  - {label: "Budget: 10,000 × 130.00 (Revenue rate, fixed) − 1,050,000", value: "250,000"}
+  - {label: "Budget Margin left (%): 250,000 ÷ 1,300,000", value: "19.2%"}
   - {label: "Tender: 10,000 × 125.00 (today's rate) − 1,050,000", value: "200,000"}
 result: {label: Margin left, value: "250,000 vs 200,000", tone: warn}
-note: Both are right for their own rule. The baseline keeps the rate of the day the budget was approved; the tender always uses today's rate.
+note: Both are right for their own rule. The delivery budget keeps the rate of the day the budget was approved; the tender always uses today's rate.

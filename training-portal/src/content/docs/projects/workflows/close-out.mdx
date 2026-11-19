@@ -22,7 +22,7 @@ sources:
   - tritel_project_delivery/views/menus.xml
   - tritel_project_delivery/views/project_views.xml
   - tritel_project_delivery/views/tender_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 
 Closing is the last step of a delivery project. Finance confirms the final cost, and the system freezes the result. The project then shows its result on the **Handover & close** tab, and its **Handover** smart button reads **Closed**. On screen, a closed project has the **Close Project** button replaced by **Reopen**.
@@ -43,7 +43,7 @@ stateDiagram-v2
 
 | Status | What it means | Moves to | Who moves it |
 |---|---|---|---|
-| **Open** | Not closed. Baselines, handovers and client delays can be worked on. | **Closed** with **Close Project**, once nothing blocks it | Delivery Finance |
+| **Open** | Not closed. Budgets, handovers and client delays can be worked on. | **Closed** with **Close Project**, once nothing blocks it | Delivery Finance |
 | **Closed** | The final cost and result are frozen. No handover, client delay or revision can be started or changed. | **Open** with **Reopen**; **Costs after close** if costs change | Delivery Finance; the system |
 | **Costs after close** to review | Still closed, but spent plus open orders differ from the figures at close. The result does not change. | **Closed** with **Mark reviewed**; **Open** with **Reopen** | Delivery Finance |
 
@@ -74,8 +74,8 @@ flowchart TD
 ## What the system checks and does
 
 - **Before closing:** the **Close Project** window lists anything that blocks the close under *This project cannot close yet.*:
-  - *Baseline v2 is waiting for approval. Approve or withdraw it first.*
-  - *The handover must be recorded and confirmed by the Head of Delivery first.* (only for a project with an approved baseline)
+  - *Budget v2 is waiting for approval. Approve or withdraw it first.*
+  - *The handover must be recorded and confirmed by the Head of Delivery first.* (only for a project with an approved budget)
   - *A handover is waiting for confirmation.*
   - *A client delay is waiting for approval.*
 - **Figures in the window:** **Spent**, **Open orders**, **Proposed final cost**, an optional **Adjustment** with **Why** (required when there is an adjustment: *Explain the adjustment to the final cost.*), **Final cost** and **Approved budget**, plus a preview of the result. If the project has no cost account, the window says spent and open orders are 0 and suggests the adjustment.
@@ -87,7 +87,7 @@ flowchart TD
 
 :::note[Good to know]
 - Only Delivery Finance can close or reopen a project, or mark costs after close reviewed.
-- A project without an approved baseline can still be closed. Its result is **Not scored** and it doesn't count in the Delivery KPI.
+- A project without an approved budget can still be closed. Its result is **Not scored** and it doesn't count in the Delivery KPI.
 :::
 
 ## Related tasks

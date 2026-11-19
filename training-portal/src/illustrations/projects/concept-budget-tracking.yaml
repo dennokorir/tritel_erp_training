@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:field:project.project.track_committed, tritel_project_delivery:field:project.project.track_forecast, tritel_project_delivery:field:project.project.track_refreshed_on
 # docs-sync: shows tritel_project_delivery:field:project.project.track_spent, tritel_project_delivery:field:project.project.tracking_html, tritel_project_delivery:menu:menu_delivery_config
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:model:project.delivery.baseline.line
@@ -13,7 +13,7 @@ frame:
   grid: true
   app: Project
   menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
-  breadcrumb: [Delivery Projects, PRJ Customer A network upgrade]
+  breadcrumb: [Delivery Projects, P26-049 · Data Centre Upgrade]
 blocks:
   - tabs: {items: [Description, Settings, Delivery, "Handover & close"], active: Delivery}
   - heading: Budget tracking

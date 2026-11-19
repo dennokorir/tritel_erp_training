@@ -1,20 +1,21 @@
 ---
 title: Link an existing project to its tender
-description: Make a project that was created before the award into a delivery project by linking it to its won tender, so it gets a baseline and counts for the delivery KPIs.
+description: Make a project that was created before the award into a delivery project by linking it to its won tender, so it gets a Delivery Budget and counts for the delivery KPIs.
 module: projects
 pageType: how-to
 roles: [delivery-pm, head-delivery]
 tags: [delivery projects, tenders]
-keywords: [link tender, connect project, old project, existing project, unlinked project, projects to link, won tender, KPI, cost account]
-where: [Project, Delivery, Projects to Link]
+keywords: [link tender, connect project, old project, existing project, unlinked project, projects to link, projects not in delivery, won tender, KPI, cost account, project code]
+where: [Project, Delivery, Projects, Projects Not in Delivery]
 before:
   - The project already exists in the Project app and its tender's status is <strong>Won</strong>.
   - You are a Delivery Project Manager or the Head of Delivery.
-related: [projects/concepts/delivery-projects, projects/how-to/delivery-pm/open-a-delivery-project, projects/how-to/delivery-pm/build-a-baseline, projects/calculations/baseline-due]
+related: [projects/concepts/delivery-projects, projects/concepts/project-codes, projects/how-to/delivery-pm/open-a-delivery-project, projects/how-to/delivery-pm/build-a-baseline, projects/calculations/baseline-due]
 sidebar: { order: 2 }
 sources:
   - tritel_project_delivery/views/project_views.xml
   - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/models/project_code.py
   - tritel_project_delivery/wizards/open_project_wizard.py
   - tritel_project_delivery/wizards/open_project_wizard_views.xml
   - tritel_project_delivery/views/menus.xml
@@ -28,46 +29,51 @@ sources:
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/buttons_views.xml
   - tritel_project_delivery/views/tender_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
-Some projects are created in Odoo before the tender is won, or outside the delivery flow. Until they are linked to a won tender they are not delivery projects: they have no baseline and the delivery KPIs don't measure them. Linking them gives them everything a newly opened delivery project gets.
+Some projects are created in Odoo before the tender is won, or outside the delivery flow. Until they are linked to a won tender they are not delivery projects: they have no Delivery Budget and the delivery KPIs don't measure them. Linking them gives them everything a newly opened delivery project gets.
 
 <Illustration name="projects/pm-link-project" caption="Linking an existing project to its won tender. The numbers match the steps below." />
 
 ## Steps
 
 1. Find the project.
-   - Head of Delivery: open **Project › Delivery › Projects to Link**. It lists every project that is not linked to a tender. My Actions also shows the count under **Projects not linked to a won tender**.
+   - Head of Delivery: open **Project › Delivery › Projects › Projects Not in Delivery**. It lists every project that is not linked to a tender. My Actions also shows the count under **Projects not linked to a won tender**.
    - Project managers: open **Project › Projects**, open **Filters** and choose **Not linked to a tender**. On the project's card, click **Open project**.
 2. On the project, open the **Delivery** tab. The blue notice says *This project is not linked to a won tender, so it is not measured by the delivery KPIs.* Click **Link to Won Tender**.
 3. In the **Link to Won Tender** window, **Existing project** is already filled in. Choose the **Won tender**. Only won tenders are listed. Check **Client** and **Award Date**.
 4. Check the **Project manager** and **Start date**. They are taken from the project.
 5. Check **Cost account**.
    - If the project already has one, it is kept: the line underneath says *The project already has this cost account; it is kept.*
-   - If not, choose finance's existing account for the job, or leave it empty to create a new one.
+   - If not, choose finance's existing account for the job, or leave it empty to create a new one. The account you choose must not belong to another project.
 6. Click **Open Delivery Project**.
 
 ## What happens next
 
-- The project becomes a delivery project linked to the tender. The **Delivery** tab now shows the **Tender** details (**Tender**, **Award date**, **Contract value**, **Baseline due**) and the **Approved baseline** status.
+- The project becomes a delivery project linked to the tender. The **Delivery** tab now shows the **Tender** details (**Tender**, **Award date**, **Contract value**, **Budget due**) and, under **Approved budget**, the **Budget status**.
+- The project keeps its [project code](/projects/concepts/project-codes/) (every project has one, for example **P26-049**). Its cost account takes that code, so orders, bills and budgets find the project by code.
 - The client is filled in if the project had none. Missing delivery stages and standard milestones are added. Stages and milestones the project already had are kept.
-- If the project has no baseline yet, **Baseline v1** is started in **Draft** with the starter items. Milestones the project already had are copied into it with their deadlines, and the project's end date becomes the baseline's **Completion date**.
-- **Baseline due** counts from the tender's award date, so a project linked late may already be overdue. It then shows in your **Project › My Actions** under **Baselines to draft**.
+- If the project has no Delivery Budget yet, **Budget v1** is started in **Draft** with the starter items. Milestones the project already had are copied into it with their deadlines, and the project's end date becomes the budget's **Completion date**.
+- **Budget due** counts from the tender's award date, so a project linked late may already be overdue. It then shows in your **Project › My Actions** under **Budgets to draft**.
+- If the **Project manager** didn't have the Delivery Project Manager role, they get it now.
 
-Next: [build the baseline](/projects/how-to/delivery-pm/build-a-baseline/).
+Next: [build the Delivery Budget](/projects/how-to/delivery-pm/build-a-baseline/).
 
 ## Common mistakes
 
 | Message | Why it happens | What to do |
 |---|---|---|
-| *This project is already linked to tender Customer B data centre.* | The project is linked to a different tender. | Check you have the right project and tender. A project belongs to one tender. |
-| *Cost account PRJ Customer B data centre is already used by project PRJ Customer B phase 1.* | The account you chose belongs to another project. | Choose the right account with finance, or leave it empty. |
+| *This project is already linked to tender TND-2026-002.* | The project is linked to a different tender. | Check you have the right project and tender. A project belongs to one tender. |
+| *Cost account Data Centre Upgrade is already used by project CCTV Installation.* | The account you chose belongs to another project. | Choose the right account with finance, or leave it empty. |
+| *Data Centre Upgrade is already the cost account of P26-047 · CCTV Installation. Choose another cost account for Data Centre Upgrade.* | The account belongs to another project, for example an archived one. | Choose another account, or leave it empty to create a new one. |
+| *Data Centre Upgrade carries the code of P26-047 · CCTV Installation. Choose another cost account for Data Centre Upgrade.* | The account carries another project's code, so it is that project's account. | Choose another account. If the account really is this job's, ask Delivery Finance to [sort it out](/projects/how-to/approvers/sort-out-cost-accounts/). |
 | *Only a won tender can open a delivery project.* | The tender is not **Won**. | Wait until the tender is marked **Won**. |
-| *Only delivery project managers can open delivery projects.* | Your user is not a Delivery Project Manager. | Ask a delivery project manager or the Head of Delivery to link it. |
+| *Only delivery project managers can open delivery projects.* | You don't have the Delivery Project Manager role (you get it only once you manage a delivery project). | Ask the Head of Delivery to link it. |
 
 :::note[Good to know]
-- **Projects to Link** lists every project that is not linked, including internal projects that will never have a tender. Leave those alone.
+- **Projects Not in Delivery** lists every project that is not linked, including internal projects that will never have a tender. Leave those alone.
 - There is no button to undo a link. Check the tender before you click **Open Delivery Project**.
+- A project manager whose only projects are not yet delivery projects doesn't have the Delivery Project Manager role, so the Head of Delivery links the first one for them.
 :::

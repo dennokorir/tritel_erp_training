@@ -5,7 +5,7 @@ module: projects
 pageType: concept
 roles: [delivery-pm, head-delivery, delivery-finance, md]
 tags: [delivery kpi, close-out]
-keywords: [KPI, delivery KPI, on time, on budget, success rate, project performance, appraisal, scorecard, late, overrun, grace period, target]
+keywords: [KPI, delivery KPI, on time, on budget, success rate, project performance, appraisal, scorecard, late, overrun, grace period, baseline]
 related: [projects/concepts/handover-and-close-out, projects/concepts/client-delays, projects/calculations/close-and-kpi, accountability/concepts/metrics, accountability/calculations/metric-families]
 sidebar: { order: 10 }
 sources:
@@ -15,7 +15,7 @@ sources:
   - tritel_accountability_framework/models/metric_hook_delivery.py
   - tritel_project_delivery/models/project.py
   - tritel_project_delivery/views/menus.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -25,13 +25,13 @@ The **Delivery KPI** asks two questions of every delivery project once it has cl
 
 A project is on time when its confirmed handover is no more than the grace days after its deadline:
 
-- **Deadline** = **Approved completion date** (of the latest approved baseline) + **Approved client delay (days)**.
+- **Deadline** = **Approved completion date** (of the latest approved Delivery Budget) + **Approved client delay (days)**.
 - **Days late** = handover date minus deadline, or 0 if it was handed over early.
 - **On time** when days late is no more than **Completion date grace (days)** in **Delivery Settings**, 7 by default.
 
 ## On budget
 
-A project is on budget when its **Final cost (before VAT)**, as confirmed by finance at close, is not above the approved budget total of the latest approved baseline, contingency included. There is no tolerance: one shilling over is over budget.
+A project is on budget when its **Final cost (before VAT)**, as confirmed by finance at close, is not above the **Budget total** of the latest approved Delivery Budget, contingency included. There is no tolerance: one shilling over is over budget.
 
 <Illustration name="projects/concept-kpi-result" caption="A project handed over within the grace and below its approved budget." />
 
@@ -43,7 +43,7 @@ A project is on budget when its **Final cost (before VAT)**, as confirmed by fin
 | **Late** | On budget, but more days late than the grace. |
 | **Over budget** | On time, but the final cost is above the approved budget. |
 | **Late and over budget** | Neither. |
-| **Not scored** | No approved baseline, no confirmed handover or no completion date at close. |
+| **Not scored** | No approved budget, no confirmed handover or no completion date at close. |
 
 ## How Accountability uses it
 
@@ -70,7 +70,7 @@ See [Metrics: targets that update themselves](/accountability/concepts/metrics/)
 
 :::note[Good to know]
 - **Days late** is recorded before the grace is applied. A project 5 days late with a 7-day grace shows **Days late** 5 and **On time**.
-- The budget test uses the latest approved baseline at close. If a revision raised the budget before close, the project is measured against the raised budget.
+- The budget test uses the latest approved Delivery Budget at close. If a revision raised the budget before close, the project is measured against the raised budget.
 - The grace and the budget are frozen at close (**Grace at close (days)**, **Approved budget at close**). Changing the settings later doesn't change closed projects. Reopening and closing again works the result out afresh.
 :::
 

@@ -1,11 +1,11 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:field:project.project.approved_delay_days, tritel_project_delivery:field:project.project.client_delay_ids, tritel_project_delivery:menu:menu_delivery_client_delays
 # docs-sync: shows tritel_project_delivery:model:project.delivery.client.delay, tritel_project_delivery:selection:project.delivery.client.delay.state
 type: calc
 title: Client delay days
 desc: Worked example of three client delays where two approved delays overlap, giving 12 approved days rather than 18, and a rejected delay is left out.
 source: tritel_project_delivery/models/closeout.py (_compute_days, _approved_delay_days)
-heading: Client delays on Customer A network upgrade
+heading: Client delays on P26-049 · Data Centre Upgrade
 inputs:
   - {label: "Delay 1 · Approved", value: "1–10 Mar"}
   - {label: "Delay 2 · Approved", value: "5–12 Mar"}

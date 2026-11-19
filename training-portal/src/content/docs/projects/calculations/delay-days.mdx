@@ -15,7 +15,7 @@ sources:
   - tritel_project_delivery/models/project.py
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/menus.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -36,7 +36,7 @@ A client delay records a period when the client held the work up. Approved delay
 - **Any dates.** A delay counts wherever its dates fall, before the project start or after the completion date. Check the dates before approving.
 - **Same start and end.** A one-day delay (From and To the same day) is 1 day.
 - **End before start** is refused: *The delay ends before it starts.*
-- **Frozen at close.** Closing records the approved days as **Approved client delay at close (days)**. Delays can't be logged, approved or rejected on a closed project: *Customer A network upgrade is closed. Finance can reopen it first.*
+- **Frozen at close.** Closing records the approved days as **Approved client delay at close (days)**. Delays can't be logged, approved or rejected on a closed project: *Data Centre Upgrade is closed. Finance can reopen it first.*
 
 :::note[Good to know]
 The total under the **Days** column of the client delays list adds every delay in the list, overlaps and rejected delays included. The figure that counts is **Approved client delay (days)** on the project's **Handover & close** tab.

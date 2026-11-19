@@ -1,59 +1,64 @@
 # Project Delivery terms (tritel_project_delivery). One or two plain sentences each.
-# Generic words (baseline, budget, handover, committed, spent, contingency) are given specific names here
+# Generic words (budget, handover, committed, spent, contingency) are given specific names here
 # so they don't link on other modules' pages.
 - term: Project Delivery
-  definition: The part of the Project app that turns a won tender into a delivery project with an approved baseline of dates and budget, tracks its spend, and closes it with an on-time and on-budget result.
+  definition: The part of the Project app that turns a won tender into a delivery project with an approved Delivery Budget of costs and dates, tracks its spend, and closes it with an on-time and on-budget result.
   module: projects
   see: [projects/index]
 - term: Delivery project
-  definition: A project linked to a won tender. Only delivery projects get a delivery baseline, budget tracking and a Delivery KPI result.
+  definition: A project linked to a won tender. Only delivery projects get a Delivery Budget, budget tracking and a Delivery KPI result.
   module: projects
   see: [projects/concepts/delivery-projects]
-- term: Projects to Link
-  definition: The Head of Delivery's list of projects that are not linked to a won tender, so they are not measured. Each can be linked with Link to Won Tender.
+- term: Projects Not in Delivery
+  aliases: [Projects to Link]
+  definition: The Head of Delivery's list, under Project › Delivery › Projects, of projects that are not linked to a won tender, so they are not measured. Each can be linked with Link to Won Tender.
   module: projects
   see: [projects/how-to/delivery-pm/link-an-existing-project]
-- term: Delivery baseline
-  aliases: [baseline version]
-  definition: The plan a delivery project is measured against - its cost items, the months they are paid, the completion date and the milestone dates. Each version is numbered v1, v2 and so on.
+- term: Delivery Budget
+  aliases: [baseline, delivery baseline, baseline version, budget version]
+  definition: The plan a delivery project is measured against - its cost items, the months they are paid, the completion date and the milestone dates. Each version is numbered budget v1, v2 and so on; it used to be called the delivery baseline.
   module: projects
   see: [projects/concepts/baselines, projects/workflows/baseline]
-- term: Original baseline
-  definition: Version 1 of a project's delivery baseline. It needs the dates approved by the Head of Delivery and the budget by Delivery Finance.
+- term: Original budget
+  aliases: [original baseline]
+  definition: Version 1 of a project's Delivery Budget. It needs the dates approved by the Head of Delivery and the budget by Delivery Finance.
   module: projects
   see: [projects/concepts/baselines]
-- term: Baseline revision
-  aliases: [Request Revision]
-  definition: A new version of an approved delivery baseline, copied from it to change the costs or dates. It needs a reason and goes through approval again; the approved version stays in force until then.
+- term: Budget revision
+  aliases: [Request Revision, baseline revision]
+  definition: A new version of an approved Delivery Budget, copied from it to change the costs or dates. It needs a reason and goes through approval again; the approved version stays in force until then.
   module: projects
   see: [projects/how-to/delivery-pm/request-a-revision, projects/concepts/baselines]
-- term: Superseded baseline
-  definition: An approved baseline version that a later approved version has replaced. It is kept for history and its Odoo budget is cancelled.
+- term: Superseded budget
+  aliases: [superseded baseline]
+  definition: An approved Delivery Budget version that a later approved version has replaced. It is kept for history and its accounting budget is cancelled.
   module: projects
   see: [projects/workflows/baseline]
-- term: Withdrawn baseline
-  definition: A draft or waiting baseline version the project manager abandoned with Withdraw. It stays on record but no longer counts, and can be deleted.
+- term: Withdrawn budget
+  aliases: [withdrawn baseline]
+  definition: A draft or waiting Delivery Budget version the project manager abandoned with Withdraw. It stays on record but no longer counts, and can be deleted.
   module: projects
   see: [projects/workflows/baseline]
-- term: Return to Draft
-  definition: Sends a baseline that is waiting for approval back to the project manager with a note. Every approval already given is cleared.
+- term: Return for Changes
+  aliases: [Return to Draft]
+  definition: Sends a Delivery Budget that is waiting for approval back to the project manager with a note. Every approval already given is cleared.
   module: projects
   see: [projects/how-to/delivery-pm/fix-a-returned-baseline, projects/workflows/baseline]
 - term: Approved completion date
-  definition: The completion date of a project's latest approved baseline. It becomes the project's end date and, plus approved client delays, the deadline for the on-time result.
+  definition: The completion date of a project's latest approved Delivery Budget. It becomes the project's end date and, plus approved client delays, the deadline for the on-time result.
   module: projects
   see: [projects/concepts/baselines, projects/concepts/delivery-kpi]
 - term: Approved delivery budget
-  definition: The budget total of a project's latest approved baseline, contingency included and before VAT. The final cost is compared with it at close.
+  definition: The budget total of a project's latest approved Delivery Budget, contingency included and before VAT. The final cost is compared with it at close.
   module: projects
   see: [projects/concepts/baselines, projects/concepts/delivery-kpi]
-- term: Baseline due
-  aliases: [Baseline due after award]
-  definition: The date a delivery project should have its baseline, 14 days after the award date by default. Past it, the project manager and the Head of Delivery are reminded once.
+- term: Budget due
+  aliases: [Budget due after award, Baseline due]
+  definition: The date a delivery project should have its Delivery Budget, 14 days after the award date by default. Past it, the project manager and the Head of Delivery are reminded once.
   module: projects
   see: [projects/calculations/baseline-due, projects/how-to/approvers/remind-overdue-baselines]
 - term: Cost item
-  definition: One thing a delivery project will pay for, with its type, quantity, unit cost, currency, VAT setting, pay months and whether it is quoted or an estimate. A baseline's budget is the sum of its cost items.
+  definition: One thing a delivery project will pay for, with its type, quantity, unit cost, currency, VAT setting, pay months and whether it is quoted or an estimate. A Delivery Budget's total is the sum of its cost items.
   module: projects
   see: [projects/concepts/cost-items-and-categories, projects/how-to/delivery-pm/build-a-baseline]
 - term: Cost type
@@ -61,12 +66,12 @@
   module: projects
   see: [projects/concepts/cost-items-and-categories]
 - term: Budget category
-  definition: A group a delivery budget is summarised and approved in, such as Equipment and hardware or Travel and site expenses. Each is linked to an Odoo budgetary position.
+  definition: A group a delivery budget is summarised and approved in, such as Equipment and hardware or Travel and site expenses. Each is linked to a budgetary position.
   module: projects
   see: [projects/concepts/cost-items-and-categories]
 - term: Starter item
   aliases: [starter items]
-  definition: A standard cost line added to every new delivery baseline, such as travel, freight, bonds and a 5% contingency. Price the ones that apply and delete the rest.
+  definition: A standard cost line added to every new Delivery Budget, such as travel, freight, bonds and a 5% contingency. Price the ones that apply and delete the rest.
   module: projects
   see: [projects/concepts/cost-items-and-categories]
 - term: Pay from
@@ -76,7 +81,7 @@
   see: [projects/how-to/delivery-pm/phase-the-spend]
 - term: Spend plan
   aliases: [Spend plan by month]
-  definition: A baseline's month-by-month table of planned spend by category, worked out from the cost items' pay months. It drives Expected by now and the monthly Odoo budget lines.
+  definition: A Delivery Budget's month-by-month table of planned spend by category, worked out from the cost items' pay months. It drives Expected by now and the monthly accounting budget lines.
   module: projects
   see: [projects/how-to/delivery-pm/phase-the-spend, projects/calculations/budget-lines-and-phasing]
 - term: Fixed rate
@@ -85,11 +90,11 @@
   module: projects
   see: [projects/concepts/cost-items-and-categories]
 - term: Project contingency
-  definition: A reserve in a delivery baseline for known risks, priced as a percentage of the other costs or as an amount. It is budgeted on a reserve account nobody posts to.
+  definition: A reserve in a Delivery Budget for known risks, priced as a percentage of the other costs or as an amount. It is budgeted on a reserve account nobody posts to.
   module: projects
   see: [projects/concepts/contingency]
 - term: Contingency cap
-  definition: The largest share of the budget total that contingency may be, 5% by default. It is checked when the baseline is confirmed for approval.
+  definition: The largest share of the budget total that contingency may be, 5% by default. It is checked when the Delivery Budget is submitted for approval.
   module: projects
   see: [projects/concepts/contingency]
 - term: Margin left
@@ -98,20 +103,21 @@
   see: [projects/calculations/margin]
 - term: Cost account
   aliases: [analytic account]
-  definition: The analytic account that collects a delivery project's costs. An order, bill or expense counts for the project only when its line carries this account.
+  definition: The analytic account that collects a project's costs. It carries the project code, so it can be found by code. An order, bill or expense counts for the project only when its line carries this account.
   module: projects
   see: [projects/concepts/odoo-budget-and-cost-account]
-- term: Odoo budget
-  definition: The accounting budget created on a project's cost account when a baseline is approved, with one line per budgetary position per month. A newer approved version replaces it.
+- term: Accounting budget
+  aliases: [Odoo budget]
+  definition: The budget in Accounting created on a project's cost account when a Delivery Budget is approved, with one line per budgetary position per month. A newer approved version replaces it.
   module: projects
   see: [projects/concepts/odoo-budget-and-cost-account, projects/calculations/budget-lines-and-phasing]
 - term: Budgetary position
-  definition: A set of ledger accounts that Odoo budgets one kind of cost on, such as Direct project costs on 500000. Each budget category is linked to one.
+  definition: A set of ledger accounts that accounting budgets plan one kind of cost on, such as Direct project costs on 500000. Each budget category is linked to one.
   module: projects
   see: [projects/concepts/odoo-budget-and-cost-account]
-- term: Odoo budget mapping
-  aliases: [Apply mapping]
-  definition: The link between budget categories and budgetary positions that finance sets once in Delivery Settings. Until it is applied, some categories share one Odoo budget line.
+- term: Accounting budget mapping
+  aliases: [Apply mapping, Odoo budget mapping]
+  definition: The link between budget categories and budgetary positions that finance sets once in Delivery Settings. Until it is applied, some categories share one accounting budget line.
   module: projects
   see: [projects/how-to/approvers/delivery-settings]
 - term: Contingency reserve account
@@ -149,9 +155,9 @@
   module: projects
   see: [projects/concepts/budget-tracking]
 - term: Budget status
-  definition: A delivery project's overall budget position - No approved budget, On track, Fully committed or Over plan. Worked out by the system.
+  definition: A label that names three things. On a project's Delivery tab it says where its Delivery Budget stands (No budget, Budget in draft, Waiting for approval, Approved, Revision pending); in budget tracking and Budget vs Actual it is the project's position against plan (No approved budget, On track, Fully committed, Over plan); on a purchase order it says how the order stands against the accounting budget (Within budget, No cost account, No budget line, Budget planned at 0, Over budget).
   module: projects
-  see: [projects/workflows/budget-status]
+  see: [projects/workflows/baseline, projects/workflows/budget-status, projects/how-to/approvers/check-an-order-against-the-budget]
 - term: Over plan
   definition: A budget line, or a project, whose committed plus spent is more than planned. It does not block anything.
   module: projects
@@ -161,8 +167,13 @@
   module: projects
   see: [projects/workflows/budget-status]
 - term: Over-plan warning
-  aliases: [Over the delivery plan, Left in delivery plan]
+  aliases: [Over the delivery plan]
   definition: The banner on a purchase order that would take a delivery project's budget line over its plan. The buyer can still confirm, and the project manager is told.
+  module: projects
+  see: [projects/concepts/budget-tracking]
+- term: Budget Available
+  aliases: [Left in delivery plan]
+  definition: The smart button on a purchase order for a delivery project, showing what is left of the project's Delivery Budget before VAT. It turns red when the order would take a budget category over its plan.
   module: projects
   see: [projects/concepts/budget-tracking]
 - term: Project handover
@@ -199,11 +210,11 @@
   see: [projects/concepts/delivery-kpi, accountability/calculations/metric-families]
 - term: Delivery Project Manager
   aliases: [Delivery PM]
-  definition: The role that opens delivery projects from won tenders, drafts and confirms baselines, requests revisions, and records handovers and client delays.
+  definition: The role that opens delivery projects from won tenders, drafts and submits Delivery Budgets, requests revisions, and records handovers and client delays. It is automatic - anyone who is Project Manager of an active delivery project has it.
   module: projects
   see: [projects/who-can-do-what]
 - term: Head of Delivery
-  definition: The role that approves the dates of every baseline and revision, confirms handovers, decides client delays and keeps the delivery settings. It includes everything a delivery project manager can do.
+  definition: The role that approves the dates of every Delivery Budget and revision, confirms handovers, decides client delays and keeps the delivery settings. It includes everything a delivery project manager can do.
   module: projects
   see: [projects/who-can-do-what]
 - term: Delivery Finance
@@ -211,11 +222,32 @@
   module: projects
   see: [projects/who-can-do-what]
 - term: MD approval
-  aliases: [MD Approve]
-  definition: The extra approval a baseline revision needs from the MD named in Delivery Settings when it raises the budget more than 10% or moves the completion date more than 30 days past version 1.
+  aliases: [MD Approve, Approve as MD]
+  definition: The extra approval a budget revision needs from the MD named in Delivery Settings when it raises the budget more than 10% or moves the completion date more than 30 days past version 1.
   module: projects
   see: [projects/concepts/approvals, projects/how-to/approvers/approve-a-large-revision]
 - term: Delivery Settings
-  definition: The one settings record for Project Delivery - grace days, baseline due days, contingency cap, MD and thresholds, cost accounts, VAT rate and the Odoo budget mapping.
+  definition: The one settings record for Project Delivery - grace days, budget due days, contingency cap, MD and thresholds, cost accounts, VAT rate and the accounting budget mapping.
   module: projects
   see: [projects/how-to/approvers/delivery-settings]
+- term: Project code
+  definition: The code every project gets when it is created, such as P26-049 - P, the two-digit year, a dash and a running number that never restarts. It shows in front of the project name and on its cost account, and only a settings administrator can correct it.
+  module: projects
+  see: [projects/concepts/project-codes, projects/how-to/approvers/correct-a-project-code]
+- term: Department account
+  definition: A cost account marked as belonging to a department rather than a project. It gets no project code and stays off Cost Accounts to Sort Out.
+  module: projects
+  see: [projects/how-to/approvers/sort-out-cost-accounts]
+- term: Cost Accounts to Sort Out
+  definition: The list of cost accounts that belong to no project and are not marked as department accounts. Delivery Finance, the Head of Delivery or an accounting manager links each to a project, marks it as a department account or archives it.
+  module: projects
+  see: [projects/how-to/approvers/sort-out-cost-accounts]
+- term: Budget Commitments
+  definition: The report of open purchase orders against running accounting budgets, one row per budget line and order line, with Ordered, Billed, Committed and Draft. It is rebuilt each time it opens and covers the whole company.
+  module: projects
+  see: [projects/reports/budget-commitments]
+- term: Committed (purchase)
+  aliases: [purchase commitment]
+  definition: On an accounting budget line, confirmed purchase orders not billed yet, before tax. With Actual it reduces Available; requests for quotation show separately as Draft and never do.
+  module: projects
+  see: [projects/calculations/purchase-commitments, projects/concepts/odoo-budget-and-cost-account]

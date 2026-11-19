@@ -1,7 +1,7 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:field:project.project.award_date, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_starter_items, tritel_project_delivery:model:delivery.starter.item, tritel_project_delivery:selection:project.project.delivery_baseline_state
-# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:cost-account, tritel_project_delivery:view_ext:project.edit_project:button:draft-baseline, tritel_project_delivery:view_ext:project.edit_project:button:won-tender
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:cost-account, tritel_project_delivery:view_ext:project.edit_project:button:draft-budget, tritel_project_delivery:view_ext:project.edit_project:button:won-tender
 # docs-sync: shows tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:open-delivery-project, tritel_project_delivery:wizard:delivery.cost.account.card
 type: screen
 title: Opening a delivery project from a won tender
@@ -11,17 +11,17 @@ frame:
   grid: true
   app: Tender Manager
   menu: [{label: Tenders, active: true, n: 1}, My Actions, Configuration]
-  breadcrumb: [All Tenders, Customer A network upgrade]
+  breadcrumb: [All Tenders, Data Centre Upgrade]
 blocks:
   - buttons: [{label: Open Delivery Project, primary: true, n: 2}]
     status: {steps: [Draft, Bidding, Evaluation, Won], current: Won}
   - dialog:
       title: Open Delivery Project
       blocks:
-        - text: "The project gets the client, the tender link, a cost account (finance's existing one if it matches), the standard delivery stages and milestones, and a draft baseline with the standard starter items."
+        - text: "The project gets the client, the tender link, a cost account (finance's existing one if it matches), the standard delivery stages and milestones, and a draft budget with the standard starter items."
         - fields:
-            - [{label: Won tender, value: Customer A network upgrade, n: 3}, {label: Existing project, value: "", n: 4}]
-            - [{label: Client, value: Customer A}, {label: Project name, value: PRJ Customer A network upgrade}]
+            - [{label: Won tender, value: Data Centre Upgrade, n: 3}, {label: Existing project, value: "", n: 4}]
+            - [{label: Client, value: Customer A}, {label: Project name, value: Data Centre Upgrade}]
             - [{label: Award Date, value: 02/02/2026}, {label: Project manager, value: Employee A, n: 5}]
             - [{label: "", value: ""}, {label: Start date, value: 09/02/2026}]
             - [{label: Cost account, value: "Leave empty to create a new cost account", tone: muted, n: 6}]

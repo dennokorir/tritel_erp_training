@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:field:project.project.approved_budget_total, tritel_project_delivery:field:project.project.approved_completion_date, tritel_project_delivery:field:project.project.award_date
 # docs-sync: shows tritel_project_delivery:field:project.project.contract_value, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:model:project.delivery.baseline, tritel_project_delivery:selection:project.delivery.baseline.kind
@@ -6,20 +6,20 @@
 # docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:approved-delivery-budget, tritel_project_delivery:view_ext:project.edit_project:button:request-revision, tritel_project_delivery:view_ext:project.edit_project:page:handover-amp-close
 type: screen
 title: Starting a revision from the project
-desc: The Delivery tab of a delivery project with an approved baseline, showing the tender details, the approved baseline figures, the Request Revision button and the list of baseline versions, numbered 1.
+desc: The Delivery tab of a delivery project with an approved budget, showing the tender details, the Approved budget figures, the Request Revision button and the list of budget versions, numbered 1.
 source: tritel_project_delivery/views/project_views.xml (project_form_delivery)
 frame:
   grid: true
   app: Project
   menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
-  breadcrumb: [Delivery Projects, PRJ Customer A network upgrade]
+  breadcrumb: [My Delivery Projects, P26-049 · Data Centre Upgrade]
 blocks:
-  - smart: [{label: Delivery baseline, value: Approved v1}, {label: Delivery budget, value: "1,050,000"}, {label: "Left · over plan", value: "-40,000", tone: bad}]
-  - title: {text: PRJ Customer A network upgrade, sub: Customer A}
+  - smart: [{label: Budget, value: Approved v1}, {label: Delivery budget, value: "1,050,000"}, {label: "Left · over plan", value: "-40,000", tone: bad}]
+  - title: {text: Data Centre Upgrade, sub: "P26-049 · Customer A"}
   - tabs: {items: [Description, Settings, Delivery, "Handover & close"], active: Delivery}
   - columns:
-      - {panel: true, blocks: [{heading: Tender}, {fields: [[{label: Tender, value: Customer A network upgrade}], [{label: Award date, value: 02/02/2026}], [{label: Contract value, value: "1,500,000"}]]}]}
-      - {panel: true, blocks: [{heading: Approved baseline}, {fields: [[{label: Baseline, value: Approved, tone: good}], [{label: Approved completion date, value: 30/06/2026}], [{label: Approved delivery budget, value: "1,050,000"}]]}]}
+      - {panel: true, blocks: [{heading: Tender}, {fields: [[{label: Tender, value: Data Centre Upgrade}], [{label: Award date, value: 02/02/2026}], [{label: Contract value, value: "1,500,000"}]]}]}
+      - {panel: true, blocks: [{heading: Approved budget}, {fields: [[{label: Budget status, value: Approved, tone: good}], [{label: Approved completion date, value: 30/06/2026}], [{label: Approved delivery budget, value: "1,050,000"}]]}]}
   - buttons: [{label: Request Revision, primary: true, n: 1}]
   - table:
       columns: [Version, Kind, Completion date, Budget total, Approved On, Status]

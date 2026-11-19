@@ -1,16 +1,16 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:client_action:action_project_my_actions, tritel_project_delivery:cron:ir_cron_baseline_due, tritel_project_delivery:field:project.project.baseline_due_date
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_root
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_settings, tritel_project_delivery:menu:menu_project_my_actions, tritel_project_delivery:model:delivery.settings
 # docs-sync: shows tritel_project_delivery:selection:delivery.settings.cost_account_mode, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:delivery-projects
 type: screen
 title: Delivery Settings
-desc: The Delivery Settings form with the KPI rules, MD approval of revisions and Budgets and cost accounts sections, the Odoo budget mapping section with accounts and positions, and the Apply mapping button, numbered 1 to 6.
+desc: The Delivery Settings form, under Project › Delivery › Setup, with the KPI rules, MD approval of revisions and Budgets and cost accounts sections, the Accounting budget mapping section with accounts and positions, and the Apply mapping button, numbered 1 to 6.
 source: tritel_project_delivery/views/delivery_settings_views.xml (delivery_settings_form)
 frame:
   grid: true
   app: Project
-  menu: [Projects, My Tasks, My Actions, Delivery, Reporting, {label: Configuration, active: true, n: 1}]
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true, n: 1}, Reporting, Configuration]
   breadcrumb: [Delivery Settings]
 blocks:
   - title: {text: Delivery Settings}
@@ -20,7 +20,7 @@ blocks:
             n: 2
           - fields:
               - [{label: Completion date grace (days), value: "7"}]
-              - [{label: Baseline due after award (days), value: "14"}]
+              - [{label: Budget due after award (days), value: "14"}]
               - [{label: Contingency cap (%), value: "5.00"}]
       - blocks:
           - heading: MD approval of revisions
@@ -34,7 +34,7 @@ blocks:
   - fields:
       - [{label: New cost accounts, value: "◉ A new plan per project, named after it  ○ One shared plan for all delivery projects"}]
       - [{label: Budget runs past completion (days), value: "180"}, {label: VAT rate (%), value: "16.00"}]
-  - heading: Odoo budget mapping
+  - heading: Accounting budget mapping
     n: 5
   - columns:
       - blocks:

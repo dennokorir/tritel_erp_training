@@ -1,0 +1,71 @@
+---
+title: Budget Commitments
+description: The Budget Commitments report of open purchase orders and requests for quotation against running accounting budgets, one row per budget line and order line, with what each column means and where each role opens it.
+module: projects
+pageType: report
+roles: [delivery-finance, delivery-pm, head-delivery, finance]
+tags: [budget tracking, purchase orders, reports]
+keywords: [commitments, committed, open orders, open POs, LPO, RFQ, encumbrance, budget report, pivot, ordered not billed, unbilled orders, vendor commitments]
+where: [Project, Delivery, Projects, Budget Commitments]
+related: [projects/calculations/purchase-commitments, projects/how-to/approvers/check-an-order-against-the-budget, projects/how-to/approvers/assign-cost-accounts, projects/menus, projects/concepts/project-codes]
+sidebar: { order: 3 }
+sources:
+  - tritel_project_delivery/models/purchase_budget.py
+  - tritel_project_delivery/views/purchase_budget_views.xml
+  - tritel_project_delivery/security/ir.model.access.csv
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+**Budget Commitments** lists what open purchase orders and requests for quotation still hold against running accounting budgets: money promised to vendors but not billed yet. Use it to see which orders sit behind a budget line's **Committed** and **Draft** figures, by project, vendor or month.
+
+Each row is **one order line against one budget line**. An order line split between two cost accounts gives two rows. Only order lines that match a budget line by the rule on [How orders count against an accounting budget](/projects/calculations/purchase-commitments/) appear, and only while they still have something to bill: a fully billed line drops out.
+
+## Where to open it
+
+| Menu | Who sees it |
+|---|---|
+| **Project › Delivery › Projects › Budget Commitments** | Delivery Project Managers, Delivery Finance and Heads of Delivery |
+| **Accounting › Project Budgets › Tracking › Budget Commitments** | Delivery Finance |
+| **Purchase › Reporting › Budget Commitments** | Purchase managers |
+
+All three open the same report, for the **whole company**: a project manager sees every project's commitments, not only their own. Filter by project code or cost account to see one project.
+
+<Illustration name="projects/report-budget-commitments" caption="Budget Commitments in its list view, on the Confirmed orders filter. The numbers match the list below." />
+
+## Reading the report
+
+1. **Open it** from one of the menus above. The report is rebuilt each time you open it, so it is always up to date when it opens. To refresh it, open it again from the menu.
+2. **Search and filter.** Search by **Budget**, **Cost account**, **Order** or **Vendor**. **Filters** has **Confirmed orders** and **Requests for quotation**. **Group By** has **Budget**, **Budget line**, **Order**, **Vendor** and **Month**.
+3. **Pivot or list.** It opens as a pivot table: budget lines down the side, each broken down by order, with **Ordered**, **Billed**, **Committed** and **Draft**. Click a figure to see the rows behind it. Switch to the list to see each row.
+4. **One row per budget line and order line**, with these columns:
+
+   | Column | What it shows |
+   |---|---|
+   | **Budget** | The accounting budget, for example *Data Centre Upgrade · delivery budget v1*. |
+   | **Project code** | The cost account's **Reference**: for a project's cost account, the project code, for example *P26-049*. |
+   | **Cost account** | The budget line's cost account. |
+   | **Budgetary position** | The budget line's budgetary position, for example *Direct project costs*. |
+   | **Order** | The purchase order or request for quotation. |
+   | **Vendor** | The order's vendor. |
+   | **Order date** | The date that decides which budget line the order counts against. |
+   | **State** | **Confirmed** or **Request for quotation**. |
+   | **Ordered** | For a confirmed order: the line's value at this budget line's share. 0 for a request for quotation. |
+   | **Billed** | For a confirmed order: how much of it is billed. |
+   | **Committed** | For a confirmed order: what is still to be billed. Adds up to the budget line's **Committed**. |
+   | **Draft** | For a request for quotation: its value. Adds up to the budget line's **Draft**. |
+
+5. **Totals.** The list adds up **Ordered**, **Billed**, **Committed** and **Draft**.
+
+All amounts are before tax, in the company currency. When nothing is open, the report says *No open purchase commitments on a running budget. Orders count once their lines carry a cost account that a budget line covers.*
+
+## What to do with it
+
+- An order you didn't expect under a project: open it and check its cost accounts. See [Set the cost account on order lines](/projects/how-to/approvers/assign-cost-accounts/).
+- A large **Draft** amount: requests for quotation that would take the budget over once confirmed. Check each with [Check a purchase order against the budget](/projects/how-to/approvers/check-an-order-against-the-budget/).
+- An old **Committed** amount that will never be billed: ask purchasing whether the rest of the order is still needed. It stays committed until it is billed or the order is cancelled.
+
+:::note[Good to know]
+- The report shows only lines that match a budget line. Order lines with no cost account, or with a cost account no running budget covers, aren't in it. Use the **Budget flags** filter on the purchase order list to find those.
+- **Ordered** and **Billed** are filled in only for confirmed orders. For a request for quotation only **Draft** has a figure.
+:::

@@ -1,11 +1,11 @@
 ---
-title: The Odoo budget and the cost account
-description: How a delivery project's costs are found through its cost account, how orders and bills get tagged to it, and what Odoo budget an approved baseline creates.
+title: The accounting budget and the cost account
+description: How a delivery project's costs are found through its cost account and project code, how orders and bills get tagged to it, what accounting budget an approved Delivery Budget creates, and how purchase orders count against it.
 module: projects
 pageType: concept
 roles: [delivery-finance, finance, head-delivery, delivery-pm]
 tags: [budgets, finance]
-keywords: [analytic account, cost centre, project code, Odoo budget, budgetary position, chart of accounts, tagging, analytic distribution, LPO, PO, vendor bill, cost of sales]
+keywords: [analytic account, cost centre, project code, Odoo budget, accounting budget, budgetary position, committed, available, tagging, analytic distribution, LPO, baseline]
 related: [projects/concepts/budget-tracking, projects/how-to/approvers/tag-orders-to-a-project, projects/how-to/approvers/delivery-settings, projects/calculations/budget-lines-and-phasing, projects/reports/project-at-a-glance]
 sidebar: { order: 5 }
 sources:
@@ -23,18 +23,25 @@ sources:
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/menus.xml
   - tritel_project_delivery/views/tender_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_project_delivery/models/purchase_budget.py
+  - tritel_project_delivery/views/purchase_budget_views.xml
+  - tritel_project_delivery/models/project_code.py
+  - tritel_project_delivery/views/project_code_views.xml
+  - tritel_project_delivery/views/cost_account_sort_views.xml
+  - tritel_project_delivery/wizards/assign_cost_accounts_views.xml
+  - tritel_project_delivery/views/baseline_views.xml
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 
-Every delivery project has a **cost account**: an analytic account in Odoo that finance uses to collect the project's costs. A cost counts for the project when the purchase order line, vendor bill line or expense **carries the project's cost account**. That is how Odoo knows a bill belongs to *PRJ Customer A network upgrade* and not to another job.
+Every delivery project has a **cost account**: an analytic account in Odoo that finance uses to collect the project's costs. A cost counts for the project when the purchase order line, vendor bill line or expense **carries the project's cost account**. That is how Odoo knows a bill belongs to *P26-049 · Data Centre Upgrade* and not to another job.
 
-When an approved baseline creates the **Odoo budget**, that budget is set on the same cost account. So the plan and the actual costs meet in one place: Odoo Budgets for finance, and the **Budget tracking** table on the project for everyone else.
+When a Delivery Budget is approved, the system creates an **accounting budget**, and that budget is set on the same cost account. So the plan, the orders and the actual costs meet in one place: the accounting budget for finance, and the **Budget tracking** table on the project for everyone else.
 
 ```mermaid
 flowchart TD
 %% docs-sync: shows tritel_project_delivery:field:project.project.track_committed, tritel_project_delivery:field:project.project.track_spent, tritel_project_delivery:field:project.project.tracking_html, tritel_project_delivery:model:project.delivery.commitment, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:view_ext:project.edit_project:button:committed, tritel_project_delivery:view_ext:project.edit_project:button:cost-account, tritel_project_delivery:view_ext:project.edit_project:button:vendor-bills, tritel_project_delivery:wizard:delivery.cost.account.card
   subgraph Plan
-    B["Approved baseline"] --> OB["Odoo budget: one line per budgetary position per month"]
+    B["Approved Delivery Budget"] --> OB["Accounting budget: one line per budgetary position per month"]
   end
   subgraph Actuals
     PO["Purchase order lines"] --> CA
@@ -43,6 +50,14 @@ flowchart TD
   OB --> CA["Project cost account"]
   CA --> TR["Budget tracking: committed and spent"]
 ```
+
+## The cost account carries the project code
+
+Every project has a code such as *P26-049*, and its cost account carries the same code. Odoo shows and searches cost accounts by their code, so you can type *P26-049* in the cost account of a purchase order line, a bill line, a journal item or a budget line and find the project. Renaming the project renames its cost account. See [Project codes](/projects/concepts/project-codes/).
+
+- The code on a project's cost account is read-only: *For a project's cost account this is the project code. It changes through the project.* Changing it any other way stops with *Data Centre Upgrade is the cost account of P26-049 · Data Centre Upgrade, so its code comes from the project. A settings administrator can correct the project code instead.*
+- A cost account can belong to one project only. Linking one that is already taken stops with *… is already the cost account of …* or *… carries the code of …*, followed by *Choose another cost account for Data Centre Upgrade.*
+- A cost account that belongs to no project, and isn't marked as a **Department account**, shows in **Cost Accounts to Sort Out**. Delivery Finance, the Head of Delivery or an accounting manager links it to a project, marks it as a department account (it then gets no project code) or archives it. See [Sort out cost accounts with no project](/projects/how-to/approvers/sort-out-cost-accounts/).
 
 ## Where the cost account comes from
 
@@ -56,21 +71,37 @@ Non-finance users open the **Cost account** smart button to see a read-only card
 - **Tenders with several delivery projects.** The buyer must choose the cost account on each line. The order shows *This tender has 2 delivery projects: choose the cost account on each line.*
 - **Automatic tagging rules.** Finance can set rules in Odoo that put the cost account on bills automatically. The **Automatic tagging rules** smart button lists them.
 - **Lines that were missed.** Tender order lines with no cost account show on the **Untagged tender order lines** smart button. The Head of Delivery or Delivery Finance uses **Tag tender orders** to tag them in one go. Until then they don't count as committed or spent.
+- **Any purchase order.** A purchase user can click **Assign Cost Accounts** on the order (or pick it from the **Action** menu of the list) to set the cost account on all lines, the lines without one, or selected lines, in one go, with a preview of the budget impact. See [Set the cost account on order lines](/projects/how-to/approvers/assign-cost-accounts/).
 
 A confirmed purchase order on the tender with lines that carry no delivery project's cost account shows a blue note: **Not tagged to the project.**
 
-## The Odoo budget
+## The accounting budget
 
-When a baseline is approved, the system creates an Odoo budget named like *PRJ Customer A network upgrade · delivery budget v1*, then confirms and validates it. It has:
+When a Delivery Budget is approved, the system creates an accounting budget named like *Data Centre Upgrade · delivery budget v1*, then confirms and validates it. It has:
 
-- one series of lines for each **budgetary position** (a set of ledger accounts), with one line per month that has planned spend;
+- one series of lines for each **budgetary position** (a set of ledger accounts), with one line per month that has planned spend, and the months in between with no planned spend merged into one line planned at 0;
 - dates from the project start to the completion date plus **Budget runs past completion (days)**, 180 by default, so late vendor bills still count.
 
-When a revision is approved, the new version gets its own Odoo budget and the old one is cancelled. Only users with accounting access see the **Odoo Budget** and **Odoo budget lines** buttons.
+When a revision is approved, the new version gets its own accounting budget and the old one is cancelled. Only users with accounting access see the **Accounting Budget** and **Accounting budget lines** buttons.
+
+## What is committed against the budget
+
+Each line of the accounting budget, on the budget form and in the budget-line list, also shows what purchase orders have taken from it:
+
+| Column | Meaning |
+|---|---|
+| **Committed** | Confirmed purchase orders not yet billed, before tax. The cart icon opens the order lines behind it. |
+| **Draft** | Requests for quotation, before tax. They never reduce **Available**. The file icon opens them. |
+| **Available** | Planned minus actual minus committed, all shown as positive amounts. Red below 0. |
+| **Used (%)** | Actual plus committed, as a share of planned. |
+
+An order line counts against a budget line when its cost account is the budget line's (at the line's share, if it is split between accounts), the expense account it will post to is in the line's budgetary position, and the order date falls within the line's dates. The rule, with a worked example, is in [How orders count against an accounting budget](/projects/calculations/purchase-commitments/).
+
+The same rule gives each purchase order its **Budget status** (**Within budget**, **No cost account**, **No budget line**, **Budget planned at 0** or **Over budget**) and its **Budget impact** tab. See [Check a purchase order against the budget](/projects/how-to/approvers/check-an-order-against-the-budget/). Every open commitment, budget line by budget line, is in the [Budget Commitments](/projects/reports/budget-commitments/) report.
 
 ## Budgetary positions
 
-Finance maps the budget categories to positions once, in **Delivery Settings** under **Odoo budget mapping**, and clicks **Apply mapping**:
+Finance maps the budget categories to positions once, in **Delivery Settings** under **Accounting budget mapping**, and clicks **Apply mapping**:
 
 | Position | Budget categories | Default accounts |
 |---|---|---|
@@ -82,14 +113,18 @@ Finance maps the budget categories to positions once, in **Delivery Settings** u
 Each account may sit in one position only, or the same cost would count twice. Spent counts only expense accounts, so payments, bank and VAT lines never show as spend.
 
 :::note[Good to know]
-- Until the mapping is applied, the baseline shows *Odoo budget mapping is not finished.* and some categories share one Odoo budget line. Finance completes it in **Delivery Settings**.
+- Until the mapping is applied, the budget shows *Accounting budget mapping is not finished.* and some categories share one accounting budget line. Finance completes it in **Delivery Settings**.
 - On a tender with several delivery projects nothing is tagged automatically. Each order line needs the right cost account by hand, or tagging afterwards.
 - Tagging order lines afterwards does not change bills already created from them. A bill line without the cost account doesn't count as spent, so finance tags it on the bill.
+- The accounting budget is phased by month. An order dated in a month with no planned spend falls on a line planned at 0, and an order bigger than its month's line shows as over budget, even when the project as a whole has room.
 :::
 
 ## Tasks that use this
 
 - [Tag orders to their project](/projects/how-to/approvers/tag-orders-to-a-project/)
+- [Set the cost account on order lines](/projects/how-to/approvers/assign-cost-accounts/)
+- [Check a purchase order against the budget](/projects/how-to/approvers/check-an-order-against-the-budget/)
+- [Sort out cost accounts with no project](/projects/how-to/approvers/sort-out-cost-accounts/)
 - [Change the Delivery settings](/projects/how-to/approvers/delivery-settings/)
-- [Budget by category, spend by month and the Odoo budget lines](/projects/calculations/budget-lines-and-phasing/)
+- [Budget by category, spend by month and the Accounting budget lines](/projects/calculations/budget-lines-and-phasing/)
 - [The project form at a glance](/projects/reports/project-at-a-glance/)

@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:field:project.project.award_date, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects_to_link
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:cost-account
 # docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:link-to-won-tender, tritel_project_delivery:view_ext:project.edit_project:button:won-tender, tritel_project_delivery:view_ext:project.edit_project:page:handover-amp-close
@@ -11,18 +11,18 @@ frame:
   grid: true
   app: Project
   menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true, n: 1}, Reporting]
-  breadcrumb: [Projects to Link, PRJ Customer B data centre]
+  breadcrumb: [Projects Not in Delivery, P26-051 · Branch Wi-Fi Rollout]
 blocks:
-  - title: {text: PRJ Customer B data centre, sub: Customer B}
+  - title: {text: Branch Wi-Fi Rollout, sub: "P26-051 · Customer B"}
   - tabs: {items: [Description, Settings, Delivery, "Handover & close"], active: Delivery}
   - note: {text: "This project is not linked to a won tender, so it is not measured by the delivery KPIs.  Link to Won Tender", tone: accent, n: 2}
   - dialog:
       title: Link to Won Tender
       blocks:
         - fields:
-            - [{label: Won tender, value: Customer B data centre, n: 3}, {label: Existing project, value: PRJ Customer B data centre}]
+            - [{label: Won tender, value: Branch Wi-Fi Rollout, n: 3}, {label: Existing project, value: P26-051 · Branch Wi-Fi Rollout}]
             - [{label: Client, value: Customer B}, {label: Project manager, value: Employee A, n: 4}]
             - [{label: Award Date, value: 01/03/2026}, {label: Start date, value: 15/03/2026}]
-            - [{label: Cost account, value: PRJ Customer B data centre, n: 5}]
+            - [{label: Cost account, value: "[P26-051] Branch Wi-Fi Rollout", n: 5}]
         - text: "The project already has this cost account; it is kept."
         - buttons: [{label: Open Delivery Project, primary: true, n: 6}, {label: Cancel}]

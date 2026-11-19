@@ -5,11 +5,11 @@ module: projects
 pageType: how-to
 roles: [delivery-pm, head-delivery, delivery-finance]
 tags: [budgets, tracking]
-keywords: [budget tracking, variance, budget vs actual, actuals, spend, committed, overspend, over budget, cost report, PO, LPO, bills]
-where: [Project, Delivery, Delivery Projects]
+keywords: [budget tracking, baseline, variance, budget vs actual, actuals, spend, committed, overspend, over budget, cost report, PO, LPO, bills]
+where: [Project, Delivery, Projects, My Delivery Projects]
 before:
-  - The project has an <strong>Approved</strong> baseline. Tracking starts once the baseline is approved.
-related: [projects/concepts/budget-tracking, projects/calculations/tracking-figures, projects/workflows/budget-status, projects/reports/project-at-a-glance, projects/reports/projects-over-budget, projects/how-to/approvers/tag-orders-to-a-project, projects/how-to/delivery-pm/request-a-revision]
+  - The project has an <strong>Approved</strong> Delivery Budget. Tracking starts once the budget is approved.
+related: [projects/concepts/budget-tracking, projects/reports/budget-commitments, projects/how-to/approvers/check-an-order-against-the-budget, projects/calculations/tracking-figures, projects/workflows/budget-status, projects/reports/project-at-a-glance, projects/reports/projects-over-budget, projects/how-to/approvers/tag-orders-to-a-project, projects/how-to/delivery-pm/request-a-revision]
 sidebar: { order: 10 }
 sources:
   - tritel_project_delivery/views/tracking_views.xml
@@ -26,17 +26,22 @@ sources:
   - tritel_project_delivery/views/menus.xml
   - tritel_project_delivery/views/tender_views.xml
   - tritel_project_delivery/wizards/tag_orders_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_project_delivery/views/project_views.xml
+  - tritel_project_delivery/views/accounting_menus.xml
+  - tritel_project_delivery/views/purchase_budget_views.xml
+  - tritel_project_delivery/models/purchase_budget.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
-Once the baseline is approved, the project shows how much of each budget line is **committed** (ordered but not yet billed) and **spent** (posted costs), and how much is **left**. Check it before raising new orders and at every project review.
+Once the Delivery Budget is approved, the project shows how much of each budget line is **committed** (ordered but not yet billed) and **spent** (posted costs), and how much is **left**. Check it before raising new orders and at every project review.
 
 <Illustration name="projects/pm-track-budget" caption="Budget tracking on a delivery project. The numbers match the steps below." />
 
 ## Steps
 
-1. Open **Project › Delivery › Delivery Projects**. The list shows each project's **Approved delivery budget**, **Committed**, **Spent**, **Left** and **Budget status**. Open the project.
+1. Open **Project › Delivery › Projects › My Delivery Projects**. It opens on your own projects; clear the filter to see every delivery project. The list shows each project's **Approved delivery budget**, **Committed**, **Spent**, **Left** and **Budget status** (**On track**, **Fully committed** or **Over plan**). Under **Filters**, **Over plan**, **Fully committed**, **On track** and **No approved budget** pick out projects by that status. Open the project.
+   - Delivery Finance and the Head of Delivery use **Project › Delivery › Projects › Delivery Projects** instead. Delivery Finance also has **Accounting › Project Budgets › Tracking › Budget vs Actual**, which opens on the projects that are **Over plan** or **Fully committed**.
 2. Read the smart buttons at the top: **Delivery budget** (the approved total), **Spent so far** (with the share of the budget, for example *Spent 43%*), **Committed**, and **Budget left**. **Budget left** is green when on track, amber when fully committed and red when over plan. Click it to see the table in a pop-up.
 3. On the **Delivery** tab, read the **Budget tracking** table. Each **Budget line** shows:
    - **Planned**: the approved budget for the line.
@@ -46,16 +51,18 @@ Once the baseline is approved, the project shows how much of each budget line is
    - **Left**: planned minus committed minus spent. Red when negative.
    - **Forecast at completion**: planned, or committed plus spent if that is higher.
    - **Status**: **On track**, **Fully committed** or **Over plan**.
-4. Click **Refresh** next to **Figures as of** to bring the figures up to date. They also refresh every night and when a baseline is approved.
+4. Click **Refresh** next to **Figures as of** to bring the figures up to date. They also refresh every night and when a Delivery Budget is approved.
 5. To see what is behind a figure, click **Spent so far** (the cost lines) or **Committed** (the open order lines). Buyers see the purchase orders themselves; finance sees the accounting entries.
 
 If a line is **Over plan**, talk to the buyer before more orders go out, and [request a revision](/projects/how-to/delivery-pm/request-a-revision/) if the plan has really changed.
 
 ## What happens next
 
-- **When an order would take a line over plan**, the buyer sees on the purchase order *Over the delivery plan. You can still confirm; the project manager will be told.*, with the amounts, for example *PRJ Customer A network upgrade · Direct project costs: this order is 100,000; 80,000 was left in the plan (over by 20,000).* If they confirm it, you get a message on the baseline headed *Order over the delivery plan: P00012*. The order is not blocked.
+- **When an order would take a line over plan**, the buyer sees on the purchase order *Over the delivery plan. You can still confirm; the project manager will be told.*, with the amounts, for example *Data Centre Upgrade · Direct project costs: this order is 100,000; 80,000 was left in the plan (over by 20,000).* If they confirm it, you get a message on the Delivery Budget headed *Order over the delivery plan: P00012*. The order is not blocked. The order's **Budget Available** smart button shows what is left on the project, in red in that case.
 - **When a project is over plan**, it appears in **Project › My Actions** under **Projects over their approved budget** for its project manager and for the Head of Delivery.
 - **Orders on the tender that don't carry the project's cost account** show on the purchase order as *Not tagged to the project.* They count as neither committed nor spent. The Head of Delivery or finance tags them with **Tag tender orders**. See [Tag orders to their project](/projects/how-to/approvers/tag-orders-to-a-project/).
+- **Every order also has a Budget status** (for example **Within budget** or **Over budget**), checked against the project's accounting budget month by month. It can disagree with the delivery plan above. See [Check a purchase order against the budget](/projects/how-to/approvers/check-an-order-against-the-budget/).
+- **To see every order line counting against the budget**, open **Project › Delivery › Projects › Budget Commitments**. See [Budget Commitments](/projects/reports/budget-commitments/).
 
 ## Common mistakes
 

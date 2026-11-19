@@ -1,0 +1,20 @@
+# docs-sync: verified_commit 5d691a8dca64
+# docs-sync: shows tritel_project_delivery:field:crossovered.budget.lines.committed_amount, tritel_project_delivery:field:crossovered.budget.lines.draft_amount, tritel_project_delivery:field:crossovered.budget.lines.available_amount, tritel_project_delivery:field:crossovered.budget.lines.used_pct
+type: calc
+title: Committed, Draft, Available and Used on a budget line
+desc: Worked example for one accounting budget line of 500,000 with 200,000 actual, where a part-billed order and half of a split order make 160,000 committed, a request for quotation adds 40,000 draft, Available is 140,000 and Used is 72%.
+source: tritel_project_delivery/models/purchase_budget.py (_budget_split, _budget_amount, _compute_commitments)
+heading: "[P26-049] Data Centre Upgrade · Direct project costs, November 2026"
+inputs:
+  - {label: "Planned (shown as a positive amount)", value: "500,000"}
+  - {label: "Actual (bills and other costs posted)", value: "200,000"}
+  - {label: "P00048, confirmed: ordered 150,000, billed 50,000", value: "100,000 not billed"}
+  - {label: "P00052, confirmed: 120,000, split 50% to this cost account", value: "60,000"}
+  - {label: "P00055, request for quotation", value: "40,000"}
+steps:
+  - {label: "Committed = 100,000 + 60,000", value: "160,000"}
+  - {label: "Draft = P00055 (never reduces Available)", value: "40,000"}
+  - {label: "Available = Planned − Actual − Committed = 500,000 − 200,000 − 160,000", value: "140,000"}
+  - {label: "Used (%) = (Actual + Committed) ÷ Planned = 360,000 ÷ 500,000", value: "72%"}
+result: {label: Available, value: "140,000", tone: good}
+note: "All amounts are before tax, in the company currency. The 50,000 already billed on P00048 is in Actual, not in Committed, so it is never counted twice."

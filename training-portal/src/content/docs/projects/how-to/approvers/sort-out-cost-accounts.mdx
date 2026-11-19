@@ -1,0 +1,64 @@
+---
+title: Sort out cost accounts with no project
+description: Work through Cost Accounts to Sort Out, the cost accounts that belong to no project, and link each one to its project, mark it as a department account, or archive it.
+module: projects
+pageType: how-to
+roles: [delivery-finance, head-delivery, finance]
+tags: [cost accounts, budget tracking]
+keywords: [analytic account, cost account, cost centre, orphan account, unlinked account, duplicate account, clean up, link account to project, department account, archive analytic account, project code]
+where: [Accounting, Project Budgets, Tracking, Cost Accounts to Sort Out]
+before:
+  - You have the <strong>Delivery Finance</strong> or <strong>Head of Delivery</strong> role, or you are an <strong>accounting manager</strong>.
+  - Heads of Delivery open the same list from <strong>Project › Delivery › Setup › Cost Accounts to Sort Out</strong>.
+related: [projects/concepts/project-codes, projects/concepts/odoo-budget-and-cost-account, projects/how-to/approvers/tag-orders-to-a-project, projects/how-to/approvers/correct-a-project-code, projects/menus]
+sidebar: { order: 14 }
+sources:
+  - tritel_project_delivery/views/cost_account_sort_views.xml
+  - tritel_project_delivery/wizards/cost_account_sort.py
+  - tritel_project_delivery/models/project_code.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A cost account (Odoo's analytic account) should belong to a project, or be a department's own account. Accounts that are neither, such as an old duplicate made before the project existed in Odoo, collect costs that count towards no project's budget. **Cost Accounts to Sort Out** lists them so you can decide, one by one, what each is.
+
+<Illustration name="projects/appr-sort-cost-accounts" caption="Linking an old account to P26-049. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Accounting › Project Budgets › Tracking › Cost Accounts to Sort Out**, or **Project › Delivery › Setup › Cost Accounts to Sort Out**. The list shows every active cost account that has no project and isn't marked as a department account.
+2. Use **Filters** to see the accounts that matter first: **Has costs** shows accounts that already hold costs, **No costs** the empty ones (shown greyed out). For each account the list shows:
+   - **Cost lines**: how many costs are posted to it;
+   - **Total**: what they add up to (costs show as minus amounts);
+   - **Last used**: the date of the latest one.
+
+   You can also search by **Cost account** name or by **Customer**.
+3. Decide what each account is, and click the button on its row:
+   - **Link to Project**: the account's costs belong to a project. Go on to step 4.
+   - **Department Account**: it is a department's own account, not a project's. Odoo asks *Mark this as a department cost account? It leaves this list and gets no project code.* Click **OK**.
+   - **Archive**: it is an unused duplicate or a mistake. A window opens with the account's figures. If it holds costs it warns *This account holds costs. Archiving hides it from new orders and bills; its costs stay in the books.* Click **Archive**.
+4. In the **Link to Project** window, check the account's figures and choose the **Project**. Only projects without a cost account are offered. The window explains: *The cost account takes the project's code, and its costs count towards that project.*
+5. Click **Link to Project**.
+
+## What happens next
+
+- **Linked**: the account becomes the project's cost account and takes its code, for example **[P26-049] Data Centre Upgrade**. Its costs now count towards that project. The project's chatter records *Cost account linked:* and the account's name. The account leaves this list.
+- **Department account**: the account leaves this list for good and its chatter records *Marked as a department cost account.*
+- **Archived**: the account can't be picked on new orders and bills any more, and leaves this list. Its costs stay in the books.
+
+When the list is empty it says *Every cost account belongs to a project or is marked as a department account.*
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Only Delivery Finance, the Head of Delivery or an accounting manager can sort out cost accounts.* | You don't have one of those roles. | Ask someone who has. |
+| *Choose the project.* | You clicked **Link to Project** without choosing one. | Choose the **Project**. |
+| *P26-049 · Data Centre Upgrade already has a cost account.* | The project got a cost account while the window was open. | Close the window. If the project's account is the wrong one, ask finance to move its costs. |
+| *Data Centre Upgrade (old) is already linked to a project.* | Someone linked the account while you were working. | Close the window and refresh the list. |
+| *Data Centre Upgrade (old) carries the code of P26-047 · Office Wi-Fi Refresh. Choose another cost account for Data Centre Upgrade.* | The account already has another project's code as its **Reference**. | Check which project the account really belongs to, and link it to that one. |
+
+:::note[Good to know]
+- **Department Account** can't be undone from any screen: the mark isn't shown on the account form. If you mark an account by mistake, ask your system administrator to clear it. Check before you click.
+- **Cost lines** and **Total** count costs already posted to the account, such as bills and journal entries. Purchase orders that aren't billed yet aren't in these figures, and they don't make an account show under **Has costs**.
+:::

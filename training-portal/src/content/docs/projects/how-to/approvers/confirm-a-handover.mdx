@@ -5,11 +5,11 @@ module: projects
 pageType: how-to
 roles: [head-delivery]
 tags: [handover, approvals, my actions]
-keywords: [handover, hand over, completion certificate, acceptance certificate, practical completion, go-live, sign off, confirm handover, return handover, on time]
-where: [Project, Delivery, Handovers]
+keywords: [handover, hand over, submit for approval, completion certificate, acceptance certificate, practical completion, go-live, sign off, confirm handover, return handover, on time]
+where: [Project, Delivery, Projects, Handovers]
 before:
   - You have the <strong>Head of Delivery</strong> role.
-  - The project manager has clicked <strong>Submit for Confirmation</strong>. Every Head of Delivery gets a to-do called <em>Confirm project handover</em>.
+  - The project manager has clicked <strong>Submit for Approval</strong> on the handover. Every Head of Delivery gets a to-do called <em>Confirm project handover</em>.
 related: [projects/workflows/handover, projects/concepts/handover-and-close-out, projects/how-to/delivery-pm/record-a-handover, projects/how-to/approvers/close-a-project, projects/calculations/close-and-kpi]
 sidebar: { order: 4 }
 sources:
@@ -22,7 +22,7 @@ sources:
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/menus.xml
   - tritel_project_delivery/views/my_actions_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -32,7 +32,7 @@ The **handover** is the date the client took over the work. Only a handover you 
 
 ## Steps
 
-1. Open **Project › Delivery › Handovers**. The list opens on **Waiting for confirmation**. Click the handover. You can also use **Project › My Actions**, under **Handovers to confirm**, where each item says whether a certificate is attached.
+1. Open **Project › Delivery › Projects › Handovers**. The list opens on **Waiting for confirmation**. Click the handover. You can also use **Project › My Actions**, under **Handovers to confirm**, where each item says whether a certificate is attached.
 2. Check the **Handover date**. It should be the date the client took over the work, the date on the certificate where there is one.
 3. Open the **Handover certificate**, if there is one. It is optional.
 4. Read the project manager's note: what was handed over, who signed for the client, and anything outstanding.
@@ -55,9 +55,9 @@ From **My Actions** you can click **Confirm**, or **Return** and type the note i
 | *Only a submitted handover can be confirmed.* | It was already confirmed or returned. | Refresh the page and check the status bar. |
 | *Only a submitted or confirmed handover can be returned.* | It is still a draft, or already returned. | Leave it for the project manager. |
 | *Only the Head of Delivery can confirm a handover.* | You don't have the Head of Delivery role. | Ask a Head of Delivery to confirm it. |
-| *PRJ Customer A network upgrade is closed. Finance can reopen it first.* | The project is already closed. | Ask finance to reopen it if the handover must change. |
+| *Data Centre Upgrade is closed. Finance can reopen it first.* | The project is already closed. | Ask finance to reopen it if the handover must change. |
 
 :::note[Good to know]
-- You can also **Return** a handover you have already confirmed, as long as the project is not closed. The project then has no confirmed handover. Finance's *Close delivery project* to-do stays, but finance cannot close a project with an approved baseline until a handover is confirmed again.
+- You can also **Return** a handover you have already confirmed, as long as the project is not closed. The project then has no confirmed handover. Finance's *Close delivery project* to-do stays, but finance cannot close a project with an approved Delivery Budget until a handover is confirmed again.
 - A project can have only one handover waiting or confirmed at a time.
 :::

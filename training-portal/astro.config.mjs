@@ -69,6 +69,7 @@ export default defineConfig({
             group('Reports', 'projects/reports', true),
             group("How it's calculated", 'projects/calculations', true),
             { label: 'Who can do what', link: '/projects/who-can-do-what/' },
+            { label: 'Project Delivery menus', link: '/projects/menus/' },
             { label: 'FAQ', link: '/projects/faq/' },
           ],
         },

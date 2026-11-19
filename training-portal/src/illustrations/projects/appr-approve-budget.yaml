@@ -1,23 +1,22 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:client_action:action_project_my_actions, tritel_project_delivery:group:group_delivery_finance, tritel_project_delivery:menu:menu_delivery_baselines_mine
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:menu:menu_project_my_actions
 # docs-sync: shows tritel_project_delivery:model:project.delivery.baseline, tritel_project_delivery:model:project.delivery.baseline.line, tritel_project_delivery:selection:project.delivery.baseline.state
 # docs-sync: shows tritel_project_delivery:selection:project.delivery.client.delay.state, tritel_project_delivery:selection:project.delivery.cost.item.basis, tritel_project_delivery:selection:project.project.delivery_baseline_state
-# docs-sync: shows tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:delivery-baseline, tritel_project_delivery:view_ext:project.edit_project:page:delivery
-# docs-sync: shows tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:field:delivery
+# docs-sync: shows tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:delivery-budget, tritel_project_delivery:view_ext:project.edit_project:page:delivery
 type: screen
-title: A baseline waiting for the budget approval
-desc: The Delivery Baseline form for Delivery Finance, with the Approve Budget and Return to Draft buttons, the budget total and margin, the Costs tab with quoted and estimated items, and the Summary by category tab, numbered 1 to 6.
+title: A delivery budget waiting for the budget approval
+desc: The Delivery Budget form for Delivery Finance, opened from Waiting for Me, with the Approve Budget and Return for Changes buttons, the budget total and margin, the Costs tab with quoted and estimated items, and the Summary by category tab, numbered 1 to 6.
 source: tritel_project_delivery/views/baseline_views.xml (baseline_form), views/budget_mapping_views.xml
 frame:
   grid: true
   app: Project
   menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true, n: 1}, Reporting, Configuration]
-  breadcrumb: [Waiting for My Approval, "PRJ Customer A network upgrade · baseline v1"]
+  breadcrumb: [Waiting for Me, "P26-049 · Data Centre Upgrade · budget v1"]
 blocks:
-  - buttons: [{label: Approve Budget, primary: true, n: 5}, {label: Return to Draft, n: 6}]
+  - buttons: [{label: Approve Budget, primary: true, n: 5}, {label: Return for Changes, n: 6}]
     status: {steps: [Draft, Waiting for approval, Approved], current: Waiting for approval}
-  - title: {text: PRJ Customer A network upgrade, sub: "Baseline v1 · Original"}
+  - title: {text: P26-049 · Data Centre Upgrade, sub: "Budget v1 · Original"}
   - fields:
       - [{label: Budget total, value: "1,050,000.00", bold: true, n: 2}, {label: Expected revenue, value: "1,500,000.00"}]
       - [{label: Contingency, value: "50,000.00"}, {label: Margin left, value: "450,000.00", tone: good}]

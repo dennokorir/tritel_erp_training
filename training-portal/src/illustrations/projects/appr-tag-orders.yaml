@@ -1,9 +1,9 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:client_action:action_project_my_actions, tritel_project_delivery:field:project.project.track_committed, tritel_project_delivery:field:project.project.track_spent
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects, tritel_project_delivery:menu:menu_delivery_root
 # docs-sync: shows tritel_project_delivery:menu:menu_project_my_actions, tritel_project_delivery:model:project.delivery.baseline, tritel_project_delivery:model:project.delivery.commitment
 # docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:view_ext:project.edit_project:button:budget-left, tritel_project_delivery:view_ext:project.edit_project:button:committed
-# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:cost-account, tritel_project_delivery:view_ext:project.edit_project:button:delivery-baseline, tritel_project_delivery:view_ext:project.edit_project:button:untagged-tender-order-lines
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:cost-account, tritel_project_delivery:view_ext:project.edit_project:button:delivery-budget, tritel_project_delivery:view_ext:project.edit_project:button:untagged-tender-order-lines
 # docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:field:untagged-lines, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:delivery-projects, tritel_project_delivery:wizard:delivery.cost.account.card
 # docs-sync: shows tritel_project_delivery:wizard:delivery.tag.orders.wizard
 type: screen
@@ -14,17 +14,17 @@ frame:
   grid: true
   app: Project
   menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting, Configuration]
-  breadcrumb: [Delivery Projects, PRJ Customer A network upgrade]
+  breadcrumb: [Delivery Projects, P26-049 · Data Centre Upgrade]
 blocks:
   - smart:
-      - {label: Delivery baseline, value: Approved v1}
+      - {label: Budget, value: Approved v1}
       - {label: Budget left, value: "KES 300,000", tone: good}
       - {label: Untagged lines, value: "3", tone: warn, n: 1}
   - dialog:
       title: Tag Tender Orders
       n: 2
       blocks:
-        - text: "These purchase order lines on the tender have no cost account. Tagging gives them cost account PRJ Customer A network upgrade, so they count as committed and spent on this project."
+        - text: "These purchase order lines on the tender have no cost account. Tagging gives them cost account Data Centre Upgrade, so they count as committed and spent on this project."
         - table:
             columns: [Tag, Order, Status, Supplier, What, Amount (before VAT), Already billed]
             widths: [1, 1.6, 2, 2, 3, 2.2, 1.6]

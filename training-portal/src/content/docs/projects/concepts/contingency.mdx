@@ -1,11 +1,11 @@
 ---
 title: Contingency
-description: What a project's contingency is, how it is priced, the cap it must stay under, and how it shows in the spend plan, the Odoo budget and budget tracking.
+description: What a project's contingency is, how it is priced, the cap it must stay under, and how it shows in the spend plan, the accounting budget and budget tracking.
 module: projects
 pageType: concept
 roles: [delivery-pm, head-delivery, delivery-finance]
-tags: [baselines, budgets]
-keywords: [contingency, risk reserve, buffer, provision, allowance, cap, 5 percent, unforeseen costs, reserve account]
+tags: [delivery budgets, budgets]
+keywords: [contingency, risk reserve, buffer, provision, allowance, cap, 5 percent, unforeseen costs, reserve account, baseline]
 related: [projects/concepts/cost-items-and-categories, projects/concepts/budget-tracking, projects/calculations/cost-items, projects/how-to/delivery-pm/build-a-baseline, projects/how-to/approvers/delivery-settings]
 sidebar: { order: 4 }
 sources:
@@ -21,11 +21,12 @@ sources:
   - tritel_project_delivery/models/project.py
   - tritel_project_delivery/views/buttons_views.xml
   - tritel_project_delivery/views/menus.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_project_delivery/views/baseline_views.xml
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
-**Project contingency** is a reserve in the baseline for known risks: a supplier price rise, an extra site visit, a delay at customs. It is a cost item of type *Contingency*, in the **Contingency** budget category. Every new baseline starts with one, at 5% of the other costs.
+**Project contingency** is a reserve in the Delivery Budget for known risks: a supplier price rise, an extra site visit, a delay at customs. It is a cost item of type *Contingency*, in the **Contingency** budget category. Every new Delivery Budget starts with one, at 5% of the other costs.
 
 You price contingency in one of two ways:
 
@@ -36,7 +37,7 @@ If you give it neither, confirming stops with *Give the contingency a percentage
 
 ## The cap
 
-Contingency may not be more than a set share of the **Budget total**. The share is **Contingency cap (%)** in **Delivery Settings**, 5% by default. The budget total includes the contingency itself. The check runs when you click **Confirm for Approval**.
+Contingency may not be more than a set share of the **Budget total**. The share is **Contingency cap (%)** in **Delivery Settings**, 5% by default. The budget total includes the contingency itself. The check runs when you click **Submit for Approval**.
 
 <Illustration name="projects/concept-contingency-cap" caption="Contingency at 5% of the other costs stays within a 5% cap." />
 
@@ -44,9 +45,9 @@ Contingency may not be more than a set share of the **Budget total**. The share 
 
 | Where | What you see |
 |---|---|
-| Baseline | **Contingency** next to the **Budget total**. The contingency line is greyed in the cost items. |
+| Delivery Budget | **Contingency** next to the **Budget total**. The contingency line is greyed in the cost items. |
 | Spend plan by month | Contingency has no pay months of its own. It is spread over the months in the same proportion as the other costs. If no other cost has a pay month yet, it sits in the completion month. |
-| Odoo budget | Its own line, **Project contingency**, on the reserve account (500900 *Project Contingency Reserve*). Nobody posts to that account, so the line shows as planned only. |
+| Accounting budget | Its own line, **Project contingency**, on the reserve account (500900 *Project Contingency Reserve*). Nobody posts to that account, so the line shows as planned only. |
 | Budget tracking | Its own row, **Project contingency**, with nothing committed or spent. Its planned amount counts in **Left**. |
 
 To use contingency in practice, you request a revision that moves the money from the contingency item to the cost that needs it. See [Request a revision](/projects/how-to/delivery-pm/request-a-revision/).
@@ -59,6 +60,6 @@ To use contingency in practice, you request a revision that moves the money from
 
 ## Tasks that use this
 
-- [Build a baseline with the cost item builder](/projects/how-to/delivery-pm/build-a-baseline/)
+- [Build a Delivery Budget with the cost item builder](/projects/how-to/delivery-pm/build-a-baseline/)
 - [How a cost item's amount is worked out](/projects/calculations/cost-items/)
 - [Change the Delivery settings](/projects/how-to/approvers/delivery-settings/)

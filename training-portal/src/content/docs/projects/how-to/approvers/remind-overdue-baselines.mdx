@@ -1,15 +1,15 @@
 ---
-title: Chase overdue baselines
-description: As Head of Delivery, find delivery projects with no approved baseline past their due date and remind the project managers from My Actions.
+title: Chase overdue Delivery Budgets
+description: As Head of Delivery, find delivery projects with no approved Delivery Budget past their due date and remind the project managers from My Actions.
 module: projects
 pageType: how-to
 roles: [head-delivery]
-tags: [baselines, my actions]
-keywords: [overdue baseline, late baseline, chase, follow up, reminder, nudge, baseline due, project plan, award date, no baseline]
+tags: [delivery budgets, my actions]
+keywords: [overdue baseline, late baseline, overdue budget, chase, follow up, reminder, nudge, budget due, award date, no budget, needs a budget]
 where: [Project, My Actions]
 before:
   - You have the <strong>Head of Delivery</strong> role.
-  - A baseline is due a set number of days after the tender award (<strong>Baseline due after award (days)</strong> in Delivery Settings, 14 by default).
+  - A Delivery Budget is due a set number of days after the tender award (<strong>Budget due after award (days)</strong> in Delivery Settings, 14 by default).
 related: [projects/calculations/baseline-due, projects/workflows/baseline, projects/how-to/delivery-pm/my-actions, projects/how-to/delivery-pm/build-a-baseline, projects/how-to/approvers/delivery-settings]
 sidebar: { order: 9 }
 sources:
@@ -24,39 +24,39 @@ sources:
   - tritel_project_delivery/views/buttons_views.xml
   - tritel_project_delivery/views/menus.xml
   - tritel_project_delivery/views/my_actions_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
-A delivery project can't be measured until its baseline is approved. When a project passes its **Baseline due** date with no baseline, or only a draft, it shows on your My Actions so you can chase the project manager.
+A delivery project can't be measured until its Delivery Budget is approved. When a project passes its **Budget due** date with no budget, or only a draft, it shows on your My Actions so you can chase the project manager.
 
-<Illustration name="projects/appr-remind-overdue" caption="Overdue baselines on your My Actions. The numbers match the steps below." />
+<Illustration name="projects/appr-remind-overdue" caption="Overdue Delivery Budgets on your My Actions. The numbers match the steps below." />
 
 ## Steps
 
 1. Open **Project › My Actions**.
-2. Find **Baselines overdue on your team**. Each item shows the project manager, the client, whether there is **No baseline** or a **Baseline in draft**, the due date, and how many days it is overdue.
+2. Find **Budgets overdue on your team**. Each item shows the project, the project manager, the client, whether there is **No budget** or a **Budget in draft**, the due date, and how many days it is overdue.
 3. Click **Remind** on an item.
 4. The item then shows *reminded today* and the **Remind** button disappears until tomorrow. Click **Open** to look at the project.
 
-To see every project in the same state, open **Project › Delivery › Delivery Projects** and use the **Needs baseline** filter. Projects with no baseline show in red.
+To see every project in the same state, open **Project › Delivery › Projects › Delivery Projects** and use the **Needs a budget** filter. Projects with no budget show in red.
 
 ## What happens next
 
-- The project manager gets a message on the project: *Reminder from My Actions: PRJ Customer A network upgrade, the delivery baseline (due 15 Mar 2026).*
-- The item stays on your list until the project manager confirms the baseline. Once it is confirmed it moves to the approvers, and you see it under **Baselines to approve: dates**.
-- Separately, a daily check gives the project manager and every Head of Delivery a *Delivery baseline overdue* to-do the first time a project passes its due date. That to-do is marked done when a baseline is confirmed or approved.
+- The project manager gets a message on the project: *Reminder from My Actions: Data Centre Upgrade, the delivery budget (due 15 Mar 2026).*
+- The item stays on your list until the project manager submits the Delivery Budget. Once it is submitted it moves to the approvers, and you see it under **Budgets to approve: dates** (and in **Project › Delivery › To approve › Waiting for Me**).
+- Separately, a daily check gives the project manager and every Head of Delivery a *Delivery Budget overdue* to-do the first time a project passes its due date. That to-do is marked done when a budget is submitted or approved. The check is the scheduled job *Project Delivery: flag projects without an approved budget*.
 
 ## Common mistakes
 
 | Message | Why it happens | What to do |
 |---|---|---|
 | *You already sent a reminder about this today.* | You reminded on this project earlier today, perhaps in another tab. | Try again tomorrow. |
-| *Nothing is waiting on anyone here.* | The baseline was confirmed after the page loaded. | Refresh My Actions. |
+| *Nothing is waiting on anyone here.* | The budget was submitted after the page loaded. | Refresh My Actions. |
 
 :::note[Good to know]
-- The list shows projects managed by others. Your own overdue projects are under **Baselines to draft**.
+- The list shows projects managed by others. Your own overdue projects are under **Budgets to draft**.
 - A project with no project manager shows without a **Remind** button. Set the project manager on the project first.
-- The *Delivery baseline overdue* to-do is sent only once per project. After that, chasing is up to you through **Remind**.
+- The *Delivery Budget overdue* to-do is sent only once per project. After that, chasing is up to you through **Remind**.
 - The due date counts from the tender's award date, or from the date the project was created if the tender has none.
 :::

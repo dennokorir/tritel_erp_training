@@ -1,12 +1,12 @@
 ---
 title: The project form at a glance
-description: Every smart button the delivery module adds to a project, a baseline, a won tender, a purchase order and a cost account, what its figure means, where it leads and who sees it.
+description: Every smart button the delivery module adds to a project, a budget, a won tender, a purchase order and a cost account, what its figure means, where it leads and who sees it.
 module: projects
 pageType: report
 roles: [delivery-pm, head-delivery, delivery-finance, finance, md, account-manager]
 tags: [tracking, reports]
-keywords: [smart buttons, project dashboard, project summary, budget left, spent so far, committed, cost account, analytic account, vendor bills, LPO, margin, handover status]
-where: [Project, Delivery, Delivery Projects]
+keywords: [smart buttons, project dashboard, project summary, budget left, spent so far, committed, cost account, analytic account, vendor bills, LPO, margin, Budget Available]
+where: [Project, Delivery, Projects, Delivery Projects]
 related: [projects/concepts/delivery-projects, projects/concepts/budget-tracking, projects/calculations/tracking-figures, projects/calculations/margin, projects/how-to/delivery-pm/track-the-budget]
 sidebar: { order: 1 }
 sources:
@@ -24,18 +24,21 @@ sources:
   - tritel_project_delivery/views/menus.xml
   - tritel_project_delivery/views/project_views.xml
   - tritel_project_delivery/views/tracking_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_project_delivery/views/project_code_views.xml
+  - tritel_project_delivery/views/purchase_budget_views.xml
+  - tritel_project_delivery/models/tender.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
-Open a project from **Project › Delivery › Delivery Projects**. The buttons along the top of the form summarise the delivery plan, the money and the handover. Hover over a button for a short explanation. The money figures are in KES, before VAT, and come from the last tracking refresh (see **Figures as of** on the **Delivery** tab).
+Open a project from **Project › Delivery › Projects › My Delivery Projects** (or **Delivery Projects** if you are the Head of Delivery or in Delivery Finance). The project code, such as *P26-049*, sits above the project name. The buttons along the top of the form summarise the delivery plan, the money and the handover. Hover over a button for a short explanation. The money figures are in KES, before VAT, and come from the last tracking refresh (see **Figures as of** on the **Delivery** tab).
 
 <Illustration name="projects/report-project-buttons" caption="A delivery project with an approved revision, a travel line over plan and a handover waiting. The numbers match the list below." />
 
 ## On the project
 
-1. **Delivery baseline**: the version that counts, for example **Approved v3**. While a version waits for approval it shows **Waiting v4** in amber, or **Draft v1** before anything is approved. Underneath: the number of revisions, or *v4 in draft* / *v4 waiting* when a revision is in progress. Opens the version being worked on, else the approved one. With no baseline at all it starts the first one (project managers only).
-2. **Approved delivery budget**: the approved baseline's **Budget total**, contingency included. This is the figure the budget KPI compares the final cost with. Opens the approved baseline. Shown once a baseline is approved.
+1. **Budget** (the **Delivery Budget** button): the version that counts, for example **Approved v3**. While a version waits for approval it shows **Waiting v4** in amber, or **Draft v1** before anything is approved. Underneath: the number of revisions, or *v4 in draft* / *v4 waiting* when a revision is in progress. Opens the version being worked on, else the approved one. With no budget at all it starts the first one (project managers only).
+2. **Approved delivery budget**: the approved budget's **Budget total**, contingency included. This is the figure the budget KPI compares the final cost with. Opens the approved budget. Shown once a budget is approved.
 3. **Spent so far**: costs posted to the project's cost account on expense accounts, with *Spent 54%* of the approved budget underneath. Finance staff with accounting access get the journal items behind it; everyone else gets a read-only list of cost lines with a pivot by budget line and month. Shown once something is spent.
 4. **Committed**: confirmed purchase order lines on the cost account not yet billed. Buyers get the purchase orders; everyone else gets a read-only list of order lines filtered to **Still to bill**. Shown once something is committed.
 5. **Budget left**: approved budget − committed − spent. Green when **On track**, amber when **Fully committed**, red when **Over plan** on at least one budget line, with the status underneath (*Left · over plan*). Opens the budget tracking window. See [Projects over their approved budget](/projects/reports/projects-over-budget/).
@@ -44,29 +47,29 @@ Open a project from **Project › Delivery › Delivery Projects**. The buttons 
 8. **Handover**: **Not recorded**, **Draft**, **Waiting**, **Confirmed**, **Returned** or **Closed**. Opens the project's handovers.
 9. **Purchase orders** (*Orders*): orders with at least one line on the cost account, cancelled orders left out. Purchase users only.
 10. **Vendor bills** (*Bills*): bills and refunds with a line on the cost account. Accounting access only.
-11. **Odoo budget lines**: the number of lines in the Odoo budget made from the approved baseline. Accounting access only.
+11. **Accounting budget lines**: the number of lines in the accounting budget made from the approved budget. Accounting access only.
 12. **Untagged tender order lines** (*Untagged lines*, amber): lines on this tender's purchase orders with no cost account. They count as neither committed nor spent until tagged. Head of Delivery and Delivery Finance only; opens the tagging tool.
 13. **Automatic tagging rules**: rules that put this cost account on new lines automatically. Accounting access only.
 
 Buttons 1 to 8 have no access restriction: anyone who can open the project sees them once they apply. Buttons 3 and 4 are hidden while their figure is 0, and button 12 while there is nothing to tag.
 
-## On the baseline, the tender and elsewhere
+## On the budget, the tender and elsewhere
 
-<Illustration name="projects/report-other-buttons" caption="The buttons on baseline v2 and on its won tender. The numbers match the list below." />
+<Illustration name="projects/report-other-buttons" caption="The buttons on budget v2 and on its won tender. The numbers match the list below." />
 
-1. **Odoo Budget** (baseline): opens the Odoo budget created on approval. Accounting access only.
+1. **Accounting Budget** (budget): opens the accounting budget created on approval. Accounting access only.
 2. **Project**: opens the delivery project.
 3. **Tender**: opens the won tender.
-4. **Baseline versions** (*Revisions*): every version of the baseline with its status. Shown once there is a revision.
-5. **Margin left**: expected revenue − this baseline − the tender's other delivery projects, red when below zero. Opens the budget tracking window once a budget is approved, otherwise the project. See [margin](/projects/calculations/margin/).
-6. **Delivery projects** (*Delivery*, on the tender): the projects opened from it.
-7. **Delivery budgets**: the total of each delivery project's approved baseline, or its latest draft or waiting version. Opens the baseline, or the list when there are several projects.
+4. **Budget Versions** (*Revisions*): every version of the budget with its status. Shown once there is a revision.
+5. **Margin left**: expected revenue − this budget − the tender's other delivery projects, red when below zero. Opens the budget tracking window once a budget is approved, otherwise the project. See [margin](/projects/calculations/margin/).
+6. **Delivery projects** (*Delivery*, on the tender): the codes of the projects opened from it, for example *P26-049, P26-050*.
+7. **Delivery budgets**: the total of each delivery project's approved budget, or its latest draft or waiting version. Opens the budget, or the list when there are several projects.
 8. **Margin left** (tender): the tender's Expected Revenue at today's rate − Delivery budgets. Red below zero.
 9. **Untagged order lines** (tender): Head of Delivery and Delivery Finance only.
 
 Two more places carry a delivery button:
 
-- **Left in delivery plan** on a purchase order: the project's **Budget left**, red when this order takes a budget line over its plan. Opens the project. The order may also show **Over the delivery plan.** and **Not tagged to the project.** See [tracking figures](/projects/calculations/tracking-figures/).
+- **Budget Available** on a purchase order (once called **Left in delivery plan**): the project's **Budget left**, red when this order takes a budget line over its plan. Opens the project. The order may also show **Over the delivery plan.** and **Not tagged to the project.** Separately, the order's **Budget status** badge compares it with the accounting budget; see [Check a purchase order against the budget](/projects/how-to/approvers/check-an-order-against-the-budget/). See [tracking figures](/projects/calculations/tracking-figures/).
 - **Delivery project** and **Delivery budget** on an analytic account used as a project's cost account.
 
 :::note[Good to know]

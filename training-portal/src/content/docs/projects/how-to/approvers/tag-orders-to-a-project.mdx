@@ -6,11 +6,11 @@ pageType: how-to
 roles: [head-delivery, delivery-finance]
 tags: [budget tracking, purchase orders, my actions]
 keywords: [tag orders, LPO, PO, purchase order, analytic account, cost account, cost centre, untagged lines, committed, actuals, allocate cost]
-where: [Project, Delivery, Delivery Projects]
+where: [Project, Delivery, Projects, Delivery Projects]
 before:
   - You have the <strong>Head of Delivery</strong> or <strong>Delivery Finance</strong> role.
   - The project was opened from a won tender and has a cost account, and some purchase order lines on that tender carry no cost account.
-related: [projects/concepts/odoo-budget-and-cost-account, projects/concepts/budget-tracking, projects/how-to/delivery-pm/track-the-budget, projects/calculations/tracking-figures, projects/reports/project-at-a-glance]
+related: [projects/concepts/odoo-budget-and-cost-account, projects/how-to/approvers/assign-cost-accounts, projects/concepts/budget-tracking, projects/how-to/delivery-pm/track-the-budget, projects/calculations/tracking-figures, projects/reports/project-at-a-glance]
 sidebar: { order: 6 }
 sources:
   - tritel_project_delivery/wizards/tag_orders_wizard.py
@@ -23,7 +23,9 @@ sources:
   - tritel_project_delivery/models/whole_orders.py
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/menus.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_project_delivery/wizards/assign_cost_accounts.py
+  - tritel_project_delivery/wizards/assign_cost_accounts_views.xml
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -33,7 +35,7 @@ A project's budget tracking only counts order lines and bills that carry the pro
 
 ## Steps
 
-1. Open the project from **Project › Delivery › Delivery Projects** and click the amber **Untagged tender order lines** button (it shows **Untagged lines** and a count). Other ways in:
+1. Open the project from **Project › Delivery › Projects › Delivery Projects** and click the amber **Untagged tender order lines** button (it shows **Untagged lines** and a count). Other ways in:
    - **Project › My Actions**: the line *Tender order lines not tagged to their project*, then **Tag orders**, which lists the projects that have some;
    - the project's **Delivery** tab, next to **Budget tracking**: **Tag tender orders**;
    - the won tender's **Untagged order lines** button.
@@ -47,6 +49,7 @@ A project's budget tracking only counts order lines and bills that carry the pro
 - The project's chatter records how many lines were tagged, with which cost account and by whom.
 - Budget tracking is refreshed at once, so **Budget left** and the **Budget status** may change. If an order now takes a budget line over its plan, the project shows **Over plan**.
 - The **Untagged tender order lines** button disappears when no lines are left.
+- To fix one order rather than a whole tender (for example an order raised without a tender, or a line that should be split between two cost accounts), use **Assign Cost Accounts** on the purchase order itself. See [Set the cost account on order lines](/projects/how-to/approvers/assign-cost-accounts/).
 
 ## Common mistakes
 

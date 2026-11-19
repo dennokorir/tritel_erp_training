@@ -1,21 +1,21 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:client_action:action_project_my_actions, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root
 # docs-sync: shows tritel_project_delivery:menu:menu_project_my_actions, tritel_project_delivery:model:project.delivery.baseline, tritel_project_delivery:model:project.delivery.baseline.line
 # docs-sync: shows tritel_project_delivery:selection:project.delivery.baseline.kind, tritel_project_delivery:selection:project.delivery.baseline.state, tritel_project_delivery:selection:project.delivery.client.delay.state
-# docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:delivery-baseline
+# docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:delivery-budget
 type: screen
 title: A revision waiting for the MD
-desc: The Delivery Baseline form of a revision, with the MD Approve and Return to Draft buttons, the Change box comparing the revision with the previous version and the original, the reason for the revision and the Changes tab listing added and changed cost items, numbered 4 to 8.
+desc: The Delivery Budget form of a revision, with the Approve as MD and Return for Changes buttons, the Change box comparing the revision with the previous version and the original, the reason for the revision and the Changes tab listing added and changed cost items, numbered 4 to 8.
 source: tritel_project_delivery/views/baseline_views.xml (baseline_form), views/tracking_views.xml (baseline_form_changes)
 frame:
   grid: true
   app: Project
   menu: [Projects, My Tasks, My Actions]
-  breadcrumb: [My Actions, "PRJ Customer A network upgrade · baseline v3"]
+  breadcrumb: [My Actions, "P26-049 · Data Centre Upgrade · budget v3"]
 blocks:
-  - buttons: [{label: MD Approve, primary: true, n: 7}, {label: Return to Draft, n: 8}]
+  - buttons: [{label: Approve as MD, primary: true, n: 7}, {label: Return for Changes, n: 8}]
     status: {steps: [Draft, Waiting for approval, Approved], current: Waiting for approval}
-  - title: {text: PRJ Customer A network upgrade, sub: "Baseline v3 · Revision"}
+  - title: {text: P26-049 · Data Centre Upgrade, sub: "Budget v3 · Revision"}
   - fields:
       - [{label: Completion date, value: 09/08/2026}, {label: Budget vs previous, value: "150,000.00", n: 4}]
       - [{label: Budget total, value: "1,200,000.00"}, {label: Days vs previous, value: "25"}]

@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:field:project.project.track_committed, tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:menu:menu_delivery_config
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:model:project.delivery.commitment, tritel_project_delivery:view_ext:project.edit_project:button:committed
 # docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:request-revision
@@ -20,6 +20,6 @@ blocks:
       columns: [Project, Figures, Buttons]
       widths: [2.2, 3, 3]
       rows:
-        - {cells: [{text: Customer A network upgrade, bold: true}, "planned 850,000 · committed and spent 762,000", "Open tracking · Request revision · Open"], n: 3}
-        - {cells: [{text: Customer B data centre, bold: true}, "planned 400,000 · committed and spent 455,000", "Open tracking · Open"], n: 4}
+        - {cells: [{text: Data Centre Upgrade, bold: true}, "planned 850,000 · committed and spent 762,000", "Open tracking · Request revision · Open"], n: 3}
+        - {cells: [{text: Branch Wi-Fi Rollout, bold: true}, "planned 400,000 · committed and spent 455,000", "Open tracking · Open"], n: 4}
   - note: {text: "A Head of Delivery sees every delivery project here, with its project manager's name. Others see the projects they manage.", tone: muted, n: 5}

@@ -1,11 +1,11 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root
 # docs-sync: shows tritel_project_delivery:selection:project.delivery.baseline.kind, tritel_project_delivery:selection:project.project.delivery_baseline_state
 type: calc
 title: Revision approvals
 desc: Worked example of revision v3, which is 100,000 and 25 days above v2 and 14.3% and 40 days above the original, so it needs the Head of Delivery, finance and the MD.
 source: tritel_project_delivery/models/baseline.py (_compute_changes, _compute_needs)
-heading: Revision v3 of Customer A network upgrade
+heading: Revision v3 of P26-049 · Data Centre Upgrade
 inputs:
   - {label: "v1 · 31 Mar 2027", value: "1,050,000"}
   - {label: "v2 · 15 Apr 2027", value: "1,100,000"}

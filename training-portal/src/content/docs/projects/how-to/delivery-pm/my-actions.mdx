@@ -5,7 +5,7 @@ module: projects
 pageType: how-to
 roles: [delivery-pm, head-delivery, delivery-finance, md]
 tags: [my actions, approvals]
-keywords: [my actions, to do, to-do list, inbox, pending approvals, tasks, reminders, chase, overdue, workload, dashboard]
+keywords: [my actions, baseline, to do, to-do list, inbox, pending approvals, tasks, reminders, chase, overdue, workload, dashboard]
 where: [Project, My Actions]
 before:
   - You can use the Project app. Every project user has <strong>My Actions</strong>; what is on it depends on your role.
@@ -29,7 +29,7 @@ sources:
   - tritel_project_delivery/views/menus.xml
   - tritel_project_delivery/views/project_views.xml
   - tritel_project_delivery/wizards/tag_orders_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -45,7 +45,7 @@ import Illustration from '../../../../../components/Illustration.astro';
 4. Use the buttons on the item to act straight away.
    - Buttons that need a note, such as **Return** and **Reject**, open a box under the item. Type what needs to change, or why, then click the button in the box. **Cancel** closes it.
    - Buttons such as **Record handover**, **Close project** or **Open tracking** open the form. When you close it, the list reloads.
-   - After a one-click action, a green message confirms it, for example *Approve dates: PRJ Customer A network upgrade*, and the list reloads.
+   - After a one-click action, a green message confirms it, for example *Approve dates: P26-049 · Data Centre Upgrade*, and the list reloads.
 5. Under **Waiting on others**, click **Remind** to send a message to whoever the item is waiting on. You can remind once a day per item.
 
 You can also see your project items on the portal at **/my/actions**, in a **Projects** section under the tenders. The **Projects · N to do** link jumps to it. Approving, confirming and closing open in the backend.
@@ -54,18 +54,18 @@ You can also see your project items on the portal at **/my/actions**, in a **Pro
 
 | Group | Who sees it | Buttons |
 |---|---|---|
-| **Baselines to draft** | Project managers, for their projects with no baseline or a draft original | **Start baseline** (starts an empty baseline, without starter items) |
-| **Baselines sent back to you** | Project managers | (open it) |
+| **Budgets to draft** | Project managers, for their projects with no Delivery Budget or a draft original (*No budget yet*) | **Start budget** (starts an empty budget, without starter items) |
+| **Budgets sent back to you** | Project managers | (open it) |
 | **Revisions in progress** | Project managers | **Withdraw** |
 | **Handovers to record** | Project managers, once the approved completion date has passed | **Record handover**, **Log client delay** |
 | **Handovers sent back to you** | Project managers | (open it) |
 | **Client delays to submit** | Project managers, for drafts | (open it) |
-| **Baselines to approve: dates** | Head of Delivery | **Approve dates**, **Return** |
-| **Baselines to approve: budget** | Delivery Finance | **Approve budget**, **Return** |
+| **Budgets to approve: dates** | Head of Delivery | **Approve dates**, **Return** |
+| **Budgets to approve: budget** | Delivery Finance | **Approve budget**, **Return** |
 | **Revisions to approve (MD)** | The MD named in Delivery Settings | **Approve**, **Return** |
 | **Handovers to confirm** | Head of Delivery | **Confirm**, **Return** |
 | **Client delays to approve** | Head of Delivery | **Approve**, **Reject** |
-| **Baselines overdue on your team** | Head of Delivery | **Remind** |
+| **Budgets overdue on your team** | Head of Delivery | **Remind** |
 | **Projects over their approved budget** | Project managers (own projects), Head of Delivery (all) | **Open tracking**, **Request revision** |
 | **Projects to close** | Delivery Finance | **Close project** |
 | **Costs after close** | Delivery Finance | **Mark reviewed**, **Open**, **Reopen** |
@@ -75,8 +75,8 @@ You can also see your project items on the portal at **/my/actions**, in a **Pro
 
 ## What happens next
 
-- Each button does the same as the button on the record, with the same checks. For example **Approve dates** gives the Head of Delivery's approval, and **Return** sends the baseline back to the project manager with your note as the **Note for the project manager**.
-- A reminder posts *Reminder from My Actions: PRJ Customer A network upgrade, approval of PRJ Customer A network upgrade · baseline v1.* on the record and notifies the people it is waiting on.
+- Each button does the same as the button on the record, with the same checks. For example **Approve dates** gives the Head of Delivery's approval, and **Return** sends the Delivery Budget back to the project manager with your note as the **Note for the project manager**.
+- A reminder posts *Reminder from My Actions: Data Centre Upgrade, approval of P26-049 · Data Centre Upgrade · budget v1.* on the record and notifies the people it is waiting on.
 - **Mark reached** marks the milestone reached and notes it on the project.
 
 ## Common mistakes
@@ -86,7 +86,7 @@ You can also see your project items on the portal at **/my/actions**, in a **Pro
 | *You already sent a reminder about this today.* | You reminded on this item earlier today. | Try again tomorrow. |
 | *There is nobody else to remind.* | The only person it is waiting on is you. | Act on it yourself. |
 | *Only the project manager, whoever submitted it, or the Head of Delivery can send a reminder.* | You are not involved in the item. | Leave it to the project manager. |
-| *This baseline is no longer waiting for approval.* | Someone approved or returned it since the list loaded. | Refresh the page. |
+| *This budget is no longer waiting for approval.* | Someone approved or returned it since the list loaded. | Refresh the page. |
 | *This handover is no longer waiting for confirmation.* / *This client delay is no longer waiting for approval.* | It was decided since the list loaded. | Refresh the page. |
 | *This record no longer exists. Refresh My Actions.* | The record was deleted. | Refresh the page. |
 | *Write a note for the project manager.* / *Write a note explaining why.* | You sent a **Return** or **Reject** with an empty note. | Type the note first. |
@@ -96,5 +96,7 @@ You can also see your project items on the portal at **/my/actions**, in a **Pro
 :::note[Good to know]
 - Overdue tasks are capped at 50. If you have more, a link **More overdue tasks** with **Open all** shows the rest.
 - **Overdue milestones** and the task groups cover every project you manage or work on, not only delivery projects.
-- The MD needs access to the Project app to open **My Actions**. Without it, the MD works from the to-do *Approve delivery baseline revision (MD)*.
+- The MD needs access to the Project app to open **My Actions**. Without it, the MD works from the to-do *Approve delivery budget revision (MD)*.
+- Items show projects by their code and name, for example **P26-049 · Data Centre Upgrade**.
+- For lists rather than one item at a time: project managers can open **Project › Delivery › Projects › My Submissions** (what you submitted that is still waiting), and Delivery Finance and the Head of Delivery **Project › Delivery › To approve › Waiting for Me**.
 :::

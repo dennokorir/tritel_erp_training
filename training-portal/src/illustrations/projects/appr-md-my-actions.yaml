@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:client_action:action_project_my_actions, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_settings, tritel_project_delivery:menu:menu_project_my_actions, tritel_project_delivery:model:delivery.settings
 type: screen
@@ -19,5 +19,5 @@ blocks:
       columns: [Item, Waiting, ""]
       widths: [6, 1.2, 3.4]
       rows:
-        - cells: ["PRJ Customer A network upgrade — Employee A · Customer A · Revision v3 · completion 09/08/2026 · +14% budget, +40 days vs v1", "2 days", {text: "Approve · Return · Open", bold: true}]
+        - cells: ["P26-049 · Data Centre Upgrade — Employee A · Customer A · Revision v3 · completion 09/08/2026 · +14% budget, +40 days vs v1", "2 days", {text: "Approve · Return · Open", bold: true}]
           n: 3

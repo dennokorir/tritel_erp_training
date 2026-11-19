@@ -1,11 +1,11 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:group:group_delivery_head, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_handovers
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_projects_to_link, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:model:project.delivery.client.delay
 # docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:log-client-delay
 # docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:record-handover, tritel_project_delivery:view_ext:project.edit_project:button:won-tender
 type: screen
 title: Projects My Actions
-desc: The My Actions screen in the Project app with the To do, Overdue and Waiting on others tiles, a link card, the Baselines sent back to you and Handovers to record groups with their buttons, a Return note box, and the Waiting on others group with a Remind button, numbered 1 to 5.
+desc: The My Actions screen in the Project app with the To do, Overdue and Waiting on others tiles, a link card, the Budgets sent back to you and Handovers to record groups with their buttons, a Return note box, and the Waiting on others group with a Remind button, numbered 1 to 5.
 source: tritel_project_delivery/static/src/my_actions/project_my_actions.xml (MyActions, MyActionsGroup); models/my_actions.py
 frame:
   grid: true
@@ -22,21 +22,21 @@ blocks:
       widths: [0.6, 6, 1.8]
       rows:
         - {cells: [{text: "4", bold: true, tone: accent}, "Projects not linked to a won tender · Link them so they are measured.", {text: Projects to link, bold: true}], n: 2}
-  - heading: "Baselines sent back to you  1"
+  - heading: "Budgets sent back to you  1"
   - table:
       columns: [Item, Waited, Buttons]
       widths: [6, 1, 2.6]
       rows:
-        - {cells: ["PRJ Customer A network upgrade · v1 · Attach Supplier B's quote", "2 days", "Open"], n: 3}
+        - {cells: ["P26-049 · Data Centre Upgrade · v1 · Attach Supplier B's quote", "2 days", "Open"], n: 3}
   - heading: "Handovers to record  1"
   - table:
       columns: [Item, Waited, Buttons]
       widths: [6, 1, 2.6]
       rows:
-        - {cells: ["PRJ Customer C office Wi-Fi · Customer C · Approved completion 31 Oct 2026", {text: "16 days", tone: bad}, {text: "Record handover · Log client delay · Open", bold: true}], n: 4}
+        - {cells: ["Office Wi-Fi · Customer C · Approved completion 31 Oct 2026", {text: "16 days", tone: bad}, {text: "Record handover · Log client delay · Open", bold: true}], n: 4}
   - heading: "Waiting on others  1"
   - table:
       columns: [Item, Waiting on, Waited, Buttons]
       widths: [4.4, 2, 1, 2.2]
       rows:
-        - {cells: ["PRJ Customer D CCTV · PRJ Customer D CCTV · baseline v1 · approval", "Head of Delivery and Finance", "3 days", {text: "Remind · Open", bold: true}], n: 5}
+        - {cells: ["P26-047 · CCTV Installation · budget v1 · approval", "Head of Delivery and Finance", "3 days", {text: "Remind · Open", bold: true}], n: 5}

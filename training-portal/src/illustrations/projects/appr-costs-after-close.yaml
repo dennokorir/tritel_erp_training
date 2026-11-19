@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:client_action:action_project_my_actions, tritel_project_delivery:cron:ir_cron_costs_after_close, tritel_project_delivery:field:project.project.after_close_amount
 # docs-sync: shows tritel_project_delivery:field:project.project.close_budget, tritel_project_delivery:field:project.project.close_committed, tritel_project_delivery:field:project.project.close_spent
 # docs-sync: shows tritel_project_delivery:field:project.project.final_cost, tritel_project_delivery:field:project.project.track_spent, tritel_project_delivery:menu:menu_delivery_config
@@ -13,10 +13,10 @@ frame:
   grid: true
   app: Project
   menu: [Projects, My Tasks, {label: My Actions, n: 1}, Delivery, Reporting, Configuration]
-  breadcrumb: [My Actions, PRJ Customer A network upgrade]
+  breadcrumb: [My Actions, P26-049 · Data Centre Upgrade]
 blocks:
   - buttons: [{label: Reopen, n: 5}]
-  - title: {text: PRJ Customer A network upgrade}
+  - title: {text: Data Centre Upgrade, sub: P26-049}
   - tabs: {items: [Tasks, Delivery, Handover & close], active: Handover & close, n: 2}
   - note: {text: "Costs after close: 15,000.00 posted or ordered since the project closed. The final cost and result stay as closed; finance can reopen it if this should count.", tone: warn, n: 3}
   - buttons: [{label: Mark reviewed, n: 4}]

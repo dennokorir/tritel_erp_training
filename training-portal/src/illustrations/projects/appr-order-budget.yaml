@@ -1,0 +1,36 @@
+# docs-sync: verified_commit 5d691a8dca64
+# docs-sync: shows tritel_project_delivery:field:purchase.order.budget_impact_html, tritel_project_delivery:selection:purchase.order.budget_status, tritel_project_delivery:selection:purchase.order.line.budget_flag
+# docs-sync: shows tritel_project_delivery:view_ext:purchase.purchase_order_form:field:budget, tritel_project_delivery:view_ext:purchase.purchase_order_form:page:budget-impact, tritel_project_delivery:view_ext:purchase.purchase_order_form:button:budget-available
+type: screen
+title: A purchase order against the budget
+desc: A purchase order for Vendor A with the Over budget status badge under its title, the Budget column on each product line, the Budget impact tab with Budget line, Planned, Actual, Committed (other orders), This order and Left after, and the Budget Available button, numbered 1 to 5.
+source: tritel_project_delivery/views/purchase_budget_views.xml (purchase_order_form_budget), models/purchase_budget.py (_budget_impact, _budget_impact_render), views/buttons_views.xml (purchase_order_form_buttons)
+frame:
+  grid: true
+  app: Purchase
+  menu: [{label: Orders, active: true}, Products, Reporting, Configuration]
+  breadcrumb: [Purchase Orders, P00052]
+blocks:
+  - buttons: [{label: Confirm Order, primary: true}, {label: Assign Cost Accounts}, {label: Cancel}]
+    status: {steps: [RFQ, RFQ Sent, Purchase Order], current: RFQ}
+  - smart: [{label: Budget Available, value: "KES 120,000", n: 5}]
+  - title: {text: Request for Quotation P00052}
+  - note: {text: "Over budget", tone: bad, n: 1}
+  - fields: [[{label: Vendor, value: Vendor A}, {label: Order Deadline, value: "2026-11-19"}]]
+  - tabs: {items: [Products, Budget impact, Other Information], active: Products}
+  - table:
+      columns: [Product, Analytic, Quantity, Unit Price, Subtotal, Budget]
+      widths: [2.4, 2.6, 1, 1.3, 1.3, 1.6]
+      n: 2
+      rows:
+        - [Rack servers, "[P26-049] Data Centre Upgrade", "2", "40,000", "80,000", {text: Over budget, badge: true, tone: bad}]
+        - [Installation, "", "1", "20,000", "20,000", {text: No cost account, badge: true, tone: warn}]
+  - tabs: {items: [Products, Budget impact, Other Information], active: Budget impact, n: 3}
+  - table:
+      columns: [Budget line, Planned, Actual, "Committed (other orders)", This order, Left after, ""]
+      widths: [2.4, 1, 1, 2.5, 1, 1.1, 1.5]
+      n: 4
+      rows:
+        - {cells: ["[P26-049] Data Centre Upgrade · Direct project costs", "400,000", "150,000", "200,000", "80,000", {text: "-30,000", bold: true}, {text: Over budget, badge: true, tone: bad}], highlight: true}
+        - [No cost account, "", "", "", "20,000", not budgeted, {text: No cost account, badge: true, tone: warn}]
+  - text: "Amounts before tax in KES. \"Left after\" = planned − actual − committed by other confirmed orders − this order."

@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:client_action:action_project_my_actions, tritel_project_delivery:field:project.project.handover_date, tritel_project_delivery:group:group_delivery_head
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_handovers, tritel_project_delivery:menu:menu_delivery_root
 # docs-sync: shows tritel_project_delivery:menu:menu_project_my_actions, tritel_project_delivery:selection:project.delivery.handover.state, tritel_project_delivery:selection:project.project.handover_state
@@ -11,12 +11,12 @@ frame:
   grid: true
   app: Project
   menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true, n: 1}, Reporting, Configuration]
-  breadcrumb: [Handovers, Handover of PRJ Customer A network upgrade]
+  breadcrumb: [Handovers, Handover of P26-049 · Data Centre Upgrade]
 blocks:
   - buttons: [{label: Confirm Handover, primary: true, n: 5}, {label: Return, n: 6}]
     status: {steps: [Draft, Waiting for confirmation, Confirmed], current: Waiting for confirmation}
   - fields:
-      - [{label: Project, value: PRJ Customer A network upgrade}, {label: Submitted by, value: Employee A}]
+      - [{label: Project, value: P26-049 · Data Centre Upgrade}, {label: Submitted by, value: Employee A}]
       - [{label: Handover date, value: 15/07/2026, bold: true, n: 2}, {label: Submitted on, value: "16/07/2026 09:30"}]
       - [{label: Handover certificate, value: completion-certificate.pdf, n: 3}]
   - text: "Handed over all four sites. Client IT manager signed. Snag list: label two patch panels."

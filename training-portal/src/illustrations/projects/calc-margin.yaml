@@ -1,18 +1,18 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.delivery.baseline.state
 # docs-sync: shows tritel_project_delivery:selection:project.delivery.client.delay.state, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state
 # docs-sync: shows tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project
 type: calc
 title: Margin left
-desc: Worked example of the margin left on a baseline, with expected revenue of 1,500,000, this baseline at 1,050,000 and another delivery project on the same tender at 300,000, leaving 150,000 or 10.0%.
+desc: Worked example of the margin left on a delivery budget, with expected revenue of 1,500,000, this budget at 1,050,000 and another delivery project on the same tender at 300,000, leaving 150,000 or 10.0%.
 source: tritel_project_delivery/models/tender_import.py (_compute_revenue)
-heading: Baseline v1 for Customer A network upgrade, tender TND-2026-001
+heading: Budget v1 for P26-049 · Data Centre Upgrade, tender TND-2026-001
 inputs:
   - {label: Expected revenue, value: "1,500,000"}
-  - {label: This baseline, value: "1,050,000"}
+  - {label: This budget, value: "1,050,000"}
   - {label: Other project, value: "300,000"}
 steps:
   - {label: "Margin left: 1,500,000 − 1,050,000 − 300,000", value: "150,000"}
   - {label: "Margin left (%): 150,000 ÷ 1,500,000 × 100", value: "10.0%"}
 result: {label: Margin left, value: "KES 150,000", tone: good}
-note: The other project counts with its latest version that is draft, waiting or approved. Below zero, the baseline shows Costs are over the expected revenue.
+note: The other project counts with its latest version that is draft, waiting or approved. Below zero, the budget shows Costs are over the expected revenue.

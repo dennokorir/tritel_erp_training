@@ -1,19 +1,21 @@
 # Field reference for Project Delivery, grouped by screen. Labels are exactly as on screen.
 # Source: tritel_project_delivery views and models (project_views.xml, tracking_views.xml, closeout_views.xml,
-# baseline_views.xml, budget_mapping_views.xml, delivery_settings_views.xml; models/*.py).
+# baseline_views.xml, budget_mapping_views.xml, delivery_settings_views.xml, purchase_budget_views.xml,
+# project_code_views.xml; models/*.py).
 screens:
   - name: Delivery project, Delivery tab
-    where: Project › Delivery › Delivery Projects (open a project), Delivery tab
+    where: Project › Delivery › Projects › My Delivery Projects or Delivery Projects (open a project), Delivery tab
     fields:
+      - {label: Project code, meaning: "The project's code, such as P26-049, shown above its name. Given when the project is created; a settings administrator corrects it with Correct Code.", where: Form header}
       - {label: Tender, meaning: "The won tender the project was opened from.", where: Tender}
-      - {label: Award date, meaning: "The tender's award date. The baseline due date counts from it.", where: Tender}
+      - {label: Award date, meaning: "The tender's award date. The Budget due date counts from it.", where: Tender}
       - {label: Contract value, meaning: "The tender's Expected Revenue, in the tender's currency.", where: Tender}
-      - {label: Baseline due, meaning: "Award date plus Baseline due after award (days). Projects with no baseline or only a draft after this date are flagged.", where: Tender}
-      - {label: Baseline, meaning: "No baseline, Baseline in draft, Waiting for approval, Approved or Revision pending.", where: Approved baseline}
-      - {label: Baseline version, meaning: "Version number of the approved baseline.", where: Approved baseline}
-      - {label: Approved completion date, meaning: "Completion date of the approved baseline. The project's end date follows it and can only change through a revision.", where: Approved baseline}
-      - {label: Approved delivery budget, meaning: "Budget total of the approved baseline, before VAT, contingency included.", where: Approved baseline}
-      - {label: Budget status, meaning: "No approved budget, On track, Fully committed or Over plan, from the last refresh.", where: Budget tracking}
+      - {label: Budget due, meaning: "Award date plus Budget due after award (days). Projects with no budget or only a draft after this date are flagged.", where: Tender}
+      - {label: Budget status, meaning: "Where the Delivery Budget stands: No budget, Budget in draft, Waiting for approval, Approved or Revision pending.", where: Approved budget}
+      - {label: Budget version, meaning: "Version number of the approved Delivery Budget.", where: Approved budget}
+      - {label: Approved completion date, meaning: "Completion date of the approved Delivery Budget. The project's end date follows it and can only change through a revision.", where: Approved budget}
+      - {label: Approved delivery budget, meaning: "Budget total of the approved Delivery Budget, before VAT, contingency included.", where: Approved budget}
+      - {label: Budget status, meaning: "No approved budget, On track, Fully committed or Over plan, from the last refresh. Also a column in Budget vs Actual.", where: Budget tracking}
       - {label: Figures as of, meaning: "When the tracking figures were last refreshed (nightly, or with Refresh).", where: Budget tracking}
       - {label: Planned, meaning: "The approved budget for the budget line.", where: Budget tracking table}
       - {label: Expected by now, meaning: "The spend plan for every month up to and including this month.", where: Budget tracking table}
@@ -23,7 +25,7 @@ screens:
       - {label: Forecast at completion, meaning: "The larger of Planned and Committed plus Spent, line by line.", where: Budget tracking table and Delivery Projects list}
 
   - name: Delivery project, Handover & close tab
-    where: Project › Delivery › Delivery Projects (open a project), Handover & close tab
+    where: Project › Delivery › Projects › My Delivery Projects or Delivery Projects (open a project), Handover & close tab
     fields:
       - {label: Handover date, meaning: "Date of the confirmed handover. Shown while the project is open.", where: Tab}
       - {label: Approved client delay (days), meaning: "Calendar days covered by approved client delays; overlapping days count once.", where: Tab}
@@ -34,22 +36,22 @@ screens:
       - {label: Closed on, meaning: "When finance closed the project.", where: Result}
       - {label: Closed by, meaning: "Who closed the project.", where: Result}
       - {label: Final cost (before VAT), meaning: "Spent plus open orders plus the adjustment, frozen at close.", where: Result}
-      - {label: Approved budget at close, meaning: "Budget total of the approved baseline when the project closed.", where: Result}
+      - {label: Approved budget at close, meaning: "Budget total of the approved Delivery Budget when the project closed.", where: Result}
       - {label: Spent at close, meaning: "Posted costs when the project closed.", where: Result}
       - {label: Open orders at close, meaning: "Unbilled confirmed order lines when the project closed.", where: Result}
       - {label: Adjustment, meaning: "Amount finance added or took off the final cost. Shown only when not 0.", where: Result}
       - {label: Adjustment note, meaning: "Why finance adjusted the final cost.", where: Result}
-      - {label: Approved completion date at close, meaning: "Completion date of the approved baseline when the project closed.", where: Result}
+      - {label: Approved completion date at close, meaning: "Completion date of the approved Delivery Budget when the project closed.", where: Result}
       - {label: Approved client delay at close (days), meaning: "Approved client delay days when the project closed.", where: Result}
       - {label: Handover date at close, meaning: "Date of the confirmed handover used for the result.", where: Result}
       - {label: Days late, meaning: "Days from the approved completion date plus client delays to the handover. Counted before the grace.", where: Result}
       - {label: Grace at close (days), meaning: "Completion date grace in force when the project closed.", where: Result}
-      - {label: Baseline version at close, meaning: "The approved version the result was measured against.", where: Result}
+      - {label: Budget version at close, meaning: "The approved version the result was measured against.", where: Result}
 
-  - name: Delivery baseline
-    where: Project › Delivery › All Baselines (open a baseline), or the Delivery baseline button on a project
+  - name: Delivery Budget
+    where: Project › Delivery › Projects › Delivery Budgets (open a budget), or the Budget button on a project
     fields:
-      - {label: Completion date, meaning: "Planned completion date. Becomes the project's end date when the baseline is approved. Editable only on a draft.", where: Form}
+      - {label: Completion date, meaning: "Planned completion date. Becomes the project's end date when the budget is approved. Editable only on a draft.", where: Form}
       - {label: Budget total, meaning: "Sum of the budget by category, contingency included, before VAT.", where: Form}
       - {label: Contingency, meaning: "Sum of the contingency items.", where: Form}
       - {label: Project manager, meaning: "The project's manager.", where: Form}
@@ -77,10 +79,10 @@ screens:
       - {label: Dates approved by, meaning: "The Head of Delivery who approved the dates.", where: Approvals tab}
       - {label: Budget approved by, meaning: "The finance user who approved the budget. Shown when finance approval is needed.", where: Approvals tab}
       - {label: MD approval by, meaning: "The MD, when MD approval is needed.", where: Approvals tab}
-      - {label: Note for the project manager, meaning: "Why the baseline is being returned. Required before Return to Draft.", where: Approvals tab}
+      - {label: Note for the project manager, meaning: "Why the budget is being returned. Required before Return for Changes.", where: Approvals tab}
 
   - name: Cost item
-    where: Delivery baseline › Costs tab (one line per item)
+    where: Delivery Budget › Costs tab (one line per item)
     fields:
       - {label: What, meaning: "What the project pays for, for example 48-port PoE switches.", where: Costs list}
       - {label: Type, meaning: "Plain-language cost type. Decides the budget category.", where: Costs list}
@@ -100,7 +102,7 @@ screens:
       - {label: Total (before VAT), meaning: "The item's amount in KES, before VAT.", where: Costs list}
 
   - name: Handover
-    where: Project header › Record Handover, or Project › Delivery › Handovers
+    where: Project header › Record Handover, or Project › Delivery › Projects › Handovers
     fields:
       - {label: Project, meaning: "The project handed over.", where: Form}
       - {label: Handover date, meaning: "The date the client took over the work, the date on the certificate where there is one. Today by default.", where: Form}
@@ -110,13 +112,13 @@ screens:
       - {label: Note when returning, meaning: "Required for the Head of Delivery to return the handover.", where: Head of Delivery}
 
   - name: Client delay
-    where: Project header › Log Client Delay, or Project › Delivery › Client Delays
+    where: Project header › Log Client Delay, or Project › Delivery › Projects › Client Delays
     fields:
       - {label: Project, meaning: "The project held up.", where: Form}
       - {label: Delay, meaning: "From and to dates of the delay, both days included.", where: Form}
       - {label: Days, meaning: "To minus From plus 1.", where: Form}
       - {label: Evidence, meaning: "Client letter, site-access email or minutes. Optional.", where: Form}
-      - {label: What the client delayed, and why, meaning: "The reason, typed in the box under the dates. Required.", where: Form}
+      - {label: "What the client delayed, and why", meaning: "The reason, typed in the box under the dates. Required.", where: Form}
       - {label: Approved or rejected by, meaning: "The Head of Delivery who decided.", where: Form}
       - {label: Note when rejecting, meaning: "Required for the Head of Delivery to reject the delay.", where: Head of Delivery}
 
@@ -128,29 +130,29 @@ screens:
       - {label: Proposed final cost, meaning: "Spent plus Open orders.", where: Window}
       - {label: Adjustment, meaning: "Add a known late bill, or take out a cost that is not this project's.", where: Window}
       - {label: Final cost, meaning: "Proposed final cost plus Adjustment. Frozen for the budget KPI.", where: Window}
-      - {label: Approved budget, meaning: "Budget total of the latest approved baseline.", where: Window}
+      - {label: Approved budget, meaning: "Budget total of the latest approved Delivery Budget.", where: Window}
       - {label: Why, meaning: "Reason for the adjustment. Required when there is one.", where: Window}
       - {label: Reason for reopening, meaning: "Required to reopen a closed project.", where: Reopen Project window}
 
   - name: Delivery Settings
-    where: Project › Configuration › Delivery › Delivery Settings
+    where: Project › Delivery › Setup › Delivery Settings (or Accounting › Configuration › Project Budgets › Delivery Settings)
     fields:
       - {label: Completion date grace (days), meaning: "A handover up to this many days after the deadline is still on time. 7 by default.", where: KPI rules}
-      - {label: Baseline due after award (days), meaning: "Days after the award date by which the baseline is due. 14 by default.", where: KPI rules}
+      - {label: Budget due after award (days), meaning: "Days after the award date by which the Delivery Budget is due. 14 by default.", where: KPI rules}
       - {label: Contingency cap (%), meaning: "Contingency may be at most this share of the budget total. 5 by default.", where: KPI rules}
       - {label: MD, meaning: "The one user who approves revisions above the limits.", where: MD approval of revisions}
       - {label: MD approval above budget increase (%), meaning: "A revision more than this far above v1's budget needs the MD. 10 by default.", where: MD approval of revisions}
       - {label: MD approval above date extension (days), meaning: "A revision with a completion date more than this many days after v1's needs the MD. 30 by default.", where: MD approval of revisions}
       - {label: New cost accounts, meaning: "A new plan per project, named after it, or One shared plan for all delivery projects.", where: Budgets and cost accounts}
       - {label: Shared plan for project cost accounts, meaning: "The plan used when cost accounts are shared. Shown only for the shared option.", where: Budgets and cost accounts}
-      - {label: Budget runs past completion (days), meaning: "The Odoo budget ends this many days after the completion date, so late bills still count. 180 by default.", where: Budgets and cost accounts}
+      - {label: Budget runs past completion (days), meaning: "The accounting budget ends this many days after the completion date, so late bills still count. 180 by default.", where: Budgets and cost accounts}
       - {label: VAT rate (%), meaning: "Starting VAT % on new cost items. 16 by default.", where: Budgets and cost accounts}
-      - {label: Accounts, meaning: "The ledger accounts of each budget line: Direct project costs, Project travel and site, Project bonds and insurance.", where: Odoo budget mapping}
+      - {label: Accounts, meaning: "The ledger accounts of each budget line: Direct project costs, Project travel and site, Project bonds and insurance.", where: Accounting budget mapping}
       - {label: Reserve account, meaning: "The account contingency is budgeted on, which nobody posts to.", where: Project contingency}
-      - {label: Position, meaning: "The budgetary position created by Apply mapping. Read-only.", where: Odoo budget mapping}
+      - {label: Position, meaning: "The budgetary position created by Apply mapping. Read-only.", where: Accounting budget mapping}
 
   - name: Cost Types
-    where: Project › Configuration › Delivery › Cost Types
+    where: Project › Delivery › Setup › Cost Types
     fields:
       - {label: Type, meaning: "The plain-language name project managers pick on a cost item.", where: List}
       - {label: Hint, meaning: "One line shown when picking the type.", where: List}
@@ -159,21 +161,48 @@ screens:
       - {label: Active, meaning: "Switch off to stop offering the type.", where: List}
 
   - name: Budget Categories
-    where: Project › Configuration › Delivery › Budget Categories
+    where: Project › Delivery › Setup › Budget Categories
     fields:
       - {label: Name, meaning: "The category the budget is summarised in.", where: List}
-      - {label: What goes in, meaning: "A short description shown on the baseline.", where: List}
-      - {label: Budgetary position, meaning: "The Odoo budget position whose accounts the category is tracked on. Empty means it goes with the direct project costs.", where: List}
+      - {label: What goes in, meaning: "A short description shown on the Delivery Budget.", where: List}
+      - {label: Budgetary position, meaning: "The budgetary position whose accounts the category is tracked on. Empty means it goes with the direct project costs.", where: List}
       - {label: Contingency, meaning: "Marks the planned reserve. Its total is checked against the contingency cap.", where: List}
       - {label: Active, meaning: "Switch off to stop using the category.", where: List}
 
   - name: Starter Items
-    where: Project › Configuration › Delivery › Starter Items
+    where: Project › Delivery › Setup › Starter Items
     fields:
-      - {label: What, meaning: "The cost line added to every new draft baseline.", where: List}
+      - {label: What, meaning: "The cost line added to every new draft Delivery Budget.", where: List}
       - {label: Type, meaning: "Its cost type.", where: List}
       - {label: Qty, meaning: "Starting quantity.", where: List}
       - {label: Unit, meaning: "Starting unit, lot by default.", where: List}
       - {label: Unit cost, meaning: "In KES, before VAT. Leave 0 for the project manager to price.", where: List}
       - {label: "% of other costs", meaning: "Contingency only.", where: List}
       - {label: Note, meaning: "Becomes the item's Reference.", where: List}
+
+  - name: Purchase order, budget
+    where: Purchase › Orders (open an order); Budget status also in the purchase order lists
+    fields:
+      - {label: Budget status, meaning: "The most serious budget flag on the order's lines: Within budget, No cost account, No budget line, Budget planned at 0 or Over budget. Shown as a badge under the order number.", where: Form header and order lists}
+      - {label: Budget, meaning: "The same flag for one order line.", where: Products tab}
+      - {label: Budget Available, meaning: "What is left of the delivery project's Delivery Budget, before VAT, from the last refresh. Red when this order takes a budget category over its plan. Was Left in delivery plan.", where: Smart button}
+      - {label: Budget line, meaning: "The accounting budget line the order counts against: cost account, budgetary position and budget name.", where: Budget impact tab}
+      - {label: Planned, meaning: "What the budget line plans, as a positive amount.", where: Budget impact tab}
+      - {label: Actual, meaning: "What is already posted on the budget line.", where: Budget impact tab}
+      - {label: Committed (other orders), meaning: "Other confirmed orders on the line not yet billed, before tax.", where: Budget impact tab}
+      - {label: This order, meaning: "This order's amount on the line, before tax (what is still to bill on a confirmed order; the whole line on a request for quotation).", where: Budget impact tab}
+      - {label: Left after, meaning: "Planned minus Actual minus Committed (other orders) minus This order. Below -0.50 the line is Over budget.", where: Budget impact tab}
+
+  - name: Accounting budget lines
+    where: Accounting budget form (Accounting Budget button on a Delivery Budget), or the budget-line list
+    fields:
+      - {label: Committed, meaning: "Confirmed purchase orders not billed yet, before tax. The cart icon opens the order lines.", where: Budget lines}
+      - {label: Draft, meaning: "Requests for quotation, before tax. Never reduces Available. The file icon opens them.", where: Budget lines}
+      - {label: Available, meaning: "Planned minus Actual minus Committed, all as positive amounts. Red below 0.", where: Budget lines}
+      - {label: Used (%), meaning: "Actual plus Committed as a share of Planned.", where: Budget lines}
+
+  - name: Project code
+    where: Any project form, the project lists and the project search
+    fields:
+      - {label: Project code, meaning: "P, the two-digit year the project was opened, a dash and a running number, such as P26-049. Unique in the company, never reused. Search by it in the project search.", where: "Form header, Project code column and search"}
+      - {label: Delivery projects, meaning: "On a won tender: the codes of the delivery projects opened from it, such as P26-049, P26-050.", where: Tender smart button}

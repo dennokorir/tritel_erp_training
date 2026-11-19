@@ -20,7 +20,9 @@ sources:
   - tritel_tender_tracker/security/security.xml
   - tritel_tender_tracker/views/tender_views.xml
   - tritel_tender_tracker/wizards/tender_summary_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_project_delivery/views/tender_views.xml
+  - tritel_project_delivery/models/tender.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -76,7 +78,7 @@ Once the tender is **Won** or **Prequalified**, the **Actual vs Estimated** tab 
 - **Approve** and **Reject** are hidden from other roles, but nothing else stops someone approving. Treat approval as the Head of Commercial's step.
 - **Reject** needs a reason: *Please enter a rejection reason before rejecting.* The **Rejection Reason** box only appears once a case is rejected, so the Head of Commercial can't fill it in first on the back-office form. Until this is changed, write the reason in the chatter and ask a Tender administrator to help record it.
 - A rejected case can only go back to **Draft** through a Tender administrator.
-- The approved delivery budget for a won tender is a separate thing: see [Delivery baselines](/projects/concepts/baselines/).
+- The approved budget the delivery team works to after a win is a separate thing, the project's Delivery Budget: see [Delivery Budgets and revisions](/projects/concepts/baselines/). Once a delivery project is opened, the tender's **Delivery projects** button shows its project code, for example **P26-049**.
 :::
 
 ## Tasks that use this

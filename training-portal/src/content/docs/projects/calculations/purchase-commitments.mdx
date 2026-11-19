@@ -1,0 +1,67 @@
+---
+title: How orders count against an accounting budget
+description: Which purchase order lines count against which accounting budget line, and how the Committed, Draft, Available and Used (%) columns on budget lines are worked out, with a worked example.
+module: projects
+pageType: calculation
+roles: [delivery-finance, finance, head-delivery]
+tags: [budget tracking, purchase orders, budgets]
+keywords: [commitment, committed, encumbrance, open orders, LPO, PO, RFQ, budget available, budget used, analytic budget, budgetary position, budget vs actual, accounting budget]
+related: [projects/how-to/approvers/check-an-order-against-the-budget, projects/reports/budget-commitments, projects/how-to/approvers/assign-cost-accounts, projects/calculations/budget-lines-and-phasing, projects/concepts/odoo-budget-and-cost-account, projects/calculations/tracking-figures]
+sidebar: { order: 9 }
+sources:
+  - tritel_project_delivery/models/purchase_budget.py
+  - tritel_project_delivery/views/purchase_budget_views.xml
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Odoo's accounting budgets compare what was **planned** with what was **actually** posted. Project Delivery adds what is **ordered but not billed yet**, so finance sees money as soon as it is promised to a vendor, not only when the bill arrives. One rule decides which order lines count against which budget line. The budget lines, each order's **Budget impact** tab, the **Assign Cost Accounts** preview and the **Budget Commitments** report all use it.
+
+## Which order lines count against a budget line
+
+An order line counts against a budget line when all of these are true:
+
+1. **The budget is running.** The budget is **Confirmed** or **Validated**. Draft, cancelled and done budgets are ignored. An approved Delivery Budget creates a validated one.
+2. **The cost account matches.** The line's cost account includes the budget line's cost account. A line split between cost accounts counts at its share: a line split 50% to *[P26-049] Data Centre Upgrade* counts half its amount there.
+3. **The expense account is in the budgetary position.** The expense account the line will post to when it is billed (the product's, otherwise its category's, adjusted by the order's fiscal position, as Odoo does when it creates the bill) is one of the accounts of the budget line's **Budgetary Position**.
+4. **The date is in range.** The order's date is between the budget line's **Start Date** and **End Date**.
+
+Cancelled orders never count. A line with no product has no expense account, so it matches no budget line.
+
+## The four columns on a budget line
+
+Accounting budgets keep cost budgets as minus amounts. These columns show every figure as a plus amount, before tax, in the company currency.
+
+| Column | How it is worked out |
+|---|---|
+| **Committed** | For confirmed orders (including locked ones): what is still to be billed, (quantity ordered − quantity billed) × price, at the line's share. Fully billed lines add nothing. |
+| **Draft** | The same, for requests for quotation: the full quantity × price. Draft **never** reduces **Available**. |
+| **Available** | Planned − Actual − Committed. Shown in bold, and in red below zero. |
+| **Used (%)** | (Actual + Committed) ÷ Planned × 100, as a bar. 0 when nothing is planned. |
+
+A cart icon after **Committed** opens the order lines behind it (*Orders behind Committed*), and a file icon after **Draft** opens the requests for quotation (*Requests for quotation behind Draft*). The icons show only when there is an amount. You see these columns on the budget's **Budget Lines** tab (**Accounting › Accounting › Management › Budgets**) and in the budget line list (**Accounting › Reporting › Management › Budgets Analysis**), where the Draft icon isn't shown.
+
+<Illustration name="projects/calc-budget-line-columns" caption="The new columns on a budget's Budget Lines tab. (1) The November line of the worked example below. (2) The icons that open the orders behind Committed and Draft." />
+
+<Illustration name="projects/calc-purchase-commitments" caption="One budget line with a part-billed order, half of a split order and a request for quotation." />
+
+## On the order: Left after
+
+An order's **Budget impact** tab uses the same figures for each budget line it touches:
+
+**Left after** = Planned − Actual − Committed (other orders) − This order
+
+**Committed (other orders)** is the budget line's **Committed** without this order. **This order** is this order's share: what isn't billed yet for a confirmed order, the full amount for a request for quotation. A request for quotation is therefore checked as if it were confirmed now. When **Left after** is below −0.5, the line is **Over budget**; when the budget line plans nothing, it is **Budget planned at 0**. See [Check a purchase order against the budget](/projects/how-to/approvers/check-an-order-against-the-budget/).
+
+## Edge cases
+
+- **Billed part.** Once a bill is posted, its amount moves from **Committed** to **Actual** (if the bill posts to the same cost account and an account in the budgetary position). Nothing is counted twice.
+- **Requests for quotation.** They show in **Draft**, never in **Committed** or **Available**, and never in another order's **Committed (other orders)**.
+- **Other currencies.** Orders in another currency are converted to the company currency at the order date.
+- **Discounts and taxes.** Discounts are taken off; taxes are left out.
+- **Nothing planned.** **Used (%)** is 0 and the order shows **Budget planned at 0**.
+
+:::note[Good to know]
+- Approved Delivery Budgets create budget lines **by month**, so the order date decides which month's line an order counts against. See [Budget by category, spend by month and the accounting budget lines](/projects/calculations/budget-lines-and-phasing/).
+- If two running budgets both have a line for the same cost account, budgetary position and date, an order line counts against only one of them.
+:::

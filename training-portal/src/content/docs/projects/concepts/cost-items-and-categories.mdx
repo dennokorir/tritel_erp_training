@@ -1,11 +1,11 @@
 ---
 title: Cost items, cost types and budget categories
-description: How a baseline's budget is built from cost items, how each item's type puts it in a budget category, and how quotes, VAT, foreign currency and starter items work.
+description: How a Delivery Budget is built from cost items, how each item's type puts it in a budget category, and how quotes, VAT, foreign currency and starter items work.
 module: projects
 pageType: concept
 roles: [delivery-pm, head-delivery, delivery-finance]
-tags: [baselines, budgets]
-keywords: [cost item, BOQ, bill of quantities, cost sheet, quotation, quote, estimate, VAT, exchange rate, USD, budget line, category, starter items, supplier quote]
+tags: [delivery budgets, budgets]
+keywords: [cost item, BOQ, bill of quantities, cost sheet, quotation, estimate, VAT, exchange rate, USD, category, starter items, baseline]
 related: [projects/how-to/delivery-pm/build-a-baseline, projects/how-to/delivery-pm/phase-the-spend, projects/concepts/contingency, projects/calculations/cost-items, projects/how-to/approvers/cost-types-and-categories]
 sidebar: { order: 3 }
 sources:
@@ -26,15 +26,15 @@ sources:
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/menus.xml
   - tritel_project_delivery/views/project_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
-A baseline's budget is built from **cost items**: one line for each thing the project will pay for, such as *48-port PoE switches* or *Installation by subcontractor*. You list them on the **Costs** tab of the baseline, in plain words, much like a BOQ or cost sheet. The system works out each item's amount before VAT and in KES, and adds the items up by **budget category**. Those category totals are what finance approves and what the Odoo budget is created from.
+A Delivery Budget's costs are built from **cost items**: one line for each thing the project will pay for, such as *48-port PoE switches* or *Installation by subcontractor*. You list them on the **Costs** tab of the Delivery Budget, in plain words, much like a BOQ or cost sheet. The system works out each item's amount before VAT and in KES, and adds the items up by **budget category**. Those category totals are what finance approves and what the accounting budget is created from.
 
 You never pick a budget category or a ledger account yourself. You pick a **cost type**, such as *Equipment we supply*, and the cost type decides the category.
 
-<Illustration name="projects/concept-cost-items" caption="Cost items on a draft baseline. The numbers match the list below." />
+<Illustration name="projects/concept-cost-items" caption="Cost items on a draft budget. The numbers match the list below." />
 
 1. Each line is one cost item: **What**, **Type**, **Qty**, **Currency**, **Unit cost**, **Pay from** and **Basis**. **Total (before VAT)** is worked out for you.
 2. A price that includes VAT: with **Incl. VAT** ticked, the VAT (16% by default, in **VAT %**) is taken out. KES 58,000 including VAT becomes KES 50,000.
@@ -81,26 +81,26 @@ flowchart TD
 | Bonds and insurance | Bonds, guarantees and insurance |
 | Contingency | Contingency |
 
-These are the standard lists. The Head of Delivery keeps the cost types under **Project › Configuration › Delivery › Cost Types**, and the Head of Delivery or Delivery Finance keeps the **Budget Categories**. Each cost type has a one-line **Hint** to help you choose, for example *Switches, servers, access points, cameras, racks, UPS*.
+These are the standard lists. The Head of Delivery keeps the cost types under **Project › Delivery › Setup › Cost Types**, and the Head of Delivery or Delivery Finance keeps the **Budget Categories**. Each cost type has a one-line **Hint** to help you choose, for example *Switches, servers, access points, cameras, racks, UPS*.
 
 ## Foreign currency
 
-Until the budget is approved, a foreign-currency item is converted at today's rate, and the baseline says *Foreign-currency amounts use today's rate until finance approves the budget.* When finance approves the budget (or the baseline is approved, if finance isn't needed), each item's rate is fixed and shown in **Fixed rate**. A revision keeps the fixed rate of items you don't touch. If you change an item's quantity, price, currency or VAT setting, it takes the rate of the day it is approved.
+Until the budget is approved, a foreign-currency item is converted at today's rate, and the Delivery Budget says *Foreign-currency amounts use today's rate until finance approves the budget.* When finance approves the budget (or the Delivery Budget is approved, if finance isn't needed), each item's rate is fixed and shown in **Fixed rate**. A revision keeps the fixed rate of items you don't touch. If you change an item's quantity, price, currency or VAT setting, it takes the rate of the day it is approved.
 
 ## Starter items
 
-Every new baseline starts with the **starter items**: costs most projects carry. The standard set is *Travel and site costs*, *Freight, clearing and delivery to site*, *Performance bond and insurance* and *Contingency* at 5% of the other costs. Price the ones that apply and delete the rest. The Head of Delivery or Delivery Finance keeps the list under **Starter Items**.
+Every new Delivery Budget starts with the **starter items**: costs most projects carry. The standard set is *Travel and site costs*, *Freight, clearing and delivery to site*, *Performance bond and insurance* and *Contingency* at 5% of the other costs. Price the ones that apply and delete the rest. The Head of Delivery or Delivery Finance keeps the list under **Project › Delivery › Setup › Starter Items**.
 
 :::note[Good to know]
-- A starter item left at a unit cost of 0 stops the baseline from being confirmed: *"Performance bond and insurance" needs a quantity and a unit cost.* Delete starter items that don't apply.
+- A starter item left at a unit cost of 0 stops the budget from being submitted for approval: *"Performance bond and insurance" needs a quantity and a unit cost.* Delete starter items that don't apply.
 - Every cost item except contingency needs a **Pay from** month before you can confirm: *"Travel and site costs" needs the month it will be paid.*
-- Budgets are keyed by hand. Older baselines may still show items that were once imported from tender purchase or sales orders; they keep that link as history only.
+- Budgets are keyed by hand. Older budgets may still show items that were once imported from tender purchase or sales orders; they keep that link as history only.
 - The **Budget category** help text on a cost type says it is "set once by finance", but only the Head of Delivery can edit cost types.
 :::
 
 ## Tasks that use this
 
-- [Build a baseline with the cost item builder](/projects/how-to/delivery-pm/build-a-baseline/)
+- [Build a Delivery Budget with the cost item builder](/projects/how-to/delivery-pm/build-a-baseline/)
 - [Plan when the money goes out](/projects/how-to/delivery-pm/phase-the-spend/)
 - [How a cost item's amount is worked out](/projects/calculations/cost-items/)
 - [Maintain cost types, categories, starter items and standard milestones](/projects/how-to/approvers/cost-types-and-categories/)

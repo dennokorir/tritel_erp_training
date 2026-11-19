@@ -5,7 +5,7 @@ module: projects
 pageType: calculation
 roles: [delivery-pm, head-delivery, delivery-finance, md, line-manager]
 tags: [close-out, kpi]
-keywords: [final cost, close out, on time, on budget, late, overrun, grace period, days late, not scored, delivery KPI, appraisal, costs after close]
+keywords: [final cost, close out, on time, on budget, late, overrun, grace period, days late, not scored, delivery KPI, appraisal, baseline]
 related: [projects/concepts/handover-and-close-out, projects/concepts/delivery-kpi, projects/workflows/close-out, projects/how-to/approvers/close-a-project, projects/how-to/approvers/review-costs-after-close, accountability/concepts/metrics, accountability/calculations/metric-families]
 sidebar: { order: 7 }
 sources:
@@ -18,7 +18,7 @@ sources:
   - tritel_project_delivery/models/project.py
   - tritel_project_delivery/models/tracking.py
   - tritel_project_delivery/views/menus.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -33,11 +33,11 @@ The **Close Project** window shows, in KES before VAT:
 - **Proposed final cost** = Spent + Open orders.
 - **Adjustment**: optional, plus or minus, for example a known late bill or a cost that belongs to another project. **Why** is then required: *Explain the adjustment to the final cost.*
 - **Final cost** = Proposed final cost + Adjustment.
-- **Approved budget**: the **Budget total** of the latest approved baseline, contingency included.
+- **Approved budget**: the **Budget total** of the latest approved Delivery Budget, contingency included.
 
 ## The result
 
-The project is **scored** only if it has an approved baseline and a **Confirmed** handover. Then:
+The project is **scored** only if it has an approved budget and a **Confirmed** handover. Then:
 
 - deadline = **Approved completion date** + **Approved client delay (days)**;
 - **Days late** = days from the deadline to the handover date, or 0 if handed over by the deadline;
@@ -50,13 +50,13 @@ The project is **scored** only if it has an approved baseline and a **Confirmed*
 | **Late** | Over the grace, within budget |
 | **Over budget** | On time, above the budget |
 | **Late and over budget** | Neither |
-| **Not scored** | No approved baseline, or no confirmed handover |
+| **Not scored** | No approved budget, or no confirmed handover |
 
 <Illustration name="projects/calc-close-result" caption="Handed over 5 days after the deadline, within the 7-day grace, and 30,000 under budget." />
 
 The window previews the result before you confirm, for example *Handover 15 Apr 2027 against approved 31 Mar 2027 + 10 days client delay: 5 days late (grace 7).*
 
-Closing stores everything with the project: the budget, baseline version, completion date, handover date, delay days and grace **at close**. Changing Delivery Settings later does not change a closed project's result. **Reopen** clears the figures (the old ones are posted in the chatter) and closing again works them out afresh.
+Closing stores everything with the project: the budget, budget version, completion date, handover date, delay days and grace **at close**. Changing Delivery Settings later does not change a closed project's result. **Reopen** clears the figures (the old ones are posted in the chatter) and closing again works them out afresh.
 
 ## Costs after close
 
@@ -86,7 +86,7 @@ See [How metrics count](/accountability/calculations/metric-families/) for how a
 :::note[Good to know]
 **Days late** is recorded before the grace is applied. A project can show *5* in **Days late** and still be **On time**, because 5 is within the 7-day grace. Only more than 7 days late makes it **Late**.
 
-The budget check uses the latest approved baseline at the time of closing, including any approved revision and the contingency.
+The budget check uses the latest approved budget at the time of closing, including any approved revision and the contingency.
 
 A project counts in the KPI window of its handover date, not the date it was closed. A project handed over in June but closed in August counts in June's window once it is closed.
 :::

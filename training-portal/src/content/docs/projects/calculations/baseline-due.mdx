@@ -1,11 +1,11 @@
 ---
-title: Baseline due date and the project's baseline status
-description: When a delivery project's baseline is due, when the overdue reminder is sent, and how the project's Baseline status is worked out from its versions.
+title: Budget due date and the project's budget status
+description: When a delivery project's Delivery Budget is due, when the overdue reminder is sent, and how the project's Budget status is worked out from its versions.
 module: projects
 pageType: calculation
 roles: [delivery-pm, head-delivery]
-tags: [baselines, reminders]
-keywords: [baseline due, deadline, overdue, late baseline, award date, reminder, chase, baseline status, revision pending, no baseline]
+tags: [delivery budgets, reminders]
+keywords: [baseline due, deadline, overdue, late baseline, award date, reminder, chase, baseline status, revision pending, no baseline, baseline]
 related: [projects/concepts/baselines, projects/workflows/baseline, projects/how-to/approvers/remind-overdue-baselines, projects/how-to/delivery-pm/my-actions, projects/how-to/approvers/delivery-settings]
 sidebar: { order: 8 }
 sources:
@@ -21,45 +21,47 @@ sources:
   - tritel_project_delivery/views/menus.xml
   - tritel_project_delivery/views/my_actions_views.xml
   - tritel_project_delivery/views/tender_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_project_delivery/views/baseline_views.xml
+  - tritel_project_delivery/models/delivery_settings.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
-Every delivery project should have an approved baseline soon after the tender is won. The **Baseline due** date on the **Delivery** tab says by when.
+Every delivery project should have an approved Delivery Budget soon after the tender is won. The **Budget due** date on the **Delivery** tab says by when.
 
 ## The rule
 
-- **Baseline due** = the tender's **Award date** + **Baseline due after award (days)** in Delivery Settings (14 by default).
+- **Budget due** = the tender's **Award date** + **Budget due after award (days)** in Delivery Settings (14 by default).
 - If the tender has no award date, the count starts from the day the project was created.
 - Only delivery projects have a due date.
 
-Each day the system checks active delivery projects whose **Baseline** is **No baseline** or **Baseline in draft**. If the due date has passed (the day after it at the earliest), the project manager and every Head of Delivery get a to-do: *Delivery baseline overdue*. It is marked done when a baseline is confirmed or approved.
+Each day the system checks active delivery projects whose **Budget status** is **No budget** or **Budget in draft**. If the due date has passed (the day after it at the earliest), the project manager and every Head of Delivery get a to-do: *Delivery Budget overdue*. It is marked done when a budget is submitted for approval or approved.
 
-<Illustration name="projects/calc-baseline-due" caption="Awarded 1 Mar 2027 and due 15 Mar 2027. Still without a confirmed baseline on 16 Mar, the project is flagged." />
+<Illustration name="projects/calc-baseline-due" caption="Awarded 1 Mar 2027 and due 15 Mar 2027. Still without a submitted budget on 16 Mar, the project is flagged." />
 
-## The project's Baseline status
+## The project's Budget status
 
-| Baseline | When |
+| Budget status | When |
 |---|---|
-| **No baseline** | No version yet, or every version is withdrawn |
-| **Baseline in draft** | No approved version, and one is a draft |
+| **No budget** | No version yet, or every version is withdrawn |
+| **Budget in draft** | No approved version, and one is a draft |
 | **Waiting for approval** | No approved version, and one is waiting for approval |
 | **Approved** | An approved version, and nothing in progress |
 | **Revision pending** | An approved version, and a revision in draft or waiting |
 
-Withdrawn and superseded versions are ignored. In **Delivery Projects** the rows with **No baseline** are shown in red.
+Withdrawn and superseded versions are ignored. In the **My Delivery Projects** and **Delivery Projects** lists, the rows with **No budget** are shown in red.
 
 ## Where it shows up
 
-- **My Actions › Baselines to draft** (project managers): projects with no baseline and first drafts not yet confirmed, marked overdue after the due date.
-- **My Actions › Baselines overdue on your team** (Head of Delivery): other project managers' projects past their due date with no baseline or only a draft, with **Remind** (once a day per project).
-- The project search filters **Needs baseline** (no baseline or a draft) and **Baseline waiting for approval** (waiting or revision pending).
+- **My Actions › Budgets to draft** (project managers): projects with no budget and first drafts not yet submitted, marked overdue after the due date.
+- **My Actions › Budgets overdue on your team** (Head of Delivery): other project managers' projects past their due date with no budget or only a draft, with **Remind** (once a day per project).
+- The project search filters **Needs a budget** (no budget or a draft) and **Budget waiting for approval** (waiting or revision pending).
 
 ## Edge cases
 
-- **Waiting counts as on its way.** A project whose baseline is waiting for approval is not flagged, even after the due date.
+- **Waiting counts as on its way.** A project whose budget is waiting for approval is not flagged, even after the due date.
 - **Changing the setting** moves the due date of every project straight away, because it is worked out each time.
 
 :::note[Good to know]
-The *Delivery baseline overdue* to-do is sent only once per project. If the baseline is later returned to draft, or withdrawn, the project shows as overdue in My Actions but no new to-do is sent. The Head of Delivery can use **Remind** from My Actions instead.
+The *Delivery Budget overdue* to-do is sent only once per project. If the budget is later sent back with **Return for Changes**, or withdrawn, the project shows as overdue in My Actions but no new to-do is sent. The Head of Delivery can use **Remind** from My Actions instead.
 :::

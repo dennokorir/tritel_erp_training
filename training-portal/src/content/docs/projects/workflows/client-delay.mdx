@@ -16,7 +16,7 @@ sources:
   - tritel_project_delivery/models/project.py
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/menus.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 
 A **client delay** is logged by the project manager and decided by the Head of Delivery. Only approved delays move the project's on-time deadline.
@@ -67,7 +67,7 @@ flowchart TD
 ## What the system does automatically
 
 - **Days:** worked out from **From** and **To**, counting both days. A delay that ends before it starts is refused: *The delay ends before it starts.*
-- **On submit:** every Head of Delivery gets an **Approve client delay** to-do (for example *PRJ Customer A network upgrade: 10 days of client delay (01 Mar 2026 to 10 Mar 2026) submitted for approval.*), and the delay appears under **Client delays to approve** in their **My Actions**. The project manager sees it under **Waiting on others**, with **Remind**.
+- **On submit:** every Head of Delivery gets an **Approve client delay** to-do (for example *Data Centre Upgrade: 10 days of client delay (01 Mar 2026 to 10 Mar 2026) submitted for approval.*), and the delay appears under **Client delays to approve** in their **My Actions**. The project manager sees it under **Waiting on others**, with **Remind**.
 - **On approve or reject:** the to-do is removed and the decision is written in the delay's chatter. Rejecting needs a note: *Write a note explaining why, then reject it.*
 - **Approved days:** the project's **Approved client delay (days)** counts every calendar day covered by an approved delay, overlapping days once. At close, these days are added to the approved completion date and frozen as **Approved client delay at close (days)**.
 - **Drafts left behind:** a draft delay shows under **Client delays to submit** in the project manager's **My Actions**.

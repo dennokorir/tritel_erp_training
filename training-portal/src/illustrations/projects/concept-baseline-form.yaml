@@ -1,21 +1,21 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_baselines, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root
 # docs-sync: shows tritel_project_delivery:model:project.delivery.baseline, tritel_project_delivery:model:project.delivery.baseline.line, tritel_project_delivery:selection:project.delivery.baseline.kind
 # docs-sync: shows tritel_project_delivery:selection:project.delivery.baseline.state, tritel_project_delivery:selection:project.delivery.client.delay.state, tritel_project_delivery:selection:project.project.delivery_baseline_state
-# docs-sync: shows tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:delivery-baseline
+# docs-sync: shows tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:delivery-budget
 type: screen
-title: A baseline revision
-desc: A delivery baseline form for revision v2 in Draft, with the Confirm for Approval button, the status bar, the completion date and budget total, the Change group comparing it with earlier versions, the Reason for revision and the tabs, numbered 1 to 6.
+title: A delivery budget revision
+desc: A Delivery Budget form for revision v2 in Draft, with the Submit for Approval button, the status bar, the completion date and budget total, the Change group comparing it with earlier versions, the Reason for revision and the tabs, numbered 1 to 6.
 source: tritel_project_delivery/views/baseline_views.xml (baseline_form); views/tracking_views.xml (baseline_form_changes)
 frame:
   grid: true
   app: Project
   menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true}, Reporting]
-  breadcrumb: [All Baselines, "PRJ Customer A network upgrade · baseline v2"]
+  breadcrumb: [Delivery Budgets, "P26-049 · Data Centre Upgrade · budget v2"]
 blocks:
-  - buttons: [{label: Confirm for Approval, primary: true, n: 1}, {label: Withdraw}]
+  - buttons: [{label: Submit for Approval, primary: true, n: 1}, {label: Withdraw}]
     status: {steps: [Draft, Waiting for approval, Approved], current: Draft, n: 2}
-  - title: {text: PRJ Customer A network upgrade, sub: "Baseline v2 · Revision"}
+  - title: {text: P26-049 · Data Centre Upgrade, sub: "Budget v2 · Revision"}
   - columns:
       - panel: false
         blocks:

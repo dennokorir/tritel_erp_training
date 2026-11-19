@@ -1,17 +1,17 @@
 ---
 title: Open a delivery project from a won tender
-description: Turn a won tender into a delivery project with its own cost account, delivery stages, standard milestones and a draft baseline ready to fill in.
+description: Turn a won tender into a delivery project with its own project code, cost account, delivery stages, standard milestones and a draft Delivery Budget ready to fill in.
 module: projects
 pageType: how-to
-roles: [delivery-pm]
+roles: [delivery-pm, head-delivery]
 tags: [delivery projects, tenders]
-keywords: [won tender, award, new project, create project, start delivery, kick-off, cost account, analytic account, cost centre, job number, LPO]
+keywords: [won tender, award, new project, create project, start delivery, kick-off, cost account, analytic account, cost centre, job number, project code, baseline]
 where: [Tender Manager, Tenders, All Tenders]
 before:
-  - You are a Delivery Project Manager. Only delivery project managers see the <strong>Open Delivery Project</strong> button.
+  - You are a Delivery Project Manager or the Head of Delivery. Only they see the <strong>Open Delivery Project</strong> button.
   - The tender's status is <strong>Won</strong>.
   - If finance already keeps a cost account for this job, find out its name.
-related: [projects/concepts/delivery-projects, projects/concepts/odoo-budget-and-cost-account, projects/how-to/delivery-pm/link-an-existing-project, projects/how-to/delivery-pm/build-a-baseline, projects/calculations/baseline-due]
+related: [projects/concepts/delivery-projects, projects/concepts/project-codes, projects/concepts/odoo-budget-and-cost-account, projects/how-to/delivery-pm/link-an-existing-project, projects/how-to/delivery-pm/build-a-baseline, projects/calculations/baseline-due]
 sidebar: { order: 1 }
 sources:
   - tritel_project_delivery/views/tender_views.xml
@@ -19,23 +19,27 @@ sources:
   - tritel_project_delivery/wizards/open_project_wizard.py
   - tritel_project_delivery/wizards/open_project_wizard_views.xml
   - tritel_project_delivery/models/project.py
+  - tritel_project_delivery/models/project_code.py
+  - tritel_project_delivery/models/delivery_access.py
   - tritel_project_delivery/models/whole_orders.py
   - tritel_project_delivery/data/delivery_data.xml
+  - tritel_project_delivery/data/delivery_access_data.xml
   - tritel_project_delivery/data/starter_item_data.xml
   - tritel_project_delivery/models/baseline.py
   - tritel_project_delivery/models/buttons.py
   - tritel_project_delivery/models/closeout.py
   - tritel_project_delivery/models/delivery_settings.py
+  - tritel_project_delivery/models/my_actions.py
   - tritel_project_delivery/models/starter_item.py
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/buttons_views.xml
   - tritel_project_delivery/views/menus.xml
   - tritel_project_delivery/views/project_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
-When a tender is won, the delivery team opens a **delivery project** from it. The system sets the project up and starts a draft baseline for you to fill in. You do this once per project, soon after the award: the baseline is due 14 days after the award date.
+When a tender is won, the delivery team opens a **delivery project** from it. The system sets the project up, gives it a project code and starts a draft Delivery Budget for you to fill in. You do this once per project, soon after the award: the budget is due 14 days after the award date.
 
 <Illustration name="projects/pm-open-project" caption="Opening a delivery project from a won tender. The numbers match the steps below." />
 
@@ -49,7 +53,7 @@ When a tender is won, the delivery team opens a **delivery project** from it. Th
    - If the project already exists in Odoo, choose it in **Existing project** instead. See [Link an existing project to its tender](/projects/how-to/delivery-pm/link-an-existing-project/).
 5. Choose the **Project manager** and check the **Start date** (today, unless you change it).
 6. Check **Cost account**. This is the account that orders, bills and expenses must carry to count for the project.
-   - If the system found an existing account with a matching name, it is filled in, and the line underneath says *Existing account in plan "PRJ Customer A network upgrade" with 12 cost lines.* Keep it if it is finance's account for this job.
+   - If the system found an existing account with a matching name, it is filled in, and the line underneath says *Existing account in plan "Data Centre Upgrade" with 12 cost lines.* Keep it if it is finance's account for this job.
    - If it is empty, the line says *A new cost account will be created in a new plan named after the project.* That is fine when finance has no account yet.
 7. Click **Open Delivery Project**.
 
@@ -57,29 +61,34 @@ When a tender is won, the delivery team opens a **delivery project** from it. Th
 
 The project opens. The system has:
 
+- given it the next [project code](/projects/concepts/project-codes/), for example **P26-049**, so it shows as **P26-049 · Data Centre Upgrade**;
 - linked it to the tender and filled in the client;
-- given it a **Cost account** (the existing one you chose, or a new one);
+- given it a **Cost account** (the existing one you chose, or a new one). The account carries the project's code, so orders, bills and budgets find it by code;
 - added the delivery stages **Initiation**, **Survey & Design**, **Procurement**, **Delivery & Installation**, **Configuration & Testing**, **Handover** and **Closed**;
 - added the standard milestones (for example **Site survey and design approved**, **Equipment delivered to site**, **Installation complete**, **Testing and commissioning complete** and **Handover**), without dates;
 - made the project manager a follower of the project;
-- started **Baseline v1** in **Draft**, with the standard starter items (by default **Travel and site costs**, **Freight, clearing and delivery to site**, **Performance bond and insurance** and **Contingency** at 5% of the other costs). The baseline's chatter says *Draft started with 4 starter items. Price them, delete what does not apply, and add the rest of the costs.*
+- started **Budget v1** in **Draft**, with the standard starter items (by default **Travel and site costs**, **Freight, clearing and delivery to site**, **Performance bond and insurance** and **Contingency** at 5% of the other costs). Its chatter says *Draft started with 4 starter items. Price them, delete what does not apply, and add the rest of the costs.*
 
-On the project's **Delivery** tab, **Baseline due** shows the award date plus 14 days. The project is listed in **Project › My Actions** under **Baselines to draft**. If there is still no approved baseline after the due date, you and the Head of Delivery each get a *Delivery baseline overdue* to-do.
+The person you chose as **Project manager** gets the Delivery Project Manager role straight away, if they didn't have it, so they can work on the project.
 
-The tender now has a **Delivery projects** smart button that opens the project.
+On the project's **Delivery** tab, **Budget due** shows the award date plus 14 days. The project is listed in **Project › My Actions** under **Budgets to draft**. If there is still no approved budget after the due date, you and the Head of Delivery each get a *Delivery Budget overdue* to-do.
 
-Next: [build the baseline](/projects/how-to/delivery-pm/build-a-baseline/).
+The tender now has a **Delivery projects** smart button showing the project's code. It opens the project.
+
+Next: [build the Delivery Budget](/projects/how-to/delivery-pm/build-a-baseline/).
 
 ## Common mistakes
 
 | Message | Why it happens | What to do |
 |---|---|---|
-| *Only delivery project managers can open delivery projects.* | Your user is not a Delivery Project Manager. | Ask the Head of Delivery or the system administrator to give you the role, or ask a delivery project manager to open it. |
+| *Only delivery project managers can open delivery projects.* | You don't have the Delivery Project Manager role. You get it automatically only once you manage a delivery project. | Ask the Head of Delivery to open it and name you as **Project manager**. |
 | *Only a won tender can open a delivery project.* | The tender's status is not **Won** (for example it is still under evaluation). | Wait until the tender is marked **Won**. |
-| *Cost account PRJ Customer A network upgrade is already used by project PRJ Customer A phase 1.* | The account you chose already belongs to another project. | Choose a different account, or leave **Cost account** empty to create a new one. Check with finance which account this job uses. |
-| *Set the shared plan for project cost accounts in Delivery Settings first.* | Delivery Settings are set to put all cost accounts in one shared plan, but no plan is chosen. | Ask finance or the Head of Delivery to complete **Delivery Settings**, then try again. |
+| *Cost account Data Centre Upgrade is already used by project CCTV Installation.* | The account you chose already belongs to another project. | Choose a different account, or leave **Cost account** empty to create a new one. Check with finance which account this job uses. |
+| *Data Centre Upgrade carries the code of P26-047 · CCTV Installation. Choose another cost account for Data Centre Upgrade.* | The account you chose carries another project's code. | Choose another account, or leave **Cost account** empty. |
+| *Set the shared plan for project cost accounts in Delivery Settings first.* | Delivery Settings are set to put all cost accounts in one shared plan, but no plan is chosen. | Ask Delivery Finance or the Head of Delivery to complete **Delivery Settings**, then try again. |
 
 :::note[Good to know]
+- The Delivery Project Manager role follows the projects: anyone who is **Project manager** on an active delivery project has it, and loses it when they no longer manage one. It is checked when a project's manager changes and again every day. So someone who doesn't manage a delivery project yet can't open their first one: the Head of Delivery opens it and names them as **Project manager**.
 - The cost account suggestion is a guess based on the project name and tender number. Always check it: a wrong account means the project's spending is counted in the wrong place.
-- The starter items with no price block the baseline from being confirmed until you price them or delete them. See [Build a baseline](/projects/how-to/delivery-pm/build-a-baseline/).
+- The starter items with no price block the Delivery Budget from being submitted until you price them or delete them. See [Build a Delivery Budget](/projects/how-to/delivery-pm/build-a-baseline/).
 :::
