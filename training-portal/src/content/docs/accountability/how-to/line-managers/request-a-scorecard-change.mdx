@@ -5,8 +5,8 @@ module: accountability
 pageType: how-to
 roles: [line-manager]
 tags: [scorecard changes, targets]
-keywords: [change target, revise target, adjust KPI, lower target, raise target, close target, scorecard change, change request, approval, propose change, target-setting deadline]
-where: [Accountability, My Team, Scorecard Change Requests]
+keywords: [change target, revise target, adjust KPI, lower target, raise target, close target, scorecard change, change request, approval, target-setting deadline, Scorecard Change Requests]
+where: [Accountability, My Team, Approve, Scorecard Changes]
 before:
   - You are the employee's manager or the manager who cascaded the target. HR and accountability administrators can do this too.
   - The target is live (Active, Pending Review or Reviewed). Drafts are edited directly.
@@ -26,7 +26,9 @@ sources:
   - tritel_accountability_framework/security/ir_groups.xml
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_accountability_framework/views/menu.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu_people.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -50,7 +52,7 @@ Once a target is live, what it is measured against is locked, because it decides
 
 Team members can click **Propose a change** on their own target to ask for it to be withdrawn, closed or changed. You get a **Scorecard change proposed** to-do.
 
-1. Open **Accountability › My Team › Scorecard Change Requests**. It opens on **Waiting for approval** and **Proposed by employees**. Open the request and read the **Reason** and the score before and after.
+1. Open **Accountability › My Team › Approve › Scorecard Changes**. It opens on **Waiting for approval** and **Proposed by employees**. Open the request and read the **Reason** and the score before and after.
 2. Click **Submit** to make the change (or send it for approval, after the deadline).
 3. To refuse it, write the **Note on the decision** first.
 4. Then click **Decline**. The note is sent to the employee.
@@ -65,7 +67,8 @@ After the deadline, changes raised by the managers who report to you come to you
 - **After the deadline**: the request is **Waiting for approval**. Your own manager and every HR manager get an **Approve scorecard change** to-do; one approval is enough.
 - **When applied**: the target is updated, the change is noted on the target, and scores are recalculated. Reviews already signed off don't move. The employee gets a **Priority Change** to acknowledge.
 - **Cancel request** withdraws a request that is not applied yet. Open requests are cancelled automatically when the period closes.
-- HR gets a monthly summary of applied, declined and waiting changes.
+- HR gets a monthly summary of applied, declined and waiting changes, and follows every request under **People › Scorecard Changes**.
+- To see the full history, open **My Team › Approve › Scorecard Changes** and clear the **Waiting for approval** and **Proposed by employees** filters. **Applied**, **Declined**, **Raised by me** and **This month** narrow it again.
 
 ## Common mistakes
 

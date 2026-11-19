@@ -1,9 +1,10 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_my_actions_action, tritel_accountability_framework:client_action:accountability_team_targets_client_action, tritel_accountability_framework:field:hr.employee.accountability_target_ids
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_actions, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_team_targets, tritel_accountability_framework:model:accountability.objective
 # docs-sync: shows tritel_accountability_framework:view_ext:hr.view_employee_form:button:targets, tritel_accountability_framework:view_ext:hr.view_employee_form:field:targets, tritel_accountability_framework:view_ext:hr.view_employee_form:page:performance
 # docs-sync: shows tritel_accountability_framework:wizard:accountability.target.rebalance.wizard, tritel_project_delivery:view_ext:project.edit_project:page:delivery, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:field:delivery
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_organisation
 type: screen
 title: Weight and share of score on a target
 desc: The Assignment group and the Share of Score strip of a target form, showing the Weight with the Rebalance Weights and Withdraw links, the share from today with its rank, the composition bar and the hint underneath, numbered 1 to 4.
@@ -11,7 +12,7 @@ source: tritel_accountability_framework/views/accountability_target_views.xml (A
 frame:
   grid: true
   app: Accountability
-  menu: [My Performance, {label: My Team, active: true}, My Actions]
+  menu: [Company Overview, My Performance, {label: My Team, active: true}, My Actions, Organisation]
   breadcrumb: [Team Targets, Customer visits per month]
 blocks:
   - title: {text: Customer visits per month, sub: "Target · Employee A · FY 2026"}

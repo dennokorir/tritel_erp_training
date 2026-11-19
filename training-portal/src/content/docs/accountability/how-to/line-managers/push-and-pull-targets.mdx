@@ -1,11 +1,11 @@
 ---
 title: Push a target down, or approve a pull
-description: Share one of your targets with your direct reports using Cascade ↓, follow adoption on Cascade Management, and approve or deny a team member's pull request.
+description: Share one of your targets with your direct reports using Cascade ↓, follow adoption on Cascades, and approve or deny a team member's pull request.
 module: accountability
 pageType: how-to
 roles: [line-manager]
 tags: [cascading, targets]
-keywords: [cascade, cascade down, push target, split target, share target, allocate target, pull request, request cascade, adopt, team KPI, apportion]
+keywords: [cascade, cascade down, push target, split target, share target, allocate target, pull request, request cascade, adopt, Cascade Management, Cascades]
 where: [Accountability, My Performance, My Targets]
 before:
   - The target you push from is yours, belongs to an objective, and that objective belongs to a period.
@@ -28,7 +28,9 @@ sources:
   - tritel_accountability_framework/views/menu.xml
   - tritel_accountability_framework/wizard/cascade_pull_wizard.py
   - tritel_accountability_framework/wizard/target_weight_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu_people.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -53,13 +55,13 @@ When a target is delivered by your team, you **cascade** it. A **share** hands p
 
 ### Follow adoption
 
-Open **Accountability › My Team › Cascade Management**. The **Board** view has columns **Pending Adoption**, **Adopted**, **Declined** and **Pull Requests**. Click **Remind All** on a source target to nudge everyone who hasn't adopted yet. **Sources**, **Recipients** and **Roster** show the same cascades in other ways.
+Open **Accountability › My Team › Set targets › Cascades**. The **Board** view has columns **Pending Adoption**, **Adopted**, **Declined** and **Pull Requests**. Click **Remind All** on a source target to nudge everyone who hasn't adopted yet. **Sources**, **Recipients** and **Roster** show the same cascades in other ways.
 
 ### Approve or deny a pull request
 
 <Illustration name="accountability/mgr-pull-request" caption="A team member's pull request on your target. The numbers match the steps below." />
 
-1. Open the request from **My Actions** (**Pull requests to approve**), or click the card in the **Pull Requests** column of Cascade Management. Read the **Cascade** section: what they asked for, from which of your targets, and their justification in **Manager Note**.
+1. Open the request from **My Actions** (**Pull requests to approve**), or click the card in the **Pull Requests** column of Cascades. Read the **Cascade** section: what they asked for, from which of your targets, and their justification in **Manager Note**.
 2. Click **Approve Pull** to offer them the share.
 3. Or click **Deny Pull** to refuse it.
 

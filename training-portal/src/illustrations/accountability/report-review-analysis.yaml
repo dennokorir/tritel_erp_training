@@ -1,7 +1,8 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_team_reviews, tritel_accountability_framework:selection:accountability.objective.state
 # docs-sync: shows tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.review.session.employee.closed_by, tritel_accountability_framework:selection:accountability.target.state
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_my_actions
 type: screen
 title: Review analysis in pivot view
 desc: The Team Reviews screen switched to its pivot view, with reviewers as rows, how each review closed as columns, and the Turnaround, Concerns and Average measures, numbered 1 to 4.
@@ -9,7 +10,7 @@ source: tritel_accountability_framework/views/accountability_review_pack_views.x
 frame:
   grid: true
   app: Accountability
-  menu: [My Performance, {label: My Team, active: true}, My Actions, Organisation]
+  menu: [Company Overview, My Performance, {label: My Team, active: true}, My Actions, Organisation]
   breadcrumb: [Team Reviews]
 blocks:
   - search: {facets: ["Open + Closed in Last 30 Days"], placeholder: "Search…", filters: [Filters, Group By], n: 1}

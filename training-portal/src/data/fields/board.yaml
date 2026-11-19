@@ -141,7 +141,7 @@ screens:
       - {label: Board result, meaning: "After sign-off: the result and Score the board signed.", where: Each target}
 
   - name: Board review (Odoo)
-    where: Accountability › My Performance › Board Reviews, or the MD's to-do
+    where: "Accountability › Organisation › Board Reviews (administrators), or the MD's My Actions and to-do"
     fields:
       - {label: Quarter From, meaning: "First day of the quarter reviewed.", where: Form}
       - {label: Quarter To, meaning: "Last day of the quarter reviewed.", where: Form}
@@ -165,7 +165,7 @@ screens:
       - {label: Hide Reason, meaning: "Required when hiding. Not shown to the board.", where: Board Position Report}
 
   - name: Accountability Settings
-    where: Accountability › Organisation › Settings
+    where: Accountability › Configuration › Settings
     fields:
       - {label: Board Reviewer, meaning: "The board member who reviews the MD each quarter. Must be a board portal user who is not an employee.", where: Board Review of the Top-Level Employee}
       - {label: Backup Board Reviewer, meaning: "Can sign off too once a review has waited 14 days. Must differ from the Board Reviewer.", where: Board Review of the Top-Level Employee}

@@ -1,16 +1,16 @@
 ---
 title: Propose next year's targets
-description: Carry your team's targets forward from last year on Propose Targets, adjust the values, drop what no longer applies and create the drafts in one go.
+description: Carry your team's targets forward from last year on Next Year's Targets, adjust the values, drop what no longer applies and create the drafts in one go.
 module: accountability
 pageType: how-to
 roles: [line-manager, hr]
 tags: [targets]
-keywords: [next year targets, new financial year, carry forward, uplift, target setting, KPI planning, budget targets, FY 2027, targets library, role set]
-where: [Accountability, My Team, Propose Targets]
+keywords: [next year targets, new financial year, carry forward, uplift, target setting, KPI planning, targets library, role set, Propose Targets, Next Year's Targets]
+where: [Accountability, My Team, Set targets, Next Year's Targets]
 before:
   - The new period exists, at least as a draft, and there is an earlier period to carry targets from.
   - The new period has its objectives. If they are missing, HR copies them from last year.
-  - You can propose targets for the people below you, not for yourself. HR can propose for anyone.
+  - You can propose targets for the people below you, not for yourself. HR can propose for anyone, from <strong>People › Next Year's Targets</strong>.
 related: [accountability/concepts/targets, accountability/concepts/periods-and-objectives, accountability/how-to/hr-admin/targets-library, accountability/how-to/line-managers/set-team-targets]
 sidebar: { order: 2 }
 sources:
@@ -29,17 +29,19 @@ sources:
   - tritel_accountability_framework/views/hr_employee_views.xml
   - tritel_accountability_framework/views/menu.xml
   - tritel_accountability_framework/wizard/cascade_line_mixin.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu_people.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
-At the start of a new year you don't have to type every target again. **Propose Targets** lists each person's targets from last year (and any suggested by their role in the targets library), with last year's value and result. You set the new values, drop what no longer fits, and create all the drafts at once.
+At the start of a new year you don't have to type every target again. **Next Year's Targets** lists each person's targets from last year (and any suggested by their role in the targets library), with last year's value and result. You set the new values, drop what no longer fits, and create all the drafts at once.
 
-<Illustration name="accountability/mgr-propose-targets" caption="Propose Targets for FY 2027, carried from FY 2026. The numbers match the steps below." />
+<Illustration name="accountability/mgr-propose-targets" caption="Next Year's Targets for FY 2027, carried from FY 2026. The numbers match the steps below." />
 
 ## Steps
 
-1. Open **Accountability › My Team › Propose Targets** and choose the new period in the list at the top (for example **FY 2027**). The screen shows *from FY 2026* next to it.
+1. Open **Accountability › My Team › Set targets › Next Year's Targets** and choose the new period in the list at the top (for example **FY 2027**). The screen shows *from FY 2026* next to it. HR opens the same screen from **Accountability › People › Next Year's Targets**.
 2. Click **Propose for everyone** to fill in lines for everyone you set targets for. You can also click **Propose from FY 2026** for one person. Running it again only adds what is missing.
 3. To raise many values at once, type a percentage next to a kind of target under **Uplift on last year** (for example 10, or -5) and click **Apply**. Every proposed line of that kind becomes last year's value plus that percentage.
 4. Check each line. Type a different value in the new-period column if needed. SLA targets show two boxes: the floor and the ideal.

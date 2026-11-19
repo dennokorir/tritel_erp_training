@@ -32,12 +32,15 @@ sources:
   - tritel_accountability_framework/views/accountability_target_library_views.xml
   - tritel_accountability_framework/views/hr_employee_views.xml
   - tritel_accountability_framework/wizard/target_weight_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu_people.xml
+  - tritel_accountability_framework/static/src/cascade/accountability_cascade_dashboard.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 
 The **Accountability Framework** is how Tritel sets, tracks and reviews everyone's performance in Odoo. Each year has a **period** (for example FY 2026). Inside it, leadership sets **objectives**, and every member of staff holds **targets** under those objectives. Managers pass targets down the reporting line, results are recorded in **reviews**, and each person gets a **score** and a **rating**.
 
-You find it in the **Accountability** app. It has four menus: **My Performance** (your own targets, reviews, briefs and snapshots), **My Team** (for line managers and HR), **My Actions** (everything waiting for you) and **Organisation** (periods, objectives, metrics and settings). You can also follow your own figures on the portal at **/my/performance**.
+You find it in the **Accountability** app. Which menus you see depends on your role. Everyone has **Company Overview** (where the company stands today; the app opens on it), **My Performance** (your own targets, reviews and score history, and progress briefs once they are switched on) and **My Actions** (everything waiting for you). Line managers also get **My Team**, HR gets **People** (the whole company's reviews, scores and changes), and both get **Organisation**: line managers see objectives and review coverage; HR sees review coverage, compliance and the targets library. Accountability administrators also get **Configuration** (periods, metrics and settings). See [Accountability menus](/accountability/menus/) for the full list by role. You can also follow your own figures on the portal at **/my/performance**.
 
 ## How the parts fit together
 
@@ -53,7 +56,7 @@ flowchart TD
   T --> R
   R --> S["Own, Team and Overall score"]
   S --> RT["Ratings"]
-  RT --> REP["Performance Overview, Team Scores, snapshots"]
+  RT --> REP["Company Overview, Team Scores, snapshots"]
   RT --> PB["Progress briefs"]
   REP --> BRD["Board portal (MD review)"]
 ```
@@ -69,7 +72,7 @@ flowchart TD
 |---|---|
 | **Everyone** | Checks their targets, marks milestone stages done, acknowledges new priorities, responds to reviews. |
 | **Line managers** (anyone with at least one person reporting to them) | Set and activate their team's targets, pass targets down, rebalance weights, run review sessions, confirm milestones, watch Team Scores. This access comes automatically from the org chart. |
-| **HR** | Exempts staff, keeps the targets library, approves scorecard changes, decides escalated reviews, sees everyone's figures. |
+| **HR** | Exempts staff, keeps the targets library, approves scorecard changes, decides escalated reviews, and follows everyone's reviews and scores under **People**. |
 | **Accountability administrators** | Open and close periods, set up metrics and settings, fix access. This role is given by hand. |
 | **MD and board** | The MD is reviewed each quarter by a named board member on the board portal. |
 

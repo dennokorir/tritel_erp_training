@@ -1,26 +1,28 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_compliance_action, tritel_accountability_framework:client_action:accountability_period_browser_action, tritel_accountability_framework:client_action:accountability_session_coverage_action
 # docs-sync: shows tritel_accountability_framework:group:group_accountability_admin, tritel_accountability_framework:menu:menu_accountability_compliance, tritel_accountability_framework:menu:menu_accountability_metrics
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_objectives
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_periods, tritel_accountability_framework:menu:menu_accountability_root
-# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_scorecard_log, tritel_accountability_framework:menu:menu_accountability_session_coverage, tritel_accountability_framework:menu:menu_accountability_targets_library
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_session_coverage, tritel_accountability_framework:menu:menu_accountability_targets_library
 # docs-sync: shows tritel_accountability_framework:model:accountability.library.entry, tritel_accountability_framework:model:accountability.role.set, tritel_accountability_framework:selection:accountability.target.metric_automation
 # docs-sync: shows tritel_accountability_framework:view_ext:hr.view_employee_tree:field:exempt, tritel_accountability_framework:wizard:accountability.metric.test.wizard
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_configuration, tritel_accountability_framework:menu:menu_accountability_settings, tritel_accountability_framework:menu:menu_accountability_people, tritel_accountability_framework:menu:menu_accountability_dashboard
 type: matrix
-title: Who can do what in Organisation
-desc: Permission grid for the Organisation menu and settings, showing which screens and set-up tasks everyone, line managers, HR and accountability administrators can reach.
-source: tritel_accountability_framework/views/menu.xml, security/ir.model.access.csv, models/accountability_config.py, models/accountability_exempt.py, models/accountability_target_library.py, models/hr_employee.py
+title: Who can do what in Organisation and Configuration
+desc: Permission grid for the Accountability menus and set-up tasks, showing which menus and screens everyone, line managers, HR and accountability administrators can reach, and who can do each set-up task.
+source: tritel_accountability_framework/views/menu.xml, views/menu_people.xml, e_board/views/md_review_views.xml, security/ir.model.access.csv, models/accountability_config.py, models/accountability_exempt.py, models/accountability_target_library.py, models/hr_employee.py
 columns: [Everyone, Line manager, HR, Accountability administrator]
 labelWidth: 300
 rows:
   - {group: Menus}
-  - {action: My Performance and My Actions, cells: [y, y, p, y]}
+  - {action: "Company Overview, My Performance and My Actions", cells: [y, y, p, y]}
   - {action: My Team menu, cells: [n, y, p, y]}
+  - {action: People menu, cells: [n, n, y, n]}
   - {action: Organisation › Objectives, cells: [n, y, n, y]}
-  - {action: Organisation › Session Coverage, cells: [n, p, y, y]}
-  - {action: Organisation › Targets Library, cells: [n, n, y, y]}
-  - {action: Organisation › Scorecard Changes, cells: [n, n, y, y]}
-  - {action: "Organisation › Periods, Compliance, Metrics, Settings", cells: [n, n, n, y]}
+  - {action: Organisation › Review Coverage, cells: [n, p, y, y]}
+  - {action: "Organisation › Compliance, Targets Library", cells: [n, n, y, y]}
+  - {action: Organisation › Board Reviews, cells: [n, n, n, y]}
+  - {action: "Configuration › Periods, Metrics, Settings", cells: [n, n, n, y]}
   - {group: People and set-up}
   - {action: See someone's score on their employee form, cells: [n, p, y, y]}
   - {action: Exempt a member of staff, cells: [n, n, y, y]}

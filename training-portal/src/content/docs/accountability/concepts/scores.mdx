@@ -23,7 +23,10 @@ sources:
   - tritel_accountability_framework/views/accountability_exempt_views.xml
   - tritel_accountability_framework/views/hr_employee_views.xml
   - tritel_accountability_framework/views/menu.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu_people.xml
+  - tritel_accountability_framework/static/src/cascade/accountability_cascade_dashboard.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -33,7 +36,7 @@ Everyone in the framework has one score record per period. It holds up to three 
 - **Team score** — for managers: how the people reporting to you did, using each person's overall score.
 - **Overall score** — the figure everyone is judged on. For most staff it equals the own score. For managers with a team it blends own and team: by default **40%** own and **60%** team.
 
-The overall score is labelled **Overall** on Team Scores, **Composite** on the Performance Overview and **Composite Score (%)** on the score record. They are the same figure.
+The overall score is labelled **Overall** on Team Scores, **Composite** on the Company Overview and **Composite Score (%)** on the score record. They are the same figure.
 
 ```mermaid
 flowchart TD
@@ -89,4 +92,4 @@ Your score also shows next to a [rating](/accountability/concepts/ratings-and-br
 - [See my performance](/accountability/how-to/everyone/see-my-performance/)
 - [See my team's scores](/accountability/how-to/line-managers/team-scores/)
 - [Own, Team and Overall score: the calculation](/accountability/calculations/own-team-overall/)
-- [Performance Overview](/accountability/reports/performance-overview/)
+- [Company Overview](/accountability/reports/performance-overview/)

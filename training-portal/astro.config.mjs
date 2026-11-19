@@ -53,6 +53,7 @@ export default defineConfig({
             group('Reports', 'accountability/reports', true),
             group("How it's calculated", 'accountability/calculations', true),
             { label: 'Who can do what', link: '/accountability/who-can-do-what/' },
+            { label: 'Accountability menus', link: '/accountability/menus/' },
             { label: 'FAQ', link: '/accountability/faq/' },
           ],
         },

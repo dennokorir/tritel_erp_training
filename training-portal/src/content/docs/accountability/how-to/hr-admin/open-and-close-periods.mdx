@@ -5,10 +5,10 @@ module: accountability
 pageType: how-to
 roles: [accountability-admin]
 tags: [periods, year end]
-keywords: [financial year, FY, new year, year end, period, activate, close, target-setting deadline, appraisal cycle, roll over]
-where: [Accountability, Organisation, Periods]
+keywords: [financial year, FY, new year, year end, period, activate, close, target-setting deadline, appraisal cycle, roll over, Configuration menu]
+where: [Accountability, Configuration, Periods]
 before:
-  - You are an accountability administrator. Only administrators see <strong>Organisation › Periods</strong>.
+  - You are an accountability administrator. Only administrators see <strong>Configuration › Periods</strong>.
   - At year end, reviews for the old period's last window are finished and signed off.
 related: [accountability/workflows/period, accountability/concepts/periods-and-objectives, accountability/how-to/hr-admin/objectives, accountability/how-to/line-managers/propose-next-years-targets]
 sidebar: { order: 1 }
@@ -24,7 +24,8 @@ sources:
   - tritel_accountability_framework/models/accountability_review_session.py
   - tritel_accountability_framework/models/accountability_target.py
   - tritel_accountability_framework/views/menu.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -34,7 +35,7 @@ A **period** is the accountability year, normally a financial year. Every object
 
 ## Steps
 
-1. Open **Accountability › Organisation › Periods** and click **New**. (The list opens on the **Active** filter; remove it to see draft and closed periods.)
+1. Open **Accountability › Configuration › Periods** and click **New**. (The list opens on the **Active** filter; remove it to see draft and closed periods.)
 2. Type the **Period Name** (for example *FY 2027*), the **Start Date** and the **End Date**.
 3. Set the **Target-Setting Deadline**. After this date, changes to a live scorecard need approval, and new targets are flagged as late-set. Leave it blank to switch both off.
 4. Save. To carry last year's objectives over, click **Copy Last Year's Objectives**. They are copied as drafts with the same tree, owners and default weights. You can click it again later; it only adds what is missing.

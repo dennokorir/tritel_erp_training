@@ -33,13 +33,14 @@ sources:
   - tritel_accountability_framework/views/menu.xml
   - tritel_accountability_framework/wizard/metric_test_wizard.py
   - tritel_project_delivery/models/closeout.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
 A **metric** is a ready-made calculation that reads a figure from Odoo, such as the value of your open opportunities or the share of your bids submitted on time. When a metric is attached to a target, nobody has to type the result: the system works it out from the records you already keep.
 
-Accountability administrators define metrics under **Accountability › Organisation › Metrics** and attach them to targets in the **Data Source** section. A target with no metric shows *Entered manually*: its result is typed by the reviewer.
+Accountability administrators define metrics under **Accountability › Configuration › Metrics** and attach them to targets in the **Data Source** section. A target with no metric shows *Entered manually*: its result is typed by the reviewer.
 
 ## What a metric does on a target
 

@@ -1,20 +1,21 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_session_coverage_action, tritel_accountability_framework:client_action:accountability_team_targets_client_action, tritel_accountability_framework:menu:menu_accountability_my_performance
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_review_sessions
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_session_coverage, tritel_accountability_framework:menu:menu_accountability_team_targets
 # docs-sync: shows tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.review.session.line.target_cadence
 # docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.state, tritel_accountability_framework:selection:accountability.target.state
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_people, tritel_accountability_framework:menu:menu_accountability_my_actions
 type: screen
-title: Session Coverage
-desc: The Session Coverage screen in Accountability with the period and cadence selectors and a grid of managers by review window, showing done, in progress, draft and not run cells and the Run on time column, numbered 1 to 5.
+title: Review Coverage
+desc: The Review Coverage screen in Accountability with the period and cadence selectors and a grid of managers by review window, showing done, in progress, draft and not run cells and the Run on time column, numbered 1 to 5.
 source: tritel_accountability_framework/static/src/session_coverage/accountability_session_coverage.xml (SessionCoverage)
 frame:
   grid: true
   app: Accountability
-  menu: [My Performance, My Team, My Actions, {label: Organisation, active: true, n: 1}]
-  breadcrumb: [Session Coverage]
+  menu: [Company Overview, My Performance, People, My Actions, {label: Organisation, active: true, n: 1}]
+  breadcrumb: [Review Coverage]
 blocks:
-  - title: {text: Session Coverage, sub: "Is every manager running their review sessions? One row per manager, one column per review window."}
+  - title: {text: Review Coverage, sub: "Is every manager running their review sessions? One row per manager, one column per review window."}
   - buttons: [{label: FY 2026, n: 2}, {label: Monthly}]
   - table:
       columns: [Manager, Team, Aug 2026, Sep 2026, Oct 2026, Nov 2026, Run on time]

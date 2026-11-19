@@ -1,8 +1,9 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_period_browser_action, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_objectives, tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_periods
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:model:accountability.objective, tritel_accountability_framework:selection:accountability.objective.achievement_state
 # docs-sync: shows tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.target.state
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_my_actions
 type: screen
 title: The Objectives screen
 desc: The Objectives screen in Accountability with the New Objective button, the list of periods on the left, and the selected period's objectives on the right with level, owner, target count, achievement and score, numbered 1 to 3.
@@ -10,7 +11,7 @@ source: tritel_accountability_framework/static/src/period_browser/accountability
 frame:
   grid: true
   app: Accountability
-  menu: [My Performance, My Team, My Actions, {label: Organisation, active: true, n: 1}]
+  menu: [Company Overview, My Performance, My Team, My Actions, {label: Organisation, active: true, n: 1}]
   breadcrumb: [Objectives]
 blocks:
   - buttons: [{label: New Objective, primary: true, n: 3}]

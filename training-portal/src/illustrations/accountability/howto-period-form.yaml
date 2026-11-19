@@ -1,8 +1,9 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_period_browser_action, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_objectives, tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_periods
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state
 # docs-sync: shows tritel_accountability_framework:selection:accountability.target.state
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_my_actions, tritel_accountability_framework:menu:menu_accountability_configuration
 type: screen
 title: A period, ready to activate
 desc: The Period form in Accountability with the Activate, Copy Last Year's Objectives, Close and Reset to Draft buttons, the status bar, the period name and the Start Date, End Date and Target-Setting Deadline fields, numbered 1 to 5.
@@ -10,7 +11,7 @@ source: tritel_accountability_framework/views/accountability_period_views.xml (a
 frame:
   grid: true
   app: Accountability
-  menu: [My Performance, My Team, My Actions, {label: Organisation, active: true, n: 1}]
+  menu: [Company Overview, My Performance, My Team, My Actions, Organisation, {label: Configuration, active: true, n: 1}]
   breadcrumb: [Periods, FY 2027]
 blocks:
   - buttons: [{label: Activate, primary: true, n: 5}, {label: "Copy Last Year's Objectives", n: 4}]

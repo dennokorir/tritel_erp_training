@@ -5,8 +5,8 @@ module: accountability
 pageType: how-to
 roles: [line-manager]
 tags: [milestones, targets]
-keywords: [milestone, stage, project target, deliverable, confirm stage, sign off milestone, send back, due date, timeline, gantt, task target]
-where: [Accountability, My Team, Team Targets]
+keywords: [milestone, stage, project target, confirm stage, sign off milestone, send back, due date, timeline, gantt, Milestone Timeline, Milestones menu]
+where: [Accountability, My Team, Set targets, Team Targets]
 before:
   - The target's type is <strong>Milestone</strong>.
   - You are the target owner's manager. Only you (or an accountability administrator, if the owner has no manager with a user account) can confirm their stages.
@@ -30,7 +30,7 @@ sources:
   - tritel_accountability_framework/security/ir_groups.xml
   - tritel_accountability_framework/views/menu.xml
   - tritel_accountability_framework/wizard/metric_test_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -53,7 +53,7 @@ Do this while the target is still a **Draft**: open it from **Team Targets** (cl
 4. Check the work, then:
    - click **Confirm** if it is done. The stage becomes **Confirmed** and counts towards the score; or
    - click **Send Back**, write the **Reason** (what still needs doing) and click **Save**. The stage goes back to **Open** and the owner sees *Sent back:* with your reason.
-5. Click **Timeline** on the target to see its stages on a chart. **My Team › Milestone Timeline** shows the stages of everyone in your reporting line.
+5. Click **Timeline** on the target to see its stages on a chart. **My Team › Set targets › Milestones** shows the stages of everyone in your reporting line.
 
 ## What happens next
 

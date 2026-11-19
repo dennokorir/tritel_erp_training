@@ -1,6 +1,7 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_team_targets_client_action, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_team_targets, tritel_accountability_framework:wizard:accountability.target.rebalance.wizard
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_my_actions, tritel_accountability_framework:menu:menu_accountability_organisation
 type: screen
 title: Rebalancing an employee's weights
 desc: The Rebalance Weights window with the drag mode buttons, the share bar, the target table with Lock, Share today, Weight now, New weight and Period share, the Reason box and the Rebalance button, numbered 1 to 6.
@@ -8,7 +9,7 @@ source: tritel_accountability_framework/views/accountability_weight_change_views
 frame:
   grid: true
   app: Accountability
-  menu: [My Performance, {label: My Team, active: true}, My Actions]
+  menu: [Company Overview, My Performance, {label: My Team, active: true}, My Actions, Organisation]
   breadcrumb: [Team Targets]
 blocks:
   - dialog:

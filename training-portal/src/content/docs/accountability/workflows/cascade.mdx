@@ -23,7 +23,7 @@ sources:
   - tritel_accountability_framework/security/ir_groups.xml
   - tritel_accountability_framework/views/menu.xml
   - tritel_accountability_framework/wizard/target_weight_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 
 **Cascading** passes part of a manager's target down to the people in their team. A manager can **push** a share down, or a team member can **pull** one up by asking for it. Either way, the team member gets a new target of their own (a "share"), which starts as a draft. Its **Cascade Status** tracks where the hand-over has got to.
@@ -61,7 +61,7 @@ stateDiagram-v2
 - **Adopt after the target-setting deadline:** adopting becomes a scorecard change of the kind **Adopt a cascade**, which is sent for approval. The share stays **Pending Adoption** until it is approved. See the [scorecard change request workflow](/accountability/workflows/scorecard-change-request/).
 - **Decline:** the reason is posted on the source target, and the source owner gets a **Resolve Declined Cascade** to-do. Pushing to the same person again closes that to-do.
 - **Push again to someone who already holds a share:** the existing share is topped up instead of creating a second one. If the share is already live, the top-up goes through a scorecard change request.
-- **Reminders:** every day, shares that have waited longer than the **Cascade Reminder Interval (days)** setting (3 by default; 0 switches it off) get a reminder. The team member is reminded to adopt or decline; the manager is reminded about pull requests. Each item is reminded at most once per interval. Managers can also remind people themselves: **Remind** in **My Actions**, **Send Reminder** on **Compliance** (administrators), or **Remind All** on **Cascade Management**.
+- **Reminders:** every day, shares that have waited longer than the **Cascade Reminder Interval (days)** setting (3 by default; 0 switches it off) get a reminder. The team member is reminded to adopt or decline; the manager is reminded about pull requests. Each item is reminded at most once per interval. Managers can also remind people themselves: **Remind** in **My Actions**, **Send Reminder** on **Compliance** (administrators), or **Remind All** on **Cascades**.
 - **Source target withdrawn:** shares still waiting (pending adoption or pull requested, with no reviews) are removed, and the team member is told.
 
 :::note[Good to know]

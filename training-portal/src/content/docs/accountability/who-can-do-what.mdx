@@ -5,8 +5,8 @@ module: accountability
 pageType: reference
 roles: [everyone, line-manager, hr, accountability-admin, board, system-admin]
 tags: [permissions, access]
-keywords: [access rights, permissions, roles, who can see my score, can't see My Team, supervisor, administrator, HR, privacy, security, visibility]
-related: [accountability/how-to/hr-admin/access-rights, accountability/faq, accountability/index, roles/hr]
+keywords: [access rights, permissions, roles, who can see my score, can't see My Team, People menu, Configuration menu, supervisor, administrator, HR, privacy, security, visibility]
+related: [accountability/menus, accountability/how-to/hr-admin/access-rights, accountability/faq, accountability/index, roles/hr]
 sidebar: { order: 2 }
 sources:
   - tritel_accountability_framework/security/ir_groups.xml
@@ -33,7 +33,12 @@ sources:
   - tritel_accountability_framework/views/hr_employee_views.xml
   - tritel_accountability_framework/wizard/cascade_pull_wizard.py
   - tritel_accountability_framework/wizard/review_concern_wizards.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu_people.xml
+  - e_board/views/md_review_views.xml
+  - tritel_accountability_framework/static/src/session_coverage/accountability_session_coverage.xml
+  - tritel_accountability_framework/static/src/cascade/accountability_cascade_dashboard.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../components/Illustration.astro';
 
@@ -49,7 +54,7 @@ Accountability follows the org chart in the Employees app. Most people never nee
 | **Accountability administrator** | Given by hand by a system administrator. Never added or removed automatically. Has everything a line manager has, for everyone. |
 | **Board member** | A board portal user named as **Board Reviewer** (or **Backup Board Reviewer**) in Settings. Not an employee. |
 
-The two automatic roles are updated whenever an employee is created, archived, linked to a user or given a new **Manager**. An administrator can also click **Resync Access Rights** in **Accountability › Organisation › Settings**.
+The two automatic roles are updated whenever an employee is created, archived, linked to a user or given a new **Manager**. An administrator can also click **Resync Access Rights** in **Accountability › Configuration › Settings**.
 
 "Your reporting line" means everyone below you in the org chart, however many levels down. "Your team" or "direct reports" means only the people whose **Manager** is you.
 
@@ -60,7 +65,7 @@ The two automatic roles are updated whenever an employee is created, archived, l
 Notes on the "partly" marks:
 
 - **See my team's targets and scores**: line managers see everyone in their reporting line. HR and administrators see everyone. Nobody else sees peers' or other departments' targets.
-- **Create and activate targets for someone else**, **Change weights**, **Withdraw, close or change a live target**: the employee's own manager, or the manager who cascaded the target to them. HR can also withdraw, close or change a live target through **Scorecard Change Requests**, but not change weights.
+- **Create and activate targets for someone else**, **Change weights**, **Withdraw, close or change a live target**: the employee's own manager, or the manager who cascaded the target to them. HR can also withdraw, close or change a live target through **Scorecard Changes**, but not change weights.
 - **Push a target down** and **Approve or deny a pull request**: line managers, for their own targets and their direct reports.
 - **Approve a scorecard change after the deadline**: the requester's own manager (when named as an approver) or any HR manager, but never the person who raised it. Administrators approve only when there is no such manager and no HR manager.
 - **Confirm or send back a stage**: the owner's manager. Administrators do it only when the owner's manager has no active Odoo user. The owner can never confirm their own stage.
@@ -73,7 +78,7 @@ Notes on the "partly" marks:
 Notes on the "partly" marks:
 
 - **Conduct a single review** and **Plan and run a review session**: only for your own **direct reports**. An administrator can run a session for any reviewer.
-- **See review sessions and Team Reviews**: line managers see their own sessions and those of managers below them. HR can see every session and review but cannot change them.
+- **See review sessions and Team Reviews**: line managers see their own sessions and those of managers below them. HR can see every session and review, under **People › Review Sessions** and **People › All Reviews**, but cannot change them.
 - **Send a reminder** and **Answer a concern**: the reviewer of that review.
 - **Decide an escalation**: the reviewer's own manager, or the **Review Escalation Contacts** named in Settings, or, if neither exists, HR. HR and administrators can also decide any escalation, as long as they are not the employee or the reviewer.
 - **Freeze a snapshot**: line managers for the people below them, never themselves.
@@ -86,9 +91,14 @@ Notes on the "partly" marks:
 
 Notes on the "partly" marks:
 
-- **My Performance and My Actions** for HR: only if the HR user is linked to an employee record. Without one, the Accountability app doesn't appear at all.
-- **My Team menu** for HR: **Propose Targets**, **Review Sessions**, **Scorecard Change Requests**, **Team Reviews**, **Team Scores** (with the **Everyone** scope) and **Priority Changes**. Not **Team Targets**, **Cascade Management** or **Milestone Timeline**, unless the HR user also manages people.
-- **Session Coverage** and **See someone's score on their employee form**: line managers for their own reporting line.
+- **Company Overview, My Performance and My Actions** for HR: only if the HR user is linked to an employee record. Without one, the Accountability app doesn't appear at all.
+- **My Team menu** for HR: only if the HR user also manages people. HR uses **People** instead: **Review Sessions** (every session), **All Reviews**, **Scores** (with the **Everyone** scope), **Scorecard Changes**, **Priority Changes** and **Next Year's Targets**. HR who also manage people see both menus, **My Team** first.
+- **People menu**: HR only. An administrator without HR rights reaches scorecard and priority changes under **My Team › Approve**.
+- **Organisation › Objectives**: line managers and administrators. HR who doesn't manage anyone doesn't see it.
+- **Review Coverage** and **See someone's score on their employee form**: line managers for their own reporting line.
+- **Organisation › Board Reviews** and the **Configuration** menu (**Periods**, **Metrics**, **Settings**): administrators only.
+
+[Accountability menus](/accountability/menus/) lists every menu by role.
 
 ## Who can see my score?
 

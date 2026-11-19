@@ -18,12 +18,15 @@ sources:
   - tritel_accountability_framework/models/accountability_weight_change.py
   - tritel_accountability_framework/security/ir_groups.xml
   - tritel_accountability_framework/views/menu.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu_people.xml
+  - tritel_accountability_framework/static/src/session_coverage/accountability_session_coverage.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 
 A **review session** is a manager's batch review of their direct reports for one review window, for example "Sep 2026 — Monthly Review". It holds one **review** (review pack) per employee, and each review lists that employee's targets at the session's cadence or finer. The session's status tells you whether it is being set up, being worked on, or finished.
 
-Line managers run sessions for their own direct reports in **Accountability › My Team › Review Sessions**. Accountability administrators can run one for any reviewer. HR can open every session but can't change them.
+Line managers run sessions for their own direct reports in **Accountability › My Team › Review › Review Sessions**. Accountability administrators can run one for any reviewer. HR can open every session, under **Accountability › People › Review Sessions**, but can't change them.
 
 ```mermaid
 stateDiagram-v2
@@ -49,7 +52,7 @@ stateDiagram-v2
 ## What the system does automatically
 
 - **Submitting reviews:** **Submit All Reviews** submits every review whose targets are all scored and lists the ones still blocked by pending targets. You can also submit one employee at a time with **Submit Review** on their review. When the last review with targets is submitted, the session moves to **Done** by itself. What happens to each review then is in the [review pack workflow](/accountability/workflows/review-pack/).
-- **Late:** a session that isn't **Done** more than 7 days after its **Review Cutoff** is marked **Late**, with **Days Late** counted from the cutoff. The 7 days are fixed, not a setting. **Session Coverage** counts a window as "run on time" only when its session was **Done** within 7 days of the cutoff.
+- **Late:** a session that isn't **Done** more than 7 days after its **Review Cutoff** is marked **Late**, with **Days Late** counted from the cutoff. The 7 days are fixed, not a setting. **Review Coverage** counts a window as "run on time" only when its session was **Done** within 7 days of the cutoff.
 - **Back to Draft** asks for confirmation, then removes lines for people outside your direct reports and lines not yet scored (**Refresh Targets** adds them back). Scored lines are kept.
 - **Changing the cutoff or cadence of a draft session** clears the figures on lines already scored, because they described the old window. A note on the session records it.
 - **Back to Draft** and **Reopen** are refused once any review has been created from the session: *2 review(s) from this session have already been created (2 pending acknowledgment). A session can only be moved back while nothing has been finalised.*
@@ -63,4 +66,4 @@ stateDiagram-v2
 - [Plan a review session](/accountability/how-to/line-managers/plan-a-review-session/)
 - [Conduct a review](/accountability/how-to/line-managers/conduct-a-review/)
 - [Track reviews on the Team Reviews board](/accountability/how-to/line-managers/team-reviews-board/)
-- [Session Coverage](/accountability/reports/session-coverage/)
+- [Review Coverage](/accountability/reports/session-coverage/)

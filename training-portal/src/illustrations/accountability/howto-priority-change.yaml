@@ -1,6 +1,7 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:model:accountability.priority.change
 # docs-sync: shows tritel_accountability_framework:model:accountability.target.weight.change, tritel_accountability_framework:selection:accountability.priority.change.state, tritel_accountability_framework:wizard:accountability.review.pack.ack.wizard
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_my_actions
 type: screen
 title: A priority change waiting for you
 desc: The Priority Change form in Accountability with the Acknowledge New Priorities button, the yellow deadline banner, the What Changed table and the Your Score Now section, numbered 1 to 5.
@@ -8,7 +9,7 @@ source: tritel_accountability_framework/views/accountability_weight_change_views
 frame:
   grid: true
   app: Accountability
-  menu: [My Performance, {label: My Actions, active: true, n: 1}]
+  menu: [Company Overview, My Performance, {label: My Actions, active: true, n: 1}]
   breadcrumb: [My Actions, "Priorities · Employee A · FY 2026"]
 blocks:
   - buttons: [{label: Acknowledge New Priorities, primary: true, n: 5}]

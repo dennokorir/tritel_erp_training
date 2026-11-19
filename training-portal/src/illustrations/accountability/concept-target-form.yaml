@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_my_actions_action, tritel_accountability_framework:client_action:accountability_my_targets_client_action, tritel_accountability_framework:menu:menu_accountability_my_actions
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_targets, tritel_accountability_framework:menu:menu_accountability_my_team
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:model:accountability.metric
@@ -6,6 +6,7 @@
 # docs-sync: shows tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.review.session.cadence, tritel_accountability_framework:selection:accountability.review.session.line.target_cadence
 # docs-sync: shows tritel_accountability_framework:selection:accountability.target.cadence, tritel_accountability_framework:selection:accountability.target.metric_automation, tritel_accountability_framework:selection:accountability.target.state
 # docs-sync: shows tritel_accountability_framework:selection:accountability.target.target_type, tritel_accountability_framework:view_ext:hr.view_employee_form:page:performance, tritel_accountability_framework:wizard:accountability.target.rebalance.wizard
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard
 type: screen
 title: A target and its main parts
 desc: The Target form in Accountability, showing the status bar, the Assignment and Measurement groups, the Share of Score strip, the Quantitative Target group, the Data Source group and the Progress group, numbered 1 to 6.
@@ -13,7 +14,7 @@ source: tritel_accountability_framework/views/accountability_target_views.xml (a
 frame:
   grid: true
   app: Accountability
-  menu: [{label: My Performance, active: true}, My Team, My Actions, Organisation]
+  menu: [Company Overview, {label: My Performance, active: true}, My Actions]
   breadcrumb: [My Targets, Grow qualified pipeline]
 blocks:
   - buttons: [{label: Request Review}, {label: Close}, {label: "Cascade ↓"}]

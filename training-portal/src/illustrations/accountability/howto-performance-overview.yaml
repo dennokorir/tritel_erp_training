@@ -1,18 +1,19 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_cascade_dashboard_action, tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_my_performance
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:model:accountability.score, tritel_accountability_framework:model:accountability.snapshot.line
 # docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.employee.avg_rating, tritel_accountability_framework:selection:accountability.review.session.line.line_rating, tritel_accountability_framework:selection:accountability.snapshot.line.rating
 # docs-sync: shows tritel_accountability_framework:selection:accountability.snapshot.rating, tritel_accountability_framework:selection:accountability.target.rating, tritel_accountability_framework:selection:accountability.target.state
 # docs-sync: shows tritel_accountability_framework:view_ext:hr.view_employee_form:field:rating
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_actions
 type: screen
-title: Performance Overview, your own figures
-desc: The Performance Overview screen in Accountability with the period and As at selectors, the figure tiles, your row in the list, and the side panel showing your Own and Composite scores, rating and targets, numbered 1 to 6.
+title: Company Overview, your own figures
+desc: The Company Overview screen in Accountability with the period and As at selectors, the figure tiles, your row in the list, and the side panel showing your Own and Composite scores, rating and targets, numbered 1 to 6.
 source: tritel_accountability_framework/static/src/cascade/accountability_cascade_dashboard.xml (CascadeDashboard)
 frame:
   grid: true
   app: Accountability
-  menu: [{label: My Performance, active: true, n: 1}, My Actions]
-  breadcrumb: [Performance Overview]
+  menu: [{label: Company Overview, active: true, n: 1}, My Performance, My Actions]
+  breadcrumb: [Company Overview]
 blocks:
   - title: {text: Org Performance Cascade, sub: "Period and As at selectors sit in the dark header"}
   - buttons: [{label: "FY 2026 ●", n: 2}, {label: "As at today (live)"}, {label: List}, {label: Organogram}, {label: Focus}]

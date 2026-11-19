@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_my_actions_action, tritel_accountability_framework:client_action:accountability_my_targets_client_action, tritel_accountability_framework:menu:menu_accountability_my_actions
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_targets, tritel_accountability_framework:menu:menu_accountability_root
 # docs-sync: shows tritel_accountability_framework:selection:accountability.config.progress_brief_frequency, tritel_accountability_framework:selection:accountability.library.entry.cadence, tritel_accountability_framework:selection:accountability.objective.state
@@ -6,6 +6,7 @@
 # docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.line.line_rating, tritel_accountability_framework:selection:accountability.review.session.line.target_cadence, tritel_accountability_framework:selection:accountability.snapshot.line.rating
 # docs-sync: shows tritel_accountability_framework:selection:accountability.snapshot.rating, tritel_accountability_framework:selection:accountability.target.cadence, tritel_accountability_framework:selection:accountability.target.rating
 # docs-sync: shows tritel_accountability_framework:selection:accountability.target.state, tritel_accountability_framework:view_ext:hr.view_employee_form:field:rating, tritel_accountability_framework:wizard:accountability.cascade.pull.wizard
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard
 type: screen
 title: My Targets, cadence view
 desc: The My Targets screen in Accountability with the period selector, the summary chips, the view buttons, the cadence filter and one row per target showing progress, score, next review and status, numbered 1 to 6.
@@ -13,7 +14,7 @@ source: tritel_accountability_framework/static/src/my_targets/accountability_my_
 frame:
   grid: true
   app: Accountability
-  menu: [{label: My Performance, active: true}, My Actions]
+  menu: [Company Overview, {label: My Performance, active: true}, My Actions]
   breadcrumb: [My Targets]
 blocks:
   - buttons: [{label: FY 2026, n: 1}, {label: "As at today (live)"}, {label: "+ New Target"}, {label: "↑ Request Cascade"}]

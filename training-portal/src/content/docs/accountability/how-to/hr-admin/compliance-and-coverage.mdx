@@ -1,15 +1,15 @@
 ---
-title: Check compliance and session coverage
-description: Use Session Coverage to see which managers have run their review sessions for each window, and Compliance to see how many cascaded targets have been adopted.
+title: Check compliance and review coverage
+description: Use Review Coverage to see which managers have run their review sessions for each window, and Compliance to see how many cascaded targets have been adopted.
 module: accountability
 pageType: how-to
 roles: [line-manager, hr, accountability-admin]
 tags: [reviews, cascading, reports]
-keywords: [compliance, coverage, review sessions, missed reviews, overdue, late, adoption rate, cascade, follow up, audit]
-where: [Accountability, Organisation, Session Coverage]
+keywords: [compliance, coverage, review sessions, missed reviews, overdue, late, adoption rate, cascade, audit, session coverage, review coverage]
+where: [Accountability, Organisation, Review Coverage]
 before:
-  - <strong>Session Coverage</strong> is for line managers (their own reporting line), HR and administrators (everyone).
-  - <strong>Compliance</strong> is for accountability administrators only.
+  - <strong>Review Coverage</strong> is for line managers (their own reporting line), HR and administrators (everyone).
+  - <strong>Compliance</strong> is for HR and accountability administrators.
 related: [accountability/reports/session-coverage, accountability/reports/compliance, accountability/how-to/line-managers/plan-a-review-session, accountability/workflows/review-session, accountability/workflows/cascade]
 sidebar: { order: 6 }
 sources:
@@ -30,19 +30,19 @@ sources:
   - tritel_accountability_framework/views/accountability_exempt_views.xml
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_accountability_framework/views/menu.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
-Two screens show whether the process is being followed. **Session Coverage** answers "has every manager reviewed their team for each month or quarter?". **Compliance** answers "have cascaded targets been adopted?".
+Two screens show whether the process is being followed. **Review Coverage** answers "has every manager reviewed their team for each month or quarter?". **Compliance** answers "have cascaded targets been adopted?".
 
-<Illustration name="accountability/howto-session-coverage" caption="Session Coverage. The numbers match steps 1 to 5." />
+<Illustration name="accountability/howto-session-coverage" caption="Review Coverage. The numbers match steps 1 to 5." />
 
 ## Steps
 
-### Session coverage
+### Review coverage
 
-1. Open **Accountability › Organisation › Session Coverage**.
+1. Open **Accountability › Organisation › Review Coverage**.
 2. Pick the period and the cadence: **Monthly**, **Quarterly**, **Semi-annual** or **Annual**.
 3. Read the grid: one row per manager, with their **Team** size, and one column per review window.
    - **✓ Done** with the session's average.
@@ -54,7 +54,7 @@ Two screens show whether the process is being followed. **Session Coverage** ans
 
 <Illustration name="accountability/howto-compliance" caption="Cascade Compliance. The numbers match steps 6 to 9." />
 
-### Cascade compliance (administrators)
+### Cascade compliance (HR and administrators)
 
 6. Open **Accountability › Organisation › Compliance** and pick the period.
 7. Read the tiles: **Total Cascades**, **Adopted ✓**, **Pending ⏳**, **Declined ✗** and **Adoption Rate**.

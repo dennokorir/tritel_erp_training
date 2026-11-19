@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_compliance_action, tritel_accountability_framework:menu:menu_accountability_compliance, tritel_accountability_framework:menu:menu_accountability_my_performance
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_review_sessions
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:selection:accountability.config.progress_brief_frequency, tritel_accountability_framework:selection:accountability.library.entry.cadence
@@ -7,6 +7,7 @@
 # docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.line.line_state, tritel_accountability_framework:selection:accountability.review.session.line.target_cadence, tritel_accountability_framework:selection:accountability.review.session.state
 # docs-sync: shows tritel_accountability_framework:selection:accountability.snapshot.line.rating, tritel_accountability_framework:selection:accountability.snapshot.rating, tritel_accountability_framework:selection:accountability.target.cadence
 # docs-sync: shows tritel_accountability_framework:selection:accountability.target.rating, tritel_accountability_framework:selection:accountability.target.state, tritel_accountability_framework:selection:accountability.target.weight.change.priority_state
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_my_actions
 type: screen
 title: Scoring an employee's review
 desc: The Employee Review form in Draft, with the Submit Review button, the progress figures, the Comment for the employee box and the Targets tab where each line has an Actual, Fetch, Done and Skip buttons and a status, numbered 1 to 7.
@@ -14,7 +15,7 @@ source: tritel_accountability_framework/views/accountability_review_session_view
 frame:
   grid: true
   app: Accountability
-  menu: [My Performance, {label: My Team, active: true}, My Actions, Organisation]
+  menu: [Company Overview, My Performance, {label: My Team, active: true}, My Actions, Organisation]
   breadcrumb: [Review Sessions, "Q3 2026 — Quarterly Review", Employee A]
 blocks:
   - buttons: [{label: Refresh Targets}, {label: Submit Review, primary: true, n: 7}]

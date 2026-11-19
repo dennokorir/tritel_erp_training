@@ -1,12 +1,12 @@
 ---
-title: Performance Overview
+title: Company Overview
 description: The organisation (or your part of it) as a tree of people with their own, team and composite scores, rating counts and targets reviewed, today or as at a past month end.
 module: accountability
 pageType: report
 roles: [everyone, line-manager, hr, md]
 tags: [scores, reports, snapshots]
-keywords: [performance overview, org chart scores, organogram, cascade dashboard, company performance, department scores, composite score, KPI dashboard, ratings count, trend]
-where: [Accountability, My Performance, Performance Overview]
+keywords: [performance overview, Performance Overview menu, company overview, org chart scores, organogram, cascade dashboard, company performance, department scores, composite score, KPI dashboard, ratings count, trend]
+where: [Accountability, Company Overview]
 related: [accountability/concepts/scores, accountability/calculations/own-team-overall, accountability/concepts/snapshots-and-as-at, accountability/how-to/line-managers/team-scores, accountability/reports/snapshots-and-compare]
 sidebar: { order: 1 }
 sources:
@@ -25,15 +25,17 @@ sources:
   - tritel_accountability_framework/views/accountability_snapshot_views.xml
   - tritel_accountability_framework/views/hr_employee_views.xml
   - tritel_accountability_framework/views/menu.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu_people.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
-**Accountability › My Performance › Performance Overview** is the first screen of the Accountability app. Its title is **Org Performance Cascade**. It shows people as a tree that follows the reporting lines, each with their scores, and a side panel with the details for one person.
+**Accountability › Company Overview** is the first menu in the Accountability app, and the app opens on it. (It used to be called **Performance Overview**, under **My Performance**.) Its title on screen is **Org Performance Cascade**. It shows people as a tree that follows the reporting lines, each with their scores, and a side panel with the details for one person.
 
 What you see depends on who you are. Accountability administrators and HR see the whole organisation. Everyone else sees themselves and the people below them, so a manager sees their branch and a team member sees only their own card.
 
-<Illustration name="accountability/report-performance-overview" caption="The Performance Overview as at a quarter end, with one manager's panel open. The numbers match the list below." />
+<Illustration name="accountability/report-performance-overview" caption="The Company Overview as at a quarter end, with one manager's panel open. The numbers match the list below." />
 
 ## Reading the screen
 

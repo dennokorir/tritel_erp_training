@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows e_board:cron:cron_board_reviews, e_board:field:accountability.config.board_backup_user_id, e_board:field:accountability.config.board_reviewer_user_id
 # docs-sync: shows e_board:group:group_board_viewer, e_board:selection:accountability.board.review.state
 type: screen
@@ -8,7 +8,7 @@ source: e_board/views/md_review_accountability_views.xml (accountability_config_
 frame:
   grid: true
   app: Accountability
-  menu: [My Performance, My Actions, {label: Organisation, active: true, n: 1}]
+  menu: [Company Overview, My Performance, My Team, My Actions, Organisation, {label: Configuration, active: true, n: 1}]
   breadcrumb: [Accountability Settings]
 blocks:
   - heading: Notifications

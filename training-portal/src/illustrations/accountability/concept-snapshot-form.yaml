@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_my_actions_action, tritel_accountability_framework:client_action:accountability_snapshot_client_action, tritel_accountability_framework:field:hr.employee.accountability_target_ids
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_actions, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_snapshots, tritel_accountability_framework:model:accountability.snapshot
@@ -6,6 +6,7 @@
 # docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.line.line_rating, tritel_accountability_framework:selection:accountability.snapshot.line.rating, tritel_accountability_framework:selection:accountability.snapshot.origin
 # docs-sync: shows tritel_accountability_framework:selection:accountability.snapshot.rating, tritel_accountability_framework:selection:accountability.target.rating, tritel_accountability_framework:view_ext:hr.view_employee_form:button:targets
 # docs-sync: shows tritel_accountability_framework:view_ext:hr.view_employee_form:field:rating, tritel_accountability_framework:view_ext:hr.view_employee_form:field:targets, tritel_accountability_framework:view_ext:hr.view_employee_form:page:performance
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard
 type: screen
 title: A frozen performance snapshot
 desc: A Performance Snapshot form, with the Compare with today's rebuild and Print PDF buttons, the Overall and Frozen groups, and the list of targets as they stood on the date, numbered 1 to 4.
@@ -13,8 +14,8 @@ source: tritel_accountability_framework/views/accountability_snapshot_views.xml 
 frame:
   grid: true
   app: Accountability
-  menu: [{label: My Performance, active: true}, My Team, My Actions]
-  breadcrumb: [Performance Snapshots, "Employee A · as at 30/09/2026"]
+  menu: [Company Overview, {label: My Performance, active: true}, My Actions]
+  breadcrumb: [My Score History, "Employee A · as at 30/09/2026"]
 blocks:
   - buttons: [{label: "Compare with today's rebuild", primary: true, n: 1}, {label: Print PDF}]
   - title: {text: Employee A, sub: "As at 30/09/2026 · FY 2026"}

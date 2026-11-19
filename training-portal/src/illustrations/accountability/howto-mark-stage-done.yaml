@@ -1,8 +1,9 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_my_actions_action, tritel_accountability_framework:client_action:accountability_my_targets_client_action, tritel_accountability_framework:menu:menu_accountability_my_actions
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_targets, tritel_accountability_framework:menu:menu_accountability_root
 # docs-sync: shows tritel_accountability_framework:model:accountability.milestone, tritel_accountability_framework:selection:accountability.milestone.status, tritel_accountability_framework:selection:accountability.milestone.timing
 # docs-sync: shows tritel_accountability_framework:wizard:accountability.milestone.action.wizard
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard
 type: screen
 title: Marking a milestone stage done
 desc: A milestone target's stages in My Targets with the Mark Done button, and the Mark Stage Done window with the Completed On date and the Save button, numbered 1 to 5.
@@ -10,7 +11,7 @@ source: tritel_accountability_framework/static/src/components/stages/accountabil
 frame:
   grid: true
   app: Accountability
-  menu: [{label: My Performance, active: true}, My Actions]
+  menu: [Company Overview, {label: My Performance, active: true}, My Actions]
   breadcrumb: [My Targets]
 blocks:
   - heading: Deliver CRM roll-out

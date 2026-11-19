@@ -1,10 +1,11 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_my_targets_client_action, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_targets
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:selection:accountability.cascade.line.mixin.cascade_link
 # docs-sync: shows tritel_accountability_framework:selection:accountability.cascade.line.mixin.target_type, tritel_accountability_framework:selection:accountability.library.entry.target_type, tritel_accountability_framework:selection:accountability.objective.state
 # docs-sync: shows tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.snapshot.line.target_type, tritel_accountability_framework:selection:accountability.target.cascade_link
 # docs-sync: shows tritel_accountability_framework:selection:accountability.target.proposal.target_type, tritel_accountability_framework:selection:accountability.target.state, tritel_accountability_framework:selection:accountability.target.target_type
 # docs-sync: shows tritel_accountability_framework:wizard:accountability.cascade.push.wizard
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_my_actions, tritel_accountability_framework:menu:menu_accountability_organisation
 type: screen
 title: Pushing a target down to your team
 desc: The Push Cascade to Team window opened from a target, with the allocation figures, one line per direct report with the Include switch, Link and Value, the note box and the Push Cascade and Split Remaining Evenly buttons, numbered 1 to 6.
@@ -12,7 +13,7 @@ source: tritel_accountability_framework/views/wizard_cascade_push_views.xml (acc
 frame:
   grid: true
   app: Accountability
-  menu: [{label: My Performance, active: true}, My Team, My Actions]
+  menu: [Company Overview, {label: My Performance, active: true}, My Team, My Actions, Organisation]
   breadcrumb: [My Targets, Grow qualified pipeline]
 blocks:
   - buttons: [{label: Close}, {label: "Cascade ↓", primary: true, n: 1}]

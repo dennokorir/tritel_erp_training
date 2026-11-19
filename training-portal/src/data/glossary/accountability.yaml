@@ -233,8 +233,9 @@
   definition: A review or review line marked Not Applicable because there was nothing to measure in the window. It is left out of every score.
   module: accountability
   see: [accountability/concepts/reviews]
-- term: Session coverage
-  definition: The report showing, for each manager and each month or quarter, whether their review session was run and on time.
+- term: Review Coverage
+  aliases: [Session Coverage]
+  definition: The report showing, for each manager and each month or quarter, whether their review session was run and on time. It was called Session Coverage.
   module: accountability
   see: [accountability/reports/session-coverage]
 - term: Rating
@@ -259,10 +260,20 @@
   definition: A person's or team's position on a past month end, rebuilt from the dated history when you pick the date.
   module: accountability
   see: [accountability/concepts/snapshots-and-as-at]
-- term: Performance Overview
-  definition: The organisation chart of everyone's own, team and overall scores, with ratings, a trend and a choice of month end.
+- term: Company Overview
+  aliases: [Performance Overview]
+  definition: The organisation chart of everyone's own, team and overall scores, with ratings, a trend and a choice of month end. The Accountability app opens on it; it was called Performance Overview.
   module: accountability
-  see: [accountability/reports/performance-overview]
+  see: [accountability/reports/performance-overview, accountability/how-to/everyone/see-my-performance]
+- term: My Score History
+  aliases: [Performance Snapshots]
+  definition: The list of your frozen performance snapshots under My Performance. Managers also see their team's there. It was called Performance Snapshots.
+  module: accountability
+  see: [accountability/reports/snapshots-and-compare, accountability/concepts/snapshots-and-as-at]
+- term: People menu
+  definition: HR's menu in Accountability with the whole company's review sessions, reviews, scores, scorecard changes, priority changes and next year's targets. HR who don't manage anyone have it instead of My Team.
+  module: accountability
+  see: [accountability/menus, accountability/who-can-do-what]
 - term: Accountability exemption
   aliases: [exempt from accountability]
   definition: Taking a person out of accountability for a time, for example an intern or someone on long leave. Set by HR on the employee record.

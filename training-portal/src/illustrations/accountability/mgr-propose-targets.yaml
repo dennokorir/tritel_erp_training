@@ -1,16 +1,17 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_propose_targets_action, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_propose_targets, tritel_accountability_framework:menu:menu_accountability_root
 # docs-sync: shows tritel_accountability_framework:selection:accountability.target.proposal.state
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_my_actions
 type: screen
 title: Proposing next year's targets
-desc: The Propose Targets screen with the period selector, the uplift row, one person's proposed lines with last year's value, result and new value, and the Drop and Create drafts buttons, numbered 1 to 7.
+desc: The Next Year's Targets screen with the period selector, the uplift row, one person's proposed lines with last year's value, result and new value, and the Drop and Create drafts buttons, numbered 1 to 7.
 source: tritel_accountability_framework/static/src/propose_targets/accountability_propose_targets.xml
 frame:
   grid: true
   app: Accountability
-  menu: [My Performance, {label: My Team, active: true}, My Actions, Organisation]
-  breadcrumb: [Propose Targets]
+  menu: [Company Overview, My Performance, {label: My Team, active: true}, My Actions, Organisation]
+  breadcrumb: [Next Year's Targets]
 blocks:
   - buttons: [{label: FY 2027, n: 1}, {label: Propose for everyone, n: 2}, {label: Create drafts (3 ready), primary: true, n: 7}]
   - text: "from FY 2026 · 2 people · 3 ready · 1 waiting for a manager's new target · 0 created"

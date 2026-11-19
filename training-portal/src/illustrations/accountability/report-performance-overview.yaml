@@ -1,16 +1,17 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_cascade_dashboard_action, tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_my_performance
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_team, tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_root
 # docs-sync: shows tritel_accountability_framework:model:accountability.snapshot.line, tritel_accountability_framework:selection:accountability.target.state
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_my_actions
 type: screen
-title: The Performance Overview
+title: The Company Overview
 desc: The Org Performance Cascade screen with the period and As at selectors, the Trend switch, the Freeze button, the List, Organogram and Focus tabs, the KPI strip and the side panel for one person with Own, Team and Composite scores, numbered 1 to 7.
 source: tritel_accountability_framework/static/src/cascade/accountability_cascade_dashboard.xml
 frame:
   grid: true
   app: Accountability
-  menu: [{label: My Performance, active: true}, My Team, My Actions, Organisation]
-  breadcrumb: [Performance Overview]
+  menu: [{label: Company Overview, active: true}, My Performance, My Team, My Actions, Organisation]
+  breadcrumb: [Company Overview]
 blocks:
   - buttons: [{label: FY 2026 ●, n: 1}, {label: As at 30 Sep 2026 · quarter end, n: 2}, {label: Trend}, {label: ❄ Freeze organisation snapshot, n: 7}]
   - buttons: [{label: List}, {label: Organogram, primary: true, n: 3}, {label: Focus}, {label: + Expand All}]

@@ -1,12 +1,12 @@
 ---
 title: See my performance
-description: Open the Performance Overview to see your own score, team score, overall (composite) score and rating for the period, and the targets behind them.
+description: Open the Company Overview to see your own score, team score, overall (composite) score and rating for the period, and the targets behind them.
 module: accountability
 pageType: how-to
 roles: [everyone]
 tags: [scores, ratings]
-keywords: [KPI, scorecard, appraisal, my score, rating, composite, overall score, performance overview, how am I doing, results]
-where: [Accountability, My Performance, Performance Overview]
+keywords: [KPI, scorecard, appraisal, my score, rating, composite, overall score, performance overview, how am I doing, Company Overview]
+where: [Accountability, Company Overview]
 before:
   - You have a user account linked to your employee record. Without it the <strong>Accountability</strong> app does not appear.
   - An accountability period is <strong>Active</strong>, and you have at least one live target in it.
@@ -27,17 +27,18 @@ sources:
   - tritel_accountability_framework/views/accountability_progress_brief_views.xml
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_accountability_framework/views/hr_employee_views.xml
-verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+  - tritel_accountability_framework/models/accountability_progress_brief.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
-The **Performance Overview** is the first screen you see when you open **Accountability**. It shows your score for the period, your rating, and how many of your targets have been reviewed. Use it whenever you want a quick answer to "how am I doing?".
+The **Company Overview** is the first screen you see when you open **Accountability**. It shows your score for the period, your rating, and how many of your targets have been reviewed. Use it whenever you want a quick answer to "how am I doing?".
 
-<Illustration name="accountability/howto-performance-overview" caption="The Performance Overview with your own row selected. The numbers match the steps below." />
+<Illustration name="accountability/howto-performance-overview" caption="The Company Overview with your own row selected. The numbers match the steps below." />
 
 ## Steps
 
-1. Open the **Accountability** app. It opens on **My Performance › Performance Overview**. You can also reach it from the menu at any time.
+1. Open the **Accountability** app. It opens on **Company Overview**. You can also reach it from the menu at any time.
 2. In the dark header, check the period. The active period has a dot after its name (**FY 2026 ●**). To look back, pick another period, or pick a month end in the **As at** list instead of **As at today (live)**.
 3. Read the tiles across the top: **Org Composite**, **Employees**, **Targets**, **Reviewed**, and one tile per rating level. For staff without a team these describe only you.
 4. Click your name in the list (or switch to **Organogram** or **Focus**). A panel opens on the right.

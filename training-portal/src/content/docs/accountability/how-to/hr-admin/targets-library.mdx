@@ -5,10 +5,10 @@ module: accountability
 pageType: how-to
 roles: [hr, accountability-admin]
 tags: [targets, year end]
-keywords: [targets library, role set, standard targets, KPI library, job role, template, job position, next year, propose targets, suggestions]
+keywords: [targets library, role set, standard targets, KPI library, job role, template, job position, next year, Seed Targets Library, Seed from this year, seed library, suggestions]
 where: [Accountability, Organisation, Targets Library]
 before:
-  - You are HR (Employees administrator) or an accountability administrator. Only you see <strong>Targets Library</strong> and <strong>Seed Targets Library</strong>.
+  - You are HR (Employees administrator) or an accountability administrator. Only you see <strong>Organisation › Targets Library</strong> and can use <strong>Seed from this year</strong>.
   - There is an active (or recent) period with live targets to learn from.
 related: [accountability/how-to/line-managers/propose-next-years-targets, accountability/concepts/targets, accountability/concepts/metrics, accountability/how-to/hr-admin/open-and-close-periods]
 sidebar: { order: 3 }
@@ -26,7 +26,10 @@ sources:
   - tritel_accountability_framework/security/ir_groups.xml
   - tritel_accountability_framework/views/hr_employee_views.xml
   - tritel_accountability_framework/views/menu.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/static/src/targets_library/targets_library_list.js
+  - tritel_accountability_framework/static/src/targets_library/targets_library_list.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -36,13 +39,15 @@ The **targets library** holds one **role set** per job role, such as *Account Ma
 
 ## Steps
 
-1. The first time, open **Accountability › Organisation › Seed Targets Library**. The system builds one draft role set for each job role that has targets in the active period, and opens **Organisation › Targets Library**. A message says how many sets and entries were created.
+1. Open **Accountability › Organisation › Targets Library**. The first time, the list is empty and says *Seed the library from this year's targets with **Seed from this year** above, then review, rename and publish each role set.* Click **Seed from this year** above the list.
+   - A window **Seed from this year** asks: *Create draft role sets from this year's targets: one per job position, one entry per measure. Job positions that already have a role set are left alone. Continue?* Click **Seed** (or **Cancel**).
+   - The system builds one draft role set for each job role that has live targets in the active period, and the list refreshes. A message says how many were made, for example *3 draft role set(s) with 24 entries seeded from FY 2026. Review, rename and publish them.*
 2. Click a role set. Correct its name if needed (for example *Account Manager*).
 3. Check **Job positions**: everyone in these job positions gets this set. **People** shows how many people that is.
 4. In the **Entries** tab, tidy each line:
    - **Name**: a clean name without amounts; values are set per person.
    - **Measured by**: the metric, if the target updates itself.
-   - **Target Type**, **Unit**, **Cadence**, and **Suggested Value** (or **Floor** and **Ideal** for SLA targets). Seeding fills these with last year's typical values.
+   - **Target Type**, **Unit**, **Cadence**, and **Suggested Value** (or **Floor** and **Ideal** for SLA targets). Seeding fills these with this year's typical values.
    - **Optional**: offered as skipped; the manager adds it where it applies. **Held last year by** shows how many people had it.
    - Delete lines that don't belong, or add new ones.
 5. Lines marked **Suggested** came from a manager's proposal. Click **Accept** to add one to the library, or delete it.
@@ -60,13 +65,14 @@ To give one person a different set from their job position's, open their employe
 
 | Message | Why it happens | What to do |
 |---|---|---|
-| *Only HR managers and accountability administrators can change the targets library.* | Someone without HR or administrator rights clicked **Publish**, **Accept** or seed. | Ask HR or an administrator. |
+| *Only HR managers and accountability administrators can change the targets library.* | Someone without HR or administrator rights clicked **Publish**, **Accept** or **Seed**. | Ask HR or an administrator. |
 | *There is no period to seed the library from.* | No period exists yet. | Create the period first. |
 | *Only published role sets can be used.* | A manager picked a draft set while proposing targets. | Publish the set. |
 | *Employee A has no role set to suggest it to.* | A manager suggested a target for someone with no matching set. | Create a set for that job position, or set the person's **Targets role set**. |
 
 :::note[Good to know]
-- Seeding never overwrites. Roles that already have a set are skipped, and the message then reads *Every role with targets in FY 2026 already has a role set.*
+- Seeding never overwrites. Roles that already have a set are skipped, and the message then reads *Every role with targets in FY 2026 already has a role set.* You can click **Seed from this year** again at any time, for example after new job positions are created.
+- **Seed from this year** used to be a menu of its own, **Organisation › Seed Targets Library**. It is now only the button on the list.
 - A person's set is their own **Targets role set** if one is chosen, otherwise their job position's set, otherwise a set whose name matches their job title.
 - Seeding groups targets by metric, or by name with the amounts taken out. Check for near-duplicates, such as two spellings of the same target.
 :::

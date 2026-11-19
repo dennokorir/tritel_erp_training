@@ -1,0 +1,132 @@
+---
+title: Accountability menus
+description: Every menu in the Accountability app, what each item opens and who sees it, and where the old menu names went.
+module: accountability
+pageType: reference
+roles: [everyone, line-manager, hr, accountability-admin]
+tags: [access]
+keywords: [accountability menu, where is, menu missing, can't see My Team, People menu, Performance Overview, Performance Snapshots, Propose Targets, Cascade Management, Milestone Timeline, Scorecard Change Requests, Session Coverage, Seed Targets Library, renamed menu]
+related: [accountability/who-can-do-what, accountability/index, accountability/reports/performance-overview, accountability/how-to/hr-admin/targets-library, accountability/how-to/hr-admin/decide-changes-and-escalations, accountability/faq]
+sidebar: { order: 3 }
+sources:
+  - tritel_accountability_framework/views/menu.xml
+  - tritel_accountability_framework/views/menu_people.xml
+  - tritel_accountability_framework/views/accountability_snapshot_views.xml
+  - tritel_accountability_framework/views/accountability_progress_brief_views.xml
+  - tritel_accountability_framework/views/accountability_scorecard_request_views.xml
+  - tritel_accountability_framework/views/accountability_target_library_views.xml
+  - tritel_accountability_framework/tests/test_menus_by_role.py
+  - e_board/views/md_review_views.xml
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+---
+import Illustration from '../../../components/Illustration.astro';
+
+Everyone sees the **Accountability** menus in the same order: **Company Overview**, **My Performance**, **My Team**, **People**, **My Actions**, **Organisation**, **Configuration**. Which of them you see depends on your role:
+
+| Role | What you see |
+|---|---|
+| **Everyone** | **Company Overview**, **My Performance** and **My Actions**. |
+| **Line manager** | Adds **My Team** and **Organisation** (**Objectives** and **Review Coverage**). |
+| **HR** | Adds **People** (HR's company-wide lists) and **Organisation** (**Review Coverage**, **Compliance** and **Targets Library**). |
+| **Accountability administrator** | Everything a line manager sees, plus **Compliance**, **Targets Library** and **Board Reviews** under **Organisation**, and **Configuration** as the last menu. |
+
+To learn how each role is given, see [Who can do what](/accountability/who-can-do-what/).
+
+<Illustration name="accountability/matrix-menus" caption="Which Accountability menus each role sees." />
+
+## Company Overview
+
+**Accountability › Company Overview** is where the app opens: where the company stands today, with each person's score in the organogram. Everyone sees it. See [Company Overview](/accountability/reports/performance-overview/) and [See my performance](/accountability/how-to/everyone/see-my-performance/).
+
+## My Performance
+
+Everyone sees these.
+
+| Item | What it opens |
+|---|---|
+| **My Targets** | Your own targets, scores and milestones. See [Check my targets](/accountability/how-to/everyone/my-targets/). |
+| **My Reviews** | Your reviews, to read, acknowledge or question. See [Respond to my review](/accountability/how-to/everyone/respond-to-my-review/). |
+| **My Score History** | Your frozen snapshots: your scores as they stood at month ends, period closes and when someone froze them. See [Snapshots and Compare](/accountability/reports/snapshots-and-compare/). |
+| **Progress Briefs** | The progress briefs sent to you. Shown only while **Send progress briefs** is switched on. See [Read my progress briefs and snapshots](/accountability/how-to/everyone/read-briefs-and-snapshots/). |
+
+## My Team
+
+Line managers and accountability administrators see this menu. Its items sit under three headings.
+
+| Item | What it opens |
+|---|---|
+| **Set targets › Team Targets** | Your team's targets, to create, activate and change. See [Set targets for my team](/accountability/how-to/line-managers/set-team-targets/). |
+| **Set targets › Cascades** | Following the targets you pushed down to your team, and the shares your team asked for. See [Push a target down, or approve a pull](/accountability/how-to/line-managers/push-and-pull-targets/). |
+| **Set targets › Milestones** | Your team's milestone stages on a timeline. See [Set milestone dates and confirm milestones](/accountability/how-to/line-managers/milestone-dates-and-confirmations/). |
+| **Set targets › Next Year's Targets** | Next year's targets proposed from this year's, ready to turn into drafts. See [Propose next year's targets](/accountability/how-to/line-managers/propose-next-years-targets/). |
+| **Review › Review Sessions** | Review sessions, opening on **My Sessions**. See [Plan a review session](/accountability/how-to/line-managers/plan-a-review-session/). |
+| **Review › Team Reviews** | Your team's reviews, grouped by whose move it is. See [Track reviews on the Team Reviews board](/accountability/how-to/line-managers/team-reviews-board/). |
+| **Review › Team Scores** | Own, team and overall scores for everyone in your team. See [See my team's scores](/accountability/how-to/line-managers/team-scores/). |
+| **Approve › Scorecard Changes** | Changes to your team's scorecards, opening on **Waiting for approval** and **Proposed by employees**. Clear the filters for the full history. See [Request a scorecard change](/accountability/how-to/line-managers/request-a-scorecard-change/). |
+| **Approve › Priority Changes** | Changes to your team's priorities and whether they were acknowledged. See [Priority change workflow](/accountability/workflows/priority-change/). |
+
+## People
+
+Only HR sees this menu: the same screens as **My Team**, for the whole company.
+
+| Item | What it opens |
+|---|---|
+| **Review Sessions** | Every review session, with no **My Sessions** filter. See [Review session workflow](/accountability/workflows/review-session/). |
+| **All Reviews** | Every review except your own, on the same board and with the same filters as **Team Reviews**. See [Track reviews on the Team Reviews board](/accountability/how-to/line-managers/team-reviews-board/). |
+| **Scores** | The **Team Scores** screen, titled **Scores**, with the **Everyone** scope. See [See my team's scores](/accountability/how-to/line-managers/team-scores/). |
+| **Scorecard Changes** | The same list as **My Team › Approve › Scorecard Changes**. See [Decide scorecard changes and escalations](/accountability/how-to/hr-admin/decide-changes-and-escalations/). |
+| **Priority Changes** | Every priority change. See [Priority change workflow](/accountability/workflows/priority-change/). |
+| **Next Year's Targets** | The **Next Year's Targets** screen. See [Propose next year's targets](/accountability/how-to/line-managers/propose-next-years-targets/). |
+
+## My Actions
+
+**Accountability › My Actions** lists everything waiting for you to act on, such as a review to acknowledge or new priorities to accept. Everyone sees it. See [Acknowledge new priorities](/accountability/how-to/everyone/acknowledge-new-priorities/) and [Respond to my review](/accountability/how-to/everyone/respond-to-my-review/).
+
+## Organisation
+
+Line managers, HR and accountability administrators see this menu, each with different items.
+
+| Item | What it opens | Who sees it |
+|---|---|---|
+| **Objectives** | The company's objectives by period. See [Set up objectives](/accountability/how-to/hr-admin/objectives/). | Line managers, administrators |
+| **Review Coverage** | Whether every manager is running their review sessions. See [Review Coverage](/accountability/reports/session-coverage/). | Line managers, HR, administrators |
+| **Compliance** | Which cascaded targets have been adopted, objective by objective. See [Compliance](/accountability/reports/compliance/). | HR, administrators |
+| **Targets Library** | Standard targets for each job position, with the **Seed from this year** button. See [Maintain the targets library](/accountability/how-to/hr-admin/targets-library/). | HR, administrators |
+| **Board Reviews** | The Managing Director's quarterly board reviews. | Administrators |
+
+## Configuration
+
+Only accountability administrators see this menu.
+
+| Item | What it opens |
+|---|---|
+| **Periods** | Performance periods, to open, close and reset. See [Open and close a period](/accountability/how-to/hr-admin/open-and-close-periods/). |
+| **Metrics** | The metrics that measure targets automatically. See [Set up and test a metric](/accountability/how-to/hr-admin/metrics/). |
+| **Settings** | The company-wide settings: how managers' scores combine, the rating scale, progress briefs, review deadlines and access rights. See [Change the Accountability settings](/accountability/how-to/hr-admin/settings/) and [Fix someone's access](/accountability/how-to/hr-admin/access-rights/). |
+
+## Renamed, moved and removed
+
+If you knew the old menus, this is where each item went.
+
+| Old | Now |
+|---|---|
+| **My Performance › Performance Overview** | **Company Overview**, its own menu |
+| **My Performance › Performance Snapshots** | **My Performance › My Score History** |
+| **My Team › Propose Targets** | **My Team › Set targets › Next Year's Targets** (HR: **People › Next Year's Targets**) |
+| **My Team › Cascade Management** | **My Team › Set targets › Cascades** |
+| **My Team › Milestone Timeline** | **My Team › Set targets › Milestones** |
+| **My Team › Scorecard Change Requests** | **My Team › Approve › Scorecard Changes** (HR: **People › Scorecard Changes**) |
+| **Organisation › Session Coverage** | **Organisation › Review Coverage** |
+| **Organisation › Periods**, **Metrics**, **Settings** | **Configuration › Periods**, **Metrics**, **Settings** |
+| **My Performance › Board Reviews** | **Organisation › Board Reviews**, administrators only |
+| HR's **My Team** menu | **People** |
+| **Organisation › Scorecard Changes** (the full log) | Removed. Use **Scorecard Changes** under **My Team › Approve** or **People** and clear the filters. |
+| **Organisation › Seed Targets Library** | Removed. Use the **Seed from this year** button on **Organisation › Targets Library**. |
+
+:::note[Good to know]
+- **Progress Briefs** appears under **My Performance** only while **Send progress briefs** is switched on in the settings (of any company). Switch it off and the menu disappears for everyone.
+- HR staff who also manage people see both **My Team** (their own team, first) and **People** (the whole company).
+- HR staff without a team don't see **Organisation › Objectives**.
+- **Seed Targets Library** is now the **Seed from this year** button on the **Targets Library** list. It asks you to confirm first and leaves job positions that already have a role set alone. Only HR and accountability administrators can seed.
+- Accountability administrators who are not HR reach scorecard changes through **My Team › Approve › Scorecard Changes**. The list has no pivot view any more.
+:::

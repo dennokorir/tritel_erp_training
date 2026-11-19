@@ -2,7 +2,7 @@
 # Source: tritel_accountability_framework views and models (see each screen's fields).
 screens:
   - name: Period
-    where: Accountability › Organisation › Periods
+    where: Accountability › Configuration › Periods
     fields:
       - {label: Period Name, meaning: "The name of the performance year, for example FY 2026.", where: Form title}
       - {label: Start Date, meaning: "First day of the period. Every time-weighted figure counts from here.", where: Form}
@@ -28,7 +28,7 @@ screens:
       - {label: Status, meaning: "Draft, Active or Closed.", where: Status bar}
 
   - name: Target
-    where: Accountability › My Performance › My Targets, or My Team › Team Targets (open a target)
+    where: Accountability › My Performance › My Targets, or My Team › Set targets › Team Targets (open a target)
     fields:
       - {label: Target, meaning: "What is being measured.", where: Form title}
       - {label: Employee, meaning: "Whose target it is. Only line managers can change it.", where: Assignment}
@@ -119,7 +119,7 @@ screens:
       - {label: How the average is reached, meaning: "The average worked out step by step.", where: Tab}
 
   - name: Employee Review (manager)
-    where: Accountability › My Team › Review Sessions › a session › Review
+    where: Accountability › My Team › Review › Review Sessions › a session › Review
     fields:
       - {label: Avg Score (%), meaning: "The review average, as the employee sees it in Average (%).", where: Progress}
       - {label: Rating, meaning: "Rating of the review.", where: Progress}
@@ -132,7 +132,7 @@ screens:
       - {label: Actual, meaning: "The result for the window, typed or fetched. Entering it moves a pending line to Done.", where: Target lines}
 
   - name: Review Session
-    where: Accountability › My Team › Review Sessions
+    where: "Accountability › My Team › Review › Review Sessions (HR: People › Review Sessions)"
     fields:
       - {label: Session Date, meaning: "The day the session was created.", where: Session}
       - {label: Review Cadence, meaning: "Targets at this cadence and every finer one are included.", where: Session}
@@ -150,7 +150,7 @@ screens:
       - {label: Status, meaning: "Draft, In Progress or Done.", where: Status bar}
 
   - name: Scores
-    where: Accountability › My Team › Team Scores, and the employee form
+    where: "Accountability › My Team › Review › Team Scores (HR: People › Scores), and the employee form"
     fields:
       - {label: Own, meaning: "Own Score (%): weighted average of your scored targets.", where: Team Scores}
       - {label: Team, meaning: "Team Score (%): weighted average of your team members' scores. Managers only.", where: Team Scores}
@@ -162,7 +162,7 @@ screens:
       - {label: Composite Score (%), meaning: "The overall score.", where: Employee form › Performance tab}
 
   - name: Settings
-    where: Accountability › Organisation › Settings
+    where: Accountability › Configuration › Settings
     fields:
       - {label: Own Performance Weight (%), meaning: "Share of a manager's overall score that comes from their own targets (40 by default).", where: Composite Score Weights}
       - {label: Team Average Weight (%), meaning: "Share that comes from their team (60 by default). Keep the two adding up to 100.", where: Composite Score Weights}
@@ -182,7 +182,7 @@ screens:
       - {label: Notify on Standalone Employees, meaning: "Who is told when someone has no manager and no team.", where: Notifications}
 
   - name: Metric
-    where: Accountability › Organisation › Metrics
+    where: Accountability › Configuration › Metrics
     fields:
       - {label: Coded Logic, meaning: "The built-in calculation a coded metric uses.", where: Rule}
       - {label: Wait Before Automatic Review (days), meaning: "Days to wait after a window closes. 0 uses the built-in default or the Settings value.", where: Rule}

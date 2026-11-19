@@ -1,9 +1,10 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit 5d691a8dca64
 # docs-sync: shows tritel_accountability_framework:client_action:accountability_team_targets_client_action, tritel_accountability_framework:menu:menu_accountability_my_performance, tritel_accountability_framework:menu:menu_accountability_my_team
 # docs-sync: shows tritel_accountability_framework:menu:menu_accountability_organisation, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:menu:menu_accountability_team_targets
 # docs-sync: shows tritel_accountability_framework:selection:accountability.objective.state, tritel_accountability_framework:selection:accountability.period.state, tritel_accountability_framework:selection:accountability.review.session.employee.avg_rating
 # docs-sync: shows tritel_accountability_framework:selection:accountability.review.session.line.line_rating, tritel_accountability_framework:selection:accountability.score.rating, tritel_accountability_framework:selection:accountability.snapshot.line.rating
 # docs-sync: shows tritel_accountability_framework:selection:accountability.snapshot.rating, tritel_accountability_framework:selection:accountability.target.rating, tritel_accountability_framework:selection:accountability.target.state
+# docs-sync: shows tritel_accountability_framework:menu:menu_accountability_dashboard, tritel_accountability_framework:menu:menu_accountability_my_actions
 type: screen
 title: Changing what a target is measured against
 desc: A live target's form with the Change target button, and the Change what it is measured against window with the current and new target, the reason box, the effect on the overall rating score and the Submit button, numbered 1 to 5.
@@ -11,7 +12,7 @@ source: tritel_accountability_framework/views/accountability_scorecard_request_v
 frame:
   grid: true
   app: Accountability
-  menu: [My Performance, {label: My Team, active: true}, My Actions, Organisation]
+  menu: [Company Overview, My Performance, {label: My Team, active: true}, My Actions, Organisation]
   breadcrumb: [Team Targets, Grow qualified pipeline]
 blocks:
   - buttons: [{label: Request Review}, {label: Close}, {label: Change target, n: 1}]

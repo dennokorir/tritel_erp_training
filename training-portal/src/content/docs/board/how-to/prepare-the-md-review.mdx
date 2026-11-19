@@ -21,7 +21,8 @@ sources:
   - e_board/controllers/md_review.py
   - e_board/data/md_review_cron.xml
   - e_board/security/security.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_accountability_framework/views/menu.xml
+verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -62,7 +63,7 @@ After each quarter the system opens a review of your targets for the board. Resu
 | *Only Employee A can do this.* | Someone other than the MD clicked **Submit to the Board**. | Only the MD can submit their own review. |
 
 :::note[Good to know]
-- The MD has no **Board Reviews** menu. You reach the review through **My Actions** (group **Board reviews**: *Prepare the quarter for the board, or acknowledge its sign-off.*) or through the to-do.
+- The MD has no **Board Reviews** menu (it is under **Organisation**, for Accountability administrators only). You reach the review through **My Actions** (group **Board reviews**: *Prepare the quarter for the board, or acknowledge its sign-off.*) or through the to-do.
 - Submitting checks only that each line you fill in has a comment. A line left with a **Result** of 0 but a comment is accepted, so check every result before you submit.
 - Metric results were worked out when the review opened. If something was posted later, say so in the **Comment**; the Board Reviewer can adjust the result.
 :::
