@@ -1,12 +1,12 @@
-# docs-sync: verified_commit 5d691a8dca64
+# docs-sync: verified_commit bba3de2bf860
 # docs-sync: shows tritel_project_delivery:field:project.project.award_date, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_projects_to_link
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:project.edit_project:button:cost-account
 # docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:link-to-won-tender, tritel_project_delivery:view_ext:project.edit_project:button:won-tender, tritel_project_delivery:view_ext:project.edit_project:page:handover-amp-close
 # docs-sync: shows tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:open-delivery-project, tritel_project_delivery:wizard:delivery.cost.account.card
 type: screen
 title: Linking an existing project to its won tender
-desc: A project's Delivery tab with the notice that it is not linked to a won tender and the Link to Won Tender button, and the Link to Won Tender window with the existing project already filled in, the won tender, project manager, start date and cost account, numbered 1 to 6.
-source: tritel_project_delivery/views/project_views.xml (project_form_delivery); wizards/open_project_wizard_views.xml (delivery_project_open_wizard_form)
+desc: A project's Delivery tab with the notice that it is not linked to a won tender and the Link to Won Tender button, and the Link to Won Tender window with Link as set to Delivery project, the existing project already filled in, the won tender, project manager, start date and cost account, numbered 1 to 7.
+source: tritel_project_delivery/views/project_views.xml (project_form_delivery); wizards/open_project_wizard_views.xml (delivery_project_open_wizard_form), wizards/open_project_wizard.py
 frame:
   grid: true
   app: Project
@@ -20,9 +20,12 @@ blocks:
       title: Link to Won Tender
       blocks:
         - fields:
-            - [{label: Won tender, value: Branch Wi-Fi Rollout, n: 3}, {label: Existing project, value: P26-051 · Branch Wi-Fi Rollout}]
-            - [{label: Client, value: Customer B}, {label: Project manager, value: Employee A, n: 4}]
+            - [{label: Link as, value: "◉ Delivery project  ○ Link only", n: 3}]
+        - text: "The project gets the client, the tender link, a cost account (finance's existing one if it matches), the standard delivery stages and milestones, and a draft budget with the standard starter items."
+        - fields:
+            - [{label: Won tender, value: Branch Wi-Fi Rollout, n: 4}, {label: Existing project, value: P26-051 · Branch Wi-Fi Rollout}]
+            - [{label: Client, value: Customer B}, {label: Project manager, value: Employee A, n: 5}]
             - [{label: Award Date, value: 01/03/2026}, {label: Start date, value: 15/03/2026}]
-            - [{label: Cost account, value: "[P26-051] Branch Wi-Fi Rollout", n: 5}]
+            - [{label: Cost account, value: "[P26-051] Branch Wi-Fi Rollout", n: 6}]
         - text: "The project already has this cost account; it is kept."
-        - buttons: [{label: Open Delivery Project, primary: true, n: 6}, {label: Cancel}]
+        - buttons: [{label: Open Delivery Project, primary: true, n: 7}, {label: Cancel}]

@@ -4,7 +4,7 @@
 # docs-sync: shows tritel_project_delivery:menu:menu_project_my_actions, tritel_project_delivery:model:project.delivery.baseline, tritel_project_delivery:model:project.delivery.commitment
 # docs-sync: shows tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:view_ext:project.edit_project:button:budget-left, tritel_project_delivery:view_ext:project.edit_project:button:committed
 # docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:cost-account, tritel_project_delivery:view_ext:project.edit_project:button:delivery-budget, tritel_project_delivery:view_ext:project.edit_project:button:untagged-tender-order-lines
-# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:field:untagged-lines, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:delivery-projects, tritel_project_delivery:wizard:delivery.cost.account.card
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:field:untagged-lines, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:projects, tritel_project_delivery:wizard:delivery.cost.account.card
 # docs-sync: shows tritel_project_delivery:wizard:delivery.tag.orders.wizard
 type: screen
 title: Tagging tender orders to a project

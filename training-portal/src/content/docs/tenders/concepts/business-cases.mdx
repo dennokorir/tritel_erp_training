@@ -5,7 +5,7 @@ module: tenders
 pageType: concept
 roles: [account-manager, head-commercial, head-channel, tender-admin]
 tags: [business cases, approvals]
-keywords: [business case, costing, cost sheet, BOQ, margin, gross profit, GP, pricing approval, bid approval, commission, facilitation, actual vs estimated, variance]
+keywords: [business case, costing, cost sheet, BOQ, margin, gross profit, GP, pricing approval, bid approval, commission, actual vs estimated, Delivery projects button]
 related: [tenders/workflows/business-case, tenders/how-to/bids/business-case, tenders/calculations/business-case-margin, tenders/how-to/bids/tender-my-actions, projects/concepts/baselines]
 sidebar: { order: 8 }
 sources:
@@ -22,7 +22,8 @@ sources:
   - tritel_tender_tracker/wizards/tender_summary_wizard.py
   - tritel_project_delivery/views/tender_views.xml
   - tritel_project_delivery/models/tender.py
-verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+  - tritel_project_delivery/models/tender_links.py
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -78,7 +79,7 @@ Once the tender is **Won** or **Prequalified**, the **Actual vs Estimated** tab 
 - **Approve** and **Reject** are hidden from other roles, but nothing else stops someone approving. Treat approval as the Head of Commercial's step.
 - **Reject** needs a reason: *Please enter a rejection reason before rejecting.* The **Rejection Reason** box only appears once a case is rejected, so the Head of Commercial can't fill it in first on the back-office form. Until this is changed, write the reason in the chatter and ask a Tender administrator to help record it.
 - A rejected case can only go back to **Draft** through a Tender administrator.
-- The approved budget the delivery team works to after a win is a separate thing, the project's Delivery Budget: see [Delivery Budgets and revisions](/projects/concepts/baselines/). Once a delivery project is opened, the tender's **Delivery projects** button shows its project code, for example **P26-049**.
+- The approved budget the delivery team works to after a win is a separate thing, the project's Delivery Budget: see [Delivery Budgets and revisions](/projects/concepts/baselines/). Once a delivery project is opened, the tender's **Projects** button (once called **Delivery projects**) shows its project code, for example **P26-049**.
 :::
 
 ## Tasks that use this

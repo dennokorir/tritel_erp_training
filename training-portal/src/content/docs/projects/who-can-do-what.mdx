@@ -5,7 +5,7 @@ module: projects
 pageType: reference
 roles: [delivery-pm, head-delivery, delivery-finance, md, everyone, system-admin]
 tags: [permissions, access]
-keywords: [access rights, permissions, roles, who can approve, can't see Delivery menu, Project Budgets menu, Configuration missing, baseline, MD approval, project code, visibility, security]
+keywords: [access rights, permissions, roles, who can approve, can't see Delivery menu, Project Budgets menu, Configuration missing, baseline, MD approval, link tender, visibility, security]
 related: [projects/concepts/approvals, projects/faq, projects/index, projects/how-to/approvers/delivery-settings, roles/delivery]
 sidebar: { order: 2 }
 sources:
@@ -39,7 +39,10 @@ sources:
   - tritel_project_delivery/wizards/assign_cost_accounts_views.xml
   - tritel_project_delivery/wizards/correct_project_code.py
   - tritel_project_delivery/tests/test_delivery_menus.py
-verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+  - tritel_project_delivery/views/tender_link_views.xml
+  - tritel_project_delivery/models/tender_links.py
+  - tritel_project_delivery/wizards/open_project_wizard_views.xml
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../components/Illustration.astro';
 
@@ -73,8 +76,8 @@ The MD column below shows only what being named MD adds. The MD also has the rig
 | Role | Project › Delivery | Accounting › Project Budgets |
 |---|---|---|
 | **Delivery PM** | **Projects**: **My Delivery Projects**, **Delivery Budgets**, **Budget Commitments**, **My Submissions**, **Handovers**, **Client Delays** | — |
-| **Head of Delivery** | **To approve › Waiting for Me**; **Projects**: everything a Delivery PM sees, plus **Delivery Projects** and **Projects Not in Delivery**; **Setup**: **Delivery Settings**, **Cost Types**, **Budget Categories**, **Starter Items**, **Standard Milestones**, **Cost Accounts to Sort Out** | — |
-| **Delivery Finance** | **To approve › Waiting for Me**; **Projects**: **Delivery Projects**, **Delivery Budgets**, **Budget Commitments**, **Handovers**, **Client Delays**; **Setup**: **Delivery Settings**, **Budget Categories**, **Starter Items**, **Cost Accounts to Sort Out** | **To approve**: **Budgets to Approve**, **Costs After Close**; **Tracking**: **Budget vs Actual**, **Delivery Budgets**, **Budget Commitments**, **Cost Accounts to Sort Out**; and **Accounting › Configuration › Project Budgets** (**Delivery Settings**, **Budget Categories**, **Starter Items**) |
+| **Head of Delivery** | **To approve › Waiting for Me**; **Projects**: everything a Delivery PM sees, plus **Delivery Projects** and **Projects Not in Delivery**; **Setup**: **Delivery Settings**, **Cost Types**, **Budget Categories**, **Starter Items**, **Standard Milestones**, **Cost Accounts to Sort Out**, **Link Projects to Tenders** | — |
+| **Delivery Finance** | **To approve › Waiting for Me**; **Projects**: **Delivery Projects**, **Delivery Budgets**, **Budget Commitments**, **Handovers**, **Client Delays**; **Setup**: **Delivery Settings**, **Budget Categories**, **Starter Items**, **Cost Accounts to Sort Out**, **Link Projects to Tenders** | **To approve**: **Budgets to Approve**, **Costs After Close**; **Tracking**: **Budget vs Actual**, **Delivery Budgets**, **Budget Commitments**, **Cost Accounts to Sort Out**, **Link Projects to Tenders**; and **Accounting › Configuration › Project Budgets** (**Delivery Settings**, **Budget Categories**, **Starter Items**) |
 | **Accounting managers** | — | **Tracking › Cost Accounts to Sort Out** only |
 
 The full list, with what each screen opens on, is in [Project Delivery menus](/projects/menus/).
@@ -102,6 +105,7 @@ Notes on the "partly" marks:
 - **Delivery Settings**, **Budget Categories**, **Starter Items**, **Cost Types** and **Standard Milestones** sit under **Project › Delivery › Setup**. The Head of Delivery sees all of them; Delivery Finance sees **Delivery Settings**, **Budget Categories** and **Starter Items**, there and under **Accounting › Configuration › Project Budgets**. **Apply mapping** can also be used by accounting advisers. The Head of Delivery and Delivery Finance can add and change budget categories but not delete them; deactivate one instead.
 
 - **Cost Accounts to Sort Out** (link a cost account to a project, mark it as a department account, or archive it): Delivery Finance, the Head of Delivery and accounting managers. Anyone else who tries is told *Only Delivery Finance, the Head of Delivery or an accounting manager can sort out cost accounts.*
+- **Link projects to tenders**: delivery project managers and the Head of Delivery link a project from its **Delivery** tab (**Link to Won Tender**, or **Make It a Delivery Project** for a project linked for reference), as a delivery project or for reference only. The Head of Delivery and Delivery Finance also have **Link Projects to Tenders** and **Action › Link to Suggested Tender (link only)**. Delivery Finance can only link for reference: choosing **Link as › Delivery project** stops with *Only delivery project managers can open delivery projects.* Anyone else who tries is told *Only the Head of Delivery, Delivery Finance or a delivery project manager can link projects to tenders.*
 
 Some buttons depend on accounting or purchase access rather than a delivery role: **Vendor bills**, **Accounting budget lines**, **Automatic tagging rules** and **Accounting Budget** need accounting access, **Purchase orders** needs purchase access, and **Spent so far** and **Cost account** open the accounting records only for users with accounting access. See [the project form at a glance](/projects/reports/project-at-a-glance/).
 

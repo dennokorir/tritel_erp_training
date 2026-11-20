@@ -1,0 +1,34 @@
+# docs-sync: verified_commit bba3de2bf860
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_link_projects_tenders, tritel_project_delivery:menu:menu_acc_pb_link_projects_tenders, tritel_project_delivery:field:project.project.tender_suggestion_id
+# docs-sync: shows tritel_project_delivery:field:project.project.tender_suggestion_note, tritel_project_delivery:field:project.project.tender_candidate_ids, tritel_project_delivery:selection:project.project.tender_suggestion_kind
+type: screen
+title: Link Projects to Tenders
+desc: The Link Projects to Tenders list in Project › Delivery › Setup with the Match, Suggested tender, Why and Other candidates columns, the Link… and No Tender buttons on each row and the Action menu, and the Link to Won Tender window set to Link only, numbered 1 to 8.
+source: tritel_project_delivery/views/tender_link_views.xml (project_tender_link_tree, action_link_projects_to_tenders, action_server_link_suggested_tender); wizards/open_project_wizard_views.xml (delivery_project_open_wizard_form); models/tender_links.py
+frame:
+  grid: true
+  app: Project
+  menu: [Projects, My Tasks, My Actions, {label: Delivery, active: true, n: 1}, Reporting]
+  breadcrumb: [Link Projects to Tenders]
+blocks:
+  - buttons: [{label: "Action › Link to Suggested Tender (link only)", n: 8}]
+  - table:
+      columns: [Project code, Name, Match, Suggested tender, Why, Other candidates]
+      widths: [0.95, 1.25, 0.9, 1.25, 2.2, 1.25]
+      n: 2
+      rows:
+        - {cells: [P26-021, LAN Upgrade, {text: Certain, badge: true, tone: good}, LAN Upgrade, "Tender number TND-2026-003 is in the project or its cost account", ""], highlight: true}
+        - [P26-033, CCTV Support, {text: Possible, badge: true, tone: warn}, CCTV Works, Won tender for the same customer, Wi-Fi Rollout]
+        - [{text: P26-040, tone: muted}, {text: Staff Training, tone: muted}, "", "", "", ""]
+  - text: "At the end of every row:"
+  - buttons: [{label: Link…, n: 3}, {label: No Tender, n: 7}]
+  - dialog:
+      title: Link to Won Tender
+      blocks:
+        - fields:
+            - [{label: Link as, value: "○ Delivery project  ◉ Link only", n: 5}]
+        - note: {text: "Link only records the tender on the project for reference. It stays out of delivery tracking: no stages, budget or reminders, and it doesn't count in the delivery KPIs. You can make it a delivery project later with Link to Won Tender.", tone: accent}
+        - fields:
+            - [{label: Won tender, value: LAN Upgrade, n: 4}, {label: Existing project, value: "P26-021 · LAN Upgrade"}]
+            - [{label: Client, value: Customer A}, {label: Award Date, value: 02/03/2026}]
+        - buttons: [{label: Link Tender, primary: true, n: 6}, {label: Cancel}]

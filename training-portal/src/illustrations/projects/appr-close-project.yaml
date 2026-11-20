@@ -5,7 +5,7 @@
 # docs-sync: shows tritel_project_delivery:menu:menu_project_my_actions, tritel_project_delivery:model:project.delivery.client.delay, tritel_project_delivery:selection:project.project.close_result
 # docs-sync: shows tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project, tritel_project_delivery:view_ext:project.edit_project:button:close-project
 # docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:handover, tritel_project_delivery:view_ext:project.edit_project:button:log-client-delay, tritel_project_delivery:view_ext:project.edit_project:button:reopen
-# docs-sync: shows tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:delivery-projects
+# docs-sync: shows tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:projects
 type: screen
 title: Closing a delivery project
 desc: The project form with the Close Project button, and the Close Project window with the spent, open orders, proposed final cost, adjustment and final cost figures, the approved budget, the note box and the result preview, numbered 1 to 6.

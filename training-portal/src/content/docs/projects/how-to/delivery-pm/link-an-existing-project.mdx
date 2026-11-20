@@ -1,16 +1,16 @@
 ---
 title: Link an existing project to its tender
-description: Make a project that was created before the award into a delivery project by linking it to its won tender, so it gets a Delivery Budget and counts for the delivery KPIs.
+description: Make a project that was created before the award into a delivery project by linking it to its won tender, or link it for reference only, and turn a link-only project into a delivery project later.
 module: projects
 pageType: how-to
 roles: [delivery-pm, head-delivery]
 tags: [delivery projects, tenders]
-keywords: [link tender, connect project, old project, existing project, unlinked project, projects to link, projects not in delivery, won tender, KPI, cost account, project code]
+keywords: [link tender, connect project, old project, existing project, unlinked project, projects to link, projects not in delivery, won tender, KPI, cost account, project code, link only, for reference, Make It a Delivery Project]
 where: [Project, Delivery, Projects, Projects Not in Delivery]
 before:
   - The project already exists in the Project app and its tender's status is <strong>Won</strong>.
   - You are a Delivery Project Manager or the Head of Delivery.
-related: [projects/concepts/delivery-projects, projects/concepts/project-codes, projects/how-to/delivery-pm/open-a-delivery-project, projects/how-to/delivery-pm/build-a-baseline, projects/calculations/baseline-due]
+related: [projects/concepts/delivery-projects, projects/how-to/approvers/link-projects-to-tenders, projects/concepts/project-codes, projects/how-to/delivery-pm/open-a-delivery-project, projects/how-to/delivery-pm/build-a-baseline, projects/calculations/baseline-due]
 sidebar: { order: 2 }
 sources:
   - tritel_project_delivery/views/project_views.xml
@@ -29,26 +29,29 @@ sources:
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/views/buttons_views.xml
   - tritel_project_delivery/views/tender_views.xml
-verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+  - tritel_project_delivery/models/tender_links.py
+  - tritel_project_delivery/views/tender_link_views.xml
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
-Some projects are created in Odoo before the tender is won, or outside the delivery flow. Until they are linked to a won tender they are not delivery projects: they have no Delivery Budget and the delivery KPIs don't measure them. Linking them gives them everything a newly opened delivery project gets.
+Some projects are created in Odoo before the tender is won, or outside the delivery flow. Until they are linked to a won tender they are not delivery projects: they have no Delivery Budget and the delivery KPIs don't measure them. Linking them as a **delivery project** gives them everything a newly opened delivery project gets. For an older or finished project that only needs its tender on record, choose **Link only** instead: see [Link for reference only](#link-for-reference-only).
 
 <Illustration name="projects/pm-link-project" caption="Linking an existing project to its won tender. The numbers match the steps below." />
 
 ## Steps
 
 1. Find the project.
-   - Head of Delivery: open **Project › Delivery › Projects › Projects Not in Delivery**. It lists every project that is not linked to a tender. My Actions also shows the count under **Projects not linked to a won tender**.
-   - Project managers: open **Project › Projects**, open **Filters** and choose **Not linked to a tender**. On the project's card, click **Open project**.
+   - Head of Delivery: open **Project › Delivery › Projects › Projects Not in Delivery**. It lists every project that is not a delivery project. My Actions also shows the count under **Projects not linked to a won tender**.
+   - Project managers: open **Project › Projects**, open **Filters** and choose **Not linked to a tender**. It shows projects with no tender at all. On the project's card, click **Open project**.
 2. On the project, open the **Delivery** tab. The blue notice says *This project is not linked to a won tender, so it is not measured by the delivery KPIs.* Click **Link to Won Tender**.
-3. In the **Link to Won Tender** window, **Existing project** is already filled in. Choose the **Won tender**. Only won tenders are listed. Check **Client** and **Award Date**.
-4. Check the **Project manager** and **Start date**. They are taken from the project.
-5. Check **Cost account**.
+3. In the **Link to Won Tender** window, **Existing project** is already filled in. Leave **Link as** on **Delivery project**.
+4. Choose the **Won tender**. Only won tenders are listed. Check **Client** and **Award Date**.
+5. Check the **Project manager** and **Start date**. They are taken from the project.
+6. Check **Cost account**.
    - If the project already has one, it is kept: the line underneath says *The project already has this cost account; it is kept.*
    - If not, choose finance's existing account for the job, or leave it empty to create a new one. The account you choose must not belong to another project.
-6. Click **Open Delivery Project**.
+7. Click **Open Delivery Project**.
 
 ## What happens next
 
@@ -61,11 +64,37 @@ Some projects are created in Odoo before the tender is won, or outside the deliv
 
 Next: [build the Delivery Budget](/projects/how-to/delivery-pm/build-a-baseline/).
 
+## Link for reference only
+
+Use **Link only** for a project that should carry its tender, so the two can be found from each other, but shouldn't be tracked or measured: for example a job finished before the delivery flow started.
+
+1. Follow steps 1 and 2 above.
+2. In the **Link to Won Tender** window, choose **Link as › Link only**. **Project manager**, **Start date** and **Cost account** disappear, and the window says *Link only records the tender on the project for reference. It stays out of delivery tracking: no stages, budget or reminders, and it doesn't count in the delivery KPIs. You can make it a delivery project later with Link to Won Tender.*
+3. Choose the **Won tender**. If Odoo has other likely tenders for the project, they are listed, read-only, under **Other candidates**.
+4. Click **Link Tender**.
+
+The project's **Tender** is set, and if the project had no customer it takes the tender's. Nothing else changes: no stages, milestones, cost account or Delivery Budget are added, and the Delivery KPI doesn't measure it. The chatter says *Linked to tender **TND-2026-002** for reference (not a delivery project).* The **Delivery** tab says *Linked to tender Branch Wi-Fi Rollout for reference. It is not a delivery project, so it is not measured by the delivery KPIs.*
+
+To work through many old projects at once, the Head of Delivery and Delivery Finance use [Link Projects to Tenders](/projects/how-to/approvers/link-projects-to-tenders/), which suggests a tender for each.
+
+## Make a link-only project a delivery project
+
+1. Open the project and its **Delivery** tab. The grey notice says *Linked to tender Branch Wi-Fi Rollout for reference. It is not a delivery project, so it is not measured by the delivery KPIs.*
+2. Click **Make It a Delivery Project**. Delivery project managers and the Head of Delivery see it.
+3. The **Link to Won Tender** window opens with the **Won tender** already filled in. It can't be changed. Leave **Link as** on **Delivery project**.
+4. Carry on from step 5 above: check the **Project manager**, **Start date** and **Cost account**, and click **Open Delivery Project**.
+
+The project then becomes a delivery project exactly as described in [What happens next](#what-happens-next).
+
 ## Common mistakes
 
 | Message | Why it happens | What to do |
 |---|---|---|
-| *This project is already linked to tender TND-2026-002.* | The project is linked to a different tender. | Check you have the right project and tender. A project belongs to one tender. |
+| *This project is already linked to tender CCTV Works.* | The project is linked to a different tender. | Check you have the right project and tender. A project belongs to one tender. |
+| *P26-051 · Branch Wi-Fi Rollout is already linked to tender CCTV Works.* | You chose **Link only** for a project that is already linked to another tender. | Check you have the right project and tender. A link can't be moved to another tender. |
+| *Only a won tender can be linked.* | You chose **Link only** with a tender that isn't **Won**. | Choose the won tender. |
+| *Link only needs an existing project.* | **Existing project** is empty while **Link only** is chosen. | Choose the **Existing project**, or switch **Link as** back to **Delivery project**. |
+| *Only the Head of Delivery, Delivery Finance or a delivery project manager can link projects to tenders.* | You don't have one of those roles. | Ask the Head of Delivery. |
 | *Cost account Data Centre Upgrade is already used by project CCTV Installation.* | The account you chose belongs to another project. | Choose the right account with finance, or leave it empty. |
 | *Data Centre Upgrade is already the cost account of P26-047 · CCTV Installation. Choose another cost account for Data Centre Upgrade.* | The account belongs to another project, for example an archived one. | Choose another account, or leave it empty to create a new one. |
 | *Data Centre Upgrade carries the code of P26-047 · CCTV Installation. Choose another cost account for Data Centre Upgrade.* | The account carries another project's code, so it is that project's account. | Choose another account. If the account really is this job's, ask Delivery Finance to [sort it out](/projects/how-to/approvers/sort-out-cost-accounts/). |
@@ -73,7 +102,8 @@ Next: [build the Delivery Budget](/projects/how-to/delivery-pm/build-a-baseline/
 | *Only delivery project managers can open delivery projects.* | You don't have the Delivery Project Manager role (you get it only once you manage a delivery project). | Ask the Head of Delivery to link it. |
 
 :::note[Good to know]
-- **Projects Not in Delivery** lists every project that is not linked, including internal projects that will never have a tender. Leave those alone.
-- There is no button to undo a link. Check the tender before you click **Open Delivery Project**.
+- **Projects Not in Delivery**, and **Projects not linked to a won tender** in My Actions, list every project that isn't a delivery project. That includes projects linked for reference only and internal projects that will never have a tender. Leave those alone.
+- The **Not linked to a tender** filter now means "no tender at all": a project linked for reference only doesn't show under it. Use **Linked to a tender** to see those.
+- There is no button to undo a link or move it to another tender. Check the tender before you click **Open Delivery Project** or **Link Tender**.
 - A project manager whose only projects are not yet delivery projects doesn't have the Delivery Project Manager role, so the Head of Delivery links the first one for them.
 :::

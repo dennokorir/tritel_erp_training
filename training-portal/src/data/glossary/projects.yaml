@@ -6,12 +6,12 @@
   module: projects
   see: [projects/index]
 - term: Delivery project
-  definition: A project linked to a won tender. Only delivery projects get a Delivery Budget, budget tracking and a Delivery KPI result.
+  definition: A project linked to a won tender as a delivery project. Only delivery projects get a Delivery Budget, budget tracking and a Delivery KPI result; a project linked for reference only is not one.
   module: projects
   see: [projects/concepts/delivery-projects]
 - term: Projects Not in Delivery
   aliases: [Projects to Link]
-  definition: The Head of Delivery's list, under Project › Delivery › Projects, of projects that are not linked to a won tender, so they are not measured. Each can be linked with Link to Won Tender.
+  definition: The Head of Delivery's list, under Project › Delivery › Projects, of projects that are not delivery projects, so they are not measured. It includes projects linked to a tender for reference only and projects marked No tender. Each can be made a delivery project with Link to Won Tender.
   module: projects
   see: [projects/how-to/delivery-pm/link-an-existing-project]
 - term: Delivery Budget
@@ -251,3 +251,21 @@
   definition: On an accounting budget line, confirmed purchase orders not billed yet, before tax. With Actual it reduces Available; requests for quotation show separately as Draft and never do.
   module: projects
   see: [projects/calculations/purchase-commitments, projects/concepts/odoo-budget-and-cost-account]
+- term: Link only
+  aliases: [linked for reference, link-only project]
+  definition: A way of linking a project to its won tender for reference, without making it a delivery project. The tender and the project can be found from each other, but the project gets no stages, Delivery Budget or reminders and the Delivery KPI doesn't measure it.
+  module: projects
+  see: [projects/how-to/delivery-pm/link-an-existing-project, projects/how-to/approvers/link-projects-to-tenders]
+- term: Link Projects to Tenders
+  definition: The list of active projects that have no tender and aren't marked No tender, each with a suggested won tender. The Head of Delivery and Delivery Finance link each one for reference or mark it No tender.
+  module: projects
+  see: [projects/how-to/approvers/link-projects-to-tenders]
+- term: Suggested tender
+  aliases: [Certain match, Possible match]
+  definition: The won tender Link Projects to Tenders proposes for a project. A Certain match has the tender number in the project's or its cost account's name; a Possible match is a won tender of the same customer, closest title first.
+  module: projects
+  see: [projects/how-to/approvers/link-projects-to-tenders]
+- term: Marked No tender
+  definition: A project marked as internal or support work that has no tender. It stays off Link Projects to Tenders; the mark goes only when the project is linked to a tender.
+  module: projects
+  see: [projects/how-to/approvers/link-projects-to-tenders]

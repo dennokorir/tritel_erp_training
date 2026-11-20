@@ -1,4 +1,4 @@
-# docs-sync: verified_commit 5d691a8dca64
+# docs-sync: verified_commit bba3de2bf860
 # docs-sync: shows tritel_project_delivery:cron:ir_cron_costs_after_close, tritel_project_delivery:field:project.project.after_close_amount, tritel_project_delivery:field:project.project.client_delay_ids
 # docs-sync: shows tritel_project_delivery:field:project.project.tracking_html, tritel_project_delivery:group:group_delivery_finance, tritel_project_delivery:group:group_delivery_head
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_categories, tritel_project_delivery:menu:menu_delivery_client_delays, tritel_project_delivery:menu:menu_delivery_config
@@ -10,10 +10,11 @@
 # docs-sync: shows tritel_project_delivery:wizard:delivery.tag.orders.wizard
 # docs-sync: shows tritel_project_delivery:menu:menu_delivery_budget_commitments, tritel_project_delivery:menu:menu_acc_pb_commitments, tritel_project_delivery:menu:menu_delivery_cost_accounts_to_sort
 # docs-sync: shows tritel_project_delivery:menu:menu_acc_pb_cost_accounts_to_sort, tritel_project_delivery:menu:menu_acc_pb_costs_after_close, tritel_project_delivery:menu:menu_acc_pb_config
+# docs-sync: shows tritel_project_delivery:menu:menu_delivery_link_projects_tenders, tritel_project_delivery:menu:menu_acc_pb_link_projects_tenders
 type: matrix
 title: Who can do what at handover, close and set-up
-desc: Permission grid for handovers, client delays, closing, budget tracking, Budget Commitments, tagging orders, Cost Accounts to Sort Out and the delivery set-up screens under Project › Delivery › Setup, for delivery project managers, the Head of Delivery, Delivery Finance, the MD and everyone with project access.
-source: tritel_project_delivery/security/ir.model.access.csv, views/menus.xml, views/accounting_menus.xml, views/purchase_budget_views.xml, views/cost_account_sort_views.xml, views/closeout_views.xml, views/tracking_views.xml, views/buttons_views.xml, models/closeout.py, models/tracking.py, models/budget_mapping.py, models/my_actions.py, models/project_code.py
+desc: Permission grid for handovers, client delays, closing, budget tracking, Budget Commitments, tagging orders, Cost Accounts to Sort Out, linking projects to tenders and the delivery set-up screens under Project › Delivery › Setup, for delivery project managers, the Head of Delivery, Delivery Finance, the MD and everyone with project access.
+source: tritel_project_delivery/security/ir.model.access.csv, views/menus.xml, views/accounting_menus.xml, views/purchase_budget_views.xml, views/cost_account_sort_views.xml, views/closeout_views.xml, views/tracking_views.xml, views/buttons_views.xml, models/closeout.py, models/tracking.py, models/budget_mapping.py, models/my_actions.py, models/project_code.py, models/tender_links.py, views/tender_link_views.xml
 columns: [Delivery PM (automatic), Head of Delivery, Delivery Finance, MD, Everyone with project access]
 labelWidth: 290
 rows:
@@ -32,6 +33,8 @@ rows:
   - {action: Tag tender orders to the project, cells: [n, y, y, n, n]}
   - {action: Projects over their approved budget in My Actions, cells: [p, y, p, n, p]}
   - {action: Cost Accounts to Sort Out, cells: [n, y, y, n, n]}
+  - {action: Link a project to its tender for reference, cells: [y, y, y, n, n]}
+  - {action: Link Projects to Tenders and bulk linking, cells: [n, y, y, n, n]}
   - {group: Set-up (Project › Delivery › Setup)}
   - {action: Delivery Settings and Apply mapping, cells: [n, y, y, n, n]}
   - {action: Budget Categories (add and change), cells: [n, y, y, n, n]}

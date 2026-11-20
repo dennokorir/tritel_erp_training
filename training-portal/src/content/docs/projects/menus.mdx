@@ -5,8 +5,8 @@ module: projects
 pageType: reference
 roles: [delivery-pm, head-delivery, delivery-finance, finance]
 tags: [access, delivery projects]
-keywords: [delivery menu, where is, menu missing, can't see delivery, Waiting for My Approval, All Baselines, Projects to Link, project budgets, accounting menu, budget commitments, cost accounts to sort out, renamed menu, project manager role]
-related: [projects/who-can-do-what, projects/how-to/approvers/cost-types-and-categories, projects/index, projects/reports/budget-commitments, projects/how-to/approvers/sort-out-cost-accounts, projects/how-to/approvers/approve-budget, projects/how-to/approvers/review-costs-after-close, projects/how-to/approvers/delivery-settings, projects/how-to/delivery-pm/open-a-delivery-project, projects/faq]
+keywords: [delivery menu, where is, menu missing, can't see delivery, Waiting for My Approval, All Baselines, Projects to Link, project budgets, accounting menu, cost accounts to sort out, link projects to tenders, renamed menu]
+related: [projects/who-can-do-what, projects/how-to/approvers/cost-types-and-categories, projects/index, projects/reports/budget-commitments, projects/how-to/approvers/sort-out-cost-accounts, projects/how-to/approvers/link-projects-to-tenders, projects/how-to/approvers/approve-budget, projects/how-to/approvers/review-costs-after-close, projects/how-to/approvers/delivery-settings, projects/how-to/delivery-pm/open-a-delivery-project, projects/faq]
 sidebar: { order: 3 }
 sources:
   - tritel_project_delivery/views/menus.xml
@@ -18,7 +18,8 @@ sources:
   - tritel_project_delivery/security/delivery_security.xml
   - tritel_project_delivery/wizards/open_project_wizard.py
   - tritel_project_delivery/tests/test_delivery_menus.py
-verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+  - tritel_project_delivery/views/tender_link_views.xml
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../components/Illustration.astro';
 
@@ -60,7 +61,7 @@ Delivery Finance and Heads of Delivery see this section.
 |---|---|---|
 | **My Delivery Projects** | Delivery Project Managers, Heads of Delivery | Delivery projects, on the **My Projects** filter. Clear the filter to see all of them. |
 | **Delivery Projects** | Delivery Finance, Heads of Delivery | Every delivery project. |
-| **Projects Not in Delivery** | Heads of Delivery | Projects that aren't delivery projects, to link to a won tender. |
+| **Projects Not in Delivery** | Heads of Delivery | Projects that aren't delivery projects, to link to a won tender. Projects linked to a tender for reference only, and projects marked **No tender**, are listed too. |
 | **Delivery Budgets** | Everyone with a delivery role | Delivery budgets, on the **Waiting for approval** filter. |
 | **Budget Commitments** | Everyone with a delivery role | Open purchase orders against accounting budgets, for the whole company. See [Budget Commitments](/projects/reports/budget-commitments/). |
 | **My Submissions** | Delivery Project Managers, Heads of Delivery | The budgets you submitted that are still waiting, on the **My submissions, waiting** filter. |
@@ -79,6 +80,7 @@ Delivery Finance and Heads of Delivery see this section.
 | **Starter Items** | Delivery Finance, Heads of Delivery | Costs added to every new draft budget. |
 | **Standard Milestones** | Heads of Delivery | The milestones every new delivery project starts with. |
 | **Cost Accounts to Sort Out** | Delivery Finance, Heads of Delivery | Cost accounts that belong to no project. See [Sort out cost accounts with no project](/projects/how-to/approvers/sort-out-cost-accounts/). |
+| **Link Projects to Tenders** | Delivery Finance, Heads of Delivery | Active projects with no tender that aren't marked **No tender**, each with a suggested won tender. When there are none: *Every active project is linked to a tender or marked No tender.* See [Link projects to their tenders](/projects/how-to/approvers/link-projects-to-tenders/). |
 
 ## Accounting › Project Budgets
 
@@ -92,6 +94,7 @@ Delivery Finance sees all of this menu. Accounting managers see only **Tracking 
 | **Tracking › Delivery Budgets** | The same list as **Project › Delivery › Projects › Delivery Budgets**. |
 | **Tracking › Budget Commitments** | The [Budget Commitments](/projects/reports/budget-commitments/) report. |
 | **Tracking › Cost Accounts to Sort Out** | See [Sort out cost accounts with no project](/projects/how-to/approvers/sort-out-cost-accounts/). |
+| **Tracking › Link Projects to Tenders** | The same list as **Project › Delivery › Setup › Link Projects to Tenders**. Delivery Finance only. See [Link projects to their tenders](/projects/how-to/approvers/link-projects-to-tenders/). |
 
 **Accounting › Configuration › Project Budgets** holds **Delivery Settings**, **Budget Categories** and **Starter Items** for Delivery Finance: the same screens as **Project › Delivery › Setup**.
 

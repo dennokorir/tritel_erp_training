@@ -1,12 +1,12 @@
 ---
 title: Delivery projects
-description: What makes a project a delivery project, how it is opened from a won tender or linked to one, and what the system sets up for it.
+description: What makes a project a delivery project, how it is opened from a won tender or linked to one, what the system sets up for it, and how to find a tender's projects and a project's tender.
 module: projects
 pageType: concept
 roles: [delivery-pm, head-delivery, delivery-finance, account-manager]
 tags: [delivery projects, tenders]
-keywords: [delivery project, won tender, awarded tender, open project, link tender, contract, project setup, cost account, analytic account, project code, P26-049, baseline]
-related: [projects/how-to/delivery-pm/open-a-delivery-project, projects/how-to/delivery-pm/link-an-existing-project, projects/concepts/baselines, projects/concepts/odoo-budget-and-cost-account, projects/reports/project-at-a-glance]
+keywords: [delivery project, won tender, awarded tender, open project, link tender, link only, project setup, cost account, project code, find project by tender, Delivery projects button, baseline]
+related: [projects/how-to/delivery-pm/open-a-delivery-project, projects/how-to/delivery-pm/link-an-existing-project, projects/how-to/approvers/link-projects-to-tenders, projects/concepts/baselines, projects/concepts/odoo-budget-and-cost-account, projects/reports/project-at-a-glance]
 sidebar: { order: 1 }
 sources:
   - tritel_project_delivery/models/project.py
@@ -27,18 +27,22 @@ sources:
   - tritel_project_delivery/models/project_code.py
   - tritel_project_delivery/views/project_code_views.xml
   - tritel_project_delivery/models/delivery_access.py
-verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+  - tritel_project_delivery/models/tender_links.py
+  - tritel_project_delivery/views/tender_link_views.xml
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
-A **delivery project** is a project in the **Project** app that is linked to a **won** tender. The link is what makes it count: only delivery projects get a Delivery Budget, budget tracking and a Delivery KPI result. Any other project is an ordinary project, and its Delivery tab says *This project is not linked to a won tender, so it is not measured by the delivery KPIs.*
+A **delivery project** is a project in the **Project** app that is linked to a **won** tender as a delivery project. The link is what makes it count: only delivery projects get a Delivery Budget, budget tracking and a Delivery KPI result. Any other project is an ordinary project, and its Delivery tab says *This project is not linked to a won tender, so it is not measured by the delivery KPIs.*
 
 There are two ways in:
 
 1. **From the tender.** When a tender's status is **Won**, a delivery project manager sees **Open Delivery Project** at the top of the tender. If the tender already has a delivery project, the button reads **Add Delivery Project**: one tender can be delivered as several projects.
 2. **From an existing project.** On a project that isn't linked yet, the **Delivery** tab has a **Link to Won Tender** button. The Head of Delivery finds these projects under **Project › Delivery › Projects › Projects Not in Delivery**.
 
-Both open the same window, **Open Delivery Project** (titled **Link to Won Tender** when you start from a project). You pick the **Won tender**, the **Project manager**, the **Start date** and, if finance already keeps one, the **Cost account**. The **Client** and **Award Date** come from the tender. The system suggests an existing cost account whose name matches the project or tender; leave it empty to create a new one.
+Both open the same window, **Open Delivery Project** (titled **Link to Won Tender** when you start from a project). Once an **Existing project** is chosen, **Link as** offers **Delivery project** or **Link only**. You pick the **Won tender**, the **Project manager**, the **Start date** and, if finance already keeps one, the **Cost account**. The **Client** and **Award Date** come from the tender. The system suggests an existing cost account whose name matches the project or tender; leave it empty to create a new one.
+
+A project can also be linked to its tender **for reference only** (**Link as › Link only**). Its **Tender** is set, so the tender and the project can be found from each other, but it isn't a delivery project: no stages, Delivery Budget, budget reminders or tracking, and the Delivery KPI doesn't measure it. Its **Delivery** tab says *Linked to tender Data Centre Upgrade for reference. It is not a delivery project, so it is not measured by the delivery KPIs.*, with **Make It a Delivery Project** for delivery project managers and the Head of Delivery. Older projects are linked this way in bulk from [Link Projects to Tenders](/projects/how-to/approvers/link-projects-to-tenders/).
 
 <Illustration name="projects/concept-delivery-project" caption="A delivery project. The numbers match the list below." />
 
@@ -73,9 +77,28 @@ When the window is confirmed, the system:
 | **Approved completion date** | The completion date of the latest approved budget. It becomes the project's end date, and you can't change it on the project. |
 | **Approved delivery budget** | The budget total of the latest approved budget. |
 
-On the tender itself, the **Delivery projects** button shows the codes of the projects opened from it (for example *P26-049, P26-050*) instead of a count. The **Delivery budgets** and **Margin left** buttons show how much of the expected revenue their budgets use.
+On the tender itself, the **Projects** button (once called **Delivery projects**) shows the codes of every project linked to it (for example *P26-049, P26-050*) instead of a count: delivery projects, projects linked for reference only, and archived ones. It opens the project, or the list when there are several. The **Delivery budgets** and **Margin left** buttons show how much of the expected revenue their budgets use.
+
+## Find a tender's projects and a project's tender
+
+The link works both ways, in search as well as on the forms.
+
+**From the projects.** In any project list (**Project › Projects**, **Delivery Projects** and the others):
+
+- type a tender number such as *TND-2026-001*, or part of a tender's title, and choose **Search Tender for: …**;
+- in **Filters**, **Linked to a tender** shows projects that have a tender (delivery projects and projects linked for reference), **Not linked to a tender** shows projects with no tender at all, and **Marked No tender** shows projects marked as having no tender;
+- in **Group By**, **Tender** groups the projects by their tender;
+- in the **Project › Projects** list view, the **Tender** column can be turned on from the optional columns menu at the right end of the column headings.
+
+**From the tenders.** In **Tender Manager › Tenders › All Tenders**:
+
+- type a project code such as *P26-049*, or part of a project's name, and choose **Search Project (code or name) for: …**;
+- in **Filters**, **With project** shows tenders with at least one linked project, **Without project** those with none, and **Won, no project** the won tenders that still have no project. Archived projects count;
+- in the list view (switch from the board with the list icon), the **Projects** column shows the linked projects' codes.
 
 :::note[Good to know]
+- A project linked for reference only isn't measured, even though the tender shows it under **Projects**. If it should count, click **Make It a Delivery Project** on its **Delivery** tab.
+- **Projects Not in Delivery** and the **Projects not linked to a won tender** count in My Actions list every project that isn't a delivery project, including projects linked for reference only. The **Not linked to a tender** filter shows only projects with no tender at all.
 - Only a delivery project manager (or the Head of Delivery) can open or link a delivery project. Account managers see the tender buttons but not **Open Delivery Project**. Because the project manager role comes from managing a delivery project, someone who doesn't manage one yet can't open their first one: *Only delivery project managers can open delivery projects.* The Head of Delivery opens it and names them.
 - **Record Handover**, **Log Client Delay** and **Close Project** also appear on projects that are not linked to a tender. Such a project closes as **Not scored**, so link it first if it should be measured.
 - Trying to change the end date of a project with an approved budget stops with *The completion date of Data Centre Upgrade comes from its approved budget. Request a revision to change it.*
@@ -85,6 +108,7 @@ On the tender itself, the **Delivery projects** button shows the codes of the pr
 
 - [Open a delivery project from a won tender](/projects/how-to/delivery-pm/open-a-delivery-project/)
 - [Link an existing project to its tender](/projects/how-to/delivery-pm/link-an-existing-project/)
+- [Link projects to their tenders](/projects/how-to/approvers/link-projects-to-tenders/)
 - [Project codes](/projects/concepts/project-codes/)
 - [The project form at a glance](/projects/reports/project-at-a-glance/)
 - [Work through Projects My Actions](/projects/how-to/delivery-pm/my-actions/)

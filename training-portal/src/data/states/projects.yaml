@@ -305,3 +305,33 @@
   meaning: "After this order, a budget line it touches would have less than nothing left (by more than 0.50). It doesn't block confirming."
   next: "Within budget (orders reduced or cancelled, or a revision adds budget)"
   who: "Purchase user; the system"
+
+# ── A project's link to its tender ─────────────────────────────────────
+- module: projects
+  workflow: "Project tender link"
+  link: "/projects/concepts/delivery-projects/"
+  state: "Not linked"
+  meaning: "The project has no tender. It shows under the Not linked to a tender filter and in Link Projects to Tenders, with a suggested tender when one is found."
+  next: "Linked for reference (Link Tender, or Link to Suggested Tender); Delivery project (Open Delivery Project); Marked No tender (No Tender)"
+  who: "Head of Delivery, Delivery Finance, delivery project manager"
+- module: projects
+  workflow: "Project tender link"
+  link: "/projects/concepts/delivery-projects/"
+  state: "Linked for reference"
+  meaning: "Link only: the project's Tender is set, so the tender and the project find each other, but it is not a delivery project and the Delivery KPI doesn't measure it."
+  next: "Delivery project (Make It a Delivery Project)"
+  who: "Head of Delivery, delivery project manager"
+- module: projects
+  workflow: "Project tender link"
+  link: "/projects/concepts/delivery-projects/"
+  state: "Delivery project"
+  meaning: "Linked to its won tender as a delivery project: stages, Delivery Budget, tracking and the Delivery KPI. A link can't be undone or moved to another tender from a screen."
+  next: "—"
+  who: "—"
+- module: projects
+  workflow: "Project tender link"
+  link: "/projects/concepts/delivery-projects/"
+  state: "Marked No tender"
+  meaning: "Internal or support work with no tender. It stays off Link Projects to Tenders; find it with the Marked No tender filter. There is no button to clear the mark."
+  next: "Linked for reference or Delivery project (Link to Won Tender on its Delivery tab)"
+  who: "Head of Delivery, Delivery Finance"

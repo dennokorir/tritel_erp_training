@@ -5,7 +5,7 @@ module: projects
 pageType: report
 roles: [delivery-pm, head-delivery, delivery-finance, finance, md, account-manager]
 tags: [tracking, reports]
-keywords: [smart buttons, project dashboard, project summary, budget left, spent so far, committed, cost account, analytic account, vendor bills, LPO, margin, Budget Available]
+keywords: [smart buttons, Delivery projects button, project dashboard, budget left, spent so far, committed, cost account, analytic account, vendor bills, LPO, margin, Budget Available]
 where: [Project, Delivery, Projects, Delivery Projects]
 related: [projects/concepts/delivery-projects, projects/concepts/budget-tracking, projects/calculations/tracking-figures, projects/calculations/margin, projects/how-to/delivery-pm/track-the-budget]
 sidebar: { order: 1 }
@@ -27,7 +27,8 @@ sources:
   - tritel_project_delivery/views/project_code_views.xml
   - tritel_project_delivery/views/purchase_budget_views.xml
   - tritel_project_delivery/models/tender.py
-verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+  - tritel_project_delivery/models/tender_links.py
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -62,7 +63,7 @@ Buttons 1 to 8 have no access restriction: anyone who can open the project sees 
 3. **Tender**: opens the won tender.
 4. **Budget Versions** (*Revisions*): every version of the budget with its status. Shown once there is a revision.
 5. **Margin left**: expected revenue − this budget − the tender's other delivery projects, red when below zero. Opens the budget tracking window once a budget is approved, otherwise the project. See [margin](/projects/calculations/margin/).
-6. **Delivery projects** (*Delivery*, on the tender): the codes of the projects opened from it, for example *P26-049, P26-050*.
+6. **Projects** (on the tender, once called **Delivery projects**): the codes of every project linked to the tender, for example *P26-049, P26-050*: delivery projects, projects linked for reference only, and archived ones. Opens the project, or the list when there are several.
 7. **Delivery budgets**: the total of each delivery project's approved budget, or its latest draft or waiting version. Opens the budget, or the list when there are several projects.
 8. **Margin left** (tender): the tender's Expected Revenue at today's rate − Delivery budgets. Red below zero.
 9. **Untagged order lines** (tender): Head of Delivery and Delivery Finance only.

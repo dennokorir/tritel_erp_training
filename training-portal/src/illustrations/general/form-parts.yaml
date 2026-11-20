@@ -2,7 +2,7 @@
 # docs-sync: shows tritel_project_delivery:field:project.project.baseline_due_date, tritel_project_delivery:field:project.project.track_spent, tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project
 # docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:budget-left, tritel_project_delivery:view_ext:project.edit_project:button:delivery-budget, tritel_project_delivery:view_ext:project.edit_project:button:handover
 # docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:button:log-client-delay, tritel_project_delivery:view_ext:project.edit_project:button:record-handover, tritel_project_delivery:view_ext:project.edit_project:button:spent-so-far
-# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:page:delivery, tritel_project_delivery:view_ext:project.edit_project:page:handover-amp-close, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:delivery-projects
+# docs-sync: shows tritel_project_delivery:view_ext:project.edit_project:page:delivery, tritel_project_delivery:view_ext:project.edit_project:page:handover-amp-close, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:projects
 type: screen
 title: The parts of a form
 desc: A record opened in a form, with the action buttons, the status bar, the smart buttons, the fields and the tabs numbered 1 to 5.
