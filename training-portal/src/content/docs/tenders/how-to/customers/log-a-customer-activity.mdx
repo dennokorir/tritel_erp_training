@@ -5,7 +5,7 @@ module: tenders
 pageType: how-to
 roles: [account-manager, presales]
 tags: [customer activities]
-keywords: [customer visit, call, meeting, touchpoint, touch, log activity, customer engagement, feedback, follow up, demo, site visit]
+keywords: [customer visit, call, meeting, touchpoint, touch, log activity, customer engagement, feedback, follow up, demo, site visit, contacts met, who I met, last met]
 where: [Tender Manager, Tender Customers, Customer Activities]
 before:
   - The customer exists in Odoo. The <strong>Customer</strong> list does not let you create one from here.
@@ -31,7 +31,8 @@ sources:
   - tritel_tender_tracker/views/target_views.xml
   - tritel_tender_tracker/views/tender_views.xml
   - tritel_tender_tracker/wizards/partner_activity_wizards.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_tender_tracker/models/customer_roles.py
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -46,15 +47,19 @@ A **customer touch** is any contact with a customer: a call, a meeting, a visit,
 3. Choose the **Customer**, check the **Date** and pick the **Type**. The **Channel** (for example **Call**, **Meeting**, **Visit**, **Workshop / Demo**) fills in from the type; change it if it's wrong.
 4. **Touch made by** starts as you. If you are logging for someone who reports to you, pick them. The **Account Manager** fills in from the customer.
 5. If the touch was about a deal, pick the **Tender** or the **Lead/Pipeline** (an opportunity). Only that customer's deals are listed. You can link one or the other, not both.
-6. Under **What happened**, write what the customer said, the outcome and the next step. Click **Save**.
+6. Under **Contacts met**, pick the customer's people you met or spoke to. Only that customer's contacts are listed, and you can pick several. This is what sets **Last met** for those people on the customer's organogram.
+7. Under **What happened**, write what the customer said, the outcome and the next step. Click **Save**.
 
-You can also click **Log touch** on a customer's touchpoint timeline (open it from the heatmap, or with the **Touchpoints** button on the customer). The customer is then filled in for you.
+You can also click **Log touch** on a customer's touchpoint timeline (open it from the heatmap, or with the **Touchpoints** button on the customer). The customer is then filled in for you. **Log Activity** on a person's card in the customer's organogram opens the same window with the customer and that person under **Contacts met** already filled in.
+
+**Contacts met** is also on the full customer activity form and as a column in the activity list, so you can add the people to a touch you logged earlier.
 
 ## What happens next
 
 - The touch is saved as **Done** and *Touch logged* appears.
 - If you linked a tender or opportunity, your note is posted on its chatter as *Feedback from customer touch dated 2026-11-16*.
 - If it is the customer's latest touch, the customer's **Last Seen** date moves to it.
+- Each person under **Contacts met** shows this date as **Last met** on the customer's organogram and on the **Key people** tab of its account plan, and the touch appears under their **Recent activity**. See [Map the customer organogram](/tenders/how-to/account-plans/map-the-customer-organogram/).
 - It counts straight away on the **Customers** heatmap, the customer's timeline, your **People** profile and the **Customer touches** strip at the top of the tender or opportunity.
 - A touch linked to a tender or opportunity can also count towards the people's achievements on that deal.
 
@@ -73,4 +78,5 @@ You can also click **Log touch** on a customer's touchpoint timeline (open it fr
   - **Touch Phase** (**Account-level**, **Pipelining**, **Bid Support**, **Post-submission**, **Delivery & Collection**) follows the **date of the touch**. It is what the Customer Activities screens show.
   - **Valid** and **Activity Phase** (**Pipelining**, **Bid Submission Support**, **Post-Submission Influence**) follow the **day you entered it** in Odoo. They are what target achievements and the portal dashboard count. A touch with no tender or opportunity, or entered before the deal was registered, or after the award date, is not valid for them.
 - So log touches on the day, and always link the deal.
+- **Contacts met** is optional, but a person nobody has logged as met has no **Last met** date. The organogram's gaps then list them as not met this year.
 :::

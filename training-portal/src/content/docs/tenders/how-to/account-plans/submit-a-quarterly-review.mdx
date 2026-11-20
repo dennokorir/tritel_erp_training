@@ -1,0 +1,67 @@
+---
+title: Submit a quarterly review
+description: As an account manager, write the quarterly review of an approved account plan (status, what changed, next steps) and submit it to your supervisor before it is due.
+module: tenders
+pageType: how-to
+roles: [account-manager]
+tags: [customers, account plans]
+keywords: [quarterly review, QBR, account review, plan review, review due, counts until, grace days, approved late, missed review, green amber red, RAG status, returned review]
+where: [Tender Manager, Tender Customers, Account Plans]
+before:
+  - The customer's account plan for this year is <strong>Approved</strong>. See <a href="/tenders/how-to/account-plans/write-an-account-plan/">Write an account plan</a>.
+  - You are the customer's <strong>Account Manager</strong>.
+related: [tenders/concepts/account-plans, tenders/workflows/account-plan, tenders/calculations/account-plan-due-dates, tenders/how-to/account-plans/write-an-account-plan, tenders/how-to/account-plans/approve-plans-and-reviews, tenders/how-to/account-plans/my-portfolio, accountability/calculations/account-manager-kpi]
+sidebar: { order: 2 }
+sources:
+  - tritel_tender_tracker/views/account_plan_views.xml
+  - tritel_tender_tracker/models/account_plans.py
+  - tritel_tender_tracker/models/account_plan_tracking.py
+  - tritel_tender_tracker/models/account_portfolio.py
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Each quarter, look back at an approved account plan and write a short **Quarterly Review**: how the account is going, what changed and what you'll do next. Your supervisor approves it. A review approved in time counts towards your **Account plans reviewed** target, so submit it early enough for your supervisor to approve it by the due date.
+
+<Illustration name="tenders/plan-quarterly-review" caption="The Quarterly Review window for Q3 2026. The numbers match the steps below." />
+
+## Steps
+
+1. Open the plan: **Tender Manager › Tender Customers › Account Plans** (or the **Account Plan** button on the customer, or the item under **Account plan reviews due** in [My Actions](/tenders/how-to/bids/tender-my-actions/)).
+2. Click **Quarterly Review**. The **Quarterly Review** window opens on:
+   - the quarter that has just ended, from the first day of the new quarter until its review stops counting (with the default settings, 19 days after the quarter ends), unless that review is already approved;
+   - otherwise, the current quarter.
+
+   If a review for that quarter already exists, it opens; otherwise a new one is started.
+3. Check the **Quarter**, the **Due date** (with the default settings, 14 days after the quarter ends) and **Counts until** (5 days later). **Timeliness** shows **Not due yet** until the due date.
+4. Pick the **Status** of the account: **Green**, **Amber** or **Red**.
+5. In the first box (*What changed this quarter: wins, losses, people, budgets, competitors.*), write what changed. You can't submit without it.
+6. In the second box (*Next steps for the coming quarter (update the plan's actions too).*), write what you'll do next. Then close the window and update the plan's **Objectives and actions** tab if needed.
+7. Click **Submit for Approval**. The window closes and the review moves to **Submitted**.
+8. If your supervisor returns it, click **Quarterly Review** again: the window shows **Returned** and a yellow line *Returned for changes:* with their note. Make the changes and click **Submit for Approval** again.
+
+## What happens next
+
+- Your supervisor gets a to-do *Approve account plan review: Customer A · Q3 2026* on the plan, and the review is listed in **Plan Reviews** for them. See [Approve or return account plans and reviews](/tenders/how-to/account-plans/approve-plans-and-reviews/).
+- When it is approved, the plan's chatter shows *Review **Q3 2026** approved (Green):* followed by what changed, and the review is locked.
+- **Timeliness** then shows **Approved on time** (by the due date) or **Approved late** (by **Counts until**). Both count towards **Account plans reviewed**. A review not approved by **Counts until** shows **Missed** and doesn't count, even if it is approved later.
+- If it is returned, you get a to-do *Account plan returned: Customer A · Q3 2026* with the note, and it is listed under **Account plans returned to you** in My Actions.
+- The plan's **Quarterly reviews** tab lists every review with its **Status**, **State**, **Approved By**, **Approved On**, **Due date** and **Timeliness**. [My Portfolio](/tenders/how-to/account-plans/my-portfolio/) shows which accounts are reviewed for the quarter.
+- Once your administrator turns on the [reminders job](/tenders/calculations/account-plan-due-dates/#reminders-and-escalation), Key account and Major growth reviews not yet submitted are chased by email from 14 days before they are due (with the default settings).
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Write what changed this quarter before submitting.* | The first box is empty. | Write what changed, then submit. |
+| *The account manager has no supervisor in the org chart to approve the review.* | Your employee record has no **Manager** with a user. | Ask HR to set your manager on your employee record. |
+| *This plan is for 2026; open the plan for 2027 to review this quarter.* | The quarter to review is in another year than the plan you opened. | Open that year's plan. If it doesn't exist, write it first. |
+| *An approved review can no longer change.* | The review has already been approved. | Write any update in next quarter's review. |
+| *Only the account manager of Customer A can change its plan.* | You are not the customer's account manager (nor the Head of Commercial). | Ask the account manager to write the review. |
+
+:::note[Good to know]
+- The window has no **Save** button: what you type is kept only when you click **Submit for Approval**. **Close** shuts the window without keeping your changes.
+- **Quarterly Review** shows only while the plan is **Approved**. After **Revise Plan**, get the plan approved again before you write the review.
+- The review counts for the quarter it looks back on. The **Account plans reviewed** target counts each Key account and Major growth customer once per quarter, if it was tiered before the quarter started.
+- Approval takes time: submit a few days before the due date so your supervisor can approve it in time.
+:::

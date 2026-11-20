@@ -1,0 +1,38 @@
+# docs-sync: verified_commit bba3de2bf860
+# docs-sync: shows tritel_tender_tracker:field:res.config.settings.tt_plan_due_md, tritel_tender_tracker:field:res.config.settings.tt_plan_review_days, tritel_tender_tracker:field:res.config.settings.tt_plan_grace_days
+# docs-sync: shows tritel_tender_tracker:field:res.config.settings.tt_plan_am_first, tritel_tender_tracker:field:res.config.settings.tt_plan_am_every, tritel_tender_tracker:field:res.config.settings.tt_plan_sup_after
+# docs-sync: shows tritel_tender_tracker:field:res.config.settings.tt_plan_esc_after, tritel_tender_tracker:field:res.config.settings.tt_plan_overdue_esc, tritel_tender_tracker:field:res.config.settings.tt_plan_weekly
+# docs-sync: shows tritel_tender_tracker:field:res.config.settings.tt_plan_hoc_user_id
+type: screen
+title: Account Plans settings
+desc: The Account Plans section of Settings under Tender Tracker, with the Due dates box (Plan approved by, Review due, Grace days) and the Reminders and escalation box (reminder and escalation days, Escalations go to, Weekly summary), showing the default values, numbered 1 to 3.
+source: tritel_tender_tracker/views/target_accounts_views.xml (res_config_settings_view_form_tender_tracker), tritel_tender_tracker/models/account_plan_tracking.py (ResConfigSettingsPlans)
+frame:
+  grid: true
+  app: Settings
+  menu: [General Settings, Users & Companies, Technical]
+  breadcrumb: [Settings, Tender Tracker]
+blocks:
+  - buttons: [{label: Save, primary: true, n: 3}, {label: Discard}]
+  - heading: Account Plans
+  - columns:
+      - panel: true
+        blocks:
+          - heading: Due dates
+          - text: Plans are due by a date in their year; each quarter's review is due after the quarter ends.
+          - fields:
+              - [{label: "Plan approved by (MM-DD)", value: "01-31", n: 1}]
+              - [{label: "Review due, days after quarter end", value: "14"}]
+              - [{label: Grace days for the KPI, value: "5"}]
+      - panel: true
+        blocks:
+          - heading: Reminders and escalation
+          - text: Working days are Monday to Friday.
+          - fields:
+              - [{label: "First reminder, days before due", value: "14", n: 2}]
+              - [{label: "Then every (working days)", value: "3"}]
+              - [{label: "Remind the supervisor after (working days)", value: "2"}]
+              - [{label: "Escalate waiting approvals after (working days)", value: "5"}]
+              - [{label: "Escalate overdue after (working days)", value: "5"}]
+              - [{label: Escalations go to, value: ""}]
+              - [{label: Weekly summary to the Head of Commercial, value: "On"}]

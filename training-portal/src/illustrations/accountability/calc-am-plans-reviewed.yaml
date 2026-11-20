@@ -1,0 +1,18 @@
+# docs-sync: verified_commit bba3de2bf860
+type: calc
+title: Account plans reviewed
+desc: Worked example of the Account plans reviewed metric for Q2 2026, where 5 of 6 accounts are eligible and 4 have a review approved by its Counts until date, giving 4.
+source: tritel_accountability_framework/models/metric_hook_account_plans.py (_hook_account_plans_reviewed)
+heading: Account plans reviewed, Q2 2026 (1 Apr – 30 Jun)
+inputs:
+  - {label: "Key account and Major growth accounts Employee A owns", value: "6"}
+  - {label: "Customer F tiered on 10 Apr 2026 (after the quarter started)", value: "Counts next quarter"}
+  - {label: "Review due date (30 Jun + 14 days)", value: "14 Jul 2026"}
+  - {label: "Counts until (due date + 5 grace days)", value: "19 Jul 2026"}
+steps:
+  - {label: "Eligible accounts: 6 − 1", value: "5"}
+  - {label: "Customers A, B, C · approved by 14 Jul", value: "3 on time"}
+  - {label: "Customer D · approved 17 Jul", value: "+ 1 (approved late)"}
+  - {label: "Customer E · approved 22 Jul, after Counts until", value: "+ 0 (missed)"}
+result: {label: Fetched value, value: "4 accounts", tone: good}
+note: "Suggested floor 3, ideal 5. The automatic review waits 19 days after 30 Jun, so the first nightly run that can create it is on 20 Jul 2026, the day after Counts until."

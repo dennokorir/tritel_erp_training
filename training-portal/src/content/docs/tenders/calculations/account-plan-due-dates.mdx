@@ -1,0 +1,104 @@
+---
+title: Account plan due dates, grace days and reminders
+description: How a plan's Due date and a quarterly review's Due date and Counts until are set, what each Timeliness value means, which quarter Quarterly Review opens, how working days are counted, and when the reminder and escalation emails go out once the job is turned on.
+module: tenders
+pageType: calculation
+roles: [account-manager, line-manager, head-commercial, tender-admin]
+tags: [account plans]
+keywords: [due date, deadline, grace days, counts until, approved late, missed review, overdue plan, timeliness, working days, reminder email, escalation, weekly summary]
+related: [tenders/concepts/account-plans, tenders/workflows/account-plan, tenders/configuration, tenders/how-to/account-plans/submit-a-quarterly-review, tenders/how-to/account-plans/plan-review-board, accountability/calculations/account-manager-kpi]
+sidebar: { order: 8 }
+sources:
+  - tritel_tender_tracker/models/account_plan_tracking.py
+  - tritel_tender_tracker/models/account_plans.py
+  - tritel_tender_tracker/models/account_portfolio.py
+  - tritel_tender_tracker/data/account_plan_cron.xml
+  - tritel_tender_tracker/views/account_plan_views.xml
+  - tritel_tender_tracker/views/target_accounts_views.xml
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Every account plan and every quarterly review has a date it should be approved by. The dates come from the **Account Plans** settings (see [Tender Manager configuration](/tenders/configuration/#account-plans-settings)); the defaults are used below.
+
+## The plan's due date
+
+A plan should be approved by **31 January** of its year (the setting **Plan approved by (MM-DD)**, default *01-31*). The **Due date** is set when the plan is created. The Head of Commercial can change it for one plan; nobody else can (*Only the Head of Commercial can change a plan's due date.*).
+
+<Illustration name="tenders/calc-account-plan-due" caption="A 2026 plan approved on 3 February is late." />
+
+| Plan **Timeliness** | When |
+|---|---|
+| **Not due yet** | Not approved, and the due date hasn't passed. |
+| **Approved on time** | Approved on or before the **Due date**. |
+| **Approved late** | Approved after the **Due date**. |
+| **Overdue** | Not approved (**Draft**, **Submitted** or **Returned**) and the **Due date** has passed. |
+
+## A review's due date and Counts until
+
+A quarterly review looks back at one quarter:
+
+- **Due date** = the last day of the quarter + **14 days** (setting **Review due, days after quarter end**).
+- **Counts until** = the **Due date** + **5 days** (setting **Grace days for the KPI**). These are calendar days.
+
+| Quarter | Ends | Due date | Counts until |
+|---|---|---|---|
+| Q1 | 31 Mar | 14 Apr | 19 Apr |
+| Q2 | 30 Jun | 14 Jul | 19 Jul |
+| Q3 | 30 Sep | 14 Oct | 19 Oct |
+| Q4 | 31 Dec | 14 Jan (next year) | 19 Jan (next year) |
+
+<Illustration name="tenders/calc-account-plan-review-dates" caption="The Q1 2026 review approved on 17 April: late, but it still counts." />
+
+| Review **Timeliness** | When | Counts for the KPI? |
+|---|---|---|
+| **Not due yet** | Not approved, and the **Due date** hasn't passed. | Not yet |
+| **Approved on time** | Approved on or before the **Due date**. | Yes |
+| **Approved late** | Approved after the **Due date** but on or before **Counts until**. | Yes |
+| **Overdue** | Not approved, past the **Due date**, not yet past **Counts until**. | Not yet |
+| **Missed** | Past **Counts until** and not approved, **or approved after Counts until**. | No |
+
+Only the approval date matters. A review submitted on time but approved after **Counts until** is **Missed**, so supervisors should approve promptly. How the KPI counts reviews is in [Account manager KPIs](/accountability/calculations/account-manager-kpi/).
+
+## Which quarter Quarterly Review opens
+
+**Quarterly Review** on an approved plan opens:
+
+- **the quarter that has just ended**, until its **Counts until** date (with the defaults, until the 19th day of the next quarter), as long as that review isn't approved yet and the quarter is in the plan's year;
+- otherwise **the current quarter**.
+
+So on 10 April 2026 it opens Q1 2026; on 20 April 2026, or once Q1 is approved, it opens Q2 2026. In January, the 2026 plan opens Q1 2026; to review Q4 2025, open the **2025** plan and use **Quarterly Review** there. If the quarter isn't in the plan's year at all, you see *This plan is for 2025; open the plan for 2026 to review this quarter.*
+
+## Working days
+
+**Waiting (working days)**, the reminder gaps and the escalation limits count working days: Monday to Friday, starting the day after. Public holidays are not skipped. For example, a review submitted on Thursday 9 April 2026 has waited 1 working day on Friday 10 April and 2 on Monday 13 April.
+
+## Reminders and escalation
+
+The scheduled job **Account Plans: reminders and escalation** is switched off when the system is installed. The schedule below applies once your administrator turns it on (see [Tender Manager configuration](/tenders/configuration/#account-plans-settings)). It runs at 05:00 on weekdays only.
+
+It chases the account manager of every **Key account** and **Major growth** target account. Something is outstanding when the customer has no plan for this year, the plan is **Draft** or **Returned**, or the plan is approved but the review for the quarter being reviewed (the one **Quarterly Review** would open) hasn't been submitted.
+
+| Email | To | When (default settings) |
+|---|---|---|
+| *Account plans due* | The account manager | From **14** days before the due date (**First reminder, days before due**), then every **3** working days (**Then every (working days)**), until it is submitted. Each line says *due 14 Apr 2026* or *3 days late*. |
+| *2 account plan item(s) waiting for your approval* | The supervisor (**Approver**) | Once a plan or review has waited **2** working days (**Remind the supervisor after (working days)**), then every 2 working days, until it is approved or returned. |
+| *Account plans escalated* | The Head of Commercial (or the person in **Escalations go to**) | Once per plan or review: when it is **5** working days past its due date (**Escalate overdue after (working days)**), or has waited **5** working days for approval (**Escalate waiting approvals after (working days)**). The plan then shows **Head of Commercial informed**. |
+| *Account plans this week* | The Head of Commercial | Every Monday, if **Weekly summary to the Head of Commercial** is on: one line per account manager, for example *Employee A: 1 overdue · 0 waiting approval · 3 of 5 reviewed for Q1 2026*. |
+
+<Illustration name="tenders/calc-account-plan-reminders" caption="The Q1 2026 review, from the first reminder to the escalation." />
+
+For a 2026 plan due on Saturday 31 January, the first reminder goes out on Monday 19 January (14 days before falls on a weekend), and if there is still no submitted plan, the escalation goes out on Friday 6 February, 5 working days after the due date.
+
+## Edge cases
+
+- **Changing the settings** affects plans created and reviews started afterwards. Existing plans keep their **Due date**, and existing reviews keep their **Due date** and **Counts until**. The **Plan Review Board** works out its cells from the current settings.
+- **The quarter's review moves on** after **Counts until**: from then on, reminders and **My Actions** are about the next quarter, and the missed review stays **Missed**.
+- **Customers in Maintain, or with no tier, or with no account manager** are never chased, though you can still write a plan for them.
+- **No email address**: someone without an email address on their user gets no reminder.
+
+:::note[Good to know]
+- With the default settings an **overdue review** is rarely escalated: 5 working days after the due date usually falls after **Counts until**, by when the reminders have moved on to the next quarter. Overdue **plans**, and plans or reviews **waiting for approval**, are escalated as described.
+- In January, the reminders and **My Actions** don't mention the Q4 review of last year's plan; they move straight to this year's plan. Account managers need to remember to open last year's plan and use **Quarterly Review** by 19 January.
+- The **Head of Commercial informed** date shows on the plan form only, not on a review.
+:::

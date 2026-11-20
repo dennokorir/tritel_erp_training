@@ -14,6 +14,8 @@ before:
 related: [tenders/commercial-targets/achievements, tenders/commercial-targets/index, tenders/concepts/customer-activities, accountability/calculations/metric-families, tenders/how-to/bids/tender-my-actions]
 sidebar: { order: 13 }
 sources:
+  - tritel_tender_tracker/security/account_plan_security.xml
+  - tritel_tender_tracker/security/ir.model.access.csv
   - tritel_tender_tracker/views/tender_views.xml
   - tritel_tender_tracker/views/target_views.xml
   - tritel_tender_tracker/models/target.py
@@ -29,7 +31,7 @@ sources:
   - tritel_tender_tracker/views/hr_employee.xml
   - tritel_tender_tracker/views/menu.xml
   - tritel_tender_tracker/views/partner_activity_touchpoints_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -61,7 +63,7 @@ The maximum points per stage, which always add up to 100:
 - **Achieved Value** = **Gross Value** × **% Achievement** ÷ 100. In the first picture the account manager's 80 points on KES 12,000,000 give KES 9,600,000. If two lines share a role on the same tender, the value is split equally between them.
 - Once the Account Manager and Bid Liaison both have a line, the tender leaves the Head of Commercial's **Achievements to attribute**; once the Presales has one, it leaves the Head of Channel's. The tender's card on the board is no longer amber for it.
 - **Compute Related Activities** lists the activities it used on the achievement's **Activities** tab. An activity counts when it was logged (entered) after the opportunity or tender was created and not after the award date. Activities on the opportunity count as **Pipelining**; on the tender, as **Bid Submission Support** up to the deadline date and **Post-Submission Influence** after it.
-- In Accountability, the lines feed **Achieved revenue (attributed)** for each role, plus the Account Manager's **Gross awarded value**, **Awarded tenders** and **Attribution rate**, all counted by award date. See [How metrics count](/accountability/calculations/metric-families/). How the split works is on [How achievements are split and counted](/tenders/commercial-targets/achievements/).
+- In Accountability, the lines feed **Achieved revenue (attributed)** for each role, plus the Account Manager's **Gross awarded value**, **Awarded tenders**, **Attribution rate** and **Awarded value growth vs same quarter last year**, all counted by award date. See [How metrics count](/accountability/calculations/metric-families/). How the split works is on [How achievements are split and counted](/tenders/commercial-targets/achievements/).
 
 ## Common mistakes
 
@@ -76,7 +78,8 @@ The maximum points per stage, which always add up to 100:
 - A line with 0 points clears the "pending" flag but earns nothing. Accountability flags these as *award(s) awaiting attribution*, so always enter the points.
 - **Compute Related Activities** replaces any points typed by hand, and doesn't rerun by itself. Click it again after more activities are logged, or retype the points afterwards.
 - Only activities where the person is **Responsible** count. Activities logged by someone else on their behalf don't.
-- The **Role** isn't checked against the person's role on the tender, and nothing stops any user from adding or changing lines. Each head should attribute only their own side.
+- Only the Head of Commercial, the Head of Channel and Tender administrators can add or change lines, and they can change any line, whatever the role. The **Role** isn't checked against the person's role on the tender, so each head should attribute only their own side.
+- Everyone else can only read the lines that credit them or the people who report to them. On someone else's won tender, the **Target Achievements** tab shows only those lines.
 - A **Prequalified** tender also shows the **Target Achievements** tab but never asks for attribution: its RFQs earn instead when won.
 - Commercial Targets role and individual targets are being replaced by Accountability revenue targets, but attribution lines still need an individual target to attach to. See [Commercial Targets: what's live and what's being replaced](/tenders/commercial-targets/).
 :::

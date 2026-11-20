@@ -1,12 +1,13 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit bba3de2bf860
 # docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:field:res.partner.is_target_account, tritel_tender_tracker:field:res.partner.suggested_industry_id
 # docs-sync: shows tritel_tender_tracker:menu:menu_classify_accounts, tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tenders_section
 # docs-sync: shows tritel_tender_tracker:menu:tender_root_menu, tritel_tender_tracker:model:target.target, tritel_tender_tracker:model:tender.initial
 # docs-sync: shows tritel_tender_tracker:selection:res.partner.coverage_rung, tritel_tender_tracker:selection:res.partner.market_segment, tritel_tender_tracker:selection:res.partner.suggested_segment
 # docs-sync: shows tritel_tender_tracker:selection:res.partner.target_tier, tritel_tender_tracker:wizard:tender.summary.wizard
+# docs-sync: shows tritel_tender_tracker:field:res.partner.target_proposed_tier, tritel_tender_tracker:field:res.partner.awarded_attr_4q, tritel_tender_tracker:field:res.partner.tier_since
 type: screen
 title: Classify Accounts
-desc: The Classify Accounts list with the Apply Suggested Sector, Target tier, Approve Proposed, Decline Proposed and Propose as Target buttons, and editable Sector, Segment, Target Account and Target Tier columns, numbered 6 to 9.
+desc: The Classify Accounts list with the Apply Suggested Sector, Target Key Account, Major Growth and Maintain, Approve Proposed, Decline Proposed, Propose as Key Account and Propose as Major Growth buttons, and the Sector, Segment, Target Account, Target Tier, Proposed Tier and Awarded attributed (4Q) columns, numbered 6 to 9.
 source: tritel_tender_tracker/views/target_accounts_views.xml (view_partner_classify_tree)
 frame:
   grid: true
@@ -14,12 +15,13 @@ frame:
   menu: [My Actions, Tenders, {label: Tender Customers, active: true}, Reporting]
   breadcrumb: [Classify Accounts]
 blocks:
-  - buttons: [{label: Apply Suggested Sector, primary: true, n: 6}, {label: "Target: Strategic", n: 8}, {label: "Target: Growth"}, {label: "Target: Maintain"}, {label: Approve Proposed, n: 9}, {label: Decline Proposed}, {label: Propose as Target, n: 7}]
-  - search: {facets: [Unclassified (no sector)], placeholder: "Search…", filters: [Filters, Group By]}
+  - buttons: [{label: Apply Suggested Sector, primary: true, n: 6}, {label: "Target: Key Account", n: 8}, {label: "Target: Major Growth"}, {label: "Target: Maintain"}, {label: Approve Proposed, n: 9}, {label: Decline Proposed}]
+  - buttons: [{label: Propose as Key Account, n: 7}, {label: Propose as Major Growth}]
+  - search: {facets: [Proposed Targets], placeholder: "Search…", filters: [Filters, Group By]}
   - table:
-      columns: ["", Customer, Coverage, Sector, Suggested Sector, Segment, Target Account, Target Tier, Proposed]
-      widths: [0.5, 2, 1.4, 1.6, 1.8, 1.6, 1.4, 1.4, 1.1]
+      columns: ["", Customer, Coverage, Sector, Segment, Target Account, Target Tier, Proposed, Proposed Tier, "Awarded, attributed (4Q)"]
+      widths: [0.5, 1.8, 1.2, 1.4, 1.5, 1.3, 1.4, 1.1, 1.5, 1.8]
       rows:
-        - ["☑", Customer A, Anchor, "", Banking, Private sector, "☐", "", "☑"]
-        - ["☐", Customer B, Named, "", Government, Public sector, "☐", "", "☐"]
-        - ["☐", Customer C, In play, "", "", "", "☐", "", "☐"]
+        - ["☑", Customer A, Anchor, Banking, Private sector, "☐", "", "☑", Key account, "12,000,000"]
+        - ["☐", Customer B, Named, Government, Public sector, "☐", "", "☑", Major growth, "4,000,000"]
+        - ["☐", Customer C, In play, Health, Public sector, "☑", Maintain, "☐", "", "0"]

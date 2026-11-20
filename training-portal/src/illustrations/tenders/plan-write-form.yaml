@@ -1,0 +1,29 @@
+# docs-sync: verified_commit bba3de2bf860
+# docs-sync: shows tritel_tender_tracker:model:tender.account.plan, tritel_tender_tracker:selection:tender.account.plan.state
+type: screen
+title: Write an account plan
+desc: A new account plan for Customer A for 2026 in Draft, with the header fields, the Goal and awarded value tab showing the annual goal split into four quarterly goals and the awarded value by quarter, and the Submit for Approval button, numbered 2 to 4 and 7.
+source: tritel_tender_tracker/views/account_plan_views.xml (account_plan_form); models/account_plans.py (_onchange_goal_amount, _compute_awarded_html)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, Tenders, {label: Tender Customers, active: true}, Reporting]
+  breadcrumb: [Account Plans, Customer A · 2026]
+blocks:
+  - buttons: [{label: Submit for Approval, primary: true, n: 7}]
+    status: {steps: [Draft, Submitted, Approved], current: Draft}
+  - title: {text: Customer A · 2026}
+  - fields:
+      - [{label: Customer, value: Customer A, n: 2}, {label: Account manager, value: Employee A}]
+      - [{label: Year, value: "2026"}, {label: Approver, value: Employee B, readonly: true}]
+      - [{label: Tier, value: Key account, readonly: true}, {label: Due date, value: 31/01/2026}]
+  - tabs: {items: [Goal and awarded value, Strategy and risks, Key people, Objectives and actions, Quarterly reviews], active: Goal and awarded value, n: 4}
+  - fields:
+      - [{label: "Awarded value goal (attributed)", value: "40,000,000", n: 3}, {label: Focus areas, value: "Networks, Security"}]
+      - [{label: Q1 goal, value: "10,000,000"}, {label: Won before, value: Networks, readonly: true}]
+      - [{label: Q2 goal, value: "10,000,000"}, {label: "", value: "", input: false}]
+  - table:
+      columns: [Quarter, Gross, Attributed, Goal, "Attributed, year before"]
+      rows:
+        - [Q1 2026, 12.0M, 6.0M, 10.0M, 4.0M]
+        - [Q2 2026, 0.0M, 0.0M, 10.0M, 5.0M]

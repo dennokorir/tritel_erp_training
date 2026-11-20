@@ -175,6 +175,7 @@ screens:
       - {label: Responsible, meaning: "The person who made the touch.", where: Form}
       - {label: Partner Activity Type, meaning: "Meeting, call, visit and so on.", where: Form}
       - {label: Channel, meaning: "How the customer was reached, from the type.", where: Form}
+      - {label: Contacts met, meaning: "The customer's people met or spoken to. Sets their Last met date on the organogram.", where: Form; Log a customer touch window; list}
       - {label: Feedback, meaning: "What happened. Posted on the tender or opportunity when marked Done.", where: Form}
       - {label: Tender, meaning: "The tender the touch supports.", where: Pipeline/Tender Related Touch}
       - {label: Lead/Pipeline, meaning: "The opportunity the touch supports.", where: Pipeline/Tender Related Touch}
@@ -193,9 +194,80 @@ screens:
       - {label: Coverage, meaning: "Anchor, Named, Prequalified, In play, Contested, Engaged or Untouched.", where: Lists}
       - {label: Segment, meaning: "Public sector, Private sector or NGO / Development.", where: Customer form}
       - {label: Target Account, meaning: "A customer the team is targeting. Set by the Head of Commercial or a Tender administrator.", where: Customer form}
-      - {label: Target Tier, meaning: "Strategic, Growth or Maintain.", where: Customer form}
+      - {label: Target Tier, meaning: "Key account, Major growth or Maintain (Key account and Major growth were Strategic and Growth before November 2026).", where: Customer form}
+      - {label: Tier Since, meaning: "When the current tier was set; resets when the tier changes. A tier counts for a quarter only if it was set before the quarter started.", where: Customer form; Classify Accounts (hidden)}
+      - {label: Proposed Tier, meaning: "The tier an account manager proposed: Key account or Major growth.", where: Classify Accounts; customer form while proposed}
       - {label: Target Since, meaning: "When it became a target.", where: Customer form}
       - {label: Target Note, meaning: "Why it is a target.", where: Customer form}
+      - {label: "Awarded, gross (4Q)", meaning: "Tender value awarded to the customer in the last four quarters, including this one (account manager attribution lines).", where: Classify Accounts}
+      - {label: "Awarded, attributed (4Q)", meaning: "The account manager's credited share of the same awards. Empty outside the plan audience.", where: Classify Accounts}
+      - {label: Account Plan, meaning: "Button: this year's plan and its status (2026 · reviewed 14 Apr), or No plan. Opens or starts the plan. Plan audience only.", where: "Customer form, button row"}
+      - {label: Organogram, meaning: "Button: how many roles have a named contact (5 of 7 roles), or Not started. Opens the full-screen organogram. Plan audience only.", where: "Customer form, button row"}
+      - {label: "Awarded, 4Q", meaning: "Button: the account manager's attributed awarded value in the last four quarters. Plan audience only.", where: "Customer form, button row"}
+
+  - name: Account plan
+    where: Tender Manager › Tender Customers › Account Plans (open a plan), or the customer's Account Plan button
+    fields:
+      - {label: Customer, meaning: "The company the plan is for. One plan per customer per year.", where: Top}
+      - {label: Year, meaning: "The plan's year.", where: Top}
+      - {label: Tier, meaning: "The customer's Target Tier.", where: Top}
+      - {label: Account manager, meaning: "The customer's account manager, filled in when the plan is created.", where: Top}
+      - {label: Approver, meaning: "The account manager's Manager in the Employees app, who approves the plan and its reviews.", where: Top}
+      - {label: Last customer activity, meaning: "Date of the customer's latest logged touch.", where: Top}
+      - {label: Due date, meaning: "The plan should be approved by this date (31 January by default). Only the Head of Commercial can change it.", where: Top}
+      - {label: Timeliness, meaning: "Not due yet, Approved on time, Approved late or Overdue.", where: Top}
+      - {label: Waiting (working days), meaning: "How long a submitted plan has waited for approval, Monday to Friday.", where: "Top, while Submitted"}
+      - {label: Head of Commercial informed, meaning: "When the plan was escalated to the Head of Commercial by the reminders job.", where: "Top, once escalated"}
+      - {label: Awarded value goal (attributed), meaning: "The year's goal for the account manager's attributed awarded value. Typing it splits it into four when the quarter goals are empty.", where: Goal and awarded value tab}
+      - {label: Q1 goal … Q4 goal, meaning: "The goal for each quarter.", where: Goal and awarded value tab}
+      - {label: Focus areas, meaning: "Solution pillars to grow with this customer this year.", where: Goal and awarded value tab}
+      - {label: Won before, meaning: "Pillars of tenders already won with this customer.", where: Goal and awarded value tab}
+      - {label: Awarded value by quarter (account manager attribution), meaning: "Quarter, Gross, Attributed, Goal and Attributed year before, in millions.", where: Goal and awarded value tab}
+      - {label: Account strategy, meaning: "Where Tritel is with the customer and how it will grow.", where: Strategy and risks tab}
+      - {label: Risks, meaning: "What could stop it, and what to do about it.", where: Strategy and risks tab}
+      - {label: Person, meaning: "A key person at the customer (one of its contacts).", where: Key people tab}
+      - {label: Reports to, meaning: "The role this person reports to. Changing it changes the organogram.", where: Key people tab}
+      - {label: Influence, meaning: "Decision maker, Approver, Influencer, Gatekeeper or User.", where: Key people tab}
+      - {label: Relationship, meaning: "Warm, Neutral or Cooling.", where: Key people tab}
+      - {label: Covered by, meaning: "Who at Tritel looks after this relationship.", where: Key people tab}
+      - {label: Last met, meaning: "The latest touch that lists this person under Contacts met.", where: Key people tab}
+      - {label: Action, meaning: "An objective or action, with its Owner, Due date and state: Open, On track, Done or Dropped.", where: Objectives and actions tab}
+
+  - name: Quarterly review
+    where: The plan's Quarterly Review button; Tender Manager › Tender Customers › Plan Reviews
+    fields:
+      - {label: Quarter, meaning: "The quarter reviewed, for example Q2 2026.", where: Top}
+      - {label: Status, meaning: "Green, Amber or Red.", where: Top}
+      - {label: Due date, meaning: "Quarter end + 14 days by default.", where: Top}
+      - {label: Counts until, meaning: "Due date + 5 grace days by default. Approved by then, it counts for the KPI.", where: Top}
+      - {label: Timeliness, meaning: "Not due yet, Approved on time, Approved late, Overdue or Missed.", where: Top}
+      - {label: What changed this quarter, meaning: "Wins, losses, people, budgets, competitors. Required to submit.", where: Body}
+      - {label: Next steps, meaning: "Next steps for the coming quarter.", where: Body}
+      - {label: What needs to change, meaning: "The note when the Approver returns a plan or review. Required.", where: Return for Changes window}
+
+  - name: Organogram
+    where: The plan's Key people tab (compact), Open Full Screen, or the customer's Organogram button
+    fields:
+      - {label: Show, meaning: "Everyone at the customer, or This plan's key people.", where: "Full screen, top"}
+      - {label: Colour by, meaning: "Relationship, Last met or Covered by.", where: "Full screen, top"}
+      - {label: Add Person, meaning: "Creates a contact (Name, Email, Role (job title), Reports to) with a role.", where: "Full screen, top"}
+      - {label: Add Role, meaning: "Adds a role, with or without a contact.", where: "Full screen, top"}
+      - {label: Gaps, meaning: "Up to 8 gaps: roles with no contact, people not met this year, cooling relationships.", where: Compact view}
+      - {label: Recent activity, meaning: "The person's latest touches, with Log Activity, Edit and Remove Role.", where: "Full screen, side panel"}
+
+  - name: Settings › Account Plans
+    where: Settings › Tender Tracker › Account Plans
+    fields:
+      - {label: Plan approved by (MM-DD), meaning: "Month and day of the plan's year it is due by. 01-31 by default.", where: Due dates}
+      - {label: "Review due, days after quarter end", meaning: "14 by default.", where: Due dates}
+      - {label: Grace days for the KPI, meaning: "Days after the review due date an approval still counts. 5 by default.", where: Due dates}
+      - {label: "First reminder, days before due", meaning: "14 by default. Also when reviews appear in My Actions.", where: Reminders and escalation}
+      - {label: Then every (working days), meaning: "3 by default.", where: Reminders and escalation}
+      - {label: Remind the supervisor after (working days), meaning: "2 by default.", where: Reminders and escalation}
+      - {label: Escalate waiting approvals after (working days), meaning: "5 by default.", where: Reminders and escalation}
+      - {label: Escalate overdue after (working days), meaning: "5 by default.", where: Reminders and escalation}
+      - {label: Escalations go to, meaning: "Empty means everyone in the Head of Commercial group.", where: Reminders and escalation}
+      - {label: Weekly summary to the Head of Commercial, meaning: "The Monday email. On by default.", where: Reminders and escalation}
 
   - name: OEM booking
     where: Channel › OEM Bookings (open a booking)

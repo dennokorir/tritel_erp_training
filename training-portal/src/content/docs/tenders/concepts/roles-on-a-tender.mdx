@@ -9,6 +9,7 @@ keywords: [tender team, nominate, nomination, assign, AM, BL, bid liaison, presa
 related: [tenders/how-to/bids/nominate-the-team, tenders/concepts/bid-desk-workload, tenders/workflows/tender-status, tenders/how-to/bids/tender-my-actions, tenders/concepts/market-coverage]
 sidebar: { order: 2 }
 sources:
+  - tritel_tender_tracker/models/account_plans.py
   - tritel_tender_tracker/models/models.py
   - tritel_tender_tracker/wizards/tenders_assignment_wizard.py
   - tritel_tender_tracker/wizards/tenders_assignment_wizard.xml
@@ -37,7 +38,7 @@ sources:
   - tritel_tender_tracker/views/project_summary_views.xml
   - tritel_tender_tracker/views/res_partner.xml
   - tritel_tender_tracker/views/summary_library_views.xml
-verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -101,7 +102,7 @@ Account manager cards also show **Coverage**, for example *60% named (3/5)*: of 
 | **Account Manager** | Listed as an account manager; can claim unowned customers; sees own tenders and opportunities on the portal. |
 | **Bid Liaison** | When named on a tender: works the checklist, marks it submitted and records the receipt. |
 | **Technical Pre-sales** | Prepares their rows of the checklist; is the default summary writer. |
-| **Head of Commercial** | Nominates Bid Liaisons, flags must-win tenders, approves business cases, manages account ownership and target accounts. |
+| **Head of Commercial** | Nominates Bid Liaisons, flags must-win tenders, approves business cases, manages account ownership and target accounts, and sees and can approve every account plan. |
 | **Head of Channel** | Nominates Account Managers and Technical Presales; requests and reviews project summaries. |
 | **Administrator** (Tender administrator) | Everything above, plus reopening, moving back on the board and deleting tenders. |
 | **Project Summary Library** | Read access to the library of complete project summaries. |

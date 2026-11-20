@@ -1,0 +1,26 @@
+# docs-sync: verified_commit bba3de2bf860
+# docs-sync: shows tritel_tender_tracker:model:tender.account.plan.review, tritel_tender_tracker:selection:tender.account.plan.review.status, tritel_tender_tracker:selection:tender.account.plan.review.state
+type: screen
+title: Quarterly Review
+desc: An approved account plan with its Quarterly Review button, and the Quarterly Review window for Q3 2026 with the quarter, the Green, Amber and Red status, the due date, counts-until date and timeliness, the boxes for what changed this quarter and next steps, and the Submit for Approval button, numbered 2 to 7.
+source: tritel_tender_tracker/views/account_plan_views.xml (account_plan_form, account_plan_review_form); models/account_plan_tracking.py (action_start_review, _compute_due)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, Tenders, {label: Tender Customers, active: true}, Reporting]
+  breadcrumb: [Account Plans, Customer A · 2026]
+blocks:
+  - buttons: [{label: Quarterly Review, primary: true, n: 2}, {label: Revise Plan}]
+    status: {steps: [Draft, Submitted, Approved], current: Approved}
+  - dialog:
+      title: Quarterly Review
+      blocks:
+        - status: {steps: [Draft, Submitted, Approved], current: Draft}
+        - fields:
+            - [{label: Plan, value: Customer A · 2026, readonly: true}, {label: Status, value: "● Green   ○ Amber   ○ Red", n: 4}]
+            - [{label: Quarter, value: Q3 2026, readonly: true, n: 3}, {label: Due date, value: 14/10/2026, readonly: true}]
+            - [{label: "", value: "", input: false}, {label: Counts until, value: 19/10/2026, readonly: true}]
+            - [{label: "", value: "", input: false}, {label: Timeliness, value: Not due yet, readonly: true}]
+            - [{label: "", value: "Won the core network tender; new Head of Procurement started in August.", n: 5}]
+            - [{label: "", value: "Book a security workshop in Q4; update the plan's actions.", n: 6}]
+        - buttons: [{label: Submit for Approval, primary: true, n: 7}, {label: Close}]

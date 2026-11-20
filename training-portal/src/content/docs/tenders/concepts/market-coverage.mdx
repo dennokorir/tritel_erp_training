@@ -5,7 +5,7 @@ module: tenders
 pageType: concept
 roles: [account-manager, head-commercial, head-channel, tender-admin]
 tags: [customers, coverage]
-keywords: [market coverage, coverage ladder, named account, anchor account, key account, target account, account plan, territory, account owner, unowned customer, claim account, win rate, named share, sector, segment]
+keywords: [market coverage, coverage ladder, named account, anchor account, key account, major growth, strategic account, target account, account plan, tier, territory, account owner, unowned customer, claim account, win rate, named share, sector, segment]
 related: [tenders/how-to/customers/market-coverage, tenders/how-to/customers/account-ownership, tenders/calculations/coverage-ladder, tenders/workflows/customer-activity, tenders/concepts/customer-activities, tenders/concepts/opportunities-and-tenders]
 sidebar: { order: 11 }
 sources:
@@ -31,7 +31,9 @@ sources:
   - tritel_tender_tracker/views/tender_views.xml
   - tritel_tender_tracker/wizards/tender_lost.py
   - tritel_tender_tracker/models/hr_employee_roles.py
-verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+  - tritel_tender_tracker/models/account_plans.py
+  - tritel_tender_tracker/models/account_plan_privacy.py
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -93,9 +95,26 @@ Owners are also set without anyone asking: saving a tender or opportunity with a
 
 ## Target accounts
 
-A **target account** is a customer Tritel has chosen to pursue, with a **Target Tier**: **Strategic**, **Growth** or **Maintain**. Anyone can **Propose as Target**; the Head of Commercial or a Tender administrator then **Approve**s it (tier **Growth** unless set) or **Decline**s it, or sets a tier directly with **Target: Strategic**, **Target: Growth** or **Target: Maintain**. They do this on the customer form or in **Tender Manager › Tender Customers › Classify Accounts**, which also offers **Apply Suggested Sector** to fill in sectors and segments in bulk. The steps are in the [customer activity and target account workflow](/tenders/workflows/customer-activity/).
+A **target account** is a customer Tritel has chosen to pursue, with a **Target Tier**: **Key account**, **Major growth** or **Maintain**. (Key account and Major growth were called Strategic and Growth before November 2026; the accounts kept their tier.)
+
+- **Account managers** propose a customer with **Propose as Key Account** or **Propose as Major Growth**. The form then reads *Proposed as Key account, awaiting approval*.
+- **The Head of Commercial or a Tender administrator** then **Approve**s it, which gives it the tier that was proposed (**Major growth** if none was), or **Decline**s it. They can also set a tier directly with **Target: Key Account**, **Target: Major Growth** or **Target: Maintain**.
+
+They do this on the customer form or in **Tender Manager › Tender Customers › Classify Accounts**, which also offers **Apply Suggested Sector** to fill in sectors and segments in bulk, and shows each customer's **Proposed Tier** and the tender value awarded over the last four quarters (**Awarded, gross (4Q)** and **Awarded, attributed (4Q)**). The steps are in the [customer activity and target account workflow](/tenders/workflows/customer-activity/).
+
+A target account has a **Target Since** date (when it first became a target) and a **Tier Since** date (when its current tier was set). **Tier Since** moves every time the tier changes. It matters for the account manager's KPI: *A tier counts for a quarter only if it was set before the quarter started.*
 
 Once a customer is proposed or made a target, its form also shows **Target Note**: a free-text line for why it was chosen or what the plan is. **Classify Accounts** has the same column, hidden by default.
+
+### Account plans for Key and Major growth accounts
+
+Every **Key account** and **Major growth** account needs an approved [account plan](/tenders/concepts/account-plans/) for the year, reviewed every quarter. A company customer's form shows three buttons for the plan's audience (its account manager, the managers above them and the Head of Commercial):
+
+- **Account Plan**: this year's plan and its status (for example *2026 · reviewed 14 Apr*), or *No plan*. Clicking it opens the plan, or starts one.
+- **Organogram**: how much of the customer's [organogram](/tenders/how-to/account-plans/map-the-customer-organogram/) is mapped (for example *5 of 7 roles*), or *Not started*.
+- **Awarded, 4Q**: the tender value awarded to the customer over the last four quarters, including this one, as credited to the account manager.
+
+Everyone else does not see these buttons. See [Who sees an account plan](/tenders/concepts/account-plan-privacy/).
 
 ## How it counts in Accountability
 
@@ -103,7 +122,8 @@ Coverage feeds measures such as **Named share – deals led**, **Named share –
 
 :::note[Good to know]
 - The ladder is worked out fresh each time; nobody sets it by hand. To move a customer up, record the tender, opportunity or touch.
-- Only the Head of Commercial and Tender administrators can set target accounts: *Only the Head of Commercial or a Tender Administrator can set target accounts. Use "Propose as Target" instead.*
+- Only the Head of Commercial and Tender administrators can set target accounts. Anyone else who ticks **Target Account** or changes the tier sees *Only the Head of Commercial or a Tender Administrator can set target accounts. Use "Propose as Target" instead.* The message still names the old button: use **Propose as Key Account** or **Propose as Major Growth**.
+- **Awarded, 4Q** and the plan's quarter table add up the account manager's credited share of every tender awarded to the customer. The account manager's KPI counts won tenders only, so the figures can differ.
 :::
 
 ## Tasks that use this
@@ -111,3 +131,4 @@ Coverage feeds measures such as **Named share – deals led**, **Named share –
 - [Use the Market Coverage screen](/tenders/how-to/customers/market-coverage/)
 - [Claim, assign and classify accounts](/tenders/how-to/customers/account-ownership/)
 - [The market coverage ladder](/tenders/calculations/coverage-ladder/)
+- [Write an account plan](/tenders/how-to/account-plans/write-an-account-plan/)

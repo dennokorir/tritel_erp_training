@@ -1,0 +1,16 @@
+# docs-sync: verified_commit bba3de2bf860
+# docs-sync: shows tritel_tender_tracker:view_ext:base.view_partner_form:button:action-open-account-plan, tritel_tender_tracker:field:res.partner.awarded_attr_4q
+type: screen
+title: Account Plan button
+desc: A customer's form with the Account Plan, Organogram and Awarded 4Q buttons at the top right; the Account Plan button reads No plan and is numbered 1.
+source: tritel_tender_tracker/views/account_plan_views.xml (view_partner_form_account_plan)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, Tenders, {label: Tender Customers, active: true}, Reporting]
+  breadcrumb: [Customers, Customer A]
+blocks:
+  - smart: [{label: Account Plan, value: No plan, n: 1}, {label: Organogram, value: "5 of 7 roles"}, {label: "Awarded, 4Q", value: "KES 12,000,000"}]
+  - title: {text: Customer A, sub: Company}
+  - fields:
+      - [{label: Account Manager, value: Employee A}, {label: Target Tier, value: Key account}]

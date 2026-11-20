@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit bba3de2bf860
 # docs-sync: shows crm_tender:group:group_administrator, crm_tender:group:group_manager, crm_tender:group:group_user
 # docs-sync: shows tritel_tender_tracker:client_action:action_market_coverage, tritel_tender_tracker:client_action:action_touchpoints_workspace, tritel_tender_tracker:field:res.partner.is_target_account
 # docs-sync: shows tritel_tender_tracker:field:res.partner.suggested_industry_id, tritel_tender_tracker:group:group_account_manager, tritel_tender_tracker:group:group_administrator
@@ -11,10 +11,11 @@
 # docs-sync: shows tritel_tender_tracker:selection:target.target.role, tritel_tender_tracker:selection:tender.business.case.line.commission_role, tritel_tender_tracker:selection:tender.portal.access.log.user_role
 # docs-sync: shows tritel_tender_tracker:view_ext:base.view_partner_form:button:touchpoints, tritel_tender_tracker:view_ext:base.view_partner_form:field:touchpoints, tritel_tender_tracker:view_ext:crm.crm_lead_view_form:button:customer-activities
 # docs-sync: shows tritel_tender_tracker:wizard:tender.summary.wizard, tritel_tender_tracker:wizard:tenders.assign.wizard
+# docs-sync: shows tritel_tender_tracker:model:tender.account.plan, tritel_tender_tracker:model:tender.account.plan.review, tritel_tender_tracker:model:tender.customer.role, tritel_tender_tracker:model:target.achievement
 type: matrix
 title: Who can do what with customers and coverage
-desc: Permission grid for customer activities, the Customer Activities and Market Coverage screens, account ownership, target accounts and prequalifications, for Account Managers, Bid Liaisons, Technical Presales, the Head of Commercial, the Head of Channel, Tender administrators and any other internal user.
-source: tritel_tender_tracker/models/touchpoints.py, models/market_coverage.py, models/account_ownership.py, models/target_accounts.py, views/account_ownership_views.xml, views/target_accounts_views.xml, security/ir.model.access.csv
+desc: Permission grid for customer activities, the Customer Activities and Market Coverage screens, account ownership, target accounts, account plans, tender attribution and prequalifications, for Account Managers, Bid Liaisons, Technical Presales, the Head of Commercial, the Head of Channel, Tender administrators and any other internal user.
+source: tritel_tender_tracker/models/touchpoints.py, models/market_coverage.py, models/account_ownership.py, models/target_accounts.py, views/account_ownership_views.xml, views/target_accounts_views.xml, security/ir.model.access.csv, security/account_plan_security.xml, models/account_plans.py, models/account_plan_tracking.py, models/account_portfolio.py
 columns: [Account Manager, Bid Liaison, Technical Presales, Head of Commercial, Head of Channel, Tender administrator, Any internal user]
 labelWidth: 250
 rows:
@@ -25,9 +26,18 @@ rows:
   - {action: Claim for Me, cells: [y, n, n, y, n, y, n]}
   - {action: "Accept Suggestion, Assign To…, Mark as Company", cells: [n, n, n, y, n, y, n]}
   - {group: Target accounts}
-  - {action: Propose as Target, cells: [y, y, y, y, y, y, y]}
+  - {action: Propose as Key Account or Major Growth, cells: [y, y, y, y, y, y, y]}
   - {action: "Approve, Decline, set Target Account or tier", cells: [n, n, n, y, n, y, n]}
   - {action: Apply Suggested Sector, cells: [n, n, n, y, n, y, n]}
+  - {group: Account plans}
+  - {action: "See a customer's plan, reviews and organogram", cells: [p, p, p, y, p, p, p]}
+  - {action: "Write and submit the plan and reviews, edit the organogram", cells: [p, n, n, y, n, n, n]}
+  - {action: Approve or return plans and reviews, cells: [p, p, p, y, p, p, p]}
+  - {action: "Change a plan's due date", cells: [n, n, n, y, n, n, n]}
+  - {action: "My Portfolio and Plan Review Board", cells: [p, p, p, y, p, p, p]}
+  - {group: Tender attribution}
+  - {action: See attribution lines, cells: [p, p, p, y, y, y, p]}
+  - {action: "Add, change or delete attribution lines", cells: [n, n, n, y, y, y, n]}
   - {group: Prequalifications}
   - {action: "Create, change status, Log RFQ", cells: [y, y, y, y, y, y, y]}
 legend: {p: "Partly: see the notes under the picture"}

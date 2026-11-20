@@ -9,6 +9,9 @@ keywords: [achievement, attribution, attribution points, won tender, credit, com
 related: [tenders/how-to/bids/attribute-a-won-tender, tenders/commercial-targets/index, tenders/concepts/customer-activities, tenders/how-to/customers/log-a-customer-activity, accountability/calculations/metric-families]
 sidebar: { order: 3 }
 sources:
+  - tritel_tender_tracker/security/account_plan_security.xml
+  - tritel_tender_tracker/security/ir.model.access.csv
+  - tritel_tender_tracker/models/account_plans.py
   - tritel_tender_tracker/models/target.py
   - tritel_tender_tracker/models/models.py
   - tritel_tender_tracker/models/res_partner.py
@@ -22,7 +25,7 @@ sources:
   - tritel_tender_tracker/security/security.xml
   - tritel_tender_tracker/views/hr_employee.xml
   - tritel_tender_tracker/views/partner_activity_touchpoints_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -62,6 +65,17 @@ An activity is valid, and gets its stage, by when it was logged in the system (n
 
 Picking the person's individual target on a new line fills **Name** with the award quarter (for example *Q2 2026*) and sets **Date From** and **Date To** to that quarter. The line's **Period** is the target period covering the award date.
 
+## Who can see and change the lines
+
+| Who | Can |
+|---|---|
+| The person credited | Read their own lines |
+| Their managers (anyone above them in the employee reporting line) | Read the lines of everyone below them |
+| Head of Commercial, Head of Channel, Tender administrators | Read, add, change and delete every line |
+| Everyone else | Nothing: other people's lines don't show |
+
+Before November 2026 every internal user could read and change every line.
+
 ## How Accountability counts it
 
 Accountability's **Achieved revenue (attributed)** metrics (one each for Account Manager, Bid Liaison and Technical Presales) add up the **Achieved Value** of a person's lines for that role on tenders with the status **Won**, by award date in the review window. **Gross awarded value**, **Awarded tenders** and **Attribution rate** do the same for Account Managers. Lines still at 0% count as nothing and are flagged as *award(s) awaiting attribution*. See [Metric families](/accountability/calculations/metric-families/).
@@ -81,4 +95,5 @@ Accountability's **Achieved revenue (attributed)** metrics (one each for Account
 - Only activities where the person is **Responsible** count. Activities logged for them by someone else, or not linked to the tender or its opportunity, don't.
 - An activity linked to both the opportunity and the tender counts as **Pipelining**.
 - The **Role** on a line is chosen by hand and isn't checked against the person's role on the tender. Check it: it sets the maximums and which share of the value they get.
+- Account Manager lines also feed the account manager's **Awarded value growth vs same quarter last year** KPI, and the **Awarded** figures on a customer's form and account plan. See [From target account to the account manager's KPI](/end-to-end/account-plan-to-am-kpi/).
 :::

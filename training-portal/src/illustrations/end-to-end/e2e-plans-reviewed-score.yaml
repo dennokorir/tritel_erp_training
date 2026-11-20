@@ -1,0 +1,20 @@
+# docs-sync: verified_commit bba3de2bf860
+# docs-sync: shows tritel_tender_tracker:model:tender.account.plan.review, tritel_tender_tracker:field:res.partner.tier_since, tritel_tender_tracker:selection:res.partner.target_tier
+type: calc
+title: Account plans reviewed reach the target
+desc: Worked example of Employee A's Account plans reviewed for Q2 2026, where six Key and Major growth accounts include one tiered on 10 April, leaving five eligible; three reviews approved by 14 July and one on 17 July count, one approved on 22 July is missed, giving 4, scored 50% on a target with a floor of 3 and an ideal of 5.
+source: tritel_accountability_framework/models/metric_hook_account_plans.py; tritel_tender_tracker/models/account_portfolio.py; tritel_tender_tracker/models/account_plan_tracking.py
+heading: "Employee A, Account plans reviewed, Q2 2026"
+inputs:
+  - {label: "Key and Major growth accounts", value: "6"}
+  - {label: "Tiered on 10 Apr (counts next quarter)", value: "1"}
+  - {label: "Approved by 14 Jul (on time)", value: "3"}
+  - {label: "Approved 17 Jul (late, by Counts until 19 Jul)", value: "1"}
+  - {label: "Approved 22 Jul (missed)", value: "1"}
+steps:
+  - {label: "Eligible: 6 − 1 tiered too late", value: "5"}
+  - {label: "Reviewed in time: 3 on time + 1 late", value: "4"}
+  - {label: "Target: at or above floor, Compliance Floor 3, Ideal Target 5", value: "floor 3, ideal 5"}
+  - {label: "Score = (4 − 3) ÷ (5 − 3) × 100", value: "50%"}
+result: {label: Score for this review, value: "50%", tone: warn}
+note: The automatic review first runs on 20 July, 19 days after the quarter ends. The floor and ideal here are the metric's suggestion; your target sets its own.

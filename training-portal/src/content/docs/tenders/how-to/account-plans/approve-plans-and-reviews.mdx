@@ -1,0 +1,68 @@
+---
+title: Approve or return account plans and reviews
+description: As an account manager's supervisor or the Head of Commercial, approve an account plan or a quarterly review, or return it with a note saying what needs to change.
+module: tenders
+pageType: how-to
+roles: [line-manager, head-commercial]
+tags: [customers, account plans, my actions]
+keywords: [approve account plan, approve review, return plan, send back, reject plan, plan approval, review approval, sign off, supervisor approval, to approve, plan reviews, waiting approval]
+where: [Tender Manager, Tender Customers, Plan Reviews]
+before:
+  - You are the account manager's supervisor (their <strong>Manager</strong> on the employee record, shown on the plan as <strong>Approver</strong>), or the Head of Commercial.
+  - The account manager has submitted the plan or the review.
+related: [tenders/concepts/account-plans, tenders/workflows/account-plan, tenders/calculations/account-plan-due-dates, tenders/how-to/account-plans/write-an-account-plan, tenders/how-to/account-plans/submit-a-quarterly-review, tenders/how-to/account-plans/plan-review-board, tenders/how-to/bids/tender-my-actions]
+sidebar: { order: 3 }
+sources:
+  - tritel_tender_tracker/views/account_plan_views.xml
+  - tritel_tender_tracker/models/account_plans.py
+  - tritel_tender_tracker/models/account_plan_tracking.py
+  - tritel_tender_tracker/models/account_portfolio.py
+  - tritel_tender_tracker/security/account_plan_security.xml
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+When an account manager who reports to you submits an account plan or a quarterly review, you approve it or return it with a note. Approve quickly: a review counts towards the account manager's target only if it is approved by its **Counts until** date.
+
+<Illustration name="tenders/plan-approve-return" caption="A submitted plan, and the window that opens on Return for Changes. The numbers match the steps below." />
+
+<Illustration name="tenders/plan-reviews-to-approve" caption="Plan Reviews opens on the reviews waiting for you." />
+
+## Steps
+
+**An account plan**
+
+1. Open **Tender Manager › Tender Customers › Account Plans**. It opens on **This year**: under **Filters**, also choose **To approve** to see the plans waiting for you. You can also open the plan from your to-do *Approve account plan: Customer A · 2026*, or from **Account plans and reviews to approve** in [My Actions](/tenders/how-to/bids/tender-my-actions/).
+2. Open the plan and read it: the goal, **Strategy and risks**, **Key people** and **Objectives and actions**. The header shows how long it has been waiting, in **Waiting (working days)**.
+3. If it is ready, click **Approve**.
+4. If it needs changes, click **Return for Changes**. In the window that opens, write what needs to change (the box reads *What needs to change before it can be approved*), then click **Return for Changes**. **Cancel** closes the window without returning the plan.
+
+**A quarterly review**
+
+5. Open **Tender Manager › Tender Customers › Plan Reviews**. It opens on **To approve**: the reviews waiting for you, with their **Quarter**, **Status**, **Due date**, **Timeliness** and **Waiting (working days)**.
+6. Note the customer and quarter of the review you want to decide, then open that customer's plan: from **Account Plans**, from your My Actions item, or by opening the review and clicking its **Plan**.
+7. On the plan, open the **Quarterly reviews** tab and click the review. It opens in a window. Read the **Status** (**Green**, **Amber** or **Red**), what changed this quarter and the next steps.
+8. In that window, click **Approve**, or **Return for Changes** and write your note as in step 4.
+
+## What happens next
+
+- **Approved plan**: the plan shows **Approved** and its **Timeliness** shows **Approved on time** or **Approved late**. Your to-do is marked done. The account manager can now write quarterly reviews.
+- **Approved review**: the plan's chatter shows *Review **Q3 2026** approved (Green):* and what changed. The review is locked, its **Timeliness** shows **Approved on time** or **Approved late**, and it counts towards the account manager's **Account plans reviewed** target. A review approved after **Counts until** shows **Missed** and doesn't count.
+- **Returned**: the plan or review shows **Returned** with your note, your to-do is marked done, and the account manager gets a to-do *Account plan returned: Customer A · 2026* (or *Customer A · Q3 2026* for a review) with your note.
+- The [Plan Review Board](/tenders/how-to/account-plans/plan-review-board/) shows every plan and review for your team, with what is waiting and for how long.
+- Once your administrator turns on the [reminders job](/tenders/calculations/account-plan-due-dates/#reminders-and-escalation), items waiting for you are chased by email after 2 working days (with the default settings), and the Head of Commercial is told about anything still waiting after 5 working days.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Only the account manager's supervisor can approve or return this.* | You are not the plan's **Approver** (nor the Head of Commercial). Managers higher up can read the plan but not approve it. | Leave it to the account manager's direct supervisor. |
+| *Only the account manager of Customer A can change its plan.* | You edited the plan or the review. As a supervisor you can approve or return it, not change it. | Return it with a note saying what to change. |
+| *Only the Head of Commercial can change a plan's due date.* | You changed the plan's **Due date**. | Ask the Head of Commercial. |
+
+:::note[Good to know]
+- Approve a review from the plan's **Quarterly reviews** tab, where it opens in a window with **Approve** and **Return for Changes**. Opened straight from **Plan Reviews** or the Plan Review Board, a review fills the page and shows no buttons. The item under **Account plans and reviews to approve** in My Actions opens the plan, so you can go on from step 7.
+- The **To approve** filter shows only what waits for you as the **Approver**. The Head of Commercial can approve any plan or review, but unless they are the direct supervisor, **Plan Reviews** opens on an empty list. Remove **To approve** and choose the **Submitted** filter instead. On **Account Plans**, group by **Status** to find the submitted plans.
+- If the account manager's **Manager** changes on their employee record, the plan's **Approver** changes with it, but a to-do already sent stays with the previous supervisor.
+- A Head of Commercial who is also the account manager can approve their own plan.
+:::

@@ -1,12 +1,12 @@
 ---
-title: How metrics count (revenue, pipeline, activity, coverage, bid desk, delivery, review behaviour)
+title: How metrics count (revenue, pipeline, activity, coverage, account management, bid desk, delivery, review behaviour)
 description: What each family of metrics counts, over which window, how long it waits before an automatic review, and who gets the credit.
 module: accountability
 pageType: calculation
 roles: [everyone, account-manager, bid-liaison, presales, head-commercial, head-channel, delivery-pm, head-delivery, line-manager, accountability-admin]
 tags: [metrics, scores]
-keywords: [metric, KPI, automatic review, revenue, attribution, pipeline, coverage, activity update, OEM, bid desk, bid quality, delivery on time, on budget, settle days, window, sources]
-related: [accountability/concepts/metrics, accountability/how-to/hr-admin/metrics, accountability/calculations/target-scores, accountability/how-to/line-managers/conduct-a-review]
+keywords: [metric, KPI, automatic review, revenue, attribution, pipeline, coverage, activity update, account plan, awarded growth, OEM, bid desk, bid quality, delivery on time, on budget, settle days, window, sources]
+related: [accountability/concepts/metrics, accountability/how-to/hr-admin/metrics, accountability/calculations/target-scores, accountability/calculations/account-manager-kpi, accountability/how-to/line-managers/conduct-a-review]
 sidebar: { order: 9 }
 sources:
   - tritel_accountability_framework/models/accountability_metric.py
@@ -20,6 +20,8 @@ sources:
   - tritel_accountability_framework/models/metric_hook_delivery.py
   - tritel_accountability_framework/models/metric_hook_review_ack.py
   - tritel_accountability_framework/models/metric_hook_review_coverage.py
+  - tritel_accountability_framework/models/metric_hook_account_plans.py
+  - tritel_tender_tracker/models/account_portfolio.py
   - tritel_tender_tracker/models/target.py
   - tritel_accountability_framework/controllers/worksheet.py
   - tritel_accountability_framework/models/accountability_milestone.py
@@ -38,7 +40,7 @@ sources:
   - tritel_project_delivery/models/closeout.py
   - tritel_project_delivery/models/project.py
   - tritel_project_delivery/views/buttons_views.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -59,6 +61,7 @@ A **metric** reads a target's result from elsewhere in Odoo: CRM, the tender tra
 |---|---|
 | Snapshot metrics | No wait. Skipped if the job is more than 7 days late, so it never reports today's figure for a past window. |
 | Coded metrics | Their own default, listed below |
+| **Account plans reviewed** | 19 days (14 days to review the quarter plus 5 grace days), fixed in the code |
 | Other metrics | **Metric Settle Period (days)** in Settings (3 by default) |
 | Any metric with **Wait Before Automatic Review (days)** above 0 | That number of days |
 
@@ -126,6 +129,15 @@ Four metrics, shipped switched off: an administrator turns them on.
 - **Named share – my accounts**: owned customers with a win (by anyone) ÷ owned customers engaged (a tender, opportunity or customer touch) in 24 months.
 - **New named accounts**: customers whose first-ever win falls in the window, with the person as account manager.
 - **Target accounts named**: owned target accounts on the Named or Anchor rung ÷ owned target accounts, on the review date.
+
+## Account management
+
+Two metrics for account managers, available only where the Tender Tracker is installed. See [Account manager KPI](/accountability/calculations/account-manager-kpi/) for worked examples.
+
+| Metric | What it counts | Waits |
+|---|---|---|
+| **Account plans reviewed** (accounts) | Key account and Major growth customers the person owns, tiered before the window started (or with no **Tier Since** date), whose account plan has a quarterly review for a quarter in the window approved by its **Counts until** date. Each account counts once. Suggested floor 3, ideal 5. | 19 days |
+| **Awarded value growth vs same quarter last year** (%) | (attributed awarded value in the window − the same window a year earlier) ÷ the year-earlier value × 100, account manager role, by award date. Gross shown alongside. No awards a year earlier: **Not Applicable**. Suggested floor 0, ideal 10. | **Metric Settle Period (days)** |
 
 ## OEM
 

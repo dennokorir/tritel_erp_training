@@ -10,11 +10,13 @@ where: [Accountability, Configuration, Metrics]
 before:
   - You are an accountability administrator. Only administrators see <strong>Configuration › Metrics</strong>.
   - You know which records the figure comes from (for example posted customer invoices) and which field links them to a person.
-related: [accountability/concepts/metrics, accountability/calculations/metric-families, accountability/concepts/targets, accountability/how-to/hr-admin/settings]
+related: [accountability/concepts/metrics, accountability/calculations/metric-families, accountability/calculations/account-manager-kpi, accountability/concepts/targets, accountability/how-to/hr-admin/settings]
 sidebar: { order: 4 }
 sources:
   - tritel_accountability_framework/views/accountability_metric_views.xml
   - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/metric_hooks.py
+  - tritel_accountability_framework/models/metric_hook_account_plans.py
   - tritel_accountability_framework/wizard/metric_test_wizard.py
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_accountability_framework/controllers/worksheet.py
@@ -25,7 +27,7 @@ sources:
   - tritel_accountability_framework/security/ir_groups.xml
   - tritel_accountability_framework/views/menu.xml
   - tritel_accountability_framework/tests/test_menus_by_role.py
-verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -77,5 +79,6 @@ To use the metric, open a target, and in **Data Source** choose it in **Metric**
 :::note[Good to know]
 - Several metrics (bid desk and bid quality, for example) are not created automatically. An administrator adds them here.
 - Some market-coverage metrics are installed but archived. Use the **Archived** filter to find and restore them.
+- Where the Tender Tracker is installed, **Coded Logic** also offers **Account plans reviewed (Key and Major growth accounts)** and **Awarded value growth vs same period last year (attributed)**. The metrics **Account plans reviewed** and **Awarded value growth vs same quarter last year** are already set up with them: attach them to account managers' targets. See [Account manager KPI](/accountability/calculations/account-manager-kpi/).
 - "OEM-recognised revenue" counts bookings for the whole company, not per person. Everyone whose target uses it for the same OEM gets the same figure.
 :::

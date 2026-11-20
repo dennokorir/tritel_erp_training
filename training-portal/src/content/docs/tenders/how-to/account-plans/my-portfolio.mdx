@@ -1,0 +1,54 @@
+---
+title: Use My Portfolio
+description: See your accounts' plans, reviews, awarded value and pipeline for the quarter, how you stand against the account manager targets, and, for supervisors, your team's figures.
+module: tenders
+pageType: how-to
+roles: [account-manager, line-manager, head-commercial]
+tags: [customers, account plans]
+keywords: [my portfolio, my accounts, account manager dashboard, plans reviewed, awarded value growth, awarded this quarter, pipeline, team portfolio, account manager KPI, QTD, same days last year, not tiered]
+where: [Tender Manager, Tender Customers, My Portfolio]
+before:
+  - You are an account manager (marked as one on your employee record), or you have account managers below you in the org chart, or you are the Head of Commercial.
+related: [tenders/concepts/account-plans, tenders/how-to/account-plans/write-an-account-plan, tenders/how-to/account-plans/submit-a-quarterly-review, tenders/how-to/account-plans/plan-review-board, tenders/how-to/customers/account-ownership, accountability/calculations/account-manager-kpi]
+sidebar: { order: 6 }
+sources:
+  - tritel_tender_tracker/static/src/portfolio/account_portfolio.xml
+  - tritel_tender_tracker/static/src/portfolio/account_portfolio.js
+  - tritel_tender_tracker/models/account_portfolio.py
+  - tritel_tender_tracker/models/account_plan_tracking.py
+  - tritel_tender_tracker/views/account_plan_views.xml
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+**My Portfolio** is the account manager's view of their customers for the quarter: which plans are reviewed, how much has been awarded compared with the same days last year, and what is in the pipeline. Supervisors and the Head of Commercial also get a **Team** tab with one line per account manager.
+
+<Illustration name="tenders/plan-my-portfolio" caption="My Portfolio, seen by a supervisor looking at Employee A. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Tender Manager › Tender Customers › My Portfolio**. The top line shows the quarter being reviewed and today's date, for example **Q3 2026 · to 2026-10-05**. If you can see more than one account manager, pick one in the list at the top right; it starts on you.
+2. Read the tiles:
+   - **Plans reviewed · Q3 2026**: Key account and Major growth customers with a review for the quarter approved in time, out of **5**. Below it: how many accounts count this quarter, and how many count only from next quarter (tiered after the quarter started).
+   - **Awarded value growth**: the value awarded to you (your attributed share of won tenders) this quarter so far, against the same days last year, for example **+20.0%** (*target 10% · vs the same days last year*). **No baseline** means nothing was awarded in those days last year.
+   - **Awarded this quarter**: your attributed value, with the gross value and last year's figure.
+   - **Open pipeline**: the expected revenue of open opportunities on these customers.
+3. Tick **Key and Major growth only** to hide the other customers. If some of your customers have no tier, a link such as **2 customer(s) not tiered: propose tiers** opens **Classify Accounts**; see [Account ownership and target accounts](/tenders/how-to/customers/account-ownership/).
+4. Read the table, one row per customer you manage, Key accounts first:
+   - **Customer** (click to open the customer) and **Tier** (*from next quarter* if it doesn't count yet).
+   - **Plan**: **Reviewed** (reviewed for the quarter, counted), **Review due** (plan approved, review not approved in time yet), **Waiting approval**, **Returned**, **Draft** or **No plan**. Click it to open the plan, or to start one.
+   - **Last review**: when the latest review was approved.
+   - **Attributed (QTD)**, **Gross (QTD)** and **Same days last year**: awarded value this quarter to date, and your attributed value for the same days last year. **Pipeline**: open opportunities.
+5. **Supervisors and the Head of Commercial**: click the **Team** tab. Each account manager has **Customers**, **Key + growth** (shown in amber below 5), **Plans reviewed** (out of 5), **Awarded growth**, **Attributed (QTD)**, **Waiting approval** and **Not tiered**. Click a name to open their **Portfolio**. Under the table: *Key + growth below 5 means that account manager can't reach the plan target until more accounts are tiered.*
+
+## What happens next
+
+- The figures update as plans and reviews are approved and tenders are awarded and attributed. Open the screen again to refresh it.
+- For the plan and review status of every account across the team, use the [Plan Review Board](/tenders/how-to/account-plans/plan-review-board/).
+
+:::note[Good to know]
+- The **5** plans reviewed and the **10%** growth on this screen are fixed. They are not read from your target in Accountability, which may set different figures. Check your target there; see [Account manager KPIs](/accountability/calculations/account-manager-kpi/).
+- **Who is listed**: the Head of Commercial sees every account manager; a manager sees the account managers below them in the org chart; an account manager sees themselves. If you aren't an account manager, the **Portfolio** tab reads *You don't manage any accounts. Account managers are set on the employee.*
+- **Plans reviewed** looks at the quarter being reviewed (the one just ended, until its reviews stop counting), while the awarded and pipeline figures are for the current calendar quarter to today. In the first days of January the **Plan** column therefore shows last year's plans.
+- Awarded figures here count won tenders only, by award date and account manager attribution.
+:::

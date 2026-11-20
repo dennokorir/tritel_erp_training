@@ -1,0 +1,21 @@
+# docs-sync: verified_commit bba3de2bf860
+# docs-sync: shows tritel_tender_tracker:cron:ir_cron_account_plan_reminders, tritel_tender_tracker:model:tender.account.plan.reminder, tritel_tender_tracker:selection:tender.account.plan.reminder.kind
+# docs-sync: shows tritel_tender_tracker:field:res.config.settings.tt_plan_am_first, tritel_tender_tracker:field:res.config.settings.tt_plan_am_every, tritel_tender_tracker:field:res.config.settings.tt_plan_sup_after
+# docs-sync: shows tritel_tender_tracker:field:res.config.settings.tt_plan_esc_after
+type: calc
+title: Reminders for a quarterly review
+desc: Worked timeline of the reminder emails for the Q1 2026 review of Customer A's plan with the default settings, once the reminders job is turned on, the account manager is reminded from 31 March every 3 working days, submits on 9 April, the supervisor is reminded on 13 and 15 April and the Head of Commercial is told on 16 April.
+source: tritel_tender_tracker/models/account_plan_tracking.py (_cron_plan_reminders, working_days), tritel_tender_tracker/data/account_plan_cron.xml
+heading: Customer A · Q1 2026 review, due 14 Apr 2026
+inputs:
+  - {label: First reminder, value: "14 days before due"}
+  - {label: Then every, value: "3 working days"}
+  - {label: Remind the supervisor after, value: "2 working days"}
+  - {label: Escalate waiting approvals after, value: "5 working days"}
+steps:
+  - {label: "Account manager: Account plans due", value: "Tue 31 Mar, Fri 3 Apr, Wed 8 Apr"}
+  - {label: "Employee A submits the review", value: "Thu 9 Apr"}
+  - {label: "Supervisor: 1 account plan item(s) waiting…", value: "Mon 13 Apr, Wed 15 Apr"}
+  - {label: "Head of Commercial: Account plans escalated", value: "Thu 16 Apr"}
+result: {label: Head of Commercial told, value: "Thu 16 Apr 2026", tone: warn}
+note: "Working days are Monday to Friday; public holidays are not skipped. The job runs at 05:00 on weekdays only, once your administrator turns it on. Reminders stop when the review is submitted, and the supervisor's stop when it is approved or returned."

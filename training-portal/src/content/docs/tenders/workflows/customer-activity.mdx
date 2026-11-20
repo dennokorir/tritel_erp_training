@@ -5,8 +5,8 @@ module: tenders
 pageType: workflow
 roles: [account-manager, presales, head-commercial, tender-admin]
 tags: [customers, touchpoints, workflows]
-keywords: [customer activity, customer touch, touchpoint, planned visit, log touch, complete, reschedule, overdue touch, target account, propose target, approve target, decline, tier, strategic, growth, maintain]
-related: [tenders/concepts/customer-activities, tenders/concepts/market-coverage, tenders/how-to/customers/log-a-customer-activity, tenders/how-to/customers/plan-customer-touches, tenders/how-to/customers/account-ownership]
+keywords: [customer activity, customer touch, touchpoint, planned visit, log touch, complete, reschedule, overdue touch, target account, propose target, approve target, decline, tier, key account, major growth, strategic, maintain]
+related: [tenders/concepts/customer-activities, tenders/concepts/market-coverage, tenders/workflows/account-plan, tenders/how-to/customers/log-a-customer-activity, tenders/how-to/customers/plan-customer-touches, tenders/how-to/customers/account-ownership]
 sidebar: { order: 7 }
 sources:
   - tritel_tender_tracker/models/res_partner.py
@@ -36,10 +36,11 @@ sources:
   - tritel_tender_tracker/wizards/partner_activity_wizards.py
   - tritel_tender_tracker/wizards/tender_summary_wizard.py
   - tritel_tender_tracker/wizards/tenders_assignment_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_tender_tracker/models/customer_roles.py
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 
-Two small workflows keep the customer picture current. A **customer touch** is either planned or done. A **target account** is proposed by anyone and approved, tiered or declined by the Head of Commercial.
+Two small workflows keep the customer picture current. A **customer touch** is either planned or done. A **target account** is proposed by anyone as a **Key account** or **Major growth** account, and approved, tiered or declined by the Head of Commercial.
 
 ## Customer touches
 
@@ -69,28 +70,29 @@ On the Customer Activities screen you can only reschedule or complete touches in
 
 ```mermaid
 stateDiagram-v2
-%% docs-sync: shows tritel_tender_tracker:field:res.partner.is_target_account, tritel_tender_tracker:field:res.partner.target_since, tritel_tender_tracker:group:group_hod_commercial, tritel_tender_tracker:model:target.target, tritel_tender_tracker:selection:res.partner.target_tier, tritel_tender_tracker:wizard:tender.summary.wizard
+%% docs-sync: shows tritel_tender_tracker:field:res.partner.is_target_account, tritel_tender_tracker:field:res.partner.target_since, tritel_tender_tracker:field:res.partner.tier_since, tritel_tender_tracker:field:res.partner.target_proposed_tier, tritel_tender_tracker:group:group_hod_commercial, tritel_tender_tracker:model:target.target, tritel_tender_tracker:selection:res.partner.target_tier, tritel_tender_tracker:wizard:tender.summary.wizard
   state "Not a target" as nottarget
   state "Proposed" as proposed
   state "Target account" as target
   [*] --> nottarget
-  nottarget --> proposed: Propose as Target (anyone)
+  nottarget --> proposed: Propose as Key Account or Major Growth (anyone)
   proposed --> target: Approve (Head of Commercial)
   proposed --> nottarget: Decline (Head of Commercial)
   nottarget --> target: Target tier button (Head of Commercial)
   target --> target: Change tier (Head of Commercial)
   note right of target
-    Tiers: Strategic, Growth, Maintain
-    Approve without a tier gives Growth
+    Tiers: Key account, Major growth, Maintain
+    Approve gives the proposed tier
     Target Since is set on the day
+    Tier Since is reset whenever the tier changes
   end note
 ```
 
 | Status | What it means | Moves to | Who moves it |
 |---|---|---|---|
-| Not a target | An ordinary customer. | **Proposed** with **Propose as Target**; **Target account** with **Target: Strategic**, **Target: Growth** or **Target: Maintain** | Any internal user (propose); Head of Commercial or Tender administrator (tier) |
-| **Proposed** (**Proposed Target**) | Someone has proposed it. **Proposed By** and **Proposed On** are filled in. | **Target account** with **Approve** (or **Approve Proposed**); back to not a target with **Decline** (or **Decline Proposed**) | Head of Commercial or Tender administrator |
-| **Target account** | A chosen account, with a **Target Tier** and **Target Since**. | Another tier with the tier buttons | Head of Commercial or Tender administrator |
+| Not a target | An ordinary customer. | **Proposed** with **Propose as Key Account** or **Propose as Major Growth**; **Target account** with **Target: Key Account**, **Target: Major Growth** or **Target: Maintain** | Any internal user (propose); Head of Commercial or Tender administrator (tier) |
+| **Proposed** (**Proposed Target**) | Someone has proposed it. **Proposed By**, **Proposed On** and **Proposed Tier** are filled in; the form reads *Proposed as Key account, awaiting approval*. | **Target account** with **Approve** (or **Approve Proposed**), in the proposed tier (**Major growth** if none); back to not a target with **Decline** (or **Decline Proposed**) | Head of Commercial or Tender administrator |
+| **Target account** | A chosen account, with a **Target Tier**, **Target Since** and **Tier Since**. **Key account** and **Major growth** accounts need an approved [account plan](/tenders/workflows/account-plan/) for the year. | Another tier with the tier buttons (resets **Tier Since**) | Head of Commercial or Tender administrator |
 
 The buttons are on the customer form and in **Tender Manager › Tender Customers › Classify Accounts**, where several customers can be handled at once.
 
@@ -102,14 +104,14 @@ flowchart TD
   subgraph AMs["Account Manager / Presales"]
     A1["Plan touch"]
     A2["Log touch or Complete"]
-    A3["Propose as Target"]
+    A3["Propose as Key Account or Major Growth"]
   end
   subgraph HoC["Head of Commercial"]
     H1["Approve, Decline or set a tier"]
     H2["Assign owners, Accept Suggestion"]
   end
   subgraph Sys["System"]
-    S1["Feedback to the deal's chatter, Last Seen updated"]
+    S1["Feedback to the deal's chatter, Last Seen and Last met updated"]
     S2["Overdue planned touches in My Actions"]
     S3["Coverage ladder and phases worked out"]
   end
@@ -123,16 +125,19 @@ flowchart TD
 ## What the system does automatically
 
 - **Log touch:** saves the touch and marks it done in one step, and shows *Touch logged*. **Plan touch** shows *Touch planned*.
-- **When a touch is done:** the date must be filled in and not in the future (*Date is Mandatory!*, *Activity date cannot be greater than today!*). The outcome is posted on the linked tender's or opportunity's chatter, and the customer's **Last Seen** date moves forward if this is the latest touch.
+- **When a touch is done:** the date must be filled in and not in the future (*Date is Mandatory!*, *Activity date cannot be greater than today!*). The outcome is posted on the linked tender's or opportunity's chatter, and the customer's **Last Seen** date moves forward if this is the latest touch. Each person under **Contacts met** gets this date as **Last met** on the customer's organogram, if it is their latest.
 - **Every touch:** **Touch Phase**, **Participant Role**, **Channel**, **Entered Late** and, for achievements, **Valid** and **Activity Phase** are worked out. See [Customer activities and touchpoints](/tenders/concepts/customer-activities/).
 - **Nightly:** customers are re-sorted into **Last Seen** bands.
 - **My Actions:** **Overdue planned customer touches** (a count, with **Open Customer Activities**) for the person making them.
-- **Target account changes** are written in the customer's chatter, for example *Proposed as a target account by Employee A.* or *Target account approved by Employee D.*
+- **Target account changes** are written in the customer's chatter, for example *Proposed as a target account by Employee A.* or *Target account approved by Employee B.*
+- **Setting or changing a tier** sets **Tier Since** to today. A tier counts towards the account manager's KPI for a quarter only if it was set before that quarter started. The bulk buttons confirm with, for example, *2 customer(s) set to Key account*.
 - **Changing a customer's account manager** moves its planned touches, its **Draft** and **Bidding** tenders and its open opportunities to the new account manager.
 
 :::note[Good to know]
 - A planned touch with no follow-up stays **Planned** for ever; there is no automatic cancel. Complete it with what happened, or reschedule it.
-- Proposing a target doesn't notify anyone. The Head of Commercial finds proposals in **Classify Accounts** (the **Proposed** column).
+- Proposing a target doesn't notify anyone. The Head of Commercial finds proposals in **Classify Accounts** (the **Proposed** and **Proposed Tier** columns). **My Actions** reminds account managers who still have customers with no tier.
+- **Key account** and **Major growth** were called **Strategic** and **Growth** until November 2026. Anyone without the right to set targets who ticks **Target Account** sees *Only the Head of Commercial or a Tender Administrator can set target accounts. Use "Propose as Target" instead.* The buttons are now **Propose as Key Account** and **Propose as Major Growth**.
+- **Proposed Tier** keeps the last proposed tier after a proposal is approved or declined, so the column can still show a tier on a customer that is no longer proposed. Go by the **Proposed** tick.
 :::
 
 ## Related tasks
@@ -141,3 +146,4 @@ flowchart TD
 - [Plan customer touches](/tenders/how-to/customers/plan-customer-touches/)
 - [Read the Customer Activities screen](/tenders/how-to/customers/read-the-customer-activities-screen/)
 - [Claim, assign and classify accounts](/tenders/how-to/customers/account-ownership/)
+- [Account plan workflow](/tenders/workflows/account-plan/)

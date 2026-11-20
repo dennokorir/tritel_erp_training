@@ -1,12 +1,12 @@
 ---
 title: Tender Manager configuration
-description: Every list under Tender Manager › Configuration (tender tags, customer tags, activity types, last seen stages and the rest), what each one controls, and who can change it.
+description: Every list under Tender Manager › Configuration (tender tags, customer tags, activity types, last seen stages and the rest), the Account Plans settings and their reminders job, what each one controls, and who can change it.
 module: tenders
 pageType: reference
 roles: [head-commercial, head-channel, tender-admin]
 tags: [tenders, customers]
-keywords: [configuration, settings, set up, tender tags, customer tags, activity types, touch types, last seen stages, lost reasons, drop reasons, cancel reasons, master data]
-related: [tenders/index, tenders/who-can-do-what, tenders/concepts/customer-activities, tenders/concepts/tenders-and-statuses]
+keywords: [configuration, settings, set up, tender tags, customer tags, activity types, last seen stages, lost reasons, drop reasons, master data, account plan settings, reminders]
+related: [tenders/index, tenders/who-can-do-what, tenders/concepts/customer-activities, tenders/concepts/tenders-and-statuses, tenders/concepts/account-plans, tenders/calculations/account-plan-due-dates]
 sidebar: { order: 3 }
 sources:
   - tritel_tender_tracker/views/menu.xml
@@ -24,7 +24,10 @@ sources:
   - tritel_tender_tracker/data/last_seen_stages.xml
   - tritel_tender_tracker/data/activity_types.xml
   - tritel_tender_tracker/security/ir.model.access.csv
-verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+  - tritel_tender_tracker/models/account_plan_tracking.py
+  - tritel_tender_tracker/views/target_accounts_views.xml
+  - tritel_tender_tracker/data/account_plan_cron.xml
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../components/Illustration.astro';
 
@@ -63,4 +66,50 @@ import Illustration from '../../../components/Illustration.astro';
 - Every member of staff who can open **Tender Manager › Configuration** can change **Tags**, **Customer Tags**, **Activity Types** and **Last Seen Stages**. Agree changes with the Head of Commercial first.
 - **Last Seen Stages** are matched to customers by their **Name** (for example *31_60*), and the bands are fixed at 30, 60, 90 and 120 days. You can change the **Description** that people see, but don't rename, add or delete stages: customers would stop being sorted into them.
 - Changing an activity type's **Channel** also changes it on every touch of that type already logged, including touches where someone picked a different channel by hand.
+:::
+
+## Account Plans settings
+
+The dates and reminders for [account plans](/tenders/concepts/account-plans/) are set in **Settings › Tender Tracker**, section **Account Plans**. Tender administrators who can open **Settings** see this section.
+
+<Illustration name="tenders/config-account-plan-settings" caption="The Account Plans settings with their default values. The numbers match the list below." />
+
+1. **Due dates**:
+
+   | Setting | Default | What it does |
+   |---|---|---|
+   | **Plan approved by (MM-DD)** | 01-31 | The month and day, in the plan's year, by which a plan should be approved. Becomes the plan's **Due date** when the plan is created. |
+   | **Review due, days after quarter end** | 14 | A quarterly review's **Due date** is the quarter's last day plus this many days. |
+   | **Grace days for the KPI** | 5 | A review approved within this many days after its due date is **Approved late** but still counts (**Counts until**). |
+
+2. **Reminders and escalation** (working days are Monday to Friday):
+
+   | Setting | Default | What it does |
+   |---|---|---|
+   | **First reminder, days before due** | 14 | Account managers are first reminded this many days before a plan or review is due. |
+   | **Then every (working days)** | 3 | How often account managers are reminded after that. |
+   | **Remind the supervisor after (working days)** | 2 | The supervisor is reminded once something has waited this long for approval, and again at the same interval. |
+   | **Escalate waiting approvals after (working days)** | 5 | The Head of Commercial is told about anything still waiting for approval after this long. |
+   | **Escalate overdue after (working days)** | 5 | The Head of Commercial is told about anything this far past its due date and still not submitted. |
+   | **Escalations go to** | empty | Who gets escalations and the weekly summary. Empty means everyone who is Head of Commercial. |
+   | **Weekly summary to the Head of Commercial** | on | A Monday email with each account manager's overdue, waiting and reviewed counts. |
+
+3. Click **Save**.
+
+The worked dates are in [Account plan due dates, grace days and reminders](/tenders/calculations/account-plan-due-dates/).
+
+### Turn on the reminders job
+
+The reminder and escalation emails are sent by a scheduled job, **Account Plans: reminders and escalation**, which is **switched off** when the system is installed, so no emails go out until an administrator turns it on. Check the settings above first, then:
+
+1. Turn on developer mode, then open **Settings › Technical › Scheduled Actions**.
+2. Open **Account Plans: reminders and escalation** (switched-off jobs are shown greyed out).
+3. Switch on **Active**. Check **Next Execution Date**: the job is meant to run at 05:00 each day.
+4. Click **Save**.
+
+The job runs daily and does nothing at weekends.
+
+:::note[Good to know]
+- Changing **Plan approved by (MM-DD)**, **Review due, days after quarter end** or **Grace days for the KPI** doesn't move the dates of plans and reviews that already exist. The Head of Commercial can change one plan's **Due date** on the plan.
+- The Accountability KPI **Account plans reviewed** waits a fixed 19 days after the quarter (14 + 5) before it is final, whatever these settings say. See [Account manager KPIs](/accountability/calculations/account-manager-kpi/).
 :::

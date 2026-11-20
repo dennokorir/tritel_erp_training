@@ -1,0 +1,31 @@
+# docs-sync: verified_commit bba3de2bf860
+# docs-sync: shows tritel_tender_tracker:client_action:action_customer_organogram, tritel_tender_tracker:model:tender.customer.role
+type: screen
+title: Organogram full screen
+desc: The full-screen Organogram for Customer A with the Show and Colour by lists, the Add Person and Add Role buttons, the chart of roles, and the side panel for Contact C with role, reports to, influence, relationship, covered by, last met, recent activity and the Log Activity, Edit and Remove Role buttons, numbered 5 to 11.
+source: tritel_tender_tracker/static/src/organogram/organogram.xml (CustomerOrganogram, OrgNode); static/src/organogram/organogram.js
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, Tenders, {label: Tender Customers, active: true}, Reporting]
+  breadcrumb: [Account Plans, Customer A · 2026, Organogram]
+blocks:
+  - buttons: [{label: "Show: Everyone at the customer ▾", n: 5}, {label: "Colour by: Relationship ▾"}, {label: Add Person, primary: true, n: 6}, {label: Add Role, n: 7}, {label: Build from Contacts}, {label: "−"}, {label: "+"}, {label: Open plan}]
+  - columns:
+      - panel: true
+        blocks:
+          - tiles: [{label: "Director, ICT", value: Contact A, tone: good}]
+          - tiles: [{label: Head of Procurement, value: Contact B, tone: muted}, {label: Network Manager, value: Contact C, tone: warn, n: 8}, {label: Head of Finance, value: No contact yet, tone: muted}]
+          - text: "Drag a card onto another to change who it reports to; drop it here to put it at the top. Removing a role moves its people up a level."
+      - panel: true
+        blocks:
+          - title: {text: Contact C, sub: Network Manager, n: 9}
+          - fields:
+              - [{label: Reports to, value: "Director, ICT", input: false}]
+              - [{label: Influence, value: Influencer, input: false}]
+              - [{label: Relationship, value: cool, input: false}]
+              - [{label: Covered by, value: Employee C, input: false}]
+              - [{label: Last met, value: 2026-03-15, input: false}]
+          - heading: Recent activity
+          - text: "2026-03-15 · Meeting · Network roadmap"
+          - buttons: [{label: Log Activity, primary: true, n: 10}, {label: Edit}, {label: Remove Role, n: 11}]

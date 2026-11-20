@@ -6,9 +6,12 @@ pageType: overview
 roles: [everyone, account-manager, bid-liaison, presales, head-commercial, head-channel, channel-user, delivery-pm, head-delivery, delivery-finance, finance, line-manager, hr, accountability-admin, md, board]
 tags: [start here, end to end]
 keywords: [end to end, process, workflow, handover between teams, how does it connect, lifecycle, sales to delivery, order to cash, big picture, flow, who does what next]
-related: [end-to-end/opportunity-to-accountability, end-to-end/oem-booking-to-revenue-target, end-to-end/customer-activity-to-coverage, end-to-end/bid-desk-to-bid-kpis, end-to-end/project-to-delivery-kpi]
+related: [end-to-end/opportunity-to-accountability, end-to-end/oem-booking-to-revenue-target, end-to-end/customer-activity-to-coverage, end-to-end/account-plan-to-am-kpi, end-to-end/bid-desk-to-bid-kpis, end-to-end/project-to-delivery-kpi]
 sidebar: { order: 0 }
 sources:
+  - tritel_tender_tracker/models/account_plans.py
+  - tritel_tender_tracker/models/account_plan_tracking.py
+  - tritel_accountability_framework/models/metric_hook_account_plans.py
   - tritel_tender_tracker/models/tender_workflow.py
   - tritel_tender_tracker/models/target.py
   - tritel_project_delivery/wizards/open_project_wizard.py
@@ -49,7 +52,7 @@ sources:
   - tritel_tender_tracker/views/account_ownership_views.xml
   - tritel_tender_tracker/views/hr_employee.xml
   - tritel_tender_tracker/views/partner_activity_touchpoints_views.xml
-verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 
 Each system section of this site explains one app. The work itself doesn't stay in one app: an opportunity in CRM becomes a tender, a won tender becomes a delivery project, and what happens in all of them ends up as figures on people's targets and, in the end, on the board's summary. The journeys on these pages follow one piece of work across those handovers, step by step, and link to the guide for each step.
@@ -58,7 +61,7 @@ Each system section of this site explains one app. The work itself doesn't stay 
 
 ```mermaid
 flowchart TD
-%% docs-sync: shows crm_tender:menu:menu_crm_oem_bookings, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:selection:accountability.objective.achievement_state, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project, tritel_project_delivery:view_ext:project.edit_project:page:delivery, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:field:delivery, tritel_tender_tracker:client_action:action_touchpoints_workspace, tritel_tender_tracker:menu:menu_customers_activities, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:selection:res.partner.coverage_rung, tritel_tender_tracker:selection:tender.initial.readiness_state
+%% docs-sync: shows crm_tender:menu:menu_crm_oem_bookings, tritel_accountability_framework:menu:menu_accountability_root, tritel_accountability_framework:selection:accountability.objective.achievement_state, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project, tritel_project_delivery:view_ext:project.edit_project:page:delivery, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:field:delivery, tritel_tender_tracker:client_action:action_touchpoints_workspace, tritel_tender_tracker:menu:menu_customers_activities, tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:selection:res.partner.coverage_rung, tritel_tender_tracker:selection:tender.initial.readiness_state, tritel_tender_tracker:model:tender.account.plan, tritel_tender_tracker:model:tender.account.plan.review
   OPP["CRM opportunity"] --> TEN["Tender"]
   TEN --> BID["Bid desk: readiness, submission, quality"]
   BID --> WON["Tender won"]
@@ -66,11 +69,13 @@ flowchart TD
   WON --> PRJ["Delivery project"]
   PRJ --> CLO["Handover and close-out"]
   ACT["Customer activities"] --> COV["Market and activity coverage"]
+  TIER["Key and Major growth accounts"] --> PLAN["Account plans and quarterly reviews"]
   PO["Purchase orders with OEM lines"] --> BK["OEM bookings"]
   ATT --> AF["Accountability targets and reviews"]
   BID --> AF
   CLO --> AF
   COV --> AF
+  PLAN --> AF
   BK --> AF
   AF --> BRD["Board portal"]
 ```
@@ -80,6 +85,7 @@ flowchart TD
 - **Won tender to revenue.** The heads attribute the win to the people who worked on it. Those attribution lines are what the Accountability revenue metrics count.
 - **Won tender to delivery.** The delivery team opens a delivery project from the won tender. Its handover and close-out decide whether it was on time and on budget.
 - **Customer activities to coverage.** Every logged customer touch moves the customer up the coverage ladder and counts towards the account manager's activity coverage.
+- **Account plans to the account manager's KPI.** Every Key and Major growth account gets a yearly plan, approved by the account manager's supervisor and reviewed each quarter. Approved reviews, and the awarded value attributed to the account manager, feed two account manager metrics.
 - **Purchases to OEM revenue.** Purchase lines tagged with an OEM are booked against what the OEM recognises. Confirmed bookings are the OEM-recognised revenue.
 - **Accountability to the board.** Metrics read all of these every night. Reviews turn the figures into scores, and the board sees the organisation's results on the **Performance** tab.
 
@@ -90,6 +96,7 @@ flowchart TD
 | [From opportunity to your scorecard](/end-to-end/opportunity-to-accountability/) | One opportunity all the way: tender, bid, win, attribution, delivery project, close-out, targets, reviews and the board | Anyone; start here |
 | [From an OEM purchase to the OEM revenue target](/end-to-end/oem-booking-to-revenue-target/) | A purchase order with OEM lines, its booking and the OEM-recognised revenue target | Channel, Finance & Accounts |
 | [From a customer visit to coverage and activity targets](/end-to-end/customer-activity-to-coverage/) | Account ownership, planned and logged touches, the coverage ladder and the coverage metrics | Account Managers, Technical Presales, Head of Commercial |
+| [From target account to the account manager's KPI](/end-to-end/account-plan-to-am-kpi/) | Tiering a customer, its account plan, the supervisor's approval, quarterly reviews, and the **Account plans reviewed** and awarded growth metrics | Account Managers, their supervisors, Head of Commercial |
 | [From bid desk work to bid KPIs](/end-to-end/bid-desk-to-bid-kpis/) | Nomination, readiness, submission, quality and disqualifications, and the bid desk metrics | Bid Liaisons, Technical Presales, Head of Commercial |
 | [From a won tender to the Delivery KPI](/end-to-end/project-to-delivery-kpi/) | The delivery project, its Delivery Budget, client delays, handover and close-out, and the delivery metrics | Delivery, Delivery Finance |
 
@@ -97,10 +104,10 @@ flowchart TD
 
 | You are | Read first | Then |
 |---|---|---|
-| Account Manager | [Opportunity to scorecard](/end-to-end/opportunity-to-accountability/) | [Customer activity to coverage](/end-to-end/customer-activity-to-coverage/) |
+| Account Manager | [Opportunity to scorecard](/end-to-end/opportunity-to-accountability/) | [Customer activity to coverage](/end-to-end/customer-activity-to-coverage/), [Target account to KPI](/end-to-end/account-plan-to-am-kpi/) |
 | Bid Liaison | [Bid desk to bid KPIs](/end-to-end/bid-desk-to-bid-kpis/) | [Opportunity to scorecard](/end-to-end/opportunity-to-accountability/) |
 | Technical Presales | [Bid desk to bid KPIs](/end-to-end/bid-desk-to-bid-kpis/) | [Customer activity to coverage](/end-to-end/customer-activity-to-coverage/) |
-| Head of Commercial | [Opportunity to scorecard](/end-to-end/opportunity-to-accountability/) | [Bid desk to bid KPIs](/end-to-end/bid-desk-to-bid-kpis/) |
+| Head of Commercial | [Opportunity to scorecard](/end-to-end/opportunity-to-accountability/) | [Bid desk to bid KPIs](/end-to-end/bid-desk-to-bid-kpis/), [Target account to KPI](/end-to-end/account-plan-to-am-kpi/) |
 | Head of Channel or a Channel user | [OEM purchase to OEM revenue](/end-to-end/oem-booking-to-revenue-target/) | [Opportunity to scorecard](/end-to-end/opportunity-to-accountability/) |
 | Delivery PM, Head of Delivery or Delivery Finance | [Won tender to Delivery KPI](/end-to-end/project-to-delivery-kpi/) | [Opportunity to scorecard](/end-to-end/opportunity-to-accountability/) |
 | Finance & Accounts | [OEM purchase to OEM revenue](/end-to-end/oem-booking-to-revenue-target/) | [Won tender to Delivery KPI](/end-to-end/project-to-delivery-kpi/) |
@@ -119,6 +126,7 @@ Most handovers between systems are not instant. A figure reaches a target throug
 | Automatic metric reviews | Every night, once a window has closed and its wait has passed |
 | Wait after the window: revenue and most other metrics | **Metric Settle Period (days)**, 3 by default |
 | Wait: activity coverage | 7 days |
+| Wait: **Account plans reviewed** | 19 days (review due 14 days after the quarter, plus 5 grace days) |
 | Wait: bid desk and bid quality | 14 days |
 | Wait: OEM-recognised revenue and delivery | 30 days |
 | Manager confirms an automatic review | *Confirm Metric Review* to-do, due in 5 days by default |

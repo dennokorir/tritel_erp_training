@@ -82,6 +82,7 @@ export default defineConfig({
             group('Workflows', 'tenders/workflows', true),
             group('How-to: bids', 'tenders/how-to/bids', true),
             group('How-to: summaries, customers and the portal', 'tenders/how-to/customers', true),
+            group('How-to: account plans', 'tenders/how-to/account-plans', true),
             group('Channel (OEMs and compliance)', 'tenders/channel', true),
             group('Commercial Targets', 'tenders/commercial-targets', true),
             group("How it's calculated", 'tenders/calculations', true),

@@ -1,0 +1,25 @@
+# docs-sync: verified_commit bba3de2bf860
+# docs-sync: shows tritel_tender_tracker:wizard:tender.account.plan.return
+type: screen
+title: Approve or return a plan
+desc: A submitted account plan for Customer A for 2026 with its Approve and Return for Changes buttons and the waiting time, and the Return for Changes window with its note box and buttons, numbered 1 to 4.
+source: tritel_tender_tracker/views/account_plan_views.xml (account_plan_form, account_plan_return_form, account_plan_search)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, Tenders, {label: Tender Customers, active: true, n: 1}, Reporting]
+  breadcrumb: [Account Plans, Customer A · 2026]
+blocks:
+  - buttons: [{label: Approve, primary: true, n: 3}, {label: Return for Changes, n: 4}]
+    status: {steps: [Draft, Submitted, Approved], current: Submitted}
+  - title: {text: Customer A · 2026, n: 2}
+  - fields:
+      - [{label: Customer, value: Customer A}, {label: Account manager, value: Employee A}]
+      - [{label: Year, value: "2026"}, {label: Approver, value: Employee B, readonly: true}]
+      - [{label: Tier, value: Key account, readonly: true}, {label: "Waiting (working days)", value: "2", readonly: true}]
+  - dialog:
+      title: Return for Changes
+      blocks:
+        - fields:
+            - [{label: "", value: "Add a goal for Q4 and name who covers the Head of Procurement."}]
+        - buttons: [{label: Return for Changes, primary: true}, {label: Cancel}]
