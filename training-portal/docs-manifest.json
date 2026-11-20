@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "1.6.0",
+  "version": "1.7.1",
   "modules": {
     "accountability": {
       "title": "Accountability Framework",
@@ -24,8 +24,8 @@
       "addons_path": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "repo_root": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "track_ref": "origin/16.0",
-      "last_synced_commit": "5d691a8dca6440f5aae8679f6ab7c74dbc0de07a",
-      "last_synced_at": "2026-11-19T14:04:50+00:00",
+      "last_synced_commit": "bba3de2bf860ace0628f097292a717042a6e6f68",
+      "last_synced_at": "2026-11-20T07:00:23+00:00",
       "pages_dir": "src/content/docs/accountability",
       "items": {
         "tritel_accountability_framework:client_action:accountability_cascade_dashboard_action": {
@@ -8147,8 +8147,8 @@
       "addons_path": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "repo_root": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "track_ref": "origin/16.0",
-      "last_synced_commit": "5d691a8dca6440f5aae8679f6ab7c74dbc0de07a",
-      "last_synced_at": "2026-11-19T14:09:14+00:00",
+      "last_synced_commit": "1a4b0b473850cf3909b218fde28ee53c9e08d29b",
+      "last_synced_at": "2026-11-20T11:05:45+00:00",
       "pages_dir": "src/content/docs/tenders",
       "items": {
         "crm_tender:field:hr.employee.certification_count": {
@@ -11521,7 +11521,8 @@
           "illustrations": [
             "tenders/bid-attribute-form",
             "tenders/bid-attribute-tab",
-            "tenders/commercial-targets/index#mermaid-1"
+            "tenders/commercial-targets/index#mermaid-1",
+            "tenders/matrix-customers"
           ]
         },
         "tritel_tender_tracker:model:target.line": {
@@ -12475,6 +12476,7 @@
             "tenders/workflows/customer-activity"
           ],
           "illustrations": [
+            "end-to-end/e2e-plans-reviewed-score",
             "tenders/cust-classify-accounts",
             "tenders/workflows/customer-activity#mermaid-2"
           ]
@@ -14365,6 +14367,539 @@
             "tenders/channel/tag-untagged-purchases"
           ],
           "illustrations": []
+        },
+        "tritel_tender_tracker:cron:ir_cron_account_plan_reminders": {
+          "kind": "cron",
+          "label": "Account Plans: reminders and escalation",
+          "file": "tritel_tender_tracker/data/account_plan_cron.xml",
+          "pages": [
+            "end-to-end/account-plan-to-am-kpi",
+            "tenders/calculations/account-plan-due-dates",
+            "tenders/workflows/account-plan"
+          ],
+          "illustrations": [
+            "tenders/calc-account-plan-reminders"
+          ]
+        },
+        "tritel_tender_tracker:menu:menu_account_portfolio": {
+          "kind": "menu",
+          "label": "My Portfolio",
+          "file": "tritel_tender_tracker/views/account_plan_views.xml",
+          "pages": [
+            "tenders/concepts/account-plans",
+            "tenders/how-to/account-plans/my-portfolio"
+          ],
+          "illustrations": [
+            "tenders/plan-my-portfolio"
+          ]
+        },
+        "tritel_tender_tracker:menu:menu_plan_review_board": {
+          "kind": "menu",
+          "label": "Plan Review Board",
+          "file": "tritel_tender_tracker/views/account_plan_views.xml",
+          "pages": [
+            "end-to-end/account-plan-to-am-kpi",
+            "tenders/concepts/account-plans",
+            "tenders/how-to/account-plans/plan-review-board"
+          ],
+          "illustrations": [
+            "tenders/plan-review-board"
+          ]
+        },
+        "tritel_tender_tracker:menu:menu_account_plans": {
+          "kind": "menu",
+          "label": "Account Plans",
+          "file": "tritel_tender_tracker/views/account_plan_views.xml",
+          "pages": [
+            "tenders/concepts/account-plans",
+            "tenders/workflows/account-plan"
+          ],
+          "illustrations": [
+            "tenders/concept-account-plan-form"
+          ]
+        },
+        "tritel_tender_tracker:menu:menu_account_plan_reviews": {
+          "kind": "menu",
+          "label": "Plan Reviews",
+          "file": "tritel_tender_tracker/views/account_plan_views.xml",
+          "pages": [
+            "end-to-end/account-plan-to-am-kpi",
+            "tenders/concepts/account-plans",
+            "tenders/how-to/account-plans/approve-plans-and-reviews",
+            "tenders/workflows/account-plan"
+          ],
+          "illustrations": [
+            "tenders/plan-reviews-to-approve"
+          ]
+        },
+        "tritel_tender_tracker:client_action:action_account_portfolio": {
+          "kind": "client_action",
+          "label": "My Portfolio",
+          "file": "tritel_tender_tracker/views/account_plan_views.xml",
+          "pages": [
+            "tenders/how-to/account-plans/my-portfolio"
+          ],
+          "illustrations": [
+            "tenders/plan-my-portfolio"
+          ]
+        },
+        "tritel_tender_tracker:client_action:action_customer_organogram": {
+          "kind": "client_action",
+          "label": "Organogram",
+          "file": "tritel_tender_tracker/views/account_plan_views.xml",
+          "pages": [
+            "tenders/how-to/account-plans/map-the-customer-organogram"
+          ],
+          "illustrations": [
+            "tenders/plan-organogram-full"
+          ]
+        },
+        "tritel_tender_tracker:client_action:action_plan_review_board": {
+          "kind": "client_action",
+          "label": "Plan Review Board",
+          "file": "tritel_tender_tracker/views/account_plan_views.xml",
+          "pages": [
+            "tenders/how-to/account-plans/plan-review-board"
+          ],
+          "illustrations": [
+            "tenders/plan-review-board"
+          ]
+        },
+        "tritel_tender_tracker:view_ext:base.view_partner_form:button:action-open-account-plan": {
+          "kind": "view_ext",
+          "label": "action_open_account_plan",
+          "file": "tritel_tender_tracker/views/account_plan_views.xml",
+          "pages": [
+            "tenders/concepts/account-plan-privacy",
+            "tenders/how-to/account-plans/write-an-account-plan"
+          ],
+          "illustrations": [
+            "tenders/matrix-account-plan-privacy",
+            "tenders/plan-open-from-customer"
+          ]
+        },
+        "tritel_tender_tracker:view_ext:base.view_partner_form:button:action-open-organogram": {
+          "kind": "view_ext",
+          "label": "action_open_organogram",
+          "file": "tritel_tender_tracker/views/account_plan_views.xml",
+          "pages": [
+            "tenders/concepts/account-plan-privacy",
+            "tenders/how-to/account-plans/map-the-customer-organogram"
+          ],
+          "illustrations": [
+            "tenders/matrix-account-plan-privacy",
+            "tenders/plan-organogram-customer"
+          ]
+        },
+        "tritel_tender_tracker:field:res.config.settings.tt_plan_due_md": {
+          "kind": "field",
+          "label": "Plan approved by (MM-DD)",
+          "file": "tritel_tender_tracker/models/account_plan_tracking.py",
+          "pages": [
+            "tenders/calculations/account-plan-due-dates",
+            "tenders/configuration"
+          ],
+          "illustrations": [
+            "tenders/calc-account-plan-due",
+            "tenders/config-account-plan-settings"
+          ]
+        },
+        "tritel_tender_tracker:field:res.config.settings.tt_plan_review_days": {
+          "kind": "field",
+          "label": "Review due, days after quarter end",
+          "file": "tritel_tender_tracker/models/account_plan_tracking.py",
+          "pages": [
+            "tenders/calculations/account-plan-due-dates",
+            "tenders/configuration"
+          ],
+          "illustrations": [
+            "tenders/calc-account-plan-review-dates",
+            "tenders/config-account-plan-settings"
+          ]
+        },
+        "tritel_tender_tracker:field:res.config.settings.tt_plan_grace_days": {
+          "kind": "field",
+          "label": "Grace days for the KPI",
+          "file": "tritel_tender_tracker/models/account_plan_tracking.py",
+          "pages": [
+            "tenders/calculations/account-plan-due-dates",
+            "tenders/configuration"
+          ],
+          "illustrations": [
+            "tenders/calc-account-plan-review-dates",
+            "tenders/config-account-plan-settings"
+          ]
+        },
+        "tritel_tender_tracker:field:res.config.settings.tt_plan_am_first": {
+          "kind": "field",
+          "label": "First reminder, days before due",
+          "file": "tritel_tender_tracker/models/account_plan_tracking.py",
+          "pages": [
+            "tenders/calculations/account-plan-due-dates",
+            "tenders/configuration"
+          ],
+          "illustrations": [
+            "tenders/calc-account-plan-reminders",
+            "tenders/config-account-plan-settings"
+          ]
+        },
+        "tritel_tender_tracker:field:res.config.settings.tt_plan_am_every": {
+          "kind": "field",
+          "label": "Then every (working days)",
+          "file": "tritel_tender_tracker/models/account_plan_tracking.py",
+          "pages": [
+            "tenders/calculations/account-plan-due-dates",
+            "tenders/configuration"
+          ],
+          "illustrations": [
+            "tenders/calc-account-plan-reminders",
+            "tenders/config-account-plan-settings"
+          ]
+        },
+        "tritel_tender_tracker:field:res.config.settings.tt_plan_sup_after": {
+          "kind": "field",
+          "label": "Remind the supervisor after (working days)",
+          "file": "tritel_tender_tracker/models/account_plan_tracking.py",
+          "pages": [
+            "tenders/calculations/account-plan-due-dates",
+            "tenders/configuration"
+          ],
+          "illustrations": [
+            "tenders/calc-account-plan-reminders",
+            "tenders/config-account-plan-settings"
+          ]
+        },
+        "tritel_tender_tracker:field:res.config.settings.tt_plan_esc_after": {
+          "kind": "field",
+          "label": "Escalate waiting approvals after (working days)",
+          "file": "tritel_tender_tracker/models/account_plan_tracking.py",
+          "pages": [
+            "tenders/calculations/account-plan-due-dates",
+            "tenders/configuration"
+          ],
+          "illustrations": [
+            "tenders/calc-account-plan-reminders",
+            "tenders/config-account-plan-settings"
+          ]
+        },
+        "tritel_tender_tracker:field:res.config.settings.tt_plan_overdue_esc": {
+          "kind": "field",
+          "label": "Escalate overdue after (working days)",
+          "file": "tritel_tender_tracker/models/account_plan_tracking.py",
+          "pages": [
+            "tenders/configuration"
+          ],
+          "illustrations": [
+            "tenders/config-account-plan-settings"
+          ]
+        },
+        "tritel_tender_tracker:field:res.config.settings.tt_plan_weekly": {
+          "kind": "field",
+          "label": "Weekly summary to the Head of Commercial",
+          "file": "tritel_tender_tracker/models/account_plan_tracking.py",
+          "pages": [
+            "tenders/configuration"
+          ],
+          "illustrations": [
+            "tenders/config-account-plan-settings"
+          ]
+        },
+        "tritel_tender_tracker:field:res.config.settings.tt_plan_hoc_user_id": {
+          "kind": "field",
+          "label": "Escalations go to",
+          "file": "tritel_tender_tracker/models/account_plan_tracking.py",
+          "pages": [
+            "tenders/configuration"
+          ],
+          "illustrations": [
+            "tenders/config-account-plan-settings"
+          ]
+        },
+        "tritel_tender_tracker:selection:tender.account.plan.timeliness": {
+          "kind": "selection",
+          "label": "Timeliness",
+          "file": "tritel_tender_tracker/models/account_plan_tracking.py",
+          "pages": [
+            "tenders/calculations/account-plan-due-dates",
+            "tenders/concepts/account-plans",
+            "tenders/workflows/account-plan"
+          ],
+          "illustrations": [
+            "tenders/calc-account-plan-due",
+            "tenders/concept-account-plan-form"
+          ]
+        },
+        "tritel_tender_tracker:selection:tender.account.plan.review.timeliness": {
+          "kind": "selection",
+          "label": "Timeliness",
+          "file": "tritel_tender_tracker/models/account_plan_tracking.py",
+          "pages": [
+            "tenders/calculations/account-plan-due-dates",
+            "tenders/workflows/account-plan"
+          ],
+          "illustrations": [
+            "tenders/calc-account-plan-review-dates"
+          ]
+        },
+        "tritel_tender_tracker:model:tender.account.plan.reminder": {
+          "kind": "model",
+          "label": "Account plan reminder sent",
+          "file": "tritel_tender_tracker/models/account_plan_tracking.py",
+          "pages": [
+            "tenders/calculations/account-plan-due-dates"
+          ],
+          "illustrations": [
+            "tenders/calc-account-plan-reminders"
+          ]
+        },
+        "tritel_tender_tracker:selection:tender.account.plan.reminder.kind": {
+          "kind": "selection",
+          "label": "kind",
+          "file": "tritel_tender_tracker/models/account_plan_tracking.py",
+          "pages": [
+            "tenders/calculations/account-plan-due-dates"
+          ],
+          "illustrations": [
+            "tenders/calc-account-plan-reminders"
+          ]
+        },
+        "tritel_tender_tracker:field:res.partner.awarded_attr_4q": {
+          "kind": "field",
+          "label": "Awarded (attributed, last 4 quarters)",
+          "file": "tritel_tender_tracker/models/account_plans.py",
+          "pages": [
+            "tenders/concepts/account-plan-privacy",
+            "tenders/concepts/customer-activities",
+            "tenders/how-to/account-plans/write-an-account-plan",
+            "tenders/how-to/customers/account-ownership"
+          ],
+          "illustrations": [
+            "tenders/cust-classify-accounts",
+            "tenders/cust-customer-form",
+            "tenders/matrix-account-plan-privacy",
+            "tenders/plan-open-from-customer"
+          ]
+        },
+        "tritel_tender_tracker:field:res.partner.awarded_gross_4q": {
+          "kind": "field",
+          "label": "Awarded (gross, last 4 quarters)",
+          "file": "tritel_tender_tracker/models/account_plans.py",
+          "pages": [
+            "tenders/concepts/account-plan-privacy"
+          ],
+          "illustrations": [
+            "tenders/matrix-account-plan-privacy"
+          ]
+        },
+        "tritel_tender_tracker:model:tender.account.plan": {
+          "kind": "model",
+          "label": "Account Plan",
+          "file": "tritel_tender_tracker/models/account_plans.py",
+          "pages": [
+            "end-to-end",
+            "end-to-end/account-plan-to-am-kpi",
+            "tenders/concepts/account-plans",
+            "tenders/how-to/account-plans/write-an-account-plan",
+            "tenders/who-can-do-what",
+            "tenders/workflows/account-plan"
+          ],
+          "illustrations": [
+            "tenders/concept-account-plan-form",
+            "tenders/matrix-customers",
+            "tenders/plan-write-form"
+          ]
+        },
+        "tritel_tender_tracker:selection:tender.account.plan.target_tier": {
+          "kind": "selection",
+          "label": "Tier",
+          "file": "tritel_tender_tracker/models/account_plans.py",
+          "pages": [
+            "tenders/concepts/account-plans"
+          ],
+          "illustrations": [
+            "tenders/concept-account-plan-form"
+          ]
+        },
+        "tritel_tender_tracker:selection:tender.account.plan.state": {
+          "kind": "selection",
+          "label": "state",
+          "file": "tritel_tender_tracker/models/account_plans.py",
+          "pages": [
+            "tenders/concepts/account-plans",
+            "tenders/how-to/account-plans/write-an-account-plan",
+            "tenders/workflows/account-plan"
+          ],
+          "illustrations": [
+            "tenders/concept-account-plan-form",
+            "tenders/plan-write-form"
+          ]
+        },
+        "tritel_tender_tracker:model:tender.account.plan.contact": {
+          "kind": "model",
+          "label": "Account plan key person",
+          "file": "tritel_tender_tracker/models/account_plans.py",
+          "pages": [
+            "tenders/how-to/account-plans/write-an-account-plan"
+          ],
+          "illustrations": [
+            "tenders/plan-key-people"
+          ]
+        },
+        "tritel_tender_tracker:selection:tender.account.plan.contact.relationship": {
+          "kind": "selection",
+          "label": "relationship",
+          "file": "tritel_tender_tracker/models/account_plans.py",
+          "pages": [
+            "tenders/how-to/account-plans/write-an-account-plan"
+          ],
+          "illustrations": [
+            "tenders/plan-key-people"
+          ]
+        },
+        "tritel_tender_tracker:selection:tender.account.plan.contact.influence": {
+          "kind": "selection",
+          "label": "Influence",
+          "file": "tritel_tender_tracker/models/account_plans.py",
+          "pages": [
+            "tenders/how-to/account-plans/write-an-account-plan"
+          ],
+          "illustrations": [
+            "tenders/plan-key-people"
+          ]
+        },
+        "tritel_tender_tracker:model:tender.account.plan.action": {
+          "kind": "model",
+          "label": "Account plan action",
+          "file": "tritel_tender_tracker/models/account_plans.py",
+          "pages": [
+            "tenders/how-to/account-plans/write-an-account-plan"
+          ],
+          "illustrations": [
+            "tenders/plan-key-people"
+          ]
+        },
+        "tritel_tender_tracker:selection:tender.account.plan.action.state": {
+          "kind": "selection",
+          "label": "state",
+          "file": "tritel_tender_tracker/models/account_plans.py",
+          "pages": [
+            "tenders/how-to/account-plans/write-an-account-plan"
+          ],
+          "illustrations": [
+            "tenders/plan-key-people"
+          ]
+        },
+        "tritel_tender_tracker:model:tender.account.plan.review": {
+          "kind": "model",
+          "label": "Account plan quarterly review",
+          "file": "tritel_tender_tracker/models/account_plans.py",
+          "pages": [
+            "end-to-end",
+            "end-to-end/account-plan-to-am-kpi",
+            "tenders/calculations/account-plan-due-dates",
+            "tenders/concepts/account-plans",
+            "tenders/how-to/account-plans/approve-plans-and-reviews",
+            "tenders/how-to/account-plans/submit-a-quarterly-review",
+            "tenders/who-can-do-what",
+            "tenders/workflows/account-plan"
+          ],
+          "illustrations": [
+            "end-to-end/e2e-plans-reviewed-score",
+            "tenders/calc-account-plan-review-dates",
+            "tenders/matrix-customers",
+            "tenders/plan-quarterly-review",
+            "tenders/plan-reviews-to-approve"
+          ]
+        },
+        "tritel_tender_tracker:selection:tender.account.plan.review.status": {
+          "kind": "selection",
+          "label": "Status",
+          "file": "tritel_tender_tracker/models/account_plans.py",
+          "pages": [
+            "tenders/how-to/account-plans/approve-plans-and-reviews",
+            "tenders/how-to/account-plans/submit-a-quarterly-review",
+            "tenders/workflows/account-plan"
+          ],
+          "illustrations": [
+            "tenders/plan-quarterly-review",
+            "tenders/plan-reviews-to-approve"
+          ]
+        },
+        "tritel_tender_tracker:selection:tender.account.plan.review.state": {
+          "kind": "selection",
+          "label": "state",
+          "file": "tritel_tender_tracker/models/account_plans.py",
+          "pages": [
+            "tenders/how-to/account-plans/submit-a-quarterly-review",
+            "tenders/workflows/account-plan"
+          ],
+          "illustrations": [
+            "tenders/plan-quarterly-review"
+          ]
+        },
+        "tritel_tender_tracker:wizard:tender.account.plan.return": {
+          "kind": "wizard",
+          "label": "Return an account plan or review",
+          "file": "tritel_tender_tracker/models/account_plans.py",
+          "pages": [
+            "tenders/how-to/account-plans/approve-plans-and-reviews",
+            "tenders/workflows/account-plan"
+          ],
+          "illustrations": [
+            "tenders/plan-approve-return"
+          ]
+        },
+        "tritel_tender_tracker:model:tender.customer.role": {
+          "kind": "model",
+          "label": "Customer role (organogram)",
+          "file": "tritel_tender_tracker/models/customer_roles.py",
+          "pages": [
+            "tenders/concepts/account-plans",
+            "tenders/how-to/account-plans/map-the-customer-organogram",
+            "tenders/who-can-do-what"
+          ],
+          "illustrations": [
+            "tenders/matrix-customers",
+            "tenders/plan-organogram-compact",
+            "tenders/plan-organogram-full"
+          ]
+        },
+        "tritel_tender_tracker:field:res.partner.customer_role_label": {
+          "kind": "field",
+          "label": "Role",
+          "file": "tritel_tender_tracker/models/customer_roles.py",
+          "pages": [
+            "tenders/concepts/account-plan-privacy",
+            "tenders/how-to/account-plans/map-the-customer-organogram"
+          ],
+          "illustrations": [
+            "tenders/matrix-account-plan-privacy",
+            "tenders/plan-organogram-customer"
+          ]
+        },
+        "tritel_tender_tracker:field:res.partner.tier_since": {
+          "kind": "field",
+          "label": "Tier Since",
+          "file": "tritel_tender_tracker/models/target_accounts.py",
+          "pages": [
+            "end-to-end/account-plan-to-am-kpi",
+            "tenders/how-to/customers/account-ownership",
+            "tenders/workflows/customer-activity"
+          ],
+          "illustrations": [
+            "end-to-end/e2e-plans-reviewed-score",
+            "tenders/cust-classify-accounts"
+          ]
+        },
+        "tritel_tender_tracker:selection:res.partner.target_proposed_tier": {
+          "kind": "selection",
+          "label": "Proposed Tier",
+          "file": "tritel_tender_tracker/models/target_accounts.py",
+          "pages": [
+            "tenders/concepts/market-coverage",
+            "tenders/how-to/customers/account-ownership"
+          ],
+          "illustrations": []
         }
       },
       "excluded": {
@@ -14414,8 +14949,8 @@
       "addons_path": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "repo_root": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "track_ref": "origin/16.0",
-      "last_synced_commit": "5d691a8dca6440f5aae8679f6ab7c74dbc0de07a",
-      "last_synced_at": "2026-11-19T14:09:14+00:00",
+      "last_synced_commit": "bba3de2bf860ace0628f097292a717042a6e6f68",
+      "last_synced_at": "2026-11-20T07:00:23+00:00",
       "pages_dir": "src/content/docs/board",
       "items": {
         "e_board:cron:cron_board_reviews": {
@@ -15054,8 +15589,8 @@
       "addons_path": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "repo_root": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "track_ref": "origin/16.0",
-      "last_synced_commit": "5d691a8dca6440f5aae8679f6ab7c74dbc0de07a",
-      "last_synced_at": "2026-11-19T14:09:14+00:00",
+      "last_synced_commit": "bba3de2bf860ace0628f097292a717042a6e6f68",
+      "last_synced_at": "2026-11-20T07:00:23+00:00",
       "pages_dir": "src/content/docs/leave",
       "items": {
         "tritel_hr_leave:client_action:action_leave_home": {
@@ -15798,7 +16333,7 @@
       "excluded": {}
     }
   },
-  "generated_at": "2026-11-20T06:55:43+00:00",
+  "generated_at": "2026-11-20T11:05:45+00:00",
   "portal_root": "training-portal",
   "verified_commit": "83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02"
 }

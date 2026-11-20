@@ -1,4 +1,4 @@
-# docs-sync: verified_commit eec18b485b6c
+# docs-sync: verified_commit bba3de2bf860
 # docs-sync: shows crm_tender:group:group_manager, tritel_tender_tracker:client_action:action_tender_my_actions, tritel_tender_tracker:cron:ir_cron_bid_quality_reminders
 # docs-sync: shows tritel_tender_tracker:group:group_bid_liaison, tritel_tender_tracker:menu:menu_bid_liaisons, tritel_tender_tracker:menu:menu_customers
 # docs-sync: shows tritel_tender_tracker:menu:menu_target_root, tritel_tender_tracker:menu:menu_tender_customers, tritel_tender_tracker:menu:menu_tender_my_actions
@@ -6,8 +6,8 @@
 # docs-sync: shows tritel_tender_tracker:model:tender.initial, tritel_tender_tracker:model:tender.summary.heading, tritel_tender_tracker:selection:tender.summary.event.kind
 type: screen
 title: Tender My Actions
-desc: The Tender Manager My Actions screen with the To do, Overdue and Waiting on others tiles, a link row for won tenders with no summary requested, and groups such as Bid liaisons to nominate with a Nominate button, Bid quality checks to score and Business cases waiting for approval, numbered 1 to 5.
-source: tritel_tender_tracker/static/src/my_actions/tender_my_actions.xml; static/src/my_actions/tender_my_actions.js; models/my_actions.py; models/bid_quality.py; models/bid_desk.py; models/prequalification_pipeline.py
+desc: The Tender Manager My Actions screen with the To do, Overdue and Waiting on others tiles, a link row for won tenders with no summary requested, and groups such as Bid liaisons to nominate with a Nominate button, Bid quality checks to score, Account plans and reviews to approve and Business cases waiting for approval, numbered 1 to 5.
+source: tritel_tender_tracker/static/src/my_actions/tender_my_actions.xml; static/src/my_actions/tender_my_actions.js; models/my_actions.py; models/account_portfolio.py; models/bid_quality.py; models/bid_desk.py; models/prequalification_pipeline.py
 frame:
   grid: true
   app: Tender Manager
@@ -15,7 +15,7 @@ frame:
   breadcrumb: [My Actions]
 blocks:
   - tiles:
-      - {label: To do, value: "5", tone: accent}
+      - {label: To do, value: "7", tone: accent}
       - {label: Overdue, value: "1", tone: bad}
       - {label: Waiting on others, value: "1", n: 2}
   - table:
@@ -40,6 +40,14 @@ blocks:
       widths: [7, 1.5, 1.8]
       rows:
         - ["TND-2026-002 · Employee C · Customer B · due 2026-12-14 · must-win", today, Open]
+  - heading: Account plans and reviews to approve  2
+  - text: Approve, or return with a note.
+  - table:
+      columns: [Item, Waiting, ""]
+      widths: [7, 1.5, 1.8]
+      rows:
+        - ["Customer A · 2026 · Employee B · Plan for 2026", "1 day", Open]
+        - ["Customer B · Q1 2026 · Employee B · Won the network refresh; renewal talks next", "3 days", Open]
   - heading: Business cases waiting for approval  1
     n: 5
   - table:

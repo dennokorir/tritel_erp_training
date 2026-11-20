@@ -1,0 +1,19 @@
+# docs-sync: verified_commit bba3de2bf860
+# docs-sync: shows tritel_tender_tracker:view_ext:base.view_partner_form:button:action-open-organogram, tritel_tender_tracker:field:res.partner.customer_role_label
+type: screen
+title: Organogram on the customer
+desc: A customer's form with the Organogram button reading 3 of 4 roles, numbered 4, and the Contacts and Addresses tab where each contact card shows the person's role and who they report to.
+source: tritel_tender_tracker/views/account_plan_views.xml (view_partner_form_account_plan, view_partner_form_customer_role); models/customer_roles.py (organogram_label, customer_role_label)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, Tenders, {label: Tender Customers, active: true}, Reporting]
+  breadcrumb: [Customers, Customer A]
+blocks:
+  - smart: [{label: Account Plan, value: "2026 · Approved"}, {label: Organogram, value: "3 of 4 roles", n: 4}, {label: "Awarded, 4Q", value: "KES 12,000,000"}]
+  - title: {text: Customer A, sub: Company}
+  - tabs: {items: [Contacts & Addresses, Sales & Purchase, Go To Market Activities], active: Contacts & Addresses}
+  - kanban:
+      - {title: "", cards: [{title: Contact A, lines: ["Director, ICT", "Director, ICT"]}]}
+      - {title: "", cards: [{title: Contact B, lines: [Procurement Manager, "Head of Procurement · reports to Director, ICT"]}]}
+      - {title: "", cards: [{title: Contact C, lines: [Network Manager, "Network Manager · reports to Director, ICT"]}]}

@@ -62,7 +62,7 @@
   module: tenders
   see: [tenders/concepts/roles-on-a-tender]
 - term: Head of Commercial
-  definition: "The role that nominates Bid Liaisons, flags must-win tenders, approves business cases and looks after account ownership and target accounts."
+  definition: "The role that nominates Bid Liaisons, flags must-win tenders, approves business cases, looks after account ownership and target accounts, and sees and can approve every account plan."
   module: tenders
   see: [tenders/concepts/roles-on-a-tender]
 - term: Head of Channel
@@ -275,11 +275,91 @@
   module: tenders
   see: [tenders/concepts/market-coverage, tenders/how-to/customers/account-ownership]
 - term: Target account
-  aliases: [target accounts, Target Tier, Propose as Target]
-  definition: "A customer Tritel has chosen to pursue, with a tier of Strategic, Growth or Maintain. Anyone can propose one; the Head of Commercial approves it."
+  aliases: [target accounts, Target Tier, Propose as Target, Propose as Key Account, Propose as Major Growth]
+  definition: "A customer Tritel has chosen to pursue, with a tier of Key account, Major growth or Maintain. Anyone can propose one as Key account or Major growth; the Head of Commercial or a Tender administrator approves it."
   module: tenders
   see: [tenders/concepts/market-coverage, tenders/workflows/customer-activity]
 - term: Commercial Dashboard
   definition: "The portal landing page for anyone with a tender role, at /my/dashboard, showing counts, values and win rate for a period."
   module: tenders
   see: [tenders/concepts/the-portal]
+
+# ── Account plans (tritel_tender_tracker 16.0.1.25.0–16.0.1.28.0) ──
+- term: Key account
+  aliases: [Key accounts, "Target: Key Account"]
+  definition: "The highest target account tier (called Strategic before November 2026). Key accounts need an approved account plan for the year and count towards the account manager's Account plans reviewed KPI."
+  module: tenders
+  see: [tenders/concepts/market-coverage, tenders/concepts/account-plans]
+- term: Major growth
+  aliases: [Major growth account, Major growth accounts, "Target: Major Growth"]
+  definition: "The second target account tier (called Growth before November 2026). Like Key accounts, they need an approved account plan and count towards the account manager's KPI."
+  module: tenders
+  see: [tenders/concepts/market-coverage, tenders/concepts/account-plans]
+- term: Maintain (tier)
+  aliases: ["Target: Maintain"]
+  definition: "The third target account tier, for customers to keep rather than grow. Maintain accounts don't need an account plan and don't count towards the account plan KPI."
+  module: tenders
+  see: [tenders/concepts/market-coverage]
+- term: Tier Since
+  definition: "On a target account, the date its current tier was set. It resets whenever the tier changes; a tier counts for a quarter only if it was set before the quarter started."
+  module: tenders
+  see: [tenders/concepts/market-coverage, end-to-end/account-plan-to-am-kpi]
+- term: Account plan
+  aliases: [account plans]
+  definition: "One plan per customer per year, written by the account manager for a Key or Major growth account: goals, strategy, key people and actions. The account manager's supervisor approves it, and it is reviewed every quarter."
+  module: tenders
+  see: [tenders/concepts/account-plans, tenders/how-to/account-plans/write-an-account-plan]
+- term: Account plan review
+  aliases: [quarterly reviews, Quarterly Review (account plan)]
+  definition: "A quarterly look back on an account plan: a Green, Amber or Red status, what changed and the next steps. Approved by the account manager's supervisor; an approved review is locked and counts towards the account manager's KPI if approved by its Counts until date."
+  module: tenders
+  see: [tenders/how-to/account-plans/submit-a-quarterly-review, tenders/workflows/account-plan]
+- term: Approver (account plan)
+  definition: "On an account plan, the account manager's Manager in the Employees app. Together with the Head of Commercial, the only person who can approve or return the plan and its reviews."
+  module: tenders
+  see: [tenders/how-to/account-plans/approve-plans-and-reviews]
+- term: Plan audience
+  definition: "Who sees a customer's account plan, reviews and organogram: its account manager, every manager above them and the Head of Commercial. Nobody else, Tender administrators included."
+  module: tenders
+  see: [tenders/concepts/account-plan-privacy]
+- term: Counts until
+  definition: "On a quarterly review, the due date plus the grace days (5 by default). A review approved after its due date but by this date is Approved late and still counts for the KPI."
+  module: tenders
+  see: [tenders/calculations/account-plan-due-dates]
+- term: Grace days for the KPI
+  definition: "The days after a quarterly review's due date during which an approval still counts for the account manager's KPI. 5 by default, set in Settings › Tender Tracker › Account Plans."
+  module: tenders
+  see: [tenders/calculations/account-plan-due-dates, tenders/configuration]
+- term: Timeliness (account plan)
+  definition: "A badge on account plans and reviews: Not due yet, Approved on time, Approved late, Overdue or, for reviews only, Missed."
+  module: tenders
+  see: [tenders/calculations/account-plan-due-dates]
+- term: Approved late
+  definition: "An account plan approved after its due date, or a quarterly review approved after its due date but by its Counts until date. A review approved late still counts for the KPI."
+  module: tenders
+  see: [tenders/calculations/account-plan-due-dates]
+- term: Missed (review)
+  definition: "A quarterly review not approved by its Counts until date. It doesn't count for the KPI, even if it is approved later."
+  module: tenders
+  see: [tenders/calculations/account-plan-due-dates]
+- term: Organogram
+  definition: "The chart of who reports to whom at a customer, kept on the customer and reused by every year's account plan. It shows each person's influence, relationship, who covers them and when they were last met."
+  module: tenders
+  see: [tenders/how-to/account-plans/map-the-customer-organogram]
+- term: Customer role
+  aliases: [customer roles]
+  definition: "One box on a customer's organogram: a role such as IT Manager, the contact who holds it (or nobody yet), and the role it reports to."
+  module: tenders
+  see: [tenders/how-to/account-plans/map-the-customer-organogram]
+- term: Contacts met
+  definition: "On a customer touch, the customer's people you met or spoke to. It sets their Last met date on the organogram."
+  module: tenders
+  see: [tenders/how-to/customers/log-a-customer-activity]
+- term: Plan Review Board
+  definition: "The screen under Tender Manager › Tender Customers › Plan Review Board that shows every Key and Major growth account's plan and quarterly review status, by account manager."
+  module: tenders
+  see: [tenders/how-to/account-plans/plan-review-board]
+- term: My Portfolio
+  definition: "The screen under Tender Manager › Tender Customers › My Portfolio that shows an account manager's customers, plans reviewed this quarter and awarded value growth, with a Team tab for their managers."
+  module: tenders
+  see: [tenders/how-to/account-plans/my-portfolio]

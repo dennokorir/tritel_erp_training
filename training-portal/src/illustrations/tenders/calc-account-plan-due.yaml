@@ -1,0 +1,16 @@
+# docs-sync: verified_commit bba3de2bf860
+# docs-sync: shows tritel_tender_tracker:field:res.config.settings.tt_plan_due_md, tritel_tender_tracker:selection:tender.account.plan.timeliness
+type: calc
+title: When a plan is due
+desc: Worked example of a 2026 account plan's Due date and Timeliness, with the default Plan approved by setting of 01-31, so the plan is due on 31 January 2026; approved on 3 February it shows Approved late.
+source: tritel_tender_tracker/models/account_plan_tracking.py (plan_due_for_year, AccountPlanTracking._compute_timeliness)
+heading: Customer A · 2026
+inputs:
+  - {label: "Plan approved by (MM-DD)", value: "01-31"}
+  - {label: Year, value: "2026"}
+  - {label: Approved on, value: "3 Feb 2026"}
+steps:
+  - {label: "Due date = that month and day in the plan's year", value: "31 Jan 2026"}
+  - {label: "Approved on or before the due date?", value: "No, 3 days after"}
+result: {label: Timeliness, value: "Approved late", tone: warn}
+note: "Approved on 28 Jan it would show Approved on time. Still not approved on 1 Feb, it shows Overdue."

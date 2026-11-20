@@ -1,0 +1,73 @@
+---
+title: Use the Plan Review Board
+description: See every Key account and Major growth customer's account plan and quarterly reviews on one screen, with what is approved, waiting, overdue or missed, by account manager.
+module: tenders
+pageType: how-to
+roles: [head-commercial, line-manager]
+tags: [customers, account plans]
+keywords: [plan review board, account plan tracker, review status, overdue reviews, missed reviews, waiting approval, approval turnaround, quarterly review board, plan compliance, QBR tracker, account plans dashboard]
+where: [Tender Manager, Tender Customers, Plan Review Board]
+before:
+  - You are the Head of Commercial (you see every account manager), or a manager with account managers below you in the org chart (you see them). An account manager sees their own accounts.
+  - Customers are tiered as <strong>Key account</strong> or <strong>Major growth</strong> target accounts, with an account manager.
+related: [tenders/concepts/account-plans, tenders/workflows/account-plan, tenders/calculations/account-plan-due-dates, tenders/how-to/account-plans/approve-plans-and-reviews, tenders/how-to/account-plans/my-portfolio, accountability/calculations/account-manager-kpi]
+sidebar: { order: 5 }
+sources:
+  - tritel_tender_tracker/static/src/plan_board/plan_board.xml
+  - tritel_tender_tracker/static/src/plan_board/plan_board.js
+  - tritel_tender_tracker/models/account_plan_tracking.py
+  - tritel_tender_tracker/models/account_portfolio.py
+  - tritel_tender_tracker/views/account_plan_views.xml
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+The **Plan Review Board** shows, for each target account, this year's plan and the four quarterly reviews in one grid, grouped by account manager. Use it to see who has an approved plan, which reviews are waiting for approval, and what is overdue or missed before it costs anyone their target.
+
+<Illustration name="tenders/plan-review-board" caption="The Plan Review Board in early October 2026, while Q3 is being reviewed. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Tender Manager › Tender Customers › Plan Review Board**.
+2. Pick what to see at the top:
+   - **Year**: last year, this year or next year.
+   - **Account manager**: **All**, or one person. The list shows only when you can see more than one account manager.
+   - **Tier**: **Key and Major growth** (the accounts that need a plan), or **All target accounts** (adds **Maintain**).
+
+   The screen remembers your choices while you move around Odoo.
+3. Read the tiles:
+   - **Plans approved**: approved plans out of the accounts listed, with the plans' due date and how many are overdue.
+   - **Q3 2026 reviews approved** (the quarter being reviewed): reviews approved in time out of the accounts listed, with the reviews' due date.
+   - **Waiting approval**: plans and reviews submitted and not yet approved, with the **oldest** in working days.
+   - **Overdue**: overdue plans plus overdue or missed reviews for the quarter being reviewed.
+   - **Approval turnaround**: the average number of working days from submitting a review to its approval, and how many plans and reviews were returned this year.
+4. Read the grid. Each account manager has a row such as **Employee A · 2 of 3 reviewed for Q3 2026**, then one row per account: **Account**, **Tier**, **Plan 2026**, one column per quarter (the quarter being reviewed is highlighted) and **Avg approval** (average working days to approve that plan's reviews). Point at a quarter cell to see its due date; click a cell to open the plan or the review.
+
+   | Cell | Meaning |
+   |---|---|
+   | **Approved 20 Jan** (plan) | Approved on that date. Shown in amber if approved after the plan's due date. |
+   | **Approved** | The review was approved by its due date. Counts. |
+   | **Approved late** | Approved after the due date but by **Counts until**. Still counts. |
+   | **Waiting 3 days** | Submitted, waiting for approval for that many working days. |
+   | **Returned** | Returned to the account manager for changes. |
+   | **Draft** / **Not started** | Started but not submitted / not started yet, and not yet due. |
+   | **Overdue** | Past its due date, not approved yet, but can still count if approved by **Counts until**. |
+   | **Missed** | Not approved by **Counts until**. It no longer counts. |
+   | **No approved plan** | The quarter can't be reviewed: the plan isn't approved. |
+   | **No plan** / **Overdue · no plan** | No plan for the year, before or after the plan's due date. A plan that isn't approved yet and is past its due date reads, for example, **Overdue · Draft**. |
+
+   Quarters that haven't started yet are blank. Under the grid: *Approved late: after the due date but within the grace days, still counts. Missed: not approved in time to count.*
+5. Click **Kanban** to see the quarter being reviewed as columns: **Not started**, **Draft**, **Waiting approval**, **Returned** and **Approved**, with a card per account. Click a card to open the review, or the plan. Click **Grid** to go back.
+
+## What happens next
+
+- Clicking a **No plan** cell opens a new plan for that customer for this year (whatever **Year** you picked), ready for the account manager to fill in.
+- Reviews approved in time move the account manager's **Account plans reviewed** count, shown in the group row and in [My Portfolio](/tenders/how-to/account-plans/my-portfolio/).
+- To act on a waiting item, see [Approve or return account plans and reviews](/tenders/how-to/account-plans/approve-plans-and-reviews/).
+
+:::note[Good to know]
+- In the first days of a quarter (until the last quarter's reviews stop counting, 19 days after it ends with the default settings), the board looks at the quarter that has just ended; after that, at the current quarter. See [Which quarter Quarterly Review opens](/tenders/calculations/account-plan-due-dates/#which-quarter-quarterly-review-opens).
+- **Waiting approval** counts plans and reviews of any quarter; **Overdue** counts reviews of the quarter being reviewed only.
+- *returned this year* on **Approval turnaround** counts every plan and review returned in the whole company since 1 January of the chosen year, not only the accounts on the screen.
+- If nothing shows (*No tiered accounts to show. Tier your Key and Major growth accounts in Classify Accounts.*), there are no target accounts in those tiers for the account managers you can see. The menu is open to everyone, so people with no account managers below them see an empty board.
+:::

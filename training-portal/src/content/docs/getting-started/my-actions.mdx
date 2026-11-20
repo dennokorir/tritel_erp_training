@@ -5,7 +5,7 @@ module: general
 pageType: concept
 roles: [everyone]
 tags: [start here, my actions]
-keywords: [my actions, to do, to-do list, inbox, pending, waiting for me, overdue, approvals]
+keywords: [my actions, to do, to-do list, inbox, pending, waiting for me, overdue, approvals, account plan, quarterly review]
 sidebar: { order: 5 }
 sources:
   - tritel_accountability_framework/static/src/my_actions/accountability_my_actions.xml
@@ -16,7 +16,8 @@ sources:
   - tritel_tender_tracker/controllers/portal_tender.py
   - tritel_tender_tracker/views/project_summary_views.xml
   - tritel_hr_leave/models/leave_approval_lists.py
-verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+  - tritel_tender_tracker/models/account_portfolio.py
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../components/Illustration.astro';
 
@@ -25,7 +26,7 @@ Each system has a **My Actions** screen that lists the work waiting for you, so 
 | My Actions in… | Menu | What it lists |
 |---|---|---|
 | Accountability | **Accountability › My Actions** | Targets to acknowledge, reviews to respond to, approvals, and items from the other systems below |
-| Tenders | **Tender Manager › My Actions** | People to nominate, bids to confirm ready, submissions to record, quality checks, project summaries, business cases, achievements to attribute |
+| Tenders | **Tender Manager › My Actions** | People to nominate, bids to confirm ready, submissions to record, quality checks, project summaries, business cases, achievements to attribute, account plans to write, returned or due for review, and plans and reviews to approve |
 | Projects | **Project › My Actions** | Delivery Budgets to draft or approve (**Budgets to draft**, **Budgets sent back to you**, **Budgets to approve: dates**, **Budgets to approve: budget**), handovers, client delays, projects to close |
 | The portal | **/my/actions** | The Tenders and Projects items, for use on a phone |
 
@@ -36,6 +37,8 @@ Each system has a **My Actions** screen that lists the work waiting for you, so 
 3. **Waiting on others** counts items you started that someone else must act on next.
 4. Items are grouped by kind of work, with a count for each group.
 5. Each item has its own buttons, for example **Acknowledge** or **Approve**. Click the item itself to open the full record.
+
+**Account plans** appear in **Tender Manager › My Actions** and on **/my/actions** in four groups: **Account plans to write**, **Account plans returned to you** and **Account plan reviews due** for account managers, and **Account plans and reviews to approve** for their supervisors. Account managers also see a **Customers with no tier** row that opens **Classify Accounts** (*Propose your Key and Major growth accounts.*). See [Work through Tender My Actions](/tenders/how-to/bids/tender-my-actions/) and [Account plans](/tenders/concepts/account-plans/).
 
 **Time off to approve** appears in **Accountability › My Actions** and **Tender Manager › My Actions** when a time off request is waiting for you: as the approver, as their delegate, or after it was escalated to you. It counts as overdue once it has been escalated or the leave starts within two days. See [Approve, refuse or ask about time off](/leave/how-to/line-managers/approve-time-off/).
 

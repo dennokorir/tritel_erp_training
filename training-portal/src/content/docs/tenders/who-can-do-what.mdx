@@ -5,8 +5,8 @@ module: tenders
 pageType: reference
 roles: [account-manager, bid-liaison, presales, head-commercial, head-channel, tender-admin, channel-user, everyone, system-admin]
 tags: [permissions, access]
-keywords: [access rights, permissions, roles, who can approve, who can reopen, can't see tender, portal visibility, Tender administrator, Channel Manager, security, must-win rights, delete tender]
-related: [tenders/faq, tenders/index, tenders/concepts/roles-on-a-tender, tenders/concepts/the-portal, tenders/channel/index]
+keywords: [access rights, permissions, roles, who can approve, who can reopen, can't see tender, portal visibility, Tender administrator, Channel Manager, security, can't see account plan, attribution rights]
+related: [tenders/faq, tenders/index, tenders/concepts/account-plan-privacy, tenders/concepts/roles-on-a-tender, tenders/concepts/the-portal, tenders/channel/index]
 sidebar: { order: 2 }
 sources:
   - tritel_tender_tracker/security/security.xml
@@ -52,7 +52,13 @@ sources:
   - tritel_tender_tracker/wizards/tender_dropped.py
   - tritel_tender_tracker/wizards/tender_lost.py
   - tritel_tender_tracker/wizards/tenders_assignment_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_tender_tracker/security/account_plan_security.xml
+  - tritel_tender_tracker/models/account_plans.py
+  - tritel_tender_tracker/models/account_plan_privacy.py
+  - tritel_tender_tracker/models/account_plan_tracking.py
+  - tritel_tender_tracker/models/account_portfolio.py
+  - tritel_tender_tracker/models/customer_roles.py
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../components/Illustration.astro';
 
@@ -109,12 +115,18 @@ People with only **Project Summary Library** access can open the library, **Expo
 
 ## Customers and coverage
 
-<Illustration name="tenders/matrix-customers" caption="Who logs customer activities, sees which customers, owns accounts and approves target accounts." />
+<Illustration name="tenders/matrix-customers" caption="Who logs customer activities, sees which customers, owns accounts, approves target accounts, works on account plans and attributes won tenders." />
 
 Notes on the "partly" marks:
 
 - **See every customer**: the Head of Commercial, Tender administrators and HR administrators (Employees app) see all customers and touches. Everyone else sees their own touches and accounts and those of the people who report to them in the Employees app.
 - **Claim for Me** works for anyone the system counts as an account manager: holding the role, owning a customer, or being Account Manager on a tender or opportunity in the last 24 months.
+- **Account plans** go by the customer, not by role. A customer's plan, its quarterly reviews, key people, actions and organogram are seen only by the customer's **account manager**, every manager above them in the Employees app's **Manager** line, and every **Head of Commercial**. Colleagues don't see each other's plans, and **Tender administrators no longer see every plan**. Outside that audience, the customer form's **Account Plan**, **Organogram** and **Awarded, 4Q** buttons and the contacts' organogram roles are hidden. See [Who sees an account plan](/tenders/concepts/account-plan-privacy/).
+  - **Write and submit, edit the organogram**: the customer's account manager, or the Head of Commercial: *Only the account manager of Customer A can change its plan.*
+  - **Approve or return**: the account manager's direct supervisor (the plan's **Approver**), or the Head of Commercial: *Only the account manager's supervisor can approve or return this.* Managers higher up can only read.
+  - **Change a plan's due date**: the Head of Commercial only: *Only the Head of Commercial can change a plan's due date.*
+  - **My Portfolio** and **Plan Review Board**: the Head of Commercial sees every account manager, a manager sees the account managers below them, and an account manager sees themselves. The menus are open to everyone, so anyone else opens an empty screen.
+- **Tender attribution** (achievement lines on won tenders): you can read the lines that credit you or anyone below you in the Employees app. The Head of Commercial, the Head of Channel and Tender administrators read and change every line. Before November 2026 every internal user could read and change them.
 
 ## Channel
 
@@ -136,6 +148,8 @@ Every internal user. In **Tender Manager** there is no restriction by role, team
 Nobody can delete a tender from the screen, Tender administrators included. Use **Drop** or **Cancel** instead.
 
 **Won**, **Prequalified**, **Lost**, **Drop** and **Cancel** have no role check: any internal user can close any tender, as long as it has a Bid Liaison and a Technical Pre-sales Engineer.
+
+A Head of Commercial who is also a customer's account manager can approve their own plan and reviews, because the Head of Commercial can approve any plan.
 
 The **Tender Tracker Portal User** role only gives read access. What each person sees on the portal pages is decided by the pages themselves, as described above.
 :::

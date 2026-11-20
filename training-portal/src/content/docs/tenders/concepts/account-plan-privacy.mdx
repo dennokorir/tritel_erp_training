@@ -1,0 +1,83 @@
+---
+title: Who sees an account plan
+description: The audience of a customer's account plan (its account manager, their managers and the Head of Commercial), who can edit, approve or only view it, what is hidden from everyone else, and who can see tender attribution.
+module: tenders
+pageType: concept
+roles: [everyone, line-manager, tender-admin, head-commercial]
+tags: [customers, account plans]
+keywords: [account plan privacy, who can see, visibility, access, confidential, plan audience, hidden, org chart, manager chain, tender attribution access, permissions]
+related: [tenders/concepts/account-plans, tenders/workflows/account-plan, tenders/who-can-do-what, tenders/how-to/bids/attribute-a-won-tender, tenders/how-to/account-plans/map-the-customer-organogram]
+sidebar: { order: 14 }
+sources:
+  - tritel_tender_tracker/models/account_plan_privacy.py
+  - tritel_tender_tracker/security/account_plan_security.xml
+  - tritel_tender_tracker/security/ir.model.access.csv
+  - tritel_tender_tracker/models/account_plans.py
+  - tritel_tender_tracker/models/account_plan_tracking.py
+  - tritel_tender_tracker/models/account_portfolio.py
+  - tritel_tender_tracker/models/customer_roles.py
+  - tritel_tender_tracker/views/account_plan_views.xml
+  - tritel_tender_tracker/views/target_accounts_views.xml
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+A customer's account plan holds sensitive thinking: strategy, risks, who at the customer is warm or cooling. So only the plan's **audience** can see it:
+
+- the customer's **account manager**,
+- every manager above them in the org chart (their **Manager**, that person's manager, and so on up), and
+- everyone who is **Head of Commercial**.
+
+Everyone else, including other account managers, doesn't see the plan at all. The audience follows the employee records: when an account manager changes, or someone's **Manager** changes, the audience is updated straight away.
+
+The same rule covers everything that hangs off the plan: its quarterly reviews, key people and actions, and the customer's organogram.
+
+<Illustration name="tenders/matrix-account-plan-privacy" caption="Who sees and does what with one customer's account plan." />
+
+## Who can do what
+
+| Person | See | Edit the plan and organogram | Approve or return |
+|---|---|---|---|
+| The customer's account manager | Yes | Yes. Writes the plan, submits it, starts and submits quarterly reviews, uses **Revise Plan**. | No |
+| Their direct supervisor (the plan's **Approver**) | Yes | No | Yes, plans and reviews |
+| Managers higher up | Yes | No: view only | No |
+| Head of Commercial | Every plan | Yes | Yes, every plan and review |
+| Tender administrators, Head of Channel, other staff | No (unless they are in the audience) | No | No |
+
+Only the Head of Commercial can change a plan's **Due date**. Tender administrators keep the **Account Plans** settings (see [Tender Manager configuration](/tenders/configuration/#account-plans-settings)), and they still set tiers on target accounts, but **they no longer see every plan**. A Tender administrator sees a plan only if they are in its audience, for example as the account manager's manager.
+
+## What is hidden outside the audience
+
+On a company customer's form, someone outside the audience doesn't see:
+
+- the **Account Plan**, **Organogram** and **Awarded, 4Q** buttons (and their figures stay empty in lists and exports),
+- the organogram role shown under each contact's name, and
+- the recent activity in the organogram's side panel.
+
+If they reach the customer's organogram another way, for example from a link someone sent them, they see: *Customer A's account plan and organogram are only visible to its account manager, their managers and the Head of Commercial.* A link to the plan itself shows Odoo's general message that they aren't allowed to see it.
+
+## Tender attribution
+
+**Tender attribution** (who is credited with a won tender, and how much) is also tighter than before. Everyone used to be able to read and change it. Now:
+
+- the person credited, and every manager above them, can **see** their lines;
+- the Head of Commercial, the Head of Channel and Tender administrators can **see and change** all of it;
+- nobody else can see it.
+
+See [Attribute a won tender](/tenders/how-to/bids/attribute-a-won-tender/).
+
+## Messages you may see
+
+| Message | Why |
+|---|---|
+| *Only the account manager of Customer A can change its plan.* | You are in the audience, but only the account manager or the Head of Commercial can edit the plan. |
+| *Only the account manager's supervisor can approve or return this.* | Only the **Approver** or the Head of Commercial can approve or return. |
+| *Only the Head of Commercial can change a plan's due date.* | The **Due date** is set from Settings; only the Head of Commercial can change it for one plan. |
+| *Only Customer A's account manager or the Head of Commercial can change its organogram.* | Managers can look at the chart but not change it. |
+| *Customer A's account plan and organogram are only visible to its account manager, their managers and the Head of Commercial.* | You are outside the audience. |
+
+:::note[Good to know]
+- A Head of Commercial who is also a customer's account manager can approve their own plan and reviews, because the Head of Commercial can approve any plan.
+- The **Tender Customers** menus **Account Plans**, **Plan Reviews**, **Plan Review Board** and **My Portfolio** are shown to all staff. Outside the audience they are simply empty.
+- The audience goes by the plan's **Account manager**. If the customer gets a new account manager, the Head of Commercial needs to change the **Account manager** on the existing plan, or the new account manager won't see it.
+:::

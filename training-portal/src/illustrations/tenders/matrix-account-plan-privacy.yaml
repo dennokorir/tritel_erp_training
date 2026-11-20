@@ -1,0 +1,25 @@
+# docs-sync: verified_commit bba3de2bf860
+# docs-sync: shows tritel_tender_tracker:view_ext:base.view_partner_form:button:action-open-account-plan, tritel_tender_tracker:view_ext:base.view_partner_form:button:action-open-organogram
+# docs-sync: shows tritel_tender_tracker:field:res.partner.awarded_attr_4q, tritel_tender_tracker:field:res.partner.awarded_gross_4q, tritel_tender_tracker:field:res.partner.customer_role_label
+type: matrix
+title: Who sees and does what with an account plan
+desc: Permission grid for one customer's account plan, its quarterly reviews, organogram, customer-form figures, tender attribution and the Account Plans settings, for the customer's account manager, their direct supervisor, higher managers, the Head of Commercial, Tender administrators, the Head of Channel and other staff.
+source: tritel_tender_tracker/security/account_plan_security.xml, tritel_tender_tracker/models/account_plan_privacy.py, models/account_plans.py, models/account_plan_tracking.py, models/customer_roles.py, views/target_accounts_views.xml
+columns: [Account manager, Direct supervisor, Higher managers, Head of Commercial, Tender administrator, Head of Channel, Other staff]
+labelWidth: 260
+rows:
+  - {group: Seeing a customer's plan}
+  - {action: "See its plans, reviews, key people and actions", cells: [y, y, y, y, n, n, n]}
+  - {action: "See Account Plan, Organogram and Awarded, 4Q on the customer", cells: [y, y, y, y, n, n, n]}
+  - {group: Working on the plan}
+  - {action: "Write the plan, Submit for Approval, Revise Plan", cells: [y, n, n, y, n, n, n]}
+  - {action: Start and submit a Quarterly Review, cells: [y, n, n, y, n, n, n]}
+  - {action: "Approve or Return for Changes (plan and reviews)", cells: [n, y, n, y, n, n, n]}
+  - {action: Change a plan's Due date, cells: [n, n, n, y, n, n, n]}
+  - {action: Change the customer's organogram, cells: [y, n, n, y, n, n, n]}
+  - {group: Tender attribution}
+  - {action: See attribution lines, cells: [p, p, p, y, y, y, p]}
+  - {action: Change attribution lines, cells: [n, n, n, y, y, y, n]}
+  - {group: Settings}
+  - {action: Change the Account Plans settings, cells: [n, n, n, n, y, n, n]}
+legend: {p: "Partly: lines that credit you or someone below you in the org chart"}

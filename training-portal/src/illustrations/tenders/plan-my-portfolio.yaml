@@ -1,0 +1,28 @@
+# docs-sync: verified_commit bba3de2bf860
+# docs-sync: shows tritel_tender_tracker:menu:menu_account_portfolio, tritel_tender_tracker:client_action:action_account_portfolio
+type: screen
+title: My Portfolio
+desc: My Portfolio for Employee A in Q3 2026 with the Portfolio and Team tabs, four tiles for plans reviewed, awarded value growth, awarded this quarter and open pipeline, the Key and Major growth only switch, and the table of customers with tier, plan state, last review and awarded values, numbered 1 to 5.
+source: tritel_tender_tracker/static/src/portfolio/account_portfolio.xml (AccountPortfolio); models/account_portfolio.py (get_portfolio_data)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, Tenders, {label: Tender Customers, active: true, n: 1}, Reporting]
+  breadcrumb: [My Portfolio]
+blocks:
+  - buttons: [{label: "Q3 2026 · to 2026-10-05"}, {label: "Employee A ▾"}]
+  - tabs: {items: [Portfolio, Team], active: Portfolio, n: 5}
+  - tiles:
+      - {label: Plans reviewed · Q3 2026, value: "3 / 5", tone: warn, n: 2}
+      - {label: Awarded value growth, value: "+20.0%", tone: good}
+      - {label: Awarded this quarter, value: KES 3.0M}
+      - {label: Open pipeline, value: KES 25.0M}
+  - buttons: [{label: "☐ Key and Major growth only", n: 3}, {label: "2 customer(s) not tiered: propose tiers"}]
+  - table:
+      columns: [Customer, Tier, Plan, Last review, Attributed (QTD), Gross (QTD), Same days last year, Pipeline]
+      widths: [1.4, 1.3, 1.4, 1.2, 1.3, 1.2, 1.4, 1.1]
+      n: 4
+      rows:
+        - [Customer A, {text: Key account, badge: true, tone: accent}, {text: Reviewed, badge: true, tone: good}, 2026-10-02, KES 2.0M, KES 3.0M, KES 1.5M, KES 10.0M]
+        - [Customer B, {text: Major growth, badge: true, tone: accent}, {text: Review due, badge: true, tone: warn}, 2026-07-10, KES 1.0M, KES 1.0M, KES 1.0M, KES 5.0M]
+        - [Customer C, {text: Maintain, badge: true, tone: muted}, {text: No plan, badge: true, tone: muted}, "—", KES 0.0M, KES 0.0M, KES 0.0M, KES 10.0M]

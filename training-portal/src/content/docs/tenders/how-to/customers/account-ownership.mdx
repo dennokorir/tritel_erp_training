@@ -5,11 +5,11 @@ module: tenders
 pageType: how-to
 roles: [account-manager, head-commercial]
 tags: [market coverage]
-keywords: [key account, account owner, account manager, claim customer, assign, target accounts, strategic accounts, tier, sector, classify, duplicate customer, coverage]
+keywords: [key account, major growth, account owner, account manager, claim customer, assign, target accounts, strategic accounts, tier, sector, classify, account plan]
 where: [Tender Manager, Tender Customers, Account Ownership]
 before:
   - Account managers can claim customers and propose target accounts. Assigning owners, tidying records and approving or tiering target accounts is for the Head of Commercial and Tender administrators.
-related: [tenders/concepts/market-coverage, tenders/workflows/customer-activity, tenders/how-to/customers/market-coverage, tenders/calculations/coverage-ladder]
+related: [tenders/concepts/market-coverage, tenders/workflows/customer-activity, tenders/concepts/account-plans, tenders/how-to/customers/market-coverage, tenders/calculations/coverage-ladder]
 sidebar: { order: 10 }
 sources:
   - tritel_tender_tracker/views/account_ownership_views.xml
@@ -32,7 +32,11 @@ sources:
   - tritel_tender_tracker/views/tender_views.xml
   - tritel_tender_tracker/wizards/tender_summary_wizard.py
   - tritel_tender_tracker/wizards/tenders_assignment_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_tender_tracker/views/account_plan_views.xml
+  - tritel_tender_tracker/models/account_plans.py
+  - tritel_tender_tracker/models/account_plan_privacy.py
+  - tritel_tender_tracker/models/customer_roles.py
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -55,9 +59,11 @@ To tidy records, use the other filters: **Owner Archived**, **Organisation Saved
 ## Steps: sectors and target accounts
 
 6. Open **Tender Manager › Tender Customers › Classify Accounts**. It opens on **Unclassified (no sector)**. You can type the **Sector** and **Segment** on each row. To take the system's suggestions, tick rows and click **Apply Suggested Sector** (Head of Commercial).
-7. **Account managers**: to suggest a target account, tick it and click **Propose as Target** (or click **Propose as Target** on the customer's form). It shows as **Proposed, awaiting approval**.
-8. **Head of Commercial**: to make customers target accounts directly, tick them and click **Target: Strategic**, **Target: Growth** or **Target: Maintain**.
-9. **Head of Commercial**: use the **Proposed Targets** filter, tick proposals and click **Approve Proposed** (they become **Growth** unless a tier is set) or **Decline Proposed**. On a customer's form, a blue line *Proposed as a target by Employee A* has **Approve** and **Decline** buttons.
+7. **Account managers**: to suggest a target account, tick it and click **Propose as Key Account** or **Propose as Major Growth**. You can also use the same two buttons next to **Target** on the customer's form. The form then reads *Proposed as Key account, awaiting approval* (or *Major growth*), and the list shows the tier in **Proposed Tier**.
+8. **Head of Commercial**: to make customers target accounts directly, tick them and click **Target: Key Account**, **Target: Major Growth** or **Target: Maintain**.
+9. **Head of Commercial**: use the **Proposed Targets** filter, check **Proposed Tier**, tick proposals and click **Approve Proposed** (each gets the tier that was proposed, or **Major growth** if none was) or **Decline Proposed**. On a customer's form, a blue line *Proposed as a target by Employee A* has **Approve** and **Decline** buttons.
+
+**Awarded, gross (4Q)** and **Awarded, attributed (4Q)** show the tender value awarded to each customer over the last four quarters (in total, and the account manager's credited share), to help you choose. **Tier Since** (hidden by default; add it from the column picker) is when each customer's current tier was set.
 
 ## What happens next
 
@@ -65,6 +71,8 @@ To tidy records, use the other filters: **Owner Archived**, **Organisation Saved
 - When a customer gets an account manager, that person also moves onto the customer's draft and bidding tenders, planned touches and early-stage opportunities.
 - Owned customers leave the **Needs Owner** list. In **Market Coverage** they count for their account manager, and **Reached, no account manager** goes down.
 - Approved target accounts get a **Target Since** date and count in **Market Coverage** under **Target accounts**.
+- Setting or changing a tier sets **Tier Since** to today. A tier counts towards the account manager's **Account plans reviewed** KPI only from the quarter after **Tier Since**: *A tier counts for a quarter only if it was set before the quarter started.* So tier accounts before the quarter begins.
+- **Key account** and **Major growth** accounts need an [account plan](/tenders/concepts/account-plans/) for the year. On a company customer's form, the account manager, their managers and the Head of Commercial see three buttons: **Account Plan** (this year's plan and its status, for example *2026 · reviewed 14 Apr*, or *No plan*; it opens the plan, or starts one), **Organogram** (for example *5 of 7 roles*, or *Not started*) and **Awarded, 4Q** (the account manager's credited share of tenders awarded in the last four quarters). See [Write an account plan](/tenders/how-to/account-plans/write-an-account-plan/).
 
 ## Common mistakes
 
@@ -73,7 +81,7 @@ To tidy records, use the other filters: **Owner Archived**, **Organisation Saved
 | *Only account managers can claim customers.* | You don't hold the account manager role. | Ask the Head of Commercial to assign the customer. |
 | *Customer A already has an account manager.* | One of the ticked customers is already owned. | Untick it. To change an owner, ask the Head of Commercial. |
 | *Only the Head of Commercial or a Tender Administrator can assign account managers.* | You clicked **Accept Suggestion**, **Assign To…** or **Mark as Company** without that role. | Use **Claim for Me**, or ask the Head of Commercial. |
-| *Only the Head of Commercial or a Tender Administrator can set target accounts. Use "Propose as Target" instead.* | You ticked **Target Account** or changed the tier yourself. | Click **Propose as Target**. |
+| *Only the Head of Commercial or a Tender Administrator can set target accounts. Use "Propose as Target" instead.* | You ticked **Target Account** or changed the tier yourself. | Click **Propose as Key Account** or **Propose as Major Growth**. |
 | *Only the Head of Commercial or a Tender Administrator can approve target accounts.* (also *…decline proposed targets.*, *…set target tiers.*, *…classify customers in bulk.*) | You clicked a Head of Commercial button. | Ask the Head of Commercial. |
 
 :::note[Good to know]
@@ -81,4 +89,8 @@ To tidy records, use the other filters: **Owner Archived**, **Organisation Saved
 - **Why** explains the suggestion: *Account manager on 2 of its deals*, *Most recent of 3 account managers on its deals*, *Made 4 of its customer touches*, or no suggestion with *Previous account manager archived* or *No deals or touches by an account manager*.
 - **Accept Suggestion** that finds nothing to do shows *0 customer(s) assigned*.
 - **Approve Proposed** makes every ticked customer a target account, whether it was proposed or not. Tick only the proposals.
+- The message *…Use "Propose as Target" instead.* still names the old button. The buttons are now **Propose as Key Account** and **Propose as Major Growth**.
+- On the customer's form, the two **Propose** buttons appear only to people who can't set targets themselves. The Head of Commercial sets the tier directly.
+- **Key account** and **Major growth** were called **Strategic** and **Growth** until November 2026. Existing target accounts kept their tier under the new name.
+- The **Awarded** columns, and the three account plan buttons, are empty for anyone outside the customer's [account plan audience](/tenders/concepts/account-plan-privacy/). A Tender administrator who is not the account manager or one of their managers sees **0** in the **Awarded** columns.
 :::

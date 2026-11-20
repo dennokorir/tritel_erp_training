@@ -9,6 +9,10 @@ keywords: [customer activity, customer touch, touchpoint, visit, meeting, call, 
 related: [tenders/workflows/customer-activity, tenders/how-to/customers/log-a-customer-activity, tenders/how-to/customers/plan-customer-touches, tenders/how-to/customers/read-the-customer-activities-screen, tenders/concepts/market-coverage, tenders/commercial-targets/achievements]
 sidebar: { order: 10 }
 sources:
+  - tritel_tender_tracker/views/account_plan_views.xml
+  - tritel_tender_tracker/models/account_plans.py
+  - tritel_tender_tracker/models/account_plan_privacy.py
+  - tritel_tender_tracker/models/customer_roles.py
   - tritel_tender_tracker/models/res_partner.py
   - tritel_tender_tracker/models/partner_activity_touchpoints.py
   - tritel_tender_tracker/models/touchpoints.py
@@ -34,7 +38,7 @@ sources:
   - tritel_tender_tracker/wizards/partner_activity_wizards.py
   - tritel_tender_tracker/data/last_seen_stages.xml
   - tritel_tender_tracker/models/deal_touch_strip.py
-verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -50,6 +54,7 @@ A touch records:
 | **Touch made by** (or **Who will make it**) | The person who made the contact. It can be anyone: an account manager, a presales engineer, a head. |
 | **Account Manager** | The account's owner. |
 | **Tender** or **Lead/Pipeline** | The deal it supports, if any. Pick one or the other; picking one clears the other. |
+| **Contacts met** | The customer's people you met or spoke to. Optional; only that customer's contacts are listed. It sets each person's **Last met** date on the customer's organogram. |
 | **What happened** (or **Notes**) | What the customer said, the outcome and the next step. |
 
 A touch is either **Planned** or **Done**. Logging a touch saves it as done straight away. Planning one saves it as planned, and you complete it later with the outcome.
@@ -72,6 +77,9 @@ The screen is at **Tender Manager › Tender Customers › Customer Activities**
 2. **Last Seen**: the date of the customer's latest done touch. It moves forward by itself when a touch is marked done; you can't type it.
 3. **Last Seen Stage**: the band that date falls in: **Last Seen 30 Days**, **Last Seen 60 Days**, **Last Seen 90 Days**, **Last Seen 120 Days**, **Last Seen Over 120 Days** or **Never Seen**. A nightly job keeps it up to date.
 4. **Go To Market Activities**: every touch logged for the customer, planned and done. The list is read-only here: log or plan touches from **Customer Activities**.
+5. **Account Plan**, **Organogram** and **Awarded, 4Q**: shown on a company customer only to its account plan audience (the account manager, the managers above them and the Head of Commercial). **Account Plan** shows this year's plan and its status (for example *2026 · reviewed 14 Apr*, or *No plan*) and opens it, or starts one. **Organogram** shows how many of the customer's roles have a named person (*5 of 7 roles*, or *Not started*) and opens the full-screen chart. **Awarded, 4Q** is the account manager's credited share of tenders awarded to the customer in the last four quarters, including this one. See [Account plans](/tenders/concepts/account-plans/) and [Who sees an account plan](/tenders/concepts/account-plan-privacy/).
+
+For the same audience, each person under **Contacts & Addresses** also shows their organogram role, for example *IT Manager · reports to CEO*.
 
 The customer list shows **Last Seen** as a countdown (for example *Yesterday* or *45 days ago*), and the customer cards show a grey **Last Seen** strip.
 
@@ -98,6 +106,7 @@ A manager's team is everyone below them in the employee reporting line, at any d
 
 :::note[Good to know]
 - **Touch Phase** (by the touch date) and **Activity Phase** (by the entry date) are different things with similar names. Log touches promptly so the two agree.
+- Outside the account plan audience the three account plan buttons are hidden, and contacts show no organogram role.
 - Changing a customer's account manager also moves its planned touches, its **Draft** and **Bidding** tenders and its open opportunities to the new account manager.
 :::
 
@@ -107,3 +116,4 @@ A manager's team is everyone below them in the employee reporting line, at any d
 - [Plan customer touches](/tenders/how-to/customers/plan-customer-touches/)
 - [Read the Customer Activities screen](/tenders/how-to/customers/read-the-customer-activities-screen/)
 - [Customer activity and target account workflow](/tenders/workflows/customer-activity/)
+- [Map the customer organogram](/tenders/how-to/account-plans/map-the-customer-organogram/)

@@ -5,11 +5,11 @@ module: tenders
 pageType: how-to
 roles: [account-manager, bid-liaison, presales, head-commercial, head-channel]
 tags: [tenders, my actions]
-keywords: [to do, to-do list, tasks, inbox, pending, overdue, nominate, approvals, reminders, what do I need to do]
+keywords: [to do, to-do list, tasks, inbox, pending, overdue, nominate, approvals, reminders, what do I need to do, account plan, quarterly review]
 where: [Tender Manager, My Actions]
 before:
   - Any internal user can open it. What you see depends on your role and on the tenders you work on.
-related: [tenders/how-to/bids/nominate-the-team, tenders/how-to/bids/score-bid-quality, tenders/how-to/bids/confirm-a-disqualification, tenders/how-to/bids/attribute-a-won-tender, tenders/how-to/bids/business-case, tenders/how-to/customers/review-a-project-summary, tenders/concepts/the-portal]
+related: [tenders/how-to/account-plans/write-an-account-plan, tenders/how-to/account-plans/approve-plans-and-reviews, tenders/how-to/bids/nominate-the-team, tenders/how-to/bids/score-bid-quality, tenders/how-to/bids/confirm-a-disqualification, tenders/how-to/bids/attribute-a-won-tender, tenders/how-to/bids/business-case, tenders/how-to/customers/review-a-project-summary, tenders/concepts/the-portal]
 sidebar: { order: 14 }
 sources:
   - tritel_tender_tracker/static/src/my_actions/tender_my_actions.xml
@@ -42,11 +42,14 @@ sources:
   - tritel_tender_tracker/views/tender_views.xml
   - tritel_tender_tracker/views/tender_workflow_views.xml
   - tritel_tender_tracker/wizards/tender_summary_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_tender_tracker/models/account_portfolio.py
+  - tritel_tender_tracker/models/account_plan_tracking.py
+  - tritel_tender_tracker/models/account_plans.py
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
-**My Actions** in Tender Manager collects everything in the tender tracker that is waiting on you: nominations, readiness checks, submissions to record, quality checks, disqualifications, attributions, business cases, prequalifications and project summaries. It also lists what you are waiting on from others. Start your day here.
+**My Actions** in Tender Manager collects everything in the tender tracker that is waiting on you: nominations, readiness checks, submissions to record, quality checks, disqualifications, attributions, business cases, prequalifications, project summaries, and account plans and their quarterly reviews. It also lists what you are waiting on from others. Start your day here.
 
 <Illustration name="tenders/bid-my-actions" caption="My Actions for a Head of Commercial. The numbers match the steps below." />
 
@@ -54,7 +57,7 @@ import Illustration from '../../../../../components/Illustration.astro';
 
 1. Open **Tender Manager › My Actions**. On the portal, the same list is at **/my/actions**.
 2. Read the tiles: **To do**, **Overdue** and **Waiting on others**.
-3. Rows at the top with a count and a button, such as **Won tenders with no summary requested** (**Open tracker**) or **Overdue planned customer touches** (**Open Customer Activities**), open a list to work through.
+3. Rows at the top with a count and a button, such as **Won tenders with no summary requested** (**Open tracker**), **Overdue planned customer touches** (**Open Customer Activities**) or **Customers with no tier** (**Classify Accounts**), open a list to work through.
 4. Work through each section. Click an item to open the tender (or prequalification, or business case). Some sections have a button that does the job straight away: **Nominate** opens the assign window; **Approve** and **Send back** act on a summary. The number on the right is how long the item has waited; red means it is past its deadline.
 5. At the bottom, **Summaries waiting on others** and **Business cases waiting for approval** show what you are waiting for. Managers can click **Remind** on a waiting summary.
 
@@ -75,6 +78,11 @@ import Illustration from '../../../../../components/Illustration.astro';
 | **Business cases to finish** | The person who created the case | Draft or rejected cases: finish and submit them. |
 | **Prequalifications to follow up** | The prequalification's Account Manager | Add missing dates, plan a renewal, or chase RFQs. See [Follow up a prequalification](/tenders/how-to/bids/prequalifications-and-rfqs/). |
 | **Summaries to write**, **Summaries sent back to you** | The summary writer | [Write the summary](/tenders/how-to/customers/write-a-project-summary/). |
+| **Account plans to write** | Account managers | Your **Key account** and **Major growth** customers with no plan for this year, or a plan still in **Draft**. The item reads, for example, *No approved plan for 2026 · due 31 Jan*. Hint: *Key and Major growth accounts need an approved plan for the year.* See [Write an account plan](/tenders/how-to/account-plans/write-an-account-plan/). |
+| **Account plans returned to you** | Account managers | A plan or quarterly review your supervisor returned, with their note. Hint: *Make the changes and submit again.* |
+| **Account plan reviews due** | Account managers | Approved plans whose quarterly review isn't submitted yet, from 14 days before it is due. Hint: *Open the plan and use Quarterly Review. Each approved review counts towards your target.* See [Submit a quarterly review](/tenders/how-to/account-plans/submit-a-quarterly-review/). |
+| **Account plans and reviews to approve** | The account manager's supervisor (the plan's **Approver**) | Submitted plans and reviews. Hint: *Approve, or return with a note.* See [Approve account plans and reviews](/tenders/how-to/account-plans/approve-plans-and-reviews/). |
+| **Customers with no tier** (row at the top) | Account managers | How many of your customers have no tier and haven't been proposed. **Classify Accounts** opens the list. Hint: *Propose your Key and Major growth accounts.* |
 | **Summaries to review** | Heads of Commercial, Heads of Channel, Tender administrators (not the writer) | [Approve or send back](/tenders/how-to/customers/review-a-project-summary/). |
 
 Each section shows a short hint under its title, for example *Overdue when the submission deadline has passed.*
@@ -89,4 +97,9 @@ Each section shows a short hint under its title, for example *Overdue when the s
 - My Actions reads the state of each tender, not the Odoo to-dos (activities). Marking a to-do done doesn't remove an item, and finishing the work removes the item even if a to-do is still there.
 - Nomination items count their waiting days from when the tender was created, and turn red once its submission deadline has passed.
 - A Tender administrator doesn't see **Achievements to attribute**; only the Heads do.
+- An item in **Account plans and reviews to approve** opens the plan. For a review, click it on the plan's **Quarterly reviews** tab: it opens in a window with **Approve** and **Return for Changes**. **Tender Manager › Tender Customers › Plan Reviews** (opening on **To approve**) lists every review waiting for you. Plans can be approved on the plan itself, or from **Account Plans** with the **To approve** filter.
+- Account plan items show *· Head of Commercial informed* once the item has been escalated. Escalations and email reminders are sent only once your administrator turns on the job *Account Plans: reminders and escalation*.
+- A plan waiting for approval counts its waiting time in working days; a review counts calendar days.
+- **Classify Accounts** opens on its **Unclassified (no sector)** filter, not on your untiered customers. Remove the filter and group by **Target Tier** to find them.
+- **Customers with no tier** counts every customer you own with no tier, including ones that will never be target accounts. It goes down only when a customer is proposed or tiered.
 :::

@@ -5,10 +5,13 @@ module: general
 pageType: role-path
 roles: [account-manager, bid-liaison, head-commercial]
 tags: [learning paths]
-keywords: [learning path, training plan, where do I start, onboarding, new starter, commercial]
+keywords: [learning path, training plan, where do I start, onboarding, new starter, commercial, account plan]
 sidebar: { order: 3 }
-sources: []
-verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+sources:
+  - tritel_tender_tracker/models/account_plans.py
+  - tritel_tender_tracker/models/account_portfolio.py
+  - tritel_tender_tracker/views/account_plan_views.xml
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 Start with the [Everyone](/roles/everyone/) path.
 
@@ -32,6 +35,17 @@ Start with the [Everyone](/roles/everyone/) path.
 16. [Use the Commercial Dashboard and portal pages](/tenders/how-to/customers/portal-dashboard/)
 17. [Work through Tender My Actions](/tenders/how-to/bids/tender-my-actions/)
 18. [Tenders and Channel FAQ](/tenders/faq/)
+
+### Account plans
+
+For your **Key account** and **Major growth** customers:
+
+1. [Account plans](/tenders/concepts/account-plans/)
+2. [Write an account plan](/tenders/how-to/account-plans/write-an-account-plan/)
+3. [Map the customer organogram](/tenders/how-to/account-plans/map-the-customer-organogram/)
+4. [Submit a quarterly review](/tenders/how-to/account-plans/submit-a-quarterly-review/)
+5. [Use My Portfolio](/tenders/how-to/account-plans/my-portfolio/)
+6. [From target account to the account manager's KPI](/end-to-end/account-plan-to-am-kpi/)
 
 ## Bid Liaison
 
@@ -57,16 +71,26 @@ Everything above, then:
 8. [Who can do what](/tenders/who-can-do-what/)
 9. [Tender Manager configuration](/tenders/configuration/)
 
+### Account plans
+
+1. [Approve account plans and reviews](/tenders/how-to/account-plans/approve-plans-and-reviews/)
+2. [Use the Plan Review Board](/tenders/how-to/account-plans/plan-review-board/)
+3. [Who sees an account plan](/tenders/concepts/account-plan-privacy/)
+4. [Account plan due dates and timeliness](/tenders/calculations/account-plan-due-dates/)
+5. [Account plan workflow](/tenders/workflows/account-plan/)
+
 ## Your own targets
 
 Many commercial targets update themselves from tenders and the pipeline:
 
 1. [Metrics: targets that update themselves](/accountability/concepts/metrics/)
 2. [How metrics count](/accountability/calculations/metric-families/)
+3. [The account manager KPI](/accountability/calculations/account-manager-kpi/)
 
 ## How your work connects
 
 - [From opportunity to your scorecard](/end-to-end/opportunity-to-accountability/)
 - [From a customer visit to coverage and activity targets](/end-to-end/customer-activity-to-coverage/)
+- [From target account to the account manager's KPI](/end-to-end/account-plan-to-am-kpi/)
 - [From bid desk work to bid KPIs](/end-to-end/bid-desk-to-bid-kpis/)
 - [From an OEM purchase to the OEM revenue target](/end-to-end/oem-booking-to-revenue-target/)

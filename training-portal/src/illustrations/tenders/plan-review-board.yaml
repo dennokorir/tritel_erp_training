@@ -1,0 +1,31 @@
+# docs-sync: verified_commit bba3de2bf860
+# docs-sync: shows tritel_tender_tracker:menu:menu_plan_review_board, tritel_tender_tracker:client_action:action_plan_review_board
+type: screen
+title: Plan Review Board
+desc: The Plan Review Board for 2026 with the Year, Account manager and Tier lists, the Grid and Kanban switch, five summary tiles, and a grid of accounts grouped by account manager with the plan and each quarter's review state, numbered 1 to 5.
+source: tritel_tender_tracker/static/src/plan_board/plan_board.xml (PlanReviewBoard); models/account_plan_tracking.py (get_review_board)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, Tenders, {label: Tender Customers, active: true, n: 1}, Reporting]
+  breadcrumb: [Plan Review Board]
+blocks:
+  - buttons: [{label: "Year: 2026 ▾", n: 2}, {label: "Account manager: All ▾"}, {label: "Tier: Key and Major growth ▾"}, {label: Grid, primary: true, n: 5}, {label: Kanban}]
+  - tiles:
+      - {label: Plans approved, value: "3 / 4", n: 3}
+      - {label: Q3 2026 reviews approved, value: "2 / 4"}
+      - {label: Waiting approval, value: "1", tone: warn}
+      - {label: Overdue, value: "1", tone: bad}
+      - {label: Approval turnaround, value: "1.5 days"}
+  - table:
+      columns: [Account, Tier, Plan 2026, Q1 2026, Q2 2026, Q3 2026, Q4 2026, Avg approval]
+      widths: [1.4, 1.3, 1.5, 1.3, 1.3, 1.4, 1.2, 1.1]
+      n: 4
+      rows:
+        - [{text: "Employee A · 2 of 3 reviewed for Q3 2026", bold: true}, "", "", "", "", "", "", ""]
+        - [Customer A, Key account, {text: Approved 20 Jan, badge: true, tone: good}, {text: Approved, badge: true, tone: good}, {text: Approved late, badge: true, tone: warn}, {text: Approved, badge: true, tone: good}, {text: Not started, badge: true, tone: muted}, 1.5 d]
+        - [Customer B, Major growth, {text: Approved 28 Jan, badge: true, tone: good}, {text: Missed, badge: true, tone: bad}, {text: Approved, badge: true, tone: good}, {text: Approved, badge: true, tone: good}, {text: Not started, badge: true, tone: muted}, 2.0 d]
+        - [Customer C, Key account, {text: Approved 05 Feb, badge: true, tone: warn}, {text: Missed, badge: true, tone: bad}, {text: Approved, badge: true, tone: good}, {text: Waiting 3 days, badge: true, tone: accent}, {text: Not started, badge: true, tone: muted}, 1.0 d]
+        - [{text: "Employee C · 0 of 1 reviewed for Q3 2026", bold: true}, "", "", "", "", "", "", ""]
+        - [Customer D, Major growth, {text: "Overdue · no plan", badge: true, tone: bad}, {text: No approved plan, badge: true, tone: muted}, {text: No approved plan, badge: true, tone: muted}, {text: No approved plan, badge: true, tone: muted}, {text: No approved plan, badge: true, tone: muted}, "—"]
+  - text: "Approved late: after the due date but within the grace days, still counts. Missed: not approved in time to count."

@@ -1,17 +1,18 @@
-# docs-sync: verified_commit 5c65842fdc84
+# docs-sync: verified_commit bba3de2bf860
 # docs-sync: shows tritel_tender_tracker:view_ext:base.view_partner_form:page:go-to-market-activities, tritel_tender_tracker:view_ext:base.view_partner_form:field:activities
 # docs-sync: shows tritel_tender_tracker:field:res.partner.last_seen, tritel_tender_tracker:field:res.partner.last_seen_stage_id, tritel_tender_tracker:view_ext:sale.res_partner_view_buttons:button:tenders
+# docs-sync: shows tritel_tender_tracker:field:res.partner.account_plan_label, tritel_tender_tracker:field:res.partner.organogram_label, tritel_tender_tracker:field:res.partner.awarded_attr_4q
 type: screen
 title: A customer's form
-desc: A customer's form with the Tenders and Touchpoints smart buttons, the Account Manager, Last Seen and Last Seen Stage fields, and the Go To Market Activities tab listing the customer's touches, numbered 1 to 4.
-source: tritel_tender_tracker/views/res_partner.xml (view_partner_form, res_partner_view_buttons), tritel_tender_tracker/views/partner_activity_touchpoints_views.xml
+desc: A customer's form with the Tenders, Touchpoints, Account Plan, Organogram and Awarded 4Q smart buttons, the Account Manager, Last Seen and Last Seen Stage fields, and the Go To Market Activities tab listing the customer's touches, numbered 1 to 5.
+source: tritel_tender_tracker/views/res_partner.xml (view_partner_form, res_partner_view_buttons), tritel_tender_tracker/views/partner_activity_touchpoints_views.xml, tritel_tender_tracker/views/account_plan_views.xml (view_partner_form_account_plan)
 frame:
   grid: true
   app: Tender Manager
   menu: [Tenders, {label: Tender Customers, active: true}, Reporting, Configuration]
   breadcrumb: [Customers, Customer A]
 blocks:
-  - smart: [{label: Tenders, value: "4", n: 1}, {label: Touchpoints, value: "12"}]
+  - smart: [{label: Tenders, value: "4", n: 1}, {label: Touchpoints, value: "12"}, {label: Account Plan, value: "2026 · reviewed 14 Apr", tone: good, n: 5}, {label: Organogram, value: "5 of 7 roles"}, {label: "Awarded, 4Q", value: "KES 12,000,000"}]
   - title: {text: Customer A, sub: Company}
   - fields:
       - [{label: Tags, value: Government}, {label: Account Manager, value: Employee A}]

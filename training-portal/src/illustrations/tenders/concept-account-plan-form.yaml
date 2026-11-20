@@ -1,0 +1,30 @@
+# docs-sync: verified_commit bba3de2bf860
+# docs-sync: shows tritel_tender_tracker:model:tender.account.plan, tritel_tender_tracker:selection:tender.account.plan.state, tritel_tender_tracker:selection:tender.account.plan.target_tier
+# docs-sync: shows tritel_tender_tracker:selection:tender.account.plan.timeliness, tritel_tender_tracker:menu:menu_account_plans
+type: screen
+title: An account plan
+desc: An approved account plan for Customer A for 2026, with the Quarterly Review and Revise Plan buttons, the Draft, Submitted, Approved status bar, the header fields (Customer, Year, Tier, Account manager, Approver, Due date, Timeliness) and the five tabs, with the Goal and awarded value tab open, numbered 1 to 6.
+source: tritel_tender_tracker/views/account_plan_views.xml (account_plan_form), tritel_tender_tracker/models/account_plans.py, tritel_tender_tracker/models/account_plan_tracking.py
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [Tenders, {label: Tender Customers, active: true}, Reporting, Configuration]
+  breadcrumb: [Account Plans, Customer A · 2026]
+blocks:
+  - buttons: [{label: Quarterly Review, primary: true, n: 1}, {label: Revise Plan}]
+    status: {steps: [Draft, Submitted, Approved], current: Approved, n: 2}
+  - title: {text: Customer A · 2026}
+  - fields:
+      - [{label: Customer, value: Customer A, n: 3}, {label: Account manager, value: Employee A}]
+      - [{label: Year, value: "2026"}, {label: Approver, value: Employee B, n: 4}]
+      - [{label: Tier, value: Key account}, {label: Due date, value: 31/01/2026}]
+      - [{label: Last customer activity, value: 12/03/2026}, {label: Timeliness, value: Approved on time, tone: good, bold: true, n: 5}]
+  - tabs: {items: [Goal and awarded value, Strategy and risks, Key people, Objectives and actions, Quarterly reviews], active: Goal and awarded value, n: 6}
+  - fields:
+      - [{label: "Awarded value goal (attributed)", value: "KES 40,000,000"}, {label: Focus areas, value: "Networks, Security"}]
+  - table:
+      columns: [Quarter, Gross, Attributed, Goal, "Attributed, year before"]
+      widths: [2, 2, 2, 2, 3]
+      rows:
+        - [Q1 2026, 12.0M, 10.0M, 10.0M, 8.0M]
+        - [Q2 2026, 0.0M, 0.0M, 10.0M, 6.0M]

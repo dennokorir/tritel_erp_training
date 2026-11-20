@@ -1,0 +1,19 @@
+# docs-sync: verified_commit bba3de2bf860
+# docs-sync: shows tritel_tender_tracker:model:tender.account.plan.review, tritel_tender_tracker:selection:tender.account.plan.review.timeliness
+# docs-sync: shows tritel_tender_tracker:field:res.config.settings.tt_plan_review_days, tritel_tender_tracker:field:res.config.settings.tt_plan_grace_days
+type: calc
+title: When a quarterly review is due
+desc: Worked example of the Q1 2026 review of Customer A's plan, with the default 14 days after quarter end and 5 grace days, so it is due on 14 April 2026 and counts until 19 April 2026; approved on 17 April it shows Approved late and still counts.
+source: tritel_tender_tracker/models/account_plan_tracking.py (AccountPlanReviewTracking._compute_due, _compute_timeliness, review_quarter)
+heading: Customer A · Q1 2026
+inputs:
+  - {label: Quarter end, value: "31 Mar 2026"}
+  - {label: "Review due, days after quarter end", value: "14"}
+  - {label: Grace days for the KPI, value: "5"}
+  - {label: Approved on, value: "17 Apr 2026"}
+steps:
+  - {label: "Due date = quarter end + 14 days", value: "14 Apr 2026"}
+  - {label: "Counts until = due date + 5 days", value: "19 Apr 2026"}
+  - {label: "Approved after the due date but by Counts until?", value: "Yes"}
+result: {label: Timeliness, value: "Approved late (counts)", tone: warn}
+note: "By 14 Apr: Approved on time. On 20 Apr or later: Missed, even if it is approved then. Until 19 Apr, Quarterly Review opens Q1; from 20 Apr it opens Q2."

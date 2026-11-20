@@ -1,0 +1,30 @@
+# docs-sync: verified_commit 1a4b0b473850
+# docs-sync: shows tritel_tender_tracker:model:tender.account.plan.contact, tritel_tender_tracker:selection:tender.account.plan.contact.relationship, tritel_tender_tracker:selection:tender.account.plan.contact.influence
+# docs-sync: shows tritel_tender_tracker:model:tender.account.plan.action, tritel_tender_tracker:selection:tender.account.plan.action.state
+type: screen
+title: Key people and actions
+desc: The account plan's Key people tab listing the customer's people in organogram order, with their position on the organogram (marked under their manager, and a greyed Not on the organogram line last), influence, relationship, covered by and last met, and the Objectives and actions tab listing actions with owner, due date and state, numbered 5 and 6.
+source: tritel_tender_tracker/views/account_plan_views.xml (account_plan_form, pages people and actions); models/account_plans.py (AccountPlanContact, AccountPlanAction); models/key_people_organogram.py (org_position)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, Tenders, {label: Tender Customers, active: true}, Reporting]
+  breadcrumb: [Account Plans, Customer A · 2026]
+blocks:
+  - tabs: {items: [Goal and awarded value, Strategy and risks, Key people, Objectives and actions, Quarterly reviews], active: Key people, n: 5}
+  - buttons: [{label: Build from Contacts}, {label: Open Full Screen, primary: true}]
+  - table:
+      columns: [Organogram, Person, Influence, Relationship, Covered by, Last met]
+      widths: [2.0, 1.1, 1.4, 1.2, 1.2, 1.2]
+      rows:
+        - ["Director, ICT", Contact A, Decision maker, {text: Warm, badge: true, tone: good}, Employee A, 02/10/2026]
+        - [└ Head of Procurement, Contact B, Approver, {text: Neutral, badge: true, tone: muted}, Employee A, ""]
+        - [└ Network Manager, Contact C, Influencer, {text: Cooling, badge: true, tone: warn}, Employee B, 15/03/2026]
+        - [{text: Not on the organogram, tone: muted}, {text: Contact D, tone: muted}, "", {text: Neutral, badge: true, tone: muted}, "", ""]
+  - tabs: {items: [Goal and awarded value, Strategy and risks, Key people, Objectives and actions, Quarterly reviews], active: Objectives and actions, n: 6}
+  - table:
+      columns: [Action, Owner, Due, State]
+      widths: [4, 1.5, 1.3, 1.3]
+      rows:
+        - [Run a security workshop for the ICT team, Employee A, 30/04/2026, {text: On track, badge: true, tone: good}]
+        - [Meet the new Head of Procurement, Employee A, 31/03/2026, {text: Open, badge: true, tone: warn}]

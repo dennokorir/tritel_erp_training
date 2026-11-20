@@ -9,6 +9,7 @@ keywords: [commercial targets, target, quota, sales target, revenue target, comm
 related: [tenders/commercial-targets/target-periods, tenders/commercial-targets/achievements, tenders/how-to/bids/attribute-a-won-tender, accountability/concepts/targets, accountability/concepts/metrics]
 sidebar: { order: 1 }
 sources:
+  - tritel_tender_tracker/security/account_plan_security.xml
   - tritel_tender_tracker/models/target.py
   - tritel_tender_tracker/models/target_period.py
   - tritel_tender_tracker/views/target_views.xml
@@ -28,7 +29,7 @@ sources:
   - tritel_tender_tracker/security/security.xml
   - tritel_tender_tracker/views/hr_employee.xml
   - tritel_tender_tracker/views/menu.xml
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 
 **Commercial Targets** is the older target screen inside the **Tender Manager** app. It has four parts: **target periods**, **role targets**, **individual targets** and **achievements**. Two of them are still in use. The other two are being replaced by revenue targets in the Accountability Framework.
@@ -67,5 +68,6 @@ These screens still work and still show percentages and statuses (**Exceeded**, 
 - Every achievement line still has to name an **individual target** for the person, in its **Target** column. Until the replacement is finished, each Account Manager, Bid Liaison and Technical Presales person needs one individual target so their wins can be attributed. Its value doesn't matter for Accountability.
 - A role target with the **Target Type** **Number of Tenders** still adds up money, not a count of tenders.
 - Closing a target period locks nothing. Targets and achievements in a **Closed** period can still be changed.
-- There are no role restrictions on these screens: any internal user can create and edit targets and achievement lines, including their own. Leave attribution to the heads.
+- Targets have no role restrictions: any internal user can create and edit targets, including their own.
+- Achievement lines (tender attribution) are restricted since November 2026. You can read the lines that credit you or anyone below you in the reporting line; only the Head of Commercial, the Head of Channel and Tender administrators can see every line and add or change lines. See [How achievements are split and counted](/tenders/commercial-targets/achievements/).
 :::

@@ -1,0 +1,19 @@
+# docs-sync: verified_commit bba3de2bf860
+# docs-sync: shows tritel_tender_tracker:menu:menu_account_plan_reviews, tritel_tender_tracker:model:tender.account.plan.review, tritel_tender_tracker:selection:tender.account.plan.review.status
+type: screen
+title: Plan Reviews to approve
+desc: The Plan Reviews list filtered on To approve, with each review's customer, quarter, account manager, status, state, due date, timeliness and working days waiting, numbered 5 and 6.
+source: tritel_tender_tracker/views/account_plan_views.xml (account_plan_review_tree, account_plan_review_search, action_account_plan_reviews)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, Tenders, {label: Tender Customers, active: true, n: 5}, Reporting]
+  breadcrumb: [Plan Reviews]
+blocks:
+  - search: {facets: [To approve], placeholder: "Search…", filters: [Filters, Group By]}
+  - table:
+      columns: [Customer, Quarter, Account manager, Status, State, Due date, Timeliness, "Waiting (working days)"]
+      widths: [1.4, 1, 1.5, 1, 1.2, 1.2, 1.4, 1.2]
+      rows:
+        - {cells: [Customer A, Q3 2026, Employee A, {text: Green, badge: true, tone: good}, {text: Submitted, badge: true, tone: accent}, 14/10/2026, Not due yet, "2"], highlight: true, n: 6}
+        - [Customer B, Q3 2026, Employee C, {text: Amber, badge: true, tone: warn}, {text: Submitted, badge: true, tone: accent}, 14/10/2026, Not due yet, "1"]

@@ -308,3 +308,12 @@
   definition: The dated record of who each employee reported to. It keeps past reviews and team scores with the manager of the time.
   module: accountability
   see: [accountability/concepts/scores, accountability/how-to/hr-admin/access-rights]
+- term: Account plans reviewed
+  definition: An account manager metric. It counts the person's Key account and Major growth customers whose quarterly account plan review was approved in time; each account counts once.
+  module: accountability
+  see: [accountability/calculations/account-manager-kpi]
+- term: Awarded value growth
+  aliases: [Awarded value growth vs same quarter last year]
+  definition: An account manager metric. It compares the person's attributed awarded value in a window with the same window a year earlier, as a percentage.
+  module: accountability
+  see: [accountability/calculations/account-manager-kpi]

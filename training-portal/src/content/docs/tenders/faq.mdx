@@ -5,10 +5,16 @@ module: tenders
 pageType: faq
 roles: [account-manager, bid-liaison, presales, head-commercial, head-channel, tender-admin, channel-user, everyone]
 tags: [faq, tenders, channel]
-keywords: [FAQ, help, why can't I, missing bid liaison, reopen tender, portal, bid score, fair share, coverage, GP, OEM booking not counted, untagged]
-related: [tenders/index, tenders/who-can-do-what, tenders/workflows/tender-status, tenders/calculations/bid-quality-score, tenders/calculations/oem-bookings]
+keywords: [FAQ, help, why can't I, missing bid liaison, reopen tender, portal, bid score, fair share, coverage, OEM booking not counted, account plan, review missed]
+related: [tenders/index, tenders/who-can-do-what, tenders/concepts/account-plans, tenders/concepts/account-plan-privacy, tenders/workflows/tender-status, tenders/calculations/bid-quality-score, tenders/calculations/oem-bookings]
 sidebar: { order: 3 }
 sources:
+  - tritel_tender_tracker/models/account_plans.py
+  - tritel_tender_tracker/models/account_plan_privacy.py
+  - tritel_tender_tracker/models/account_plan_tracking.py
+  - tritel_tender_tracker/models/account_portfolio.py
+  - tritel_tender_tracker/models/target_accounts.py
+  - tritel_tender_tracker/security/account_plan_security.xml
   - tritel_tender_tracker/models/digest.py
   - tritel_tender_tracker/views/digest_views.xml
   - tritel_tender_tracker/data/digest_data.xml
@@ -46,7 +52,7 @@ sources:
   - tritel_tender_tracker/wizards/bid_desk_wizards.py
   - tritel_tender_tracker/wizards/tender_dropped.py
   - tritel_tender_tracker/wizards/tenders_assignment_wizard.py
-verified_commit: 5c65842fdc84ad076ab9c765615755de221683e8
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 
 ## Why can't I see a tender on the portal?
@@ -128,6 +134,22 @@ You see your own touches and accounts and those of the people who report to you.
 ## Why can't I claim a customer?
 
 Only account managers can claim, and only customers with no account manager: *Only account managers can claim customers.* See [Claim, assign and classify accounts](/tenders/how-to/customers/account-ownership/).
+
+## Why can't I see a colleague's account plan?
+
+A customer's account plan, its reviews and its organogram are seen only by the customer's account manager, the managers above them in the Employees app, and the Head of Commercial. Other account managers, and Tender administrators, don't see them. Trying to open one from the customer stops with *Customer A's account plan and organogram are only visible to its account manager, their managers and the Head of Commercial.* See [Who sees an account plan](/tenders/concepts/account-plan-privacy/).
+
+## My quarterly review was approved, so why does it say Missed?
+
+A review counts only if it is approved by its **Counts until** date: 14 days after the quarter ends (the **Due date**) plus 5 grace days. Approved by the due date it is **Approved on time**; by **Counts until**, **Approved late** (it still counts); after that, **Missed**, even though it is approved. For Q2 2026 that means approved by 14 July (on time) or 19 July (late). Submit early so your supervisor has time to approve. See [Account plan due dates and timeliness](/tenders/calculations/account-plan-due-dates/).
+
+## Why doesn't my new Key account count for this quarter?
+
+A tier counts for a quarter only if it was set before the quarter started. The customer's **Tier Since** date shows when its tier was last set; changing the tier, even from **Major growth** to **Key account**, resets it. The account counts from the next quarter. See [From target account to the account manager's KPI](/end-to-end/account-plan-to-am-kpi/).
+
+## Why can't I approve my team member's account plan?
+
+Only the account manager's direct supervisor (the plan's **Approver**) or the Head of Commercial can: *Only the account manager's supervisor can approve or return this.* Managers higher up can read the plan but not approve it. If the account manager has no **Manager** in the Employees app, they can't submit: *Employee A has no supervisor in the org chart to approve the plan.* See [Approve account plans and reviews](/tenders/how-to/account-plans/approve-plans-and-reviews/).
 
 ## Why is the actual gross profit on the business case higher than estimated?
 

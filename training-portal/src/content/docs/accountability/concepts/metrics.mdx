@@ -5,7 +5,7 @@ module: accountability
 pageType: concept
 roles: [everyone, line-manager, account-manager, bid-liaison, presales, head-commercial, head-channel, delivery-pm, head-delivery, accountability-admin]
 tags: [metrics, targets]
-keywords: [KPI, automatic KPI, data source, pipeline, revenue, coverage, bid desk, delivery KPI, provisional, auto review, measure, dashboard figure]
+keywords: [KPI, automatic KPI, data source, pipeline, revenue, coverage, account plan, bid desk, delivery KPI, provisional, auto review, measure, dashboard figure]
 related: [accountability/calculations/metric-families, accountability/how-to/hr-admin/metrics, accountability/concepts/targets, accountability/concepts/reviews]
 sidebar: { order: 3 }
 sources:
@@ -20,6 +20,7 @@ sources:
   - tritel_accountability_framework/models/metric_hook_delivery.py
   - tritel_accountability_framework/models/metric_hook_review_coverage.py
   - tritel_accountability_framework/models/metric_hook_review_ack.py
+  - tritel_accountability_framework/models/metric_hook_account_plans.py
   - tritel_accountability_framework/views/accountability_target_views.xml
   - tritel_project_delivery/scripts/seed_delivery_kpis.py
   - tritel_accountability_framework/controllers/worksheet.py
@@ -34,7 +35,7 @@ sources:
   - tritel_accountability_framework/wizard/metric_test_wizard.py
   - tritel_project_delivery/models/closeout.py
   - tritel_accountability_framework/tests/test_menus_by_role.py
-verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -59,7 +60,7 @@ The **How it's calculated** tab, and **Open worksheet →** on My Targets, list 
 
 A few rules worth knowing:
 
-- The system waits a few days after a window ends before creating the review, so late updates can be logged. Some metrics wait longer (14 or 30 days).
+- The system waits a few days after a window ends before creating the review, so late updates can be logged. Some metrics wait longer (14, 19 or 30 days). **Account plans reviewed** waits 19 days, so quarterly reviews approved late but within their grace days still count.
 - When there is nothing to measure in a window (for example no bids were due), the review is recorded as **Not Applicable** and leaves the score alone.
 - When a metric can't be worked out, the manager gets a *Fix Metric* to-do.
 
@@ -104,6 +105,15 @@ The names below are as they appear in the **Metric** field. How each one counts,
 | **Named share – my accounts** | Named customers ÷ engaged customers among the accounts you own, over 24 months. | Tender Tracker and CRM | Account managers |
 | **New named accounts** | Customers whose first-ever win falls in the window, with you as account manager. | Tender Tracker and CRM | Account managers |
 | **Target accounts named** | Of the target accounts you own, the share that are named on the review date. | Tender Tracker (market coverage) | Account managers |
+
+### Account management
+
+| Metric | What it counts | Data from | For |
+|---|---|---|---|
+| **Account plans reviewed** | Your Key account and Major growth customers (tiered before the window started) whose account plan review for a quarter in the window was approved in time. Each account counts once. | Tender Tracker (account plans) | Account managers |
+| **Awarded value growth vs same quarter last year** | Growth of your attributed awarded value against the same window a year earlier, in %. No awards a year earlier means no baseline, and the review is Not Applicable. | Tender Tracker | Account managers |
+
+How these two count, with examples: [Account manager KPI](/accountability/calculations/account-manager-kpi/).
 
 ### Channel and OEM
 

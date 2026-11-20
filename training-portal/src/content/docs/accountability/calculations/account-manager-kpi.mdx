@@ -1,0 +1,100 @@
+---
+title: "Account manager KPI: plans reviewed and awarded growth"
+description: How the two account manager metrics count, Account plans reviewed and Awarded value growth vs same quarter last year, with worked examples, the waiting rules and the no-baseline case.
+module: accountability
+pageType: calculation
+roles: [account-manager, line-manager, hr, accountability-admin]
+tags: [metrics, scores]
+keywords: [account plan, quarterly review, key account, major growth, tier, awarded value, growth, year on year, attribution, KPI, account manager scorecard, baseline]
+related: [accountability/calculations/metric-families, accountability/concepts/metrics, accountability/how-to/hr-admin/metrics, tenders/concepts/account-plans, tenders/calculations/account-plan-due-dates, end-to-end/account-plan-to-am-kpi]
+sidebar: { order: 10 }
+sources:
+  - tritel_accountability_framework/models/metric_hook_account_plans.py
+  - tritel_accountability_framework/models/accountability_metric.py
+  - tritel_accountability_framework/models/metric_hooks.py
+  - tritel_accountability_framework/models/accountability_target.py
+  - tritel_accountability_framework/models/accountability_config.py
+  - tritel_accountability_framework/migrations/16.0.1.98.0/post-migrate.py
+  - tritel_tender_tracker/models/account_portfolio.py
+  - tritel_tender_tracker/models/account_plan_tracking.py
+  - tritel_tender_tracker/models/account_plans.py
+  - tritel_tender_tracker/models/target_accounts.py
+  - tritel_tender_tracker/scripts/attribution_baseline_2025.py
+  - tritel_tender_tracker/static/src/portfolio/account_portfolio.xml
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
+---
+import Illustration from '../../../../components/Illustration.astro';
+
+Two metrics measure an account manager's work on their most important customers. They read the [account plans](/tenders/concepts/account-plans/), customer tiers and tender attribution in the Tender Tracker, so they are only available where the Tender Tracker is installed. Both are added automatically as **Coded** metrics; an administrator attaches them to targets like any other [metric](/accountability/concepts/metrics/).
+
+| Metric | Code | Unit | Suggested | Waits after the window closes |
+|---|---|---|---|---|
+| **Account plans reviewed** | `account_plans_reviewed` | accounts | Floor 3, ideal 5 | 19 days |
+| **Awarded value growth vs same quarter last year** | `awarded_growth_yoy` | % | Floor 0, ideal 10 | **Metric Settle Period (days)** in Settings (3 by default) |
+
+The suggested floor and ideal come from each metric's description. They are a guide only: nothing is filled in on a target for you.
+
+## Account plans reviewed
+
+**The rule.** The number of the person's Key account and Major growth customers whose account plan has a quarterly review that was approved in time, for a quarter that starts in the review window. Each account counts once.
+
+**Which accounts count.** A customer is eligible when, on the day the metric is worked out:
+
+- it is a **Target Account** with **Target Tier** *Key account* or *Major growth*;
+- the person is its account manager;
+- its **Tier Since** date is **before the window started**. A customer tiered during the window counts from the next quarter. A customer with no **Tier Since** date counts.
+
+**Which reviews count.** The review must be **Approved**, for a quarter that starts inside the window, and approved on or before its **Counts until** date. Reviews are due 14 days after the quarter ends, and an approval up to 5 days after that still counts, shown as *approved late*. An approval after **Counts until** is *missed* and doesn't count. See [account plan due dates](/tenders/calculations/account-plan-due-dates/).
+
+**When it is worked out.** The automatic review waits **19 days** after the window closes (14 days to review plus 5 grace days), so every review that can still count has been approved by then. The 19 days are set in the code.
+
+<Illustration name="accountability/calc-am-plans-reviewed" caption="Six accounts, one tiered after the quarter started. Of the five eligible, three were approved on time and one late, so Employee A scores 4." />
+
+**The worksheet.** The section **Key and Major growth accounts** lists one row per account:
+
+| Column | Shows |
+|---|---|
+| **Customer** | The customer |
+| **Tier** | *Key account* or *Major growth* |
+| **Review** | The quarter, for example *Q2 2026*, or *Q2 2026 (approved late)*. *Not reviewed* when no review counts (flagged **not reviewed**). For an account tiered too late: *Tiered 2026-04-10, counts next quarter*. |
+| **Approved** | The date the review was approved |
+
+The steps show **Key and Major growth accounts owned (tiered before the window)** and **With an approved review in the window**.
+
+## Awarded value growth vs same quarter last year
+
+**The rule.** (attributed awarded value in the window − attributed awarded value in the same window a year earlier) ÷ the year-earlier value × 100.
+
+**What counts.** Won tenders where the person has an account manager attribution line, by **award date**. The value is the person's attributed share (see [revenue metrics](/accountability/calculations/metric-families/#revenue)). The gross value of the same tenders is shown alongside but doesn't change the result. Awards not yet attributed count as 0 and are flagged **awaiting attribution**.
+
+**When it is worked out.** This metric has no wait of its own, so it uses **Metric Settle Period (days)** in [Accountability settings](/accountability/how-to/hr-admin/settings/) (3 by default).
+
+<Illustration name="accountability/calc-am-awarded-growth" caption="12,000,000 attributed this quarter against 10,000,000 in the same quarter last year is growth of +20.0%." />
+
+**No baseline.** If the person had no attributed awards in the year-earlier window, there is nothing to grow from. The review is recorded as **Not Applicable** and left out of the score, with the message *No attributed awards for Employee A in 01 Apr 2025 – 30 Jun 2025, so there is no baseline to grow from.*
+
+**The worksheet.** The section **Awarded tenders (account manager role)** lists the awards in both windows:
+
+| Column | Shows |
+|---|---|
+| **Period** | *This period* or *Year before* |
+| **Customer** | The customer |
+| **Tender** | The tender reference, for example TND-2026-001 |
+| **Award date** | The award date |
+| **Gross (KES)** | The tender's gross awarded value |
+| **Attributed (KES)** | The person's attributed share |
+
+The steps show **Attributed this period (gross)**, **Attributed 01 Apr 2025 – 30 Jun 2025 (gross)** and **Growth**.
+
+## Edge cases
+
+- **Period to date.** With **Measure Over** set to *Period to date*, the window runs from the period start. For Account plans reviewed, a customer reviewed in Q1 and Q2 still counts once. Eligibility is checked against the period start, so a customer tiered after the period started doesn't count in that period's year-to-date figure.
+- **Monthly windows.** Reviews belong to quarters. A monthly window only finds a review in the month the quarter starts (January, April, July, October).
+- **2025 figures may be estimates.** Tender attribution started in 2026. To give 2026 a baseline, 2025 account manager attribution may have been added as estimates. These lines are named "TND-2025-001 · 2025 baseline (estimated)" and can be corrected by hand.
+- **Today's owner and tier.** Eligibility uses each customer's account manager, tier and **Tier Since** as they are when the figure is worked out, not as they were during the window.
+
+:::note[Good to know]
+- The 19-day wait for Account plans reviewed doesn't move if the review or grace days are changed in the Tender Tracker settings. If you lengthen them, set **Wait Before Automatic Review (days)** on the metric to match.
+- **My Portfolio** shows the same two figures for the quarter so far. Its target of 5 plans and its 10% growth mark are fixed on that screen and don't follow the floor and ideal set on your target.
+- See the whole journey in [From account plan to the account manager KPI](/end-to-end/account-plan-to-am-kpi/).
+:::

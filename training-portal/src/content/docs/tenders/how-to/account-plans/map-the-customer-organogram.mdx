@@ -1,0 +1,95 @@
+---
+title: Map a customer's organogram
+description: Build a customer's organogram (who holds which role and who reports to whom), mark who matters and how warm they are, spot the gaps, and record who you met.
+module: tenders
+pageType: how-to
+roles: [account-manager, head-commercial]
+tags: [customers, account plans]
+keywords: [organogram, org chart, organisation chart, stakeholder map, decision makers, key people, customer contacts, reporting line, relationship map, who reports to whom, contacts met, last met, coverage gaps]
+where: [Tender Manager, Tender Customers, Account Plans]
+before:
+  - You are the customer's <strong>Account Manager</strong>, or the Head of Commercial. The account manager's managers can look at the organogram but not change it.
+  - The customer is a company. Its people are added as its contacts (or with <strong>Add Person</strong> below).
+related: [tenders/concepts/account-plans, tenders/how-to/account-plans/write-an-account-plan, tenders/how-to/customers/log-a-customer-activity, tenders/concepts/customer-activities, tenders/concepts/account-plan-privacy]
+sidebar: { order: 4 }
+sources:
+  - tritel_tender_tracker/models/customer_roles.py
+  - tritel_tender_tracker/models/key_people_organogram.py
+  - tritel_tender_tracker/models/account_plans.py
+  - tritel_tender_tracker/models/account_plan_privacy.py
+  - tritel_tender_tracker/static/src/organogram/organogram.xml
+  - tritel_tender_tracker/static/src/organogram/organogram.js
+  - tritel_tender_tracker/views/account_plan_views.xml
+  - tritel_tender_tracker/views/partner_activity_touchpoints_views.xml
+  - tritel_tender_tracker/static/src/touchpoints/common/touch_dialog.js
+verified_commit: 1a4b0b473850cf3909b218fde28ee53c9e08d29b
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+A customer's **organogram** shows the roles at the customer (for example *Director, ICT* or *Head of Procurement*), who holds each one and who reports to whom. A role can be empty until you know who holds it. The organogram belongs to the customer, so every year's account plan uses the same one. Each plan adds its own view of the people: their influence, how warm the relationship is and who at Tritel covers them.
+
+<Illustration name="tenders/plan-organogram-compact" caption="The organogram on the plan's Key people tab. The numbers match the steps below." />
+
+<Illustration name="tenders/plan-organogram-customer" caption="The customer's Organogram button, and each contact's role on the customer's form." />
+
+<Illustration name="tenders/plan-organogram-full" caption="The full-screen organogram, with a person selected." />
+
+## Steps
+
+1. Open the account plan and go to the **Key people** tab. The chart shows as soon as the plan has a customer; until then the tab reads *Choose a customer to see the organogram.*
+2. If the chart is empty (*No roles yet. Use Build from Contacts, or open the full screen to add roles.*), click **Build from Contacts**. It saves the plan, adds one role for each of the customer's contacts that has none (named after their job title), and puts every contact on the plan's **Key people** list: *3 role(s) added to the organogram, 3 person(s) added to Key people.*
+3. Read the compact view beside the chart:
+   - ***x* of *y*** **roles with a named contact**;
+   - ***x* of *y*** **decision makers and approvers warm** (from the **Influence** and **Relationship** you set on the key people list);
+   - **Gaps** (up to eight): *No contact at Head of Finance.*, *Contact B (Head of Procurement) has not been met this year.* (for decision makers and approvers), *Contact C is cooling: last met 2026-03-15.*
+4. To change the organogram, click **Open Full Screen** (or click the chart). Both save the plan first. From the customer's form, click the **Organogram** button (it reads, for example, **3 of 4 roles**, or **Not started**).
+5. Choose what to see:
+   - **Show**: **Everyone at the customer**, or **This plan's key people** (with the roles above them, so the structure still reads). The second choice is only there when you open the screen from a plan.
+   - **Colour by**: **Relationship** (warm, neutral, cooling), **Last met** (in the last 90 days, in the last year, longer or never) or **Covered by** (someone at Tritel covers them, or nobody yet). The legend under the chart explains the colours. **−** and **+** zoom.
+6. To add someone new, click **Add Person**. Fill in **Name**, **Email**, **Role (job title)** and **Reports to** (**Nobody (top)** for the most senior), then click **Save**. This also adds the person as a contact of the customer. When you opened the screen from a plan, the box **Add to this plan's key people** is ticked, so the person also joins the plan's **Key people**; untick it to add them to the chart only.
+7. To add a role you haven't filled yet, click **Add Role**, give the **Role (job title)** and **Reports to**, and click **Save**. The card reads *No contact yet*.
+8. To change who reports to whom, drag a card onto the card of their new manager. Drop it on the empty space of the chart to put it at the top. You can also do it in the side panel (next step).
+9. Click a card to see the person in the panel on the right:
+   - Opened from a plan, the panel shows **In this plan** or **Not in this plan**. Click **Add to Plan** to put the person on the plan's **Key people**, or **Remove from Plan** to take them off it. Removing keeps their role on the chart: the chart belongs to the customer and every year's plan shares it.
+   - Change the person's place on the chart right in the panel: **Role** (the role's title) and **Reports to** (**Nobody (top)** for the most senior). **Reports to** lists only roles outside the person's own team, so a role can't end up reporting to someone below it.
+   - For someone in this plan, also set **Influence**, **Relationship** and **Covered by** here.
+   - Click **Save**. The screen shows *Saved*.
+   - Below are **Last met**, **Email**, **Phone**, the plan's note and **Recent activity**. **Edit Contact** opens the contact (on an empty role the button reads **Edit Role** and opens the role).
+10. Click **Log Activity** to record a call, meeting or visit with this person. The *Log a customer touch* window opens with the customer and the person under **Contacts met** already filled in. See [Log a customer activity](/tenders/how-to/customers/log-a-customer-activity/).
+11. To remove a role, select it, click **Remove Role**, then **Confirm: remove role**. The people who reported to it move up a level.
+
+## Key people and the chart
+
+A plan's **Key people** and the customer's organogram are kept in step:
+
+- Everyone on a plan's **Key people** list holds a role on the chart. Someone added to the list without a role gets a new role at the top of the chart, named after their job title. Move them under their manager with **Reports to**.
+- The **Key people** list follows the chart from the top down, each person followed by their team. Its **Organogram** column shows where each person sits; people with no role come last and read *Not on the organogram*.
+- From a plan, **Add Person** (with its box ticked), **Add to Plan** and **Build from Contacts** add people to the plan's **Key people**. **Remove from Plan** takes them off the list but leaves the chart alone.
+- On the full screen, **Build from Contacts** reads *3 role(s) added to the organogram, 2 person(s) added to this plan* when opened from a plan, or *3 role(s) added to the organogram* from the customer's **Organogram** button. With nothing to add it reads *Every contact is already on the organogram and in this plan*, or *Every contact already has a role*.
+
+## What happens next
+
+- The **Organogram** button on the customer shows how many roles have a named contact, for example **3 of 4 roles**.
+- On the customer's **Contacts & Addresses** tab, each contact who holds a role shows it, for example *Head of Procurement · reports to Director, ICT*.
+- Changing **Reports to** on the plan's **Key people** list changes the organogram too (and adds a role for that person if they had none).
+- **Last met** comes from customer activities: each time you log a touch, pick the people you met in **Contacts met** (the box reads *Who you met (sets Last met on the organogram)*). It updates **Last met**, the **Last met** colours and the *not met this year* and *cooling* gaps.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *A role cannot report to itself or to one of its own reports.* | You dropped a card onto itself or onto someone below it. | Drop it onto someone above or beside it. |
+| *Give the role a title.* (side panel) | You cleared **Role** in the side panel and clicked **Save**. | Type the role's title and click **Save** again. |
+| *A role can only report to a role at the same customer.* | The role chosen in **Reports to** belongs to another customer. | Choose a role at this customer. |
+| *This contact already holds a role at this customer.* | A person can hold only one role at a customer. | Use the role they already hold, or change it. |
+| *Contact D is not a contact of Customer A.* | The person you put in the role belongs to another company. | Add them as a contact of this customer first, or use **Add Person**. |
+| *Give the person's name and role.* / *Give the role a title.* | **Name** or **Role (job title)** is empty in **Add Person** or **Add Role**. | Fill them in and click **Save**. |
+| *Only Customer A's account manager or the Head of Commercial can change its organogram.* | You are not the customer's account manager or the Head of Commercial. | Ask the account manager to make the change. |
+| *Customer A's account plan and organogram are only visible to its account manager, their managers and the Head of Commercial.* | You aren't in the customer's plan audience. | Ask the account manager or the Head of Commercial. |
+
+:::note[Good to know]
+- **Influence**, **Relationship**, **Covered by** and the note come from a plan's **Key people** list. Opened from the customer's **Organogram** button there is no plan, so those stay empty, every card is drawn as *not in this plan*, and the only gaps listed are empty roles. Open the organogram from the plan to see the full picture.
+- The side panel lets you change **Influence**, **Relationship** and **Covered by** only for people in the plan you opened it from, and only if you can edit that plan. Otherwise it shows them as text, and **Relationship** then reads *warm*, *neutral* or *cool* (on the plan it reads **Warm**, **Neutral** or **Cooling**).
+- Removing a role removes the role only: the contact stays on the customer and on the plan's key people list, where they come last as *Not on the organogram*.
+- If an old browser tab shows text such as *5 of 7 roles* instead of the chart, reload the page.
+:::

@@ -1,0 +1,84 @@
+---
+title: Write an account plan
+description: As an account manager, write this year's plan for a customer (goal, strategy, key people and actions) and submit it to your supervisor for approval.
+module: tenders
+pageType: how-to
+roles: [account-manager]
+tags: [customers, account plans]
+keywords: [account plan, customer plan, annual plan, key account plan, write plan, plan approval, awarded value goal, strategy, risks, key people, stakeholders, objectives, revise plan, returned plan]
+where: [Tender Manager, Tender Customers, Account Plans]
+before:
+  - You are the customer's <strong>Account Manager</strong>, and your employee record has a <strong>Manager</strong> with a user (your supervisor approves the plan).
+  - The customer is a company. Plans matter most for <strong>Key account</strong> and <strong>Major growth</strong> customers; see <a href="/tenders/concepts/account-plans/">Account plans</a>.
+related: [tenders/concepts/account-plans, tenders/workflows/account-plan, tenders/calculations/account-plan-due-dates, tenders/how-to/account-plans/map-the-customer-organogram, tenders/how-to/account-plans/submit-a-quarterly-review, tenders/how-to/account-plans/approve-plans-and-reviews, tenders/how-to/account-plans/my-portfolio]
+sidebar: { order: 1 }
+sources:
+  - tritel_tender_tracker/views/account_plan_views.xml
+  - tritel_tender_tracker/models/account_plans.py
+  - tritel_tender_tracker/models/account_plan_tracking.py
+  - tritel_tender_tracker/models/account_plan_privacy.py
+  - tritel_tender_tracker/models/customer_roles.py
+  - tritel_tender_tracker/models/key_people_organogram.py
+  - tritel_tender_tracker/security/account_plan_security.xml
+verified_commit: 1a4b0b473850cf3909b218fde28ee53c9e08d29b
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+An **account plan** sets out, for one customer and one year, what you want to win there, how, with whom, and what could get in the way. Write it at the start of the year: by default it should be approved by 31 January. Your supervisor approves it, and once it is approved you review it every quarter.
+
+<Illustration name="tenders/plan-open-from-customer" caption="On the customer's form, the Account Plan button opens this year's plan, or starts one." />
+
+<Illustration name="tenders/plan-write-form" caption="A new plan in Draft. The numbers match the steps below." />
+
+<Illustration name="tenders/plan-key-people" caption="The Key people and Objectives and actions tabs." />
+
+## Steps
+
+1. Open the customer and click the **Account Plan** button at the top right. It opens this year's plan, or a new one if there is none (the button then reads **No plan**). You can also open **Tender Manager › Tender Customers › Account Plans** and click **New**.
+2. Check the header. **Customer** and **Year** (this year) are filled in when you start from the customer. **Account manager** comes from the customer, and **Approver** is your supervisor. **Tier** shows the customer's tier. **Due date** is set when the plan is first saved.
+3. On the **Goal and awarded value** tab:
+   - Type the **Awarded value goal (attributed)**: the value of tenders you aim to have awarded, counted as your share. If the four quarter goals are empty, the goal is split equally into **Q1 goal** to **Q4 goal**. Change the quarters if the year isn't even.
+   - Pick the **Focus areas**: the solution pillars you want to grow with this customer. **Won before** lists the pillars of tenders already won there.
+   - The table **Awarded value by quarter (account manager attribution)** shows, for each quarter, **Gross**, **Attributed**, **Goal** and **Attributed, year before**, in millions.
+4. On the **Strategy and risks** tab, write the **Account strategy** (where you are with the customer, what you want to grow, and how) and the **Risks** (what could stop you, and what you'll do about it).
+5. On the **Key people** tab, list the customer's people who matter:
+   - When you pick the customer on a new plan, every active contact of the customer is added, in organogram order. Delete the lines of anyone you don't need this year (deleting a line doesn't change the organogram).
+   - The list follows the customer's organogram from the top down: each person is followed by their own team. The **Organogram** column shows where each person sits, for example **Director, ICT** and, below them, **└ Head of Procurement**. People with no role on the chart come last, greyed, and read *Not on the organogram*.
+   - For each person, set **Influence** (**Decision maker**, **Approver**, **Influencer**, **Gatekeeper** or **User**), **Relationship** (**Warm**, **Neutral** or **Cooling**), **Covered by** (who at Tritel looks after them) and a **Note**. **Job title** and **Last met** fill in by themselves.
+   - **Reports to** is hidden at first. To show it, open the optional-columns menu at the right end of the list's header row and tick **Reports to**. Changing it changes the customer's organogram.
+   - As soon as the customer is chosen, the chart above the list shows the customer's organogram, with **Build from Contacts** and **Open Full Screen** above it. Both save the plan first. **Build from Contacts** adds every contact of the customer to **Key people**, and gives each contact without one a role on the organogram, named after their job title. See [Map a customer's organogram](/tenders/how-to/account-plans/map-the-customer-organogram/).
+6. On the **Objectives and actions** tab, add what you'll do: **Action**, **Owner**, **Due** and **State** (**Open**, **On track**, **Done** or **Dropped**).
+7. Save, then click **Submit for Approval**. The plan moves to **Submitted**.
+8. If your supervisor returns it, the plan shows **Returned** and a yellow line *Returned for changes:* with their note. Make the changes and click **Submit for Approval** again.
+9. To change an approved plan later in the year, click **Revise Plan**. It goes back to **Draft**; make your changes and submit it again.
+
+## What happens next
+
+- Your supervisor gets a to-do *Approve account plan: Customer A · 2026*. While the plan waits, the header shows **Waiting (working days)**.
+- When it is approved, the plan shows **Approved** and **Timeliness** shows **Approved on time** (by the **Due date**) or **Approved late**. A plan that isn't approved by its due date shows **Overdue**.
+- If it is returned, you get a to-do *Account plan returned: Customer A · 2026* with the note, and it appears under **Account plans returned to you** in [My Actions](/tenders/how-to/bids/tender-my-actions/).
+- Once the plan is approved, the **Quarterly Review** button appears: see [Submit a quarterly review](/tenders/how-to/account-plans/submit-a-quarterly-review/).
+- Everyone on the **Key people** list holds a role on the customer's organogram. When you save the plan, a person without a role gets a new one at the top of the chart, named after their job title (or their name). Move it under the right manager with **Reports to**, or on the full-screen organogram.
+- **Build from Contacts** on the plan shows, for example, *2 role(s) added to the organogram, 3 person(s) added to Key people.*, or *Every contact is already on the organogram and in Key people.* when there is nothing to add.
+- Once your administrator turns on the [reminders job](/tenders/calculations/account-plan-due-dates/#reminders-and-escalation), Key account and Major growth customers with no approved plan are chased by email from 14 days before the due date (with the default settings), and plans still waiting for approval are chased with your supervisor.
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *This customer already has a plan for that year.* | Each customer has one plan per year. | Open the existing plan from the customer's **Account Plan** button, or from **Account Plans**. |
+| *Employee A has no supervisor in the org chart to approve the plan.* | Your employee record has no **Manager**, or the manager has no user, so there is no **Approver**. | Ask HR to set your manager on your employee record, then submit again. |
+| *Only the account manager of Customer A can change its plan.* | You are not the plan's account manager (nor the Head of Commercial). Supervisors can read a plan, approve it or return it, but not edit it. | Ask the account manager to make the change. |
+| *Only the Head of Commercial can change a plan's due date.* | You changed **Due date**. | Leave it as it is, or ask the Head of Commercial. |
+| *Customer A's account plan and organogram are only visible to its account manager, their managers and the Head of Commercial.* | You are not in the customer's plan audience. | Ask the customer's account manager or the Head of Commercial. |
+
+:::note[Good to know]
+- Only the account manager, the managers above them and the Head of Commercial can see a customer's plan, its organogram and the **Account Plan**, **Organogram** and **Awarded, 4Q** buttons. See [Who can see an account plan](/tenders/concepts/account-plan-privacy/).
+- **Revise Plan** turns the plan back to **Draft** until it is approved again. While it is in Draft you can't start a quarterly review, it counts as a plan still to write in My Actions and the reminders, and if the due date has passed its **Timeliness** shows **Overdue**, then **Approved late** once it is approved again.
+- **Last customer activity** is the date of the customer's latest activity, and that can be a touch that is only planned.
+- The **Awarded, 4Q** button and the plan's quarter table count all awarded value attributed to the account manager. The account manager KPI counts won tenders only, so the figures can differ.
+- Changing **Reports to** on a key person changes the customer's organogram, which every year's plan shares.
+- On a plan that isn't saved yet, the **Organogram** column reads *Not on the organogram* for everyone, including people you add by hand. Save the plan: each person then shows their place on the chart and the list is put in chart order.
+- Deleting someone from **Key people** leaves their role on the organogram, because the chart belongs to the customer. The other way round, if their role is removed from the organogram, they stay on the list, last and greyed, as *Not on the organogram*. **Build from Contacts** gives them a role again, at the top of the chart.
+- Plans written before this change were brought into step when the system was updated: their key people were given roles on the chart and put in chart order.
+:::

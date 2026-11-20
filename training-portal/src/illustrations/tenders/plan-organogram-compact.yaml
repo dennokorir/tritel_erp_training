@@ -1,0 +1,26 @@
+# docs-sync: verified_commit 1a4b0b473850
+# docs-sync: shows tritel_tender_tracker:model:tender.customer.role
+type: screen
+title: Organogram on the plan
+desc: The account plan's Key people tab with the Build from Contacts and Open Full Screen buttons (shown once the plan has a customer), a compact organogram of Customer A's roles, the counts of roles with a named contact and of warm decision makers and approvers, and the list of gaps, numbered 1 to 4.
+source: tritel_tender_tracker/views/account_plan_views.xml (account_plan_form, page people); static/src/organogram/organogram.xml (OrganogramCompact); models/customer_roles.py (get_organogram)
+frame:
+  grid: true
+  app: Tender Manager
+  menu: [My Actions, Tenders, {label: Tender Customers, active: true}, Reporting]
+  breadcrumb: [Account Plans, Customer A · 2026]
+blocks:
+  - tabs: {items: [Goal and awarded value, Strategy and risks, Key people, Objectives and actions, Quarterly reviews], active: Key people, n: 1}
+  - buttons: [{label: Build from Contacts, n: 2}, {label: Open Full Screen, primary: true, n: 4}]
+  - columns:
+      - panel: true
+        blocks:
+          - tiles: [{label: "Director, ICT", value: Contact A, tone: good}]
+          - tiles: [{label: Head of Procurement, value: Contact B, tone: muted}, {label: Network Manager, value: Contact C, tone: warn}]
+          - tiles: [{label: Head of Finance, value: No contact yet, tone: muted}]
+      - panel: true
+        blocks:
+          - tiles: [{label: roles with a named contact, value: "3 of 4", n: 3}]
+          - tiles: [{label: decision makers and approvers warm, value: "1 of 2"}]
+          - heading: Gaps
+          - text: "No contact at Head of Finance. Contact B (Head of Procurement) has not been met this year. Contact C is cooling: last met 2026-03-15."

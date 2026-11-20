@@ -6,7 +6,7 @@ pageType: journey
 roles: [account-manager, presales, head-commercial, line-manager, accountability-admin]
 tags: [end to end, customers, coverage, metrics]
 keywords: [end to end, process, workflow, handover between teams, how does it connect, lifecycle, customer visit, meeting, call log, touchpoint, account coverage, named account, activity KPI, pipeline update]
-related: [end-to-end/index, tenders/concepts/customer-activities, tenders/calculations/coverage-ladder, tenders/how-to/customers/log-a-customer-activity, accountability/calculations/metric-families]
+related: [end-to-end/index, end-to-end/account-plan-to-am-kpi, tenders/concepts/customer-activities, tenders/calculations/coverage-ladder, tenders/how-to/customers/log-a-customer-activity, accountability/calculations/metric-families]
 sidebar: { order: 3 }
 sources:
   - tritel_tender_tracker/models/account_ownership.py
@@ -47,7 +47,8 @@ sources:
   - tritel_tender_tracker/views/tender_views.xml
   - tritel_tender_tracker/wizards/partner_activity_wizards.py
   - tritel_tender_tracker/wizards/tenders_assignment_wizard.py
-verified_commit: eec18b485b6c6d644069f73427c97d5c535646fc
+  - tritel_tender_tracker/models/customer_roles.py
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../components/Illustration.astro';
 
@@ -84,10 +85,10 @@ flowchart TD
 | # | Who | Where | What happens | Guide |
 |---|---|---|---|---|
 | 1 | Account Manager; Head of Commercial | **Tender Manager › Tender Customers › Account Ownership** | The customer gets an **Account Manager**: claimed with **Claim for Me**, or assigned by the Head of Commercial. It now sits on the ladder at **Untouched**. | [Claim, assign and classify accounts](/tenders/how-to/customers/account-ownership/) |
-| 2 | Head of Commercial | **Tender Manager › Tender Customers › Classify Accounts** | The customer may be made a target account (**Strategic**, **Growth** or **Maintain**). | [Claim, assign and classify accounts](/tenders/how-to/customers/account-ownership/) |
+| 2 | Head of Commercial | **Tender Manager › Tender Customers › Classify Accounts** | The customer may be made a target account (**Key account**, **Major growth** or **Maintain**), directly or after an account manager clicks **Propose as Key Account** or **Propose as Major Growth**. Key and Major growth accounts then need an account plan: see [From target account to the account manager's KPI](/end-to-end/account-plan-to-am-kpi/). | [Claim, assign and classify accounts](/tenders/how-to/customers/account-ownership/) |
 | 3 | Account Manager | **Tender Manager › Tender Customers › Customer Activities**, **Plan touch** | The visit is planned with a date and linked to its opportunity or tender. A planned touch counts nowhere yet. | [Plan customer touches](/tenders/how-to/customers/plan-customer-touches/) |
-| 4 | Account Manager or Technical Presales | **Planned** tab, **Complete**; or **Log touch** | After the visit, the touch is completed (or logged) with **What happened**. It is saved as **Done**. | [Log a customer activity](/tenders/how-to/customers/log-a-customer-activity/) |
-| 5 | The system | Linked deal, customer | The note is posted on the opportunity or tender, the customer's **Last Seen** moves, and the touch shows on the heatmap and timeline. | [Customer activities and touchpoints](/tenders/concepts/customer-activities/) |
+| 4 | Account Manager or Technical Presales | **Planned** tab, **Complete**; or **Log touch** | After the visit, the touch is completed (or logged) with **What happened** and the **Contacts met**. It is saved as **Done**. | [Log a customer activity](/tenders/how-to/customers/log-a-customer-activity/) |
+| 5 | The system | Linked deal, customer | The note is posted on the opportunity or tender, the customer's **Last Seen** moves, each person under **Contacts met** gets a new **Last met** on the organogram, and the touch shows on the heatmap and timeline. | [Customer activities and touchpoints](/tenders/concepts/customer-activities/) |
 | 6 | The system | **Tender Manager › Tender Customers › Market Coverage** | The customer's rung is worked out each time someone looks: **Engaged** after a done touch, up to **In play**, **Named** and **Anchor** as deals open and are won. | [Use the Market Coverage screen](/tenders/how-to/customers/market-coverage/) |
 | 7 | The system | Nightly | **Pipeline status coverage** and **Tender evaluation coverage** count the updates, and the market coverage metrics count the rungs. **Provisional** values refresh. | [How metrics count](/accountability/calculations/metric-families/) |
 | 8 | The system, then the line manager | *Confirm Metric Review* to-do | After the window and its wait, a draft review is created with the figure. The manager checks the worksheet and confirms. | [Conduct a review](/accountability/how-to/line-managers/conduct-a-review/) |
@@ -114,6 +115,7 @@ The four market coverage metrics are switched off until an administrator turns t
 | Tender or opportunity | Customer | The deal's account manager becomes the customer's when it has none | When the deal is saved |
 | Customer | Tender, plans, early opportunities | A newly assigned account manager moves onto the customer's draft and bidding tenders, planned touches and early-stage opportunities | When assigned |
 | Done touch | Linked deal | The note, as *Feedback from customer touch dated …* | When marked done |
+| Done touch with **Contacts met** | Customer organogram | **Last met** for each person met, and the touch under their **Recent activity** | When saved |
 | Done touch | Coverage ladder | The customer is at least **Engaged** | Each time the screen is opened |
 | Done touch | Activity coverage | Counts for the month or week of its **Date** if the person who made it entered it within 7 days after that month or week ended | Nightly; review waits 7 days |
 | Done touch on a won deal | Attribution | **Compute Related Activities** counts it towards the stage points | When a head clicks it. See [Attribute a won tender](/tenders/how-to/bids/attribute-a-won-tender/) |
