@@ -14,12 +14,13 @@ sources:
   - tritel_tender_tracker/models/account_plan_privacy.py
   - tritel_tender_tracker/models/account_portfolio.py
   - tritel_tender_tracker/models/customer_roles.py
+  - tritel_tender_tracker/models/key_people_organogram.py
   - tritel_tender_tracker/models/target_accounts.py
   - tritel_tender_tracker/views/account_plan_views.xml
   - tritel_tender_tracker/views/target_accounts_views.xml
   - tritel_tender_tracker/security/account_plan_security.xml
   - tritel_accountability_framework/models/metric_hook_account_plans.py
-verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
+verified_commit: 1a4b0b473850cf3909b218fde28ee53c9e08d29b
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -57,7 +58,7 @@ flowchart TD
 |---|---|
 | **Goal and awarded value** | **Awarded value goal (attributed)** for the year and the **Q1 goal** to **Q4 goal** (type the year's goal first and the four quarters are filled in with a quarter each). **Focus areas**: the solution pillars to grow. **Won before**: pillars of tenders already won. A table, **Awarded value by quarter (account manager attribution)**, shows **Gross**, **Attributed**, **Goal** and **Attributed, year before** for each quarter, in millions. |
 | **Strategy and risks** | **Account strategy** and **Risks**, in your own words. |
-| **Key people** | The customer's people who matter: a small organogram, then a list with **Person**, **Job title**, **Reports to**, **Influence**, **Relationship**, **Covered by**, **Last met** and **Note**. Choosing the customer on a new plan fills in up to 6 of its contacts. |
+| **Key people** | The customer's people who matter: a small organogram, then a list with **Organogram** (where the person sits on the chart), **Person**, **Job title**, **Influence**, **Relationship**, **Covered by**, **Last met** and **Note** (**Reports to** can be shown too). The list follows the chart from the top down, and everyone on it holds a role on the organogram. Choosing the customer on a new plan fills in every active contact of the customer. |
 | **Objectives and actions** | **Action**, **Owner**, **Due** and a state: **Open**, **On track**, **Done** or **Dropped**. |
 | **Quarterly reviews** | The plan's reviews, read-only: quarter, **Status**, what changed, approval, **Due date** and **Timeliness**. |
 
@@ -69,7 +70,7 @@ In the first days of a quarter, **Quarterly Review** opens the review for the qu
 
 ## The customer organogram
 
-The **organogram** is a chart of the customer's people: who holds which role and who reports to whom. It belongs to the customer, not to one plan, so next year's plan uses the same chart. A role can be left without a person, to show a gap. The **Key people** tab shows a small version with gap warnings (for example *No contact at Head of ICT.*), and **Open Full Screen** opens the full chart, where you can add people and roles and drag cards to change reporting lines. Logging a customer activity with **Contacts met** sets each person's **Last met** date. See [Map the customer organogram](/tenders/how-to/account-plans/map-the-customer-organogram/).
+The **organogram** is a chart of the customer's people: who holds which role and who reports to whom. It belongs to the customer, not to one plan, so next year's plan uses the same chart. A role can be left without a person, to show a gap. The **Key people** tab shows a small version with gap warnings (for example *No contact at Head of ICT.*), and **Open Full Screen** opens the full chart, where you can add people and roles, change reporting lines, and add people to the plan's key people or take them off it. Everyone in a plan's key people holds a role on the chart. Taking someone off a plan leaves their role in place, because the chart is shared by every year's plan. Logging a customer activity with **Contacts met** sets each person's **Last met** date. See [Map the customer organogram](/tenders/how-to/account-plans/map-the-customer-organogram/).
 
 ## On the customer form
 

@@ -225,8 +225,10 @@ screens:
       - {label: Awarded value by quarter (account manager attribution), meaning: "Quarter, Gross, Attributed, Goal and Attributed year before, in millions.", where: Goal and awarded value tab}
       - {label: Account strategy, meaning: "Where Tritel is with the customer and how it will grow.", where: Strategy and risks tab}
       - {label: Risks, meaning: "What could stop it, and what to do about it.", where: Strategy and risks tab}
-      - {label: Person, meaning: "A key person at the customer (one of its contacts).", where: Key people tab}
-      - {label: Reports to, meaning: "The role this person reports to. Changing it changes the organogram.", where: Key people tab}
+      - {label: Organogram, meaning: "Where the person sits on the customer's organogram: their role, marked └ under their manager. Not on the organogram (greyed, at the end) for people with no role. The list follows the chart from the top down.", where: Key people tab}
+      - {label: Person, meaning: "A key person at the customer (one of its contacts). Every key person holds a role on the organogram. A new plan starts with every active contact of the customer.", where: Key people tab}
+      - {label: Job title, meaning: "The contact's job title. Shown by default; can be hidden.", where: Key people tab}
+      - {label: Reports to, meaning: "The role this person reports to. Changing it changes the organogram. Hidden by default; show it from the optional-columns menu.", where: Key people tab}
       - {label: Influence, meaning: "Decision maker, Approver, Influencer, Gatekeeper or User.", where: Key people tab}
       - {label: Relationship, meaning: "Warm, Neutral or Cooling.", where: Key people tab}
       - {label: Covered by, meaning: "Who at Tritel looks after this relationship.", where: Key people tab}
@@ -253,7 +255,16 @@ screens:
       - {label: Add Person, meaning: "Creates a contact (Name, Email, Role (job title), Reports to) with a role.", where: "Full screen, top"}
       - {label: Add Role, meaning: "Adds a role, with or without a contact.", where: "Full screen, top"}
       - {label: Gaps, meaning: "Up to 8 gaps: roles with no contact, people not met this year, cooling relationships.", where: Compact view}
-      - {label: Recent activity, meaning: "The person's latest touches, with Log Activity, Edit and Remove Role.", where: "Full screen, side panel"}
+      - {label: Build from Contacts, meaning: "Adds a role for each of the customer's contacts that has none. From a plan, also puts every contact on the plan's Key people. Saves the plan first.", where: "Key people tab; full screen, top"}
+      - {label: Open Full Screen, meaning: "Opens the customer's full-screen organogram. Shown once the plan has a customer; saves the plan first.", where: Key people tab}
+      - {label: Add to this plan's key people, meaning: "Ticked by default: the person you add also joins the plan's Key people. Only when the screen was opened from a plan.", where: "Full screen, Add Person"}
+      - {label: In this plan / Not in this plan, meaning: "Whether the selected person is on the plan's Key people. Only when the screen was opened from a plan.", where: "Full screen, side panel"}
+      - {label: Add to Plan / Remove from Plan, meaning: "Puts the person on the plan's Key people, or takes them off it. Removing keeps their role on the organogram. For people who can edit the plan.", where: "Full screen, side panel"}
+      - {label: Role, meaning: "The title of the selected role. Edit it in place and click Save.", where: "Full screen, side panel"}
+      - {label: Reports to, meaning: "The role the selected one reports to, or Nobody (top). Roles in its own team aren't offered.", where: "Full screen, side panel"}
+      - {label: "Influence, Relationship, Covered by", meaning: "The plan's view of the person. Editable for people in the plan, by people who can edit the plan.", where: "Full screen, side panel"}
+      - {label: Save, meaning: "Saves the side panel's changes (Saved).", where: "Full screen, side panel"}
+      - {label: Recent activity, meaning: "The person's latest touches, with Log Activity, Edit Contact (Edit Role on an empty role) and Remove Role.", where: "Full screen, side panel"}
 
   - name: Settings › Account Plans
     where: Settings › Tender Tracker › Account Plans
