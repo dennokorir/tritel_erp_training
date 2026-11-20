@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "version": "1.5.0",
+  "version": "1.6.0",
   "modules": {
     "accountability": {
       "title": "Accountability Framework",
@@ -4225,8 +4225,8 @@
       "addons_path": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "repo_root": "/home/dennokorir/Projects/waft-16-tritel/custom/src/Tritel-Technologies/tritel-addons",
       "track_ref": "origin/16.0",
-      "last_synced_commit": "5d691a8dca6440f5aae8679f6ab7c74dbc0de07a",
-      "last_synced_at": "2026-11-19T14:09:14+00:00",
+      "last_synced_commit": "bba3de2bf860ace0628f097292a717042a6e6f68",
+      "last_synced_at": "2026-11-20T06:55:43+00:00",
       "pages_dir": "src/content/docs/projects",
       "items": {
         "tritel_project_delivery:client_action:action_project_my_actions": {
@@ -7154,35 +7154,6 @@
           ],
           "illustrations": []
         },
-        "tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:delivery-projects": {
-          "kind": "view_ext",
-          "label": "Delivery projects",
-          "file": "tritel_project_delivery/views/tender_views.xml",
-          "pages": [
-            "projects/calculations/baseline-due",
-            "projects/concepts/delivery-projects",
-            "projects/concepts/odoo-budget-and-cost-account",
-            "projects/how-to/delivery-pm/build-a-baseline",
-            "projects/how-to/delivery-pm/link-an-existing-project",
-            "projects/how-to/delivery-pm/open-a-delivery-project",
-            "projects/how-to/delivery-pm/record-a-handover",
-            "projects/how-to/delivery-pm/track-the-budget",
-            "projects/index",
-            "projects/reports/project-at-a-glance",
-            "projects/reports/projects-over-budget",
-            "projects/who-can-do-what"
-          ],
-          "illustrations": [
-            "general/form-parts",
-            "projects/appr-close-project",
-            "projects/appr-delivery-settings",
-            "projects/appr-tag-orders",
-            "projects/concept-budget-tracking",
-            "projects/concept-close-window",
-            "projects/concept-cost-items",
-            "projects/concept-delivery-project"
-          ]
-        },
         "tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:open-delivery-project": {
           "kind": "view_ext",
           "label": "Open Delivery Project",
@@ -7979,6 +7950,173 @@
           ],
           "illustrations": [
             "projects/appr-sort-cost-accounts"
+          ]
+        },
+        "tritel_project_delivery:view_ext:project.edit_project:button:make-it-a-delivery-project": {
+          "kind": "view_ext",
+          "label": "Make It a Delivery Project",
+          "file": "tritel_project_delivery/views/project_views.xml",
+          "pages": [
+            "end-to-end/opportunity-to-accountability",
+            "end-to-end/project-to-delivery-kpi",
+            "projects/concepts/delivery-projects",
+            "projects/how-to/delivery-pm/link-an-existing-project"
+          ],
+          "illustrations": []
+        },
+        "tritel_project_delivery:menu:menu_delivery_link_projects_tenders": {
+          "kind": "menu",
+          "label": "Link Projects to Tenders",
+          "file": "tritel_project_delivery/views/tender_link_views.xml",
+          "pages": [
+            "projects/how-to/approvers/link-projects-to-tenders",
+            "projects/menus"
+          ],
+          "illustrations": [
+            "projects/appr-link-projects-tenders",
+            "projects/matrix-closeout-setup",
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:menu:menu_acc_pb_link_projects_tenders": {
+          "kind": "menu",
+          "label": "Link Projects to Tenders",
+          "file": "tritel_project_delivery/views/tender_link_views.xml",
+          "pages": [
+            "projects/how-to/approvers/link-projects-to-tenders",
+            "projects/menus"
+          ],
+          "illustrations": [
+            "projects/appr-link-projects-tenders",
+            "projects/matrix-closeout-setup",
+            "projects/matrix-menus"
+          ]
+        },
+        "tritel_project_delivery:view_ext:project.view_project_project_filter:field:tender": {
+          "kind": "view_ext",
+          "label": "Tender",
+          "file": "tritel_project_delivery/views/tender_link_views.xml",
+          "pages": [
+            "projects/concepts/delivery-projects"
+          ],
+          "illustrations": []
+        },
+        "tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_search:field:project-code-or-name": {
+          "kind": "view_ext",
+          "label": "Project (code or name)",
+          "file": "tritel_project_delivery/views/tender_link_views.xml",
+          "pages": [
+            "projects/concepts/delivery-projects",
+            "tenders/concepts/tenders-and-statuses"
+          ],
+          "illustrations": []
+        },
+        "tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_tree:field:projects": {
+          "kind": "view_ext",
+          "label": "Projects",
+          "file": "tritel_project_delivery/views/tender_link_views.xml",
+          "pages": [
+            "projects/concepts/delivery-projects",
+            "tenders/concepts/tenders-and-statuses"
+          ],
+          "illustrations": []
+        },
+        "tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:projects": {
+          "kind": "view_ext",
+          "label": "Projects",
+          "file": "tritel_project_delivery/views/tender_views.xml",
+          "pages": [
+            "projects/calculations/baseline-due",
+            "projects/concepts/delivery-projects",
+            "projects/concepts/odoo-budget-and-cost-account",
+            "projects/how-to/delivery-pm/build-a-baseline",
+            "projects/how-to/delivery-pm/link-an-existing-project",
+            "projects/how-to/delivery-pm/open-a-delivery-project",
+            "projects/how-to/delivery-pm/record-a-handover",
+            "projects/how-to/delivery-pm/track-the-budget",
+            "projects/index",
+            "projects/reports/project-at-a-glance",
+            "projects/reports/projects-over-budget",
+            "projects/who-can-do-what",
+            "tenders/concepts/tenders-and-statuses"
+          ],
+          "illustrations": [
+            "general/form-parts",
+            "projects/appr-close-project",
+            "projects/appr-delivery-settings",
+            "projects/appr-tag-orders",
+            "projects/concept-budget-tracking",
+            "projects/concept-close-window",
+            "projects/concept-cost-items",
+            "projects/concept-delivery-project",
+            "projects/report-other-buttons"
+          ]
+        },
+        "tritel_project_delivery:field:tender.initial.delivery_project_codes": {
+          "kind": "field",
+          "label": "Project codes",
+          "file": "tritel_project_delivery/models/tender.py",
+          "pages": [
+            "projects/concepts/delivery-projects",
+            "projects/concepts/project-codes"
+          ],
+          "illustrations": [
+            "projects/report-other-buttons"
+          ]
+        },
+        "tritel_project_delivery:field:tender.initial.project_search": {
+          "kind": "field",
+          "label": "Project",
+          "file": "tritel_project_delivery/models/tender_links.py",
+          "pages": [
+            "projects/concepts/delivery-projects",
+            "tenders/concepts/tenders-and-statuses"
+          ],
+          "illustrations": []
+        },
+        "tritel_project_delivery:field:project.project.tender_suggestion_id": {
+          "kind": "field",
+          "label": "Suggested tender",
+          "file": "tritel_project_delivery/models/tender_links.py",
+          "pages": [
+            "projects/how-to/approvers/link-projects-to-tenders"
+          ],
+          "illustrations": [
+            "projects/appr-link-projects-tenders"
+          ]
+        },
+        "tritel_project_delivery:field:project.project.tender_suggestion_note": {
+          "kind": "field",
+          "label": "Why",
+          "file": "tritel_project_delivery/models/tender_links.py",
+          "pages": [
+            "projects/how-to/approvers/link-projects-to-tenders"
+          ],
+          "illustrations": [
+            "projects/appr-link-projects-tenders"
+          ]
+        },
+        "tritel_project_delivery:field:project.project.tender_candidate_ids": {
+          "kind": "field",
+          "label": "Other candidates",
+          "file": "tritel_project_delivery/models/tender_links.py",
+          "pages": [
+            "projects/how-to/approvers/link-projects-to-tenders",
+            "projects/how-to/delivery-pm/link-an-existing-project"
+          ],
+          "illustrations": [
+            "projects/appr-link-projects-tenders"
+          ]
+        },
+        "tritel_project_delivery:selection:project.project.tender_suggestion_kind": {
+          "kind": "selection",
+          "label": "Match",
+          "file": "tritel_project_delivery/models/tender_links.py",
+          "pages": [
+            "projects/how-to/approvers/link-projects-to-tenders"
+          ],
+          "illustrations": [
+            "projects/appr-link-projects-tenders"
           ]
         }
       },
@@ -15660,7 +15798,7 @@
       "excluded": {}
     }
   },
-  "generated_at": "2026-11-19T14:09:14+00:00",
+  "generated_at": "2026-11-20T06:55:43+00:00",
   "portal_root": "training-portal",
   "verified_commit": "83d4cd69791094ea2f3440c9ee07e2d7ff0e7a02"
 }

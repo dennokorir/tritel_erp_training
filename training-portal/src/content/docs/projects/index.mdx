@@ -5,7 +5,7 @@ module: projects
 pageType: overview
 roles: [delivery-pm, head-delivery, delivery-finance, md, finance, account-manager, everyone]
 tags: [start here, delivery budgets, budgets, close-out]
-keywords: [project delivery, delivery project, project budget, baseline, delivery baseline, LPO, PO, variance, overrun, handover, project code, menus]
+keywords: [project delivery, delivery project, project budget, baseline, delivery baseline, LPO, variance, overrun, handover, project code, menus, Delivery projects button]
 related: [projects/concepts/delivery-projects, projects/concepts/baselines, projects/concepts/budget-tracking, projects/concepts/delivery-kpi, projects/workflows/baseline]
 sidebar: { order: 1 }
 sources:
@@ -36,7 +36,9 @@ sources:
   - tritel_project_delivery/models/purchase_budget.py
   - tritel_project_delivery/models/delivery_access.py
   - tritel_project_delivery/views/baseline_views.xml
-verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+  - tritel_project_delivery/views/tender_link_views.xml
+  - tritel_project_delivery/models/tender_links.py
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 
 **Project Delivery** is how Tritel plans, approves, tracks and closes the work it has won. When a tender is won, the delivery team opens a **delivery project** from it. The project manager lists everything the project will pay for and when, and sets a completion date and milestone dates. Together these make the project's **Delivery Budget** (once called the delivery baseline). Once it is approved, the project is tracked against it, and at the end it is handed over and closed. Closing freezes the result: was it on time, and was it on budget?
@@ -50,8 +52,8 @@ Project Delivery lives in the **Project** app under **Project › Delivery**, an
 | You are | Your menus |
 |---|---|
 | A delivery project manager | **Project › Delivery › Projects**: **My Delivery Projects**, **Delivery Budgets**, **Budget Commitments**, **My Submissions**, **Handovers** and **Client Delays**. |
-| The Head of Delivery | The same, plus **To approve › Waiting for Me**, **Projects › Delivery Projects** and **Projects › Projects Not in Delivery**, and **Setup** (**Delivery Settings**, **Cost Types**, **Budget Categories**, **Starter Items**, **Standard Milestones**, **Cost Accounts to Sort Out**). |
-| In Delivery Finance | **Project › Delivery** (**To approve**, **Projects** and **Setup**), and **Accounting › Project Budgets**: **To approve › Budgets to Approve** and **Costs After Close**, and **Tracking › Budget vs Actual**, **Delivery Budgets**, **Budget Commitments** and **Cost Accounts to Sort Out**. The set-up lists are also under **Accounting › Configuration › Project Budgets**. |
+| The Head of Delivery | The same, plus **To approve › Waiting for Me**, **Projects › Delivery Projects** and **Projects › Projects Not in Delivery**, and **Setup** (**Delivery Settings**, **Cost Types**, **Budget Categories**, **Starter Items**, **Standard Milestones**, **Cost Accounts to Sort Out**, **Link Projects to Tenders**). |
+| In Delivery Finance | **Project › Delivery** (**To approve**, **Projects** and **Setup**), and **Accounting › Project Budgets**: **To approve › Budgets to Approve** and **Costs After Close**, and **Tracking › Budget vs Actual**, **Delivery Budgets**, **Budget Commitments**, **Cost Accounts to Sort Out** and **Link Projects to Tenders**. The set-up lists are also under **Accounting › Configuration › Project Budgets**. |
 | An accounting manager | **Accounting › Project Budgets › Tracking › Cost Accounts to Sort Out**. |
 
 **Project › My Actions** lists everything waiting for you. The same list appears in the Projects section of the portal page **/my/actions**.
@@ -62,7 +64,7 @@ On a purchase order, the **Budget status** badge under the order number says how
 
 ```mermaid
 flowchart TD
-%% docs-sync: shows tritel_project_delivery:field:project.project.client_delay_ids, tritel_project_delivery:field:project.project.tracking_html, tritel_project_delivery:menu:menu_delivery_client_delays, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:model:project.delivery.baseline, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project, tritel_project_delivery:view_ext:project.edit_project:button:cost-account, tritel_project_delivery:view_ext:project.edit_project:button:delivery-baseline, tritel_project_delivery:view_ext:project.edit_project:button:handover, tritel_project_delivery:view_ext:project.edit_project:button:purchase-orders, tritel_project_delivery:view_ext:project.edit_project:button:vendor-bills, tritel_project_delivery:view_ext:project.edit_project:button:won-tender, tritel_project_delivery:view_ext:project.edit_project:page:delivery, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:field:delivery, tritel_project_delivery:wizard:delivery.cost.account.card
+%% docs-sync: shows tritel_project_delivery:field:project.project.client_delay_ids, tritel_project_delivery:field:project.project.tracking_html, tritel_project_delivery:menu:menu_delivery_client_delays, tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:model:project.delivery.baseline, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project, tritel_project_delivery:view_ext:project.edit_project:button:cost-account, tritel_project_delivery:view_ext:project.edit_project:button:delivery-baseline, tritel_project_delivery:view_ext:project.edit_project:button:handover, tritel_project_delivery:view_ext:project.edit_project:button:purchase-orders, tritel_project_delivery:view_ext:project.edit_project:button:vendor-bills, tritel_project_delivery:view_ext:project.edit_project:button:won-tender, tritel_project_delivery:view_ext:project.edit_project:page:delivery, tritel_project_delivery:wizard:delivery.cost.account.card
   T["Won tender"] --> P["Delivery project"]
   P --> B["Delivery Budget (costs, dates)"]
   B --> A["Approvals (Head, Finance, MD)"]
@@ -76,7 +78,7 @@ flowchart TD
   C --> K["Delivery KPI (Accountability)"]
 ```
 
-- **Delivery project:** a project linked to a won tender. Only these are measured. See [Delivery projects](/projects/concepts/delivery-projects/).
+- **Delivery project:** a project linked to a won tender as a delivery project. Only these are measured; a project linked to its tender for reference only isn't. See [Delivery projects](/projects/concepts/delivery-projects/).
 - **Delivery Budget:** the list of costs, the months they are paid, the completion date and the milestone dates. Version 1 is the original; every change after approval is a new version, a revision. See [Delivery Budgets and revisions](/projects/concepts/baselines/).
 - **Approvals:** the Head of Delivery approves the dates, Delivery Finance approves the budget, and the MD also approves large revisions. See [Who approves what](/projects/concepts/approvals/).
 - **Accounting budget and cost account:** approval creates an accounting budget on the project's cost account. Orders and bills count against the project when they carry that cost account, and confirmed orders not yet billed show on the budget lines as **Committed**. See [The accounting budget and the cost account](/projects/concepts/odoo-budget-and-cost-account/).
@@ -89,11 +91,11 @@ flowchart TD
 | Who | What they do |
 |---|---|
 | **Delivery project managers** | Open delivery projects from won tenders, build the Delivery Budget and submit it for approval, request revisions, record the handover and log client delays. |
-| **Head of Delivery** | Approves the dates of every Delivery Budget and revision, confirms or returns handovers, approves or rejects client delays, links older projects to their tenders, chases overdue budgets and looks after the delivery settings. Can also do everything a project manager does. |
-| **Delivery Finance** | Approves the costs of every first Delivery Budget and of revisions that change costs, tags orders to their project, closes and reopens projects, reviews costs posted after close, and sorts out cost accounts that belong to no project. |
+| **Head of Delivery** | Approves the dates of every Delivery Budget and revision, confirms or returns handovers, approves or rejects client delays, links older projects to their tenders (as delivery projects, or for reference from **Link Projects to Tenders**), chases overdue budgets and looks after the delivery settings. Can also do everything a project manager does. |
+| **Delivery Finance** | Approves the costs of every first Delivery Budget and of revisions that change costs, tags orders to their project, closes and reopens projects, reviews costs posted after close, sorts out cost accounts that belong to no project, and links older projects to their tenders for reference. |
 | **The MD** | Named in **Delivery Settings**. Also approves a revision that raises the budget or moves the completion date beyond the set limits. |
 | **Finance and accounts** | See the accounting budget, with what is committed and still available on each line, and the vendor bills and tagging rules behind each project. Accounting managers sort out cost accounts that belong to no project. |
-| **Account managers** | See the **Delivery projects**, **Delivery budgets** and **Margin left** buttons on their won tenders. Opening a project needs a delivery project manager. |
+| **Account managers** | See the **Projects**, **Delivery budgets** and **Margin left** buttons on their won tenders. Opening a project needs a delivery project manager. |
 | **Buyers** | See the **Budget status** of each purchase order and a warning when an order would take a project over its plan. They set the cost account on order lines with **Assign Cost Accounts**. |
 | **Every project user** | Uses **Project › My Actions** for overdue milestones and tasks, and can open a project's delivery figures from its smart buttons. |
 
@@ -101,7 +103,7 @@ flowchart TD
 
 ```mermaid
 flowchart TD
-%% docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project, tritel_project_delivery:view_ext:project.edit_project:button:handover, tritel_project_delivery:view_ext:project.edit_project:page:delivery, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:open-delivery-project, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:field:delivery
+%% docs-sync: shows tritel_project_delivery:menu:menu_delivery_config, tritel_project_delivery:menu:menu_delivery_root, tritel_project_delivery:selection:project.project.delivery_baseline_state, tritel_project_delivery:selection:project.project.handover_state, tritel_project_delivery:view_ext:analytic.view_account_analytic_account_form:button:delivery-project, tritel_project_delivery:view_ext:project.edit_project:button:handover, tritel_project_delivery:view_ext:project.edit_project:page:delivery, tritel_project_delivery:view_ext:tritel_tender_tracker.view_tender_form:button:open-delivery-project
   A["Tender won"] --> B["Open Delivery Project"]
   B --> C["Budget drafted"]
   C --> D["Submit for Approval"]

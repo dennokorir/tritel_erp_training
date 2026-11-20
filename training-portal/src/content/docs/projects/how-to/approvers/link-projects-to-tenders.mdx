@@ -1,0 +1,75 @@
+---
+title: Link projects to their tenders
+description: Work through Link Projects to Tenders, the projects that have no tender, and link each one to its suggested won tender for reference, or mark it as having no tender.
+module: projects
+pageType: how-to
+roles: [head-delivery, delivery-finance]
+tags: [delivery projects, tenders]
+keywords: [link tender, unlinked project, old project, finished project, project without tender, suggested tender, match tender, link only, for reference, no tender, internal project, bulk link, clean up]
+where: [Project, Delivery, Setup, Link Projects to Tenders]
+before:
+  - You have the <strong>Head of Delivery</strong> or <strong>Delivery Finance</strong> role.
+  - Delivery Finance also finds the list under <strong>Accounting › Project Budgets › Tracking › Link Projects to Tenders</strong>.
+related: [projects/how-to/delivery-pm/link-an-existing-project, projects/concepts/delivery-projects, projects/concepts/project-codes, projects/how-to/approvers/sort-out-cost-accounts, projects/menus]
+sidebar: { order: 16 }
+sources:
+  - tritel_project_delivery/views/tender_link_views.xml
+  - tritel_project_delivery/models/tender_links.py
+  - tritel_project_delivery/wizards/open_project_wizard.py
+  - tritel_project_delivery/wizards/open_project_wizard_views.xml
+  - tritel_project_delivery/views/project_views.xml
+  - tritel_project_delivery/security/ir.model.access.csv
+  - tritel_project_delivery/views/menus.xml
+  - tritel_project_delivery/views/accounting_menus.xml
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
+---
+import Illustration from '../../../../../components/Illustration.astro';
+
+Many projects in Odoo were set up before the delivery flow, or for jobs that are already finished, and carry no tender. **Link Projects to Tenders** lists every active project that has no tender and isn't marked as having none, and suggests the won tender each one most likely belongs to. Linking them records the tender on the project for reference, so you can find a tender's projects and a project's tender both ways. It doesn't make them delivery projects.
+
+<Illustration name="projects/appr-link-projects-tenders" caption="Linking P26-021 to its suggested tender. The numbers match the steps below." />
+
+## Steps
+
+1. Open **Project › Delivery › Setup › Link Projects to Tenders**, or **Accounting › Project Budgets › Tracking › Link Projects to Tenders**.
+2. Read the suggestion on each row. Rows with no suggestion are greyed out. For each project the list shows its **Project code**, **Name**, **Customer** and the date it was **Opened**, and:
+   - **Match**: **Certain** (green) when the tender number, for example TND-2026-003, appears in the project's name or its cost account's name. **Possible** (amber) when the tender is a won tender of the same customer; the one whose title is closest to the project's name comes first.
+   - **Suggested tender**: the best match. Only won tenders are suggested.
+   - **Why**: *Tender number TND-2026-003 is in the project or its cost account* or *Won tender for the same customer*.
+   - **Other candidates**: up to two more won tenders that could fit.
+3. Click **Link…** on the project's row.
+4. The **Link to Won Tender** window opens with **Won tender** filled with the suggestion and **Existing project** with the project. If one of the **Other candidates**, or another won tender, is the right one, choose it in **Won tender**. Check **Client** and **Award Date**.
+5. Leave **Link as** on **Link only**. The window explains: *Link only records the tender on the project for reference. It stays out of delivery tracking: no stages, budget or reminders, and it doesn't count in the delivery KPIs. You can make it a delivery project later with Link to Won Tender.*
+   - A Head of Delivery who wants the project measured can choose **Delivery project** instead. The window then asks for the **Project manager**, **Start date** and **Cost account**, as in [Link an existing project to its tender](/projects/how-to/delivery-pm/link-an-existing-project/).
+6. Click **Link Tender**. The project opens; go back to the list for the next one.
+7. If the project is internal or support work that never had a tender, click **No Tender** on its row instead. Odoo asks *Mark this project as having no tender? It leaves this list.* Click **OK**.
+8. To link several projects to their suggestions at once, tick them in the list and choose **Action › Link to Suggested Tender (link only)**. Only do this for rows whose suggestion you have checked, usually the **Certain** ones.
+
+## What happens next
+
+- **Linked**: the project's **Tender** is set and it leaves this list. If the project had no customer, it takes the tender's. The project's chatter says *Linked to tender **TND-2026-003** for reference (not a delivery project).*
+- The project's **Delivery** tab now says *Linked to tender LAN Upgrade for reference. It is not a delivery project, so it is not measured by the delivery KPIs.* Delivery project managers and the Head of Delivery see **Make It a Delivery Project** there, to turn it into a measured delivery project for the same tender. See [Make a link-only project a delivery project](/projects/how-to/delivery-pm/link-an-existing-project/#make-a-link-only-project-a-delivery-project).
+- The tender's **Projects** button now shows the project's code, and the project shows in the tender list's **Projects** column. Searching projects by **Tender**, or tenders by **Project (code or name)**, finds them. See [Find a tender's projects and a project's tender](/projects/concepts/delivery-projects/#find-a-tenders-projects-and-a-projects-tender).
+- The tender keeps its **Open Delivery Project** button: a link for reference doesn't count as a delivery project.
+- **No Tender**: the project leaves this list for good. Find these projects again with the **Marked No tender** filter in any project list.
+- **Bulk link**: Odoo reports, for example, *3 project(s) linked to their suggested tender. 2 skipped (already linked or no suggestion).*
+
+When the list is empty it says *Every active project is linked to a tender or marked No tender.*
+
+## Common mistakes
+
+| Message | Why it happens | What to do |
+|---|---|---|
+| *Only the Head of Delivery, Delivery Finance or a delivery project manager can link projects to tenders.* | You don't have one of those roles. | Ask someone who has. |
+| *Only a won tender can be linked.* | The tender you chose isn't **Won**. | Choose the won tender. |
+| *P26-021 · LAN Upgrade is already linked to tender CCTV Works.* | Someone linked the project while you were working. | Refresh the list. A link can't be moved to another tender from a screen. |
+| *Link only needs an existing project.* | **Existing project** was cleared while **Link only** was chosen. | Close the window and click **Link…** on the row again. |
+| *Only delivery project managers can open delivery projects.* | You chose **Link as › Delivery project** in Delivery Finance. Only delivery project managers and the Head of Delivery can make a delivery project. | Choose **Link only**, or ask the Head of Delivery. |
+
+:::note[Good to know]
+- Delivery Finance sees both **Link as** options, but **Delivery project** stops with *Only delivery project managers can open delivery projects.* Use **Link only**.
+- A **Possible** suggestion is only a guess from the customer and the title. It can name a tender that is already linked to another project. Check it before you link.
+- **Action › Link to Suggested Tender (link only)** appears in the **Action** menu of every project list, not only this one. It links each ticked project that has no tender to its suggested tender, **Possible** ones included, and skips the rest.
+- Neither a link nor **No Tender** can be undone from a screen. A linked project can't be moved to another tender. The **No Tender** mark has no button to clear it: it goes only when the project is linked to a tender for reference. Check before you click, and ask your system administrator if you made a mistake.
+- **Projects Not in Delivery**, and **Projects not linked to a won tender** in My Actions, list projects that aren't delivery projects. They still include the projects you linked for reference and the ones marked **No Tender**.
+:::

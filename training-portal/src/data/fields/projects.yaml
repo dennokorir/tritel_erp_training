@@ -205,4 +205,32 @@ screens:
     where: Any project form, the project lists and the project search
     fields:
       - {label: Project code, meaning: "P, the two-digit year the project was opened, a dash and a running number, such as P26-049. Unique in the company, never reused. Search by it in the project search.", where: "Form header, Project code column and search"}
-      - {label: Delivery projects, meaning: "On a won tender: the codes of the delivery projects opened from it, such as P26-049, P26-050.", where: Tender smart button}
+      - {label: Projects, meaning: "On a tender (once called Delivery projects): the codes of every project linked to it, such as P26-049, P26-050, including projects linked for reference only and archived ones. Also a column in the tender list.", where: "Tender smart button and tender list"}
+
+  - name: Link to Won Tender window
+    where: "Link to Won Tender on a project's Delivery tab, Link… in Link Projects to Tenders, or Open Delivery Project on a won tender once an existing project is chosen"
+    fields:
+      - {label: Link as, meaning: "Delivery project: stages, milestones, cost account, budget reminder and delivery KPIs. Link only: records the tender for reference, for older or finished projects. Shown once Existing project is filled.", where: Top of the window}
+      - {label: Other candidates, meaning: "Other won tenders that could belong to the project, read-only. Shown when there are any.", where: Under Won tender}
+
+  - name: Link Projects to Tenders
+    where: "Project › Delivery › Setup › Link Projects to Tenders, or Accounting › Project Budgets › Tracking › Link Projects to Tenders"
+    fields:
+      - {label: Project code, meaning: "The project's code, such as P26-021.", where: Column}
+      - {label: Opened, meaning: "The date the project was created in Odoo.", where: Column}
+      - {label: Match, meaning: "Certain (green): the tender number is in the project's or its cost account's name. Possible (amber): a won tender of the same customer.", where: Column}
+      - {label: Suggested tender, meaning: "The won tender that best matches the project.", where: Column}
+      - {label: Why, meaning: "Why the tender is suggested: the tender number was found, or it is a won tender for the same customer.", where: Column}
+      - {label: Other candidates, meaning: "Up to two more won tenders that could fit.", where: Column}
+
+  - name: Project and tender search
+    where: "The search bar of the project lists and of Tender Manager › Tenders › All Tenders"
+    fields:
+      - {label: Tender, meaning: "Projects: search by tender number or title. Also a Group By option and an optional column in the Project › Projects list.", where: Project search}
+      - {label: Linked to a tender, meaning: "Projects that have a tender, as a delivery project or for reference.", where: Project filters}
+      - {label: Not linked to a tender, meaning: "Projects with no tender at all.", where: Project filters}
+      - {label: Marked No tender, meaning: "Projects marked as having no tender.", where: Project filters}
+      - {label: Project (code or name), meaning: "Tenders: search by the code or name of a linked project.", where: Tender search}
+      - {label: With project, meaning: "Tenders with at least one linked project, archived ones included.", where: Tender filters}
+      - {label: Without project, meaning: "Tenders with no linked project.", where: Tender filters}
+      - {label: "Won, no project", meaning: "Won tenders with no linked project.", where: Tender filters}

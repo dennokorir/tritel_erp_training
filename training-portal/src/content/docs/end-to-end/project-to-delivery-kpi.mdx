@@ -5,7 +5,7 @@ module: end-to-end
 pageType: journey
 roles: [delivery-pm, head-delivery, delivery-finance, finance, md, account-manager, line-manager, accountability-admin]
 tags: [end to end, delivery kpi, close-out, metrics]
-keywords: [end to end, baseline, process, workflow, handover between teams, how does it connect, lifecycle, sales to delivery, project lifecycle, on time, on budget, handover, close out, delivery KPI, project manager scorecard]
+keywords: [end to end, baseline, process, workflow, handover between teams, how does it connect, lifecycle, sales to delivery, project lifecycle, on time, on budget, handover, close out, delivery KPI, project manager scorecard, link only]
 related: [end-to-end/index, projects/concepts/delivery-kpi, projects/calculations/close-and-kpi, projects/concepts/handover-and-close-out, accountability/calculations/metric-families]
 sidebar: { order: 5 }
 sources:
@@ -60,7 +60,8 @@ sources:
   - tritel_tender_tracker/views/tender_views.xml
   - tritel_tender_tracker/wizards/partner_activity_wizards.py
   - tritel_tender_tracker/wizards/tender_summary_wizard.py
-verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+  - tritel_project_delivery/models/tender_links.py
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../components/Illustration.astro';
 
@@ -125,7 +126,7 @@ The delivery targets are usually quarterly **Threshold / SLA** targets with a **
 
 | From | To | What travels | When |
 |---|---|---|---|
-| Won tender | Delivery project | **Won tender**, **Client**, **Award Date**; the **Delivery** tab shows **Tender**, **Award date**, **Contract value** and **Budget due**; the tender's **Delivery projects** button shows the project code | When the project is opened or linked |
+| Won tender | Delivery project | **Won tender**, **Client**, **Award Date**; the **Delivery** tab shows **Tender**, **Award date**, **Contract value** and **Budget due**; the tender's **Projects** button (once called **Delivery projects**) shows the project code | When the project is opened or linked |
 | Approved Delivery Budget | Project | The completion date and milestone dates; the accounting budget on the cost account | When the last approval is in |
 | Orders and bills | Budget tracking | Committed and spent amounts, on the cost account | Every night |
 | Approved client delays | Close-out | **Approved client delay (days)**, overlaps counted once | When approved |
@@ -137,6 +138,7 @@ The delivery targets are usually quarterly **Threshold / SLA** targets with a **
 | What happens | Effect | Fix |
 |---|---|---|
 | The project isn't linked to its won tender | It has no Delivery Budget and the Delivery KPI doesn't measure it. | **Link to Won Tender**. See [Link an existing project](/projects/how-to/delivery-pm/link-an-existing-project/). |
+| The project is linked to its tender for reference only | The tender's **Projects** button shows it, but it isn't a delivery project: no Delivery Budget, and the Delivery KPI doesn't measure it. Its **Delivery** tab says *Linked to tender Data Centre Upgrade for reference.* | **Make It a Delivery Project** on its **Delivery** tab. See [Make a link-only project a delivery project](/projects/how-to/delivery-pm/link-an-existing-project/#make-a-link-only-project-a-delivery-project). |
 | No approved Delivery Budget by close | The project closes as **Not scored** and isn't counted. | Get the budget approved before the handover. See [Submit a Delivery Budget for approval](/projects/how-to/delivery-pm/send-for-approval/). |
 | Orders or bills don't carry the cost account | Spending doesn't count against the project, so tracking and the final cost are understated. The order shows **No cost account** as its **Budget status**. | Tag them. See [Tag orders to their project](/projects/how-to/approvers/tag-orders-to-a-project/) or [Set the cost account on order lines](/projects/how-to/approvers/assign-cost-accounts/). |
 | A client delay is logged late, rejected or left waiting | Its days don't move the deadline; finance can't close while one is waiting for approval. | Log each delay as it happens, with evidence. See [Log a client delay](/projects/how-to/delivery-pm/log-a-client-delay/). |

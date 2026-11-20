@@ -5,7 +5,7 @@ module: projects
 pageType: how-to
 roles: [delivery-pm, head-delivery]
 tags: [delivery projects, tenders]
-keywords: [won tender, award, new project, create project, start delivery, kick-off, cost account, analytic account, cost centre, job number, project code, baseline]
+keywords: [won tender, award, new project, create project, start delivery, kick-off, cost account, analytic account, project code, baseline, Delivery projects button, link only]
 where: [Tender Manager, Tenders, All Tenders]
 before:
   - You are a Delivery Project Manager or the Head of Delivery. Only they see the <strong>Open Delivery Project</strong> button.
@@ -35,7 +35,8 @@ sources:
   - tritel_project_delivery/views/buttons_views.xml
   - tritel_project_delivery/views/menus.xml
   - tritel_project_delivery/views/project_views.xml
-verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+  - tritel_project_delivery/models/tender_links.py
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../../../components/Illustration.astro';
 
@@ -48,9 +49,10 @@ When a tender is won, the delivery team opens a **delivery project** from it. Th
 1. Open **Tender Manager › Tenders › All Tenders** and open the won tender.
 2. Click **Open Delivery Project** at the top of the tender.
    - If the tender already has a delivery project, the button is called **Add Delivery Project**. Use it only when the same tender needs a second, separate project.
+   - Projects linked to the tender for reference only don't count: a won tender whose only project is linked for reference still shows **Open Delivery Project**.
 3. In the **Open Delivery Project** window, check **Won tender**, **Client** and **Award Date**. They come from the tender.
 4. Leave **Existing project** empty to create a new project. Check the **Project name**: it is filled in from the tender's title. Edit it if you need to.
-   - If the project already exists in Odoo, choose it in **Existing project** instead. See [Link an existing project to its tender](/projects/how-to/delivery-pm/link-an-existing-project/).
+   - If the project already exists in Odoo, choose it in **Existing project** instead. **Link as** then appears above: leave it on **Delivery project** to carry on here, or choose **Link only** to record the tender on the project for reference without delivery tracking (the button then reads **Link Tender**). See [Link an existing project to its tender](/projects/how-to/delivery-pm/link-an-existing-project/).
 5. Choose the **Project manager** and check the **Start date** (today, unless you change it).
 6. Check **Cost account**. This is the account that orders, bills and expenses must carry to count for the project.
    - If the system found an existing account with a matching name, it is filled in, and the line underneath says *Existing account in plan "Data Centre Upgrade" with 12 cost lines.* Keep it if it is finance's account for this job.
@@ -73,7 +75,7 @@ The person you chose as **Project manager** gets the Delivery Project Manager ro
 
 On the project's **Delivery** tab, **Budget due** shows the award date plus 14 days. The project is listed in **Project › My Actions** under **Budgets to draft**. If there is still no approved budget after the due date, you and the Head of Delivery each get a *Delivery Budget overdue* to-do.
 
-The tender now has a **Delivery projects** smart button showing the project's code. It opens the project.
+The tender now has a **Projects** smart button (once called **Delivery projects**) showing the project's code. It opens the project, or the list when the tender has several. It also counts projects linked for reference only and archived ones.
 
 Next: [build the Delivery Budget](/projects/how-to/delivery-pm/build-a-baseline/).
 

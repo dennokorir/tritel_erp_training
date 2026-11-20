@@ -5,7 +5,7 @@ module: end-to-end
 pageType: journey
 roles: [account-manager, bid-liaison, presales, head-commercial, head-channel, delivery-pm, head-delivery, delivery-finance, finance, line-manager, accountability-admin, md, board]
 tags: [end to end, tenders, achievements, metrics]
-keywords: [end to end, process, workflow, handover between teams, how does it connect, lifecycle, sales to delivery, order to cash, opportunity to award, win to revenue, attribution, appraisal, KPI, scorecard]
+keywords: [end to end, process, workflow, handover between teams, how does it connect, lifecycle, sales to delivery, order to cash, opportunity to award, win to revenue, attribution, appraisal, KPI, scorecard, link only]
 related: [end-to-end/index, tenders/how-to/bids/attribute-a-won-tender, accountability/calculations/metric-families, projects/concepts/delivery-kpi, board/how-to/read-performance]
 sidebar: { order: 1 }
 sources:
@@ -68,7 +68,8 @@ sources:
   - tritel_tender_tracker/views/tender_views.xml
   - tritel_tender_tracker/wizards/bid_desk_wizards.py
   - tritel_tender_tracker/wizards/tender_summary_wizard.py
-verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+  - tritel_project_delivery/models/tender_links.py
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../components/Illustration.astro';
 
@@ -198,6 +199,7 @@ The same win also adds to Employee A's **Gross awarded value** and **Awarded ten
 | The win is never recorded, or has no **Award Date** | Nothing is attributed and nothing reaches the revenue targets. Delivery can't open a project. | Record **Won** with the award date. See [Record the result](/tenders/how-to/bids/record-the-result/). |
 | The win isn't attributed, or a line has 0 points | It counts as 0 in achieved revenue. The worksheet flags it as *award(s) awaiting attribution*. | Each head adds the line and the points, or clicks **Compute Related Activities**. See [Attribute a won tender](/tenders/how-to/bids/attribute-a-won-tender/). |
 | The project isn't linked to its tender | It isn't a delivery project: no Delivery Budget, and the Delivery KPI doesn't measure it. | **Link to Won Tender**; the Head of Delivery finds such projects in **Project › Delivery › Projects › Projects Not in Delivery**. See [Link an existing project](/projects/how-to/delivery-pm/link-an-existing-project/). |
+| The project is linked to its tender for reference only | The tender's **Projects** button shows it, but it isn't a delivery project, so the Delivery KPI doesn't measure it. | **Make It a Delivery Project** on the project's **Delivery** tab. See [Make a link-only project a delivery project](/projects/how-to/delivery-pm/link-an-existing-project/#make-a-link-only-project-a-delivery-project). |
 | The handover isn't confirmed, or finance hasn't closed the project | The project is listed in the delivery worksheet but not counted. | Confirm the handover, then close the project. See [Close or reopen a project](/projects/how-to/approvers/close-a-project/). |
 | The target has no metric, or **Automatic Reviews** is off | No draft review appears; the figure must be fetched or typed in the review. | An accountability administrator sets the **Metric** and **Automatic Reviews** in **Data Source**. See [Set up and test a metric](/accountability/how-to/hr-admin/metrics/). |
 

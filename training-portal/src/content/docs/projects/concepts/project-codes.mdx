@@ -5,7 +5,7 @@ module: projects
 pageType: concept
 roles: [everyone, delivery-pm, head-delivery, delivery-finance, finance]
 tags: [delivery projects, cost accounts]
-keywords: [project code, project number, job number, job code, P26, project reference, project ID, analytic account code, cost centre code, find a project, search project]
+keywords: [project code, project number, job number, job code, P26, project reference, project ID, analytic account code, find a project, search project, Delivery projects button]
 related: [projects/how-to/approvers/correct-a-project-code, projects/how-to/approvers/sort-out-cost-accounts, projects/concepts/odoo-budget-and-cost-account, projects/concepts/delivery-projects, projects/how-to/delivery-pm/open-a-delivery-project, projects/reports/budget-commitments]
 sidebar: { order: 11 }
 sources:
@@ -17,7 +17,9 @@ sources:
   - tritel_project_delivery/models/tender.py
   - tritel_project_delivery/views/tender_views.xml
   - tritel_project_delivery/models/baseline.py
-verified_commit: 5d691a8dca6440f5aae8679f6ab7c74dbc0de07a
+  - tritel_project_delivery/models/tender_links.py
+  - tritel_project_delivery/views/tender_link_views.xml
+verified_commit: bba3de2bf860ace0628f097292a717042a6e6f68
 ---
 import Illustration from '../../../../components/Illustration.astro';
 
@@ -32,7 +34,7 @@ Odoo gives the code when the project is created. Nobody types it. A copy of a pr
 Everywhere Odoo names a project, it shows the code first: **P26-049 · Data Centre Upgrade**. You see it in project fields, in the project list's **Project code** column and in front of each name, on the **Delivery Projects** list, above the project's name on its form, and in the names of what belongs to the project:
 
 - Delivery Budgets: **P26-049 · Data Centre Upgrade · budget v2**;
-- the tender's **Delivery projects** button shows the codes of the projects opened from it, instead of a count;
+- the tender's **Projects** button (once called **Delivery projects**) shows the codes of the projects linked to it, instead of a count, and the tender list has a **Projects** column with the same codes;
 - the **Budget Commitments** report has a **Project code** column.
 
 <Illustration name="projects/concept-project-codes" caption="Searching the Project list by code. The code also sits above the name on the project form." />
@@ -40,6 +42,8 @@ Everywhere Odoo names a project, it shows the code first: **P26-049 · Data Cent
 ## Finding a project by its code
 
 Type the code, or part of it, wherever you pick or search for a project. In the project search bar you can search by name or code, or choose **Project code** to search by code only. Part of a code works too: **26-04** finds P26-040 to P26-049.
+
+To find a project's tender from the code, search the tenders: in **Tender Manager › Tenders › All Tenders**, type the code and choose **Search Project (code or name) for: …**. See [Find a tender's projects and a project's tender](/projects/concepts/delivery-projects/#find-a-tenders-projects-and-a-projects-tender).
 
 ## The cost account carries the code
 
